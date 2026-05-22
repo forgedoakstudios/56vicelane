@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>One PC To Rule Them All — GTA6 Launch Day Build Guide | 56ViceLane</title>
+  <meta name="description" content="Three LOTR-themed PC builds for GTA6 launch day. The Shire ($1,441), The Fellowship ($2,277), and The Mordor ($7,033). Real parts. Real affiliate links. Build before prices spike." />
+
+  <meta property="og:title" content="One PC To Rule Them All — GTA6 Launch Day Build Guide" />
+  <meta property="og:description" content="Three LOTR-themed PC builds for GTA6 launch day. The Shire, The Fellowship, and The Mordor. Real parts. Real prices. Build before the Samsung strike hits." />
+  <meta property="og:image" content="/images/Jason_and_Lucia_01_landscape.jpg" />
+  <meta property="og:url" content="https://56vicelane.com/articles/gta6-pc-build-guide-2026.html" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="One PC To Rule Them All — GTA6 Launch Day Build Guide" />
+  <meta name="twitter:description" content="Three LOTR-themed PC builds for GTA6 launch day. Real parts. Real prices. Build before prices spike." />
+  <meta name="twitter:image" content="/images/Jason_and_Lucia_01_landscape.jpg" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9EKF7J4V7W');
+  </script>
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --pitch:     #0B0B0F;
+      --asphalt:   #16161D;
+      --amber:     #FF6B1A;
+      --amber-dim: #cc4a00;
+      --cyan:      #00D4FF;
+      --bone:      #F0EDE8;
+      --smoke:     #7A7A8C;
+      --edge:      #26262F;
+      --green:     #00C875;
+      --red:       #FF3B3B;
+      --gold:      #FFD700;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--pitch);
+      color: var(--bone);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav {
+      background: var(--asphalt);
+      border-bottom: 1px solid var(--edge);
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo { font-family: 'Russo One', sans-serif; font-size: 1.3rem; color: var(--amber); text-decoration: none; }
+    .nav-links { display: flex; gap: 20px; list-style: none; }
+    .nav-links a { font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--smoke); }
+    .nav-links a:hover { color: var(--bone); text-decoration: none; }
+
+    /* TICKER */
+    .ticker-wrap { background: var(--amber); overflow: hidden; padding: 6px 0; }
+    .ticker-track { display: flex; gap: 60px; white-space: nowrap; animation: ticker 20s linear infinite; }
+    .ticker-item { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 700; color: #000; letter-spacing: 0.03em; text-transform: uppercase; cursor: pointer; flex-shrink: 0; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* SHARE BAR */
+    .share-bar { background: var(--asphalt); border-top: 1px solid var(--edge); border-bottom: 1px solid var(--edge); padding: 10px 20px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .share-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--smoke); }
+    .share-btn { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.04em; padding: 6px 14px; border-radius: 4px; border: none; cursor: pointer; text-transform: uppercase; text-decoration: none; display: inline-block; }
+    .share-btn.native  { background: var(--amber); color: #000; }
+    .share-btn.reddit  { background: #FF4500; color: #fff; }
+    .share-btn.twitter { background: #000; color: #fff; border: 1px solid #333; }
+    .share-btn.whatsapp{ background: #25D366; color: #000; }
+    .share-btn.copy    { background: var(--edge); color: var(--bone); }
+
+    /* ARTICLE WRAP */
+    .article-wrap { max-width: 860px; margin: 0 auto; padding: 40px 20px 80px; }
+
+    .article-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 12px; }
+
+    .article-headline { font-family: 'Russo One', sans-serif; font-size: clamp(1.8rem, 5vw, 2.8rem); line-height: 1.1; color: var(--bone); margin-bottom: 16px; }
+    .article-headline .hl { color: var(--amber); }
+
+    .article-deck { font-size: 1.1rem; color: var(--smoke); line-height: 1.65; border-left: 3px solid var(--amber); padding-left: 16px; margin-bottom: 24px; }
+
+    .article-meta { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; color: var(--smoke); letter-spacing: 0.04em; margin-bottom: 36px; }
+    .article-meta span { color: var(--cyan); }
+
+    h2 { font-family: 'Russo One', sans-serif; font-size: 1.3rem; color: var(--bone); margin: 44px 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--edge); }
+
+    p { margin-bottom: 20px; }
+
+    /* WARNING BOX */
+    .warning-box { background: #130800; border: 1px solid var(--amber); border-radius: 6px; padding: 20px 24px; margin: 32px 0; }
+    .warning-header { font-family: 'Russo One', sans-serif; font-size: 0.95rem; color: var(--amber); margin-bottom: 10px; }
+    .warning-box p { font-size: 0.95rem; color: var(--bone); margin-bottom: 10px; }
+    .warning-box p:last-child { margin-bottom: 0; }
+    .warning-box strong { color: var(--amber); }
+
+    /* BUILD CARDS */
+    .build-card {
+      border: 1px solid var(--edge);
+      border-radius: 8px;
+      margin: 40px 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .build-card.shire  { border-color: var(--green); }
+    .build-card.fellowship { border-color: var(--cyan); }
+    .build-card.mordor { border-color: var(--amber); }
+
+    .build-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .build-card.shire::before  { background: var(--green); box-shadow: 0 0 12px var(--green); }
+    .build-card.fellowship::before { background: var(--cyan); box-shadow: 0 0 12px var(--cyan); }
+    .build-card.mordor::before { background: var(--amber); box-shadow: 0 0 12px var(--amber); }
+
+    .build-header {
+      padding: 24px 24px 20px;
+      background: var(--asphalt);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .build-name {
+      font-family: 'Russo One', sans-serif;
+      font-size: 1.6rem;
+      line-height: 1.1;
+    }
+    .build-card.shire  .build-name { color: var(--green); }
+    .build-card.fellowship .build-name { color: var(--cyan); }
+    .build-card.mordor .build-name { color: var(--amber); }
+
+    .build-subtitle {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--smoke);
+      margin-top: 4px;
+    }
+
+    .build-price-block { text-align: right; }
+    .build-price {
+      font-family: 'Russo One', sans-serif;
+      font-size: 2rem;
+      line-height: 1;
+    }
+    .build-card.shire  .build-price { color: var(--green); }
+    .build-card.fellowship .build-price { color: var(--cyan); }
+    .build-card.mordor .build-price { color: var(--amber); }
+
+    .build-price-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--smoke);
+      margin-top: 2px;
+    }
+
+    .build-desc {
+      padding: 16px 24px;
+      font-size: 0.95rem;
+      color: var(--smoke);
+      background: var(--pitch);
+      border-bottom: 1px solid var(--edge);
+      line-height: 1.6;
+    }
+
+    /* PARTS TABLE */
+    .parts-table { width: 100%; border-collapse: collapse; }
+    .parts-table th {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--smoke);
+      padding: 10px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--edge);
+      background: var(--asphalt);
+    }
+    .parts-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--edge);
+      font-size: 0.9rem;
+      vertical-align: middle;
+    }
+    .parts-table tr:last-child td { border-bottom: none; }
+    .parts-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+    .part-category {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--smoke);
+      white-space: nowrap;
+    }
+
+    .part-name { color: var(--bone); line-height: 1.4; }
+
+    .part-price {
+      font-family: 'Russo One', sans-serif;
+      font-size: 0.95rem;
+      white-space: nowrap;
+      text-align: right;
+    }
+    .build-card.shire  .part-price { color: var(--green); }
+    .build-card.fellowship .part-price { color: var(--cyan); }
+    .build-card.mordor .part-price { color: var(--amber); }
+
+    .buy-btn {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 7px 14px;
+      border-radius: 3px;
+      white-space: nowrap;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .buy-btn:hover { opacity: 0.85; text-decoration: none; }
+    .build-card.shire  .buy-btn { background: var(--green); color: #000; }
+    .build-card.fellowship .buy-btn { background: var(--cyan); color: #000; }
+    .build-card.mordor .buy-btn { background: var(--amber); color: #000; }
+
+    /* TOTAL ROW */
+    .total-row {
+      background: var(--asphalt);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      border-top: 1px solid var(--edge);
+    }
+    .total-label {
+      font-family: 'Russo One', sans-serif;
+      font-size: 0.9rem;
+      color: var(--smoke);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .total-amount {
+      font-family: 'Russo One', sans-serif;
+      font-size: 1.4rem;
+    }
+    .build-card.shire  .total-amount { color: var(--green); }
+    .build-card.fellowship .total-amount { color: var(--cyan); }
+    .build-card.mordor .total-amount { color: var(--amber); }
+
+    /* COMPARISON TABLE */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 32px 0;
+      font-size: 0.9rem;
+    }
+    .compare-table th {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 12px 16px;
+      border-bottom: 2px solid var(--edge);
+      text-align: center;
+    }
+    .compare-table th:first-child { text-align: left; color: var(--smoke); }
+    .compare-table th.shire { color: var(--green); }
+    .compare-table th.fellowship { color: var(--cyan); }
+    .compare-table th.mordor { color: var(--amber); }
+    .compare-table td {
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--edge);
+      text-align: center;
+      color: var(--smoke);
+    }
+    .compare-table td:first-child { text-align: left; color: var(--bone); font-weight: 500; }
+    .compare-table tr:last-child td { border-bottom: none; font-family: 'Russo One', sans-serif; font-size: 1rem; }
+    .compare-table td.shire-val { color: var(--green); }
+    .compare-table td.fellowship-val { color: var(--cyan); }
+    .compare-table td.mordor-val { color: var(--amber); }
+
+    /* CALLOUT */
+    .callout { background: var(--asphalt); border: 1px solid var(--edge); border-left: 4px solid var(--amber); border-radius: 6px; padding: 18px 22px; margin: 28px 0; }
+    .callout.cyan { border-left-color: var(--cyan); }
+    .callout.green { border-left-color: var(--green); }
+    .callout-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); margin-bottom: 8px; }
+    .callout.cyan .callout-label { color: var(--cyan); }
+    .callout.green .callout-label { color: var(--green); }
+    .callout p { font-size: 0.95rem; color: var(--bone); margin: 0; line-height: 1.6; }
+    .callout strong { color: var(--amber); }
+    .callout.cyan strong { color: var(--cyan); }
+    .callout.green strong { color: var(--green); }
+
+    /* RATINGS */
+    .rating-section { background: var(--asphalt); border: 1px solid var(--edge); border-radius: 8px; padding: 24px; margin: 40px 0; text-align: center; }
+    .rating-title { font-family: 'Russo One', sans-serif; font-size: 1rem; margin-bottom: 16px; }
+    .rating-row { display: flex; justify-content: center; gap: 8px; margin-bottom: 6px; }
+    .rating-icon { font-size: 1.6rem; cursor: pointer; transition: transform 0.2s; opacity: 0.45; }
+    .rating-icon:hover, .rating-icon.active { opacity: 1; transform: scale(1.2); }
+    .rating-sublabel { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--smoke); margin-bottom: 18px; }
+    .rating-divider { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; color: var(--smoke); margin: 4px 0 14px; }
+    #rating-result { font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; color: var(--green); margin-top: 10px; min-height: 20px; }
+
+    /* COMMENTS */
+    .comments-section { margin: 40px 0; }
+    .comments-header { font-family: 'Russo One', sans-serif; font-size: 1.1rem; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--edge); }
+    .form-field { margin-bottom: 14px; }
+    .form-field label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--smoke); display: block; margin-bottom: 6px; }
+    .form-field input, .form-field textarea, .form-field select { width: 100%; background: var(--asphalt); border: 1px solid var(--edge); border-radius: 4px; color: var(--bone); font-family: 'Inter', sans-serif; font-size: 0.95rem; padding: 10px 14px; outline: none; }
+    .form-field input:focus, .form-field textarea:focus { border-color: var(--amber); }
+    .form-field textarea { resize: vertical; min-height: 100px; }
+    .char-count { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; color: var(--smoke); text-align: right; margin-top: 4px; }
+    .community-rules { font-size: 0.8rem; color: var(--smoke); margin-bottom: 14px; line-height: 1.4; }
+    .btn-submit { background: var(--amber); color: #000; font-family: 'Russo One', sans-serif; font-size: 0.9rem; letter-spacing: 0.04em; padding: 12px 28px; border: none; border-radius: 4px; cursor: pointer; text-transform: uppercase; width: 100%; }
+    .btn-submit:hover { background: var(--amber-dim); }
+    #submit-msg { font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; color: var(--green); margin-top: 10px; min-height: 20px; }
+    .comment-card { background: var(--asphalt); border: 1px solid var(--edge); border-radius: 6px; padding: 16px; margin-bottom: 12px; }
+    .comment-card-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+    .comment-name { font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--cyan); }
+    .comment-time { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; color: var(--smoke); }
+    .comment-text { font-size: 0.9rem; line-height: 1.55; }
+    .comment-gif img { max-width: 200px; border-radius: 4px; margin-top: 8px; }
+
+    /* FOOTER */
+    footer { background: var(--asphalt); border-top: 1px solid var(--edge); padding: 32px 20px; text-align: center; }
+    .footer-logo { font-family: 'Russo One', sans-serif; font-size: 1.2rem; color: var(--amber); margin-bottom: 8px; }
+    .footer-tagline { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; color: var(--smoke); letter-spacing: 0.06em; text-transform: uppercase; }
+    .footer-links { margin-top: 16px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; color: var(--smoke); letter-spacing: 0.04em; text-transform: uppercase; }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .parts-table th:nth-child(2), .parts-table td:nth-child(2) { display: none; }
+      .build-header { flex-direction: column; }
+      .build-price-block { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">56ViceLane</a>
+  <ul class="nav-links">
+    <li><a href="/news.html">News</a></li>
+    <li><a href="/lastdrive.html">Last Drive</a></li>
+    <li><a href="/shop.html">Gear</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker-track">
+    <span class="ticker-item">Loading latest GTA6 news...</span>
+  </div>
+</div>
+
+<!-- SHARE BAR TOP -->
+<div class="share-bar">
+  <span class="share-label">Share:</span>
+  <button class="share-btn native" onclick="nativeShare()">📤 Share</button>
+  <a class="share-btn reddit" href="https://reddit.com/submit?url=https://56vicelane.com/articles/gta6-pc-build-guide-2026.html&title=One+PC+To+Rule+Them+All+—+GTA6+Launch+Day+Build+Guide" target="_blank">Reddit</a>
+  <a class="share-btn twitter" href="https://twitter.com/intent/tweet?url=https://56vicelane.com/articles/gta6-pc-build-guide-2026.html&text=One+PC+To+Rule+Them+All+—+GTA6+Launch+Day+Build+Guide" target="_blank">X / Twitter</a>
+  <a class="share-btn whatsapp" href="https://wa.me/?text=One+PC+To+Rule+Them+All+—+GTA6+Build+Guide+https://56vicelane.com/articles/gta6-pc-build-guide-2026.html" target="_blank">WhatsApp</a>
+  <button class="share-btn copy" onclick="copyLink()">Copy Link</button>
+</div>
+
+<!-- ARTICLE -->
+<div class="article-wrap">
+
+  <div class="article-eyebrow">🖥️ PC Build Guide · May 20, 2026</div>
+
+  <h1 class="article-headline">One PC To <span class="hl">Rule</span> Them All</h1>
+
+  <p class="article-deck">
+    GTA6 launches November 19. Three builds. Three price points. All real parts with real affiliate links — picked right now before the Samsung strike hits and RAM prices go wherever they're going to go. The Shire. The Fellowship. The Mordor. Choose your destiny.
+  </p>
+
+  <div class="article-meta">
+    By <span>56ViceLane Staff</span> &nbsp;·&nbsp; May 20, 2026 &nbsp;·&nbsp; Updated with real pricing
+  </div>
+
+  <!-- ADSENSE -->
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+  <div class="warning-box">
+    <div class="warning-header">⚠️ Buy Before The Spike</div>
+    <p>A Samsung strike involving 45,000 workers is scheduled for <strong>May 21</strong> — tomorrow. Samsung makes a third of the world's DRAM. Supply chain disruptions hit retail 8–12 weeks downstream. That puts the price spike in <strong>August–September</strong> — right when most people plan to build for November 19.</p>
+    <p>Every price in this guide reflects what you'd pay today. We can't promise those numbers hold through summer. <a href="/articles/gta6-samsung-strike-ai-npc-memory-crisis.html">Read the full breakdown here.</a></p>
+  </div>
+
+  <p>GTA6 is coming to PC eventually — Rockstar always does. And when it arrives, it's going to ask more from your hardware than anything before it. The AI-driven NPC system alone requires serious memory bandwidth. The open world scale is unprecedented. You want to be ready. These three builds give you a path in at every budget.</p>
+
+  <!-- QUICK COMPARE -->
+  <h2>Quick Comparison</h2>
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>Build</th>
+        <th class="shire">🌿 The Shire</th>
+        <th class="fellowship">⚔️ The Fellowship</th>
+        <th class="mordor">🔥 The Mordor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Target</td>
+        <td class="shire-val">1080p / 60fps</td>
+        <td class="fellowship-val">1440p / High</td>
+        <td class="mordor-val">4K / Ultra</td>
+      </tr>
+      <tr>
+        <td>CPU</td>
+        <td class="shire-val">Ryzen 5 7600</td>
+        <td class="fellowship-val">Ryzen 7 9700X</td>
+        <td class="mordor-val">Ryzen 9 9950X3D</td>
+      </tr>
+      <tr>
+        <td>GPU</td>
+        <td class="shire-val">RX 9060 XT 16G</td>
+        <td class="fellowship-val">RTX 5070 12G</td>
+        <td class="mordor-val">RTX 5090 32G</td>
+      </tr>
+      <tr>
+        <td>RAM</td>
+        <td class="shire-val">16GB DDR5</td>
+        <td class="fellowship-val">32GB DDR5</td>
+        <td class="mordor-val">64GB DDR5</td>
+      </tr>
+      <tr>
+        <td>Storage</td>
+        <td class="shire-val">1TB NVMe</td>
+        <td class="fellowship-val">2TB NVMe</td>
+        <td class="mordor-val">2TB + 4TB NVMe</td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td class="shire-val">$1,441.71</td>
+        <td class="fellowship-val">$2,277.92</td>
+        <td class="mordor-val">$7,033.76</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- THE SHIRE -->
+  <!-- ══════════════════════════════════════ -->
+
+  <div class="build-card shire">
+    <div class="build-header">
+      <div>
+        <div class="build-name">🌿 The Shire</div>
+        <div class="build-subtitle">Budget 1080p · GTA6 Ready · Smart Money Build</div>
+      </div>
+      <div class="build-price-block">
+        <div class="build-price">$1,441</div>
+        <div class="build-price-label">Total Build Cost</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 140px;gap:0;background:var(--pitch);border-bottom:1px solid var(--edge);">
+      <div class="build-desc" style="border-bottom:none;">
+        Not everyone needs to spend $7,000 to play GTA6. The Shire is built for 1080p gaming at high settings — smooth, reliable, and significantly more capable than a console. The Ryzen 5 7600 handles everything GTA6 can throw at it, and the RX 9060 XT with 16GB of VRAM is genuinely overbuilt for 1080p. The AI NPC system will run exactly as Rockstar intended. This is the honest pick for most players.
+      </div>
+      <a href="https://amzn.to/4uRo89Q" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;padding:12px;background:var(--pitch);border-left:1px solid var(--edge);">
+        <img src="https://m.media-amazon.com/images/I/71Q5uHsZAoL._AC_SL300_.jpg" alt="GIGABYTE RX 9060 XT" style="width:100%;max-width:120px;height:auto;border-radius:4px;" loading="lazy" />
+      </a>
+    </div>
+
+    <table class="parts-table">
+      <thead>
+        <tr>
+          <th>Part</th>
+          <th>Product</th>
+          <th style="text-align:right">Price</th>
+          <th style="text-align:center">Buy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="part-category">CPU</td>
+          <td class="part-name">AMD Ryzen 5 7600 6-Core 12-Thread</td>
+          <td class="part-price">$211.00</td>
+          <td style="text-align:center"><a href="https://amzn.to/3PQL2PN" class="buy-btn" target="_blank" rel="noopener">Buy →</a></td>
+        </tr>
+        <tr>
+          <td class="part-category">Motherboard</td>
+          <td class="part-name">GIGABYTE B650 Gaming X AX V2 AM5 ATX</td>
+          <td class="part-price">$169.50</td>
+          <td style="text-align:center"><a href="https://amzn.to/4ukD1l4" class="buy-btn" target="_blank" rel="noopener">Buy →</a></td>
+        </tr>
+        <tr>
+          <td class="part-category">RAM</td>
+          <td class="part-name">Kingston FURY Beast 16GB DDR5 5200MT/s</td>
+          <td class="part-price">$232.81</td>
+          <td style="text-align:center"><a href="https://amzn.to/4eR4E0p" class="buy-btn" target="_blank" rel="noopener">Buy →</a></td>
+        </tr>
+        <tr>
+          <td class="part-category">Storage</td>
+          <td class="part-name">Crucial P310 1TB PCIe Gen4 NVMe M.2</td>
+          <td class="part-price">$188.43</td>
+          <td style="text-align:center"><a href="https://amzn.to/4nB2CUm" class="buy-btn" target="_blank" rel="noopener">Buy →</a></td>
+        </tr>
+        <tr>
+          <td class="part-category">GPU</td>
+          <td class="part-name">GIGABYTE Radeon RX 9060 XT Gaming OC 16G</td>
+          <td class="part-price">$459.99</td>
+          <td style="text-align:center"><a href="https://amzn.to/4uRo89Q" class="buy-btn" target="_blank" rel="noopener">Buy →</a></td>
+        </tr>
+        <tr>
+          <td class="part-category">PSU</td>
+          <td class="part-name">MSI MAG A650GL 650W 80+ Gold Fully Modular</td>
+          <td class="part-price">$89.99</td>
+          <td style="text-align:center"><a href="https://amzn.to/4dmntHC" class="buy-btn" target="_blank" rel="noopener">Buy →</a></td>
+        </tr>
+        <tr>
+          <td class="part-category">Case</td>
+          <td class="part-name">MONTECH Sky 3 ATX Panoramic Glass</td>
+          <td class="part-price">$89.99</td>
+          <td style="text-align:center"><a href="https://amzn.to/4uRsJJ8" class="buy-btn" target="_blank" rel="noopener">Buy →</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="total-row">
+      <span class="total-label">🌿 Shire Total</span>
+      <span class="total-amount">$1,441.71</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- THE FELLOWSHIP -->
+  <!-- ══════════════════════════════════════ -->
+
+  <div class="build-card fellowship">
+    <div class="build-header">
+      <div>
+        <div class="build-name">⚔️ The Fellowship</div>
+        <div class="build-subtitle">Mid-Range 1440p · High Settings · The Sweet Spot</div>
+      </div>
+      <div class="build-price-block">
+        <div class="build-price">$2,277</div>
+        <div class="build-price-label">Total Build Cost</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 140px;gap:0;background:var(--pitch);border-bottom:1px solid var(--edge);">
+      <div class="build-desc" style="border-bottom:none;">
+        This is the build most serious GTA6 PC players should target. The Ryzen 7 9700X paired with the RTX 5070 hits 1440p at high settings without breaking a sweat. 32GB of fast DDR5 gives the AI NPC system room to breathe. The Samsung 990 PRO 2TB means GTA6's massive open world loads without stutters. The Fractal North XL is one of the best-looking cases money can buy at this price point. Built to last well beyond launch day.
+      </div>
+      <a href="https://amzn.to/4uhqS0k" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;padding:12px;background:var(--pitch);border-left:1px solid var(--edge);">
+        <img src="https://m.media-amazon.com/images/I/71Q5uHsZAoL._AC_SL300_.jpg" alt="GIGABYTE RTX 5070" style="width:100%;max-width:120px;height:auto;border-radius:4px;" loading="lazy" />
+      </a>
+    </div>
+
+    <table class="parts-table">
+      <thead>
+        <tr>
+          <th>Part</th>
+          <th>Product</th>
+          <th style="text-align:right">Price</th>
+          <th style="text-align:center">Buy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="part-category">CPU</td>
+          <td class="part-name">AMD Ryzen 7 9700X 8-Core 16-Thread</td>
+          <td class="part-price">$304.99</td>
+          <td style="text-align:center"><a href="https://amzn.to/4frPaAc" class="buy-btn" target="_blank" rel="noopener">Buy →</a></td>
+        </tr>
+        <tr>
+          <td class="part-category">Motherboard</td>
+          <td class="part-name">MSI MAG B650 Tomahawk WiFi AM5 ATX</td>
+          <td class="part-price">$159.99</td>
+          <td style="text-align:center"><a href="https://amzn.to/4uorWQj" class="buy-btn" target="_blank" rel="noopener">Buy →</a></td>
+        </tr>
+        <tr>
+          <td class="part-category">RAM</td>
+          <td class="part-name">Lexar Thor Z DDR5 32GB 6000MHz RGB</td>
+          <td class="part-price">$359.99</td>
+          <td style="text-align:center"><a href="https://amzn.to/4dT3ksN" class="buy-btn" target="_blank" rel="noopener">Buy →</a></td>
+        </tr>
+        <tr>
+          <td class="part-category">Storage</td>
+          <td class="part-name">Samsung 990 PRO 2TB NVMe M.2 PCIe Gen4</td>
+          <td class="part-price">$429.99</td>
+          <td style="text-align:center"><a href="https://amzn.to/43lfJzl" class="buy-btn" target="_blank" rel="noopener">Buy →</a></td>
+        </tr>
+        <tr>
+          <td class="part-category">CPU Cooler</td>
+          <td class="part-name">ARCTIC Liquid Freezer III Pro 360 AIO</td>
+          <td class="part-price">$83.99</td>
+          <td style="text-align:center"><a href="https://amzn.to/4nC7AAa" class="buy-btn" target="_blank" rel="noopener">Buy →</a></td>
+        </tr>
+        <tr>
+          <td class="part-category">GPU</td>
+          <td class="part-name">GIGABYTE GeForce RTX 5070 WINDFORCE OC 12G</td>
+          <td class="part-price">$635.99</td>
+          <td style="text-align:center"><a href="https://amzn.to/4uhqS0k" class="buy-btn" target="_blank" rel="noopener">Buy →</a></td>
+        </tr>
+        <tr>
+          <td class="part-category">PSU</td>
+          <td class="part-name">MSI MAG A850GL 850W PCIe5 80+ Gold</td>
+          <td class="part-price">$107.99</td>
+          <td style="text-align:center"><a href="https://amzn.to/4dyloG7" class="buy-btn" target="_blank" rel="noopener">Buy →</a></td>
+        </tr>
+        <tr>
+          <td class="part-category">Case</td>
+          <td class="part-name">Fractal Design North XL Charcoal Black TG</td>
+          <td class="part-price">$194.99</td>
+          <td style="text-align:center"><a href="https://amzn.to/4tPSwR4" class="buy-btn" target="_blank" rel="noopener">Buy →</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="total-row">
+      <span class="total-label">⚔️ Fellowship Total</span>
+      <span class="total-amount">$2,277.92</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- THE MORDOR -->
+  <!-- ══════════════════════════════════════ -->
+
+  <div class="build-card mordor">
+    <div class="build-header">
+      <div>
+        <div class="build-name">🔥 The Mordor</div>
+        <div class="build-subtitle">4K Ultra · No Compromises · The One Ring Build</div>
+      </div>
+      <div class="build-price-block">
+        <div class="build-price">$7,033</div>
+        <div class="build-price-label">Total Build Cost</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 140px;gap:0;background:var(--pitch);border-bottom:1px solid var(--edge);">
+      <div class="build-desc" style="border-bottom:none;">
+        There is no ceiling here. The Ryzen 9 9950X3D is the most powerful gaming CPU AMD has ever made. The RTX 5090 with 32GB of GDDR7 is in a category by itself — nearly double the performance of its predecessor. 64GB of DDR5 means GTA6's AI NPC system gets every resource it could possibly ask for. Dual NVMe drives — 2TB for OS and GTA6, 4TB for everything else. The Lian Li Dynamic EVO XL showcases every component. This isn't a gaming PC. It's a statement.
+      </div>
+      <a href="https://amzn.to/3RQuUyk" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;padding:12px;background:var(--pitch);border-left:1px solid var(--edge);">
+        <img src="https://m.media-amazon.com/images/I/81Q5uHsZAoL._AC_SL300_.jpg" alt="ASUS ROG Astral RTX 5090" style="width:100%;max-width:120px;height:auto;border-radius:4px;" loading="lazy" />
+      </a>
+    </div>
+
+    <table class="parts-table">
+      <thead>
+        <tr>
+          <th>Part</th>
+          <th>Product</th>
+          <th style="text-align:right">Price</th>
+          <th style="text-align:center">Buy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="part-category">CPU</td>
+          <td class="part-name">AMD Ryzen 9 9950X3D 16-Core Processor</td>
+          <td class="part-price">$639.99</td>
+          <td style="text-align:center"><a href="https://amzn.to/4nD7rNb" class="buy-btn" target="_blank" rel="noopener">Buy →</a></td>
+        </tr>
+        <tr>
+          <td class="part-category">Motherboard</td>
+          <td class="part-name">ASUS ROG Strix X870-A Gaming WiFi AM5 ATX</td>
+          <td class="part-price">$259.99</td>
+          <td style="text-align:center"><a href="https://amzn.to/3RCmcDP" class="buy-btn" target="_blank" rel="noopener">Buy →</a></td>
+        </tr>
+        <tr>
+          <td class="part-category">RAM</td>
+          <td class="part-name">Lexar ARES Gen2 RGB DDR5 64GB 6000MHz</td>
+          <td class="part-price">$869.99</td>
+          <td style="text-align:center"><a href="https://amzn.to/4uXXzzR" class="buy-btn" target="_blank" rel="noopener">Buy →</a></td>
+        </tr>
+        <tr>
+          <td class="part-category">OS Drive</td>
+          <td class="part-name">Samsung 990 PRO 2TB NVMe M.2 PCIe Gen4</td>
+          <td class="part-price">$429.99</td>
+          <td style="text-align:center"><a href="https://amzn.to/43lfJzl" class="buy-btn" target="_blank" rel="noopener">Buy →</a></td>
+        </tr>
+        <tr>
+          <td class="part-category">Game Drive</td>
+          <td class="part-name">WD Blue SN5000 4TB NVMe M.2 PCIe Gen4</td>
+          <td class="part-price">$479.99</td>
+          <td style="text-align:center"><a href="https://amzn.to/49Yj7UO" class="buy-btn" target="_blank" rel="noopener">Buy →</a></td>
+        </tr>
+        <tr>
+          <td class="part-category">CPU Cooler</td>
+          <td class="part-name">ARCTIC Liquid Freezer III Pro 360 AIO</td>
+          <td class="part-price">$83.99</td>
+          <td style="text-align:center"><a href="https://amzn.to/4uWHxpT" class="buy-btn" target="_blank" rel="noopener">Buy →</a></td>
+        </tr>
+        <tr>
+          <td class="part-category">GPU</td>
+          <td class="part-name">ASUS ROG Astral GeForce RTX 5090 OC 32GB</td>
+          <td class="part-price">$3,899.95</td>
+          <td style="text-align:center"><a href="https://amzn.to/3RQuUyk" class="buy-btn" target="_blank" rel="noopener">Buy →</a></td>
+        </tr>
+        <tr>
+          <td class="part-category">PSU</td>
+          <td class="part-name">MONTECH Century II 1200W 80+ Gold ATX 3.1</td>
+          <td class="part-price">$119.90</td>
+          <td style="text-align:center"><a href="https://amzn.to/49byGby" class="buy-btn" target="_blank" rel="noopener">Buy →</a></td>
+        </tr>
+        <tr>
+          <td class="part-category">Case</td>
+          <td class="part-name">Lian Li Dynamic EVO XL White E-ATX</td>
+          <td class="part-price">$249.97</td>
+          <td style="text-align:center"><a href="https://amzn.to/4tLPtJl" class="buy-btn" target="_blank" rel="noopener">Buy →</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="total-row">
+      <span class="total-label">🔥 Mordor Total</span>
+      <span class="total-amount">$7,033.76</span>
+    </div>
+  </div>
+
+  <!-- ADSENSE MID -->
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+  <h2>Why These Parts. Why Now.</h2>
+
+  <p>Every component in all three builds was hand-selected and priced in May 2026. These aren't generic recommendations pulled from a spreadsheet. They're real Amazon listings with real SiteStripe affiliate links, picked for compatibility, value, and GTA6 readiness.</p>
+
+  <p>The RAM situation deserves a separate conversation. Every build here is running DDR5 that costs more than it should. That's not a mistake in the guide — that's the AI data center memory crisis hitting your wallet directly. Samsung's HBM production for AI servers is cannibalizing consumer DDR5 supply. A 16GB kit that should cost $80-100 is running $230+. A 32GB kit that should be $150 is $360. That's the market right now.</p>
+
+  <div class="callout">
+    <div class="callout-label">⚡ The Samsung Situation</div>
+    <p>45,000 Samsung workers are scheduled to strike May 21. Samsung makes a third of the world's DRAM. Supply chain impacts hit retail 8–12 weeks after a disruption — meaning August and September. Build now or pay more later. <strong><a href="/articles/gta6-samsung-strike-ai-npc-memory-crisis.html">Full breakdown here.</a></strong></p>
+  </div>
+
+  <p>All links on this page use the 56vicelane-20 Amazon Associates tracking ID. When you buy through these links you support the site at no additional cost to you. Prices fluctuate — what you see here is what was live at time of writing.</p>
+
+  <div class="callout cyan">
+    <div class="callout-label">🏁 The Last Drive — November 18, 2026</div>
+    <p>The night before GTA6 launches, the world logs into GTA5 together for one final slow cruise. Free. All platforms. No missions. Just the road and the people. <strong><a href="/lastdrive.html">Sign up and get your name on the Wall of Honor.</a></strong></p>
+  </div>
+
+  <!-- RATINGS -->
+  <div class="rating-section">
+    <div class="rating-title">Rate This Guide</div>
+    <div class="rating-row" id="stars-row">
+      <span class="rating-icon" data-val="1" data-type="good">⭐</span>
+      <span class="rating-icon" data-val="2" data-type="good">⭐</span>
+      <span class="rating-icon" data-val="3" data-type="good">⭐</span>
+      <span class="rating-icon" data-val="4" data-type="good">⭐</span>
+      <span class="rating-icon" data-val="5" data-type="good">⭐</span>
+    </div>
+    <div class="rating-sublabel">Stars = Solid Guide</div>
+    <div class="rating-divider">— or —</div>
+    <div class="rating-row" id="cops-row">
+      <span class="rating-icon" data-val="1" data-type="bad">🚔</span>
+      <span class="rating-icon" data-val="2" data-type="bad">🚔</span>
+      <span class="rating-icon" data-val="3" data-type="bad">🚔</span>
+      <span class="rating-icon" data-val="4" data-type="bad">🚔</span>
+      <span class="rating-icon" data-val="5" data-type="bad">🚔</span>
+    </div>
+    <div class="rating-sublabel">Cop Cars = Wrong Picks</div>
+    <div id="rating-result"></div>
+  </div>
+
+  <!-- COMMENTS -->
+  <div class="comments-section">
+    <div class="comments-header">💬 Which Build Are You Running?</div>
+    <div class="comment-form">
+      <div class="form-field">
+        <label>Name / Gamertag</label>
+        <input type="text" id="comment-name" placeholder="Your name or gamertag" maxlength="50" />
+      </div>
+      <div class="form-field">
+        <label>Comment <span style="color:var(--smoke)">(500 char max)</span></label>
+        <textarea id="comment-text" placeholder="Shire, Fellowship, or Mordor? Tell us your build plans." maxlength="500"></textarea>
+        <div class="char-count"><span id="char-count">0</span> / 500</div>
+      </div>
+      <div class="form-field">
+        <label>Emoji</label>
+        <select id="comment-emoji">
+          <option value="🌿">🌿 Shire</option>
+          <option value="⚔️">⚔️ Fellowship</option>
+          <option value="🔥">🔥 Mordor</option>
+          <option value="🎮">🎮 Controller</option>
+          <option value="💻">💻 PC Master Race</option>
+          <option value="💰">💰 Money</option>
+          <option value="🤯">🤯 Mind Blown</option>
+          <option value="😤">😤 Too Expensive</option>
+          <option value="👀">👀 Eyes</option>
+          <option value="🏁">🏁 Last Drive</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>GIF URL (optional)</label>
+        <input type="url" id="comment-gif" placeholder="Paste a GIF link" />
+      </div>
+      <div class="community-rules">⚠️ Community rules: 18+ language OK. No threats, no slurs. Keep it real.</div>
+      <button class="btn-submit" onclick="submitComment()">Post Comment</button>
+      <div id="submit-msg"></div>
+    </div>
+    <div id="comments-list"></div>
+  </div>
+
+</div>
+
+<!-- SHARE BAR BOTTOM -->
+<div class="share-bar">
+  <span class="share-label">Share:</span>
+  <button class="share-btn native" onclick="nativeShare()">📤 Share</button>
+  <a class="share-btn reddit" href="https://reddit.com/submit?url=https://56vicelane.com/articles/gta6-pc-build-guide-2026.html&title=One+PC+To+Rule+Them+All+—+GTA6+Launch+Day+Build+Guide" target="_blank">Reddit</a>
+  <a class="share-btn twitter" href="https://twitter.com/intent/tweet?url=https://56vicelane.com/articles/gta6-pc-build-guide-2026.html&text=One+PC+To+Rule+Them+All+—+GTA6+Launch+Day+Build+Guide" target="_blank">X / Twitter</a>
+  <a class="share-btn whatsapp" href="https://wa.me/?text=One+PC+To+Rule+Them+All+—+GTA6+Build+Guide+https://56vicelane.com/articles/gta6-pc-build-guide-2026.html" target="_blank">WhatsApp</a>
+  <button class="share-btn copy" onclick="copyLink()">Copy Link</button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">56ViceLane</div>
+  <div class="footer-tagline">Where GTA5 Ends And GTA6 Begins</div>
+  <div class="footer-links">
+    <a href="/news.html">News</a>
+    <a href="/lastdrive.html">Last Drive</a>
+    <a href="/shop.html">Gear</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy.html">Privacy</a>
+  </div>
+</footer>
+
+<script>
+  const AIRTABLE_TOKEN = 'pattxJ12NQzpHMejD.2eb992f22f1a43e032d866df028dbb33958635234f6cfd30769e3e12f10d5588';
+  const AIRTABLE_BASE  = 'appVViGbmcu5gbn8B';
+  const ARTICLE_SLUG   = 'gta6-pc-build-guide-2026';
+
+  // TICKER
+  fetch('/articles.json')
+    .then(r => r.json())
+    .then(articles => {
+      const track = document.getElementById('ticker-track');
+      const items = [...articles, ...articles].map(a =>
+        `<span class="ticker-item" onclick="location.href='${a.url}'">${a.emoji} ${a.title}</span>`
+      ).join('');
+      track.innerHTML = items;
+    })
+    .catch(() => {
+      document.getElementById('ticker-track').innerHTML =
+        '<span class="ticker-item">🏁 The Last Drive — November 18, 2026 — Sign Up Now</span>';
+    });
+
+  // SHARE
+  function nativeShare() {
+    if (navigator.share) {
+      navigator.share({ title: "One PC To Rule Them All — GTA6 Launch Day Build Guide", url: window.location.href });
+    }
+  }
+  function copyLink() {
+    navigator.clipboard.writeText(window.location.href);
+    event.target.textContent = 'Copied!';
+    setTimeout(() => event.target.textContent = 'Copy Link', 2000);
+  }
+
+  // RATINGS
+  document.querySelectorAll('.rating-icon').forEach(icon => {
+    icon.addEventListener('click', async () => {
+      if (localStorage.getItem('rated-' + ARTICLE_SLUG)) {
+        document.getElementById('rating-result').textContent = 'Already voted. Thanks!';
+        return;
+      }
+      const val = parseInt(icon.dataset.val);
+      const type = icon.dataset.type;
+      const isPositive = type === 'good';
+      document.querySelectorAll(`[data-type="${type}"]`).forEach((ic, i) => { if (i < val) ic.classList.add('active'); });
+      try {
+        await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE}/ArticleRatings`, {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fields: { ArticleSlug: ARTICLE_SLUG, Rating: val, IsPositive: isPositive, Timestamp: new Date().toISOString() } })
+        });
+      } catch(e) {}
+      localStorage.setItem('rated-' + ARTICLE_SLUG, '1');
+      document.getElementById('rating-result').textContent = isPositive
+        ? `${val} star${val > 1 ? 's' : ''} — Appreciate it.`
+        : `${val} cop car${val > 1 ? 's' : ''} — Tell us what we got wrong below.`;
+    });
+  });
+
+  // CHAR COUNT
+  document.getElementById('comment-text').addEventListener('input', function() {
+    document.getElementById('char-count').textContent = this.value.length;
+  });
+
+  // SUBMIT COMMENT
+  async function submitComment() {
+    const name   = document.getElementById('comment-name').value.trim();
+    const text   = document.getElementById('comment-text').value.trim();
+    const emoji  = document.getElementById('comment-emoji').value;
+    const gifUrl = document.getElementById('comment-gif').value.trim();
+    const msgEl  = document.getElementById('submit-msg');
+    if (!name || !text) { msgEl.textContent = 'Name and comment required.'; msgEl.style.color = '#FF3B3B'; return; }
+    msgEl.textContent = 'Posting...'; msgEl.style.color = 'var(--smoke)';
+    try {
+      await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE}/ArticleComments`, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fields: { Name: name, Comment: text, Emoji: emoji, GifUrl: gifUrl, ArticleSlug: ARTICLE_SLUG, Timestamp: new Date().toISOString() } })
+      });
+      msgEl.textContent = '✅ Posted!'; msgEl.style.color = 'var(--green)';
+      document.getElementById('comment-name').value = '';
+      document.getElementById('comment-text').value = '';
+      document.getElementById('comment-gif').value  = '';
+      document.getElementById('char-count').textContent = '0';
+      setTimeout(loadComments, 800);
+    } catch(e) { msgEl.textContent = 'Error. Try again.'; msgEl.style.color = '#FF3B3B'; }
+  }
+
+  // LOAD COMMENTS
+  async function loadComments() {
+    try {
+      const res = await fetch(
+        `https://api.airtable.com/v0/${AIRTABLE_BASE}/ArticleComments?filterByFormula={ArticleSlug}="${ARTICLE_SLUG}"&sort[0][field]=Timestamp&sort[0][direction]=desc`,
+        { headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}` } }
+      );
+      const data = await res.json();
+      const list = document.getElementById('comments-list');
+      if (!data.records || data.records.length === 0) {
+        list.innerHTML = '<p style="color:var(--smoke);font-size:0.9rem;">No comments yet. Be the first to share your build.</p>';
+        return;
+      }
+      list.innerHTML = data.records.map(r => {
+        const f = r.fields;
+        const d = f.Timestamp ? new Date(f.Timestamp).toLocaleDateString() : '';
+        return `<div class="comment-card">
+          <div class="comment-card-header">
+            <span class="comment-name">${f.Emoji || ''} ${f.Name || 'Anonymous'}</span>
+            <span class="comment-time">${d}</span>
+          </div>
+          <div class="comment-text">${f.Comment || ''}</div>
+          ${f.GifUrl ? `<div class="comment-gif"><img src="${f.GifUrl}" alt="gif" loading="lazy"/></div>` : ''}
+        </div>`;
+      }).join('');
+    } catch(e) {}
+  }
+
+  loadComments();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Take-Two Earnings: GTA6 On Track, $8.2B Forecast, No Pre-Orders Yet | 56ViceLane</title>
+  <meta name="description" content="Take-Two Interactive Q4 2026 earnings call — live GTA6 coverage. Pre-orders, pricing, trailer, editions, PC version. Everything announced, as it happens." />
+
+  <meta property="og:title" content="Take-Two Earnings: GTA6 On Track, $8.2B Forecast, No Pre-Orders Yet" />
+  <meta property="og:description" content="Take-Two posted record $6.72B in FY2026 and projected $8.2B for FY2027. GTA6 confirmed November 19. No pre-orders. No price. Full earnings breakdown." />
+  <meta property="og:image" content="/images/Jason_and_Lucia_01_landscape.jpg" />
+  <meta property="og:url" content="https://56vicelane.com/articles/gta6-take-two-earnings-call-may-2026.html" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Take-Two Earnings: GTA6 On Track, $8.2B Forecast, No Pre-Orders Yet" />
+  <meta name="twitter:description" content="Take-Two Q4 earnings call live GTA6 coverage — pre-orders, pricing, trailer, editions." />
+  <meta name="twitter:image" content="/images/Jason_and_Lucia_01_landscape.jpg" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9EKF7J4V7W');
+  </script>
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --pitch:     #0B0B0F;
+      --asphalt:   #16161D;
+      --amber:     #FF6B1A;
+      --amber-dim: #cc4a00;
+      --cyan:      #00D4FF;
+      --bone:      #F0EDE8;
+      --smoke:     #7A7A8C;
+      --edge:      #26262F;
+      --green:     #00C875;
+      --red:       #FF3B3B;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--pitch); color: var(--bone); font-family: 'Inter', sans-serif; font-size: 17px; line-height: 1.75; overflow-x: hidden; }
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav { background: var(--asphalt); border-bottom: 1px solid var(--edge); padding: 0 20px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-family: 'Russo One', sans-serif; font-size: 1.3rem; color: var(--amber); text-decoration: none; }
+    .nav-links { display: flex; gap: 20px; list-style: none; }
+    .nav-links a { font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--smoke); }
+    .nav-links a:hover { color: var(--bone); text-decoration: none; }
+
+    /* TICKER */
+    .ticker-wrap { background: var(--amber); overflow: hidden; padding: 6px 0; }
+    .ticker-track { display: flex; gap: 60px; white-space: nowrap; animation: ticker 20s linear infinite; }
+    .ticker-item { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 700; color: #000; letter-spacing: 0.03em; text-transform: uppercase; cursor: pointer; flex-shrink: 0; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* LIVE BADGE */
+    .live-bar { background: var(--red); padding: 8px 20px; display: flex; align-items: center; gap: 10px; }
+    .live-dot { width: 8px; height: 8px; border-radius: 50%; background: #fff; animation: pulse 1s infinite; flex-shrink: 0; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    .live-text { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; }
+
+    /* SHARE BAR */
+    .share-bar { background: var(--asphalt); border-top: 1px solid var(--edge); border-bottom: 1px solid var(--edge); padding: 10px 20px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .share-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--smoke); }
+    .share-btn { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.04em; padding: 6px 14px; border-radius: 4px; border: none; cursor: pointer; text-transform: uppercase; text-decoration: none; display: inline-block; }
+    .share-btn.native  { background: var(--amber); color: #000; }
+    .share-btn.reddit  { background: #FF4500; color: #fff; }
+    .share-btn.twitter { background: #000; color: #fff; border: 1px solid #333; }
+    .share-btn.whatsapp{ background: #25D366; color: #000; }
+    .share-btn.copy    { background: var(--edge); color: var(--bone); }
+
+    /* ARTICLE */
+    .article-wrap { max-width: 780px; margin: 0 auto; padding: 40px 20px 80px; }
+
+    .article-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
+
+    .article-headline { font-family: 'Russo One', sans-serif; font-size: clamp(1.8rem, 5vw, 2.8rem); line-height: 1.1; color: var(--bone); margin-bottom: 16px; }
+    .article-headline .hl { color: var(--amber); }
+
+    .article-deck { font-size: 1.1rem; color: var(--smoke); line-height: 1.65; border-left: 3px solid var(--red); padding-left: 16px; margin-bottom: 24px; }
+
+    .article-meta { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; color: var(--smoke); letter-spacing: 0.04em; margin-bottom: 36px; }
+    .article-meta span { color: var(--cyan); }
+
+    h2 { font-family: 'Russo One', sans-serif; font-size: 1.3rem; color: var(--bone); margin: 44px 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--edge); }
+
+    p { margin-bottom: 20px; }
+
+    /* ANNOUNCEMENT BLOCKS */
+    .announcement {
+      background: var(--asphalt);
+      border: 1px solid var(--edge);
+      border-radius: 6px;
+      margin: 24px 0;
+      overflow: hidden;
+    }
+    .announcement.confirmed { border-left: 4px solid var(--green); }
+    .announcement.breaking  { border-left: 4px solid var(--red); }
+    .announcement.rumor     { border-left: 4px solid var(--amber); }
+    .announcement.nothing   { border-left: 4px solid var(--smoke); opacity: 0.6; }
+
+    .announcement-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--edge);
+    }
+    .announcement-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 3px;
+    }
+    .tag-confirmed { background: var(--green); color: #000; }
+    .tag-breaking  { background: var(--red); color: #fff; }
+    .tag-rumor     { background: var(--amber); color: #000; }
+    .tag-nothing   { background: var(--edge); color: var(--smoke); }
+
+    .announcement-title {
+      font-family: 'Russo One', sans-serif;
+      font-size: 1rem;
+      color: var(--bone);
+    }
+    .announcement-body {
+      padding: 14px 18px;
+      font-size: 0.95rem;
+      color: var(--smoke);
+      line-height: 1.65;
+    }
+    .announcement-body strong { color: var(--bone); }
+    .announcement.confirmed .announcement-body strong { color: var(--green); }
+    .announcement.breaking  .announcement-body strong { color: var(--red); }
+    .announcement.rumor     .announcement-body strong { color: var(--amber); }
+
+    /* PLACEHOLDER STYLE */
+    .placeholder {
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(255,107,26,0.03),
+        rgba(255,107,26,0.03) 10px,
+        transparent 10px,
+        transparent 20px
+      );
+      border: 1px dashed var(--edge);
+      border-radius: 6px;
+      padding: 20px;
+      margin: 24px 0;
+      text-align: center;
+    }
+    .placeholder-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 6px;
+    }
+    .placeholder-desc {
+      font-size: 0.85rem;
+      color: var(--smoke);
+    }
+
+    /* TTWO STOCK */
+    .stock-bar {
+      background: var(--asphalt);
+      border: 1px solid var(--edge);
+      border-top: 2px solid var(--amber);
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin: 28px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .stock-left { }
+    .stock-ticker-label { font-family: 'Russo One', sans-serif; font-size: 0.9rem; color: var(--amber); }
+    .stock-name { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--smoke); margin-top: 2px; }
+    .stock-right { text-align: right; }
+    .stock-price { font-family: 'Russo One', sans-serif; font-size: 1.6rem; color: var(--bone); }
+    .stock-change { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; }
+    .stock-change.up { color: var(--green); }
+    .stock-change.down { color: var(--red); }
+    .stock-change.flat { color: var(--smoke); }
+    .stock-note { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; color: var(--smoke); margin-top: 4px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+    /* CALLOUT */
+    .callout { background: var(--asphalt); border: 1px solid var(--edge); border-left: 4px solid var(--amber); border-radius: 6px; padding: 18px 22px; margin: 28px 0; }
+    .callout.cyan { border-left-color: var(--cyan); }
+    .callout.red { border-left-color: var(--red); }
+    .callout-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); margin-bottom: 8px; }
+    .callout.cyan .callout-label { color: var(--cyan); }
+    .callout.red .callout-label { color: var(--red); }
+    .callout p { font-size: 0.95rem; color: var(--bone); margin: 0; line-height: 1.6; }
+    .callout strong { color: var(--amber); }
+    .callout.cyan strong { color: var(--cyan); }
+
+    /* RATINGS */
+    .rating-section { background: var(--asphalt); border: 1px solid var(--edge); border-radius: 8px; padding: 24px; margin: 40px 0; text-align: center; }
+    .rating-title { font-family: 'Russo One', sans-serif; font-size: 1rem; margin-bottom: 16px; }
+    .rating-row { display: flex; justify-content: center; gap: 8px; margin-bottom: 6px; }
+    .rating-icon { font-size: 1.6rem; cursor: pointer; transition: transform 0.2s; opacity: 0.45; }
+    .rating-icon:hover, .rating-icon.active { opacity: 1; transform: scale(1.2); }
+    .rating-sublabel { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--smoke); margin-bottom: 18px; }
+    .rating-divider { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; color: var(--smoke); margin: 4px 0 14px; }
+    #rating-result { font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; color: var(--green); margin-top: 10px; min-height: 20px; }
+
+    /* COMMENTS */
+    .comments-section { margin: 40px 0; }
+    .comments-header { font-family: 'Russo One', sans-serif; font-size: 1.1rem; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--edge); }
+    .form-field { margin-bottom: 14px; }
+    .form-field label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--smoke); display: block; margin-bottom: 6px; }
+    .form-field input, .form-field textarea, .form-field select { width: 100%; background: var(--asphalt); border: 1px solid var(--edge); border-radius: 4px; color: var(--bone); font-family: 'Inter', sans-serif; font-size: 0.95rem; padding: 10px 14px; outline: none; }
+    .form-field input:focus, .form-field textarea:focus { border-color: var(--amber); }
+    .form-field textarea { resize: vertical; min-height: 100px; }
+    .char-count { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; color: var(--smoke); text-align: right; margin-top: 4px; }
+    .community-rules { font-size: 0.8rem; color: var(--smoke); margin-bottom: 14px; line-height: 1.4; }
+    .btn-submit { background: var(--amber); color: #000; font-family: 'Russo One', sans-serif; font-size: 0.9rem; letter-spacing: 0.04em; padding: 12px 28px; border: none; border-radius: 4px; cursor: pointer; text-transform: uppercase; width: 100%; }
+    .btn-submit:hover { background: var(--amber-dim); }
+    #submit-msg { font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; color: var(--green); margin-top: 10px; min-height: 20px; }
+    .comment-card { background: var(--asphalt); border: 1px solid var(--edge); border-radius: 6px; padding: 16px; margin-bottom: 12px; }
+    .comment-card-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+    .comment-name { font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--cyan); }
+    .comment-time { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; color: var(--smoke); }
+    .comment-text { font-size: 0.9rem; line-height: 1.55; }
+    .comment-gif img { max-width: 200px; border-radius: 4px; margin-top: 8px; }
+
+    /* FOOTER */
+    footer { background: var(--asphalt); border-top: 1px solid var(--edge); padding: 32px 20px; text-align: center; }
+    .footer-logo { font-family: 'Russo One', sans-serif; font-size: 1.2rem; color: var(--amber); margin-bottom: 8px; }
+    .footer-tagline { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; color: var(--smoke); letter-spacing: 0.06em; text-transform: uppercase; }
+    .footer-links { margin-top: 16px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; color: var(--smoke); letter-spacing: 0.04em; text-transform: uppercase; }
+
+    @media (max-width: 480px) { .nav-links { display: none; } }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">56ViceLane</a>
+  <ul class="nav-links">
+    <li><a href="/news.html">News</a></li>
+    <li><a href="/lastdrive.html">Last Drive</a></li>
+    <li><a href="/shop.html">Gear</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker-track">
+    <span class="ticker-item">Loading latest GTA6 news...</span>
+  </div>
+</div>
+
+<!-- LIVE BAR — REMOVE AFTER EVENT -->
+
+
+<!-- SHARE BAR TOP -->
+<div class="share-bar">
+  <span class="share-label">Share:</span>
+  <button class="share-btn native" onclick="nativeShare()">📤 Share</button>
+  <a class="share-btn reddit" href="https://reddit.com/submit?url=https://56vicelane.com/articles/gta6-take-two-earnings-call-may-2026.html&title=Take-Two+Earnings+Call+Live+—+Everything+GTA6+Announced" target="_blank">Reddit</a>
+  <a class="share-btn twitter" href="https://twitter.com/intent/tweet?url=https://56vicelane.com/articles/gta6-take-two-earnings-call-may-2026.html&text=Take-Two+Earnings+Live+—+Everything+GTA6+Announced+%2356ViceLane" target="_blank">X / Twitter</a>
+  <a class="share-btn whatsapp" href="https://wa.me/?text=Take-Two+Earnings+Live+GTA6+Coverage+https://56vicelane.com/articles/gta6-take-two-earnings-call-may-2026.html" target="_blank">WhatsApp</a>
+  <button class="share-btn copy" onclick="copyLink()">Copy Link</button>
+</div>
+
+<!-- ARTICLE -->
+<div class="article-wrap">
+
+  <div class="article-eyebrow">🔴 Live Coverage · May 21, 2026</div>
+
+  <h1 class="article-headline">
+    Take-Two <span class="hl">Earnings Call</span> — Everything GTA6
+  </h1>
+
+  <p class="article-deck">
+    Take-Two Interactive's Q4 2026 earnings call. The day the entire gaming world stops. Pre-orders. Pricing. Trailer. Editions. PC release. All of it could drop today. We're covering every announcement as it happens.
+  </p>
+
+  <div class="article-meta">
+    By <span>56ViceLane Staff</span> &nbsp;·&nbsp; May 21, 2026 &nbsp;·&nbsp; Full earnings call coverage
+  </div>
+
+  <!-- ADSENSE -->
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+  <!-- TTWO STOCK WIDGET -->
+  <div class="stock-bar">
+    <div class="stock-left">
+      <div class="stock-ticker-label">TTWO</div>
+      <div class="stock-name">Take-Two Interactive</div>
+    </div>
+    <div class="stock-right">
+      <div class="stock-price" id="stock-price">—</div>
+      <div class="stock-change flat" id="stock-change">Loading...</div>
+      <div class="stock-note" id="stock-note">~15 min delayed · NYSE hours</div>
+    </div>
+  </div>
+
+  <p>Take-Two Interactive's Q4 fiscal 2026 earnings call begins today. This is the most anticipated earnings call in gaming history — not because of the financial results, but because of what CEO Strauss Zelnick might say about GTA6 in the 184 days remaining before November 19 launch.</p>
+
+  <p>The last time Take-Two held an earnings call, a single leaked Best Buy email about pre-orders moved their market cap by $2 billion in a single day. Today they're doing it for real. Every analyst on the call will be asking about pre-orders, pricing, and the game. Here's everything as it's announced.</p>
+
+  <div class="callout red">
+    <div class="callout-label">⚠️ Also Today</div>
+    <p>The Samsung semiconductor strike — 45,000 workers — is also scheduled to begin today May 21. If Zelnick mentions supply chain, hardware availability, or anything related to the PC version's timing, that context matters. <strong><a href="/articles/gta6-samsung-strike-ai-npc-memory-crisis.html">Full Samsung strike breakdown here.</a></strong></p>
+  </div>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- ANNOUNCEMENTS — FILL IN AS THEY HAPPEN -->
+  <!-- ═══════════════════════════════════ -->
+
+  <h2>&#x1F4CB; What Was Announced</h2>
+
+  <!-- NOVEMBER 19 CONFIRMED -->
+  <div class="announcement confirmed">
+    <div class="announcement-header">
+      <span class="announcement-tag tag-confirmed">&#x2713; Confirmed</span>
+      <span class="announcement-title">November 19, 2026 — Still Locked</span>
+    </div>
+    <div class="announcement-body">
+      <strong>November 19 was confirmed multiple times throughout the call.</strong> Zelnick referenced it directly in projections, pipeline timelines, and financial guidance. There was no hedging, no softening, no language that suggested any risk to the date. For anyone who panicked after seeing Google AI Mode's misleading "delayed again" summary this morning — this call put that to rest completely.
+    </div>
+  </div>
+
+  <!-- FY2027 GUIDANCE -->
+  <div class="announcement confirmed">
+    <div class="announcement-header">
+      <span class="announcement-tag tag-confirmed">&#x1F4B0; Financial</span>
+      <span class="announcement-title">$8&ndash;8.2 Billion FY2027 Forecast — GTA6 Is The Engine</span>
+    </div>
+    <div class="announcement-body">
+      Take-Two projected FY2027 net bookings of <strong>$8 billion to $8.2 billion</strong> — approximately 20% growth over FY2026's record $6.72 billion. The growth driver is almost entirely GTA6. The Grand Theft Auto series alone is expected to account for <strong>65% of all net bookings</strong> in FY2027. To put that number in perspective: 65% of $8 billion is $5.2 billion — from one franchise, in one fiscal year. That is an almost incomprehensible number and it explains every decision Take-Two has made for the past three years.
+    </div>
+  </div>
+
+  <!-- FY2026 RESULTS -->
+  <div class="announcement confirmed">
+    <div class="announcement-header">
+      <span class="announcement-tag tag-confirmed">&#x2713; Results</span>
+      <span class="announcement-title">FY2026 Record Results — Beat On Every Metric</span>
+    </div>
+    <div class="announcement-body">
+      <strong>FY2026 net bookings came in at $6.72 billion</strong> — above the high end of guidance ($6.65&ndash;6.7 billion) and up 17% year over year. Operating cash flow hit $624 million against a forecast of $450 million. NBA 2K grew over 30%. Mobile increased 13%. GTA Online increased 6% — a remarkable result for a 13-year-old live service game now at <strong>230 million units sold</strong>. Red Dead Redemption 2 is at 85 million units. Zelnick called both titles "vastly more resilient than anyone expected."
+    </div>
+  </div>
+
+  <!-- PRE-ORDERS -->
+  <div class="announcement nothing">
+    <div class="announcement-header">
+      <span class="announcement-tag tag-nothing">Not Announced</span>
+      <span class="announcement-title">Pre-Orders — Not Opened</span>
+    </div>
+    <div class="announcement-body">
+      No pre-orders were announced or opened during the call. When an analyst pushed on the topic, Zelnick's answer was precise: <em>"Rockstar will provide more details on the GTA series when they're ready to talk about that."</em> That is a deliberate deflection. Rockstar controls the pre-order announcement timeline entirely and it will come when they decide — not when Wall Street asks. Given the $2 billion stock swing the Best Buy email leak caused, the actual announcement will be a major event.
+    </div>
+  </div>
+
+  <!-- PRICING -->
+  <div class="announcement rumor">
+    <div class="announcement-header">
+      <span class="announcement-tag tag-rumor">&#x1F4B0; Most Important Exchange</span>
+      <span class="announcement-title">$70 and $80 Both Asked — Here's What Zelnick Actually Said</span>
+    </div>
+    <div class="announcement-body">
+      <p style="margin-bottom:14px;">Two separate analysts pushed on price today. First came $80. Then came $70. Zelnick navigated both without confirming either — but the way he navigated them tells you everything.</p>
+
+      <p style="margin-bottom:14px;">On <strong>$80</strong>: He deflected into value language. Wanting consumers to feel good about what they pay. No confirmation, no denial. A deliberate sidestep.</p>
+
+      <p style="margin-bottom:14px;">On <strong>$70</strong>: This is where it got revealing. An analyst asked whether pricing GTA6 at $70 would signal a lesser game — essentially asking if $70 meant cutting corners. Zelnick's response was direct: <strong>no, the price of the game doesn't reflect the quality of the game.</strong> He noted that game prices had actually dropped in real terms over recent years and defended $70 as a legitimate price point that would not diminish what GTA6 is.</p>
+
+      <p style="margin-bottom:0;">He then added: no price has been confirmed yet, the pricing will be made available later down the road, and it would be announced when the timing was right.</p>
+
+      <p style="margin-top:14px;margin-bottom:0;"><strong>Read that carefully.</strong> He did not say $70 was wrong. He defended it. He explained why it wouldn't mean a lesser game. Then he said the price hasn't been announced yet. A CEO does not spend time defending a price point he's planning to charge more than. $70 is alive. Whether it lands at $70, $80, or something else — the announcement is coming from Rockstar on their timeline. But today Zelnick made clear that whatever the number is, the game's quality is not reflected in it.</p>
+    </div>
+  </div>
+
+  <!-- TRAILER -->
+  <div class="announcement nothing">
+    <div class="announcement-header">
+      <span class="announcement-tag tag-nothing">Not Released</span>
+      <span class="announcement-title">New Trailer — Nothing Dropped</span>
+    </div>
+    <div class="announcement-body">
+      No new trailer was released during or around the call. No footage was teased to analysts. The earnings call format is financial — not marketing. Trailers come on Rockstar's timeline, not Take-Two's investor calendar.
+    </div>
+  </div>
+
+  <!-- AI QUESTION -->
+  <div class="announcement confirmed">
+    <div class="announcement-header">
+      <span class="announcement-tag tag-confirmed">&#x1F916; Notable</span>
+      <span class="announcement-title">Zelnick Addressed AI Directly — "Association Is Not The Same As Creation"</span>
+    </div>
+    <div class="announcement-body">
+      An analyst raised the ongoing debate about whether AI could theoretically create GTA6 in months. Zelnick's response was one of the most substantive of the call: <strong>"Association is not the same as hit creation."</strong> He pointed out that thousands of mobile games are released every year using the same technology, but only a handful become hits. Technology enables creation — it does not guarantee quality. He added that Take-Two is already using licensed AI to create marketing spots that previously cost $25,000&ndash;$100,000 per unit, now produced for essentially zero. His position: AI makes the company more efficient. It does not make great games easier to create.
+    </div>
+  </div>
+
+  <!-- PIPELINE -->
+  <div class="announcement confirmed">
+    <div class="announcement-header">
+      <span class="announcement-tag tag-confirmed">&#x1F4CB; Pipeline</span>
+      <span class="announcement-title">29 Titles Through Fiscal 2029</span>
+    </div>
+    <div class="announcement-body">
+      Take-Two confirmed a pipeline of <strong>29 titles through fiscal 2029</strong>. Alongside GTA6's November 19 launch, six additional titles are planned for the fiscal year including WWE 2K27, two mobile titles, three sports titles, and one platform extension. The college basketball content — currently featuring 16 universities — was described as "a taste of what's to come" with Zelnick calling it "very exciting for us."
+    </div>
+  </div>
+
+  <!-- GTA ONLINE LEGACY -->
+  <div class="announcement confirmed">
+    <div class="announcement-header">
+      <span class="announcement-tag tag-confirmed">&#x1F3AE; Notable</span>
+      <span class="announcement-title">GTA Online Is Now A "Legacy Game" — But It's Not Going Anywhere</span>
+    </div>
+    <div class="announcement-body">
+      Zelnick used a word today that he has never publicly used before to describe GTA Online: <strong>"legacy game."</strong> That framing matters. It signals that Take-Two has internally shifted how they categorize GTA Online — no longer a live-service flagship, now a legacy title in maintenance mode. However he was clear that it is not being shut down. The reason is simple: too many people still play it. With GTA5 at 230 million units sold and GTA Online still posting 6% growth in FY2026, there is no business case to pull the plug.
+    </div>
+  </div>
+
+  <!-- GTA6 ONLINE -->
+  <div class="announcement nothing">
+    <div class="announcement-header">
+      <span class="announcement-tag tag-nothing">Unaddressed</span>
+      <span class="announcement-title">GTA6 Online — Zelnick Declined To Speculate</span>
+    </div>
+    <div class="announcement-body">
+      An analyst asked directly about GTA6's online component. Zelnick's response: he was not going to speculate — GTA6 online is something that <strong>"remains unspoken of at this time."</strong> That is a deliberate non-answer and arguably the most interesting silence of the entire call. GTA Online generated billions in revenue for over a decade. The online component of GTA6 is potentially the most valuable piece of the entire release. The fact that Zelnick won't even acknowledge it yet — on a call where he freely discussed $8 billion revenue projections — means Rockstar is holding that announcement for maximum impact. When GTA6 online details drop, it will be its own event.
+    </div>
+  </div>
+
+  <!-- CONSOLE AVAILABILITY -->
+  <div class="announcement confirmed">
+    <div class="announcement-header">
+      <span class="announcement-tag tag-confirmed">&#x1F3AE; Confirmed</span>
+      <span class="announcement-title">Console Availability — Zelnick Not Worried</span>
+    </div>
+    <div class="announcement-body">
+      An analyst raised console availability and next-gen market share heading into GTA6's launch window. Zelnick said he was not concerned about hardware supply or install base. His focus was on consumers <strong>"feeling good about what they pay"</strong> — connecting hardware value perception directly to software pricing. Reading between the lines: he believes enough PS5 and Xbox Series X/S consoles are in the market to drive a massive launch, and that the bigger variable is whether consumers feel the game justifies its price — whatever that price turns out to be.
+    </div>
+  </div>
+
+  <h2>&#x1F9E0; What It All Means</h2>
+
+  <p>Strip away the financial language and this call told you one thing: <strong>Take-Two has built their entire company around November 19.</strong> A $8.2 billion revenue projection with 65% coming from GTA6 is not a forecast — it's a bet. Every dollar spent, every acquisition, every studio hire, every infrastructure decision for the past three years has been pointed at this one game on this one date.</p>
+
+  <p>The pricing exchange is the headline most people will miss. Two analysts pushed — one on $80, one on $70. Zelnick deflected $80 into value language. But on $70 he went further — he <strong>defended it</strong>. Said it wouldn't mean a lesser game. Said prices had dropped in real terms over the years. Then said no price is confirmed and timing is Rockstar's call. You do not spend time on an earnings call defending a price point you're planning to exceed. $70 is very much in play. The announcement is coming from Rockstar when they're ready.</p>
+
+  <p>The "legacy game" label on GTA Online closes a chapter quietly. Thirteen years. 230 million players. Billions in shark card revenue. Zelnick drew a line around it today. But the silence on GTA6 online is louder than anything he said. He wouldn't speculate. Wouldn't acknowledge it. On a call where he discussed $8 billion projections in detail — he had nothing to say about the component that could generate more recurring revenue than anything else in the company's history. That silence is intentional. When GTA6 online is revealed, it will not be buried in an earnings call. It will be its own moment.</p>
+
+  <p>Pre-orders are coming from Rockstar. The timing is theirs entirely. What today told us is that the financial infrastructure is locked, the date is locked, and the only thing standing between now and November 19 is Rockstar deciding when to open the floodgates. When they do — it will move markets, break records, and make the Best Buy email look like a warmup act.</p>
+
+  <div class="callout cyan">
+    <div class="callout-label">&#x1F4C5; What's Next</div>
+    <p>The pre-order announcement will come from Rockstar directly — not from a leak, not from an earnings call. When it drops, 56ViceLane will have it immediately. <strong><a href="/lastdrive.html">Sign up for The Last Drive and never miss an update.</a></strong></p>
+  </div>
+
+  <!-- ADSENSE MID -->
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+  <h2>&#x1F4DA; Background Reading</h2>
+
+  <div class="callout">
+    <div class="callout-label">&#x1F4CC; Related Coverage</div>
+    <p>
+      <a href="/articles/gta6-preorder-chaos-debunked.html">The Best Buy pre-order chaos that moved $2B in market cap &rarr;</a><br/><br/>
+      <a href="/articles/gta6-price-115-dutch-leak.html">The &euro;99 Dutch retailer price leak &rarr;</a><br/><br/>
+      <a href="/articles/gta6-six-editions-leak.html">The six editions leak &rarr;</a><br/><br/>
+      <a href="/articles/gta6-samsung-strike-ai-npc-memory-crisis.html">Samsung strike avoided — but supply pressure remains &rarr;</a><br/><br/>
+      <a href="/articles/gta6-not-delayed-google-ai-wrong.html">GTA6 has NOT been delayed — what Google AI got wrong &rarr;</a>
+    </p>
+  </div>
+
+  <h2>&#x1F4AC; Reactions</h2>
+  <p>What did you make of the call? Hyped by the numbers? Frustrated no pre-orders dropped? Drop it below.</p>
+
+  <div class="callout cyan">
+    <div class="callout-label">🏁 The Last Drive — November 18, 2026</div>
+    <p>Whatever gets announced today — we ride together the night before it all begins. <strong><a href="/lastdrive.html">Sign up for The Last Drive and get on the Wall of Honor.</a></strong></p>
+  </div>
+
+  <!-- RATINGS -->
+  <div class="rating-section">
+    <div class="rating-title">Rate This Coverage</div>
+    <div class="rating-row">
+      <span class="rating-icon" data-val="1" data-type="good">⭐</span>
+      <span class="rating-icon" data-val="2" data-type="good">⭐</span>
+      <span class="rating-icon" data-val="3" data-type="good">⭐</span>
+      <span class="rating-icon" data-val="4" data-type="good">⭐</span>
+      <span class="rating-icon" data-val="5" data-type="good">⭐</span>
+    </div>
+    <div class="rating-sublabel">Stars = Solid Coverage</div>
+    <div class="rating-divider">— or —</div>
+    <div class="rating-row">
+      <span class="rating-icon" data-val="1" data-type="bad">🚔</span>
+      <span class="rating-icon" data-val="2" data-type="bad">🚔</span>
+      <span class="rating-icon" data-val="3" data-type="bad">🚔</span>
+      <span class="rating-icon" data-val="4" data-type="bad">🚔</span>
+      <span class="rating-icon" data-val="5" data-type="bad">🚔</span>
+    </div>
+    <div class="rating-sublabel">Cop Cars = Missed The Story</div>
+    <div id="rating-result"></div>
+  </div>
+
+  <!-- COMMENTS -->
+  <div class="comments-section">
+    <div class="comments-header">💬 Reactions</div>
+    <div class="comment-form">
+      <div class="form-field">
+        <label>Name / Gamertag</label>
+        <input type="text" id="comment-name" placeholder="Your name or gamertag" maxlength="50" />
+      </div>
+      <div class="form-field">
+        <label>Comment <span style="color:var(--smoke)">(500 char max)</span></label>
+        <textarea id="comment-text" placeholder="What do you think about what was announced? Hyped? Disappointed?" maxlength="500"></textarea>
+        <div class="char-count"><span id="char-count">0</span> / 500</div>
+      </div>
+      <div class="form-field">
+        <label>Emoji</label>
+        <select id="comment-emoji">
+          <option value="🔥">🔥 Fire</option>
+          <option value="🎮">🎮 Controller</option>
+          <option value="💰">💰 Money</option>
+          <option value="😤">😤 Frustrated</option>
+          <option value="🤯">🤯 Mind Blown</option>
+          <option value="👀">👀 Eyes</option>
+          <option value="💀">💀 Dead</option>
+          <option value="🚗">🚗 Car</option>
+          <option value="📅">📅 Date</option>
+          <option value="🏁">🏁 Last Drive</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>GIF URL (optional)</label>
+        <input type="url" id="comment-gif" placeholder="Paste a reaction GIF link" />
+      </div>
+      <div class="community-rules">⚠️ Community rules: 18+ language OK. No threats, no slurs. Keep it real.</div>
+      <button class="btn-submit" onclick="submitComment()">Post Reaction</button>
+      <div id="submit-msg"></div>
+    </div>
+    <div id="comments-list"></div>
+  </div>
+
+</div>
+
+<!-- SHARE BAR BOTTOM -->
+<div class="share-bar">
+  <span class="share-label">Share:</span>
+  <button class="share-btn native" onclick="nativeShare()">📤 Share</button>
+  <a class="share-btn reddit" href="https://reddit.com/submit?url=https://56vicelane.com/articles/gta6-take-two-earnings-call-may-2026.html&title=Take-Two+Earnings+Call+Live+—+Everything+GTA6+Announced" target="_blank">Reddit</a>
+  <a class="share-btn twitter" href="https://twitter.com/intent/tweet?url=https://56vicelane.com/articles/gta6-take-two-earnings-call-may-2026.html&text=Take-Two+Earnings+Live+—+Everything+GTA6+Announced+%2356ViceLane" target="_blank">X / Twitter</a>
+  <a class="share-btn whatsapp" href="https://wa.me/?text=Take-Two+Earnings+Live+GTA6+Coverage+https://56vicelane.com/articles/gta6-take-two-earnings-call-may-2026.html" target="_blank">WhatsApp</a>
+  <button class="share-btn copy" onclick="copyLink()">Copy Link</button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">56ViceLane</div>
+  <div class="footer-tagline">Where GTA5 Ends And GTA6 Begins</div>
+  <div class="footer-links">
+    <a href="/news.html">News</a>
+    <a href="/lastdrive.html">Last Drive</a>
+    <a href="/shop.html">Gear</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy.html">Privacy</a>
+  </div>
+</footer>
+
+<script>
+  const AIRTABLE_TOKEN = 'pattxJ12NQzpHMejD.2eb992f22f1a43e032d866df028dbb33958635234f6cfd30769e3e12f10d5588';
+  const AIRTABLE_BASE  = 'appVViGbmcu5gbn8B';
+  const ARTICLE_SLUG   = 'gta6-take-two-earnings-call-may-2026';
+
+  // TICKER
+  fetch('/articles.json')
+    .then(r => r.json())
+    .then(articles => {
+      const track = document.getElementById('ticker-track');
+      const items = [...articles, ...articles].map(a =>
+        `<span class="ticker-item" onclick="location.href='${a.url}'">${a.emoji} ${a.title}</span>`
+      ).join('');
+      track.innerHTML = items;
+    })
+    .catch(() => {
+      document.getElementById('ticker-track').innerHTML =
+        '<span class="ticker-item">🏁 The Last Drive — November 18, 2026 — Sign Up Now</span>';
+    });
+
+  // STOCK
+  async function fetchStock() {
+    try {
+      const url = 'https://query1.finance.yahoo.com/v8/finance/chart/TTWO?interval=1d&range=1d';
+      const proxy = 'https://api.allorigins.win/get?url=' + encodeURIComponent(url);
+      const res = await fetch(proxy);
+      const wrapper = await res.json();
+      const data = JSON.parse(wrapper.contents);
+      const meta = data?.chart?.result?.[0]?.meta;
+      if (!meta) return;
+      const price  = meta.regularMarketPrice;
+      const prev   = meta.previousClose || meta.chartPreviousClose;
+      const change = price - prev;
+      const pct    = ((change / prev) * 100);
+      document.getElementById('stock-price').textContent = '$' + price.toFixed(2);
+      const el = document.getElementById('stock-change');
+      const s  = change >= 0 ? '+' : '';
+      el.textContent = `${s}${change.toFixed(2)} (${s}${pct.toFixed(2)}%)`;
+      el.className = 'stock-change ' + (change > 0 ? 'up' : change < 0 ? 'down' : 'flat');
+      document.getElementById('stock-note').textContent =
+        '~15 min delayed · Updated ' + new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+    } catch(e) {}
+  }
+  fetchStock();
+  setInterval(fetchStock, 900000);
+
+  // SHARE
+  function nativeShare() {
+    if (navigator.share) {
+      navigator.share({ title: "Take-Two Earnings Call — Everything GTA6", url: window.location.href });
+    }
+  }
+  function copyLink() {
+    navigator.clipboard.writeText(window.location.href);
+    event.target.textContent = 'Copied!';
+    setTimeout(() => event.target.textContent = 'Copy Link', 2000);
+  }
+
+  // RATINGS
+  document.querySelectorAll('.rating-icon').forEach(icon => {
+    icon.addEventListener('click', async () => {
+      if (localStorage.getItem('rated-' + ARTICLE_SLUG)) {
+        document.getElementById('rating-result').textContent = 'Already voted. Thanks!';
+        return;
+      }
+      const val = parseInt(icon.dataset.val);
+      const type = icon.dataset.type;
+      const isPositive = type === 'good';
+      document.querySelectorAll(`[data-type="${type}"]`).forEach((ic, i) => { if (i < val) ic.classList.add('active'); });
+      try {
+        await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE}/ArticleRatings`, {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fields: { ArticleSlug: ARTICLE_SLUG, Rating: val, IsPositive: isPositive, Timestamp: new Date().toISOString() } })
+        });
+      } catch(e) {}
+      localStorage.setItem('rated-' + ARTICLE_SLUG, '1');
+      document.getElementById('rating-result').textContent = isPositive
+        ? `${val} star${val > 1 ? 's' : ''} — Appreciate it.`
+        : `${val} cop car${val > 1 ? 's' : ''} — Tell us what we missed below.`;
+    });
+  });
+
+  // CHAR COUNT
+  document.getElementById('comment-text').addEventListener('input', function() {
+    document.getElementById('char-count').textContent = this.value.length;
+  });
+
+  // SUBMIT COMMENT
+  async function submitComment() {
+    const name   = document.getElementById('comment-name').value.trim();
+    const text   = document.getElementById('comment-text').value.trim();
+    const emoji  = document.getElementById('comment-emoji').value;
+    const gifUrl = document.getElementById('comment-gif').value.trim();
+    const msgEl  = document.getElementById('submit-msg');
+    if (!name || !text) { msgEl.textContent = 'Name and comment required.'; msgEl.style.color = '#FF3B3B'; return; }
+    msgEl.textContent = 'Posting...'; msgEl.style.color = 'var(--smoke)';
+    try {
+      await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE}/ArticleComments`, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fields: { Name: name, Comment: text, Emoji: emoji, GifUrl: gifUrl, ArticleSlug: ARTICLE_SLUG, Timestamp: new Date().toISOString() } })
+      });
+      msgEl.textContent = '✅ Posted!'; msgEl.style.color = 'var(--green)';
+      document.getElementById('comment-name').value = '';
+      document.getElementById('comment-text').value = '';
+      document.getElementById('comment-gif').value  = '';
+      document.getElementById('char-count').textContent = '0';
+      setTimeout(loadComments, 800);
+    } catch(e) { msgEl.textContent = 'Error. Try again.'; msgEl.style.color = '#FF3B3B'; }
+  }
+
+  // LOAD COMMENTS
+  async function loadComments() {
+    try {
+      const res = await fetch(
+        `https://api.airtable.com/v0/${AIRTABLE_BASE}/ArticleComments?filterByFormula={ArticleSlug}="${ARTICLE_SLUG}"&sort[0][field]=Timestamp&sort[0][direction]=desc`,
+        { headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}` } }
+      );
+      const data = await res.json();
+      const list = document.getElementById('comments-list');
+      if (!data.records || data.records.length === 0) {
+        list.innerHTML = '<p style="color:var(--smoke);font-size:0.9rem;">No reactions yet. Drop yours above.</p>';
+        return;
+      }
+      list.innerHTML = data.records.map(r => {
+        const f = r.fields;
+        const d = f.Timestamp ? new Date(f.Timestamp).toLocaleDateString() : '';
+        return `<div class="comment-card">
+          <div class="comment-card-header">
+            <span class="comment-name">${f.Emoji || ''} ${f.Name || 'Anonymous'}</span>
+            <span class="comment-time">${d}</span>
+          </div>
+          <div class="comment-text">${f.Comment || ''}</div>
+          ${f.GifUrl ? `<div class="comment-gif"><img src="${f.GifUrl}" alt="gif" loading="lazy"/></div>` : ''}
+        </div>`;
+      }).join('');
+    } catch(e) {}
+  }
+
+  loadComments();
+</script>
+
+</body>
+</html>
