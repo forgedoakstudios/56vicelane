@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-9EKF7J4V7W");
+</script>
+<meta charset="UTF-8">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="56ViceLane">
+<meta property="og:title" content="The Last Drive — GTA5 Community Farewell Event — 56ViceLane">
+<meta property="og:description" content="One final cruise through the city that raised us. November 18 2026. Free. All platforms.">
+<meta property="og:url" content="https://56vicelane.com/lastdrive.html">
+<meta property="og:image" content="https://56vicelane.com/images/Jason_and_Lucia_01_landscape.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@56ViceLane">
+<meta name="twitter:title" content="The Last Drive — GTA5 Community Farewell Event — 56ViceLane">
+<meta name="twitter:description" content="One final cruise through the city that raised us. November 18 2026. Free. All platforms.">
+<meta name="twitter:image" content="https://56vicelane.com/images/Jason_and_Lucia_01_landscape.jpg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The Last Drive — community farewell to GTA5. Sign up for your region, platform, and time slot. November 18, 2026.">
+<title>The Last Drive — 56ViceLane</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --pitch:#0B0B0F;--asphalt:#16161D;--amber:#FF6B1A;--amber-dim:#cc4a00;
+  --cyan:#00D4FF;--cyan-dim:#0099bb;--bone:#F0EDE8;--smoke:#7A7A8C;
+  --edge:#26262F;--green:#00C875;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--pitch);color:var(--bone);font-family:'Inter',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:0.04;pointer-events:none;z-index:100;mix-blend-mode:overlay;}
+
+/* TICKER */
+.ticker{background:var(--amber);color:var(--pitch);font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;font-size:12px;padding:7px 0;overflow:hidden;white-space:nowrap;position:relative;z-index:10;}
+.ticker-track{display:inline-block;animation:ticker-scroll 20s linear infinite;padding-left:100%;}
+.ticker-track span{margin:0 28px;}
+.ticker-track span::after{content:'◆';margin-left:28px;font-size:8px;opacity:0.6;}
+@keyframes ticker-scroll{from{transform:translateX(0);}to{transform:translateX(-100%);}}
+
+/* NAV */
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;border-bottom:1px solid var(--edge);position:relative;z-index:50;flex-wrap:wrap;gap:12px;}
+.brand{font-family:'Russo One',sans-serif;font-size:20px;color:var(--bone);text-decoration:none;}
+.brand .num{color:var(--amber);text-shadow:0 0 8px var(--amber);}
+.menu-btn{background:none;border:1px solid var(--edge);color:var(--smoke);font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;font-size:12px;padding:10px 18px;cursor:pointer;transition:all 0.3s;}
+.menu-btn:hover{border-color:var(--amber);color:var(--amber);}
+.nav-links{display:none;width:100%;flex-direction:column;border-top:1px solid var(--edge);padding-top:12px;gap:4px;order:3;}
+.nav-links.open{display:flex;}
+.nav-link{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;font-size:14px;color:var(--smoke);text-decoration:none;padding:12px 4px;border-bottom:1px solid var(--edge);transition:color 0.3s;}
+.nav-link:last-child{border-bottom:none;}
+.nav-link:hover,.nav-link.active{color:var(--amber);}
+@media(min-width:768px){
+  .nav-links{display:flex!important;flex-direction:row;width:auto;border-top:none;padding-top:0;gap:28px;order:0;}
+  .nav-link{border-bottom:none;padding:0;font-size:12px;}
+  .menu-btn{display:none;}
+  nav{flex-wrap:nowrap;padding:22px 48px;}
+}
+
+/* HERO */
+.event-hero{position:relative;padding:64px 24px 72px;overflow:hidden;background:linear-gradient(180deg,#0d0d16 0%,var(--pitch) 100%);border-bottom:1px solid var(--edge);}
+.event-hero::before{content:'NOV 18';position:absolute;top:50%;right:-4%;transform:translateY(-50%);font-family:'Russo One',sans-serif;font-size:32vw;color:transparent;-webkit-text-stroke:1px var(--edge);pointer-events:none;user-select:none;line-height:0.9;z-index:0;}
+.event-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--amber),transparent);box-shadow:0 0 30px rgba(255,107,26,0.2);}
+.hero-content{position:relative;z-index:2;max-width:700px;}
+.hero-eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0.25em;color:var(--smoke);font-size:11px;margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--amber);box-shadow:0 0 6px var(--amber);}
+.event-hero h1{font-family:'Russo One',sans-serif;font-size:clamp(44px,13vw,96px);text-transform:uppercase;line-height:0.95;margin-bottom:20px;}
+.event-hero h1 .the{display:block;font-size:0.5em;color:var(--smoke);letter-spacing:0.2em;margin-bottom:4px;}
+.event-hero p{font-size:16px;color:var(--smoke);max-width:560px;margin-bottom:32px;line-height:1.75;}
+.event-hero p strong{color:var(--bone);}
+.event-stats{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--edge);margin-bottom:32px;max-width:560px;}
+.stat-item{flex:1;min-width:100px;padding:14px 16px;border-right:1px solid var(--edge);position:relative;}
+.stat-item:last-child{border-right:none;}
+.stat-item::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--amber);box-shadow:0 0 8px var(--amber);}
+.stat-lbl{font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0.18em;color:var(--smoke);font-size:9px;margin-bottom:4px;}
+.stat-val{font-family:'Russo One',sans-serif;font-size:16px;color:var(--bone);text-transform:uppercase;}
+.hero-cta{display:inline-block;background:var(--amber);color:var(--pitch);font-family:'Russo One',sans-serif;text-transform:uppercase;letter-spacing:0.06em;font-size:14px;padding:16px 32px;text-decoration:none;transition:all 0.3s;}
+.hero-cta:hover{box-shadow:0 0 24px rgba(255,107,26,0.4);}
+
+/* PETITION */
+.petition-banner{background:linear-gradient(135deg,#0d0d18,#0a0a12);border-top:1px solid var(--edge);border-bottom:1px solid var(--edge);padding:32px 24px;position:relative;}
+.petition-banner::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--amber));box-shadow:0 0 12px var(--cyan);}
+@media(min-width:768px){.petition-banner{padding:40px 48px;}}
+.petition-tag{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;font-size:11px;color:var(--cyan);margin-bottom:8px;}
+.petition-banner h2{font-family:'Russo One',sans-serif;font-size:clamp(22px,5vw,36px);text-transform:uppercase;margin-bottom:12px;line-height:1.1;}
+.petition-banner h2 span{color:var(--cyan);}
+.petition-banner p{font-size:14px;color:var(--smoke);line-height:1.7;margin-bottom:20px;max-width:600px;}
+.petition-banner p strong{color:var(--bone);}
+.hashtag-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px;}
+.hashtag{font-family:'Russo One',sans-serif;font-size:18px;color:var(--amber);text-shadow:0 0 10px var(--amber);}
+.share-btns{display:flex;flex-wrap:wrap;gap:10px;}
+.share-btn{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;font-size:12px;padding:10px 20px;border:1px solid var(--edge);color:var(--smoke);background:none;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block;}
+.share-btn:hover{border-color:var(--cyan);color:var(--cyan);}
+
+/* MAIN */
+.main-content{padding:0 24px 80px;max-width:1000px;margin:0 auto;}
+@media(min-width:768px){.main-content{padding:0 48px 100px;}}
+.road-divider{display:flex;align-items:center;gap:16px;margin:56px 0 40px;}
+.road-divider::before,.road-divider::after{content:'';flex:1;height:1px;background:var(--edge);}
+.road-divider-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.25em;color:var(--amber);font-size:11px;white-space:nowrap;}
+.s-eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0.22em;color:var(--smoke);font-size:11px;margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.s-eyebrow::before{content:'';width:16px;height:1px;background:var(--amber);box-shadow:0 0 6px var(--amber);}
+.s-title{font-family:'Russo One',sans-serif;font-size:clamp(26px,6vw,44px);text-transform:uppercase;line-height:1.0;margin-bottom:16px;}
+.s-desc{font-size:15px;color:var(--smoke);max-width:600px;line-height:1.75;margin-bottom:32px;}
+.s-desc strong{color:var(--bone);}
+
+/* RULES */
+.rules-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:28px;}
+@media(min-width:600px){.rules-grid{grid-template-columns:1fr 1fr;}}
+.rule-card{border:1px solid var(--edge);padding:20px;}
+.rule-num{font-family:'Russo One',sans-serif;font-size:12px;color:var(--amber);letter-spacing:0.1em;margin-bottom:8px;}
+.rule-title{font-family:'Russo One',sans-serif;font-size:16px;text-transform:uppercase;margin-bottom:6px;}
+.rule-text{font-size:13px;color:var(--smoke);line-height:1.6;}
+
+/* PLATFORM TABS */
+.platform-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;}
+.platform-tab{font-family:'Russo One',sans-serif;text-transform:uppercase;font-size:12px;padding:12px 16px;border:1px solid var(--edge);background:none;color:var(--smoke);cursor:pointer;transition:all 0.3s;letter-spacing:0.04em;display:flex;align-items:center;gap:8px;}
+.platform-tab:hover{border-color:#333345;background:var(--asphalt);color:var(--bone);}
+.platform-tab.active{border-color:var(--amber);color:var(--amber);background:rgba(255,107,26,0.08);}
+.platform-tab .cnt{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:11px;background:var(--asphalt);border:1px solid var(--edge);padding:2px 6px;color:var(--smoke);}
+.platform-tab.active .cnt{border-color:var(--amber);color:var(--amber);}
+.platform-panel{display:none;}
+.platform-panel.active{display:block;}
+
+/* REGIONS */
+.region-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px;}
+@media(min-width:600px){.region-grid{grid-template-columns:repeat(3,1fr);}}
+.region-card{border:1px solid var(--edge);padding:16px 12px;cursor:pointer;transition:all 0.3s;text-align:center;position:relative;overflow:hidden;}
+.region-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--amber);box-shadow:0 0 8px var(--amber);transform:scaleX(0);transition:transform 0.3s;}
+.region-card:hover{border-color:#333345;background:var(--asphalt);}
+.region-card:hover::after,.region-card.selected::after{transform:scaleX(1);}
+.region-card.selected{border-color:var(--amber);background:rgba(255,107,26,0.08);}
+.region-flag{font-size:24px;margin-bottom:6px;}
+.region-name{font-family:'Russo One',sans-serif;font-size:12px;text-transform:uppercase;margin-bottom:2px;}
+.region-tz{font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;font-size:10px;color:var(--smoke);}
+
+/* SLOTS */
+.time-slots{display:none;margin-bottom:28px;}
+.time-slots.visible{display:block;}
+.slots-grid{display:grid;grid-template-columns:1fr;gap:8px;margin-top:16px;}
+@media(min-width:500px){.slots-grid{grid-template-columns:1fr 1fr;}}
+.slot-card{border:1px solid var(--edge);padding:16px 18px;cursor:pointer;transition:all 0.3s;display:flex;justify-content:space-between;align-items:center;}
+.slot-card:hover{border-color:#333345;background:var(--asphalt);}
+.slot-card.selected{border-color:var(--cyan);background:rgba(0,212,255,0.06);}
+.slot-time{font-family:'Russo One',sans-serif;font-size:18px;color:var(--bone);}
+.slot-period{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:13px;color:var(--smoke);margin-left:4px;}
+.slot-label{font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;font-size:11px;color:var(--smoke);text-align:right;}
+.slot-status{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;font-size:10px;text-align:right;margin-top:2px;}
+.slot-status.open{color:var(--green);}
+.slot-status.taken{color:var(--smoke);}
+
+/* FORM */
+.signup-section{display:none;}
+.signup-section.visible{display:block;}
+.confirm-strip{display:none;background:var(--asphalt);border:1px solid var(--edge);border-left:3px solid var(--amber);padding:14px 18px;margin-bottom:16px;gap:20px;flex-wrap:wrap;align-items:center;}
+.confirm-strip.show{display:flex;}
+.confirm-item{display:flex;flex-direction:column;gap:2px;}
+.confirm-lbl{font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;font-size:10px;color:var(--smoke);}
+.confirm-val{font-family:'Russo One',sans-serif;font-size:13px;color:var(--amber);text-transform:uppercase;}
+.org-badge{display:none;background:rgba(255,107,26,0.15);border:1px solid var(--amber);color:var(--amber);font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;font-size:11px;padding:8px 16px;margin-bottom:20px;}
+.org-badge.show{display:inline-block;}
+
+.form-grid{display:grid;grid-template-columns:1fr;gap:14px;max-width:580px;}
+@media(min-width:600px){.form-grid{grid-template-columns:1fr 1fr;}}
+.form-field{display:flex;flex-direction:column;gap:6px;}
+.form-field.full{grid-column:1/-1;}
+.form-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;font-size:11px;color:var(--smoke);}
+.form-field input{background:var(--asphalt);border:1px solid var(--edge);color:var(--bone);padding:14px 16px;font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color 0.3s,box-shadow 0.3s;}
+.form-field input:focus{border-color:var(--amber);box-shadow:0 0 12px rgba(255,107,26,0.15);}
+.form-field input::placeholder{color:var(--smoke);}
+
+/* CHAT */
+.chat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.sel-btn{border:1px solid var(--edge);background:none;color:var(--smoke);font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;font-size:12px;padding:12px 8px;cursor:pointer;transition:all 0.3s;text-align:center;}
+.sel-btn:hover{border-color:#333345;color:var(--bone);background:var(--asphalt);}
+.sel-btn.selected{border-color:var(--cyan);color:var(--cyan);background:rgba(0,212,255,0.08);}
+.sel-btn.amber.selected{border-color:var(--amber);color:var(--amber);background:rgba(255,107,26,0.08);}
+.hidden-field{display:none;margin-top:8px;}
+.hidden-field.visible{display:block;}
+
+/* OPTIONS (3-col) */
+.opt-grid{display:grid;grid-template-columns:1fr;gap:8px;}
+@media(min-width:500px){.opt-grid{grid-template-columns:repeat(3,1fr);}}
+.opt-btn{border:1px solid var(--edge);background:none;color:var(--smoke);font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;font-size:12px;padding:14px 10px;cursor:pointer;transition:all 0.3s;text-align:center;}
+.opt-btn:hover{border-color:#333345;color:var(--bone);background:var(--asphalt);}
+.opt-btn.selected{border-color:var(--amber);color:var(--amber);background:rgba(255,107,26,0.08);}
+.opt-sub{display:block;font-size:10px;color:var(--smoke);margin-top:3px;font-weight:600;text-transform:none;letter-spacing:0;}
+
+/* TOGGLES */
+.toggle-row{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--edge);}
+.toggle-row:last-child{border-bottom:none;}
+.toggle-lbl{font-size:14px;color:var(--bone);flex:1;line-height:1.4;}
+.toggle-lbl span{display:block;font-size:12px;color:var(--smoke);margin-top:2px;}
+.toggle{position:relative;width:44px;height:24px;flex-shrink:0;}
+.toggle input{opacity:0;width:0;height:0;}
+.toggle-slider{position:absolute;inset:0;background:var(--edge);cursor:pointer;transition:0.3s;border-radius:24px;}
+.toggle-slider::before{content:'';position:absolute;height:18px;width:18px;left:3px;bottom:3px;background:var(--smoke);transition:0.3s;border-radius:50%;}
+.toggle input:checked+.toggle-slider{background:var(--amber);}
+.toggle input:checked+.toggle-slider::before{transform:translateX(20px);background:var(--pitch);}
+
+/* SUBMIT */
+.submit-row{margin-top:24px;max-width:580px;}
+.submit-btn{width:100%;background:var(--amber);color:var(--pitch);border:none;font-family:'Russo One',sans-serif;text-transform:uppercase;letter-spacing:0.06em;font-size:16px;padding:18px;cursor:pointer;transition:all 0.3s;}
+.submit-btn:hover{box-shadow:0 0 30px rgba(255,107,26,0.4);transform:translateY(-2px);}
+.submit-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none;box-shadow:none;}
+.submit-note{font-family:'Barlow Condensed',sans-serif;font-size:11px;color:var(--smoke);text-transform:uppercase;letter-spacing:0.12em;margin-top:10px;text-align:center;}
+
+/* SUCCESS */
+.success-box{display:none;border:1px solid var(--green);padding:32px 24px;text-align:center;background:rgba(0,200,117,0.05);max-width:580px;}
+.success-box.show{display:block;}
+.success-icon{font-size:40px;margin-bottom:16px;}
+.success-title{font-family:'Russo One',sans-serif;font-size:24px;text-transform:uppercase;color:var(--green);margin-bottom:12px;}
+.success-text{font-size:14px;color:var(--smoke);line-height:1.7;}
+.success-text strong{color:var(--bone);}
+.success-link{display:inline-block;margin-top:16px;border:1px solid var(--amber);color:var(--amber);font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;font-size:12px;padding:12px 24px;text-decoration:none;transition:all 0.3s;}
+.success-link:hover{background:var(--amber);color:var(--pitch);}
+
+/* WALL CTA */
+.wall-cta{border:1px solid var(--edge);padding:28px 24px;text-align:center;margin-top:40px;background:var(--asphalt);}
+.wall-cta h3{font-family:'Russo One',sans-serif;font-size:20px;text-transform:uppercase;margin-bottom:8px;}
+.wall-cta p{font-size:14px;color:var(--smoke);margin-bottom:20px;}
+.wall-cta a{display:inline-block;background:none;border:1px solid var(--amber);color:var(--amber);font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;font-size:13px;padding:14px 28px;text-decoration:none;transition:all 0.3s;}
+.wall-cta a:hover{background:var(--amber);color:var(--pitch);}
+
+/* FOOTER */
+footer{padding:40px 24px;border-top:1px solid var(--edge);text-align:center;}
+.footer-brand{font-family:'Russo One',sans-serif;font-size:22px;margin-bottom:6px;}
+.footer-brand .num{color:var(--amber);text-shadow:0 0 8px var(--amber);}
+.footer-tag{font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0.18em;font-size:10px;color:var(--smoke);margin-bottom:16px;}
+.footer-links{display:flex;justify-content:center;gap:20px;margin-bottom:14px;flex-wrap:wrap;}
+.footer-links a{font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;font-size:11px;color:var(--smoke);text-decoration:none;transition:color 0.3s;}
+.footer-links a:hover{color:var(--amber);}
+.footer-copy{font-size:11px;color:#4a4a5a;}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ─── SHARE BAR ─────────────────────────────────────────── */
+.share-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 14px 0;
+  border-top: 1px solid var(--edge);
+  border-bottom: 1px solid var(--edge);
+  margin: 20px 0;
+}
+.share-label {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 11px;
+  color: var(--smoke);
+  margin-right: 4px;
+  flex-shrink: 0;
+}
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 11px;
+  padding: 8px 14px;
+  border: 1px solid var(--edge);
+  background: var(--asphalt);
+  color: var(--bone);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s;
+  white-space: nowrap;
+}
+.share-btn:hover { border-color: var(--amber); color: var(--amber); }
+.share-btn.native { background: var(--amber); color: var(--pitch); border-color: var(--amber); }
+.share-btn.native:hover { box-shadow: 0 0 16px rgba(255,107,26,0.4); }
+.share-btn.copied { background: #00C875; border-color: #00C875; color: var(--pitch); }
+
+</style>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="ticker" id="site-ticker">
+  <div class="ticker-track" id="ticker-track">
+    <span>Loading latest news...</span>
+  </div>
+</div>
+<script>
+(function(){
+  fetch('/articles.json?v=' + Date.now())
+    .then(function(r){return r.json();})
+    .then(function(articles){
+      var track = document.getElementById('ticker-track');
+      if(!track) return;
+      track.innerHTML = articles.map(function(a){
+        return '<span>' + a.emoji + ' <a href="' + a.url + '">' + a.title + '</a></span>';
+      }).join('');
+    })
+    .catch(function(){
+      // fallback if JSON fails
+      var track = document.getElementById('ticker-track');
+      if(track) track.innerHTML = '<span>&#x1F525; <a href="/news.html">Latest GTA6 News &#8212; 56ViceLane</a></span>';
+    });
+})();
+</script>
+
+</div>
+
+<nav>
+  <a href="/" class="brand"><span class="num">56</span>ViceLane</a>
+  <div class="nav-links" id="nav-links">
+    <a href="/news.html" class="nav-link">News</a>
+    <a href="/lastdrive.html" class="nav-link active">Last Drive</a>
+    <a href="/wall.html" class="nav-link">Wall of Honor</a>
+    <a href="/#signup" class="nav-link">Join List</a>
+  </div>
+  <button class="menu-btn" id="menu-btn">Menu</button>
+</nav>
+<div style="padding:0 24px;max-width:1100px;margin:0 auto;"><div class="share-bar"><span class="share-label">Share</span><button class="share-btn native" onclick="vl_share('The Last Drive — GTA5 Community Farewell Event — 56ViceLane','One final cruise through the city that raised us. November 18 2026. Free. All platforms.','https://56vicelane.com/lastdrive.html')">&#x1F4F1; Share</button><a class="share-btn" href="https://www.reddit.com/r/GTA6/submit?url=https://56vicelane.com/lastdrive.html&amp;title=The+Last+Drive+—+GTA5+Community+Farewell+Event+—+56ViceLane" target="_blank" rel="noopener">Reddit</a><a class="share-btn" href="https://twitter.com/intent/tweet?url=https://56vicelane.com/lastdrive.html&amp;text=The+Last+Drive+—+GTA5+Community+Farewell+Event+—+56ViceLane&amp;via=56ViceLane" target="_blank" rel="noopener">&#x1D54F; Post</a><a class="share-btn" href="https://wa.me/?text=The+Last+Drive+—+GTA5+Community+Farewell+Event+—+56ViceLane+https://56vicelane.com/lastdrive.html" target="_blank" rel="noopener">WhatsApp</a><button class="share-btn copy-btn" onclick="vl_copy('https://56vicelane.com/lastdrive.html')">Copy Link</button></div></div>
+
+<div class="event-hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Community Farewell Event — GTA5</div>
+    <h1><span class="the">The</span>Last Drive</h1>
+    <p>The night before GTA6 drops, we ride one final time through the streets that raised us. <strong>November 18, 2026.</strong> Every platform. Every region. <strong>No missions. No chaos. Just the road.</strong></p>
+    <div class="event-stats">
+      <div class="stat-item"><div class="stat-lbl">Date</div><div class="stat-val">Nov 18</div></div>
+      <div class="stat-item"><div class="stat-lbl">Platforms</div><div class="stat-val">All</div></div>
+      <div class="stat-item"><div class="stat-lbl">Cost</div><div class="stat-val">Free</div></div>
+      <div class="stat-item"><div class="stat-lbl">Format</div><div class="stat-val">Regional</div></div>
+    </div>
+    <a href="#signup" class="hero-cta">Sign Up Now</a>
+  </div>
+</div>
+
+<div class="petition-banner">
+  <div class="petition-tag">Community Petition to Rockstar Games</div>
+  <h2>Help Us <span>#ClearTheLane</span></h2>
+  <p>We're asking Rockstar to <strong>turn off NPC traffic along the Last Drive route</strong> for November 18. One clean road. One final cruise. No interruptions. Share the hashtag — let Rockstar know what this community means.</p>
+  <div class="hashtag-row">
+    <span class="hashtag">#ClearTheLane</span>
+    <span class="hashtag">#LastDrive</span>
+    <span class="hashtag">#56ViceLane</span>
+  </div>
+  <div class="share-btns">
+    <a href="https://twitter.com/intent/tweet?text=I%27m%20signing%20up%20for%20The%20Last%20Drive%20%E2%80%94%20a%20community%20farewell%20to%20GTA5%20on%20November%2018%202026.%20Help%20us%20%23ClearTheLane%20%40RockstarGames%20%23LastDrive%20%2356ViceLane%20%E2%86%92%2056vicelane.com" target="_blank" rel="noopener" class="share-btn">Share on X / Twitter</a>
+    <button class="share-btn" onclick="copyTags()">Copy Hashtags</button>
+  </div>
+</div>
+
+<div class="main-content">
+
+  <div class="road-divider"><span class="road-divider-label">The Rules</span></div>
+  <div class="reveal">
+    <div class="rules-grid">
+      <div class="rule-card"><div class="rule-num">RULE 01</div><div class="rule-title">No Missions</div><div class="rule-text">Tonight is about the city. No missions, no heists. Just the road.</div></div>
+      <div class="rule-card"><div class="rule-num">RULE 02</div><div class="rule-title">Passive Mode On</div><div class="rule-text">Everyone goes passive. No killing other drivers. We ride clean together.</div></div>
+      <div class="rule-card"><div class="rule-num">RULE 03</div><div class="rule-title">Slow Cruise</div><div class="rule-text">Pick a car you love. Drive like you're saying goodbye — because you are.</div></div>
+      <div class="rule-card"><div class="rule-num">RULE 04</div><div class="rule-title">Respect The Night</div><div class="rule-text">Show up with the right energy. Honor what GTA5 meant to all of us.</div></div>
+    </div>
+  </div>
+
+  <div class="road-divider" id="signup"><span class="road-divider-label">Sign Up</span></div>
+
+  <div class="reveal">
+    <div class="s-eyebrow">Step 1 of 4 — Select Your Platform</div>
+    <div class="s-title">What Are You Rolling On?</div>
+    <div class="s-desc">Each platform has its own lobby. Pick yours and we'll show you who's already signed up for your region and time slot.</div>
+
+    <div class="platform-tabs" id="ptabs">
+      <button class="platform-tab active" data-p="PS5">🎮 PS5 <span class="cnt" id="cnt-PS5">...</span></button>
+      <button class="platform-tab" data-p="PS4">🎮 PS4 <span class="cnt" id="cnt-PS4">...</span></button>
+      <button class="platform-tab" data-p="Xbox Series X/S">🟢 Xbox Series X/S <span class="cnt" id="cnt-XboxS">...</span></button>
+      <button class="platform-tab" data-p="Xbox One">🟢 Xbox One <span class="cnt" id="cnt-XboxO">...</span></button>
+      <button class="platform-tab" data-p="PC">🖥 PC <span class="cnt" id="cnt-PC">...</span></button>
+    </div>
+
+    <div id="panels"></div>
+
+    <div class="wall-cta reveal">
+      <h3>Wall of Honor</h3>
+      <p>See everyone who's already signed up. Find players in your region and slot to add before the night.</p>
+      <a href="/wall.html">View The Wall →</a>
+    </div>
+  </div>
+
+</div>
+
+<div style="padding:0 24px 24px;max-width:1100px;margin:0 auto;"><div class="share-bar"><span class="share-label">Share</span><button class="share-btn native" onclick="vl_share('The Last Drive — GTA5 Community Farewell Event — 56ViceLane','One final cruise through the city that raised us. November 18 2026. Free. All platforms.','https://56vicelane.com/lastdrive.html')">&#x1F4F1; Share</button><a class="share-btn" href="https://www.reddit.com/r/GTA6/submit?url=https://56vicelane.com/lastdrive.html&amp;title=The+Last+Drive+—+GTA5+Community+Farewell+Event+—+56ViceLane" target="_blank" rel="noopener">Reddit</a><a class="share-btn" href="https://twitter.com/intent/tweet?url=https://56vicelane.com/lastdrive.html&amp;text=The+Last+Drive+—+GTA5+Community+Farewell+Event+—+56ViceLane&amp;via=56ViceLane" target="_blank" rel="noopener">&#x1D54F; Post</a><a class="share-btn" href="https://wa.me/?text=The+Last+Drive+—+GTA5+Community+Farewell+Event+—+56ViceLane+https://56vicelane.com/lastdrive.html" target="_blank" rel="noopener">WhatsApp</a><button class="share-btn copy-btn" onclick="vl_copy('https://56vicelane.com/lastdrive.html')">Copy Link</button></div></div>
+<footer>
+  <div class="footer-brand"><span class="num">56</span>ViceLane</div>
+  <div class="footer-tag">Where GTA5 Ends And GTA6 Begins</div>
+  <div class="footer-links">
+    <a href="/">Home</a><a href="/news.html">News</a>
+    <a href="/wall.html">Wall of Honor</a>
+    <a href="/privacy.html">Privacy</a>
+  </div>
+  <div class="footer-copy">© 2026 56ViceLane · Independent fan project · Not affiliated with Rockstar Games or Take-Two Interactive</div>
+</footer>
+
+<script>
+const AT_TOKEN = 'pattxJ12NQzpHMejD.2eb992f22f1a43e032d866df028dbb33958635234f6cfd30769e3e12f10d5588';
+const AT_BASE  = 'appVViGbmcu5gbn8B';
+const AT_URL   = `https://api.airtable.com/v0/${AT_BASE}/Table%201`;
+const AT_H     = { 'Authorization': `Bearer ${AT_TOKEN}`, 'Content-Type': 'application/json' };
+
+const PLATFORMS = ['PS5','PS4','Xbox Series X/S','Xbox One','PC'];
+const REGIONS = [
+  {name:'NA East',tz:'EST',flag:'🇺🇸'},
+  {name:'NA West',tz:'PST',flag:'🌵'},
+  {name:'Europe',tz:'CET',flag:'🇪🇺'},
+  {name:'Latin America',tz:'BRT',flag:'🌎'},
+  {name:'Australia/NZ',tz:'AEST',flag:'🇦🇺'},
+  {name:'Asia',tz:'JST',flag:'🌏'},
+];
+const TIMES = ['6:00 PM','8:00 PM','10:00 PM','12:00 AM'];
+const TIME_LABELS = ['Evening Cruise','Night Cruise','Late Night','Midnight Send-Off'];
+const CNT_IDS = {'PS5':'cnt-PS5','PS4':'cnt-PS4','Xbox Series X/S':'cnt-XboxS','Xbox One':'cnt-XboxO','PC':'cnt-PC'};
+
+const st = {}; // state per platform
+PLATFORMS.forEach(p => st[p] = {region:'',slot:'',chat:'',staging:'',drive:'',isOrg:false});
+
+// ── BUILD ALL PANELS ────────────────────────────────────────
+const panelsEl = document.getElementById('panels');
+
+PLATFORMS.forEach(p => {
+  const pid = p.replace(/[^a-zA-Z0-9]/g,'_');
+  const panel = document.createElement('div');
+  panel.className = 'platform-panel' + (p === 'PS5' ? ' active' : '');
+  panel.id = `panel_${pid}`;
+  panel.innerHTML = `
+    <div class="s-eyebrow">${p} — Step 2 of 4 — Pick Your Region</div>
+    <div class="region-grid" id="rg_${pid}"></div>
+
+    <div class="time-slots" id="ts_${pid}">
+      <div class="s-eyebrow">${p} — Step 3 of 4 — Pick Your Time Slot</div>
+      <div class="s-title" id="st_${pid}">Choose Your Slot</div>
+      <div class="s-desc">Times shown in your region's local timezone. Green = organizer spot available.</div>
+      <div class="slots-grid" id="sg_${pid}"></div>
+    </div>
+
+    <div class="signup-section" id="sf_${pid}">
+      <div class="s-eyebrow">${p} — Step 4 of 4 — Your Details</div>
+      <div class="s-title">Lock In Your Spot</div>
+      <div class="confirm-strip" id="cs_${pid}"></div>
+      <div class="org-badge" id="ob_${pid}">⭐ You're The Drive Organizer For This Slot</div>
+
+      <div class="form-grid">
+        <div class="form-field"><label class="form-label">Your Name</label><input type="text" id="fn_${pid}" placeholder="What do we call you?"></div>
+        <div class="form-field"><label class="form-label">Email</label><input type="email" id="fe_${pid}" placeholder="For event updates only"></div>
+        <div class="form-field full"><label class="form-label">${p.startsWith('Xbox') ? 'Xbox Gamertag' : p === 'PC' ? 'Social Club / Steam Name' : 'PSN ID'}</label><input type="text" id="fg_${pid}" placeholder="Other players will add you with this"></div>
+
+        <div class="form-field full">
+          <label class="form-label">Preferred Chat</label>
+          <div class="chat-grid">
+            <button type="button" class="sel-btn" data-p="${p}" data-k="chat" data-v="In-Game">🎮 In-Game</button>
+            <button type="button" class="sel-btn" data-p="${p}" data-k="chat" data-v="Discord">💬 Discord</button>
+            <button type="button" class="sel-btn" data-p="${p}" data-k="chat" data-v="Other">Other</button>
+          </div>
+          <div class="hidden-field" id="co_${pid}">
+            <input type="text" id="ct_${pid}" placeholder="e.g. TeamSpeak, WhatsApp group">
+          </div>
+        </div>
+
+        <div class="form-field full">
+          <label class="form-label">Staging Location</label>
+          <div class="opt-grid">
+            <button type="button" class="opt-btn" data-p="${p}" data-k="staging" data-v="Casino">Casino<span class="opt-sub">Central — main boulevard route</span></button>
+            <button type="button" class="opt-btn" data-p="${p}" data-k="staging" data-v="Airport">Airport<span class="opt-sub">South end of the map</span></button>
+            <button type="button" class="opt-btn" data-p="${p}" data-k="staging" data-v="Pier">Pier<span class="opt-sub">Scenic waterfront stage</span></button>
+          </div>
+        </div>
+
+        <div class="form-field full">
+          <label class="form-label">Drive Type</label>
+          <div class="opt-grid">
+            <button type="button" class="opt-btn" data-p="${p}" data-k="drive" data-v="Solo Drive (one Lap)">Solo Drive<span class="opt-sub">One lap · ~30 mins</span></button>
+            <button type="button" class="opt-btn" data-p="${p}" data-k="drive" data-v="Extended Drive">Extended Drive<span class="opt-sub">Up to 5 laps · ~2 hrs</span></button>
+            <button type="button" class="opt-btn" data-p="${p}" data-k="drive" data-v="Marathon (Last Remaining...)">Marathon<span class="opt-sub">Ride until midnight</span></button>
+          </div>
+        </div>
+
+        <div class="form-field full">
+          <label class="form-label">Crew Name <span style="font-family:'Inter',sans-serif;text-transform:none;letter-spacing:0;font-size:10px;">(optional)</span></label>
+          <input type="text" id="fc_${pid}" placeholder="Leave blank if riding solo">
+        </div>
+
+        <div class="form-field full">
+          <div class="toggle-row">
+            <div class="toggle-lbl">I'll enable Passive Mode during the drive<span>Required to keep the cruise clean for everyone</span></div>
+            <label class="toggle"><input type="checkbox" id="tp_${pid}"><span class="toggle-slider"></span></label>
+          </div>
+          <div class="toggle-row">
+            <div class="toggle-lbl">Show my gamertag on the Wall of Honor<span>Your tag will be publicly visible on 56ViceLane</span></div>
+            <label class="toggle"><input type="checkbox" id="tw_${pid}"><span class="toggle-slider"></span></label>
+          </div>
+          <div class="toggle-row">
+            <div class="toggle-lbl">Sign the #ClearTheLane petition<span>Add my name asking Rockstar to clear NPC traffic for the night</span></div>
+            <label class="toggle"><input type="checkbox" id="tq_${pid}" checked><span class="toggle-slider"></span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="submit-row">
+        <button class="submit-btn" id="sub_${pid}" data-p="${p}">Lock In My Spot</button>
+        <div class="submit-note">Gamertag only appears on Wall of Honor if you opt in above</div>
+      </div>
+
+      <div class="success-box" id="ok_${pid}">
+        <div class="success-icon">🚗</div>
+        <div class="success-title">You're In The Lane</div>
+        <div class="success-text"><strong>See you November 18.</strong><br><br>Check your email for lobby details closer to the date. Visit the Wall of Honor to find other players in your slot and add them before the night.</div>
+        <a href="/wall.html" class="success-link">View Wall of Honor →</a>
+      </div>
+    </div>
+  `;
+  panelsEl.appendChild(panel);
+
+  // Build region cards
+  const rg = panel.querySelector(`#rg_${pid}`);
+  REGIONS.forEach(r => {
+    const card = document.createElement('div');
+    card.className = 'region-card';
+    card.innerHTML = `<div class="region-flag">${r.flag}</div><div class="region-name">${r.name}</div><div class="region-tz">${r.tz}</div>`;
+    card.addEventListener('click', () => {
+      rg.querySelectorAll('.region-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      st[p].region = r.name;
+      st[p].tz = r.tz;
+      buildSlots(p, pid, r);
+    });
+    rg.appendChild(card);
+  });
+});
+
+// ── PLATFORM TABS ───────────────────────────────────────────
+document.querySelectorAll('.platform-tab').forEach(tab => {
+  tab.addEventListener('click', function() {
+    const p = this.dataset.p;
+    const pid = p.replace(/[^a-zA-Z0-9]/g,'_');
+    document.querySelectorAll('.platform-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.platform-panel').forEach(pp => pp.classList.remove('active'));
+    this.classList.add('active');
+    document.getElementById(`panel_${pid}`).classList.add('active');
+  });
+});
+
+// ── BUILD SLOTS ─────────────────────────────────────────────
+async function buildSlots(p, pid, region) {
+  const tsDiv = document.getElementById(`ts_${pid}`);
+  const sgDiv = document.getElementById(`sg_${pid}`);
+  const stEl  = document.getElementById(`st_${pid}`);
+  stEl.textContent = `${region.name} Time Slots`;
+  sgDiv.innerHTML = '<div style="color:var(--smoke);font-size:13px;padding:12px 0">Checking availability...</div>';
+  tsDiv.classList.add('visible');
+  tsDiv.scrollIntoView({behavior:'smooth',block:'start'});
+
+  const checks = await Promise.all(
+    TIMES.map(t => isFirstSignup(p, region.name, `${t} ${region.tz}`))
+  );
+
+  sgDiv.innerHTML = '';
+  TIMES.forEach((time, i) => {
+    const slotKey = `${time} ${region.tz}`;
+    const isFirst = checks[i];
+    const card = document.createElement('div');
+    card.className = 'slot-card';
+    card.innerHTML = `
+      <div>
+        <div class="slot-time">${time}<span class="slot-period">${region.tz}</span></div>
+        <div class="slot-label">${TIME_LABELS[i]}</div>
+      </div>
+      <div>
+        <div class="slot-status ${isFirst ? 'open' : 'taken'}">${isFirst ? '⭐ Organizer Spot Open' : '✓ Join The Crew'}</div>
+      </div>
+    `;
+    card.addEventListener('click', () => {
+      sgDiv.querySelectorAll('.slot-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      st[p].slot = slotKey;
+      st[p].isOrg = isFirst;
+      showForm(p, pid, region.name, slotKey, isFirst);
+    });
+    sgDiv.appendChild(card);
+  });
+}
+
+async function isFirstSignup(platform, region, slot) {
+  try {
+    const f = encodeURIComponent(`AND({Platform}="${platform}",{Region}="${region}",{Staging Time}="${slot}")`);
+    const r = await fetch(`${AT_URL}?filterByFormula=${f}&maxRecords=1&fields%5B%5D=Name`, {headers:AT_H});
+    const d = await r.json();
+    return !d.records || d.records.length === 0;
+  } catch(e){ return false; }
+}
+
+function showForm(p, pid, region, slot, isOrg) {
+  const cs = document.getElementById(`cs_${pid}`);
+  const ob = document.getElementById(`ob_${pid}`);
+  const sf = document.getElementById(`sf_${pid}`);
+  cs.innerHTML = `
+    <div class="confirm-item"><div class="confirm-lbl">Platform</div><div class="confirm-val">${p}</div></div>
+    <div class="confirm-item"><div class="confirm-lbl">Region</div><div class="confirm-val">${region}</div></div>
+    <div class="confirm-item"><div class="confirm-lbl">Slot</div><div class="confirm-val">${slot}</div></div>
+  `;
+  cs.classList.add('show');
+  if (isOrg) {
+    ob.classList.add('show');
+    document.getElementById(`tw_${pid}`).checked = true;
+  }
+  sf.classList.add('visible');
+  setTimeout(() => sf.scrollIntoView({behavior:'smooth',block:'start'}), 100);
+}
+
+// ── BUTTON SELECTORS ────────────────────────────────────────
+document.addEventListener('click', function(e) {
+  const btn = e.target.closest('.sel-btn,.opt-btn');
+  if (!btn) return;
+  const p   = btn.dataset.p;
+  const pid = p.replace(/[^a-zA-Z0-9]/g,'_');
+  const k   = btn.dataset.k;
+  const v   = btn.dataset.v;
+
+  if (btn.classList.contains('sel-btn')) {
+    document.querySelectorAll(`.sel-btn[data-p="${p}"][data-k="${k}"]`).forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    st[p][k] = v;
+    if (k === 'chat') {
+      const co = document.getElementById(`co_${pid}`);
+      if (co) co.classList.toggle('visible', v === 'Other');
+    }
+  } else {
+    document.querySelectorAll(`.opt-btn[data-p="${p}"][data-k="${k}"]`).forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    st[p][k] = v;
+  }
+});
+
+// ── SUBMIT ──────────────────────────────────────────────────
+document.addEventListener('click', async function(e) {
+  const btn = e.target.closest('.submit-btn');
+  if (!btn) return;
+  const p   = btn.dataset.p;
+  const pid = p.replace(/[^a-zA-Z0-9]/g,'_');
+  const s   = st[p];
+
+  const name     = (document.getElementById(`fn_${pid}`)?.value || '').trim();
+  const email    = (document.getElementById(`fe_${pid}`)?.value || '').trim();
+  const gamertag = (document.getElementById(`fg_${pid}`)?.value || '').trim();
+  const crew     = (document.getElementById(`fc_${pid}`)?.value || '').trim();
+  const chatOther= (document.getElementById(`ct_${pid}`)?.value || '').trim();
+  const passive  = document.getElementById(`tp_${pid}`)?.checked || false;
+  const showWall = document.getElementById(`tw_${pid}`)?.checked || false;
+  const petition = document.getElementById(`tq_${pid}`)?.checked || false;
+
+  if (!name || !email || !gamertag || !s.chat || !s.staging || !s.drive || !s.region || !s.slot) {
+    btn.textContent = 'Please Fill In All Fields';
+    btn.style.background = '#cc0000';
+    setTimeout(() => { btn.textContent = 'Lock In My Spot'; btn.style.background = 'var(--amber)'; }, 2500);
+    return;
+  }
+
+  btn.textContent = 'Locking In...';
+  btn.disabled = true;
+
+  const isOrg = await isFirstSignup(p, s.region, s.slot);
+
+  try {
+    const res = await fetch(AT_URL, {
+      method: 'POST',
+      headers: AT_H,
+      body: JSON.stringify({ records: [{ fields: {
+        'Name': name,
+        'Gamertag': gamertag,
+        'Email': email,
+        'Platform': p,
+        'Region': s.region,
+        'Staging Time': s.slot,
+        'Chat': s.chat,
+        'ChatOther': chatOther,
+        'CrewName': crew,
+        'Staging Location': s.staging,
+        'Drive Type': s.drive,
+        'Passive Mode': passive,
+        'IsOrganizer': isOrg,
+        'ShowOnWall': showWall,
+        'Petition Opt In': petition
+      }}]})
+    });
+
+    if (res.ok) {
+      document.getElementById(`sf_${pid}`).style.display = 'none';
+      document.getElementById(`ok_${pid}`).classList.add('show');
+      document.getElementById(`ok_${pid}`).scrollIntoView({behavior:'smooth'});
+      loadCounts();
+    } else {
+      throw new Error();
+    }
+  } catch(err) {
+    btn.textContent = 'Error — Try Again';
+    btn.disabled = false;
+    btn.style.background = '#cc0000';
+  }
+});
+
+// ── COUNTS ──────────────────────────────────────────────────
+async function loadCounts() {
+  try {
+    let allRecords = [];
+    let offset = '';
+    do {
+      const url = `${AT_URL}?fields%5B%5D=Platform${offset ? '&offset='+offset : ''}`;
+      const r = await fetch(url, {headers:AT_H});
+      const d = await r.json();
+      if (d.records) allRecords = allRecords.concat(d.records);
+      offset = d.offset || '';
+    } while(offset);
+
+    const counts = {'PS5':0,'PS4':0,'Xbox Series X/S':0,'Xbox One':0,'PC':0};
+    allRecords.forEach(r => { const p = r.fields.Platform; if (counts[p] !== undefined) counts[p]++; });
+    Object.entries(CNT_IDS).forEach(([p, id]) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = counts[p];
+    });
+  } catch(e) {
+    Object.values(CNT_IDS).forEach(id => { const el = document.getElementById(id); if(el) el.textContent = '?'; });
+  }
+}
+loadCounts();
+
+// ── COPY HASHTAGS ────────────────────────────────────────────
+function copyTags() {
+  navigator.clipboard.writeText('#ClearTheLane #LastDrive #56ViceLane').then(() => {
+    document.querySelectorAll('.share-btn').forEach(b => {
+      if (b.textContent.includes('Copy')) { b.textContent = 'Copied! ✓'; setTimeout(() => b.textContent = 'Copy Hashtags', 2000); }
+    });
+  });
+}
+
+// ── NAV ─────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  const mb = document.getElementById('menu-btn');
+  const nl = document.getElementById('nav-links');
+  if (mb && nl) mb.addEventListener('click', () => { const o = nl.classList.toggle('open'); mb.textContent = o ? 'Close' : 'Menu'; });
+});
+
+// ── REVEAL ───────────────────────────────────────────────────
+const obs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);} }), {threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+<script>
+
+function shareNative(title, text, url) {
+  if (navigator.share) {
+    navigator.share({ title: title, text: text, url: url }).catch(() => {});
+  } else {
+    copyLink(url);
+  }
+}
+function copyLink(url) {
+  const u = url || window.location.href;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(u).then(() => {
+      document.querySelectorAll(".share-btn.copy").forEach(b => {
+        const orig = b.textContent;
+        b.textContent = "Copied!";
+        b.classList.add("copied");
+        setTimeout(() => { b.textContent = orig; b.classList.remove("copied"); }, 2000);
+      });
+    });
+  }
+}
+
+</script>
+<script>
+function vl_share(title,text,url){
+  if(navigator.share){navigator.share({title:title,text:text,url:url}).catch(function(){});}
+  else{vl_copy(url);}
+}
+function vl_copy(url){
+  var u=url||window.location.href;
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(u).then(function(){
+      document.querySelectorAll(".share-btn.copy-btn").forEach(function(b){
+        var o=b.textContent;b.textContent="Copied!";b.classList.add("copied");
+        setTimeout(function(){b.textContent=o;b.classList.remove("copied");},2000);
+      });
+    });
+  }
+}
+</script>
+</body>
+</html>
