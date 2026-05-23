@@ -30,6 +30,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <style>
+    .related-section{border-top:1px solid var(--edge);padding-top:24px;margin-top:32px;}
+.related-title{font-family:'Russo One',sans-serif;font-size:1.1rem;color:var(--bone);margin-bottom:14px;}
+.related-grid{display:flex;flex-direction:column;gap:10px;}
+.related-card{background:var(--asphalt);border:1px solid var(--edge);border-radius:6px;padding:12px 14px;text-decoration:none;display:block;}
+.related-card:hover{border-color:var(--amber);}
+.related-card-label{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;font-weight:700;text-transform:uppercase;color:var(--amber);margin-bottom:4px;}
+.related-card-title{font-family:'Russo One',sans-serif;font-size:0.9rem;color:var(--bone);line-height:1.3;}
     :root {
       --pitch:     #0B0B0F;
       --asphalt:   #16161D;
@@ -407,7 +414,28 @@
 
 <!-- RATING SECTION -->
 <div
-
+<div class="related-section reveal">
+  <div class="related-title">Related Articles</div>
+  <div class="related-grid">
+    <a href="/articles/gta6-take-two-earnings-call-may-2026.html" class="related-card">
+      <div class="related-card-label">📞 Earnings</div>
+      <div class="related-card-title">Take-Two Earnings: GTA6 Nov 19 Locked — Full Breakdown</div>
+    </a>
+    <a href="/articles/gta6-not-delayed-google-ai-wrong.html" class="related-card">
+      <div class="related-card-label">✅ Confirmed</div>
+      <div class="related-card-title">No, GTA6 Has NOT Been Delayed — Here's What Google Is Getting Wrong</div>
+    </a>
+    <a href="/articles/gta6-pc-build-guide-2026.html" class="related-card">
+      <div class="related-card-label">💻 Build Guide</div>
+      <div class="related-card-title">One PC To Rule Them All — The GTA6 Launch Day Build Guide</div>
+    </a>
+    <a href="/lastdrive.html" class="related-card">
+      <div class="related-card-label">🏁 Event</div>
+      <div class="related-card-title">The Last Drive — November 18 — Sign Up Now</div>
+    </a>
+  </div>
+</div>
+  
   <div class="callout cyan" style="margin-top:40px;">
     <div class="callout-label">&#x1F3C1; The Last Drive &#x2014; November 18, 2026</div>
     <p>The night before GTA6 changes everything, the world logs into GTA5 together for one final cruise. Free. All platforms. <a href="/lastdrive.html">Sign up and get your name on the Wall of Honor.</a></p>
