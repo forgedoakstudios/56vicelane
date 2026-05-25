@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+I'm<!DOCTYPE html>
 <html lang="en">
 <head>
 <!-- Google tag (gtag.js) -->
@@ -523,23 +523,7 @@ footer { padding: 40px 24px; border-top: 1px solid var(--edge); text-align: cent
   <!-- ARTICLE FEED -->
   <div class="article-feed">
 
-    <function setArticleTime(cardElement, filePath) {
-    fetch('https://api.github.com/repos/forgedoakstudios/56vicelane/commits?path=' + filePath + '&sha=main&per_page=1')
-        .then(function(res){ return res.json(); })
-        .then(function(data){
-            if(data.length > 0){
-                var date = new Date(data[0].commit.committer.date);
-                var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-                var hours = date.getHours();
-                var mins = date.getMinutes().toString().padStart(2,'0');
-                var ampm = hours >= 12 ? 'PM' : 'AM';
-                hours = hours % 12 || 12;
-                cardElement.querySelector('.article-time').textContent = 
-                    months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear() + ' ' + hours + ':' + mins + ' ' + ampm;
-            }
-        })
-        .catch(function(){ /* silently fail */ });
-}>
+    
 
     <div class="article-card featured reveal">
   <div class="article-body">
