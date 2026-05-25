@@ -523,14 +523,30 @@ footer { padding: 40px 24px; border-top: 1px solid var(--edge); text-align: cent
   <!-- ARTICLE FEED -->
   <div class="article-feed">
 
-    <div class="feed-section-label">Latest &#8212; May 25, 2026</div>
+    <function setArticleTime(cardElement, filePath) {
+    fetch('https://api.github.com/repos/forgedoakstudios/56vicelane/commits?path=' + filePath + '&sha=main&per_page=1')
+        .then(function(res){ return res.json(); })
+        .then(function(data){
+            if(data.length > 0){
+                var date = new Date(data[0].commit.committer.date);
+                var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+                var hours = date.getHours();
+                var mins = date.getMinutes().toString().padStart(2,'0');
+                var ampm = hours >= 12 ? 'PM' : 'AM';
+                hours = hours % 12 || 12;
+                cardElement.querySelector('.article-time').textContent = 
+                    months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear() + ' ' + hours + ':' + mins + ' ' + ampm;
+            }
+        })
+        .catch(function(){ /* silently fail */ });
+}>
 
     <div class="article-card featured reveal">
   <div class="article-body">
     <div class="article-meta">
       <span class="fact-badge" style="background:var(--amber);color:#000;border-color:var(--amber)">Analysis</span>
       <span class="article-tag">Marketing</span>
-      <span class="article-date">May 26, 2026</span>
+      <span class="article-date">May 25, 2026</span>
     </div>
     <div class="article-title">
       <a href="/articles/gta6-trailer-3-marketing-timeline-prediction.html">GTA6 Trailer 3 — Why July 5-15 Is The Real Window</a>
