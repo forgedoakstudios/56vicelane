@@ -1,7 +1,90 @@
 [
-  {"emoji":"🎬","title":"GTA6 Trailer 3 — Why July 5-15 Is The Real Window","url":"/articles/gta6-trailer-3-marketing-timeline-prediction.html"},
-  {"emoji":"📉","title":"BREAKING: Take-Two Stock Slides 5% — What It Actually Means For GTA6","url":"/articles/gta6-earnings-stock-slide-what-it-means.html"},
-  {"emoji":"💻","title":"One PC To Rule Them All — The GTA6 Launch Day Build Guide","url":"/articles/gta6-pc-build-guide-2026.html"},
-  {"emoji":"🛒","title":"GTA6 Gear Guide — Controllers, Headsets, Chairs & More","url":"/shop.html"},
-  {"emoji":"🏁","title":"The Last Drive — November 18 — Sign Up Now","url":"/lastdrive.html"}
+  {
+    "emoji": "\u26a1",
+    "title": "Sony & Xbox Both Make Major Moves Ahead of GTA 6",
+    "url": "/articles/gta6-xbox-wishlist-campaign-international.html",
+    "date": "2026-05-26",
+    "featured": true
+  },
+  {
+    "emoji": "\ud83d\udcca",
+    "title": "GTA6 Trailer 3 \u2014 Why July 5-15 Is The Real Window",
+    "url": "/articles/gta6-trailer-3-marketing-timeline-prediction.html",
+    "date": "2026-05-25",
+    "featured": true
+  },
+  {
+    "emoji": "\ud83d\udcc8",
+    "title": "Take-Two Stock Slides 5% After Earnings \u2014 What It Means For GTA6 Fans",
+    "url": "/articles/gta6-earnings-stock-slide-what-it-means.html",
+    "date": "2026-05-22",
+    "featured": true
+  },
+  {
+    "emoji": "\u2705",
+    "title": "Take-Two Earnings: GTA6 On Track, $8.2B Forecast, $70 Defended",
+    "url": "/articles/gta6-take-two-earnings-call-may-2026.html",
+    "date": "2026-05-21",
+    "featured": true
+  },
+  {
+    "emoji": "\u2705",
+    "title": "No, GTA6 Has NOT Been Delayed Again \u2014 Here's What Google Is Getting Wrong",
+    "url": "/articles/gta6-not-delayed-google-ai-wrong.html",
+    "date": "2026-05-21"
+  },
+  {
+    "emoji": "\ud83d\udd25",
+    "title": "GTA 6 Pre-Orders Secretly Went Live \u2014 And Nobody Noticed",
+    "url": "/articles/gta6-preorders-secretly-went-live-italy.html",
+    "date": "2026-05-19"
+  },
+  {
+    "emoji": "\u26a1",
+    "title": "The Strike That Could Break GTA6's AI Before You Even Play It",
+    "url": "/articles/gta6-samsung-strike-ai-npc-memory-crisis.html",
+    "date": "2026-05-19"
+  },
+  {
+    "emoji": "\ud83d\udcbb",
+    "title": "One PC To Rule Them All \u2014 GTA6 Launch Day Build Guide",
+    "url": "/articles/gta6-pc-build-guide-2026.html",
+    "date": "2026-05-20"
+  },
+  {
+    "emoji": "\ud83d\udd25",
+    "title": "GTA 6 Sparks Pre-Order Chaos: How One Email Broke the Internet",
+    "url": "/articles/gta6-preorder-chaos-debunked.html",
+    "date": "2026-05-18"
+  },
+  {
+    "emoji": "\ud83d\udcb0",
+    "title": "GTA 6 Could Cost $115 \u2014 And Fans Are Furious",
+    "url": "/articles/gta6-price-115-dutch-leak.html",
+    "date": "2026-05-18"
+  },
+  {
+    "emoji": "\ud83d\udce6",
+    "title": "GTA 6 Will Launch With Six Editions \u2014 Including a Collector's Set",
+    "url": "/articles/gta6-six-editions-leak.html",
+    "date": "2026-05-18"
+  },
+  {
+    "emoji": "\ud83d\udcf0",
+    "title": "Rockstar Won't Send Review Copies \u2014 What That Means For Day-One Buyers",
+    "url": "/articles/gta6-no-review-copies.html",
+    "date": "2026-05-18"
+  },
+  {
+    "emoji": "\u2705",
+    "title": "GTA6 Release Date Locked: November 19 2026 Is Official",
+    "url": "/articles/gta6-november-19-confirmed.html",
+    "date": "2026-04-28"
+  },
+  {
+    "emoji": "\ud83c\udfae",
+    "title": "GTA6 Gear Guide \u2014 Controllers, Headsets, Chairs & More",
+    "url": "/shop.html",
+    "date": "2026-05-01"
+  }
 ]
