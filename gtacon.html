@@ -772,9 +772,9 @@ async function fetchCondition() {
   } catch(e) {
     // Fallback: read from local gtacon.json if worker unavailable
     try {
-      const res = await fetch('/gtacon.json?v=' + Date.now());
-      const data = await res.json();
-      return data;
+      const res2 = await fetch('/gtacon.json?v=' + Date.now());
+      const data2 = await res2.json();
+      return data2;
     } catch(e2) {
       return null;
     }
@@ -1300,6 +1300,13 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', function(){
     navigator.serviceWorker.register('/gtacon-sw.js').catch(function(){});
   });
+}
+
+// ── NOTIFICATIONS ──────────────────────────────────────────────
+function requestNotifications() {
+  if ('Notification' in window && Notification.permission === 'default') {
+    Notification.requestPermission();
+  }
 }
 
 // ── MAIN LOOP ────────────────────────────────────────────────────
