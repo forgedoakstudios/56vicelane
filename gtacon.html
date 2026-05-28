@@ -762,29 +762,27 @@ let currentCondition = null;
 let initialized = false;
 
 // ── FETCH CONDITION FROM WORKER ──────────────────────────────────
-async function fetchCondition() {
+function fetchCondition() {
   setLiveStatus('updating');
-  try {
-    // Primary: local gtacon.json — fast, reliable, no CORS
-    const res = await fetch('/gtacon.json?v=' + Date.now());
-    if (!res.ok) throw new Error('json failed');
-    const data = await res.json();
-    // Try worker in background for fresher data
-    fetch(WORKER_URL + '?v=' + Date.now())
-      .then(function(r){ return r.json(); })
-      .then(function(wd){ if(wd && wd.condition){ applyCondition(wd, false); } })
-      .catch(function(){});
-    return data;
-  } catch(e) {
-    try {
-      const res2 = await fetch(WORKER_URL + '?v=' + Date.now());
-      if (!res2.ok) throw new Error('worker failed');
-      const data2 = await res2.json();
-      return data2;
-    } catch(e2) { return null; }
-  } finally {
-    setLiveStatus('live');
-  }
+  return fetch('/gtacon.json?v=' + Date.now())
+    .then(function(res) {
+      if (!res.ok) throw new Error('status ' + res.status);
+      return res.json();
+    })
+    .then(function(data) {
+      setLiveStatus('live');
+      // Also try worker in background for fresher KV data
+      fetch('https://gtacon-worker.forgedoakstudios.workers.dev/gtacon-status?v=' + Date.now())
+        .then(function(r) { return r.json(); })
+        .then(function(wd) { if (wd && wd.condition) applyCondition(wd, false); })
+        .catch(function() {});
+      return data;
+    })
+    .catch(function(e) {
+      console.log('[GTACON] fetch error:', e);
+      setLiveStatus('live');
+      return null;
+    });
 }
 
 // ── APPLY CONDITION TO PAGE ──────────────────────────────────────
@@ -1314,9 +1312,10 @@ function requestNotifications() {
 }
 
 // ── MAIN LOOP ────────────────────────────────────────────────────
-async function checkAndUpdate() {
-  const data = await fetchCondition();
-  if (data) applyCondition(data, !initialized);
+function checkAndUpdate() {
+  fetchCondition().then(function(data) {
+    if (data) applyCondition(data, !initialized);
+  });
 }
 
 // Initial load
