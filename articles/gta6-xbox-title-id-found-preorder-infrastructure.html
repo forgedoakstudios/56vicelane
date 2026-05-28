@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GTA VI Title ID Found In Xbox API — The Pre-Order Button Is Almost Ready | 56ViceLane</title>
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -11,7 +13,11 @@
     gtag('js', new Date());
     gtag('config', 'G-9EKF7J4V7W');
   </script>
+
+  <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
+
+  <!-- OG / Twitter Meta -->
   <meta property="og:title" content="GTA VI Title ID Found In Xbox API — The Pre-Order Button Is Almost Ready">
   <meta property="og:description" content="A Reddit user found GTA VI's Xbox Title ID buried in Microsoft's API. The Package Name is Rockstar's. This is pre-order infrastructure. It's almost time.">
   <meta property="og:image" content="https://56vicelane.com/images/Jason_and_Lucia_01_landscape.jpg">
@@ -25,145 +31,706 @@
   <meta name="twitter:description" content="A Reddit user found GTA VI's Xbox Title ID buried in Microsoft's API. The Package Name is Rockstar's. This is pre-order infrastructure. It's almost time.">
   <meta name="twitter:image" content="https://56vicelane.com/images/Jason_and_Lucia_01_landscape.jpg">
   <meta name="description" content="A Reddit user found GTA VI's Xbox Title ID buried in Microsoft's API. The Package Name is Rockstar's. This is pre-order infrastructure. It's almost time.">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --pitch:#0B0B0F; --asphalt:#16161D; --amber:#FF6B1A; --amber-dim:#cc4a00;
-      --cyan:#00D4FF; --bone:#F0EDE8; --smoke:#7A7A8C; --edge:#26262F;
-      --green:#00C875; --red:#FF3B3B;
+      --pitch:     #0B0B0F;
+      --asphalt:   #16161D;
+      --amber:     #FF6B1A;
+      --amber-dim: #cc4a00;
+      --cyan:      #00D4FF;
+      --bone:      #F0EDE8;
+      --smoke:     #7A7A8C;
+      --edge:      #26262F;
+      --green:     #00C875;
+      --red:       #FF3B3B;
     }
-    body { background:var(--pitch); color:var(--bone); font-family:'Inter',sans-serif; font-size:1rem; line-height:1.75; }
-    a { color:var(--cyan); text-decoration:none; }
-    a:hover { text-decoration:underline; }
-    .ticker-wrap { background:var(--amber); overflow:hidden; padding:6px 0; position:sticky; top:0; z-index:100; }
-    .ticker-track { display:flex; gap:60px; white-space:nowrap; animation:ticker 20s linear infinite; }
-    .ticker-item { font-family:'Barlow Condensed',sans-serif; font-size:0.85rem; font-weight:700; color:#000; text-transform:uppercase; cursor:pointer; flex-shrink:0; }
-    @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-    nav { background:var(--asphalt); border-bottom:1px solid var(--edge); padding:0 1.25rem; display:flex; align-items:center; justify-content:space-between; height:56px; }
-    .nav-logo { font-family:'Russo One',sans-serif; font-size:1.25rem; color:var(--amber); text-decoration:none; }
-    .nav-links { display:flex; gap:1.5rem; list-style:none; }
-    .nav-links a { font-family:'Barlow Condensed',sans-serif; font-size:0.9rem; font-weight:700; text-transform:uppercase; color:var(--bone); letter-spacing:0.05em; }
-    .nav-links a:hover { color:var(--amber); text-decoration:none; }
-    .article-hero { background:linear-gradient(180deg,rgba(11,11,15,0.6) 0%,var(--pitch) 100%), url('/images/Jason_and_Lucia_01_landscape.jpg') center/cover no-repeat; padding:3rem 1.25rem 2.5rem; text-align:center; border-bottom:1px solid var(--edge); }
-    .tag-row { display:flex; gap:0.5rem; justify-content:center; flex-wrap:wrap; margin-bottom:1rem; }
-    .tag { font-family:'Barlow Condensed',sans-serif; font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; padding:3px 10px; border-radius:3px; }
-    .tag-breaking { background:var(--red); color:#fff; }
-    .tag-analysis { background:var(--amber); color:#000; }
-    .tag-preorders { background:var(--edge); color:var(--cyan); border:1px solid var(--cyan); }
-    .article-hero h1 { font-family:'Russo One',sans-serif; font-size:clamp(1.6rem,5vw,2.5rem); line-height:1.2; color:var(--bone); max-width:760px; margin:0 auto 1rem; }
-    .article-hero h1 span { color:var(--amber); }
-    .byline { font-family:'Barlow Condensed',sans-serif; font-size:0.85rem; color:var(--smoke); letter-spacing:0.04em; text-transform:uppercase; }
-    .share-bar { background:var(--asphalt); border-top:1px solid var(--edge); border-bottom:1px solid var(--edge); padding:0.75rem 1.25rem; display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center; }
-    .share-label { font-family:'Barlow Condensed',sans-serif; font-size:0.8rem; font-weight:700; text-transform:uppercase; color:var(--smoke); letter-spacing:0.06em; margin-right:0.25rem; }
-    .share-btn { font-family:'Barlow Condensed',sans-serif; font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; padding:6px 14px; border-radius:4px; border:none; cursor:pointer; transition:opacity 0.15s; }
-    .share-btn:hover { opacity:0.85; }
-    .share-native { background:var(--amber); color:#000; }
-    .share-reddit { background:#FF4500; color:#fff; }
-    .share-twitter { background:#000; color:#fff; border:1px solid #333; }
-    .share-whatsapp { background:#25D366; color:#fff; }
-    .share-copy { background:var(--edge); color:var(--bone); border:1px solid var(--smoke); }
-    .article-wrap { max-width:760px; margin:0 auto; padding:2rem 1.25rem 3rem; }
-    .article-wrap p { margin-bottom:1.4rem; color:var(--bone); }
-    .article-wrap h2 { font-family:'Russo One',sans-serif; font-size:1.35rem; color:var(--amber); margin:2.5rem 0 1rem; line-height:1.25; }
-    .credit-box { background:var(--asphalt); border-left:3px solid var(--cyan); border-radius:6px; padding:1rem 1.25rem; margin:1.5rem 0 2rem; }
-    .credit-box p { font-family:'Barlow Condensed',sans-serif; font-size:0.9rem; color:var(--smoke); margin:0; line-height:1.6; }
-    .credit-box a { color:var(--cyan); }
-    .credit-box strong { color:var(--bone); }
-    .id-data-box { background:var(--asphalt); border:1px solid var(--amber); border-radius:8px; padding:1.25rem 1.5rem; margin:1.75rem 0; }
-    .id-data-box .data-title { font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--amber); margin-bottom:1rem; }
-    .id-row { display:flex; align-items:baseline; gap:0.75rem; margin-bottom:0.6rem; flex-wrap:wrap; }
-    .id-label { font-family:'Barlow Condensed',sans-serif; font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--smoke); min-width:160px; flex-shrink:0; }
-    .id-value { font-family:'Inter',monospace; font-size:0.88rem; color:var(--cyan); word-break:break-all; }
-    .id-divider { border:none; border-top:1px solid var(--edge); margin:0.75rem 0; }
-    .timeline { background:var(--asphalt); border-radius:8px; padding:1.25rem 1.5rem; margin:1.75rem 0; border-left:3px solid var(--amber); }
-    .timeline-title { font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--amber); margin-bottom:1rem; }
-    .timeline-item { display:flex; gap:1rem; margin-bottom:0.8rem; align-items:flex-start; }
-    .tl-date { font-family:'Barlow Condensed',sans-serif; font-size:0.78rem; font-weight:700; text-transform:uppercase; color:var(--smoke); white-space:nowrap; min-width:90px; }
-    .tl-event { font-size:0.9rem; color:var(--bone); line-height:1.4; }
-    .tl-event strong { color:var(--amber); }
-    .gtacon-callout { background:linear-gradient(135deg,var(--asphalt) 0%,#1a1a24 100%); border:1px solid var(--amber); border-radius:10px; padding:1.5rem; margin:2.5rem 0; text-align:center; }
-    .gtacon-label { font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--smoke); margin-bottom:0.5rem; }
-    .gtacon-condition { font-family:'Russo One',sans-serif; font-size:2rem; color:var(--amber); line-height:1; margin-bottom:0.4rem; }
-    .gtacon-desc { font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; color:var(--bone); margin-bottom:1rem; line-height:1.5; }
-    .gtacon-btn { display:inline-block; background:var(--amber); color:#000; font-family:'Barlow Condensed',sans-serif; font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; padding:8px 22px; border-radius:5px; text-decoration:none; }
-    .gtacon-btn:hover { background:var(--amber-dim); color:#fff; text-decoration:none; }
-    .ad-unit { margin:2rem 0; }
-    .gear-section { background:var(--asphalt); border-radius:10px; padding:1.5rem; margin:2.5rem 0; border:1px solid var(--edge); }
-    .gear-header { display:flex; align-items:center; gap:0.6rem; margin-bottom:1.25rem; }
-    .gear-header span { font-family:'Russo One',sans-serif; font-size:1rem; color:var(--bone); }
-    .gear-header small { font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; color:var(--smoke); text-transform:uppercase; letter-spacing:0.05em; }
-    .gear-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:0.75rem; }
-    .gear-item { background:var(--pitch); border:1px solid var(--edge); border-radius:6px; padding:0.85rem 1rem; display:flex; justify-content:space-between; align-items:center; gap:0.5rem; transition:border-color 0.15s; }
-    .gear-item:hover { border-color:var(--amber); }
-    .gear-name { font-family:'Barlow Condensed',sans-serif; font-size:0.88rem; font-weight:600; color:var(--bone); line-height:1.3; }
-    .gear-link { flex-shrink:0; background:var(--amber); color:#000; font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; padding:5px 12px; border-radius:4px; white-space:nowrap; text-decoration:none; }
-    .gear-link:hover { background:var(--amber-dim); color:#fff; text-decoration:none; }
-    .gear-disclosure { font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; color:var(--smoke); margin-top:1rem; text-align:center; }
-    .ratings-section { background:var(--asphalt); border-radius:10px; padding:1.5rem; margin:2.5rem 0; border:1px solid var(--edge); text-align:center; }
-    .ratings-title { font-family:'Barlow Condensed',sans-serif; font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--smoke); margin-bottom:1rem; }
-    .ratings-row { display:flex; justify-content:center; gap:2.5rem; flex-wrap:wrap; }
-    .rating-group { text-align:center; }
-    .rating-group-label { font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; font-weight:700; text-transform:uppercase; color:var(--smoke); margin-bottom:0.5rem; letter-spacing:0.06em; }
-    .rating-icons { display:flex; gap:0.3rem; justify-content:center; }
-    .rating-icon { font-size:1.5rem; cursor:pointer; transition:transform 0.15s; filter:grayscale(0.5) opacity(0.4); }
-    .rating-icon:hover, .rating-icon.active { filter:none; transform:scale(1.2); }
-    .rating-icon.spin { animation:spin-icon 0.6s ease; }
-    .rating-icon.flash { animation:flash-icon 0.4s ease 2; }
-    @keyframes spin-icon { from{transform:rotate(0deg) scale(1.2)} to{transform:rotate(360deg) scale(1.2)} }
-    @keyframes flash-icon { 0%,100%{opacity:1} 50%{opacity:0.2} }
-    .ratings-result { margin-top:1rem; font-family:'Barlow Condensed',sans-serif; font-size:0.9rem; color:var(--smoke); display:none; }
-    .ratings-result.visible { display:block; }
-    .ratings-result span { color:var(--amber); font-weight:700; }
-    .comments-section { background:var(--asphalt); border-radius:10px; padding:1.5rem; margin:2.5rem 0; border:1px solid var(--edge); }
-    .comments-title { font-family:'Russo One',sans-serif; font-size:1.1rem; color:var(--bone); margin-bottom:1.25rem; }
-    .comment-rules { font-family:'Barlow Condensed',sans-serif; font-size:0.8rem; color:var(--smoke); background:var(--pitch); border-left:3px solid var(--edge); padding:0.6rem 0.9rem; margin-bottom:1.25rem; border-radius:0 4px 4px 0; }
-    .comment-form { display:flex; flex-direction:column; gap:0.75rem; }
-    .comment-input { background:var(--pitch); border:1px solid var(--edge); border-radius:6px; padding:0.75rem 1rem; color:var(--bone); font-family:'Inter',sans-serif; font-size:0.9rem; outline:none; transition:border-color 0.15s; width:100%; }
-    .comment-input:focus { border-color:var(--amber); }
-    .comment-input::placeholder { color:var(--smoke); }
-    .comment-textarea { min-height:100px; resize:vertical; }
-    .comment-char-count { font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; color:var(--smoke); text-align:right; margin-top:-0.5rem; }
-    .emoji-row { display:flex; gap:0.4rem; flex-wrap:wrap; margin-top:0.25rem; }
-    .emoji-btn { background:none; border:1px solid var(--edge); border-radius:4px; padding:3px 6px; font-size:1.1rem; cursor:pointer; transition:border-color 0.1s; }
-    .emoji-btn:hover { border-color:var(--amber); }
-    .emoji-btn.selected { border-color:var(--amber); background:rgba(255,107,26,0.12); }
-    .emoji-search { font-size:0.8rem; padding:5px 10px; }
-    .gif-preview { max-width:200px; border-radius:6px; margin-top:0.5rem; display:none; }
-    .comment-submit { background:var(--amber); color:#000; border:none; border-radius:6px; padding:10px 24px; font-family:'Barlow Condensed',sans-serif; font-size:0.9rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; cursor:pointer; transition:background 0.15s; align-self:flex-start; }
-    .comment-submit:hover { background:var(--amber-dim); }
-    .comment-success { display:none; color:var(--green); font-family:'Barlow Condensed',sans-serif; font-size:0.9rem; font-weight:700; text-transform:uppercase; padding-top:0.25rem; }
-    .comments-list { margin-top:1.75rem; display:flex; flex-direction:column; gap:1rem; }
-    .comment-card { background:var(--pitch); border:1px solid var(--edge); border-radius:6px; padding:0.9rem 1rem; }
-    .comment-meta { display:flex; align-items:center; gap:0.5rem; margin-bottom:0.5rem; }
-    .comment-name { font-family:'Barlow Condensed',sans-serif; font-size:0.85rem; font-weight:700; color:var(--cyan); text-transform:uppercase; }
-    .comment-time { font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; color:var(--smoke); }
-    .comment-text { font-size:0.9rem; color:var(--bone); line-height:1.55; }
-    .comment-gif { max-width:180px; border-radius:4px; margin-top:0.5rem; }
-    .reveal { opacity:0; transform:translateY(20px); transition:opacity 0.7s,transform 0.7s; }
-    .reveal.visible { opacity:1; transform:translateY(0); }
-    .pullquote { border-left:4px solid var(--amber); padding:0.75rem 1.25rem; margin:1.75rem 0; background:rgba(255,107,26,0.06); border-radius:0 6px 6px 0; }
-    .pullquote p { font-family:'Barlow Condensed',sans-serif; font-size:1.15rem; font-weight:600; color:var(--bone); line-height:1.45; margin:0; font-style:italic; }
-    footer { background:var(--asphalt); border-top:1px solid var(--edge); padding:2rem 1.25rem; text-align:center; }
-    .footer-logo { font-family:'Russo One',sans-serif; font-size:1.1rem; color:var(--amber); margin-bottom:0.5rem; }
-    .footer-tagline { font-family:'Barlow Condensed',sans-serif; font-size:0.8rem; color:var(--smoke); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:1rem; }
-    .footer-links { display:flex; gap:1.25rem; justify-content:center; flex-wrap:wrap; margin-bottom:1rem; }
-    .footer-links a { font-family:'Barlow Condensed',sans-serif; font-size:0.85rem; font-weight:600; text-transform:uppercase; color:var(--smoke); letter-spacing:0.05em; }
-    .footer-links a:hover { color:var(--amber); text-decoration:none; }
-    .footer-copy { font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; color:var(--smoke); }
-    @media (max-width:480px) { .nav-links{gap:1rem} .nav-links a{font-size:0.8rem} .id-label{min-width:100%} .gear-grid{grid-template-columns:1fr} }
+
+    body {
+      background: var(--pitch);
+      color: var(--bone);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── TICKER ── */
+    .ticker-wrap {
+      background: var(--amber);
+      overflow: hidden;
+      padding: 6px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .ticker-track {
+      display: flex;
+      gap: 60px;
+      white-space: nowrap;
+      animation: ticker 20s linear infinite;
+    }
+    .ticker-item {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #000;
+      text-transform: uppercase;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--asphalt);
+      border-bottom: 1px solid var(--edge);
+      padding: 0 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .nav-logo {
+      font-family: 'Russo One', sans-serif;
+      font-size: 1.25rem;
+      color: var(--amber);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--bone);
+      letter-spacing: 0.05em;
+    }
+    .nav-links a:hover { color: var(--amber); text-decoration: none; }
+
+    /* ── ARTICLE HERO ── */
+    .article-hero {
+      background: linear-gradient(180deg, rgba(11,11,15,0.6) 0%, var(--pitch) 100%),
+                  url('/images/Jason_and_Lucia_01_landscape.jpg') center/cover no-repeat;
+      padding: 3rem 1.25rem 2.5rem;
+      text-align: center;
+      border-bottom: 1px solid var(--edge);
+    }
+    .tag-row {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 3px 10px;
+      border-radius: 3px;
+    }
+    .tag-breaking { background: var(--red); color: #fff; }
+    .tag-analysis { background: var(--amber); color: #000; }
+    .tag-preorders { background: var(--edge); color: var(--cyan); border: 1px solid var(--cyan); }
+
+    .article-hero h1 {
+      font-family: 'Russo One', sans-serif;
+      font-size: clamp(1.6rem, 5vw, 2.5rem);
+      line-height: 1.2;
+      color: var(--bone);
+      max-width: 760px;
+      margin: 0 auto 1rem;
+    }
+    .article-hero h1 span { color: var(--amber); }
+
+    .byline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      color: var(--smoke);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ── SHARE BAR ── */
+    .share-bar {
+      background: var(--asphalt);
+      border-top: 1px solid var(--edge);
+      border-bottom: 1px solid var(--edge);
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .share-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--smoke);
+      letter-spacing: 0.06em;
+      margin-right: 0.25rem;
+    }
+    .share-btn {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 6px 14px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .share-btn:hover { opacity: 0.85; }
+    .share-native  { background: var(--amber); color: #000; }
+    .share-reddit  { background: #FF4500; color: #fff; }
+    .share-twitter { background: #000; color: #fff; border: 1px solid #333; }
+    .share-whatsapp{ background: #25D366; color: #fff; }
+    .share-copy    { background: var(--edge); color: var(--bone); border: 1px solid var(--smoke); }
+
+    /* ── ARTICLE BODY ── */
+    .article-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 3rem;
+    }
+
+    .article-wrap p {
+      margin-bottom: 1.4rem;
+      color: var(--bone);
+    }
+    .article-wrap h2 {
+      font-family: 'Russo One', sans-serif;
+      font-size: 1.35rem;
+      color: var(--amber);
+      margin: 2.5rem 0 1rem;
+      line-height: 1.25;
+    }
+    .article-wrap h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--cyan);
+      margin: 1.8rem 0 0.75rem;
+    }
+
+    /* ── CREDIT BOX ── */
+    .credit-box {
+      background: var(--asphalt);
+      border-left: 3px solid var(--cyan);
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .credit-box p {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem;
+      color: var(--smoke);
+      margin: 0;
+      line-height: 1.6;
+    }
+    .credit-box a { color: var(--cyan); }
+    .credit-box strong { color: var(--bone); }
+
+    /* ── ID DATA BOX ── */
+    .id-data-box {
+      background: var(--asphalt);
+      border: 1px solid var(--amber);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.75rem 0;
+    }
+    .id-data-box .data-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--amber);
+      margin-bottom: 1rem;
+    }
+    .id-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .id-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--smoke);
+      min-width: 160px;
+      flex-shrink: 0;
+    }
+    .id-value {
+      font-family: 'Inter', monospace;
+      font-size: 0.88rem;
+      color: var(--cyan);
+      word-break: break-all;
+    }
+    .id-divider {
+      border: none;
+      border-top: 1px solid var(--edge);
+      margin: 0.75rem 0;
+    }
+
+    /* ── TIMELINE BOX ── */
+    .timeline {
+      background: var(--asphalt);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.75rem 0;
+      border-left: 3px solid var(--amber);
+    }
+    .timeline-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--amber);
+      margin-bottom: 1rem;
+    }
+    .timeline-item {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 0.8rem;
+      align-items: flex-start;
+    }
+    .tl-date {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--smoke);
+      white-space: nowrap;
+      min-width: 90px;
+    }
+    .tl-event {
+      font-size: 0.9rem;
+      color: var(--bone);
+      line-height: 1.4;
+    }
+    .tl-event strong { color: var(--amber); }
+
+    /* ── GTACON CALLOUT ── */
+    .gtacon-callout {
+      background: linear-gradient(135deg, var(--asphalt) 0%, #1a1a24 100%);
+      border: 1px solid var(--amber);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin: 2.5rem 0;
+      text-align: center;
+    }
+    .gtacon-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--smoke);
+      margin-bottom: 0.5rem;
+    }
+    .gtacon-condition {
+      font-family: 'Russo One', sans-serif;
+      font-size: 2rem;
+      color: var(--amber);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .gtacon-desc {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.95rem;
+      color: var(--bone);
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+    .gtacon-btn {
+      display: inline-block;
+      background: var(--amber);
+      color: #000;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 8px 22px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    .gtacon-btn:hover { background: var(--amber-dim); text-decoration: none; color: #fff; }
+
+    /* ── ADSENSE ── */
+    .ad-unit { margin: 2rem 0; }
+
+    /* ── GEAR SECTION ── */
+    .gear-section {
+      background: var(--asphalt);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin: 2.5rem 0;
+      border: 1px solid var(--edge);
+    }
+    .gear-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1.25rem;
+    }
+    .gear-header span {
+      font-family: 'Russo One', sans-serif;
+      font-size: 1rem;
+      color: var(--bone);
+    }
+    .gear-header small {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      color: var(--smoke);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .gear-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.75rem;
+    }
+    .gear-item {
+      background: var(--pitch);
+      border: 1px solid var(--edge);
+      border-radius: 6px;
+      padding: 0.85rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      transition: border-color 0.15s;
+    }
+    .gear-item:hover { border-color: var(--amber); }
+    .gear-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--bone);
+      line-height: 1.3;
+    }
+    .gear-link {
+      flex-shrink: 0;
+      background: var(--amber);
+      color: #000;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 5px 12px;
+      border-radius: 4px;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .gear-link:hover { background: var(--amber-dim); color: #fff; text-decoration: none; }
+    .gear-disclosure {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      color: var(--smoke);
+      margin-top: 1rem;
+      text-align: center;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── RATINGS ── */
+    .ratings-section {
+      background: var(--asphalt);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin: 2.5rem 0;
+      border: 1px solid var(--edge);
+      text-align: center;
+    }
+    .ratings-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--smoke);
+      margin-bottom: 1rem;
+    }
+    .ratings-row {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .rating-group { text-align: center; }
+    .rating-group-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--smoke);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.06em;
+    }
+    .rating-icons { display: flex; gap: 0.3rem; justify-content: center; }
+    .rating-icon {
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: transform 0.15s;
+      filter: grayscale(0.5) opacity(0.4);
+    }
+    .rating-icon:hover, .rating-icon.active {
+      filter: none;
+      transform: scale(1.2);
+    }
+    .rating-icon.spin { animation: spin-icon 0.6s ease; }
+    .rating-icon.flash { animation: flash-icon 0.4s ease 2; }
+    @keyframes spin-icon { from { transform: rotate(0deg) scale(1.2); } to { transform: rotate(360deg) scale(1.2); } }
+    @keyframes flash-icon { 0%,100% { opacity: 1; } 50% { opacity: 0.2; } }
+    .ratings-result {
+      margin-top: 1rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem;
+      color: var(--smoke);
+      display: none;
+    }
+    .ratings-result.visible { display: block; }
+    .ratings-result span { color: var(--amber); font-weight: 700; }
+
+    /* ── COMMENTS ── */
+    .comments-section {
+      background: var(--asphalt);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin: 2.5rem 0;
+      border: 1px solid var(--edge);
+    }
+    .comments-title {
+      font-family: 'Russo One', sans-serif;
+      font-size: 1.1rem;
+      color: var(--bone);
+      margin-bottom: 1.25rem;
+    }
+    .comment-rules {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      color: var(--smoke);
+      background: var(--pitch);
+      border-left: 3px solid var(--edge);
+      padding: 0.6rem 0.9rem;
+      margin-bottom: 1.25rem;
+      border-radius: 0 4px 4px 0;
+    }
+    .comment-form { display: flex; flex-direction: column; gap: 0.75rem; }
+    .comment-input {
+      background: var(--pitch);
+      border: 1px solid var(--edge);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      color: var(--bone);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.15s;
+      width: 100%;
+    }
+    .comment-input:focus { border-color: var(--amber); }
+    .comment-input::placeholder { color: var(--smoke); }
+    .comment-textarea { min-height: 100px; resize: vertical; }
+    .comment-char-count {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      color: var(--smoke);
+      text-align: right;
+      margin-top: -0.5rem;
+    }
+    .emoji-row {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin-top: 0.25rem;
+    }
+    .emoji-btn {
+      background: none;
+      border: 1px solid var(--edge);
+      border-radius: 4px;
+      padding: 3px 6px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: border-color 0.1s;
+    }
+    .emoji-btn:hover { border-color: var(--amber); }
+    .emoji-btn.selected { border-color: var(--amber); background: rgba(255,107,26,0.12); }
+    .emoji-search {
+      font-size: 0.8rem;
+      padding: 5px 10px;
+    }
+    .gif-preview {
+      max-width: 200px;
+      border-radius: 6px;
+      margin-top: 0.5rem;
+      display: none;
+    }
+    .comment-submit {
+      background: var(--amber);
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 24px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: background 0.15s;
+      align-self: flex-start;
+    }
+    .comment-submit:hover { background: var(--amber-dim); }
+    .comment-success {
+      display: none;
+      color: var(--green);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding-top: 0.25rem;
+    }
+    .comments-list { margin-top: 1.75rem; display: flex; flex-direction: column; gap: 1rem; }
+    .comment-card {
+      background: var(--pitch);
+      border: 1px solid var(--edge);
+      border-radius: 6px;
+      padding: 0.9rem 1rem;
+    }
+    .comment-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .comment-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--cyan);
+      text-transform: uppercase;
+    }
+    .comment-time {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      color: var(--smoke);
+    }
+    .comment-text { font-size: 0.9rem; color: var(--bone); line-height: 1.55; }
+    .comment-gif { max-width: 180px; border-radius: 4px; margin-top: 0.5rem; }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s, transform 0.7s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--asphalt);
+      border-top: 1px solid var(--edge);
+      padding: 2rem 1.25rem;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Russo One', sans-serif;
+      font-size: 1.1rem;
+      color: var(--amber);
+      margin-bottom: 0.5rem;
+    }
+    .footer-tagline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      color: var(--smoke);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 1rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 1.25rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .footer-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--smoke);
+      letter-spacing: 0.05em;
+    }
+    .footer-links a:hover { color: var(--amber); text-decoration: none; }
+    .footer-copy {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      color: var(--smoke);
+    }
+
+    /* ── PULLQUOTE ── */
+    .pullquote {
+      border-left: 4px solid var(--amber);
+      padding: 0.75rem 1.25rem;
+      margin: 1.75rem 0;
+      background: rgba(255,107,26,0.06);
+      border-radius: 0 6px 6px 0;
+    }
+    .pullquote p {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--bone);
+      line-height: 1.45;
+      margin: 0;
+      font-style: italic;
+    }
+
+    @media (max-width: 480px) {
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.8rem; }
+      .id-label { min-width: 100%; }
+      .gear-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
 
+<!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-track" id="ticker-track">
     <span class="ticker-item">Loading latest GTA6 news...</span>
   </div>
 </div>
 
+<!-- NAV -->
 <nav>
   <a href="/" class="nav-logo">56ViceLane</a>
   <ul class="nav-links">
@@ -174,6 +741,7 @@
   </ul>
 </nav>
 
+<!-- SHARE BAR — TOP -->
 <div class="share-bar">
   <span class="share-label">Share</span>
   <button class="share-btn share-native" onclick="nativeShare()">📤 Share</button>
@@ -183,6 +751,7 @@
   <button class="share-btn share-copy" id="copy-btn-top" onclick="copyLink('copy-btn-top')">Copy Link</button>
 </div>
 
+<!-- HERO -->
 <div class="article-hero">
   <div class="tag-row">
     <span class="tag tag-breaking">Breaking</span>
@@ -193,8 +762,10 @@
   <p class="byline">May 28, 2026 &nbsp;·&nbsp; 56ViceLane News Desk</p>
 </div>
 
+<!-- ARTICLE BODY -->
 <div class="article-wrap">
 
+  <!-- CREDIT BOX -->
   <div class="credit-box reveal">
     <p>
       <strong>Source:</strong> Reddit user
@@ -205,16 +776,562 @@
     </p>
   </div>
 
-  <p class="reveal">Somewhere inside Microsoft's backend, a string of characters has been sitting quietly, waiting for the right person to find it. On May 28, 2026, that person was a Reddit user named BlackAnt02. What they found isn't a rumor, isn't a leak from an inside source, and doesn't require a single anonymous tip to verify. It's a Title ID — and it means Rockstar Games has already registered GTA VI on Xbox as a purchasable product.</p>
+  <p class="reveal">
+    Somewhere inside Microsoft's backend, a string of characters has been sitting quietly, waiting for the right person to find it. On May 28, 2026, that person was a Reddit user named BlackAnt02. What they found isn't a rumor, isn't a leak from an inside source, and doesn't require a single anonymous tip to verify. It's a Title ID — and it means Rockstar Games has already registered GTA VI on Xbox as a purchasable product.
+  </p>
 
-  <p class="reveal">The pre-order button isn't live yet. But the infrastructure to flip it on? That's done.</p>
+  <p class="reveal">
+    The pre-order button isn't live yet. But the infrastructure to flip it on? That's done.
+  </p>
 
+  <!-- ID DATA BOX -->
   <div class="id-data-box reveal">
     <div class="data-title">📡 GTA VI — Confirmed Product IDs</div>
-    <div class="id-row"><span class="id-label">Xbox Product ID</span><span class="id-value">9NL3WWNZLZZN</span></div>
-    <div class="id-row"><span class="id-label">Title ID (Decimal)</span><span class="id-value">2035456122</span></div>
-    <div class="id-row"><span class="id-label">Title ID (Hex)</span><span class="id-value">7952987A</span></div>
-    <div class="id-row"><span class="id-label">Package Name</span><span class="id-value">RockstarGamesInc.28872443D20A7_k2ss7vbb13xte</span></div>
+
+    <div class="id-row">
+      <span class="id-label">Xbox Product ID</span>
+      <span class="id-value">9NL3WWNZLZZN</span>
+    </div>
+    <div class="id-row">
+      <span class="id-label">Title ID (Decimal)</span>
+      <span class="id-value">2035456122</span>
+    </div>
+    <div class="id-row">
+      <span class="id-label">Title ID (Hex)</span>
+      <span class="id-value">7952987A</span>
+    </div>
+    <div class="id-row">
+      <span class="id-label">Package Name</span>
+      <span class="id-value">RockstarGamesInc.28872443D20A7_k2ss7vbb13xte</span>
+    </div>
     <hr class="id-divider">
-    <div class="id-row"><span class="id-label">PS Store ID (Standard)</span><span class="id-value">PPSA01547_00</span></div>
-    <div class="id-row"><span class="id-label">PS Store ID (Digital/Alt)</span><span class="id-value">PPSA29660_00</span></div
+    <div class="id-row">
+      <span class="id-label">PS Store ID (Standard)</span>
+      <span class="id-value">PPSA01547_00</span>
+    </div>
+    <div class="id-row">
+      <span class="id-label">PS Store ID (Digital/Alt)</span>
+      <span class="id-value">PPSA29660_00</span>
+    </div>
+  </div>
+
+  <!-- AD UNIT -->
+  <div class="ad-unit reveal">
+    <ins class="adsbygoogle" style="display:block"
+      data-ad-client="ca-pub-8376427875991063"
+      data-ad-slot="auto"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <h2 class="reveal">Who Is BlackAnt02</h2>
+
+  <p class="reveal">
+    BlackAnt02 is a member of the r/GTA6 community with a history of digging into storefront APIs and backend product databases — the kind of methodical work that doesn't get the headlines that trailer breakdowns do, but frequently delivers harder evidence. This is not a screenshot of a DM from someone's "friend at Rockstar." This is public-facing API data pulled from Microsoft's own product catalog.
+  </p>
+
+  <p class="reveal">
+    The original Reddit post was straightforward: the IDs, the Package Name, and the observation that this represented active product registration. The GTA6 community picked it up fast. The thread gained traction because the data was verifiable — you can look up Xbox Title IDs in Microsoft's public endpoints yourself. BlackAnt02 didn't need to be believed on faith. The numbers speak for themselves.
+  </p>
+
+  <h2 class="reveal">What A Title ID Actually Means</h2>
+
+  <p class="reveal">
+    Title IDs are assigned by Microsoft when a developer formally registers their title in the Xbox developer program. It is not a placeholder. It is not reserved speculatively. A Title ID exists because a publisher — in this case, Rockstar Games under the Package Name <strong style="color:var(--cyan)">RockstarGamesInc.28872443D20A7_k2ss7vbb13xte</strong> — submitted their product for registration and it was processed.
+  </p>
+
+  <p class="reveal">
+    The decimal ID <strong style="color:var(--cyan)">2035456122</strong> and its hex equivalent <strong style="color:var(--cyan)">7952987A</strong> are two representations of the same registered product identity. Think of it like a UPC code for the Xbox ecosystem. Before a game can appear in the Microsoft Store — before it can be wishlisted, before it can accept a pre-order, before it can show a price — it needs this ID. That work is already done.
+  </p>
+
+  <div class="pullquote reveal">
+    <p>"Before a game can appear in the Microsoft Store — before it can be wishlisted, before it can accept a pre-order — it needs this ID. That work is already done."</p>
+  </div>
+
+  <p class="reveal">
+    The Xbox Product ID <strong style="color:var(--cyan)">9NL3WWNZLZZN</strong> is the storefront-facing identifier. If Microsoft flips the listing live tonight, this is the string that would populate the URL for GTA VI's Xbox store page. Everything is staged. The only thing missing is a date when Rockstar tells Microsoft to make it public.
+  </p>
+
+  <!-- AD UNIT 2 -->
+  <div class="ad-unit reveal">
+    <ins class="adsbygoogle" style="display:block"
+      data-ad-client="ca-pub-8376427875991063"
+      data-ad-slot="auto"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <h2 class="reveal">The PlayStation Side</h2>
+
+  <p class="reveal">
+    Two PlayStation Store IDs surfaced in the same thread: <strong style="color:var(--cyan)">PPSA01547_00</strong> and <strong style="color:var(--cyan)">PPSA29660_00</strong>. On PlayStation, a single game title can carry multiple IDs — this typically indicates different editions, regional variants, or digital versus physical distinctions. The fact that two IDs exist is worth paying attention to.
+  </p>
+
+  <p class="reveal">
+    Earlier leaks suggested GTA VI will launch with at least six distinct editions — the DetectiveSeeds leak from May included three standard tiers, a collector's edition, and two PS5-specific bundles. Two PlayStation product IDs aligns with a tiered release structure. This is not two separate games. This is how modern AAA titles with multiple purchase options get registered in Sony's backend.
+  </p>
+
+  <p class="reveal">
+    PlayStation's PPSA product format is used for PS5 native titles. Both IDs carrying the PPSA prefix confirms both registrations are for current-generation hardware — consistent with everything Rockstar has communicated about the game's platform targets.
+  </p>
+
+  <h2 class="reveal">The Full Picture — A Pre-Order Timeline</h2>
+
+  <div class="timeline reveal">
+    <div class="timeline-title">🗓 GTA VI Pre-Order Evidence — Chronological</div>
+    <div class="timeline-item">
+      <span class="tl-date">May 10</span>
+      <span class="tl-event">Dutch retailer Gameshop Twente lists GTA VI at <strong>€99</strong> — first specific pricing from any storefront</span>
+    </div>
+    <div class="timeline-item">
+      <span class="tl-date">May 14</span>
+      <span class="tl-event">Best Buy affiliate email triggers <strong>$2B swing in Take-Two stock</strong> overnight. Email debunked as premature but market reaction showed demand level</span>
+    </div>
+    <div class="timeline-item">
+      <span class="tl-date">May 19</span>
+      <span class="tl-event">Italian retailer Showgame lists GTA VI at <strong>€69.90</strong>. 50 copies. <strong>Sells out immediately.</strong> Listing pulled within hours</span>
+    </div>
+    <div class="timeline-item">
+      <span class="tl-date">May 21</span>
+      <span class="tl-event">Take-Two earnings call: <strong>November 19 confirmed</strong>, $8.2B revenue forecast. Strauss Zelnick confirms advertising begins <strong>end of June 2026</strong></span>
+    </div>
+    <div class="timeline-item">
+      <span class="tl-date">May 28</span>
+      <span class="tl-event"><strong>Xbox Title ID 9NL3WWNZLZZN found in Microsoft API.</strong> Package Name confirms Rockstar registration. Both PS IDs surface. Pre-order infrastructure is staged.</span>
+    </div>
+    <div class="timeline-item">
+      <span class="tl-date">Late June</span>
+      <span class="tl-event"><strong>Advertising campaign begins</strong> per Zelnick. Pre-orders likely to open simultaneously or within days. This is the window to watch.</span>
+    </div>
+  </div>
+
+  <h2 class="reveal">Bottom Line</h2>
+
+  <p class="reveal">
+    Rockstar doesn't register a game in Microsoft's product catalog and then change their mind. This isn't a fan theory. This isn't a "trusted leaker" with an anonymous source. This is product infrastructure that exists because someone at Rockstar or Take-Two submitted the registration. The game has a product identity on Xbox. It has two product identities on PlayStation. The stores are loaded and waiting for the signal.
+  </p>
+
+  <p class="reveal">
+    The signal is coming. Strauss Zelnick said advertising starts at the end of June. Pre-orders typically open alongside or immediately after a major marketing push. The Italian sellout in May showed what happens when even an accidental listing goes live — 50 copies gone in minutes, and that was barely noticed. When the real button flips, it's going to be a moment.
+  </p>
+
+  <div class="pullquote reveal">
+    <p>"The stores are loaded and waiting for the signal. And Zelnick told you exactly when that signal is coming: end of June."</p>
+  </div>
+
+  <p class="reveal">
+    Watch BlackAnt02. Watch r/GTA6. Watch the Xbox Store and PlayStation Store around the last week of June. The infrastructure for this moment has been sitting in a database, quietly, with a Title ID of <strong style="color:var(--amber)">7952987A</strong>.
+  </p>
+
+  <p class="reveal">
+    That number is real. What comes next is just a matter of when.
+  </p>
+
+  <!-- GTACON CALLOUT -->
+  <div class="gtacon-callout reveal">
+    <div class="gtacon-label">🚦 GTACON Status</div>
+    <div class="gtacon-condition">CONDITION 3</div>
+    <div class="gtacon-desc">
+      Pre-order infrastructure confirmed on both platforms.<br>
+      Advertising campaign imminent. Watch late June.
+    </div>
+    <a href="/gtacon" class="gtacon-btn">Track The Countdown →</a>
+  </div>
+
+  <!-- GEAR SECTION -->
+  <div class="gear-section reveal">
+    <div class="gear-header">
+      <span>🎮 GTA6 Ready Gear</span>
+      &nbsp;
+      <small>Amazon Affiliate Links</small>
+    </div>
+    <div class="gear-grid">
+      <div class="gear-item">
+        <span class="gear-name">PlayStation 5 Console</span>
+        <a class="gear-link" href="https://amzn.to/4tRFjXX" target="_blank" rel="noopener sponsored">Check Price</a>
+      </div>
+      <div class="gear-item">
+        <span class="gear-name">DualSense — Midnight Black</span>
+        <a class="gear-link" href="https://amzn.to/4tSvLfv" target="_blank" rel="noopener sponsored">Check Price</a>
+      </div>
+      <div class="gear-item">
+        <span class="gear-name">PULSE Elite Wireless Headset</span>
+        <a class="gear-link" href="https://amzn.to/4uxmVF7" target="_blank" rel="noopener sponsored">Check Price</a>
+      </div>
+      <div class="gear-item">
+        <span class="gear-name">Xbox Series X Console</span>
+        <a class="gear-link" href="https://amzn.to/4f3txWP" target="_blank" rel="noopener sponsored">Check Price</a>
+      </div>
+      <div class="gear-item">
+        <span class="gear-name">Xbox Controller — Velocity Green</span>
+        <a class="gear-link" href="https://amzn.to/3PpcdRP" target="_blank" rel="noopener sponsored">Check Price</a>
+      </div>
+      <div class="gear-item">
+        <span class="gear-name">Xbox Elite Series 2 Controller</span>
+        <a class="gear-link" href="https://amzn.to/4wRZXtL" target="_blank" rel="noopener sponsored">Check Price</a>
+      </div>
+      <div class="gear-item">
+        <span class="gear-name">HyperX Cloud III Headset — Black</span>
+        <a class="gear-link" href="https://amzn.to/430849Y" target="_blank" rel="noopener sponsored">Check Price</a>
+      </div>
+      <div class="gear-item">
+        <span class="gear-name">HyperX Cloud III Headset — Red</span>
+        <a class="gear-link" href="https://amzn.to/4tRFYsp" target="_blank" rel="noopener sponsored">Check Price</a>
+      </div>
+      <div class="gear-item">
+        <span class="gear-name">GTPLAYER Gaming Chair</span>
+        <a class="gear-link" href="https://amzn.to/4fHinHq" target="_blank" rel="noopener sponsored">Check Price</a>
+      </div>
+      <div class="gear-item">
+        <span class="gear-name">AOC 27" QHD Gaming Monitor</span>
+        <a class="gear-link" href="https://amzn.to/4f3TyFq" target="_blank" rel="noopener sponsored">Check Price</a>
+      </div>
+    </div>
+    <p class="gear-disclosure">56ViceLane earns a small commission on qualifying Amazon purchases at no extra cost to you.</p>
+  </div>
+
+  <!-- RATINGS -->
+  <div class="ratings-section reveal">
+    <div class="ratings-title">Rate This Article</div>
+    <div class="ratings-row">
+      <div class="rating-group">
+        <div class="rating-group-label">Good intel</div>
+        <div class="rating-icons" id="stars-row">
+          <span class="rating-icon" data-val="1" data-type="positive">⭐</span>
+          <span class="rating-icon" data-val="2" data-type="positive">⭐</span>
+          <span class="rating-icon" data-val="3" data-type="positive">⭐</span>
+          <span class="rating-icon" data-val="4" data-type="positive">⭐</span>
+          <span class="rating-icon" data-val="5" data-type="positive">⭐</span>
+        </div>
+      </div>
+      <div class="rating-group">
+        <div class="rating-group-label">Trash take</div>
+        <div class="rating-icons" id="cops-row">
+          <span class="rating-icon" data-val="1" data-type="negative">🚔</span>
+          <span class="rating-icon" data-val="2" data-type="negative">🚔</span>
+          <span class="rating-icon" data-val="3" data-type="negative">🚔</span>
+          <span class="rating-icon" data-val="4" data-type="negative">🚔</span>
+          <span class="rating-icon" data-val="5" data-type="negative">🚔</span>
+        </div>
+      </div>
+    </div>
+    <div class="ratings-result" id="ratings-result">
+      Community rating: <span id="avg-display">—</span>
+    </div>
+  </div>
+
+  <!-- COMMENTS -->
+  <div class="comments-section reveal">
+    <div class="comments-title">Drop Your Take</div>
+    <div class="comment-rules">18+ language OK · No threats · No slurs · Keep it community</div>
+
+    <div class="comment-form">
+      <input type="text" class="comment-input" id="comment-name" placeholder="Gamertag or Name" maxlength="60">
+      <textarea class="comment-input comment-textarea" id="comment-text" placeholder="What do you think? Xbox pre-orders drop soon?" maxlength="500"></textarea>
+      <div class="comment-char-count"><span id="char-count">0</span>/500</div>
+
+      <div class="emoji-row" id="emoji-row">
+        <input type="text" class="comment-input emoji-search" id="emoji-search" placeholder="Search emoji..." style="width:120px;">
+      </div>
+      <div id="emoji-selected" style="font-size:1.4rem; min-height:1.8rem;"></div>
+
+      <input type="text" class="comment-input" id="gif-url" placeholder="GIF URL (optional)">
+      <img id="gif-preview" class="gif-preview" alt="GIF preview">
+
+      <button class="comment-submit" onclick="submitComment()">Post Comment</button>
+      <div class="comment-success" id="comment-success">✅ Comment posted — thanks!</div>
+    </div>
+
+    <div class="comments-list" id="comments-list"></div>
+  </div>
+
+  <!-- SHARE BAR — BOTTOM -->
+  <div class="share-bar" style="margin-top:2rem; border-radius:8px;">
+    <span class="share-label">Share</span>
+    <button class="share-btn share-native" onclick="nativeShare()">📤 Share</button>
+    <button class="share-btn share-reddit" onclick="shareReddit()">Reddit</button>
+    <button class="share-btn share-twitter" onclick="shareTwitter()">✕ Post</button>
+    <button class="share-btn share-whatsapp" onclick="shareWhatsApp()">WhatsApp</button>
+    <button class="share-btn share-copy" id="copy-btn-bot" onclick="copyLink('copy-btn-bot')">Copy Link</button>
+  </div>
+
+</div><!-- /article-wrap -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">56ViceLane</div>
+  <div class="footer-tagline">Where GTA5 Ends And GTA6 Begins</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/news">News</a>
+    <a href="/lastdrive">Last Drive</a>
+    <a href="/shop">Shop</a>
+    <a href="/gtacon">GTACON</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/privacy">Privacy</a>
+  </div>
+  <div class="footer-copy">© 2026 56ViceLane · Forged Oak Studios · Not affiliated with Rockstar Games or Take-Two Interactive</div>
+</footer>
+
+<script>
+  // ── CONSTANTS ──
+  const ARTICLE_SLUG = 'gta6-xbox-title-id-found-preorder-infrastructure';
+  const AIRTABLE_TOKEN = 'pattxJ12NQzpHMejD.2eb992f22f1a43e032d866df028dbb33958635234f6cfd30769e3e12f10d5588';
+  const AIRTABLE_BASE  = 'appVViGbmcu5gbn8B';
+  const ARTICLE_TITLE  = 'GTA VI Title ID Found In Xbox API — The Pre-Order Button Is Almost Ready';
+  const ARTICLE_URL    = window.location.href;
+
+  // ── TICKER ──
+  function loadTicker() {
+    fetch('/articles.json?v=' + Date.now())
+      .then(r => r.json())
+      .then(articles => {
+        const track = document.getElementById('ticker-track');
+        const items = [...articles, ...articles].map(a =>
+          `<span class="ticker-item" onclick="location.href='${a.url}'">${a.emoji} ${a.title}</span>`
+        ).join('');
+        track.innerHTML = items;
+      })
+      .catch(() => {
+        document.getElementById('ticker-track').innerHTML =
+          '<span class="ticker-item">🔥 56ViceLane — Where GTA5 Ends And GTA6 Begins</span>';
+      });
+  }
+
+  // ── SHARE FUNCTIONS ──
+  function nativeShare() {
+    if (navigator.share) {
+      navigator.share({ title: ARTICLE_TITLE, url: ARTICLE_URL });
+    } else {
+      navigator.clipboard.writeText(ARTICLE_URL);
+    }
+  }
+  function shareReddit() {
+    const url = 'https://www.reddit.com/r/GTA6/submit?url=' + encodeURIComponent(ARTICLE_URL) + '&title=' + encodeURIComponent(ARTICLE_TITLE);
+    window.open(url, '_blank');
+  }
+  function shareTwitter() {
+    const text = ARTICLE_TITLE + ' #GTA6 #GTA6News #GTA6PreOrder';
+    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(ARTICLE_URL), '_blank');
+  }
+  function shareWhatsApp() {
+    window.open('https://wa.me/?text=' + encodeURIComponent(ARTICLE_TITLE + ' ' + ARTICLE_URL), '_blank');
+  }
+  function copyLink(btnId) {
+    navigator.clipboard.writeText(ARTICLE_URL).then(() => {
+      const btn = document.getElementById(btnId);
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy Link', 2000);
+    });
+  }
+
+  // ── RATINGS ──
+  const EMOJIS_POSITIVE = ['⭐','⭐','⭐','⭐','⭐'];
+  const EMOJIS_NEGATIVE = ['🚔','🚔','🚔','🚔','🚔'];
+  let hasVoted = localStorage.getItem('rated_' + ARTICLE_SLUG);
+
+  function submitRating(val, isPositive) {
+    if (hasVoted) return;
+    hasVoted = true;
+    localStorage.setItem('rated_' + ARTICLE_SLUG, '1');
+
+    const rowId = isPositive ? 'stars-row' : 'cops-row';
+    const row = document.getElementById(rowId);
+    const icons = row.querySelectorAll('.rating-icon');
+    icons.forEach((ic, i) => {
+      if (i < val) {
+        ic.classList.add('active');
+        if (val === 5) {
+          ic.classList.add(isPositive ? 'spin' : 'flash');
+        }
+      }
+    });
+
+    fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE}/ArticleRatings`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${AIRTABLE_TOKEN}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        fields: {
+          ArticleSlug: ARTICLE_SLUG,
+          Rating: val,
+          IsPositive: isPositive,
+          Timestamp: new Date().toISOString()
+        }
+      })
+    }).catch(() => {});
+
+    loadAvgRating();
+  }
+
+  function loadAvgRating() {
+    fetch(
+      `https://api.airtable.com/v0/${AIRTABLE_BASE}/ArticleRatings?filterByFormula={ArticleSlug}="${ARTICLE_SLUG}"`,
+      { headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}` } }
+    ).then(r => r.json()).then(d => {
+      if (!d.records || !d.records.length) return;
+      const total = d.records.reduce((sum, r) => sum + (r.fields.Rating || 0), 0);
+      const avg = (total / d.records.length).toFixed(1);
+      const count = d.records.length;
+      document.getElementById('avg-display').textContent = `${avg}/5 from ${count} vote${count !== 1 ? 's' : ''}`;
+      document.getElementById('ratings-result').classList.add('visible');
+    }).catch(() => {});
+  }
+
+  // Attach rating click listeners
+  document.querySelectorAll('.rating-icon').forEach(ic => {
+    ic.addEventListener('click', () => {
+      const val = parseInt(ic.dataset.val);
+      const isPositive = ic.dataset.type === 'positive';
+      submitRating(val, isPositive);
+    });
+  });
+
+  // ── EMOJI PICKER ──
+  const GTA_EMOJIS = ['🎮','🔥','💰','🚗','🏎️','🚔','⭐','💥','🗺️','🌴','🌆','🎵','🤙','💸','📱','🎯','🏁','🚀','💎','👑','🔫','🏍️','🌙','☀️','🎪','🎨','🎤','🕹️','🏖️','🌊','🚁','✈️','💾','📡','🎬','🎭','🎸','🎤','🏆','💫'];
+  let selectedEmoji = '';
+  let emojiFiltered = [...GTA_EMOJIS];
+
+  function renderEmojis(list) {
+    const row = document.getElementById('emoji-row');
+    const search = document.getElementById('emoji-search');
+    row.innerHTML = '';
+    row.appendChild(search);
+    list.forEach(em => {
+      const btn = document.createElement('button');
+      btn.className = 'emoji-btn' + (em === selectedEmoji ? ' selected' : '');
+      btn.textContent = em;
+      btn.onclick = () => {
+        selectedEmoji = em === selectedEmoji ? '' : em;
+        document.getElementById('emoji-selected').textContent = selectedEmoji;
+        renderEmojis(emojiFiltered);
+      };
+      row.appendChild(btn);
+    });
+  }
+
+  document.getElementById('emoji-search').addEventListener('input', function() {
+    emojiFiltered = GTA_EMOJIS;
+    renderEmojis(emojiFiltered);
+  });
+
+  // Char counter
+  document.getElementById('comment-text').addEventListener('input', function() {
+    document.getElementById('char-count').textContent = this.value.length;
+  });
+
+  // GIF preview
+  document.getElementById('gif-url').addEventListener('input', function() {
+    const preview = document.getElementById('gif-preview');
+    if (this.value.trim()) {
+      preview.src = this.value.trim();
+      preview.style.display = 'block';
+    } else {
+      preview.style.display = 'none';
+    }
+  });
+
+  // ── SUBMIT COMMENT ──
+  async function submitComment() {
+    const name = document.getElementById('comment-name').value.trim();
+    const text = document.getElementById('comment-text').value.trim();
+    if (!name || !text) return;
+
+    const btn = document.querySelector('.comment-submit');
+    btn.textContent = 'Posting...';
+    btn.disabled = true;
+
+    try {
+      await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE}/ArticleComments`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${AIRTABLE_TOKEN}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          fields: {
+            Name: name,
+            Comment: text,
+            GifUrl: document.getElementById('gif-url').value.trim() || '',
+            Emoji: selectedEmoji,
+            ArticleSlug: ARTICLE_SLUG,
+            Timestamp: new Date().toISOString()
+          }
+        })
+      });
+
+      document.getElementById('comment-name').value = '';
+      document.getElementById('comment-text').value = '';
+      document.getElementById('gif-url').value = '';
+      document.getElementById('gif-preview').style.display = 'none';
+      document.getElementById('char-count').textContent = '0';
+      selectedEmoji = '';
+      document.getElementById('emoji-selected').textContent = '';
+      document.getElementById('comment-success').style.display = 'block';
+      setTimeout(() => document.getElementById('comment-success').style.display = 'none', 3000);
+      loadComments();
+    } catch(e) {
+      // silent fail
+    }
+
+    btn.textContent = 'Post Comment';
+    btn.disabled = false;
+  }
+
+  // ── LOAD COMMENTS ──
+  async function loadComments() {
+    try {
+      const r = await fetch(
+        `https://api.airtable.com/v0/${AIRTABLE_BASE}/ArticleComments?filterByFormula={ArticleSlug}="${ARTICLE_SLUG}"&sort[0][field]=Timestamp&sort[0][direction]=desc&maxRecords=50`,
+        { headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}` } }
+      );
+      const d = await r.json();
+      const list = document.getElementById('comments-list');
+      if (!d.records || !d.records.length) {
+        list.innerHTML = '<p style="color:var(--smoke);font-family:\'Barlow Condensed\',sans-serif;font-size:0.9rem;">No comments yet. Be the first.</p>';
+        return;
+      }
+      list.innerHTML = d.records.map(rec => {
+        const f = rec.fields;
+        const ts = f.Timestamp ? new Date(f.Timestamp).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '';
+        return `<div class="comment-card">
+          <div class="comment-meta">
+            <span class="comment-name">${f.Name || 'Anonymous'}${f.Emoji ? ' ' + f.Emoji : ''}</span>
+            <span class="comment-time">${ts}</span>
+          </div>
+          <div class="comment-text">${(f.Comment || '').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+          ${f.GifUrl ? `<img class="comment-gif" src="${f.GifUrl}" alt="gif" loading="lazy">` : ''}
+        </div>`;
+      }).join('');
+    } catch(e) {
+      // silent fail
+    }
+  }
+
+  // ── SCROLL REVEAL ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── INIT ──
+  window.addEventListener('load', function() {
+    loadTicker();
+    renderEmojis(GTA_EMOJIS);
+    loadComments();
+    loadAvgRating();
+  });
+</script>
+
+</body>
+</html>
