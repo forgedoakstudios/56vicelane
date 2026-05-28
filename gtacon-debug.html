@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GTACON Debug</title>
+<style>
+body{background:#080A0E;color:#E8E4DC;font-family:monospace;padding:20px;}
+.box{background:#0E1018;border:1px solid #1C1F2B;padding:16px;margin:12px 0;border-radius:4px;}
+.ok{color:#00CC66;}.err{color:#FF1A1A;}.info{color:#FFCC00;}
+h2{color:#FF6B1A;font-size:1rem;margin-bottom:8px;text-transform:uppercase;letter-spacing:.1em;}
+pre{white-space:pre-wrap;word-break:break-all;font-size:.8rem;line-height:1.6;}
+</style>
+</head>
+<body>
+<h1 style="color:#FF6B1A;font-family:sans-serif;">GTACON Debug Page</h1>
+
+<div class="box">
+  <h2>Step 1 — Page Loaded</h2>
+  <div class="ok" id="s1">✅ Page loaded successfully</div>
+</div>
+
+<div class="box">
+  <h2>Step 2 — Fetch gtacon.json</h2>
+  <div id="s2" class="info">⏳ Fetching...</div>
+  <pre id="s2data"></pre>
+</div>
+
+<div class="box">
+  <h2>Step 3 — Parse JSON</h2>
+  <div id="s3" class="info">⏳ Waiting...</div>
+  <pre id="s3data"></pre>
+</div>
+
+<div class="box">
+  <h2>Step 4 — Read Condition</h2>
+  <div id="s4" class="info">⏳ Waiting...</div>
+</div>
+
+<div class="box">
+  <h2>Step 5 — Fetch Worker</h2>
+  <div id="s5" class="info">⏳ Waiting...</div>
+  <pre id="s5data"></pre>
+</div>
+
+<div class="box">
+  <h2>Console Errors</h2>
+  <pre id="errors" style="color:#FF6B1A;">None detected</pre>
+</div>
+
+<script>
+// Capture any errors
+var errors = [];
+window.addEventListener('error', function(e) {
+  errors.push('ERROR: ' + e.message + ' (line ' + e.lineno + ')');
+  document.getElementById('errors').textContent = errors.join('\n');
+});
+window.addEventListener('unhandledrejection', function(e) {
+  errors.push('PROMISE REJECTION: ' + e.reason);
+  document.getElementById('errors').textContent = errors.join('\n');
+});
+
+// Run tests sequentially
+async function runTests() {
+  // Step 2 — Fetch gtacon.json
+  try {
+    var url = '/gtacon.json?v=' + Date.now();
+    document.getElementById('s2').textContent = '⏳ Fetching: ' + url;
+    var res = await fetch(url);
+    document.getElementById('s2').className = 'ok';
+    document.getElementById('s2').textContent = '✅ Fetch succeeded — Status: ' + res.status + ' ' + res.statusText;
+    var text = await res.text();
+    document.getElementById('s2data').textContent = 'Raw response (' + text.length + ' chars):\n' + text.substring(0, 200);
+
+    // Step 3 — Parse JSON
+    try {
+      var data = JSON.parse(text);
+      document.getElementById('s3').className = 'ok';
+      document.getElementById('s3').textContent = '✅ JSON parsed successfully';
+      document.getElementById('s3data').textContent = JSON.stringify(data, null, 2);
+
+      // Step 4 — Read condition
+      if (data && data.condition) {
+        document.getElementById('s4').className = 'ok';
+        document.getElementById('s4').textContent = '✅ Condition: ' + data.condition + ' — ' + data.name + ' — ' + data.note;
+      } else {
+        document.getElementById('s4').className = 'err';
+        document.getElementById('s4').textContent = '❌ No condition field in data. Keys found: ' + Object.keys(data).join(', ');
+      }
+    } catch(parseErr) {
+      document.getElementById('s3').className = 'err';
+      document.getElementById('s3').textContent = '❌ JSON parse failed: ' + parseErr.message;
+    }
+
+  } catch(fetchErr) {
+    document.getElementById('s2').className = 'err';
+    document.getElementById('s2').textContent = '❌ Fetch failed: ' + fetchErr.message;
+  }
+
+  // Step 5 — Try worker
+  try {
+    var workerUrl = 'https://gtacon-worker.forgedoakstudios.workers.dev/gtacon-status?v=' + Date.now();
+    document.getElementById('s5').textContent = '⏳ Fetching worker: ' + workerUrl;
+    var wres = await fetch(workerUrl);
+    var wdata = await wres.json();
+    document.getElementById('s5').className = 'ok';
+    document.getElementById('s5').textContent = '✅ Worker responded — Condition: ' + wdata.condition;
+    document.getElementById('s5data').textContent = JSON.stringify(wdata, null, 2).substring(0, 300);
+  } catch(werr) {
+    document.getElementById('s5').className = 'err';
+    document.getElementById('s5').textContent = '❌ Worker fetch failed: ' + werr.message;
+  }
+}
+
+// Run immediately on load
+runTests();
+</script>
+</body>
+</html>
