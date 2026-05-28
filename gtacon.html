@@ -552,10 +552,10 @@ footer{position:relative;z-index:5;background:var(--pitch);border-top:1px solid 
 <nav>
   <a href="/" class="nav-logo"><span>56</span>ViceLane</a>
   <div class="nav-links">
-    <a href="/news.html">News</a>
-    <a href="/lastdrive.html">Last Drive</a>
-    <a href="/shop.html">Shop</a>
-    <a href="/gtacon.html" class="active">GTACON</a>
+    <a href="/news">News</a>
+    <a href="/lastdrive">Last Drive</a>
+    <a href="/shop">Shop</a>
+    <a href="/gtacon" class="active">GTACON</a>
   </div>
 </nav>
 
@@ -720,8 +720,8 @@ footer{position:relative;z-index:5;background:var(--pitch);border-top:1px solid 
 <footer>
   <a href="/" class="f-logo"><span>56</span>ViceLane</a>
   <div class="f-links">
-    <a href="/news.html">News</a><a href="/gtacon.html">GTACON</a>
-    <a href="/lastdrive.html">Last Drive</a><a href="/shop.html">Shop</a>
+    <a href="/news">News</a><a href="/gtacon">GTACON</a>
+    <a href="/lastdrive">Last Drive</a><a href="/shop">Shop</a>
     <a href="/#signup">Join List</a>
   </div>
   <div class="f-note">
@@ -765,19 +765,23 @@ let initialized = false;
 async function fetchCondition() {
   setLiveStatus('updating');
   try {
-    const res = await fetch(WORKER_URL + '?v=' + Date.now());
-    if (!res.ok) throw new Error('fetch failed');
+    // Primary: local gtacon.json — fast, reliable, no CORS
+    const res = await fetch('/gtacon.json?v=' + Date.now());
+    if (!res.ok) throw new Error('json failed');
     const data = await res.json();
+    // Try worker in background for fresher data
+    fetch(WORKER_URL + '?v=' + Date.now())
+      .then(function(r){ return r.json(); })
+      .then(function(wd){ if(wd && wd.condition){ applyCondition(wd, false); } })
+      .catch(function(){});
     return data;
   } catch(e) {
-    // Fallback: read from local gtacon.json if worker unavailable
     try {
-      const res = await fetch('/gtacon.json?v=' + Date.now());
-      const data = await res.json();
-      return data;
-    } catch(e2) {
-      return null;
-    }
+      const res2 = await fetch(WORKER_URL + '?v=' + Date.now());
+      if (!res2.ok) throw new Error('worker failed');
+      const data2 = await res2.json();
+      return data2;
+    } catch(e2) { return null; }
   } finally {
     setLiveStatus('live');
   }
@@ -1300,6 +1304,13 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', function(){
     navigator.serviceWorker.register('/gtacon-sw.js').catch(function(){});
   });
+}
+
+// ── NOTIFICATIONS ──────────────────────────────────────────────
+function requestNotifications() {
+  if ('Notification' in window && Notification.permission === 'default') {
+    Notification.requestPermission();
+  }
 }
 
 // ── MAIN LOOP ────────────────────────────────────────────────────
