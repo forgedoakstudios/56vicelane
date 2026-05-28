@@ -747,7 +747,7 @@
   <button class="share-btn share-native" onclick="nativeShare()">📤 Share</button>
   <button class="share-btn share-reddit" onclick="shareReddit()">Reddit</button>
   <button class="share-btn share-twitter" onclick="shareTwitter()">✕ Post</button>
-  <button class="share-btn share-whatsapp" onclick="shareWhatsApp()">WhatsApp</button>
+  <button class="share-btn share-whatsapp" onclick="shareWhatsApp()">WhatsApp</button><button class="share-btn share-facebook" onclick="shareFacebook()">Facebook</button>
   <button class="share-btn share-copy" id="copy-btn-top" onclick="copyLink('copy-btn-top')">Copy Link</button>
 </div>
 
@@ -1053,7 +1053,7 @@
     <button class="share-btn share-native" onclick="nativeShare()">📤 Share</button>
     <button class="share-btn share-reddit" onclick="shareReddit()">Reddit</button>
     <button class="share-btn share-twitter" onclick="shareTwitter()">✕ Post</button>
-    <button class="share-btn share-whatsapp" onclick="shareWhatsApp()">WhatsApp</button>
+    <button class="share-btn share-whatsapp" onclick="shareWhatsApp()">WhatsApp</button><button class="share-btn share-facebook" onclick="shareFacebook()">Facebook</button>
     <button class="share-btn share-copy" id="copy-btn-bot" onclick="copyLink('copy-btn-bot')">Copy Link</button>
   </div>
 
@@ -1117,7 +1117,8 @@
     const text = ARTICLE_TITLE + ' #GTA6 #GTA6News #GTA6PreOrder';
     window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(ARTICLE_URL), '_blank');
   }
-  function shareWhatsApp() {
+  function shareFacebook(){window.open("https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(window.location.href),"_blank");}
+function shareWhatsApp() {
     window.open('https://wa.me/?text=' + encodeURIComponent(ARTICLE_TITLE + ' ' + ARTICLE_URL), '_blank');
   }
   function copyLink(btnId) {
