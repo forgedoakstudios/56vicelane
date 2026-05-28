@@ -1,964 +1,558 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-9EKF7J4V7W');
-</script>
-<meta charset="UTF-8">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="56ViceLane">
-<meta property="og:title" content="GTA6 News Hub — 56ViceLane">
-<meta property="og:description" content="GTA6 confirmed facts, credible leaks, and launch day coverage. Pre-order chaos, price leaks, editions breakdown and more. Updated daily.">
-<meta property="og:url" content="https://56vicelane.com/news.html">
-<meta property="og:image" content="https://56vicelane.com/images/Jason_and_Lucia_01_landscape.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@56ViceLane">
-<meta name="twitter:title" content="GTA6 News Hub — 56ViceLane">
-<meta name="twitter:description" content="GTA6 confirmed facts, credible leaks, and launch day coverage. Pre-order chaos, price leaks, editions breakdown and more. Updated daily.">
-<meta name="twitter:image" content="https://56vicelane.com/images/Jason_and_Lucia_01_landscape.jpg">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="GTA6 news, confirmed facts, leaks and updates — all in one place. No filler. 56ViceLane covers everything from launch date to pre-orders.">
-<title>GTA6 News Hub — 56ViceLane</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root {
-  --pitch:     #0B0B0F;
-  --asphalt:   #16161D;
-  --amber:     #FF6B1A;
-  --amber-dim: #cc4a00;
-  --cyan:      #00D4FF;
-  --bone:      #F0EDE8;
-  --smoke:     #7A7A8C;
-  --edge:      #26262F;
-  --green:     #00C875;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--pitch);
-  color: var(--bone);
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: 0.04;
-  pointer-events: none;
-  z-index: 100;
-  mix-blend-mode: overlay;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GTA6 News Hub — 56ViceLane</title>
 
-/* ─── TICKER ─────────────────────────────────────────── */
-.ticker {
-  background: var(--amber);
-  color: var(--pitch);
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 12px;
-  padding: 7px 0;
-  overflow: hidden;
-  white-space: nowrap;
-  position: relative;
-  z-index: 10;
-}
-.ticker-track {
-  display: inline-block;
-  animation: ticker-scroll 40s linear infinite;
-  padding-left: 100%;
-}
-.ticker-track span { margin: 0 28px; }
-.ticker-track span::after { content: '&#9670;'; margin-left: 28px; font-size: 8px; opacity: 0.6; }
-.ticker-track a { color: var(--pitch); text-decoration: none; font-weight: 800; }
-.ticker-track a:hover { text-decoration: underline; }
-@keyframes ticker-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-100%); }
-}
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9EKF7J4V7W');
+  </script>
 
-/* ─── BREAKING BANNER ────────────────────────────────── */
-.breaking-banner {
-  background: var(--asphalt);
-  border-bottom: 1px solid var(--edge);
-  padding: 10px 24px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  overflow: hidden;
-  position: relative;
-  z-index: 9;
-}
-.breaking-banner::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--amber), transparent);
-}
-.breaking-label {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-size: 10px;
-  background: var(--amber);
-  color: var(--pitch);
-  padding: 3px 8px;
-  flex-shrink: 0;
-}
-.breaking-text {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 11px;
-  color: var(--smoke);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
 
-/* ─── NAV ────────────────────────────────────────────── */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 24px;
-  border-bottom: 1px solid var(--edge);
-  position: relative;
-  z-index: 5;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-.brand { font-family: 'Russo One', sans-serif; font-size: 20px; color: var(--bone); text-decoration: none; }
-.brand .num { color: var(--amber); text-shadow: 0 0 8px var(--amber), 0 0 20px var(--amber-dim); }
-.nav-links { display: none; width: 100%; flex-direction: column; border-top: 1px solid var(--edge); padding-top: 12px; gap: 4px; order: 3; }
-.nav-links.open { display: flex; }
-.nav-link { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; font-size: 14px; color: var(--smoke); text-decoration: none; padding: 12px 4px; border-bottom: 1px solid var(--edge); transition: color 0.3s; }
-.nav-link:last-child { border-bottom: none; }
-.nav-link:hover, .nav-link.active { color: var(--amber); }
-.menu-btn { background: none; border: 1px solid var(--edge); color: var(--smoke); font-family: 'Barlow Condensed', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; font-size: 12px; padding: 10px 18px; cursor: pointer; transition: all 0.3s; }
-.menu-btn:hover { border-color: var(--amber); color: var(--amber); }
-@media (min-width: 768px) {
-  .nav-links { display: flex !important; flex-direction: row; width: auto; border-top: none; padding-top: 0; gap: 28px; order: 0; }
-  .nav-link { border-bottom: none; padding: 0; font-size: 12px; }
-  .menu-btn { display: none; }
-  nav { flex-wrap: nowrap; padding: 22px 48px; }
-}
+  <meta property="og:title" content="GTA6 News Hub — 56ViceLane">
+  <meta property="og:description" content="Every GTA6 leak, confirmed fact, and launch day update. Where GTA5 Ends And GTA6 Begins.">
+  <meta property="og:image" content="https://56vicelane.com/images/Jason_and_Lucia_01_landscape.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://56vicelane.com/news">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="56ViceLane">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GTA6 News Hub — 56ViceLane">
+  <meta name="twitter:description" content="Every GTA6 leak, confirmed fact, and launch day update.">
+  <meta name="twitter:image" content="https://56vicelane.com/images/Jason_and_Lucia_01_landscape.jpg">
+  <meta name="description" content="Every GTA6 leak, confirmed fact, and launch day update. Where GTA5 Ends And GTA6 Begins.">
 
-/* ─── PAGE HEADER ────────────────────────────────────── */
-.page-header {
-  padding: 48px 24px 32px;
-  border-bottom: 1px solid var(--edge);
-  position: relative;
-}
-.page-header::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 24px; right: 24px;
-  height: 1px;
-  background: linear-gradient(90deg, var(--amber), transparent);
-}
-.page-eyebrow {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.25em;
-  color: var(--smoke);
-  font-size: 11px;
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.page-eyebrow::before { content: ''; width: 20px; height: 1px; background: var(--amber); box-shadow: 0 0 6px var(--amber); }
-.page-header h1 {
-  font-family: 'Russo One', sans-serif;
-  font-size: clamp(28px, 7vw, 52px);
-  text-transform: uppercase;
-  line-height: 1.05;
-}
-.page-header h1 .hl { color: var(--amber); }
-.page-subtitle { font-size: 14px; color: var(--smoke); margin-top: 10px; max-width: 480px; line-height: 1.6; }
-@media (min-width: 768px) { .page-header { padding: 64px 48px 40px; } }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-/* ─── LAYOUT ─────────────────────────────────────────── */
-.news-layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0;
-}
-@media (min-width: 900px) {
-  .news-layout { grid-template-columns: 1fr 300px; align-items: start; }
-}
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ─── ARTICLE FEED ───────────────────────────────────── */
-.article-feed {
-  padding: 32px 24px;
-  border-right: 1px solid var(--edge);
-}
-@media (min-width: 768px) { .article-feed { padding: 40px 48px; } }
+    :root {
+      --pitch:     #0B0B0F;
+      --asphalt:   #16161D;
+      --amber:     #FF6B1A;
+      --amber-dim: #cc4a00;
+      --cyan:      #00D4FF;
+      --bone:      #F0EDE8;
+      --smoke:     #7A7A8C;
+      --edge:      #26262F;
+      --green:     #00C875;
+      --red:       #FF3B3B;
+    }
 
-.feed-section-label {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 10px;
-  color: var(--smoke);
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--edge);
-}
+    body { background: var(--pitch); color: var(--bone); font-family: 'Inter', sans-serif; font-size: 1rem; line-height: 1.75; }
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-/* ─── ARTICLE CARDS ──────────────────────────────────── */
-.article-card {
-  border: 1px solid var(--edge);
-  margin-bottom: 16px;
-  transition: border-color 0.3s;
-  position: relative;
-}
-.article-card:hover { border-color: #333345; }
-.article-card.featured { border-color: var(--amber); }
-.article-card.featured::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--amber);
-  box-shadow: 0 0 8px var(--amber);
-}
-.article-body { padding: 20px; }
-.article-meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-.fact-badge {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-size: 10px;
-  padding: 3px 8px;
-  border: 1px solid var(--amber);
-  color: var(--amber);
-}
-.fact-badge.confirmed { background: var(--amber); color: var(--pitch); border-color: var(--amber); }
-.fact-badge.rumor { border-color: var(--cyan); color: var(--cyan); }
-.article-tag {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 10px;
-  padding: 3px 8px;
-  border: 1px solid var(--edge);
-  color: var(--smoke);
-}
-.article-tag.cyan { border-color: var(--cyan); color: var(--cyan); }
-.article-date {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 600;
-  font-size: 11px;
-  color: var(--smoke);
-  margin-left: auto;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-.article-title {
-  font-family: 'Russo One', sans-serif;
-  font-size: clamp(17px, 3.5vw, 22px);
-  text-transform: uppercase;
-  line-height: 1.2;
-  margin-bottom: 10px;
-}
-.article-title a {
-  color: var(--bone);
-  text-decoration: none;
-  transition: color 0.3s;
-}
-.article-title a:hover { color: var(--amber); }
-.article-excerpt {
-  font-size: 14px;
-  color: var(--smoke);
-  line-height: 1.7;
-  margin-bottom: 14px;
-}
-.article-excerpt strong { color: var(--bone); }
-.read-more {
-  display: inline-block;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-size: 11px;
-  color: var(--amber);
-  text-decoration: none;
-  transition: color 0.3s;
-}
-.read-more:hover { color: var(--bone); }
-.read-more::after { content: ' \2192'; }
+    /* TICKER */
+    .ticker-wrap { background: var(--amber); overflow: hidden; padding: 6px 0; position: sticky; top: 0; z-index: 100; }
+    .ticker-track { display: flex; gap: 60px; white-space: nowrap; animation: ticker 20s linear infinite; }
+    .ticker-item { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 700; color: #000; text-transform: uppercase; cursor: pointer; flex-shrink: 0; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-/* ─── SIDEBAR ────────────────────────────────────────── */
-.sidebar {
-  padding: 32px 24px;
-  position: sticky;
-  top: 0;
-}
-@media (min-width: 768px) { .sidebar { padding: 40px 28px; } }
+    /* NAV */
+    nav { background: var(--asphalt); border-bottom: 1px solid var(--edge); padding: 0 1.25rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+    .nav-logo { font-family: 'Russo One', sans-serif; font-size: 1.25rem; color: var(--amber); text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; color: var(--bone); letter-spacing: 0.05em; }
+    .nav-links a:hover, .nav-links a.active { color: var(--amber); text-decoration: none; }
 
-.sidebar-block {
-  margin-bottom: 32px;
-  padding-bottom: 32px;
-  border-bottom: 1px solid var(--edge);
-}
-.sidebar-block:last-child { border-bottom: none; }
-.sidebar-label {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 10px;
-  color: var(--amber);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.sidebar-label::before { content: ''; width: 12px; height: 1px; background: var(--amber); box-shadow: 0 0 4px var(--amber); }
+    /* PAGE HERO */
+    .page-hero { padding: 2.5rem 1.25rem 2rem; border-bottom: 1px solid var(--edge); text-align: center; }
+    .page-hero h1 { font-family: 'Russo One', sans-serif; font-size: clamp(1.8rem, 5vw, 2.6rem); color: var(--bone); margin-bottom: 0.5rem; }
+    .page-hero h1 span { color: var(--amber); }
+    .page-hero p { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; color: var(--smoke); text-transform: uppercase; letter-spacing: 0.05em; }
 
-.fact-item {
-  display: flex;
-  gap: 10px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--edge);
-  align-items: flex-start;
-}
-.fact-item:last-child { border-bottom: none; }
-.fact-check {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 800;
-  font-size: 12px;
-  color: var(--amber);
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-.fact-text { font-size: 13px; color: var(--smoke); line-height: 1.5; }
-.fact-text strong { color: var(--bone); }
+    /* STOCK WIDGET */
+    .stock-bar { background: var(--asphalt); border-bottom: 1px solid var(--edge); padding: 0.6rem 1.25rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .stock-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--smoke); }
+    .stock-ticker-name { font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--bone); }
+    .stock-price { font-family: 'Russo One', sans-serif; font-size: 1rem; color: var(--amber); }
+    .stock-change { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 700; }
+    .stock-change.up { color: var(--green); }
+    .stock-change.down { color: var(--red); }
+    .stock-delay { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; color: var(--smoke); }
 
-.stock-mini {
-  background: var(--asphalt);
-  border: 1px solid var(--edge);
-  border-top: 2px solid var(--amber);
-  padding: 14px;
-  margin-bottom: 16px;
-}
-.stock-ticker-label { font-family: 'Russo One', sans-serif; font-size: 14px; color: var(--amber); margin-bottom: 2px; }
-.stock-name { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; color: var(--smoke); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
-.stock-price { font-family: 'Russo One', sans-serif; font-size: 24px; color: var(--bone); margin-bottom: 4px; }
-.stock-change { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; }
-.stock-change.up { color: #00C875; }
-.stock-change.down { color: #ff4444; }
-.stock-change.flat { color: var(--smoke); }
-.stock-note { font-size: 10px; color: var(--smoke); margin-top: 6px; font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.6; }
+    /* SHARE BAR */
+    .share-bar { background: var(--asphalt); border-bottom: 1px solid var(--edge); padding: 0.75rem 1.25rem; display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; }
+    .share-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--smoke); letter-spacing: 0.06em; }
+    .share-btn { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 6px 14px; border-radius: 4px; border: none; cursor: pointer; transition: opacity 0.15s; }
+    .share-btn:hover { opacity: 0.85; }
+    .share-native  { background: var(--amber); color: #000; }
+    .share-reddit  { background: #FF4500; color: #fff; }
+    .share-twitter { background: #000; color: #fff; border: 1px solid #333; }
+    .share-whatsapp{ background: #25D366; color: #fff; }
+    .share-copy    { background: var(--edge); color: var(--bone); border: 1px solid var(--smoke); }
 
-.sidebar-cta {
-  display: block;
-  background: var(--amber);
-  color: var(--pitch);
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 13px;
-  padding: 14px 20px;
-  text-decoration: none;
-  text-align: center;
-  transition: all 0.3s;
-  margin-bottom: 10px;
-}
-.sidebar-cta:hover { box-shadow: 0 0 20px rgba(255,107,26,0.4); }
-.sidebar-cta.ghost { background: transparent; color: var(--bone); border: 1px solid var(--edge); }
-.sidebar-cta.ghost:hover { border-color: var(--cyan); color: var(--cyan); }
+    /* LAYOUT */
+    .news-wrap { max-width: 900px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
 
-/* ─── REVEAL ─────────────────────────────────────────── */
-.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+    /* AD */
+    .ad-unit { margin: 1.5rem 0; }
 
-/* ─── FOOTER ─────────────────────────────────────────── */
-footer { padding: 40px 24px; border-top: 1px solid var(--edge); text-align: center; }
-.footer-brand { font-family: 'Russo One', sans-serif; font-size: 22px; margin-bottom: 6px; }
-.footer-brand .num { color: var(--amber); text-shadow: 0 0 8px var(--amber), 0 0 20px var(--amber-dim); }
-.footer-tag { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; font-size: 10px; color: var(--smoke); margin-bottom: 16px; }
-.footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 14px; flex-wrap: wrap; }
-.footer-links a { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; font-size: 11px; color: var(--smoke); text-decoration: none; transition: color 0.3s; }
-.footer-links a:hover { color: var(--amber); }
-.footer-copy { font-size: 11px; color: #4a4a5a; }
+    /* ARTICLE CARDS */
+    .feed-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--smoke); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--edge); }
 
-/* ─── SHARE BAR ─────────────────────────────────────────── */
-.share-bar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  padding: 14px 0;
-  border-top: 1px solid var(--edge);
-  border-bottom: 1px solid var(--edge);
-  margin: 20px 0;
-}
-.share-label {
-  font-family: "Barlow Condensed", sans-serif;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 11px;
-  color: var(--smoke);
-  margin-right: 4px;
-  flex-shrink: 0;
-}
-.share-btn {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  padding: 6px 14px;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-  text-transform: uppercase;
-  text-decoration: none;
-  display: inline-block;
-}
-.share-btn:hover { opacity: 0.85; text-decoration: none; }
-.share-btn.native  { background: var(--amber); color: #000; }
-.share-btn.reddit  { background: #FF4500; color: #fff; }
-.share-btn.twitter { background: #000; color: #fff; border: 1px solid #333; }
-.share-btn.whatsapp{ background: #25D366; color: #000; }
-.share-btn.copy    { background: var(--edge); color: var(--bone); }
-.share-btn.copied  { background: #00C875; color: #000; }
+    .article-card {
+      background: var(--asphalt);
+      border: 1px solid var(--edge);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .article-card:hover { border-color: var(--amber); transform: translateY(-2px); }
 
-/* GTACON NAV HIGHLIGHT */
-.nav-link.gtacon { color: var(--amber); }
-.nav-link.gtacon:hover { color: var(--bone); }
-</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
+    .card-meta { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+    .card-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 9px; border-radius: 3px; }
+    .tag-breaking  { background: var(--red); color: #fff; }
+    .tag-analysis  { background: var(--amber); color: #000; }
+    .tag-confirmed { background: var(--green); color: #000; }
+    .tag-leak      { background: var(--cyan); color: #000; }
+    .tag-hardware  { background: #7B5EA7; color: #fff; }
+    .tag-event     { background: var(--asphalt); color: var(--amber); border: 1px solid var(--amber); }
+    .tag-preorders { background: var(--edge); color: var(--cyan); border: 1px solid var(--cyan); }
+    .card-date { font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; color: var(--smoke); text-transform: uppercase; letter-spacing: 0.04em; margin-left: auto; }
+
+    .card-title { font-family: 'Russo One', sans-serif; font-size: 1.15rem; line-height: 1.3; margin-bottom: 0.6rem; }
+    .card-title a { color: var(--bone); text-decoration: none; }
+    .card-title a:hover { color: var(--amber); }
+
+    .card-excerpt { font-size: 0.9rem; color: var(--smoke); line-height: 1.55; margin-bottom: 0.75rem; }
+
+    .card-read-more { font-family: 'Barlow Condensed', sans-serif; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--amber); text-decoration: none; }
+    .card-read-more:hover { color: var(--amber-dim); text-decoration: none; }
+
+    /* FEATURED CARD */
+    .article-card.featured { border-color: var(--amber); background: linear-gradient(135deg, var(--asphalt) 0%, #1c1610 100%); }
+    .article-card.featured .card-title { font-size: 1.3rem; }
+
+    /* ARCHIVE LINK */
+    .archive-link-wrap { text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--edge); }
+    .archive-link-wrap a { font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--smoke); border: 1px solid var(--edge); padding: 8px 20px; border-radius: 5px; }
+    .archive-link-wrap a:hover { color: var(--bone); border-color: var(--bone); text-decoration: none; }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s, transform 0.7s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* FOOTER */
+    footer { background: var(--asphalt); border-top: 1px solid var(--edge); padding: 2rem 1.25rem; text-align: center; }
+    .footer-logo { font-family: 'Russo One', sans-serif; font-size: 1.1rem; color: var(--amber); margin-bottom: 0.5rem; }
+    .footer-tagline { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; color: var(--smoke); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; }
+    .footer-links { display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
+    .footer-links a { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: var(--smoke); letter-spacing: 0.05em; }
+    .footer-links a:hover { color: var(--amber); text-decoration: none; }
+    .footer-copy { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; color: var(--smoke); }
+
+    @media (max-width: 480px) {
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.8rem; }
+      .card-date { margin-left: 0; }
+    }
+  </style>
 </head>
 <body>
 
 <!-- TICKER -->
-<div class="ticker" id="site-ticker">
+<div class="ticker-wrap">
   <div class="ticker-track" id="ticker-track">
-    <span>Loading latest news...</span>
+    <span class="ticker-item">Loading latest GTA6 news...</span>
   </div>
-</div>
-<script>
-(function(){
-  fetch('/articles.json?v=' + Date.now())
-    .then(function(r){return r.json();})
-    .then(function(articles){
-      var track = document.getElementById('ticker-track');
-      if(!track) return;
-      track.innerHTML = articles.map(function(a){
-        return '<span>' + a.emoji + ' <a href="' + a.url + '">' + a.title + '</a></span>';
-      }).join('');
-    })
-    .catch(function(){
-      var track = document.getElementById('ticker-track');
-      if(track) track.innerHTML = '<span>&#x1F525; <a href="/news.html">Latest GTA6 News &#8212; 56ViceLane</a></span>';
-    });
-})();
-</script>
-
-<!-- BREAKING BANNER -->
-<div class="breaking-banner">
-  <span class="breaking-label">Breaking</span>
-  <span class="breaking-text">&#x26A1; GTA6 Trailer 3 — Why July 5-15 Is The Real Window &#8212; TTWO Stock Slides 5% After Earnings &#8212; GTA6 Nov 19 Locked &#8212; $8.2B Forecast &#8212; $70 Defended &#8212; Pre-Orders Not Yet Open &#8212; Six Editions Leaked &#8212; GTACON Now Live At 56ViceLane.com/gtacon.html</span>
 </div>
 
 <!-- NAV -->
 <nav>
-  <a href="/" class="brand"><span class="num">56</span>ViceLane</a>
-  <div class="nav-links" id="nav-links">
-    <a href="/news.html" class="nav-link active">News</a>
-    <a href="/lastdrive.html" class="nav-link">Last Drive</a>
-    <a href="/shop.html" class="nav-link">Shop</a>
-    <a href="/gtacon" class="nav-link gtacon">GTACON</a>
-    <a href="/#signup" class="nav-link">Join List</a>
-  </div>
-  <button class="menu-btn" id="menu-btn">Menu</button>
+  <a href="/" class="nav-logo">56ViceLane</a>
+  <ul class="nav-links">
+    <li><a href="/news" class="active">News</a></li>
+    <li><a href="/lastdrive">Last Drive</a></li>
+    <li><a href="/shop">Shop</a></li>
+    <li><a href="/gtacon">GTACON</a></li>
+  </ul>
 </nav>
 
-<div style="padding:0 24px;max-width:1100px;margin:0 auto;"><div class="share-bar"><span class="share-label">Share</span><button class="share-btn native" onclick="vl_share('GTA6 News Hub — 56ViceLane','GTA6 confirmed facts, credible leaks, and launch day coverage.','https://56vicelane.com/news.html')">&#x1F4F1; Share</button><a class="share-btn reddit" href="https://www.reddit.com/r/GTA6/submit?url=https://56vicelane.com/news.html&amp;title=GTA6+News+Hub+—+56ViceLane" target="_blank" rel="noopener">Reddit</a><a class="share-btn twitter" href="https://twitter.com/intent/tweet?url=https://56vicelane.com/news.html&amp;text=GTA6+News+Hub+—+56ViceLane&amp;via=56ViceLane" target="_blank" rel="noopener">&#x1D54F; Post</a><a class="share-btn whatsapp" href="https://wa.me/?text=GTA6+News+Hub+—+56ViceLane+https://56vicelane.com/news.html" target="_blank" rel="noopener">WhatsApp</a><button class="share-btn copy" onclick="vl_copy('https://56vicelane.com/news.html')">Copy Link</button></div></div>
-
-<!-- PAGE HEADER -->
-<div class="page-header">
-  <div class="page-eyebrow">GTA6 Coverage</div>
-  <h1><span class="hl">GTA6</span> News Hub</h1>
-  <p class="page-subtitle">Confirmed facts, credible leaks, and launch day coverage &#8212; all in one place. No filler.</p>
+<!-- TTWO STOCK WIDGET -->
+<div class="stock-bar">
+  <span class="stock-label">TTWO</span>
+  <span class="stock-ticker-name">Take-Two Interactive</span>
+  <span class="stock-price" id="stock-price">—</span>
+  <span class="stock-change" id="stock-change">—</span>
+  <span class="stock-delay">~15 min delayed · NYSE hours</span>
 </div>
 
-<!-- MAIN LAYOUT -->
-<div class="news-layout">
-
-  <!-- ARTICLE FEED -->
-  <div class="article-feed">
-
-    <div class="article-card featured reveal">
-  <div class="article-body">
-    <div class="article-meta">
-      <span class="fact-badge" style="background:var(--cyan);color:#000;border-color:var(--cyan)">Guide</span>
-      <span class="article-tag">Analysis</span>
-      <span class="article-tag">Speculation</span>
-      <span class="article-date">May 28, 2026</span>
-    </div>
-    <div class="article-title">
-      <a href="/articles/gta6-ps-plus-always-online-gta5-merge-speculation.html">Does GTA 6 Need PS Plus? Will It Be Always Online? Everything We Know</a>
-    </div>
-    <div class="article-excerpt">
-      Three questions every GTA 6 buyer is asking. Here&#8217;s what we know, what we don&#8217;t &#8212; and one thought at the end that might just break the internet. <strong>Just speculation. That&#8217;s all. &#128514;</strong>
-    </div>
-    <a href="/articles/gta6-ps-plus-always-online-gta5-merge-speculation.html" class="read-more">Read The Full Breakdown</a>
-  </div>
-    </div>
-
-    <div class="article-card featured reveal">
-  <div class="article-body">
-    <div class="article-meta">
-      <span class="fact-badge" style="background:var(--amber);color:#000;border-color:var(--amber)">&#x26A1; Breaking</span>
-      <span class="article-tag">Analysis</span>
-      <span class="article-tag cyan">GTA 6 Online</span>
-      <span class="article-date">May 28, 2026</span>
-    </div>
-    <div class="article-title">
-      <a href="/articles/gta5-ragemp-shutdown-gta6-fivem-takeover.html">Take-Two Is Shutting Down RAGE:MP &#8212; And It&#8217;s Not Really About GTA 5</a>
-    </div>
-    <div class="article-excerpt">
-      Take-Two just hit RAGE:MP with a cease-and-desist. Public servers gone June 1, everything gone August 31. Every other outlet is calling this a GTA 5 story. <strong>It isn&#8217;t. This is about who controls the GTA 6 Online ecosystem when it launches.</strong>
-    </div>
-    <a href="/articles/gta5-ragemp-shutdown-gta6-fivem-takeover.html" class="read-more">Read The Full Breakdown</a>
-  </div>
-    </div>
-
-    <div class="article-card featured reveal">
-  <div class="article-body">
-    <div class="article-meta">
-      <span class="fact-badge" style="background:var(--green);color:#000;border-color:var(--green)">&#x2713; Confirmed</span>
-      <span class="article-tag">Analysis</span>
-      <span class="article-tag cyan">Trailer 3</span>
-      <span class="article-date">May 27, 2026</span>
-    </div>
-    <div class="article-title">
-      <a href="/articles/gta6-trailer-3-window-confirmed-56vicelane-called-it.html">We Called It &#8212; The GTA 6 Trailer 3 Window Is Now Official</a>
-    </div>
-    <div class="article-excerpt">
-      56ViceLane predicted the July 5-15 window last week. Zelnick just confirmed the same window to Bloomberg &#8212; no marketing before June 21, most likely June 25 to July 8. <strong>No Trailer 3 before summer. The window is official.</strong>
-    </div>
-    <a href="/articles/gta6-trailer-3-window-confirmed-56vicelane-called-it.html" class="read-more">Read The Full Breakdown</a>
-  </div>
-    </div>
-
-    <div class="article-card featured reveal">
-  <div class="article-body">
-    <div class="article-meta">
-      <span class="fact-badge" style="background:var(--amber);color:#000;border-color:var(--amber)">&#x26A1; Breaking</span>
-      <span class="article-tag">Analysis</span>
-      <span class="article-tag cyan">Pre-Orders</span>
-      <span class="article-date">May 26, 2026</span>
-    </div>
-    <div class="article-title">
-      <a href="/articles/gta6-xbox-wishlist-campaign-international.html">Sony &amp; Xbox Both Make Major Moves Ahead of GTA 6</a>
-    </div>
-    <div class="article-excerpt">
-      Sony is emailing millions of PS4 owners to upgrade for GTA 6. Xbox just ran a coordinated wishlist campaign across six countries in seven days after eleven months of silence. <strong>Both platforms. Same window. This is what pre-order infrastructure activation looks like from the outside.</strong>
-    </div>
-    <a href="/articles/gta6-xbox-wishlist-campaign-international.html" class="read-more">Read The Full Breakdown</a>
-  </div>
-    </div>
-
-    <div class="article-card featured reveal">
-  <div class="article-body">
-    <div class="article-meta">
-      <span class="fact-badge" style="background:var(--amber);color:#000;border-color:var(--amber)">Analysis</span>
-      <span class="article-tag">Marketing</span>
-      <span class="article-date">May 25, 2026</span>
-    </div>
-    <div class="article-title">
-      <a href="/articles/gta6-trailer-3-marketing-timeline-prediction.html">GTA6 Trailer 3 — Why July 5-15 Is The Real Window</a>
-    </div>
-    <div class="article-excerpt">
-      Everyone says Trailer 3 is coming this week. They've been saying that for months. Here's the actual math based on what Zelnick confirmed — and why the trailer drops before pre-orders, not after.
-    </div>
-    <a href="/articles/gta6-trailer-3-marketing-timeline-prediction.html" class="read-more">Read The Analysis</a>
-  </div>
-    </div>
-
-<div class="article-card featured reveal">
-  <div class="article-body">
-    <div class="article-meta">
-      <span class="fact-badge" style="background:#FF3B3B;color:#fff;border-color:#FF3B3B">&#x26A1; Breaking</span>
-      <span class="article-tag cyan">TTWO Stock</span>
-      <span class="article-date">May 22, 2026</span>
-    </div>
-    <div class="article-title">
-      <a href="/articles/gta6-earnings-stock-slide-what-it-means.html">Take-Two Stock Slides 5% After Earnings — What It Actually Means For GTA6 Fans</a>
-    </div>
-    <div class="article-excerpt">Numbers beat. Stock dropped anyway. TTWO fell 5.5% to ~$225 on cautious FY2027 guidance — but <strong>November 19 is confirmed</strong> and analysts are broadly bullish. Here's the full breakdown.</div>
-    <a href="/articles/gta6-earnings-stock-slide-what-it-means.html" class="read-more">Read The Full Story</a>
-  </div>
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <h1>GTA6 <span>News Hub</span></h1>
+  <p>Every leak · Every confirmed fact · Every launch day update</p>
 </div>
 
-    <div class="article-card featured reveal">
-      <div class="article-body">
-        <div class="article-meta">
-          <span class="fact-badge" style="background:var(--green);color:#000;border-color:var(--green)">&#x2713; Full Coverage</span>
-          <span class="article-tag cyan">Earnings Call</span>
-          <span class="article-tag">May 21, 2026</span>
-          <span class="article-date">May 21, 2026</span>
-        </div>
-        <div class="article-title">
-          <a href="/articles/gta6-take-two-earnings-call-may-2026.html">Take-Two Earnings: GTA6 On Track, $8.2B Forecast, $70 Defended, GTA6 Online Unaddressed</a>
-        </div>
-        <div class="article-excerpt">
-          November 19 locked. $8&ndash;8.2 billion projected for FY2027. GTA series = 65% of net bookings. Zelnick defended $70 as a valid price — but confirmed nothing. GTA6 online: he refused to speculate. GTA Online called a "legacy game." Every answer that mattered, broken down.
-        </div>
-        <a href="/articles/gta6-take-two-earnings-call-may-2026.html" class="read-more">Full Earnings Breakdown</a>
-      </div>
-    </div>
-
-    <div class="article-card reveal">
-      <div class="article-body">
-        <div class="article-meta">
-          <span class="fact-badge" style="background:var(--green);color:#000;border-color:var(--green)">&#x2713; Debunked</span>
-          <span class="article-tag">Google AI</span>
-          <span class="article-date">May 21, 2026</span>
-        </div>
-        <div class="article-title">
-          <a href="/articles/gta6-not-delayed-google-ai-wrong.html">No, GTA6 Has NOT Been Delayed Again &#8212; Here's What Google Is Getting Wrong</a>
-        </div>
-        <div class="article-excerpt">Google AI Mode is showing a scary summary that looks like a new GTA6 delay. It hasn't been delayed. November 19 is still locked. Here's exactly what Google is misrepresenting and why.</div>
-        <a href="/articles/gta6-not-delayed-google-ai-wrong.html" class="read-more">Read The Debunk</a>
-      </div>
-    </div>
-
-    <div class="article-card featured reveal">
-      <div class="article-body">
-        <div class="article-meta">
-          <span class="fact-badge" style="background:#FF3B3B;color:#fff;border-color:#FF3B3B">&#x1F534; Live Tomorrow</span>
-          <span class="article-tag cyan">Earnings Call</span>
-          <span class="article-tag">4:33 PM ET</span>
-          <span class="article-date">May 20, 2026</span>
-        </div>
-        <div class="article-title">
-          <a href="/articles/gta6-earnings-call-preview-may21.html">Tomorrow at 4:33 PM Eastern, Take-Two Gets On A Call With The World</a>
-        </div>
-        <div class="article-excerpt">The Q4 fiscal 2026 earnings call is set. Every analyst has a GTA6 question ready. No matter how much or how little Strauss Zelnick says tomorrow &#8212; <strong>GTA6 news is guaranteed</strong>. Pre-orders. Pricing. Trailer. Editions. PC version. Here&#8217;s everything you need to know before 4:33 PM ET.</div>
-        <a href="/articles/gta6-earnings-call-preview-may21.html" class="read-more">Read The Preview</a>
-      </div>
-    </div>
-
-    <div class="article-card featured reveal">
-      <div class="article-body">
-        <div class="article-meta">
-          <span class="fact-badge" style="background:var(--amber);color:var(--pitch);border-color:var(--amber)">&#x26A1; Breaking</span>
-          <span class="article-tag cyan">Deep Dive</span>
-          <span class="article-tag">Supply Chain</span>
-          <span class="article-date">May 19, 2026</span>
-        </div>
-        <div class="article-title">
-          <a href="/articles/gta6-samsung-strike-ai-npc-memory-crisis.html">The Strike That Could Break GTA6&#8217;s AI Before You Even Play It</a>
-        </div>
-        <div class="article-excerpt">Rockstar promised NPCs that remember you, react to you, and feel alive in ways no open world game ever has. That promise runs on hardware. That hardware is built from chips. <strong>45,000 Samsung workers walk out May 21 for 18 days</strong> &#8212; the largest labor stoppage in semiconductor history.</div>
-        <a href="/articles/gta6-samsung-strike-ai-npc-memory-crisis.html" class="read-more">Read Full Breakdown</a>
-      </div>
-    </div>
-
-    <div class="article-card featured reveal">
-      <div class="article-body">
-        <div class="article-meta">
-          <span class="fact-badge" style="background:var(--amber);color:var(--pitch);border-color:var(--amber)">&#x1F525; Breaking</span>
-          <span class="article-tag">Pre-Orders</span>
-          <span class="article-tag cyan">Exclusive</span>
-          <span class="article-date">May 19, 2026</span>
-        </div>
-        <div class="article-title">
-          <a href="/articles/gta6-preorders-secretly-went-live-italy.html">GTA 6 Pre-Orders Secretly Went Live &#8212; And Nobody Noticed</a>
-        </div>
-        <div class="article-excerpt">While everyone was watching the Best Buy chaos, <strong>a retailer quietly opened GTA 6 pre-orders for real.</strong> Full listing. Live buy button. Official price. 50 copies. Gone before most people even knew it happened.</div>
-        <a href="/articles/gta6-preorders-secretly-went-live-italy.html" class="read-more">Read Full Story</a>
-      </div>
-    </div>
-
-    <div class="article-card reveal">
-      <div class="article-body">
-        <div class="article-meta">
-          <span class="fact-badge" style="background:var(--cyan);color:var(--pitch);border-color:var(--cyan)">&#x1F4BB; Guide</span>
-          <span class="article-tag">PC Builds</span>
-          <span class="article-tag cyan">Affiliate</span>
-          <span class="article-date">May 20, 2026</span>
-        </div>
-        <div class="article-title">
-          <a href="/articles/gta6-pc-build-guide-2026.html">One PC To Rule Them All &#8212; GTA6 Launch Day Build Guide</a>
-        </div>
-        <div class="article-excerpt">Three builds. Three price points. The Shire ($1,441), The Fellowship ($2,277), and The Mordor ($7,033). All real parts. All real Amazon affiliate links. <strong>Buy before the Samsung strike hits and RAM prices spike.</strong></div>
-        <a href="/articles/gta6-pc-build-guide-2026.html" class="read-more">See All Three Builds</a>
-      </div>
-    </div>
-
-    <div class="article-card featured reveal">
-      <div class="article-body">
-        <div class="article-meta">
-          <span class="fact-badge">&#x26A1; NEWS</span>
-          <span class="article-tag" style="background:var(--amber);color:var(--pitch);border-color:var(--amber)">&#x1F525; Breaking</span>
-          <span class="article-tag cyan">Debunked</span>
-          <span class="article-date">May 18, 2026</span>
-        </div>
-        <div class="article-title">
-          <a href="/articles/gta6-preorder-chaos-debunked.html">GTA 6 Sparks Pre-Order Chaos: How One Email Broke the Internet</a>
-        </div>
-        <div class="article-excerpt">A single Best Buy affiliate email had <strong>1.5 million Reddit members in full meltdown</strong>, swung Take-Two&#8217;s market cap by <strong>$2 billion</strong>, and triggered death threats against one of gaming&#8217;s top leakers.</div>
-        <a href="/articles/gta6-preorder-chaos-debunked.html" class="read-more">Read Full Story</a>
-      </div>
-    </div>
-
-    <div class="article-card reveal">
-      <div class="article-body">
-        <div class="article-meta">
-          <span class="fact-badge rumor">&#x26A1; RUMOR</span>
-          <span class="article-tag">Pricing</span>
-          <span class="article-tag cyan">Leak</span>
-          <span class="article-date">May 18, 2026</span>
-        </div>
-        <div class="article-title">
-          <a href="/articles/gta6-price-115-dutch-leak.html">GTA 6 Could Cost $115 &#8212; And Fans Are Furious</a>
-        </div>
-        <div class="article-excerpt">Dutch retailer Gameshop Twente has GTA 6 listed at <strong>&#8364;99 &#8212; roughly $115 USD</strong>. The listing is real. Whether the price is final is the only question left.</div>
-        <a href="/articles/gta6-price-115-dutch-leak.html" class="read-more">Read Full Story</a>
-      </div>
-    </div>
-
-    <div class="article-card reveal">
-      <div class="article-body">
-        <div class="article-meta">
-          <span class="fact-badge rumor">&#x26A1; RUMOR</span>
-          <span class="article-tag">Editions</span>
-          <span class="article-tag">Pre-Orders</span>
-          <span class="article-date">May 18, 2026</span>
-        </div>
-        <div class="article-title">
-          <a href="/articles/gta6-six-editions-leak.html">GTA 6 Will Launch With Six Editions &#8212; Including a Collector&#8217;s Set</a>
-        </div>
-        <div class="article-excerpt">Leaker DetectiveSeeds says GTA 6 launches with <strong>six ways to buy</strong>: three standard tiers, a rare collector&#8217;s edition, and two PS5 console bundles.</div>
-        <a href="/articles/gta6-six-editions-leak.html" class="read-more">Read Full Story</a>
-      </div>
-    </div>
-
-    <div class="article-card reveal">
-      <div class="article-body">
-        <div class="article-meta">
-          <span class="fact-badge rumor">&#x26A1; RUMOR</span>
-          <span class="article-tag">Press</span>
-          <span class="article-tag cyan">Launch Day</span>
-          <span class="article-date">May 18, 2026</span>
-        </div>
-        <div class="article-title">
-          <a href="/articles/gta6-no-review-copies.html">Rockstar Won&#8217;t Send Review Copies &#8212; What That Means For Day-One Buyers</a>
-        </div>
-        <div class="article-excerpt">Rockstar Games reportedly will not distribute GTA 6 review copies to press ahead of launch. <strong>Journalists will preview under strict supervision at a closed event instead.</strong></div>
-        <a href="/articles/gta6-no-review-copies.html" class="read-more">Read Full Story</a>
-      </div>
-    </div>
-
-    <div class="feed-section-label" style="margin-top:32px;">Earlier Coverage</div>
-
-    <div class="article-card reveal">
-      <div class="article-body">
-        <div class="article-meta">
-          <span class="fact-badge confirmed">&#x2713; CONFIRMED</span>
-          <span class="article-tag">Market</span>
-          <span class="article-tag cyan">Take-Two</span>
-          <span class="article-date">May 14, 2026</span>
-        </div>
-        <div class="article-title">
-          <a href="/articles/gta6-preorder-stock-surge.html">GTA6 Pre-Order Leak Adds $2 Billion To Take-Two Overnight</a>
-        </div>
-        <div class="article-excerpt">Take-Two Interactive&#8217;s market cap surged by an estimated <strong>$2 billion</strong> before the rumor was debunked. Here&#8217;s what the stock move tells us about the financial stakes around GTA6&#8217;s launch.</div>
-        <a href="/articles/gta6-preorder-stock-surge.html" class="read-more">Read Full Story</a>
-      </div>
-    </div>
-
-    <div class="article-card reveal">
-      <div class="article-body">
-        <div class="article-meta">
-          <span class="fact-badge confirmed">&#x2713; CONFIRMED</span>
-          <span class="article-tag">Guide</span>
-          <span class="article-tag cyan">Facts Only</span>
-          <span class="article-date">May 5, 2026</span>
-        </div>
-        <div class="article-title">
-          <a href="/articles/gta6-everything-confirmed.html">GTA6: Everything Officially Confirmed So Far</a>
-        </div>
-        <div class="article-excerpt">No speculation. No leaks. Just the facts that Rockstar and Take-Two have officially confirmed &#8212; release date, platforms, characters, setting, and everything else that is locked in.</div>
-        <a href="/articles/gta6-everything-confirmed.html" class="read-more">Read Full Story</a>
-      </div>
-    </div>
-
-    <div class="article-card reveal">
-      <div class="article-body">
-        <div class="article-meta">
-          <span class="fact-badge confirmed">&#x2713; CONFIRMED</span>
-          <span class="article-tag">Release Date</span>
-          <span class="article-date">April 28, 2026</span>
-        </div>
-        <div class="article-title">
-          <a href="/articles/gta6-november-19-confirmed.html">GTA6 Release Date Locked: November 19 2026 Is Official</a>
-        </div>
-        <div class="article-excerpt">After two delays and years of anticipation, Rockstar Games officially confirmed Grand Theft Auto VI launches <strong>November 19, 2026</strong> on PS5 and Xbox Series X/S.</div>
-        <a href="/articles/gta6-november-19-confirmed.html" class="read-more">Read Full Story</a>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-    <div class="sidebar-block">
-      <div class="sidebar-label">Take-Two Stock</div>
-      <div class="stock-mini">
-        <div class="stock-ticker-label">TTWO</div>
-        <div class="stock-name">Take-Two Interactive</div>
-        <div class="stock-price" id="sidebar-price">&#8212;</div>
-        <div class="stock-change flat" id="sidebar-change">Loading&#8230;</div>
-        <div class="stock-note" id="sidebar-updated">&#126;15 min delayed &#183; NYSE hours</div>
-      </div>
-    </div>
-
-    <div class="sidebar-block">
-      <div class="sidebar-label">GTACON Status</div>
-      <a href="/gtacon" style="display:block;background:var(--asphalt);border:1px solid var(--amber);border-top:2px solid var(--amber);padding:14px;text-decoration:none;margin-bottom:10px;">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--smoke);margin-bottom:4px;">Current Condition</div>
-        <div style="font-family:'Russo One',sans-serif;font-size:1.4rem;color:var(--amber);">CON 3 — Significant</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;color:var(--smoke);margin-top:4px;">Major signals confirmed. Marketing window approaching.</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-top:8px;">View Live Tracker →</div>
-      </a>
-    </div>
-
-    <div class="sidebar-block">
-      <div class="sidebar-label">Confirmed Facts</div>
-      <div class="fact-item"><span class="fact-check">&#x2713;</span><div class="fact-text"><strong>Release Date:</strong> November 19, 2026 &#8212; official from Rockstar Newswire</div></div>
-      <div class="fact-item"><span class="fact-check">&#x2713;</span><div class="fact-text"><strong>Platforms:</strong> PS5 and Xbox Series X/S at launch</div></div>
-      <div class="fact-item"><span class="fact-check">&#x2713;</span><div class="fact-text"><strong>Setting:</strong> Vice City &#8212; Leonida&#8217;s neon-soaked metropolis</div></div>
-      <div class="fact-item"><span class="fact-check">&#x2713;</span><div class="fact-text"><strong>Characters:</strong> Jason and Lucia &#8212; dual protagonists</div></div>
-      <div class="fact-item"><span class="fact-check">?</span><div class="fact-text"><strong>Price:</strong> &#8364;99 (~$115 USD) leaked by Dutch retailer &#8212; unconfirmed</div></div>
-      <div class="fact-item"><span class="fact-check">?</span><div class="fact-text"><strong>Editions:</strong> Six total leaked &#8212; including collector&#8217;s set and PS5 bundles</div></div>
-      <div class="fact-item"><span class="fact-check">?</span><div class="fact-text"><strong>Pre-orders:</strong> Not open &#8212; Best Buy email was an error per insider</div></div>
-    </div>
-
-    <div class="sidebar-block">
-      <div class="sidebar-label">The Last Drive</div>
-      <p style="font-size:13px;color:var(--smoke);margin-bottom:16px;line-height:1.6;">One final cruise through the city that raised us. <strong style="color:var(--bone)">November 18, 2026.</strong> Free. All platforms.</p>
-      <a href="/lastdrive.html" class="sidebar-cta">Sign Up Free</a>
-      <a href="/#signup" class="sidebar-cta ghost">Join The Email List</a>
-    </div>
-  </div>
-
+<!-- SHARE BAR -->
+<div class="share-bar">
+  <span class="share-label">Share</span>
+  <button class="share-btn share-native" onclick="nativeShare()">📤 Share</button>
+  <button class="share-btn share-reddit" onclick="shareReddit()">Reddit</button>
+  <button class="share-btn share-twitter" onclick="shareTwitter()">✕ Post</button>
+  <button class="share-btn share-whatsapp" onclick="shareWhatsApp()">WhatsApp</button>
+  <button class="share-btn share-copy" id="copy-btn" onclick="copyLink('copy-btn')">Copy Link</button>
 </div>
 
-<div style="padding:0 24px 24px;max-width:1100px;margin:0 auto;"><div class="share-bar"><span class="share-label">Share</span><button class="share-btn native" onclick="vl_share('GTA6 News Hub — 56ViceLane','GTA6 confirmed facts, credible leaks, and launch day coverage.','https://56vicelane.com/news.html')">&#x1F4F1; Share</button><a class="share-btn reddit" href="https://www.reddit.com/r/GTA6/submit?url=https://56vicelane.com/news.html&amp;title=GTA6+News+Hub+—+56ViceLane" target="_blank" rel="noopener">Reddit</a><a class="share-btn twitter" href="https://twitter.com/intent/tweet?url=https://56vicelane.com/news.html&amp;text=GTA6+News+Hub+—+56ViceLane&amp;via=56ViceLane" target="_blank" rel="noopener">&#x1D54F; Post</a><a class="share-btn whatsapp" href="https://wa.me/?text=GTA6+News+Hub+—+56ViceLane+https://56vicelane.com/news.html" target="_blank" rel="noopener">WhatsApp</a><button class="share-btn copy" onclick="vl_copy('https://56vicelane.com/news.html')">Copy Link</button></div></div>
+<!-- NEWS FEED -->
+<div class="news-wrap">
 
+  <div class="ad-unit">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <div class="feed-label">Latest — May 2026</div>
+
+  <!-- ARTICLE 1 — NEW -->
+  <div class="article-card featured reveal">
+    <div class="card-meta">
+      <span class="card-tag tag-breaking">Breaking</span>
+      <span class="card-tag tag-analysis">Analysis</span>
+      <span class="card-tag tag-preorders">Pre-Orders</span>
+      <span class="card-date">May 28, 2026</span>
+    </div>
+    <h2 class="card-title">
+      <a href="/articles/gta6-xbox-title-id-found-preorder-infrastructure">GTA VI Title ID Found In Xbox API — The Pre-Order Button Is Almost Ready</a>
+    </h2>
+    <p class="card-excerpt">A Reddit user found GTA VI's Xbox Title ID buried in Microsoft's API. Package Name confirms Rockstar. Both PlayStation IDs surfaced too. This is pre-order infrastructure. It's almost time.</p>
+    <a href="/articles/gta6-xbox-title-id-found-preorder-infrastructure" class="card-read-more">Read More →</a>
+  </div>
+
+  <!-- ARTICLE 2 -->
+  <div class="article-card reveal">
+    <div class="card-meta">
+      <span class="card-tag tag-confirmed">Confirmed</span>
+      <span class="card-tag tag-analysis">Analysis</span>
+      <span class="card-date">May 21, 2026</span>
+    </div>
+    <h2 class="card-title">
+      <a href="/articles/gta6-take-two-earnings-call-may-2026">Take-Two Earnings: GTA6 Nov 19 Locked, $8.2B Forecast — Full Breakdown</a>
+    </h2>
+    <p class="card-excerpt">The May 21 earnings call confirmed everything. November 19 is locked. $8.2B revenue forecast. Advertising campaign starts end of June. Full breakdown of every number that matters.</p>
+    <a href="/articles/gta6-take-two-earnings-call-may-2026" class="card-read-more">Read More →</a>
+  </div>
+
+  <!-- ARTICLE 3 -->
+  <div class="article-card reveal">
+    <div class="card-meta">
+      <span class="card-tag tag-confirmed">Confirmed</span>
+      <span class="card-date">May 21, 2026</span>
+    </div>
+    <h2 class="card-title">
+      <a href="/articles/gta6-not-delayed-google-ai-wrong">No, GTA6 Has NOT Been Delayed — Here's What Google Is Getting Wrong</a>
+    </h2>
+    <p class="card-excerpt">Google's AI Overview is surfacing delay misinformation and people are panicking. Here's what's actually confirmed, what's not, and why November 19 is still the date.</p>
+    <a href="/articles/gta6-not-delayed-google-ai-wrong" class="card-read-more">Read More →</a>
+  </div>
+
+  <div class="ad-unit reveal">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- ARTICLE 4 -->
+  <div class="article-card reveal">
+    <div class="card-meta">
+      <span class="card-tag tag-analysis">Analysis</span>
+      <span class="card-date">May 20, 2026</span>
+    </div>
+    <h2 class="card-title">
+      <a href="/articles/gta6-earnings-call-preview-may21">May 21 4:33 PM ET — Take-Two Earnings Call Preview</a>
+    </h2>
+    <p class="card-excerpt">What to watch for, what questions are on the table, and why this earnings call might be the biggest GTA6 news moment before the advertising campaign drops.</p>
+    <a href="/articles/gta6-earnings-call-preview-may21" class="card-read-more">Read More →</a>
+  </div>
+
+  <!-- ARTICLE 5 -->
+  <div class="article-card reveal">
+    <div class="card-meta">
+      <span class="card-tag tag-analysis">Analysis</span>
+      <span class="card-tag tag-hardware">Hardware</span>
+      <span class="card-date">May 20, 2026</span>
+    </div>
+    <h2 class="card-title">
+      <a href="/articles/gta6-samsung-strike-ai-npc-memory-crisis">Samsung Strike Avoided — But The Memory Supply Damage May Already Be Done</a>
+    </h2>
+    <p class="card-excerpt">The Samsung fab workers' strike was resolved May 20 but the AI data center memory crisis has already pushed RAM prices up. What this means for your GTA6 PC build.</p>
+    <a href="/articles/gta6-samsung-strike-ai-npc-memory-crisis" class="card-read-more">Read More →</a>
+  </div>
+
+  <!-- ARTICLE 6 -->
+  <div class="article-card reveal">
+    <div class="card-meta">
+      <span class="card-tag tag-hardware">PC Build</span>
+      <span class="card-date">May 19, 2026</span>
+    </div>
+    <h2 class="card-title">
+      <a href="/articles/gta6-pc-build-guide-2026">One PC To Rule Them All — The GTA6 Launch Day Build Guide</a>
+    </h2>
+    <p class="card-excerpt">Three LOTR-themed builds covering every budget. The Shire at $1,150, The Fellowship at $2,000, and The Mordor at $6,200. Everything you need to be ready November 19.</p>
+    <a href="/articles/gta6-pc-build-guide-2026" class="card-read-more">Read More →</a>
+  </div>
+
+  <!-- ARTICLE 7 -->
+  <div class="article-card reveal">
+    <div class="card-meta">
+      <span class="card-tag tag-breaking">Breaking</span>
+      <span class="card-tag tag-preorders">Pre-Orders</span>
+      <span class="card-date">May 19, 2026</span>
+    </div>
+    <h2 class="card-title">
+      <a href="/articles/gta6-preorders-secretly-went-live-italy">GTA 6 Pre-Orders Secretly Went Live — And Nobody Noticed</a>
+    </h2>
+    <p class="card-excerpt">Italian retailer Showgame listed GTA6 at €69.90. 50 copies. Sold out immediately. The listing was pulled within hours. Meanwhile Scandinavian stores are already running in-store marketing.</p>
+    <a href="/articles/gta6-preorders-secretly-went-live-italy" class="card-read-more">Read More →</a>
+  </div>
+
+  <div class="ad-unit reveal">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- ARTICLE 8 -->
+  <div class="article-card reveal">
+    <div class="card-meta">
+      <span class="card-tag tag-breaking">Breaking</span>
+      <span class="card-tag tag-preorders">Pre-Orders</span>
+      <span class="card-date">May 18, 2026</span>
+    </div>
+    <h2 class="card-title">
+      <a href="/articles/gta6-preorder-chaos-debunked">GTA 6 Sparks Pre-Order Chaos: How One Email Broke the Internet</a>
+    </h2>
+    <p class="card-excerpt">A Best Buy affiliate email sent GTA6 fans into a frenzy and added $2 billion to Take-Two's stock price overnight. Tom Henderson received death threats. Then insiders debunked the whole thing.</p>
+    <a href="/articles/gta6-preorder-chaos-debunked" class="card-read-more">Read More →</a>
+  </div>
+
+  <!-- ARTICLE 9 -->
+  <div class="article-card reveal">
+    <div class="card-meta">
+      <span class="card-tag tag-leak">Leak</span>
+      <span class="card-date">May 18, 2026</span>
+    </div>
+    <h2 class="card-title">
+      <a href="/articles/gta6-price-115-dutch-leak">GTA 6 Could Cost $115 — And Fans Are Furious</a>
+    </h2>
+    <p class="card-excerpt">Dutch retailer Gameshop Twente listed GTA6 at €99 — roughly $115 USD at current exchange rates. The gaming community has opinions. Loud ones.</p>
+    <a href="/articles/gta6-price-115-dutch-leak" class="card-read-more">Read More →</a>
+  </div>
+
+  <!-- ARTICLE 10 -->
+  <div class="article-card reveal">
+    <div class="card-meta">
+      <span class="card-tag tag-leak">Leak</span>
+      <span class="card-date">May 18, 2026</span>
+    </div>
+    <h2 class="card-title">
+      <a href="/articles/gta6-six-editions-leak">GTA 6 Will Launch With Six Editions Including Collector's Set</a>
+    </h2>
+    <p class="card-excerpt">The DetectiveSeeds leak points to three standard tiers, a collector's edition, and two PS5 bundles. No physical disc in any of the bundles. Here's what each tier reportedly includes.</p>
+    <a href="/articles/gta6-six-editions-leak" class="card-read-more">Read More →</a>
+  </div>
+
+  <!-- ARTICLE 11 -->
+  <div class="article-card reveal">
+    <div class="card-meta">
+      <span class="card-tag tag-confirmed">Confirmed</span>
+      <span class="card-date">May 18, 2026</span>
+    </div>
+    <h2 class="card-title">
+      <a href="/articles/gta6-no-review-copies">Rockstar Won't Send GTA 6 Review Copies — Here's What That Means</a>
+    </h2>
+    <p class="card-excerpt">Journalists get a supervised preview event only. No Metacritic score on day one. No review embargoes. This is Rockstar playing a different game entirely.</p>
+    <a href="/articles/gta6-no-review-copies" class="card-read-more">Read More →</a>
+  </div>
+
+  <!-- ARTICLE 12 -->
+  <div class="article-card reveal">
+    <div class="card-meta">
+      <span class="card-tag tag-leak">Leak</span>
+      <span class="card-tag tag-hardware">Hardware</span>
+      <span class="card-date">May 18, 2026</span>
+    </div>
+    <h2 class="card-title">
+      <a href="/articles/gta6-gta5-switch2-virtuos">GTA 5 Could Be Coming To Nintendo Switch 2</a>
+    </h2>
+    <p class="card-excerpt">Virtuos, the porting studio behind some of the biggest console ports in recent memory, has signaled interest in bringing GTA5 and Red Dead Redemption 2 to Switch 2.</p>
+    <a href="/articles/gta6-gta5-switch2-virtuos" class="card-read-more">Read More →</a>
+  </div>
+
+  <div class="ad-unit reveal">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- ARTICLE 13 -->
+  <div class="article-card reveal">
+    <div class="card-meta">
+      <span class="card-tag tag-breaking">Breaking</span>
+      <span class="card-date">May 14, 2026</span>
+    </div>
+    <h2 class="card-title">
+      <a href="/articles/gta6-preorder-stock-surge">GTA6 Pre-Order Leak Adds $2 Billion To Take-Two Overnight</a>
+    </h2>
+    <p class="card-excerpt">One leaked email. Two billion dollars in market cap added in a single session. The demand signal from this moment told the entire industry everything it needed to know about GTA6's commercial ceiling.</p>
+    <a href="/articles/gta6-preorder-stock-surge" class="card-read-more">Read More →</a>
+  </div>
+
+  <!-- ARTICLE 14 -->
+  <div class="article-card reveal">
+    <div class="card-meta">
+      <span class="card-tag tag-analysis">Analysis</span>
+      <span class="card-date">May 10, 2026</span>
+    </div>
+    <h2 class="card-title">
+      <a href="/articles/gta6-price-what-to-expect">GTA6 Price: $70, $80, or $100? What We Actually Know</a>
+    </h2>
+    <p class="card-excerpt">Multiple retailers have now published different prices. We broke down every leak, every precedent, and every Take-Two statement to figure out what you should actually budget.</p>
+    <a href="/articles/gta6-price-what-to-expect" class="card-read-more">Read More →</a>
+  </div>
+
+  <!-- ARTICLE 15 -->
+  <div class="article-card reveal">
+    <div class="card-meta">
+      <span class="card-tag tag-confirmed">Confirmed</span>
+      <span class="card-date">May 5, 2026</span>
+    </div>
+    <h2 class="card-title">
+      <a href="/articles/gta6-everything-confirmed">GTA6: Everything Officially Confirmed So Far</a>
+    </h2>
+    <p class="card-excerpt">Not rumors. Not leaks. Only what Rockstar and Take-Two have officially said. Characters, setting, platforms, release date, and every hard fact in one place.</p>
+    <a href="/articles/gta6-everything-confirmed" class="card-read-more">Read More →</a>
+  </div>
+
+  <!-- ARTICLE 16 -->
+  <div class="article-card reveal">
+    <div class="card-meta">
+      <span class="card-tag tag-confirmed">Confirmed</span>
+      <span class="card-date">April 28, 2026</span>
+    </div>
+    <h2 class="card-title">
+      <a href="/articles/gta6-november-19-confirmed">GTA6 Release Date Locked: November 19 2026 Is Official</a>
+    </h2>
+    <p class="card-excerpt">After years of speculation, Take-Two Interactive confirmed the date. November 19, 2026. Circle it. Build toward it. Everything on this site exists because of this date.</p>
+    <a href="/articles/gta6-november-19-confirmed" class="card-read-more">Read More →</a>
+  </div>
+
+  <!-- LAST DRIVE EVENT CARD -->
+  <div class="article-card reveal" style="border-color: var(--amber); background: linear-gradient(135deg, var(--asphalt) 0%, #100f0a 100%);">
+    <div class="card-meta">
+      <span class="card-tag tag-event">Event</span>
+      <span class="card-date">November 18, 2026</span>
+    </div>
+    <h2 class="card-title">
+      <a href="/lastdrive">The Last Drive — One Final Cruise Through GTA5 Before GTA6 Launches</a>
+    </h2>
+    <p class="card-excerpt">November 18, 2026. The night before GTA6. Players worldwide log into GTA5 for one final slow cruise. No missions. No chaos. Just the road and the people who lived on it. Sign up free.</p>
+    <a href="/lastdrive" class="card-read-more">Sign Up Free →</a>
+  </div>
+
+  <!-- ARCHIVE LINK -->
+  <div class="archive-link-wrap reveal">
+    <a href="/archive">View Archive →</a>
+  </div>
+
+</div><!-- /news-wrap -->
+
+<!-- FOOTER -->
 <footer>
-  <div class="footer-brand"><span class="num">56</span>ViceLane</div>
-  <div class="footer-tag">Where GTA5 Ends And GTA6 Begins</div>
+  <div class="footer-logo">56ViceLane</div>
+  <div class="footer-tagline">Where GTA5 Ends And GTA6 Begins</div>
   <div class="footer-links">
     <a href="/">Home</a>
-    <a href="/news.html">News</a>
+    <a href="/news">News</a>
+    <a href="/lastdrive">Last Drive</a>
+    <a href="/shop">Shop</a>
     <a href="/gtacon">GTACON</a>
-    <a href="/lastdrive.html">Last Drive</a>
-    <a href="/shop.html">Shop</a>
-    <a href="/privacy.html">Privacy Policy</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/privacy">Privacy</a>
   </div>
-  <div class="footer-copy">&#169; 2026 56ViceLane &#183; Independent fan project &#183; Not affiliated with Rockstar Games or Take-Two Interactive</div>
+  <div class="footer-copy">© 2026 56ViceLane · Forged Oak Studios · Not affiliated with Rockstar Games or Take-Two Interactive</div>
 </footer>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const mb = document.getElementById('menu-btn');
-  const nl = document.getElementById('nav-links');
-  if (mb && nl) mb.addEventListener('click', () => {
-    const o = nl.classList.toggle('open');
-    mb.textContent = o ? 'Close' : 'Menu';
-  });
-});
+  // TICKER
+  fetch('/articles.json?v=' + Date.now())
+    .then(r => r.json())
+    .then(articles => {
+      const track = document.getElementById('ticker-track');
+      const items = [...articles, ...articles].map(a =>
+        `<span class="ticker-item" onclick="location.href='${a.url}'">${a.emoji} ${a.title}</span>`
+      ).join('');
+      track.innerHTML = items;
+    })
+    .catch(() => {
+      document.getElementById('ticker-track').innerHTML =
+        '<span class="ticker-item">🔥 56ViceLane — Where GTA5 Ends And GTA6 Begins</span>';
+    });
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
-  });
-}, { threshold: 0.08 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-async function fetchSidebarStock() {
-  try {
-    const url = 'https://query1.finance.yahoo.com/v8/finance/chart/TTWO?interval=1d&range=1d';
-    const proxy = 'https://api.allorigins.win/get?url=' + encodeURIComponent(url);
-    const res = await fetch(proxy);
-    const wrapper = await res.json();
-    const data = JSON.parse(wrapper.contents);
-    const meta = data?.chart?.result?.[0]?.meta;
-    if (!meta) return;
-    const price  = meta.regularMarketPrice;
-    const prev   = meta.previousClose || meta.chartPreviousClose;
-    const change = price - prev;
-    const pct    = ((change / prev) * 100);
-    document.getElementById('sidebar-price').textContent = '$' + price.toFixed(2);
-    const el = document.getElementById('sidebar-change');
-    const s  = change >= 0 ? '+' : '';
-    el.textContent = `${s}${change.toFixed(2)} (${s}${pct.toFixed(2)}%)`;
-    el.className = 'stock-change ' + (change > 0 ? 'up' : change < 0 ? 'down' : 'flat');
-    document.getElementById('sidebar-updated').textContent = '~15 min delayed \u00b7 Updated ' + new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
-  } catch(e) {
-    document.getElementById('sidebar-price').textContent = '&#8212;';
-    document.getElementById('sidebar-change').textContent = 'Unavailable';
+  // TTWO STOCK WIDGET
+  async function loadStock() {
+    try {
+      const url = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/TTWO?interval=1d&range=1d');
+      const res = await fetch(url);
+      const raw = await res.json();
+      const data = JSON.parse(raw.contents);
+      const meta = data.chart.result[0].meta;
+      const price = meta.regularMarketPrice.toFixed(2);
+      const prev = meta.chartPreviousClose.toFixed(2);
+      const change = (meta.regularMarketPrice - meta.chartPreviousClose).toFixed(2);
+      const pct = ((change / meta.chartPreviousClose) * 100).toFixed(2);
+      const isUp = change >= 0;
+      document.getElementById('stock-price').textContent = '$' + price;
+      const changeEl = document.getElementById('stock-change');
+      changeEl.textContent = (isUp ? '+' : '') + change + ' (' + (isUp ? '+' : '') + pct + '%)';
+      changeEl.className = 'stock-change ' + (isUp ? 'up' : 'down');
+    } catch(e) {
+      document.getElementById('stock-price').textContent = '—';
+    }
   }
-}
-fetchSidebarStock();
-setInterval(fetchSidebarStock, 900000);
+  loadStock();
+  setInterval(loadStock, 900000);
 
-function vl_share(title,text,url){
-  if(navigator.share){navigator.share({title:title,text:text,url:url}).catch(function(){});}
-  else{vl_copy(url);}
-}
-function vl_copy(url){
-  var u=url||window.location.href;
-  if(navigator.clipboard){
-    navigator.clipboard.writeText(u).then(function(){
-      document.querySelectorAll(".share-btn.copy").forEach(function(b){
-        var o=b.textContent;b.textContent="Copied!";b.classList.add("copied");
-        setTimeout(function(){b.textContent=o;b.classList.remove("copied");},2000);
-      });
+  // SHARE
+  function nativeShare() {
+    if (navigator.share) { navigator.share({ title: 'GTA6 News Hub — 56ViceLane', url: window.location.href }); }
+    else { navigator.clipboard.writeText(window.location.href); }
+  }
+  function shareReddit() {
+    window.open('https://www.reddit.com/r/GTA6/submit?url=' + encodeURIComponent(window.location.href) + '&title=' + encodeURIComponent('GTA6 News Hub — 56ViceLane'), '_blank');
+  }
+  function shareTwitter() {
+    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('GTA6 News Hub — Every leak, every confirmed fact. #GTA6 #GTA6News') + '&url=' + encodeURIComponent(window.location.href), '_blank');
+  }
+  function shareWhatsApp() {
+    window.open('https://wa.me/?text=' + encodeURIComponent('GTA6 News Hub — 56ViceLane ' + window.location.href), '_blank');
+  }
+  function copyLink(btnId) {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      const btn = document.getElementById(btnId);
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy Link', 2000);
     });
   }
-}
+
+  // SCROLL REVEAL
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
+
 </body>
 </html>
