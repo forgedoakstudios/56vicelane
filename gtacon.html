@@ -3,355 +3,99 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GTACON — GTA 6 Launch Readiness Condition | 56ViceLane</title>
+<title>GTACON — GTA 6 Launch Readiness | 56ViceLane</title>
 <meta name="description" content="56ViceLane's exclusive GTA 6 launch readiness tracker. Five conditions. Fully automated. Updated in real time.">
-
-<!-- PWA: Add to Home Screen support -->
+<meta property="og:title" content="GTACON — GTA 6 Launch Readiness | 56ViceLane">
+<meta property="og:description" content="The only GTA 6 launch readiness tracker on the internet. Five conditions. We monitor it so you don't have to.">
+<meta property="og:image" content="https://56vicelane.com/images/Jason_and_Lucia_01_landscape.jpg">
+<meta property="og:url" content="https://56vicelane.com/gtacon">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@56ViceLane">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="GTACON">
-<meta name="application-name" content="GTACON">
 <meta name="theme-color" content="#080A0E">
-
-<!-- PWA Icons (create these images and upload to your site) -->
-<link rel="apple-touch-icon" sizes="180x180" href="/images/gtacon-icon-180.png">
-<link rel="apple-touch-icon" sizes="152x152" href="/images/gtacon-icon-152.png">
-<link rel="apple-touch-icon" sizes="120x120" href="/images/gtacon-icon-120.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-
-<!-- PWA Manifest -->
 <link rel="manifest" href="/gtacon-manifest.json">
-
+<link rel="apple-touch-icon" sizes="180x180" href="/images/gtacon-icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;900&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --pitch:#080A0E; --asphalt:#0E1018; --edge:#1C1F2B;
-  --amber:#FF6B1A; --amber-dim:#B84A10;
-  --bone:#E8E4DC; --smoke:#6A6E82;
-  --con5:#00CC66; --con4:#88CC00; --con3:#FFCC00;
-  --con2:#FF6600; --con1:#FF1A1A;
+:root{
+  --pitch:#080A0E;--asphalt:#0E1018;--edge:#1C1F2B;
+  --amber:#FF6B1A;--amber-dim:#B84A10;
+  --bone:#E8E4DC;--smoke:#6A6E82;
+  --con5:#00CC66;--con4:#88CC00;--con3:#FFCC00;
+  --con2:#FF6600;--con1:#FF1A1A;
   --cc:#FFCC00;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--pitch);color:var(--bone);font-family:'Source Sans 3',sans-serif;overflow-x:hidden;}
 
-.bg-grid{position:fixed;inset:0;background-image:linear-gradient(rgba(255,107,26,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,107,26,.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0;}
-#bgGlow{position:fixed;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:600px;pointer-events:none;z-index:0;animation:glowP 4s ease-in-out infinite;}
-@keyframes glowP{0%,100%{opacity:.6;transform:translateX(-50%) scale(1);}50%{opacity:1;transform:translateX(-50%) scale(1.1);}}
-
-/* PERSISTENT NAV INSTALL BANNER */
-.nav-install-bar {
-  position:relative; z-index:9;
-  background:linear-gradient(90deg, rgba(255,107,26,.15), rgba(255,107,26,.08), rgba(255,107,26,.15));
-  border-bottom:1px solid rgba(255,107,26,.3);
-  padding:10px 20px;
-  display:flex; align-items:center; justify-content:center;
-  gap:12px; cursor:pointer;
-  animation:installBarPulse 3s ease-in-out infinite;
-  text-decoration:none;
-}
-.nav-install-bar.hidden { display:none; }
-@keyframes installBarPulse {
-  0%,100%{background:linear-gradient(90deg,rgba(255,107,26,.12),rgba(255,107,26,.06),rgba(255,107,26,.12));}
-  50%{background:linear-gradient(90deg,rgba(255,107,26,.22),rgba(255,107,26,.14),rgba(255,107,26,.22));}
-}
-.nib-icon {
-  font-size:1.2rem; flex-shrink:0;
-  animation:phoneWiggle 2s ease-in-out infinite;
-}
-@keyframes phoneWiggle {
-  0%,100%{transform:rotate(0deg);}
-  20%{transform:rotate(-12deg);}
-  40%{transform:rotate(12deg);}
-  60%{transform:rotate(-8deg);}
-  80%{transform:rotate(8deg);}
-}
-.nib-text {
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:900; font-size:.95rem;
-  letter-spacing:.08em; text-transform:uppercase;
-  color:var(--bone);
-}
-.nib-text em { color:var(--amber); font-style:normal; }
-.nib-cta {
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:900; font-size:.75rem;
-  letter-spacing:.1em; text-transform:uppercase;
-  background:var(--amber); color:#000;
-  padding:5px 12px; border-radius:1px;
-  flex-shrink:0; white-space:nowrap;
-}
-.nib-dismiss {
-  font-size:.75rem; color:var(--smoke);
-  background:none; border:none; cursor:pointer;
-  padding:4px 8px; flex-shrink:0;
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:700; letter-spacing:.08em; text-transform:uppercase;
-}
-
-/* FIRST VISIT POPUP */
-.install-popup {
-  position:fixed; inset:0; z-index:1000;
-  background:rgba(0,0,0,.85); backdrop-filter:blur(8px);
-  display:flex; align-items:flex-end; justify-content:center;
-  padding:20px; opacity:0; pointer-events:none;
-  transition:opacity .3s ease;
-}
-.install-popup.show { opacity:1; pointer-events:all; }
-.install-popup-inner {
-  background:var(--asphalt);
-  border:1px solid var(--edge);
-  border-top:3px solid var(--amber);
-  width:100%; max-width:480px;
-  padding:28px 24px 24px;
-  animation:popupSlide .4s cubic-bezier(.23,1,.32,1);
-}
-@keyframes popupSlide {
-  from{transform:translateY(40px);opacity:0;}
-  to{transform:translateY(0);opacity:1;}
-}
-.popup-header {
-  display:flex; justify-content:space-between;
-  align-items:flex-start; margin-bottom:6px;
-}
-.popup-title {
-  font-family:'Bebas Neue',sans-serif;
-  font-size:1.8rem; color:var(--amber);
-  letter-spacing:.05em; line-height:1;
-}
-.popup-close {
-  background:none; border:none; color:var(--smoke);
-  font-size:1.4rem; cursor:pointer; padding:0 4px;
-  line-height:1; margin-top:-2px;
-}
-.popup-sub {
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:.85rem; color:var(--smoke);
-  margin-bottom:24px; line-height:1.5;
-}
-.popup-sub strong { color:var(--bone); }
-
-/* Device tabs */
-.device-tabs {
-  display:flex; gap:2px; margin-bottom:16px;
-}
-.dev-tab {
-  flex:1; font-family:'Barlow Condensed',sans-serif;
-  font-weight:700; font-size:.85rem; letter-spacing:.08em;
-  text-transform:uppercase; padding:8px;
-  background:var(--pitch); border:1px solid var(--edge);
-  color:var(--smoke); cursor:pointer; transition:all .2s;
-  text-align:center;
-}
-.dev-tab.active {
-  background:rgba(255,107,26,.15);
-  border-color:var(--amber); color:var(--amber);
-}
-
-/* Steps */
-.install-steps { display:none; }
-.install-steps.show { display:block; }
-.install-step {
-  display:flex; align-items:flex-start; gap:12px;
-  padding:10px 0; border-bottom:1px solid var(--edge);
-}
-.install-step:last-child { border-bottom:none; }
-.step-num {
-  width:26px; height:26px; border-radius:50%;
-  background:var(--amber); color:#000;
-  font-family:'Bebas Neue',sans-serif; font-size:1rem;
-  display:flex; align-items:center; justify-content:center;
-  flex-shrink:0; margin-top:1px;
-}
-.step-text {
-  font-size:.88rem; color:var(--bone); line-height:1.5;
-}
-.step-text em {
-  color:var(--amber); font-style:normal; font-weight:600;
-}
-.step-icon { font-size:1.1rem; }
-
-.popup-install-btn {
-  width:100%; margin-top:20px;
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:900; font-size:1rem; letter-spacing:.1em;
-  text-transform:uppercase; background:var(--amber);
-  border:none; color:#000; padding:14px;
-  cursor:pointer; transition:background .2s;
-}
-.popup-install-btn:hover { background:var(--amber-dim); }
-.popup-install-btn.ios-only {
-  background:transparent; border:1px solid var(--amber);
-  color:var(--amber);
-}
-
-/* PWA INSTALL BANNER (bottom slide) */
-.install-banner {
-  position:fixed; bottom:0; left:0; right:0; z-index:200;
-  background:var(--asphalt);
-  border-top:2px solid var(--amber);
-  padding:14px 20px;
-  display:none;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  animation:slideUp .4s ease-out;
-}
-@keyframes slideUp{from{transform:translateY(100%);}to{transform:translateY(0);}}
-.install-banner.show{display:flex;}
-.install-left{display:flex;align-items:center;gap:10px;}
-.install-icon{
-  width:40px;height:40px;border-radius:8px;
-  background:linear-gradient(135deg,var(--amber),var(--amber-dim));
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:#000;
-  letter-spacing:.05em;flex-shrink:0;
-}
-.install-text{font-family:'Barlow Condensed',sans-serif;}
-.install-title{font-size:.9rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em;color:var(--bone);}
-.install-sub{font-size:.7rem;color:var(--smoke);margin-top:1px;}
-.install-btns{display:flex;gap:8px;flex-shrink:0;}
-.install-yes{
-  font-family:'Barlow Condensed',sans-serif;font-weight:900;
-  font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;
-  background:var(--amber);border:none;color:#000;
-  padding:8px 16px;cursor:pointer;
-}
-.install-no{
-  font-family:'Barlow Condensed',sans-serif;font-weight:700;
-  font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;
-  background:transparent;border:1px solid var(--edge);color:var(--smoke);
-  padding:8px 12px;cursor:pointer;
-}
-
-/* PHOTOSENSITIVITY WARNING */
-.photo-warning {
-  position:relative; z-index:10;
-  background:rgba(255,107,26,.08);
-  border-bottom:1px solid rgba(255,107,26,.2);
-  padding:6px 20px;
-  text-align:center;
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:.7rem; font-weight:700; letter-spacing:.08em;
-  text-transform:uppercase; color:var(--smoke);
-}
-.photo-warning span { color:var(--amber); }
-
-/* MUTE TOGGLE */
-.mute-btn {
-  position:fixed; bottom:80px; right:16px; z-index:201;
-  width:44px; height:44px; border-radius:50%;
-  background:rgba(14,16,24,.92); backdrop-filter:blur(8px);
-  border:1px solid var(--edge);
-  display:flex; align-items:center; justify-content:center;
-  cursor:pointer; transition:all .2s;
-  font-size:1.2rem; line-height:1;
-}
-.mute-btn:hover { border-color:var(--amber); }
-.mute-btn.muted { border-color:var(--smoke); opacity:.6; }
-
-/* LIVE BADGE */
-.live-badge {
-  position:fixed; top:16px; right:16px; z-index:100;
-  display:flex; align-items:center; gap:6px;
-  background:rgba(14,16,24,.9); backdrop-filter:blur(8px);
-  border:1px solid var(--edge); padding:6px 12px;
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:.7rem; font-weight:700; letter-spacing:.1em;
-  text-transform:uppercase; color:var(--smoke);
-}
-.live-dot{width:6px;height:6px;border-radius:50%;background:var(--con3);animation:livePulse 1.5s ease-in-out infinite;}
-@keyframes livePulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(255,204,0,.5);}50%{opacity:.6;box-shadow:0 0 0 4px rgba(255,204,0,0);}}
-.live-badge.updating .live-dot{background:#888;animation:none;}
-
-/* CONDITION CHANGE FLASH */
-.condition-flash{
-  position:fixed;inset:0;z-index:999;
-  pointer-events:none;
-  opacity:0;
-  transition:opacity .3s;
-}
-.condition-flash.active{animation:flashBang .8s ease-out forwards;}
-@keyframes flashBang{0%{opacity:.6;}100%{opacity:0;}}
-
-/* ALERT BAR — shows when condition changes */
-.alert-bar{
-  position:relative;z-index:20;
-  background:var(--con2);
-  padding:10px 20px;
-  text-align:center;
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:900; font-size:1rem; letter-spacing:.08em;
-  text-transform:uppercase; color:#000;
-  display:none;
-  animation:alertSlide .4s ease-out;
-}
-@keyframes alertSlide{from{transform:translateY(-100%);}to{transform:translateY(0);}}
-
 /* TICKER */
-.ticker{position:relative;z-index:10;background:var(--amber);overflow:hidden;padding:7px 0;}
+.ticker{background:var(--amber);overflow:hidden;padding:7px 0;position:relative;z-index:10;}
 .ticker-track{display:flex;gap:80px;white-space:nowrap;animation:tickS 30s linear infinite;}
 .ticker-item{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:#000;flex-shrink:0;}
 @keyframes tickS{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
 /* NAV */
-nav{position:relative;z-index:10;background:rgba(14,16,24,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--edge);padding:14px 28px;display:flex;justify-content:space-between;align-items:center;}
+nav{background:rgba(14,16,24,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--edge);padding:14px 28px;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:10;}
 .nav-logo{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:900;color:var(--bone);text-decoration:none;}
 .nav-logo span{color:var(--amber);}
 .nav-links{display:flex;gap:28px;}
 .nav-links a{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:var(--smoke);text-decoration:none;transition:color .2s;}
 .nav-links a:hover{color:var(--bone);}
 .nav-links a.active{color:var(--amber);}
+@media(max-width:600px){.nav-links{display:none;}}
+
+/* LIVE BADGE */
+.live-badge{position:fixed;top:16px;right:16px;z-index:100;display:flex;align-items:center;gap:6px;background:rgba(14,16,24,.9);border:1px solid var(--edge);padding:6px 12px;font-family:'Barlow Condensed',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--smoke);}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--con3);animation:livePulse 1.5s ease-in-out infinite;}
+@keyframes livePulse{0%,100%{opacity:1;}50%{opacity:.5;}}
+
+/* MUTE */
+.mute-btn{position:fixed;bottom:24px;right:16px;z-index:201;width:44px;height:44px;border-radius:50%;background:rgba(14,16,24,.92);border:1px solid var(--edge);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;}
 
 /* HERO */
-.hero{position:relative;z-index:5;text-align:center;padding:48px 24px 32px;}
+.hero{text-align:center;padding:48px 24px 32px;position:relative;z-index:5;}
 .hero-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--smoke);margin-bottom:14px;}
 .hero-eyebrow span{color:var(--amber);margin:0 8px;}
 .gtacon-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(4.5rem,16vw,10rem);line-height:.9;letter-spacing:.05em;color:var(--bone);margin-bottom:6px;}
-.gtacon-title .flash{transition:color .8s;}
 .gtacon-sub{font-family:'Barlow Condensed',sans-serif;font-size:clamp(.9rem,2.5vw,1.2rem);font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--smoke);margin-bottom:44px;}
 
-/* THE METER */
+/* METER */
 .meter-wrap{max-width:820px;margin:0 auto 28px;padding:0 8px;}
 .meter-labels{display:flex;margin-bottom:10px;}
-.ml{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;transition:color .8s;}
+.ml{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;}
 .ml-num{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;line-height:1;}
 .ml-name{font-family:'Barlow Condensed',sans-serif;font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--smoke);}
-
 .meter-bar-outer{position:relative;height:36px;border-radius:3px;background:linear-gradient(90deg,var(--con1) 0%,var(--con2) 25%,var(--con3) 50%,var(--con4) 75%,var(--con5) 100%);overflow:visible;}
 .meter-mask{position:absolute;top:0;right:0;bottom:0;background:var(--pitch);border-left:1px solid rgba(255,255,255,.08);transition:width 1.8s cubic-bezier(.23,1,.32,1);border-radius:0 3px 3px 0;}
-.meter-ticks{position:absolute;inset:0;display:flex;justify-content:space-between;pointer-events:none;padding:0 20%;}
-.meter-tick{width:1px;background:rgba(0,0,0,.3);}
-.meter-needle{position:absolute;top:-8px;bottom:-8px;width:5px;border-radius:3px;background:#fff;transform:translateX(-50%);transition:left 1.8s cubic-bezier(.23,1,.32,1),box-shadow .8s;animation:needleFloat 3s ease-in-out infinite;z-index:10;}
+.meter-needle{position:absolute;top:-8px;bottom:-8px;width:5px;border-radius:3px;background:#fff;transform:translateX(-50%);transition:left 1.8s cubic-bezier(.23,1,.32,1);z-index:10;animation:needleFloat 3s ease-in-out infinite;}
 @keyframes needleFloat{0%,100%{margin-top:0;}50%{margin-top:-4px;}}
-.needle-bubble{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.12em;padding:4px 12px;border-radius:2px;white-space:nowrap;color:#000;transition:background .8s;animation:bubbleFloat 3s ease-in-out infinite;}
-@keyframes bubbleFloat{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(-4px);}}
-.needle-bubble::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border-left:6px solid transparent;border-right:6px solid transparent;border-top:6px solid var(--cc);transition:border-top-color .8s;}
+.needle-bubble{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.12em;padding:4px 12px;border-radius:2px;white-space:nowrap;color:#000;background:var(--cc);}
+.needle-bubble::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border-left:6px solid transparent;border-right:6px solid transparent;border-top:6px solid var(--cc);}
 .meter-scale{display:flex;margin-top:8px;}
-.ms{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;flex:1;text-align:center;transition:color .8s;}
+.ms{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;flex:1;text-align:center;}
 
 /* READOUT */
-.meter-readout{display:inline-flex;align-items:center;gap:20px;background:var(--asphalt);border:1px solid var(--edge);border-top-width:3px;padding:14px 28px;transition:border-color .8s;}
-.readout-con{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;line-height:1;transition:color .8s;}
+.meter-readout{display:inline-flex;align-items:center;gap:20px;background:var(--asphalt);border:1px solid var(--edge);border-top:3px solid var(--cc);padding:14px 28px;transition:border-color .8s;}
+.readout-con{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;line-height:1;color:var(--cc);}
 .readout-div{width:1px;height:42px;background:var(--edge);}
 .readout-label{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--smoke);margin-bottom:3px;}
-.readout-name{font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em;transition:color .8s;}
+.readout-name{font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em;color:var(--cc);}
 .readout-desc{font-size:.78rem;color:var(--smoke);margin-top:2px;max-width:220px;line-height:1.3;}
 .readout-updated{font-family:'Barlow Condensed',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--smoke);margin-top:6px;}
 
 /* CONDITION CARDS */
-.scale-section{position:relative;z-index:5;max-width:900px;margin:0 auto;padding:0 24px 60px;}
+.scale-section{max-width:900px;margin:0 auto;padding:0 24px 60px;position:relative;z-index:5;}
 .scale-title{font-family:'Barlow Condensed',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--smoke);text-align:center;margin-bottom:24px;}
 .condition-card{display:grid;grid-template-columns:80px 1fr;border:1px solid var(--edge);margin-bottom:2px;position:relative;overflow:hidden;transition:all .8s;}
-.condition-card.active{box-shadow:0 0 30px rgba(255,204,0,.1),inset 0 0 60px rgba(255,204,0,.03);}
+.condition-card.active{border-color:var(--cc);box-shadow:0 0 30px rgba(255,204,0,.1);}
 .condition-card.inactive{opacity:.4;}
-.condition-card.inactive:hover{opacity:.65;}
-.con-num-block{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px;position:relative;}
-.con-num{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;line-height:1;position:relative;z-index:2;}
-.con-word-sm{font-family:'Barlow Condensed',sans-serif;font-size:.55rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4);position:relative;z-index:2;}
+.con-num-block{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px;}
+.con-num{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;line-height:1;}
+.con-word-sm{font-family:'Barlow Condensed',sans-serif;font-size:.55rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4);}
 .con-body{background:var(--asphalt);padding:20px 24px;border-left:1px solid var(--edge);}
 .con-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;gap:16px;}
 .con-name-h{font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em;}
@@ -365,188 +109,65 @@ nav{position:relative;z-index:10;background:rgba(14,16,24,.95);backdrop-filter:b
 .con-pills{display:flex;gap:8px;flex-wrap:wrap;}
 .pill{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;background:rgba(255,255,255,.04);border:1px solid var(--edge);color:var(--smoke);}
 .pill.lit{background:rgba(255,107,26,.1);border-color:rgba(255,107,26,.3);color:var(--amber);}
-.condition-card.active .con-num-block::after{content:'';position:absolute;right:0;top:0;bottom:0;width:2px;box-shadow:0 0 12px var(--cc);}
 
 /* INTEL */
-.intel-strip{position:relative;z-index:5;background:var(--asphalt);border-top:1px solid var(--edge);border-bottom:1px solid var(--edge);padding:32px 24px;text-align:center;margin-bottom:48px;}
+.intel-strip{background:var(--asphalt);border-top:1px solid var(--edge);border-bottom:1px solid var(--edge);padding:32px 24px;text-align:center;margin-bottom:48px;position:relative;z-index:5;}
 .intel-lbl{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--smoke);margin-bottom:12px;}
 .intel-txt{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.1rem,3vw,1.5rem);font-weight:600;color:var(--bone);max-width:680px;margin:0 auto 16px;line-height:1.4;}
 .intel-txt em{color:var(--amber);font-style:normal;}
 .intel-sub{font-size:.85rem;color:var(--smoke);max-width:500px;margin:0 auto;line-height:1.6;}
 
-.last-updated{position:relative;z-index:5;text-align:center;padding:0 24px 20px;}
+/* LAST UPDATED */
+.last-updated{text-align:center;padding:0 24px 20px;position:relative;z-index:5;}
 .upd-inner{display:inline-flex;align-items:center;gap:10px;font-family:'Barlow Condensed',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--smoke);}
 .upd-dot{width:6px;height:6px;border-radius:50%;background:var(--con3);animation:dotP 2s ease-in-out infinite;}
 @keyframes dotP{0%,100%{opacity:1;}50%{opacity:.5;}}
 
-.share-section{position:relative;z-index:5;text-align:center;padding:0 24px 60px;}
+/* SHARE */
+.share-section{text-align:center;padding:0 24px 60px;position:relative;z-index:5;}
 .share-lbl{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--smoke);margin-bottom:14px;}
 .share-btns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
 .share-btn{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;padding:10px 20px;border:1px solid var(--edge);background:transparent;color:var(--bone);cursor:pointer;text-decoration:none;transition:all .2s;}
 .share-btn:hover{border-color:var(--amber);color:var(--amber);}
 .share-btn.prime{background:var(--amber);border-color:var(--amber);color:#000;}
-.share-btn.prime:hover{background:var(--amber-dim);}
 
-.countdown-section{position:relative;z-index:5;background:var(--asphalt);border-top:1px solid var(--edge);padding:28px 24px;text-align:center;}
+/* COUNTDOWN */
+.countdown-section{background:var(--asphalt);border-top:1px solid var(--edge);padding:28px 24px;text-align:center;position:relative;z-index:5;}
 .cd-lbl{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--smoke);margin-bottom:12px;}
 .cd-nums{display:flex;justify-content:center;gap:2px;}
 .cd-block{background:var(--pitch);padding:10px 16px;min-width:70px;text-align:center;}
 .cd-num{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--amber);line-height:1;display:block;}
 .cd-unit{font-family:'Barlow Condensed',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--smoke);margin-top:3px;}
 
-footer{position:relative;z-index:5;background:var(--pitch);border-top:1px solid var(--edge);padding:24px;text-align:center;}
+/* FOOTER */
+footer{background:var(--pitch);border-top:1px solid var(--edge);padding:24px;text-align:center;position:relative;z-index:5;}
 .f-logo{font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:900;color:var(--bone);text-decoration:none;display:inline-block;margin-bottom:8px;}
 .f-logo span{color:var(--amber);}
 .f-links{display:flex;gap:20px;justify-content:center;margin-bottom:12px;}
 .f-links a{font-family:'Barlow Condensed',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--smoke);text-decoration:none;transition:color .2s;}
 .f-links a:hover{color:var(--amber);}
 .f-note{font-size:.72rem;color:var(--smoke);line-height:1.5;}
-
-@media(max-width:600px){
-  .nav-links{display:none;}
-  .condition-card{grid-template-columns:60px 1fr;}
-  .con-num{font-size:2.5rem;}
-  .meter-readout{flex-direction:column;gap:8px;text-align:center;}
-  .readout-div{width:60px;height:1px;}
-  .live-badge{top:auto;bottom:16px;right:16px;}
-  .ml-name{display:none;}
-}
 </style>
 </head>
 <body>
-<div class="bg-grid"></div>
-<div id="bgGlow"></div>
 
-<!-- PWA INSTALL BANNER -->
-<div class="install-banner" id="installBanner">
-  <div class="install-left">
-    <div class="install-icon">GTA<br>CON</div>
-    <div class="install-text">
-      <div class="install-title">Add GTACON to your home screen</div>
-      <div class="install-sub">Get instant alerts when the condition changes</div>
-    </div>
-  </div>
-  <div class="install-btns">
-    <button class="install-yes" id="installBtn">Add Now</button>
-    <button class="install-no" id="installNo">Later</button>
-  </div>
-</div>
+<!-- LIVE BADGE -->
+<div class="live-badge"><div class="live-dot" id="liveDot"></div><span id="liveText">Live</span></div>
 
-<!-- CONDITION CHANGE FLASH -->
-<div class="condition-flash" id="condFlash"></div>
+<!-- MUTE -->
+<button class="mute-btn" id="muteBtn" title="Toggle sound">🔊</button>
 
-<!-- ALERT BAR (hidden until condition changes) -->
-<div class="alert-bar" id="alertBar">
-  ⚡ GTACON CONDITION HAS CHANGED — SEE BELOW
-</div>
-
-<!-- LIVE UPDATE BADGE -->
-<div class="live-badge" id="liveBadge">
-  <div class="live-dot" id="liveDot"></div>
-  <span id="liveText">Live</span>
-</div>
-
-<!-- FIRST VISIT INSTALL POPUP -->
-<div class="install-popup" id="installPopup">
-  <div class="install-popup-inner">
-    <div class="popup-header">
-      <div class="popup-title">📱 Never Miss A Condition Change</div>
-      <button class="popup-close" id="popupClose">✕</button>
-    </div>
-    <div class="popup-sub">
-      Add GTACON to your home screen and get <strong>instant alerts</strong>
-      the moment the condition changes — day or night.
-      It takes 3 taps. Here's how.
-    </div>
-
-    <div class="device-tabs">
-      <div class="dev-tab active" id="tabIos" onclick="showTab('ios')">📱 iPhone</div>
-      <div class="dev-tab" id="tabAndroid" onclick="showTab('android')">🤖 Android</div>
-    </div>
-
-    <!-- iOS Steps -->
-    <div class="install-steps show" id="stepsIos">
-      <div class="install-step">
-        <div class="step-num">1</div>
-        <div class="step-text">
-          Tap the <em>Share button</em> at the bottom of your Safari browser
-          <div class="step-icon">⬆️ (the box with the arrow pointing up)</div>
-        </div>
-      </div>
-      <div class="install-step">
-        <div class="step-num">2</div>
-        <div class="step-text">
-          Scroll down and tap <em>"Add to Home Screen"</em>
-          <div class="step-icon">➕ (it has a plus icon)</div>
-        </div>
-      </div>
-      <div class="install-step">
-        <div class="step-num">3</div>
-        <div class="step-text">
-          Tap <em>"Add"</em> in the top right corner.
-          GTACON appears on your home screen instantly.
-        </div>
-      </div>
-    </div>
-
-    <!-- Android Steps -->
-    <div class="install-steps" id="stepsAndroid">
-      <div class="install-step">
-        <div class="step-num">1</div>
-        <div class="step-text">
-          Tap the <em>three-dot menu</em> in the top right of Chrome
-          <div class="step-icon">⋮</div>
-        </div>
-      </div>
-      <div class="install-step">
-        <div class="step-num">2</div>
-        <div class="step-text">
-          Tap <em>"Add to Home screen"</em> or
-          <em>"Install app"</em> from the menu
-        </div>
-      </div>
-      <div class="install-step">
-        <div class="step-num">3</div>
-        <div class="step-text">
-          Tap <em>"Add"</em> to confirm.
-          GTACON installs like a real app — no App Store needed.
-        </div>
-      </div>
-    </div>
-
-    <button class="popup-install-btn" id="popupInstallBtn">
-      Tap Here To Install (Android) / Follow Steps Above (iPhone)
-    </button>
-  </div>
-</div>
-
-<!-- PERSISTENT NAV INSTALL BANNER -->
-<div class="nav-install-bar" id="navInstallBar">
-  <span class="nib-icon">📱</span>
-  <span class="nib-text">Get <em>instant alerts</em> when GTACON changes — add to your home screen</span>
-  <span class="nib-cta">How To →</span>
-  <button class="nib-dismiss" id="nibDismiss">✕</button>
-</div>
-
-<!-- PHOTOSENSITIVITY WARNING -->
-<div class="photo-warning">
-  <span>⚠</span> This page uses visual alerts when the condition changes. If you are photosensitive, condition change effects can be disabled via the <span>sound/visual toggle</span> in the bottom right.
-</div>
-
-<!-- MUTE / VISUAL TOGGLE -->
-<button class="mute-btn" id="muteBtn" title="Toggle sound and visual alerts">🔊</button>
-<div class="ticker">
-  <div class="ticker-track" id="tickerTrack">
-    <span class="ticker-item" id="t1">⚡ GTACON LOADING...</span>
-    <span class="ticker-item" id="t2">🎮 56VICELANE IS WATCHING</span>
-    <span class="ticker-item" id="t3">📅 GTA 6 LAUNCHES NOVEMBER 19, 2026</span>
-    <span class="ticker-item" id="t4">🔥 CHECKING CONDITION...</span>
-    <span class="ticker-item">⚡ GTACON LOADING...</span>
-    <span class="ticker-item">🎮 56VICELANE IS WATCHING</span>
-    <span class="ticker-item">📅 GTA 6 LAUNCHES NOVEMBER 19, 2026</span>
-    <span class="ticker-item">🔥 CHECKING CONDITION...</span>
-  </div>
-</div>
+<!-- TICKER -->
+<div class="ticker"><div class="ticker-track" id="tickerTrack">
+  <span class="ticker-item">⚡ GTACON CONDITION 3 — SIGNIFICANT — 56VICELANE IS WATCHING</span>
+  <span class="ticker-item">🎮 56VICELANE IS WATCHING — WE'LL TELL YOU WHEN IT MOVES</span>
+  <span class="ticker-item">📅 GTA 6 LAUNCHES NOVEMBER 19, 2026</span>
+  <span class="ticker-item">🔥 TRAILER 3 WINDOW CONFIRMED — JUNE 25 TO JULY 8</span>
+  <span class="ticker-item">⚡ GTACON CONDITION 3 — SIGNIFICANT — 56VICELANE IS WATCHING</span>
+  <span class="ticker-item">🎮 56VICELANE IS WATCHING — WE'LL TELL YOU WHEN IT MOVES</span>
+  <span class="ticker-item">📅 GTA 6 LAUNCHES NOVEMBER 19, 2026</span>
+  <span class="ticker-item">🔥 TRAILER 3 WINDOW CONFIRMED — JUNE 25 TO JULY 8</span>
+</div></div>
 
 <!-- NAV -->
 <nav>
@@ -559,46 +180,43 @@ footer{position:relative;z-index:5;background:var(--pitch);border-top:1px solid 
   </div>
 </nav>
 
-<!-- HERO + METER -->
+<!-- HERO -->
 <div class="hero">
   <div class="hero-eyebrow">56ViceLane Exclusive <span>//</span> GTA 6 Launch Readiness <span>//</span> <span id="heroDate">Monitored Around The Clock</span></div>
-  <div class="gtacon-title">GTA<span class="flash" id="titleFlash">CON</span></div>
+  <div class="gtacon-title">GTA<span id="titleFlash">CON</span></div>
   <div class="gtacon-sub">Grand Theft Auto Launch Readiness Condition</div>
 
   <div class="meter-wrap">
     <div class="meter-labels">
-      <div class="ml" id="ml1" style="color:var(--con1)"><span class="ml-num">1</span><span class="ml-name">Maximum</span></div>
-      <div class="ml" id="ml2" style="color:var(--con2)"><span class="ml-num">2</span><span class="ml-name">Critical</span></div>
-      <div class="ml" id="ml3" style="color:var(--con3)"><span class="ml-num">3</span><span class="ml-name">Significant</span></div>
-      <div class="ml" id="ml4" style="color:var(--con4)"><span class="ml-num">4</span><span class="ml-name">Elevated</span></div>
-      <div class="ml" id="ml5" style="color:var(--con5)"><span class="ml-num">5</span><span class="ml-name">Cold</span></div>
+      <div class="ml" style="color:var(--con1)"><span class="ml-num">1</span><span class="ml-name">Maximum</span></div>
+      <div class="ml" style="color:var(--con2)"><span class="ml-num">2</span><span class="ml-name">Critical</span></div>
+      <div class="ml" style="color:var(--con3)"><span class="ml-num">3</span><span class="ml-name">Significant</span></div>
+      <div class="ml" style="color:var(--con4)"><span class="ml-num">4</span><span class="ml-name">Elevated</span></div>
+      <div class="ml" style="color:var(--con5)"><span class="ml-num">5</span><span class="ml-name">Cold</span></div>
     </div>
-
     <div class="meter-bar-outer">
-      <div class="meter-ticks"><div class="meter-tick"></div><div class="meter-tick"></div><div class="meter-tick"></div></div>
-      <div class="meter-mask" id="meterMask"></div>
-      <div class="meter-needle" id="meterNeedle">
-        <div class="needle-bubble" id="needleBubble">CON ?</div>
+      <div class="meter-mask" id="meterMask" style="width:40%"></div>
+      <div class="meter-needle" id="meterNeedle" style="left:50%;box-shadow:0 0 14px 4px var(--con3),0 0 35px 8px rgba(255,204,0,.5)">
+        <div class="needle-bubble" id="needleBubble">CON 3</div>
       </div>
     </div>
-
     <div class="meter-scale">
-      <span class="ms" id="ms1" style="color:var(--con1)">LAUNCH</span>
-      <span class="ms" id="ms2" style="color:var(--con2)">CRITICAL</span>
-      <span class="ms" id="ms3" style="color:var(--con3)">SIGNIFICANT</span>
-      <span class="ms" id="ms4" style="color:var(--con4)">ELEVATED</span>
-      <span class="ms" id="ms5" style="color:var(--con5)">COLD</span>
+      <span class="ms" style="color:var(--con1)">Launch</span>
+      <span class="ms" style="color:var(--con2)">Critical</span>
+      <span class="ms" style="color:var(--con3)">Significant</span>
+      <span class="ms" style="color:var(--con4)">Elevated</span>
+      <span class="ms" style="color:var(--con5)">Cold</span>
     </div>
   </div>
 
   <div class="meter-readout" id="meterReadout">
-    <div class="readout-con" id="rCon">—</div>
+    <div class="readout-con" id="rCon">CON 3</div>
     <div class="readout-div"></div>
     <div>
       <div class="readout-label">Current Condition</div>
-      <div class="readout-name" id="rName">Loading...</div>
-      <div class="readout-desc" id="rDesc">Checking signals...</div>
-      <div class="readout-updated" id="rUpdated">Last checked: —</div>
+      <div class="readout-name" id="rName">Significant</div>
+      <div class="readout-desc" id="rDesc">Major signals confirmed. Marketing window approaching. Stay tuned.</div>
+      <div class="readout-updated" id="rUpdated">Auto-monitored · Checking now...</div>
     </div>
   </div>
 </div>
@@ -607,78 +225,48 @@ footer{position:relative;z-index:5;background:var(--pitch);border-top:1px solid 
 <div class="scale-section">
   <div class="scale-title">— The Five Conditions —</div>
 
-  <div class="condition-card" id="card5">
-    <div class="con-num-block" style="background:rgba(0,204,102,.08)">
-      <div class="con-num" style="color:var(--con5)">5</div>
-      <div class="con-word-sm">GTACON</div>
-    </div>
+  <div class="condition-card inactive" id="card5">
+    <div class="con-num-block" style="background:rgba(0,204,102,.08)"><div class="con-num" style="color:var(--con5)">5</div><div class="con-word-sm">GTACON</div></div>
     <div class="con-body">
-      <div class="con-header">
-        <div class="con-name-h" style="color:var(--con5)">Cold</div>
-        <span class="con-tag" id="tag5">—</span>
-      </div>
+      <div class="con-header"><div class="con-name-h" style="color:var(--con5)">Cold</div><span class="con-tag tag-past" id="tag5">Passed</span></div>
       <div class="con-desc">Business as usual. No significant GTA 6 signals. The community waits. <strong>Nothing to see here.</strong></div>
-      <div class="con-pills"><span class="pill">No Leaks</span><span class="pill">No Marketing</span><span class="pill">No Trailer</span><span class="pill">Radio Silence</span></div>
+      <div class="con-pills"><span class="pill">No Leaks</span><span class="pill">No Marketing</span><span class="pill">No Trailer</span></div>
     </div>
   </div>
 
-  <div class="condition-card" id="card4">
-    <div class="con-num-block" style="background:rgba(136,204,0,.08)">
-      <div class="con-num" style="color:var(--con4)">4</div>
-      <div class="con-word-sm">GTACON</div>
-    </div>
+  <div class="condition-card inactive" id="card4">
+    <div class="con-num-block" style="background:rgba(136,204,0,.08)"><div class="con-num" style="color:var(--con4)">4</div><div class="con-word-sm">GTACON</div></div>
     <div class="con-body">
-      <div class="con-header">
-        <div class="con-name-h" style="color:var(--con4)">Elevated</div>
-        <span class="con-tag" id="tag4">—</span>
-      </div>
-      <div class="con-desc">Credible leakers active. Community speculation rising. <strong>Something is building</strong> but nothing confirmed from official channels.</div>
-      <div class="con-pills"><span class="pill lit">Leakers Active</span><span class="pill lit">Community Buzz</span><span class="pill">No Official Word</span><span class="pill">Pre-Order Rumors</span></div>
+      <div class="con-header"><div class="con-name-h" style="color:var(--con4)">Elevated</div><span class="con-tag tag-past" id="tag4">Passed</span></div>
+      <div class="con-desc">Credible leakers active. Community speculation rising. <strong>Something is building</strong> but nothing confirmed.</div>
+      <div class="con-pills"><span class="pill lit">Leakers Active</span><span class="pill lit">Community Buzz</span></div>
     </div>
   </div>
 
-  <div class="condition-card" id="card3">
-    <div class="con-num-block" style="background:rgba(255,204,0,.1)">
-      <div class="con-num" style="color:var(--con3)">3</div>
-      <div class="con-word-sm">GTACON</div>
-    </div>
+  <div class="condition-card active" id="card3">
+    <div class="con-num-block" style="background:rgba(255,204,0,.1)"><div class="con-num" style="color:var(--con3)">3</div><div class="con-word-sm">GTACON</div></div>
     <div class="con-body">
-      <div class="con-header">
-        <div class="con-name-h" style="color:var(--con3)">Significant</div>
-        <span class="con-tag" id="tag3">—</span>
-      </div>
-      <div class="con-desc"><strong>Major signals confirmed.</strong> Official sources have spoken. Platform partners are moving. The marketing machine is warming up. <strong>A window is coming and we are watching it closely.</strong></div>
-      <div class="con-pills"><span class="pill lit">CEO Confirmed</span><span class="pill lit">Partners Moving</span><span class="pill lit">Trailer Imminent</span><span class="pill lit">Window Identified</span><span class="pill">Campaign Live</span></div>
+      <div class="con-header"><div class="con-name-h" style="color:var(--con3)">Significant</div><span class="con-tag tag-now" id="tag3">▶ Active Now</span></div>
+      <div class="con-desc"><strong>Major signals confirmed.</strong> CEO confirmed marketing starts end of June. Trailer 3 window: June 25 to July 8. Platform partners moving. Pre-orders imminent when marketing fires.</div>
+      <div class="con-pills"><span class="pill lit">CEO Confirmed</span><span class="pill lit">Partners Moving</span><span class="pill lit">Window Identified</span><span class="pill lit">Trailer Imminent</span></div>
     </div>
   </div>
 
-  <div class="condition-card" id="card2">
-    <div class="con-num-block" style="background:rgba(255,102,0,.08)">
-      <div class="con-num" style="color:var(--con2)">2</div>
-      <div class="con-word-sm">GTACON</div>
-    </div>
+  <div class="condition-card inactive" id="card2">
+    <div class="con-num-block" style="background:rgba(255,102,0,.08)"><div class="con-num" style="color:var(--con2)">2</div><div class="con-word-sm">GTACON</div></div>
     <div class="con-body">
-      <div class="con-header">
-        <div class="con-name-h" style="color:var(--con2)">Critical</div>
-        <span class="con-tag" id="tag2">—</span>
-      </div>
-      <div class="con-desc"><strong>Trailer 3 is live or dropping very soon.</strong> The campaign has fired. Pre-orders are opening. Marketing is hitting every screen simultaneously — currently or very soon. <strong>All pieces are in place. This is what we've been watching for.</strong></div>
-      <div class="con-pills"><span class="pill">Trailer 3 Imminent</span><span class="pill">Campaign Firing</span><span class="pill">Pre-Orders Opening</span><span class="pill">Bundle Announced</span></div>
+      <div class="con-header"><div class="con-name-h" style="color:var(--con2)">Critical</div><span class="con-tag tag-up" id="tag2">Upcoming</span></div>
+      <div class="con-desc"><strong>Trailer 3 is live or dropping very soon.</strong> The campaign has fired. Pre-orders are opening. <strong>All pieces are in place.</strong></div>
+      <div class="con-pills"><span class="pill">Trailer 3 Live</span><span class="pill">Pre-Orders Open</span><span class="pill">Campaign Firing</span></div>
     </div>
   </div>
 
-  <div class="condition-card" id="card1">
-    <div class="con-num-block" style="background:rgba(255,26,26,.08)">
-      <div class="con-num" style="color:var(--con1)">1</div>
-      <div class="con-word-sm">GTACON</div>
-    </div>
+  <div class="condition-card inactive" id="card1">
+    <div class="con-num-block" style="background:rgba(255,26,26,.08)"><div class="con-num" style="color:var(--con1)">1</div><div class="con-word-sm">GTACON</div></div>
     <div class="con-body">
-      <div class="con-header">
-        <div class="con-name-h" style="color:var(--con1)">Maximum</div>
-        <span class="con-tag" id="tag1">—</span>
-      </div>
+      <div class="con-header"><div class="con-name-h" style="color:var(--con1)">Maximum</div><span class="con-tag tag-up" id="tag1">Upcoming</span></div>
       <div class="con-desc"><strong>Launch week. GTA 6 is here.</strong> Reviews are live. Day one is upon us. 56ViceLane is in full coverage mode.</div>
-      <div class="con-pills"><span class="pill">Launch Day</span><span class="pill">Reviews Live</span><span class="pill">Servers Tested</span><span class="pill">Full Coverage</span></div>
+      <div class="con-pills"><span class="pill">Launch Day</span><span class="pill">Reviews Live</span><span class="pill">Full Coverage</span></div>
     </div>
   </div>
 </div>
@@ -687,23 +275,19 @@ footer{position:relative;z-index:5;background:var(--pitch);border-top:1px solid 
 <div class="intel-strip">
   <div class="intel-lbl">— 56ViceLane Intelligence —</div>
   <div class="intel-txt">We know what to watch for. <em>We're watching it right now.</em> When the condition changes, you'll hear it here first.</div>
-  <div class="intel-sub">56ViceLane monitors the GTA 6 launch ecosystem around the clock using our own methods. We don't guess — we track. Follow @56ViceLane on X and bookmark this page. When GTACON changes, we post immediately.</div>
+  <div class="intel-sub">56ViceLane monitors the GTA 6 launch ecosystem around the clock. We don't guess — we track. Follow @56ViceLane on X and bookmark this page.</div>
 </div>
 
 <div class="last-updated">
-  <div class="upd-inner">
-    <div class="upd-dot"></div>
-    <span id="lastUpdatedText">Checking...</span>
-    <div class="upd-dot"></div>
-  </div>
+  <div class="upd-inner"><div class="upd-dot"></div><span id="lastUpdatedText">Auto-monitored · Checking...</span><div class="upd-dot"></div></div>
 </div>
 
 <div class="share-section">
   <div class="share-lbl">— Spread The Word —</div>
   <div class="share-btns">
-    <a id="shareX" href="https://twitter.com/intent/tweet?text=GTA6+is+at+GTACON+3+%E2%80%94+Significant.+%4056ViceLane+tracks+the+launch+readiness+in+real+time.&url=https://56vicelane.com/gtacon.html" target="_blank" class="share-btn prime">Share on X</a>
-    <a href="https://www.reddit.com/submit?url=https://56vicelane.com/gtacon.html&title=56ViceLane+GTACON+—+GTA+6+Launch+Readiness+Tracker" target="_blank" class="share-btn">Post to Reddit</a>
-    <button class="share-btn" onclick="copyLink()">Copy Link</button>
+    <a id="shareX" href="https://twitter.com/intent/tweet?text=GTA6+is+at+GTACON+3+%E2%80%94+Significant.+%4056ViceLane+tracks+the+launch+readiness+in+real+time.&url=https://56vicelane.com/gtacon" target="_blank" class="share-btn prime">Share on X</a>
+    <a href="https://www.reddit.com/submit?url=https://56vicelane.com/gtacon&title=56ViceLane+GTACON+—+GTA+6+Launch+Readiness+Tracker" target="_blank" class="share-btn">Post to Reddit</a>
+    <button class="share-btn" onclick="copyLink(this)">Copy Link</button>
   </div>
 </div>
 
@@ -720,618 +304,221 @@ footer{position:relative;z-index:5;background:var(--pitch);border-top:1px solid 
 <footer>
   <a href="/" class="f-logo"><span>56</span>ViceLane</a>
   <div class="f-links">
-    <a href="/news">News</a><a href="/gtacon">GTACON</a>
-    <a href="/lastdrive">Last Drive</a><a href="/shop">Shop</a>
-    <a href="/#signup">Join List</a>
+    <a href="/news">News</a>
+    <a href="/gtacon">GTACON</a>
+    <a href="/lastdrive">Last Drive</a>
+    <a href="/shop">Shop</a>
   </div>
-  <div class="f-note">
-    GTACON is a 56ViceLane original feature. Conditions are evaluated automatically around the clock.<br>
-    We don't reveal our methods. We just tell you what's coming.<br><br>
-    © 2026 56ViceLane · <a href="/privacy.html" style="color:var(--smoke)">Privacy</a> · <a href="/terms.html" style="color:var(--smoke)">Terms</a>
-  </div>
+  <div class="f-note">GTACON is a 56ViceLane original. Conditions evaluated automatically.<br>© 2026 56ViceLane · Not affiliated with Rockstar Games or Take-Two Interactive</div>
 </footer>
 
 <script>
-// ═══════════════════════════════════════════════════════════
-// GTACON AUTO-UPDATE SYSTEM
-// Reads from Cloudflare Worker KV via API endpoint
-// Polls every 5 minutes while page is open
-// ═══════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════
+// GTACON — CLEAN REBUILD
+// Hardcoded default: CON 3. Tries to fetch fresh data.
+// No async/await. No XHR. Pure fetch().then() chains.
+// ═══════════════════════════════════════════════════
 
-// Your Cloudflare Worker URL — update after deploying worker
-const WORKER_URL = 'https://gtacon-worker.forgedoakstudios.workers.dev/gtacon-status';
+var WORKER_URL = 'https://gtacon-worker.forgedoakstudios.workers.dev/gtacon-status';
+var CHECK_INTERVAL = 5 * 60 * 1000;
 
-// Check interval: 5 minutes
-const CHECK_INTERVAL = 5 * 60 * 1000;
-
-const COLORS = {
-  1:'#FF1A1A', 2:'#FF6600', 3:'#FFCC00', 4:'#88CC00', 5:'#00CC66'
-};
-const POSITIONS = { 1:10, 2:30, 3:50, 4:70, 5:90 };
-const MASKS     = { 1:0,  2:20, 3:40, 4:60, 5:80  };
-const NAMES     = { 1:'Maximum', 2:'Critical', 3:'Significant', 4:'Elevated', 5:'Cold' };
-const DESCS     = {
+var COLORS = {1:'#FF1A1A',2:'#FF6600',3:'#FFCC00',4:'#88CC00',5:'#00CC66'};
+var NAMES  = {1:'Maximum',2:'Critical',3:'Significant',4:'Elevated',5:'Cold'};
+var MASKS  = {1:0,2:20,3:40,4:60,5:80};
+var POSITIONS = {1:10,2:30,3:50,4:70,5:90};
+var DESCS  = {
   1:'Launch week. GTA 6 is here. 56ViceLane in full coverage mode.',
-  2:'Trailer 3 is live or dropping very soon. Marketing hitting every screen simultaneously — currently or very soon. All pieces are in place.',
-  3:'Major signals confirmed. Marketing window approaching. Stay tuned.',
+  2:'Trailer 3 is live or dropping very soon. Marketing hitting every screen simultaneously.',
+  3:'Major signals confirmed. CEO confirmed marketing starts end of June. Window: June 25 to July 8.',
   4:'Leaker activity elevated. Community buzz rising. Watching closely.',
-  5:'Business as usual. No significant signals detected. Community waits.',
+  5:'Business as usual. No significant signals detected.'
 };
 
-let currentCondition = null;
-let initialized = false;
+var currentCondition = 3;
+var alertsMuted = false;
+var audioCtx = null;
 
-// ── FETCH CONDITION FROM WORKER ──────────────────────────────────
-function fetchCondition() {
-  setLiveStatus('updating');
-  return fetch('/gtacon.json?v=' + Date.now())
-    .then(function(res) {
-      if (!res.ok) throw new Error('status ' + res.status);
-      return res.json();
-    })
-    .then(function(data) {
-      setLiveStatus('live');
-      // Also try worker in background for fresher KV data
-      fetch('https://gtacon-worker.forgedoakstudios.workers.dev/gtacon-status?v=' + Date.now())
-        .then(function(r) { return r.json(); })
-        .then(function(wd) { if (wd && wd.condition) applyCondition(wd, false); })
-        .catch(function() {});
-      return data;
-    })
-    .catch(function(e) {
-      console.log('[GTACON] fetch error:', e);
-      setLiveStatus('live');
-      return null;
-    });
-}
-
-// ── APPLY CONDITION TO PAGE ──────────────────────────────────────
-function applyCondition(data, animate) {
-  if (!data) return;
-  const con = data.condition;
-  const color = COLORS[con];
-  const wasCondition = currentCondition;
+// ── APPLY CONDITION ──────────────────────────────────
+function applyCondition(con, note, updated) {
+  if (!con || con < 1 || con > 5) return;
   currentCondition = con;
-
-  // Flash and alert if condition changed
-  if (wasCondition && wasCondition !== con) {
-    triggerConditionChange(wasCondition, con, color);
-  }
+  var color = COLORS[con];
 
   // Update CSS variable
   document.documentElement.style.setProperty('--cc', color);
 
-  // BG Glow
-  document.getElementById('bgGlow').style.background =
-    `radial-gradient(ellipse, ${color}0D 0%, transparent 70%)`;
-
-  // Title flash color
+  // Title
   document.getElementById('titleFlash').style.color = color;
 
-  // Needle
-  const needle = document.getElementById('meterNeedle');
-  const mask   = document.getElementById('meterMask');
-  const bubble = document.getElementById('needleBubble');
+  // Needle and mask
+  var needle = document.getElementById('meterNeedle');
+  var mask   = document.getElementById('meterMask');
+  var bubble = document.getElementById('needleBubble');
 
-  needle.style.boxShadow = `0 0 14px 4px ${color}, 0 0 35px 8px ${color}88`;
-  bubble.textContent     = 'CON ' + con;
+  needle.style.left = POSITIONS[con] + '%';
+  needle.style.boxShadow = '0 0 14px 4px ' + color + ',0 0 35px 8px ' + color + '88';
+  mask.style.width = MASKS[con] + '%';
+  bubble.textContent = 'CON ' + con;
   bubble.style.background = color;
 
-  if (!initialized || animate) {
-    // Animate from start
-    mask.style.transition  = 'none';
-    mask.style.width       = '100%';
-    needle.style.transition = 'none';
-    needle.style.left       = '0%';
-    setTimeout(() => {
-      mask.style.transition  = 'width 1.8s cubic-bezier(.23,1,.32,1)';
-      needle.style.transition = 'left 1.8s cubic-bezier(.23,1,.32,1), box-shadow .8s';
-      mask.style.width  = MASKS[con] + '%';
-      needle.style.left = POSITIONS[con] + '%';
-    }, 100);
-  } else {
-    // Smooth transition (no reset)
-    mask.style.width  = MASKS[con] + '%';
-    needle.style.left = POSITIONS[con] + '%';
-  }
-
   // Readout
-  const readout = document.getElementById('meterReadout');
-  document.getElementById('rCon').textContent   = 'CON ' + con;
-  document.getElementById('rCon').style.color   = color;
-  document.getElementById('rName').textContent  = NAMES[con];
-  document.getElementById('rName').style.color  = color;
-  document.getElementById('rDesc').textContent  = data.note || DESCS[con];
-  readout.style.borderColor = color;
+  document.getElementById('rCon').textContent = 'CON ' + con;
+  document.getElementById('rCon').style.color = color;
+  document.getElementById('rName').textContent = NAMES[con];
+  document.getElementById('rName').style.color = color;
+  document.getElementById('rDesc').textContent = note || DESCS[con];
+  document.getElementById('meterReadout').style.borderColor = color;
 
-  // Updated timestamp
-  const updTime = data.updated ? new Date(data.updated) : new Date();
-  document.getElementById('rUpdated').textContent =
-    'Auto-updated: ' + updTime.toLocaleString('en-US', {
-      month:'short', day:'numeric', hour:'numeric', minute:'2-digit',
-      timeZoneName:'short', timeZone:'America/Chicago'
-    });
+  // Updated time
+  if (updated) {
+    var d = new Date(updated);
+    document.getElementById('rUpdated').textContent = 'Updated: ' + d.toLocaleDateString('en-US', {month:'short',day:'numeric',year:'numeric'});
+    document.getElementById('heroDate').textContent = 'Updated ' + d.toLocaleDateString('en-US', {month:'long',day:'numeric',year:'numeric'});
+  }
+  document.getElementById('lastUpdatedText').textContent = 'Auto-monitored · Last check: ' + new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
 
-  document.getElementById('heroDate').textContent =
-    'Auto-updated ' + updTime.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
-
-  document.getElementById('lastUpdatedText').textContent =
-    'Auto-monitored · Last check: ' + updTime.toLocaleTimeString('en-US',{
-      hour:'numeric', minute:'2-digit', timeZoneName:'short', timeZone:'America/Chicago'
-    });
-
-  // Update ticker
-  updateTicker(con, color);
-
-  // Update condition cards
-  updateCards(con);
-
-  // Update share X link
-  document.getElementById('shareX').href =
-    `https://twitter.com/intent/tweet?text=GTA6+is+at+GTACON+${con}+%E2%80%94+${NAMES[con]}.+%4056ViceLane+tracks+the+launch+readiness+in+real+time.+%23GTA6&url=https://56vicelane.com/gtacon.html`;
-
-  initialized = true;
-}
-
-// ── CONDITION CARDS ──────────────────────────────────────────────
-function updateCards(con) {
-  for (let i = 1; i <= 5; i++) {
-    const card = document.getElementById('card' + i);
-    const tag  = document.getElementById('tag' + i);
-    card.className = 'condition-card ' + (i === con ? 'active' : 'inactive');
+  // Cards
+  for (var i = 1; i <= 5; i++) {
+    var card = document.getElementById('card' + i);
+    var tag  = document.getElementById('tag' + i);
     if (i === con) {
-      card.style.borderColor = COLORS[con];
-      tag.textContent        = '▶ Active Now';
-      tag.className          = 'con-tag tag-now';
-    } else if (i < con) {
+      card.className = 'condition-card active';
+      card.style.borderColor = color;
+      tag.textContent = '▶ Active Now';
+      tag.className = 'con-tag tag-now';
+    } else if (i > con) {
+      card.className = 'condition-card inactive';
+      card.style.borderColor = '';
       tag.textContent = 'Passed';
-      tag.className   = 'con-tag tag-past';
-      card.style.borderColor = '';
+      tag.className = 'con-tag tag-past';
     } else {
-      tag.textContent = 'Upcoming';
-      tag.className   = 'con-tag tag-up';
+      card.className = 'condition-card inactive';
       card.style.borderColor = '';
+      tag.textContent = 'Upcoming';
+      tag.className = 'con-tag tag-up';
     }
   }
+
+  // Share link
+  document.getElementById('shareX').href = 'https://twitter.com/intent/tweet?text=GTA6+is+at+GTACON+' + con + '+%E2%80%94+' + NAMES[con] + '.+%4056ViceLane+tracks+launch+readiness+in+real+time.+%23GTA6&url=https://56vicelane.com/gtacon';
 }
 
-// ── TICKER UPDATE ────────────────────────────────────────────────
-function updateTicker(con, color) {
-  const items = [
-    `⚡ GTACON CONDITION ${con} — ${NAMES[con].toUpperCase()} — 56VICELANE`,
-    `🎮 56VICELANE IS WATCHING — WE'LL TELL YOU WHEN IT MOVES`,
-    `📅 GTA 6 LAUNCHES NOVEMBER 19, 2026`,
-    `🔥 AUTO-MONITORED AROUND THE CLOCK — CONDITION ${con}`,
-  ];
-  const track = document.getElementById('tickerTrack');
-  track.innerHTML = [...items, ...items].map(t =>
-    `<span class="ticker-item">${t}</span>`
-  ).join('');
-}
-
-// ═══════════════════════════════════════════════════════════
-// INSTALL POPUP + NAV BANNER SYSTEM
-// ═══════════════════════════════════════════════════════════
-
-// Show first-visit popup after 4 seconds if not dismissed before
-function initInstallPromotion() {
-  const dismissed  = localStorage.getItem('gtacon-popup-dismissed');
-  const installed  = localStorage.getItem('gtacon-install-accepted');
-  const navDismiss = localStorage.getItem('gtacon-nav-dismissed');
-
-  // Nav bar — always visible unless dismissed or installed
-  if (!navDismiss && !installed) {
-    document.getElementById('navInstallBar').classList.remove('hidden');
-  }
-
-  // First visit popup — show once after 4 seconds
-  if (!dismissed && !installed) {
-    setTimeout(() => {
-      document.getElementById('installPopup').classList.add('show');
-    }, 4000);
-  }
-}
-
-// Tab switching — iPhone vs Android
-function showTab(tab) {
-  document.getElementById('tabIos').classList.toggle('active', tab === 'ios');
-  document.getElementById('tabAndroid').classList.toggle('active', tab === 'android');
-  document.getElementById('stepsIos').classList.toggle('show', tab === 'ios');
-  document.getElementById('stepsAndroid').classList.toggle('show', tab === 'android');
-
-  // Update button text
-  const btn = document.getElementById('popupInstallBtn');
-  if (tab === 'android' && deferredInstallPrompt) {
-    btn.textContent = '⬇ Install GTACON Now';
-    btn.classList.remove('ios-only');
-  } else {
-    btn.textContent = '✓ Got It — Follow The Steps Above';
-    btn.classList.add('ios-only');
-  }
-}
-
-// Auto-detect device and show right tab
-function detectDevice() {
-  const isIos = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-  if (!isIos) showTab('android');
-}
-
-// Close popup
-document.getElementById('popupClose').addEventListener('click', () => {
-  document.getElementById('installPopup').classList.remove('show');
-  localStorage.setItem('gtacon-popup-dismissed', 'true');
-});
-
-// Popup install button
-document.getElementById('popupInstallBtn').addEventListener('click', async () => {
-  if (deferredInstallPrompt) {
-    // Android — native prompt
-    deferredInstallPrompt.prompt();
-    const { outcome } = await deferredInstallPrompt.userChoice;
-    if (outcome === 'accepted') {
-      document.getElementById('installPopup').classList.remove('show');
-      document.getElementById('navInstallBar').classList.add('hidden');
-      localStorage.setItem('gtacon-install-accepted', 'true');
-    }
-    deferredInstallPrompt = null;
-  } else {
-    // iOS — just close, they have the steps
-    document.getElementById('installPopup').classList.remove('show');
-    localStorage.setItem('gtacon-popup-dismissed', 'true');
-  }
-});
-
-// Nav bar click — reopens popup
-document.getElementById('navInstallBar').addEventListener('click', (e) => {
-  if (e.target.id === 'nibDismiss') return;
-  detectDevice();
-  document.getElementById('installPopup').classList.add('show');
-  unlockAudio();
-});
-
-// Nav bar dismiss
-document.getElementById('nibDismiss').addEventListener('click', (e) => {
-  e.stopPropagation();
-  document.getElementById('navInstallBar').classList.add('hidden');
-  localStorage.setItem('gtacon-nav-dismissed', 'true');
-});
-
-// ── MUTE / VISUAL TOGGLE ─────────────────────────────────────────
-let alertsMuted = localStorage.getItem('gtacon-muted') === 'true';
-
-function updateMuteBtn() {
-  const btn = document.getElementById('muteBtn');
-  if (alertsMuted) {
-    btn.textContent = '🔇';
-    btn.classList.add('muted');
-    btn.title = 'Alerts muted — tap to enable';
-  } else {
-    btn.textContent = '🔊';
-    btn.classList.remove('muted');
-    btn.title = 'Tap to mute sound and visual alerts';
-  }
-}
-
-document.getElementById('muteBtn').addEventListener('click', () => {
-  alertsMuted = !alertsMuted;
-  localStorage.setItem('gtacon-muted', alertsMuted);
-  updateMuteBtn();
-  // Unlock audio on same interaction
-  unlockAudio();
-});
-
-updateMuteBtn();
-
-// ── SEIZURE-SAFE PULSING LIGHT ────────────────────────────────────
-// W3C WCAG 2.3.1: No more than 3 flashes per second
-// We use slow, gentle fades — not strobes
-// Max opacity kept low. Minimum pulse duration 500ms.
-
-function triggerPulsingLight(condition, color, duration) {
-  if (alertsMuted) return;
-
-  // Overlay — very low opacity, slow fade
-  const overlay = document.createElement('div');
-  overlay.style.cssText = `
-    position:fixed; inset:0; z-index:998;
-    pointer-events:none;
-    background:${color};
-    opacity:0;
-    transition:opacity 600ms ease-in-out;
-  `;
-  document.body.appendChild(overlay);
-
-  // Condition number — glows gently, doesn't strobe
-  const numDisplay = document.createElement('div');
-  numDisplay.style.cssText = `
-    position:fixed; inset:0; z-index:999;
-    pointer-events:none;
-    display:flex; flex-direction:column;
-    align-items:center; justify-content:center;
-    opacity:0; transition:opacity .6s ease;
-  `;
-  numDisplay.innerHTML = `
-    <div style="
-      font-family:'Bebas Neue',sans-serif;
-      font-size:clamp(6rem,28vw,14rem);
-      line-height:.85; color:${color};
-      text-shadow:0 0 30px ${color}88, 0 0 60px ${color}44;
-      letter-spacing:.05em;
-      animation:gentleGlow 2s ease-in-out infinite;
-    ">${condition}</div>
-    <div style="
-      font-family:'Barlow Condensed',sans-serif;
-      font-size:clamp(.9rem,3.5vw,1.8rem);
-      font-weight:900; letter-spacing:.25em;
-      text-transform:uppercase; color:${color};
-      opacity:.85; margin-top:8px;
-    ">GTACON — ${NAMES[condition]}</div>
-  `;
-  document.body.appendChild(numDisplay);
-
-  // Inject gentle glow keyframe once
-  if (!document.getElementById('gentleGlowStyle')) {
-    const s = document.createElement('style');
-    s.id = 'gentleGlowStyle';
-    s.textContent = `
-      @keyframes gentleGlow {
-        0%,100% { text-shadow:0 0 30px ${color}88, 0 0 60px ${color}44; }
-        50%      { text-shadow:0 0 50px ${color}CC, 0 0 90px ${color}66; }
+// ── FETCH FRESH DATA ─────────────────────────────────
+function fetchFresh() {
+  // Try gtacon.json first — same domain, no CORS issues
+  fetch('/gtacon.json?t=' + Date.now())
+    .then(function(r) {
+      if (!r.ok) throw new Error('status ' + r.status);
+      return r.json();
+    })
+    .then(function(d) {
+      if (d && d.condition) {
+        applyCondition(d.condition, d.note, d.updated);
       }
-    `;
-    document.head.appendChild(s);
-  }
-
-  // WCAG-safe pulse: max 1 pulse per second, max opacity 0.12
-  // Condition 1 gets slightly more intensity but never strobes
-  const maxOpacity = condition === 1 ? 0.12 : condition === 2 ? 0.09 : 0.06;
-  const pulseCount = condition === 1 ? 4  : condition === 2 ? 3  : 2;
-  const pulseMs    = 800; // 800ms per pulse = well under 3Hz limit
-
-  // Fade in number display
-  setTimeout(() => { numDisplay.style.opacity = '1'; }, 50);
-
-  // Slow gentle pulses on overlay
-  let pulse = 0;
-  function doPulse() {
-    if (pulse >= pulseCount) {
-      // Fade everything out
-      overlay.style.transition = 'opacity 1s ease';
-      overlay.style.opacity = '0';
-      numDisplay.style.transition = 'opacity 1s ease';
-      numDisplay.style.opacity = '0';
-      setTimeout(() => { overlay.remove(); numDisplay.remove(); }, 1200);
-      return;
-    }
-    // Fade IN
-    overlay.style.opacity = maxOpacity;
-    setTimeout(() => {
-      // Fade OUT
-      overlay.style.opacity = '0';
-      pulse++;
-      setTimeout(doPulse, pulseMs * 0.4);
-    }, pulseMs * 0.6);
-  }
-  setTimeout(doPulse, 200);
+      // Also try worker in background
+      fetch(WORKER_URL + '?t=' + Date.now())
+        .then(function(r2) { return r2.json(); })
+        .then(function(d2) {
+          if (d2 && d2.condition && d2.condition !== currentCondition) {
+            applyCondition(d2.condition, d2.note, d2.updated);
+          }
+        })
+        .catch(function() {});
+    })
+    .catch(function(e) {
+      console.log('[GTACON] JSON fetch failed:', e.message);
+      // Try worker directly as fallback
+      fetch(WORKER_URL + '?t=' + Date.now())
+        .then(function(r) { return r.json(); })
+        .then(function(d) {
+          if (d && d.condition) applyCondition(d.condition, d.note, d.updated);
+        })
+        .catch(function(e2) {
+          console.log('[GTACON] Worker fetch also failed:', e2.message);
+        });
+    });
 }
 
-// ── AUDIO ENGINE ──────────────────────────────────────────────────
-
-var audioCtx = null;
-
-function getAudioCtx() {
+// ── AUDIO ────────────────────────────────────────────
+function getCtx() {
   if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
   if (audioCtx.state === 'suspended') audioCtx.resume();
   return audioCtx;
 }
-
-var audioUnlocked = false;
-function unlockAudio() {
-  if (audioUnlocked) return;
-  try {
-    var ctx = getAudioCtx();
-    var buf = ctx.createBuffer(1,1,22050);
-    var src = ctx.createBufferSource();
-    src.buffer = buf; src.connect(ctx.destination); src.start(0);
-    audioUnlocked = true;
-  } catch(e){}
-}
-document.addEventListener('touchstart', unlockAudio, {once:true});
-document.addEventListener('click', unlockAudio, {once:true});
-
 function tone(freq, type, start, dur, vol, ctx) {
   var o = ctx.createOscillator(); var g = ctx.createGain();
-  o.connect(g); g.connect(ctx.destination);
-  o.type = type; o.frequency.setValueAtTime(freq, start);
-  g.gain.setValueAtTime(0, start);
-  g.gain.linearRampToValueAtTime(vol, start + 0.015);
-  g.gain.exponentialRampToValueAtTime(0.001, start + dur);
-  o.start(start); o.stop(start + dur + 0.05);
+  o.connect(g); g.connect(ctx.destination); o.type = type;
+  o.frequency.setValueAtTime(freq, start);
+  g.gain.setValueAtTime(0, start); g.gain.linearRampToValueAtTime(vol, start+0.015);
+  g.gain.exponentialRampToValueAtTime(0.001, start+dur);
+  o.start(start); o.stop(start+dur+0.05);
 }
-
-function noise(start, dur, vol, ctx) {
-  var bufSize = Math.floor(ctx.sampleRate * dur);
-  var buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
-  var data = buf.getChannelData(0);
-  for (var i = 0; i < bufSize; i++) data[i] = Math.random() * 2 - 1;
-  var src = ctx.createBufferSource(); var flt = ctx.createBiquadFilter(); var g = ctx.createGain();
-  src.buffer = buf; flt.type = 'bandpass'; flt.frequency.value = 900; flt.Q.value = 0.6;
-  src.connect(flt); flt.connect(g); g.connect(ctx.destination);
-  g.gain.setValueAtTime(0, start);
-  g.gain.linearRampToValueAtTime(vol, start + 0.02);
-  g.gain.exponentialRampToValueAtTime(0.001, start + dur);
-  src.start(start); src.stop(start + dur + 0.05);
-}
-
-function soundCon4(ctx) {
-  var t = ctx.currentTime;
-  tone(880,'sine',t,0.6,0.15,ctx);
-  tone(660,'sine',t+0.4,0.5,0.10,ctx);
-}
-
-function soundCon3(ctx) {
-  var t = ctx.currentTime;
-  tone(440,'square',t,0.25,0.12,ctx);
-  tone(550,'square',t+0.4,0.25,0.12,ctx);
-  tone(440,'square',t+0.8,0.25,0.12,ctx);
-  tone(550,'square',t+1.2,0.30,0.14,ctx);
-}
-
-function euroSiren(ctx, startT, cycles, vol, lowHz, highHz, cycleMs) {
-  var half = cycleMs / 2;
+function euroSiren(ctx, startT, cycles, vol, lowHz, highHz, cycleT) {
+  var half = cycleT / 2;
   for (var i = 0; i < cycles; i++) {
-    var cs = startT + (i * cycleMs);
-
-    // LOW tone
-    var lo = ctx.createOscillator();
-    var loG = ctx.createGain();
-    lo.connect(loG); loG.connect(ctx.destination);
-    lo.type = 'sawtooth';
+    var cs = startT + (i * cycleT);
+    var lo = ctx.createOscillator(); var loG = ctx.createGain();
+    lo.connect(loG); loG.connect(ctx.destination); lo.type = 'sawtooth';
     lo.frequency.setValueAtTime(lowHz, cs);
-    loG.gain.setValueAtTime(0, cs);
-    loG.gain.linearRampToValueAtTime(vol, cs + 0.05);
-    loG.gain.setValueAtTime(vol, cs + half - 0.07);
-    loG.gain.exponentialRampToValueAtTime(0.001, cs + half);
-    lo.start(cs); lo.stop(cs + half + 0.02);
-
-    // LOW sub
-    var loS = ctx.createOscillator();
-    var loSG = ctx.createGain();
-    loS.connect(loSG); loSG.connect(ctx.destination);
-    loS.type = 'sine';
-    loS.frequency.setValueAtTime(lowHz / 2, cs);
-    loSG.gain.setValueAtTime(0, cs);
-    loSG.gain.linearRampToValueAtTime(vol * 0.55, cs + 0.06);
-    loSG.gain.setValueAtTime(vol * 0.55, cs + half - 0.08);
-    loSG.gain.exponentialRampToValueAtTime(0.001, cs + half);
-    loS.start(cs); loS.stop(cs + half + 0.02);
-
-    // HIGH tone
-    var hi = ctx.createOscillator();
-    var hiG = ctx.createGain();
-    hi.connect(hiG); hiG.connect(ctx.destination);
-    hi.type = 'sawtooth';
-    hi.frequency.setValueAtTime(highHz, cs + half);
-    hiG.gain.setValueAtTime(0, cs + half);
-    hiG.gain.linearRampToValueAtTime(vol * 0.88, cs + half + 0.05);
-    hiG.gain.setValueAtTime(vol * 0.88, cs + cycleMs - 0.07);
-    hiG.gain.exponentialRampToValueAtTime(0.001, cs + cycleMs);
-    hi.start(cs + half); hi.stop(cs + cycleMs + 0.02);
-
-    // HIGH sub
-    var hiS = ctx.createOscillator();
-    var hiSG = ctx.createGain();
-    hiS.connect(hiSG); hiSG.connect(ctx.destination);
-    hiS.type = 'sine';
-    hiS.frequency.setValueAtTime(highHz / 2, cs + half);
-    hiSG.gain.setValueAtTime(0, cs + half);
-    hiSG.gain.linearRampToValueAtTime(vol * 0.48, cs + half + 0.06);
-    hiSG.gain.setValueAtTime(vol * 0.48, cs + cycleMs - 0.08);
-    hiSG.gain.exponentialRampToValueAtTime(0.001, cs + cycleMs);
-    hiS.start(cs + half); hiS.stop(cs + cycleMs + 0.02);
+    loG.gain.setValueAtTime(0,cs); loG.gain.linearRampToValueAtTime(vol,cs+0.05);
+    loG.gain.setValueAtTime(vol,cs+half-0.07); loG.gain.exponentialRampToValueAtTime(0.001,cs+half);
+    lo.start(cs); lo.stop(cs+half+0.02);
+    var hi = ctx.createOscillator(); var hiG = ctx.createGain();
+    hi.connect(hiG); hiG.connect(ctx.destination); hi.type = 'sawtooth';
+    hi.frequency.setValueAtTime(highHz, cs+half);
+    hiG.gain.setValueAtTime(0,cs+half); hiG.gain.linearRampToValueAtTime(vol*0.88,cs+half+0.05);
+    hiG.gain.setValueAtTime(vol*0.88,cs+cycleT-0.07); hiG.gain.exponentialRampToValueAtTime(0.001,cs+cycleT);
+    hi.start(cs+half); hi.stop(cs+cycleT+0.02);
   }
 }
 
-// CON 2 — European siren: 3 cycles, 1.5s pause, 2 more cycles
-function soundCon2(ctx) {
-  var t = ctx.currentTime;
-  // Classic European two-tone: 440Hz low / 580Hz high, 0.8s cycle
-  euroSiren(ctx, t, 3, 0.28, 440, 580, 0.8);
-  var gap = t + (3 * 0.8) + 1.5;
-  euroSiren(ctx, gap, 2, 0.32, 440, 580, 0.8);
-  // Radio crackle in the silence gap
-  noise(t + (3 * 0.8) + 0.15, 0.14, 0.18, ctx);
-  noise(t + (3 * 0.8) + 0.65, 0.10, 0.14, ctx);
+// ── MUTE BUTTON ──────────────────────────────────────
+document.getElementById('muteBtn').addEventListener('click', function() {
+  alertsMuted = !alertsMuted;
+  this.textContent = alertsMuted ? '🔇' : '🔊';
+  try { getCtx(); } catch(e) {}
+});
+
+// ── COUNTDOWN ────────────────────────────────────────
+function tick() {
+  var diff = new Date('2026-11-19T00:00:00-05:00') - new Date();
+  if (diff <= 0) return;
+  document.getElementById('cd-d').textContent = Math.floor(diff/86400000);
+  document.getElementById('cd-h').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+  document.getElementById('cd-m').textContent = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+  document.getElementById('cd-s').textContent = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+}
+setInterval(tick, 1000);
+tick();
+
+// ── COPY LINK ────────────────────────────────────────
+function copyLink(btn) {
+  navigator.clipboard.writeText('https://56vicelane.com/gtacon');
+  btn.textContent = 'Copied!';
+  setTimeout(function() { btn.textContent = 'Copy Link'; }, 2000);
 }
 
-// CON 1 — Heavy detuned European sirens: 4 bursts + foghorn + final impact
-function soundCon1(ctx) {
-  var t = ctx.currentTime;
-  var cycleT = 0.9;
-  var burstCycles = 3;
-  var burstLen = burstCycles * cycleT;
-  var gapLen = 1.8;
+// ── START ────────────────────────────────────────────
+// Apply hardcoded default immediately — page never shows Loading
+applyCondition(3, 'Major signals confirmed. CEO confirmed marketing starts end of June. Trailer 3 window: June 25 to July 8. Platform partners moving. Pre-orders imminent when marketing fires.', '2026-05-27');
 
-  function burst(startT, vol) {
-    // Main siren — lower pitch for more menace
-    euroSiren(ctx, startT, burstCycles, vol, 380, 510, cycleT);
-    // Detuned layer — +8Hz for thickness
-    euroSiren(ctx, startT, burstCycles, vol * 0.45, 388, 518, cycleT);
-  }
+// Then fetch fresh data
+fetchFresh();
 
-  // 4 bursts
-  burst(t, 0.30);
-  burst(t + burstLen + gapLen, 0.34);
-  burst(t + (burstLen + gapLen) * 2, 0.38);
-  // Final burst — 4 cycles, loudest
-  euroSiren(ctx, t + (burstLen + gapLen) * 3, 4, 0.42, 380, 510, cycleT);
-  euroSiren(ctx, t + (burstLen + gapLen) * 3, 4, 0.20, 388, 518, cycleT);
+// Poll every 5 minutes
+setInterval(fetchFresh, CHECK_INTERVAL);
 
-  // Deep foghorn hit between bursts 2 and 3
-  var fogT = t + (burstLen + gapLen) * 2 - 1.0;
-  var fog  = ctx.createOscillator();
-  var fogG = ctx.createGain();
-  fog.connect(fogG); fogG.connect(ctx.destination);
-  fog.type = 'sine';
-  fog.frequency.setValueAtTime(60, fogT);
-  fog.frequency.linearRampToValueAtTime(46, fogT + 1.3);
-  fogG.gain.setValueAtTime(0, fogT);
-  fogG.gain.linearRampToValueAtTime(0.48, fogT + 0.15);
-  fogG.gain.setValueAtTime(0.48, fogT + 1.0);
-  fogG.gain.exponentialRampToValueAtTime(0.001, fogT + 1.5);
-  fog.start(fogT); fog.stop(fogT + 1.6);
+// Check when tab becomes visible
+document.addEventListener('visibilitychange', function() {
+  if (!document.hidden) fetchFresh();
+});
 
-  // Radio crackles in gaps
-  noise(t + burstLen + 0.2, 0.12, 0.20, ctx);
-  noise(t + (burstLen + gapLen) + burstLen + 0.2, 0.12, 0.20, ctx);
-  noise(t + (burstLen + gapLen) * 2 + burstLen + 0.2, 0.12, 0.20, ctx);
-
-  // Final impact
-  var endT = t + (burstLen + gapLen) * 3 + (4 * cycleT) + 0.3;
-  tone(52, 'sine', endT, 1.0, 0.52, ctx);
-  noise(endT, 0.28, 0.38, ctx);
-}
-
-
-
-
-
-
-// ── SERVICE WORKER ─────────────────────────────────
+// Service worker
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function(){
+  window.addEventListener('load', function() {
     navigator.serviceWorker.register('/gtacon-sw.js').catch(function(){});
   });
 }
-
-// ── NOTIFICATIONS ──────────────────────────────────────────────
-function requestNotifications() {
-  if ('Notification' in window && Notification.permission === 'default') {
-    Notification.requestPermission();
-  }
-}
-
-// ── MAIN LOOP ────────────────────────────────────────────────────
-function checkAndUpdate() {
-  fetchCondition().then(function(data) {
-    if (data) applyCondition(data, !initialized);
-  });
-}
-
-// Initial load
-window.addEventListener('load', async () => {
-  await checkAndUpdate();
-  requestNotifications();
-  initInstallPromotion();
-  detectDevice();
-  // Poll every 5 minutes
-  setInterval(checkAndUpdate, CHECK_INTERVAL);
-});
-
-// Also check when tab becomes visible again
-document.addEventListener('visibilitychange', () => {
-  if (!document.hidden) checkAndUpdate();
-});
 </script>
 </body>
 </html>
