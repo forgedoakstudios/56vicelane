@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GTA6 News Hub — 56ViceLane</title>
-
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -12,165 +11,104 @@
     gtag('js', new Date());
     gtag('config', 'G-9EKF7J4V7W');
   </script>
-
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
-
   <meta property="og:title" content="GTA6 News Hub — 56ViceLane">
   <meta property="og:description" content="Every GTA6 leak, confirmed fact, and launch day update. Where GTA5 Ends And GTA6 Begins.">
   <meta property="og:image" content="https://56vicelane.com/images/Jason_and_Lucia_01_landscape.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://56vicelane.com/news">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="56ViceLane">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="GTA6 News Hub — 56ViceLane">
-  <meta name="twitter:description" content="Every GTA6 leak, confirmed fact, and launch day update.">
-  <meta name="twitter:image" content="https://56vicelane.com/images/Jason_and_Lucia_01_landscape.jpg">
   <meta name="description" content="Every GTA6 leak, confirmed fact, and launch day update. Where GTA5 Ends And GTA6 Begins.">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --pitch:     #0B0B0F;
-      --asphalt:   #16161D;
-      --amber:     #FF6B1A;
-      --amber-dim: #cc4a00;
-      --cyan:      #00D4FF;
-      --bone:      #F0EDE8;
-      --smoke:     #7A7A8C;
-      --edge:      #26262F;
-      --green:     #00C875;
-      --red:       #FF3B3B;
+      --pitch:#0B0B0F; --asphalt:#16161D; --amber:#FF6B1A; --amber-dim:#cc4a00;
+      --cyan:#00D4FF; --bone:#F0EDE8; --smoke:#7A7A8C; --edge:#26262F;
+      --green:#00C875; --red:#FF3B3B;
     }
-
-    body { background: var(--pitch); color: var(--bone); font-family: 'Inter', sans-serif; font-size: 1rem; line-height: 1.75; }
-    a { color: var(--cyan); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    /* TICKER */
-    .ticker-wrap { background: var(--amber); overflow: hidden; padding: 6px 0; position: sticky; top: 0; z-index: 100; }
-    .ticker-track { display: flex; gap: 60px; white-space: nowrap; animation: ticker 20s linear infinite; }
-    .ticker-item { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 700; color: #000; text-transform: uppercase; cursor: pointer; flex-shrink: 0; }
-    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* NAV */
-    nav { background: var(--asphalt); border-bottom: 1px solid var(--edge); padding: 0 1.25rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
-    .nav-logo { font-family: 'Russo One', sans-serif; font-size: 1.25rem; color: var(--amber); text-decoration: none; }
-    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-    .nav-links a { font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; color: var(--bone); letter-spacing: 0.05em; }
-    .nav-links a:hover, .nav-links a.active { color: var(--amber); text-decoration: none; }
-
-    /* PAGE HERO */
-    .page-hero { padding: 2.5rem 1.25rem 2rem; border-bottom: 1px solid var(--edge); text-align: center; }
-    .page-hero h1 { font-family: 'Russo One', sans-serif; font-size: clamp(1.8rem, 5vw, 2.6rem); color: var(--bone); margin-bottom: 0.5rem; }
-    .page-hero h1 span { color: var(--amber); }
-    .page-hero p { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; color: var(--smoke); text-transform: uppercase; letter-spacing: 0.05em; }
-
-    /* STOCK WIDGET */
-    .stock-bar { background: var(--asphalt); border-bottom: 1px solid var(--edge); padding: 0.6rem 1.25rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
-    .stock-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--smoke); }
-    .stock-ticker-name { font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--bone); }
-    .stock-price { font-family: 'Russo One', sans-serif; font-size: 1rem; color: var(--amber); }
-    .stock-change { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 700; }
-    .stock-change.up { color: var(--green); }
-    .stock-change.down { color: var(--red); }
-    .stock-delay { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; color: var(--smoke); }
-
-    /* SHARE BAR */
-    .share-bar { background: var(--asphalt); border-bottom: 1px solid var(--edge); padding: 0.75rem 1.25rem; display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; }
-    .share-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--smoke); letter-spacing: 0.06em; }
-    .share-btn { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 6px 14px; border-radius: 4px; border: none; cursor: pointer; transition: opacity 0.15s; }
-    .share-btn:hover { opacity: 0.85; }
-    .share-native  { background: var(--amber); color: #000; }
-    .share-reddit  { background: #FF4500; color: #fff; }
-    .share-twitter { background: #000; color: #fff; border: 1px solid #333; }
-    .share-whatsapp{ background: #25D366; color: #fff; }
-    .share-copy    { background: var(--edge); color: var(--bone); border: 1px solid var(--smoke); }
-
-    /* LAYOUT */
-    .news-wrap { max-width: 900px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
-
-    /* AD */
-    .ad-unit { margin: 1.5rem 0; }
-
-    /* ARTICLE CARDS */
-    .feed-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--smoke); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--edge); }
-
-    .article-card {
-      background: var(--asphalt);
-      border: 1px solid var(--edge);
-      border-radius: 10px;
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 1rem;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .article-card:hover { border-color: var(--amber); transform: translateY(-2px); }
-
-    .card-meta { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
-    .card-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 9px; border-radius: 3px; }
-    .tag-breaking  { background: var(--red); color: #fff; }
-    .tag-analysis  { background: var(--amber); color: #000; }
-    .tag-confirmed { background: var(--green); color: #000; }
-    .tag-leak      { background: var(--cyan); color: #000; }
-    .tag-hardware  { background: #7B5EA7; color: #fff; }
-    .tag-event     { background: var(--asphalt); color: var(--amber); border: 1px solid var(--amber); }
-    .tag-preorders { background: var(--edge); color: var(--cyan); border: 1px solid var(--cyan); }
-    .card-date { font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; color: var(--smoke); text-transform: uppercase; letter-spacing: 0.04em; margin-left: auto; }
-
-    .card-title { font-family: 'Russo One', sans-serif; font-size: 1.15rem; line-height: 1.3; margin-bottom: 0.6rem; }
-    .card-title a { color: var(--bone); text-decoration: none; }
-    .card-title a:hover { color: var(--amber); }
-
-    .card-excerpt { font-size: 0.9rem; color: var(--smoke); line-height: 1.55; margin-bottom: 0.75rem; }
-
-    .card-read-more { font-family: 'Barlow Condensed', sans-serif; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--amber); text-decoration: none; }
-    .card-read-more:hover { color: var(--amber-dim); text-decoration: none; }
-
-    /* FEATURED CARD */
-    .article-card.featured { border-color: var(--amber); background: linear-gradient(135deg, var(--asphalt) 0%, #1c1610 100%); }
-    .article-card.featured .card-title { font-size: 1.3rem; }
-
-    /* ARCHIVE LINK */
-    .archive-link-wrap { text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--edge); }
-    .archive-link-wrap a { font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--smoke); border: 1px solid var(--edge); padding: 8px 20px; border-radius: 5px; }
-    .archive-link-wrap a:hover { color: var(--bone); border-color: var(--bone); text-decoration: none; }
-
-    /* SCROLL REVEAL */
-    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s, transform 0.7s; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* FOOTER */
-    footer { background: var(--asphalt); border-top: 1px solid var(--edge); padding: 2rem 1.25rem; text-align: center; }
-    .footer-logo { font-family: 'Russo One', sans-serif; font-size: 1.1rem; color: var(--amber); margin-bottom: 0.5rem; }
-    .footer-tagline { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; color: var(--smoke); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; }
-    .footer-links { display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
-    .footer-links a { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: var(--smoke); letter-spacing: 0.05em; }
-    .footer-links a:hover { color: var(--amber); text-decoration: none; }
-    .footer-copy { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; color: var(--smoke); }
-
-    @media (max-width: 480px) {
-      .nav-links { gap: 1rem; }
-      .nav-links a { font-size: 0.8rem; }
-      .card-date { margin-left: 0; }
-    }
+    body { background:var(--pitch); color:var(--bone); font-family:'Inter',sans-serif; font-size:1rem; line-height:1.75; }
+    a { color:var(--cyan); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .ticker-wrap { background:var(--amber); overflow:hidden; padding:6px 0; position:sticky; top:0; z-index:100; }
+    .ticker-track { display:flex; gap:60px; white-space:nowrap; animation:ticker 20s linear infinite; }
+    .ticker-item { font-family:'Barlow Condensed',sans-serif; font-size:0.85rem; font-weight:700; color:#000; text-transform:uppercase; cursor:pointer; flex-shrink:0; }
+    @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    nav { background:var(--asphalt); border-bottom:1px solid var(--edge); padding:0 1.25rem; display:flex; align-items:center; justify-content:space-between; height:56px; }
+    .nav-logo { font-family:'Russo One',sans-serif; font-size:1.25rem; color:var(--amber); text-decoration:none; }
+    .nav-links { display:flex; gap:1.5rem; list-style:none; }
+    .nav-links a { font-family:'Barlow Condensed',sans-serif; font-size:0.9rem; font-weight:700; text-transform:uppercase; color:var(--bone); letter-spacing:0.05em; }
+    .nav-links a:hover, .nav-links a.active { color:var(--amber); text-decoration:none; }
+    .page-hero { padding:2.5rem 1.25rem 2rem; border-bottom:1px solid var(--edge); text-align:center; }
+    .page-hero h1 { font-family:'Russo One',sans-serif; font-size:clamp(1.8rem,5vw,2.6rem); color:var(--bone); margin-bottom:0.5rem; }
+    .page-hero h1 span { color:var(--amber); }
+    .page-hero p { font-family:'Barlow Condensed',sans-serif; font-size:1rem; color:var(--smoke); text-transform:uppercase; letter-spacing:0.05em; }
+    .stock-bar { background:var(--asphalt); border-bottom:1px solid var(--edge); padding:0.6rem 1.25rem; display:flex; align-items:center; gap:1rem; flex-wrap:wrap; }
+    .stock-label { font-family:'Barlow Condensed',sans-serif; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--smoke); }
+    .stock-price { font-family:'Russo One',sans-serif; font-size:1rem; color:var(--amber); }
+    .stock-change { font-family:'Barlow Condensed',sans-serif; font-size:0.85rem; font-weight:700; }
+    .stock-change.up { color:var(--green); }
+    .stock-change.down { color:var(--red); }
+    .stock-delay { font-family:'Barlow Condensed',sans-serif; font-size:0.72rem; color:var(--smoke); }
+    .share-bar { background:var(--asphalt); border-bottom:1px solid var(--edge); padding:0.75rem 1.25rem; display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center; }
+    .share-label { font-family:'Barlow Condensed',sans-serif; font-size:0.8rem; font-weight:700; text-transform:uppercase; color:var(--smoke); letter-spacing:0.06em; }
+    .share-btn { font-family:'Barlow Condensed',sans-serif; font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; padding:6px 14px; border-radius:4px; border:none; cursor:pointer; transition:opacity 0.15s; }
+    .share-btn:hover { opacity:0.85; }
+    .share-native  { background:var(--amber); color:#000; }
+    .share-reddit  { background:#FF4500; color:#fff; }
+    .share-twitter { background:#000; color:#fff; border:1px solid #333; }
+    .share-whatsapp{ background:#25D366; color:#fff; }
+    .share-facebook{ background:#1877F2; color:#fff; }
+    .share-copy    { background:var(--edge); color:var(--bone); border:1px solid var(--smoke); }
+    .news-wrap { max-width:900px; margin:0 auto; padding:2rem 1.25rem 4rem; }
+    .ad-unit { margin:1.5rem 0; }
+    .feed-label { font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--smoke); margin-bottom:1.25rem; padding-bottom:0.5rem; border-bottom:1px solid var(--edge); }
+    .article-card { background:var(--asphalt); border:1px solid var(--edge); border-radius:10px; padding:1.25rem 1.5rem; margin-bottom:1rem; transition:border-color 0.2s, transform 0.2s; }
+    .article-card:hover { border-color:var(--amber); transform:translateY(-2px); }
+    .article-card.featured { border-color:var(--amber); background:linear-gradient(135deg,var(--asphalt) 0%,#1c1610 100%); }
+    .card-meta { display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.6rem; }
+    .card-tag { font-family:'Barlow Condensed',sans-serif; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; padding:2px 9px; border-radius:3px; }
+    .tag-breaking  { background:var(--red); color:#fff; }
+    .tag-analysis  { background:var(--amber); color:#000; }
+    .tag-confirmed { background:var(--green); color:#000; }
+    .tag-leak      { background:var(--cyan); color:#000; }
+    .tag-industry  { background:#7B5EA7; color:#fff; }
+    .tag-event     { background:var(--asphalt); color:var(--amber); border:1px solid var(--amber); }
+    .tag-preorders { background:var(--edge); color:var(--cyan); border:1px solid var(--cyan); }
+    .tag-guide     { background:var(--asphalt); color:var(--bone); border:1px solid var(--edge); }
+    .card-date { font-family:'Barlow Condensed',sans-serif; font-size:0.78rem; color:var(--smoke); text-transform:uppercase; letter-spacing:0.04em; margin-left:auto; }
+    .card-title { font-family:'Russo One',sans-serif; font-size:1.15rem; line-height:1.3; margin-bottom:0.6rem; }
+    .card-title a { color:var(--bone); text-decoration:none; }
+    .card-title a:hover { color:var(--amber); }
+    .card-excerpt { font-size:0.9rem; color:var(--smoke); line-height:1.55; margin-bottom:0.75rem; }
+    .card-read-more { font-family:'Barlow Condensed',sans-serif; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--amber); text-decoration:none; }
+    .card-read-more:hover { color:var(--amber-dim); text-decoration:none; }
+    .archive-link-wrap { text-align:center; margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--edge); }
+    .archive-link-wrap a { font-family:'Barlow Condensed',sans-serif; font-size:0.9rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--smoke); border:1px solid var(--edge); padding:8px 20px; border-radius:5px; }
+    .archive-link-wrap a:hover { color:var(--bone); border-color:var(--bone); text-decoration:none; }
+    .reveal { opacity:0; transform:translateY(20px); transition:opacity 0.7s,transform 0.7s; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    footer { background:var(--asphalt); border-top:1px solid var(--edge); padding:2rem 1.25rem; text-align:center; }
+    .footer-logo { font-family:'Russo One',sans-serif; font-size:1.1rem; color:var(--amber); margin-bottom:0.5rem; }
+    .footer-tagline { font-family:'Barlow Condensed',sans-serif; font-size:0.8rem; color:var(--smoke); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:1rem; }
+    .footer-links { display:flex; gap:1.25rem; justify-content:center; flex-wrap:wrap; margin-bottom:1rem; }
+    .footer-links a { font-family:'Barlow Condensed',sans-serif; font-size:0.85rem; font-weight:600; text-transform:uppercase; color:var(--smoke); letter-spacing:0.05em; }
+    .footer-links a:hover { color:var(--amber); text-decoration:none; }
+    .footer-copy { font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; color:var(--smoke); }
+    @media (max-width:480px) { .nav-links{gap:1rem} .nav-links a{font-size:0.8rem} .card-date{margin-left:0} }
   </style>
 </head>
 <body>
 
-<!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-track" id="ticker-track">
     <span class="ticker-item">Loading latest GTA6 news...</span>
   </div>
 </div>
 
-<!-- NAV -->
 <nav>
   <a href="/" class="nav-logo">56ViceLane</a>
   <ul class="nav-links">
@@ -181,32 +119,28 @@
   </ul>
 </nav>
 
-<!-- TTWO STOCK WIDGET -->
 <div class="stock-bar">
   <span class="stock-label">TTWO</span>
-  <span class="stock-ticker-name">Take-Two Interactive</span>
   <span class="stock-price" id="stock-price">—</span>
   <span class="stock-change" id="stock-change">—</span>
-  <span class="stock-delay">~15 min delayed · NYSE hours</span>
+  <span class="stock-delay">~15 min delayed</span>
 </div>
 
-<!-- PAGE HERO -->
 <div class="page-hero">
   <h1>GTA6 <span>News Hub</span></h1>
   <p>Every leak · Every confirmed fact · Every launch day update</p>
 </div>
 
-<!-- SHARE BAR -->
 <div class="share-bar">
   <span class="share-label">Share</span>
   <button class="share-btn share-native" onclick="nativeShare()">📤 Share</button>
   <button class="share-btn share-reddit" onclick="shareReddit()">Reddit</button>
   <button class="share-btn share-twitter" onclick="shareTwitter()">✕ Post</button>
   <button class="share-btn share-whatsapp" onclick="shareWhatsApp()">WhatsApp</button>
+  <button class="share-btn share-facebook" onclick="shareFacebook()">Facebook</button>
   <button class="share-btn share-copy" id="copy-btn" onclick="copyLink('copy-btn')">Copy Link</button>
 </div>
 
-<!-- NEWS FEED -->
 <div class="news-wrap">
 
   <div class="ad-unit">
@@ -216,8 +150,22 @@
 
   <div class="feed-label">Latest — May 2026</div>
 
-  <!-- ARTICLE 1 — NEW -->
+  <!-- FABLE / GTA6 — NEW -->
   <div class="article-card featured reveal">
+    <div class="card-meta">
+      <span class="card-tag tag-breaking">Breaking</span>
+      <span class="card-tag tag-industry">Industry Intel</span>
+      <span class="card-date">May 29, 2026</span>
+    </div>
+    <h2 class="card-title">
+      <a href="/articles/fable-delayed-february-2027-because-of-gta6">Microsoft Just Blinked — Fable Delayed To February 2027 Because Of GTA 6</a>
+    </h2>
+    <p class="card-excerpt">Microsoft moved Fable out of GTA6's way and named Grand Theft Auto VI specifically. Every major publisher is now scheduling around November 19. The dominoes are falling.</p>
+    <a href="/articles/fable-delayed-february-2027-because-of-gta6" class="card-read-more">Read More →</a>
+  </div>
+
+  <!-- XBOX TITLE ID -->
+  <div class="article-card reveal">
     <div class="card-meta">
       <span class="card-tag tag-breaking">Breaking</span>
       <span class="card-tag tag-analysis">Analysis</span>
@@ -231,7 +179,26 @@
     <a href="/articles/gta6-xbox-title-id-found-preorder-infrastructure" class="card-read-more">Read More →</a>
   </div>
 
-  <!-- ARTICLE 2 -->
+  <!-- EVERYTHING WE KNOW -->
+  <div class="article-card reveal">
+    <div class="card-meta">
+      <span class="card-tag tag-analysis">Master Guide</span>
+      <span class="card-tag tag-confirmed">Verified</span>
+      <span class="card-date">May 28, 2026</span>
+    </div>
+    <h2 class="card-title">
+      <a href="/articles/gta6-everything-we-know-complete-guide">GTA 6 — Everything We Know: The Complete Verified Guide</a>
+    </h2>
+    <p class="card-excerpt">Characters, map, vehicles, AI, planes, weapons, online, PC — every confirmed and leaked detail verified and sourced. 12 sections. Deep dives coming for each one.</p>
+    <a href="/articles/gta6-everything-we-know-complete-guide" class="card-read-more">Read More →</a>
+  </div>
+
+  <div class="ad-unit reveal">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- EARNINGS CALL -->
   <div class="article-card reveal">
     <div class="card-meta">
       <span class="card-tag tag-confirmed">Confirmed</span>
@@ -241,11 +208,11 @@
     <h2 class="card-title">
       <a href="/articles/gta6-take-two-earnings-call-may-2026">Take-Two Earnings: GTA6 Nov 19 Locked, $8.2B Forecast — Full Breakdown</a>
     </h2>
-    <p class="card-excerpt">The May 21 earnings call confirmed everything. November 19 is locked. $8.2B revenue forecast. Advertising campaign starts end of June. Full breakdown of every number that matters.</p>
+    <p class="card-excerpt">November 19 is locked. $8.2B revenue forecast. Advertising campaign starts end of June. Full breakdown of every number that matters.</p>
     <a href="/articles/gta6-take-two-earnings-call-may-2026" class="card-read-more">Read More →</a>
   </div>
 
-  <!-- ARTICLE 3 -->
+  <!-- NOT DELAYED -->
   <div class="article-card reveal">
     <div class="card-meta">
       <span class="card-tag tag-confirmed">Confirmed</span>
@@ -254,16 +221,11 @@
     <h2 class="card-title">
       <a href="/articles/gta6-not-delayed-google-ai-wrong">No, GTA6 Has NOT Been Delayed — Here's What Google Is Getting Wrong</a>
     </h2>
-    <p class="card-excerpt">Google's AI Overview is surfacing delay misinformation and people are panicking. Here's what's actually confirmed, what's not, and why November 19 is still the date.</p>
+    <p class="card-excerpt">Google's AI Overview is surfacing delay misinformation. Here's what's actually confirmed and why November 19 is still the date.</p>
     <a href="/articles/gta6-not-delayed-google-ai-wrong" class="card-read-more">Read More →</a>
   </div>
 
-  <div class="ad-unit reveal">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
-
-  <!-- ARTICLE 4 -->
+  <!-- EARNINGS PREVIEW -->
   <div class="article-card reveal">
     <div class="card-meta">
       <span class="card-tag tag-analysis">Analysis</span>
@@ -272,38 +234,43 @@
     <h2 class="card-title">
       <a href="/articles/gta6-earnings-call-preview-may21">May 21 4:33 PM ET — Take-Two Earnings Call Preview</a>
     </h2>
-    <p class="card-excerpt">What to watch for, what questions are on the table, and why this earnings call might be the biggest GTA6 news moment before the advertising campaign drops.</p>
+    <p class="card-excerpt">What to watch for and why this earnings call might be the biggest GTA6 news moment before the advertising campaign drops.</p>
     <a href="/articles/gta6-earnings-call-preview-may21" class="card-read-more">Read More →</a>
   </div>
 
-  <!-- ARTICLE 5 -->
+  <div class="ad-unit reveal">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- SAMSUNG -->
   <div class="article-card reveal">
     <div class="card-meta">
       <span class="card-tag tag-analysis">Analysis</span>
-      <span class="card-tag tag-hardware">Hardware</span>
+      <span class="card-tag tag-industry">Industry Intel</span>
       <span class="card-date">May 20, 2026</span>
     </div>
     <h2 class="card-title">
       <a href="/articles/gta6-samsung-strike-ai-npc-memory-crisis">Samsung Strike Avoided — But The Memory Supply Damage May Already Be Done</a>
     </h2>
-    <p class="card-excerpt">The Samsung fab workers' strike was resolved May 20 but the AI data center memory crisis has already pushed RAM prices up. What this means for your GTA6 PC build.</p>
+    <p class="card-excerpt">The Samsung strike was resolved but AI data center demand has already pushed RAM prices up. What this means for your GTA6 PC build.</p>
     <a href="/articles/gta6-samsung-strike-ai-npc-memory-crisis" class="card-read-more">Read More →</a>
   </div>
 
-  <!-- ARTICLE 6 -->
+  <!-- PC BUILD -->
   <div class="article-card reveal">
     <div class="card-meta">
-      <span class="card-tag tag-hardware">PC Build</span>
+      <span class="card-tag tag-industry">PC Build</span>
       <span class="card-date">May 19, 2026</span>
     </div>
     <h2 class="card-title">
       <a href="/articles/gta6-pc-build-guide-2026">One PC To Rule Them All — The GTA6 Launch Day Build Guide</a>
     </h2>
-    <p class="card-excerpt">Three LOTR-themed builds covering every budget. The Shire at $1,150, The Fellowship at $2,000, and The Mordor at $6,200. Everything you need to be ready November 19.</p>
+    <p class="card-excerpt">Three builds covering every budget. The Shire at $1,150, The Fellowship at $2,000, and The Mordor at $6,200.</p>
     <a href="/articles/gta6-pc-build-guide-2026" class="card-read-more">Read More →</a>
   </div>
 
-  <!-- ARTICLE 7 -->
+  <!-- ITALY PREORDERS -->
   <div class="article-card reveal">
     <div class="card-meta">
       <span class="card-tag tag-breaking">Breaking</span>
@@ -313,7 +280,7 @@
     <h2 class="card-title">
       <a href="/articles/gta6-preorders-secretly-went-live-italy">GTA 6 Pre-Orders Secretly Went Live — And Nobody Noticed</a>
     </h2>
-    <p class="card-excerpt">Italian retailer Showgame listed GTA6 at €69.90. 50 copies. Sold out immediately. The listing was pulled within hours. Meanwhile Scandinavian stores are already running in-store marketing.</p>
+    <p class="card-excerpt">Italian retailer Showgame listed GTA6 at €69.90. 50 copies. Sold out immediately. Pulled within hours.</p>
     <a href="/articles/gta6-preorders-secretly-went-live-italy" class="card-read-more">Read More →</a>
   </div>
 
@@ -322,7 +289,7 @@
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 
-  <!-- ARTICLE 8 -->
+  <!-- BEST BUY -->
   <div class="article-card reveal">
     <div class="card-meta">
       <span class="card-tag tag-breaking">Breaking</span>
@@ -332,11 +299,11 @@
     <h2 class="card-title">
       <a href="/articles/gta6-preorder-chaos-debunked">GTA 6 Sparks Pre-Order Chaos: How One Email Broke the Internet</a>
     </h2>
-    <p class="card-excerpt">A Best Buy affiliate email sent GTA6 fans into a frenzy and added $2 billion to Take-Two's stock price overnight. Tom Henderson received death threats. Then insiders debunked the whole thing.</p>
+    <p class="card-excerpt">A Best Buy affiliate email sent GTA6 fans into a frenzy and added $2 billion to Take-Two's stock price overnight.</p>
     <a href="/articles/gta6-preorder-chaos-debunked" class="card-read-more">Read More →</a>
   </div>
 
-  <!-- ARTICLE 9 -->
+  <!-- PRICE -->
   <div class="article-card reveal">
     <div class="card-meta">
       <span class="card-tag tag-leak">Leak</span>
@@ -345,11 +312,11 @@
     <h2 class="card-title">
       <a href="/articles/gta6-price-115-dutch-leak">GTA 6 Could Cost $115 — And Fans Are Furious</a>
     </h2>
-    <p class="card-excerpt">Dutch retailer Gameshop Twente listed GTA6 at €99 — roughly $115 USD at current exchange rates. The gaming community has opinions. Loud ones.</p>
+    <p class="card-excerpt">Dutch retailer Gameshop Twente listed GTA6 at €99 — roughly $115 USD. The gaming community has loud opinions.</p>
     <a href="/articles/gta6-price-115-dutch-leak" class="card-read-more">Read More →</a>
   </div>
 
-  <!-- ARTICLE 10 -->
+  <!-- SIX EDITIONS -->
   <div class="article-card reveal">
     <div class="card-meta">
       <span class="card-tag tag-leak">Leak</span>
@@ -358,11 +325,11 @@
     <h2 class="card-title">
       <a href="/articles/gta6-six-editions-leak">GTA 6 Will Launch With Six Editions Including Collector's Set</a>
     </h2>
-    <p class="card-excerpt">The DetectiveSeeds leak points to three standard tiers, a collector's edition, and two PS5 bundles. No physical disc in any of the bundles. Here's what each tier reportedly includes.</p>
+    <p class="card-excerpt">Three standard tiers, a collector's edition, and two PS5 bundles. No physical disc in any bundle.</p>
     <a href="/articles/gta6-six-editions-leak" class="card-read-more">Read More →</a>
   </div>
 
-  <!-- ARTICLE 11 -->
+  <!-- NO REVIEW COPIES -->
   <div class="article-card reveal">
     <div class="card-meta">
       <span class="card-tag tag-confirmed">Confirmed</span>
@@ -371,69 +338,11 @@
     <h2 class="card-title">
       <a href="/articles/gta6-no-review-copies">Rockstar Won't Send GTA 6 Review Copies — Here's What That Means</a>
     </h2>
-    <p class="card-excerpt">Journalists get a supervised preview event only. No Metacritic score on day one. No review embargoes. This is Rockstar playing a different game entirely.</p>
+    <p class="card-excerpt">Supervised press preview events only. No Metacritic score on day one. Rockstar is playing a different game entirely.</p>
     <a href="/articles/gta6-no-review-copies" class="card-read-more">Read More →</a>
   </div>
 
-  <!-- ARTICLE 12 -->
-  <div class="article-card reveal">
-    <div class="card-meta">
-      <span class="card-tag tag-leak">Leak</span>
-      <span class="card-tag tag-hardware">Hardware</span>
-      <span class="card-date">May 18, 2026</span>
-    </div>
-    <h2 class="card-title">
-      <a href="/articles/gta6-gta5-switch2-virtuos">GTA 5 Could Be Coming To Nintendo Switch 2</a>
-    </h2>
-    <p class="card-excerpt">Virtuos, the porting studio behind some of the biggest console ports in recent memory, has signaled interest in bringing GTA5 and Red Dead Redemption 2 to Switch 2.</p>
-    <a href="/articles/gta6-gta5-switch2-virtuos" class="card-read-more">Read More →</a>
-  </div>
-
-  <div class="ad-unit reveal">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
-
-  <!-- ARTICLE 13 -->
-  <div class="article-card reveal">
-    <div class="card-meta">
-      <span class="card-tag tag-breaking">Breaking</span>
-      <span class="card-date">May 14, 2026</span>
-    </div>
-    <h2 class="card-title">
-      <a href="/articles/gta6-preorder-stock-surge">GTA6 Pre-Order Leak Adds $2 Billion To Take-Two Overnight</a>
-    </h2>
-    <p class="card-excerpt">One leaked email. Two billion dollars in market cap added in a single session. The demand signal from this moment told the entire industry everything it needed to know about GTA6's commercial ceiling.</p>
-    <a href="/articles/gta6-preorder-stock-surge" class="card-read-more">Read More →</a>
-  </div>
-
-  <!-- ARTICLE 14 -->
-  <div class="article-card reveal">
-    <div class="card-meta">
-      <span class="card-tag tag-analysis">Analysis</span>
-      <span class="card-date">May 10, 2026</span>
-    </div>
-    <h2 class="card-title">
-      <a href="/articles/gta6-price-what-to-expect">GTA6 Price: $70, $80, or $100? What We Actually Know</a>
-    </h2>
-    <p class="card-excerpt">Multiple retailers have now published different prices. We broke down every leak, every precedent, and every Take-Two statement to figure out what you should actually budget.</p>
-    <a href="/articles/gta6-price-what-to-expect" class="card-read-more">Read More →</a>
-  </div>
-
-  <!-- ARTICLE 15 -->
-  <div class="article-card reveal">
-    <div class="card-meta">
-      <span class="card-tag tag-confirmed">Confirmed</span>
-      <span class="card-date">May 5, 2026</span>
-    </div>
-    <h2 class="card-title">
-      <a href="/articles/gta6-everything-confirmed">GTA6: Everything Officially Confirmed So Far</a>
-    </h2>
-    <p class="card-excerpt">Not rumors. Not leaks. Only what Rockstar and Take-Two have officially said. Characters, setting, platforms, release date, and every hard fact in one place.</p>
-    <a href="/articles/gta6-everything-confirmed" class="card-read-more">Read More →</a>
-  </div>
-
-  <!-- ARTICLE 16 -->
+  <!-- NOV 19 CONFIRMED -->
   <div class="article-card reveal">
     <div class="card-meta">
       <span class="card-tag tag-confirmed">Confirmed</span>
@@ -442,12 +351,12 @@
     <h2 class="card-title">
       <a href="/articles/gta6-november-19-confirmed">GTA6 Release Date Locked: November 19 2026 Is Official</a>
     </h2>
-    <p class="card-excerpt">After years of speculation, Take-Two Interactive confirmed the date. November 19, 2026. Circle it. Build toward it. Everything on this site exists because of this date.</p>
+    <p class="card-excerpt">After years of speculation, Take-Two confirmed the date. November 19, 2026. Everything on this site exists because of this date.</p>
     <a href="/articles/gta6-november-19-confirmed" class="card-read-more">Read More →</a>
   </div>
 
-  <!-- LAST DRIVE EVENT CARD -->
-  <div class="article-card reveal" style="border-color: var(--amber); background: linear-gradient(135deg, var(--asphalt) 0%, #100f0a 100%);">
+  <!-- LAST DRIVE -->
+  <div class="article-card reveal" style="border-color:var(--amber);background:linear-gradient(135deg,var(--asphalt) 0%,#100f0a 100%);">
     <div class="card-meta">
       <span class="card-tag tag-event">Event</span>
       <span class="card-date">November 18, 2026</span>
@@ -455,18 +364,16 @@
     <h2 class="card-title">
       <a href="/lastdrive">The Last Drive — One Final Cruise Through GTA5 Before GTA6 Launches</a>
     </h2>
-    <p class="card-excerpt">November 18, 2026. The night before GTA6. Players worldwide log into GTA5 for one final slow cruise. No missions. No chaos. Just the road and the people who lived on it. Sign up free.</p>
+    <p class="card-excerpt">November 18, 2026. The night before GTA6. One final slow cruise. No missions. No chaos. Just the road. Sign up free.</p>
     <a href="/lastdrive" class="card-read-more">Sign Up Free →</a>
   </div>
 
-  <!-- ARCHIVE LINK -->
   <div class="archive-link-wrap reveal">
     <a href="/archive">View Archive →</a>
   </div>
 
-</div><!-- /news-wrap -->
+</div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-logo">56ViceLane</div>
   <div class="footer-tagline">Where GTA5 Ends And GTA6 Begins</div>
@@ -484,7 +391,6 @@
 </footer>
 
 <script>
-  // TICKER
   fetch('/articles.json?v=' + Date.now())
     .then(r => r.json())
     .then(articles => {
@@ -499,7 +405,6 @@
         '<span class="ticker-item">🔥 56ViceLane — Where GTA5 Ends And GTA6 Begins</span>';
     });
 
-  // TTWO STOCK WIDGET
   async function loadStock() {
     try {
       const url = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/TTWO?interval=1d&range=1d');
@@ -508,22 +413,18 @@
       const data = JSON.parse(raw.contents);
       const meta = data.chart.result[0].meta;
       const price = meta.regularMarketPrice.toFixed(2);
-      const prev = meta.chartPreviousClose.toFixed(2);
-      const change = (meta.regularMarketPrice - meta.chartPreviousClose).toFixed(2);
-      const pct = ((change / meta.chartPreviousClose) * 100).toFixed(2);
+      const prev = meta.chartPreviousClose;
+      const change = (meta.regularMarketPrice - prev).toFixed(2);
+      const pct = ((meta.regularMarketPrice - prev) / prev * 100).toFixed(2);
       const isUp = change >= 0;
       document.getElementById('stock-price').textContent = '$' + price;
-      const changeEl = document.getElementById('stock-change');
-      changeEl.textContent = (isUp ? '+' : '') + change + ' (' + (isUp ? '+' : '') + pct + '%)';
-      changeEl.className = 'stock-change ' + (isUp ? 'up' : 'down');
-    } catch(e) {
-      document.getElementById('stock-price').textContent = '—';
-    }
+      const el = document.getElementById('stock-change');
+      el.textContent = (isUp ? '+' : '') + change + ' (' + (isUp ? '+' : '') + pct + '%)';
+      el.className = 'stock-change ' + (isUp ? 'up' : 'down');
+    } catch(e) {}
   }
   loadStock();
-  setInterval(loadStock, 900000);
 
-  // SHARE
   function nativeShare() {
     if (navigator.share) { navigator.share({ title: 'GTA6 News Hub — 56ViceLane', url: window.location.href }); }
     else { navigator.clipboard.writeText(window.location.href); }
@@ -532,10 +433,13 @@
     window.open('https://www.reddit.com/r/GTA6/submit?url=' + encodeURIComponent(window.location.href) + '&title=' + encodeURIComponent('GTA6 News Hub — 56ViceLane'), '_blank');
   }
   function shareTwitter() {
-    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('GTA6 News Hub — Every leak, every confirmed fact. #GTA6 #GTA6News') + '&url=' + encodeURIComponent(window.location.href), '_blank');
+    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('GTA6 News Hub — Every leak, every confirmed fact. #GTA6') + '&url=' + encodeURIComponent(window.location.href), '_blank');
   }
   function shareWhatsApp() {
     window.open('https://wa.me/?text=' + encodeURIComponent('GTA6 News Hub — 56ViceLane ' + window.location.href), '_blank');
+  }
+  function shareFacebook() {
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank');
   }
   function copyLink(btnId) {
     navigator.clipboard.writeText(window.location.href).then(() => {
@@ -545,14 +449,10 @@
     });
   }
 
-  // SCROLL REVEAL
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
-    });
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
-
 </body>
 </html>
