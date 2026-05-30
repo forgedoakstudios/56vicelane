@@ -74,14 +74,13 @@
     .card-meta { display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.6rem; }
     .card-tag { font-family:'Barlow Condensed',sans-serif; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; padding:2px 9px; border-radius:3px; }
     .tag-breaking  { background:var(--red); color:#fff; }
-    .tag-analysis  { background:var(--amber); color:#000; }
     .tag-confirmed { background:var(--green); color:#000; }
-    .tag-leak      { background:var(--cyan); color:#000; }
     .tag-industry  { background:#7B5EA7; color:#fff; }
     .tag-security  { background:#1877F2; color:#fff; }
-    .tag-event     { background:var(--asphalt); color:var(--amber); border:1px solid var(--amber); }
-    .tag-preorders { background:var(--edge); color:var(--cyan); border:1px solid var(--cyan); }
+    .tag-map       { background:#1877F2; color:#fff; }
+    .tag-deep      { background:var(--amber); color:#000; }
     .tag-pinned    { background:var(--edge); color:var(--cyan); border:1px solid var(--cyan); }
+    .tag-event     { background:var(--asphalt); color:var(--amber); border:1px solid var(--amber); }
     .card-date { font-family:'Barlow Condensed',sans-serif; font-size:0.78rem; color:var(--smoke); text-transform:uppercase; letter-spacing:0.04em; margin-left:auto; }
     .card-title { font-family:'Russo One',sans-serif; font-size:1.15rem; line-height:1.3; margin-bottom:0.6rem; }
     .card-title a { color:var(--bone); text-decoration:none; }
@@ -154,18 +153,31 @@
 
   <div class="feed-label">Latest — May 2026</div>
 
-  <!-- PROMPT INJECTION — FEATURED -->
+  <!-- LEONIDA MAP — FEATURED -->
   <div class="article-card featured reveal">
+    <div class="card-meta">
+      <span class="card-tag tag-confirmed">Confirmed</span>
+      <span class="card-tag tag-map">Map Deep Dive</span>
+      <span class="card-date">May 30, 2026</span>
+    </div>
+    <h2 class="card-title">
+      <a href="/articles/gta6-leonida-map-confirmed-regions">The GTA6 Leonida Map — Every Confirmed Region Broken Down</a>
+    </h2>
+    <p class="card-excerpt">Vice City. Leonida Keys. Grassrivers. Port Gellhorn. Ambrosia. Mount Kalaga. Six regions confirmed by Rockstar. Here's what each one actually is — and what separates official facts from fan speculation.</p>
+    <a href="/articles/gta6-leonida-map-confirmed-regions" class="card-read-more">Read More →</a>
+  </div>
+
+  <!-- PROMPT INJECTION -->
+  <div class="article-card reveal">
     <div class="card-meta">
       <span class="card-tag tag-breaking">Breaking</span>
       <span class="card-tag tag-security">Security</span>
-      <span class="card-tag tag-industry">Industry Intel</span>
       <span class="card-date">May 30, 2026</span>
     </div>
     <h2 class="card-title">
       <a href="/articles/prompt-injection-attack-ai-coding-gta6-pc-builders">The New Cyber Attack That Targets AI — And Why Your GTA6 Setup Could Be At Risk</a>
     </h2>
-    <p class="card-excerpt">A developer hid a data-nuking instruction inside legitimate code and AI agents followed it without question. This is the new attack vector. Here's what every GTA6 PC builder needs to know before November 19.</p>
+    <p class="card-excerpt">A developer hid a data-nuking instruction inside legitimate code and AI agents followed it. This is the new attack vector every GTA6 PC builder needs to know about before November 19.</p>
     <a href="/articles/prompt-injection-attack-ai-coding-gta6-pc-builders" class="card-read-more">Read More →</a>
   </div>
 
@@ -183,33 +195,19 @@
     <a href="/articles/fable-delayed-february-2027-because-of-gta6" class="card-read-more">Read More →</a>
   </div>
 
-  <!-- XBOX TITLE ID -->
-  <div class="article-card reveal">
-    <div class="card-meta">
-      <span class="card-tag tag-breaking">Breaking</span>
-      <span class="card-tag tag-preorders">Pre-Orders</span>
-      <span class="card-date">May 28, 2026</span>
-    </div>
-    <h2 class="card-title">
-      <a href="/articles/gta6-xbox-title-id-found-preorder-infrastructure">GTA VI Title ID Found In Xbox API — The Pre-Order Button Is Almost Ready</a>
-    </h2>
-    <p class="card-excerpt">A Reddit user found GTA VI's Xbox Title ID buried in Microsoft's API. Package Name confirms Rockstar. Both PlayStation IDs surfaced too. Pre-order infrastructure is staged and waiting.</p>
-    <a href="/articles/gta6-xbox-title-id-found-preorder-infrastructure" class="card-read-more">Read More →</a>
-  </div>
-
   <div class="ad-unit reveal">
     <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 
-  <!-- SECTION DIVIDER -->
+  <!-- ALWAYS ON SECTION -->
   <div class="section-divider reveal">📌 Always On 56ViceLane</div>
 
   <!-- PC BUILD — PINNED -->
   <div class="article-card pinned reveal">
     <div class="card-meta">
       <span class="card-tag tag-pinned">Pinned</span>
-      <span class="card-tag tag-industry">PC Build</span>
+      <span class="card-tag tag-deep">PC Build</span>
       <span class="card-date">May 19, 2026</span>
     </div>
     <h2 class="card-title">
