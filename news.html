@@ -69,6 +69,8 @@
     .article-card { background:var(--asphalt); border:1px solid var(--edge); border-radius:10px; padding:1.25rem 1.5rem; margin-bottom:1rem; transition:border-color 0.2s, transform 0.2s; }
     .article-card:hover { border-color:var(--amber); transform:translateY(-2px); }
     .article-card.featured { border-color:var(--amber); background:linear-gradient(135deg,var(--asphalt) 0%,#1c1610 100%); }
+    .article-card.pinned { border-color:var(--cyan); background:linear-gradient(135deg,var(--asphalt) 0%,#0d1a1c 100%); }
+    .article-card.event { border-color:var(--amber); background:linear-gradient(135deg,var(--asphalt) 0%,#100f0a 100%); }
     .card-meta { display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.6rem; }
     .card-tag { font-family:'Barlow Condensed',sans-serif; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; padding:2px 9px; border-radius:3px; }
     .tag-breaking  { background:var(--red); color:#fff; }
@@ -76,9 +78,10 @@
     .tag-confirmed { background:var(--green); color:#000; }
     .tag-leak      { background:var(--cyan); color:#000; }
     .tag-industry  { background:#7B5EA7; color:#fff; }
+    .tag-security  { background:#1877F2; color:#fff; }
     .tag-event     { background:var(--asphalt); color:var(--amber); border:1px solid var(--amber); }
     .tag-preorders { background:var(--edge); color:var(--cyan); border:1px solid var(--cyan); }
-    .tag-guide     { background:var(--asphalt); color:var(--bone); border:1px solid var(--edge); }
+    .tag-pinned    { background:var(--edge); color:var(--cyan); border:1px solid var(--cyan); }
     .card-date { font-family:'Barlow Condensed',sans-serif; font-size:0.78rem; color:var(--smoke); text-transform:uppercase; letter-spacing:0.04em; margin-left:auto; }
     .card-title { font-family:'Russo One',sans-serif; font-size:1.15rem; line-height:1.3; margin-bottom:0.6rem; }
     .card-title a { color:var(--bone); text-decoration:none; }
@@ -86,6 +89,7 @@
     .card-excerpt { font-size:0.9rem; color:var(--smoke); line-height:1.55; margin-bottom:0.75rem; }
     .card-read-more { font-family:'Barlow Condensed',sans-serif; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--amber); text-decoration:none; }
     .card-read-more:hover { color:var(--amber-dim); text-decoration:none; }
+    .section-divider { font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--smoke); margin:2rem 0 1.25rem; padding-bottom:0.5rem; border-bottom:1px solid var(--edge); }
     .archive-link-wrap { text-align:center; margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--edge); }
     .archive-link-wrap a { font-family:'Barlow Condensed',sans-serif; font-size:0.9rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--smoke); border:1px solid var(--edge); padding:8px 20px; border-radius:5px; }
     .archive-link-wrap a:hover { color:var(--bone); border-color:var(--bone); text-decoration:none; }
@@ -150,8 +154,23 @@
 
   <div class="feed-label">Latest — May 2026</div>
 
-  <!-- FABLE / GTA6 — NEW -->
+  <!-- PROMPT INJECTION — FEATURED -->
   <div class="article-card featured reveal">
+    <div class="card-meta">
+      <span class="card-tag tag-breaking">Breaking</span>
+      <span class="card-tag tag-security">Security</span>
+      <span class="card-tag tag-industry">Industry Intel</span>
+      <span class="card-date">May 30, 2026</span>
+    </div>
+    <h2 class="card-title">
+      <a href="/articles/prompt-injection-attack-ai-coding-gta6-pc-builders">The New Cyber Attack That Targets AI — And Why Your GTA6 Setup Could Be At Risk</a>
+    </h2>
+    <p class="card-excerpt">A developer hid a data-nuking instruction inside legitimate code and AI agents followed it without question. This is the new attack vector. Here's what every GTA6 PC builder needs to know before November 19.</p>
+    <a href="/articles/prompt-injection-attack-ai-coding-gta6-pc-builders" class="card-read-more">Read More →</a>
+  </div>
+
+  <!-- FABLE -->
+  <div class="article-card reveal">
     <div class="card-meta">
       <span class="card-tag tag-breaking">Breaking</span>
       <span class="card-tag tag-industry">Industry Intel</span>
@@ -160,7 +179,7 @@
     <h2 class="card-title">
       <a href="/articles/fable-delayed-february-2027-because-of-gta6">Microsoft Just Blinked — Fable Delayed To February 2027 Because Of GTA 6</a>
     </h2>
-    <p class="card-excerpt">Microsoft moved Fable out of GTA6's way and named Grand Theft Auto VI specifically. Every major publisher is now scheduling around November 19. The dominoes are falling.</p>
+    <p class="card-excerpt">Microsoft moved Fable out of GTA6's way and named Grand Theft Auto VI directly. Every major publisher is now scheduling around November 19. The dominoes are falling.</p>
     <a href="/articles/fable-delayed-february-2027-because-of-gta6" class="card-read-more">Read More →</a>
   </div>
 
@@ -168,120 +187,50 @@
   <div class="article-card reveal">
     <div class="card-meta">
       <span class="card-tag tag-breaking">Breaking</span>
-      <span class="card-tag tag-analysis">Analysis</span>
       <span class="card-tag tag-preorders">Pre-Orders</span>
       <span class="card-date">May 28, 2026</span>
     </div>
     <h2 class="card-title">
       <a href="/articles/gta6-xbox-title-id-found-preorder-infrastructure">GTA VI Title ID Found In Xbox API — The Pre-Order Button Is Almost Ready</a>
     </h2>
-    <p class="card-excerpt">A Reddit user found GTA VI's Xbox Title ID buried in Microsoft's API. Package Name confirms Rockstar. Both PlayStation IDs surfaced too. This is pre-order infrastructure. It's almost time.</p>
+    <p class="card-excerpt">A Reddit user found GTA VI's Xbox Title ID buried in Microsoft's API. Package Name confirms Rockstar. Both PlayStation IDs surfaced too. Pre-order infrastructure is staged and waiting.</p>
     <a href="/articles/gta6-xbox-title-id-found-preorder-infrastructure" class="card-read-more">Read More →</a>
   </div>
 
-  <!-- EVERYTHING WE KNOW -->
-  <div class="article-card reveal">
-    <div class="card-meta">
-      <span class="card-tag tag-analysis">Master Guide</span>
-      <span class="card-tag tag-confirmed">Verified</span>
-      <span class="card-date">May 28, 2026</span>
-    </div>
-    <h2 class="card-title">
-      <a href="/articles/gta6-everything-we-know-complete-guide">GTA 6 — Everything We Know: The Complete Verified Guide</a>
-    </h2>
-    <p class="card-excerpt">Characters, map, vehicles, AI, planes, weapons, online, PC — every confirmed and leaked detail verified and sourced. 12 sections. Deep dives coming for each one.</p>
-    <a href="/articles/gta6-everything-we-know-complete-guide" class="card-read-more">Read More →</a>
-  </div>
-
   <div class="ad-unit reveal">
     <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 
-  <!-- EARNINGS CALL -->
-  <div class="article-card reveal">
-    <div class="card-meta">
-      <span class="card-tag tag-confirmed">Confirmed</span>
-      <span class="card-tag tag-analysis">Analysis</span>
-      <span class="card-date">May 21, 2026</span>
-    </div>
-    <h2 class="card-title">
-      <a href="/articles/gta6-take-two-earnings-call-may-2026">Take-Two Earnings: GTA6 Nov 19 Locked, $8.2B Forecast — Full Breakdown</a>
-    </h2>
-    <p class="card-excerpt">November 19 is locked. $8.2B revenue forecast. Advertising campaign starts end of June. Full breakdown of every number that matters.</p>
-    <a href="/articles/gta6-take-two-earnings-call-may-2026" class="card-read-more">Read More →</a>
-  </div>
+  <!-- SECTION DIVIDER -->
+  <div class="section-divider reveal">📌 Always On 56ViceLane</div>
 
-  <!-- NOT DELAYED -->
-  <div class="article-card reveal">
+  <!-- PC BUILD — PINNED -->
+  <div class="article-card pinned reveal">
     <div class="card-meta">
-      <span class="card-tag tag-confirmed">Confirmed</span>
-      <span class="card-date">May 21, 2026</span>
-    </div>
-    <h2 class="card-title">
-      <a href="/articles/gta6-not-delayed-google-ai-wrong">No, GTA6 Has NOT Been Delayed — Here's What Google Is Getting Wrong</a>
-    </h2>
-    <p class="card-excerpt">Google's AI Overview is surfacing delay misinformation. Here's what's actually confirmed and why November 19 is still the date.</p>
-    <a href="/articles/gta6-not-delayed-google-ai-wrong" class="card-read-more">Read More →</a>
-  </div>
-
-  <!-- EARNINGS PREVIEW -->
-  <div class="article-card reveal">
-    <div class="card-meta">
-      <span class="card-tag tag-analysis">Analysis</span>
-      <span class="card-date">May 20, 2026</span>
-    </div>
-    <h2 class="card-title">
-      <a href="/articles/gta6-earnings-call-preview-may21">May 21 4:33 PM ET — Take-Two Earnings Call Preview</a>
-    </h2>
-    <p class="card-excerpt">What to watch for and why this earnings call might be the biggest GTA6 news moment before the advertising campaign drops.</p>
-    <a href="/articles/gta6-earnings-call-preview-may21" class="card-read-more">Read More →</a>
-  </div>
-
-  <div class="ad-unit reveal">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
-
-  <!-- SAMSUNG -->
-  <div class="article-card reveal">
-    <div class="card-meta">
-      <span class="card-tag tag-analysis">Analysis</span>
-      <span class="card-tag tag-industry">Industry Intel</span>
-      <span class="card-date">May 20, 2026</span>
-    </div>
-    <h2 class="card-title">
-      <a href="/articles/gta6-samsung-strike-ai-npc-memory-crisis">Samsung Strike Avoided — But The Memory Supply Damage May Already Be Done</a>
-    </h2>
-    <p class="card-excerpt">The Samsung strike was resolved but AI data center demand has already pushed RAM prices up. What this means for your GTA6 PC build.</p>
-    <a href="/articles/gta6-samsung-strike-ai-npc-memory-crisis" class="card-read-more">Read More →</a>
-  </div>
-
-  <!-- PC BUILD -->
-  <div class="article-card reveal">
-    <div class="card-meta">
+      <span class="card-tag tag-pinned">Pinned</span>
       <span class="card-tag tag-industry">PC Build</span>
       <span class="card-date">May 19, 2026</span>
     </div>
     <h2 class="card-title">
       <a href="/articles/gta6-pc-build-guide-2026">One PC To Rule Them All — The GTA6 Launch Day Build Guide</a>
     </h2>
-    <p class="card-excerpt">Three builds covering every budget. The Shire at $1,150, The Fellowship at $2,000, and The Mordor at $6,200.</p>
+    <p class="card-excerpt">Three LOTR-themed builds covering every budget. The Shire at $1,150, The Fellowship at $2,000, and The Mordor at $6,200. Everything you need to be ready November 19.</p>
     <a href="/articles/gta6-pc-build-guide-2026" class="card-read-more">Read More →</a>
   </div>
 
-  <!-- ITALY PREORDERS -->
-  <div class="article-card reveal">
+  <!-- LAST DRIVE — PINNED -->
+  <div class="article-card event reveal">
     <div class="card-meta">
-      <span class="card-tag tag-breaking">Breaking</span>
-      <span class="card-tag tag-preorders">Pre-Orders</span>
-      <span class="card-date">May 19, 2026</span>
+      <span class="card-tag tag-event">Event</span>
+      <span class="card-tag tag-pinned">Pinned</span>
+      <span class="card-date">November 18, 2026</span>
     </div>
     <h2 class="card-title">
-      <a href="/articles/gta6-preorders-secretly-went-live-italy">GTA 6 Pre-Orders Secretly Went Live — And Nobody Noticed</a>
+      <a href="/lastdrive">The Last Drive — One Final Cruise Through GTA5 Before GTA6 Launches</a>
     </h2>
-    <p class="card-excerpt">Italian retailer Showgame listed GTA6 at €69.90. 50 copies. Sold out immediately. Pulled within hours.</p>
-    <a href="/articles/gta6-preorders-secretly-went-live-italy" class="card-read-more">Read More →</a>
+    <p class="card-excerpt">November 18, 2026. The night before GTA6. One final slow cruise. No missions. No chaos. Just the road and the people who lived on it. Sign up free.</p>
+    <a href="/lastdrive" class="card-read-more">Sign Up Free →</a>
   </div>
 
   <div class="ad-unit reveal">
@@ -289,87 +238,8 @@
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 
-  <!-- BEST BUY -->
-  <div class="article-card reveal">
-    <div class="card-meta">
-      <span class="card-tag tag-breaking">Breaking</span>
-      <span class="card-tag tag-preorders">Pre-Orders</span>
-      <span class="card-date">May 18, 2026</span>
-    </div>
-    <h2 class="card-title">
-      <a href="/articles/gta6-preorder-chaos-debunked">GTA 6 Sparks Pre-Order Chaos: How One Email Broke the Internet</a>
-    </h2>
-    <p class="card-excerpt">A Best Buy affiliate email sent GTA6 fans into a frenzy and added $2 billion to Take-Two's stock price overnight.</p>
-    <a href="/articles/gta6-preorder-chaos-debunked" class="card-read-more">Read More →</a>
-  </div>
-
-  <!-- PRICE -->
-  <div class="article-card reveal">
-    <div class="card-meta">
-      <span class="card-tag tag-leak">Leak</span>
-      <span class="card-date">May 18, 2026</span>
-    </div>
-    <h2 class="card-title">
-      <a href="/articles/gta6-price-115-dutch-leak">GTA 6 Could Cost $115 — And Fans Are Furious</a>
-    </h2>
-    <p class="card-excerpt">Dutch retailer Gameshop Twente listed GTA6 at €99 — roughly $115 USD. The gaming community has loud opinions.</p>
-    <a href="/articles/gta6-price-115-dutch-leak" class="card-read-more">Read More →</a>
-  </div>
-
-  <!-- SIX EDITIONS -->
-  <div class="article-card reveal">
-    <div class="card-meta">
-      <span class="card-tag tag-leak">Leak</span>
-      <span class="card-date">May 18, 2026</span>
-    </div>
-    <h2 class="card-title">
-      <a href="/articles/gta6-six-editions-leak">GTA 6 Will Launch With Six Editions Including Collector's Set</a>
-    </h2>
-    <p class="card-excerpt">Three standard tiers, a collector's edition, and two PS5 bundles. No physical disc in any bundle.</p>
-    <a href="/articles/gta6-six-editions-leak" class="card-read-more">Read More →</a>
-  </div>
-
-  <!-- NO REVIEW COPIES -->
-  <div class="article-card reveal">
-    <div class="card-meta">
-      <span class="card-tag tag-confirmed">Confirmed</span>
-      <span class="card-date">May 18, 2026</span>
-    </div>
-    <h2 class="card-title">
-      <a href="/articles/gta6-no-review-copies">Rockstar Won't Send GTA 6 Review Copies — Here's What That Means</a>
-    </h2>
-    <p class="card-excerpt">Supervised press preview events only. No Metacritic score on day one. Rockstar is playing a different game entirely.</p>
-    <a href="/articles/gta6-no-review-copies" class="card-read-more">Read More →</a>
-  </div>
-
-  <!-- NOV 19 CONFIRMED -->
-  <div class="article-card reveal">
-    <div class="card-meta">
-      <span class="card-tag tag-confirmed">Confirmed</span>
-      <span class="card-date">April 28, 2026</span>
-    </div>
-    <h2 class="card-title">
-      <a href="/articles/gta6-november-19-confirmed">GTA6 Release Date Locked: November 19 2026 Is Official</a>
-    </h2>
-    <p class="card-excerpt">After years of speculation, Take-Two confirmed the date. November 19, 2026. Everything on this site exists because of this date.</p>
-    <a href="/articles/gta6-november-19-confirmed" class="card-read-more">Read More →</a>
-  </div>
-
-  <!-- LAST DRIVE -->
-  <div class="article-card reveal" style="border-color:var(--amber);background:linear-gradient(135deg,var(--asphalt) 0%,#100f0a 100%);">
-    <div class="card-meta">
-      <span class="card-tag tag-event">Event</span>
-      <span class="card-date">November 18, 2026</span>
-    </div>
-    <h2 class="card-title">
-      <a href="/lastdrive">The Last Drive — One Final Cruise Through GTA5 Before GTA6 Launches</a>
-    </h2>
-    <p class="card-excerpt">November 18, 2026. The night before GTA6. One final slow cruise. No missions. No chaos. Just the road. Sign up free.</p>
-    <a href="/lastdrive" class="card-read-more">Sign Up Free →</a>
-  </div>
-
   <div class="archive-link-wrap reveal">
-    <a href="/archive">View Archive →</a>
+    <a href="/archive">View All Articles →</a>
   </div>
 
 </div>
