@@ -1,127 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GTA6 News Hub — 56ViceLane</title>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-9EKF7J4V7W');
-  </script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
-  <meta property="og:title" content="GTA6 News Hub — 56ViceLane">
-  <meta property="og:description" content="Every GTA6 leak, confirmed fact, and launch day update. Where GTA5 Ends And GTA6 Begins.">
-  <meta property="og:image" content="https://56vicelane.com/images/Jason_and_Lucia_01_landscape.jpg">
-  <meta property="og:url" content="https://56vicelane.com/news">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="56ViceLane">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="description" content="Every GTA6 leak, confirmed fact, and launch day update. Where GTA5 Ends And GTA6 Begins.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --pitch:#0B0B0F; --asphalt:#16161D; --amber:#FF6B1A; --amber-dim:#cc4a00;
-      --cyan:#00D4FF; --bone:#F0EDE8; --smoke:#7A7A8C; --edge:#26262F;
-      --green:#00C875; --red:#FF3B3B;
-    }
-    body { background:var(--pitch); color:var(--bone); font-family:'Inter',sans-serif; font-size:1rem; line-height:1.75; }
-    a { color:var(--cyan); text-decoration:none; }
-    a:hover { text-decoration:underline; }
-    .ticker-wrap { background:var(--amber); overflow:hidden; padding:6px 0; position:sticky; top:0; z-index:100; }
-    .ticker-track { display:flex; gap:60px; white-space:nowrap; animation:ticker 20s linear infinite; }
-    .ticker-item { font-family:'Barlow Condensed',sans-serif; font-size:0.85rem; font-weight:700; color:#000; text-transform:uppercase; cursor:pointer; flex-shrink:0; }
-    @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-    nav { background:var(--asphalt); border-bottom:1px solid var(--edge); padding:0 1.25rem; display:flex; align-items:center; justify-content:space-between; height:56px; }
-    .nav-logo { font-family:'Russo One',sans-serif; font-size:1.25rem; color:var(--amber); text-decoration:none; }
-    .nav-links { display:flex; gap:1.5rem; list-style:none; }
-    .nav-links a { font-family:'Barlow Condensed',sans-serif; font-size:0.9rem; font-weight:700; text-transform:uppercase; color:var(--bone); letter-spacing:0.05em; }
-    .nav-links a:hover, .nav-links a.active { color:var(--amber); text-decoration:none; }
-    .page-hero { padding:2.5rem 1.25rem 2rem; border-bottom:1px solid var(--edge); text-align:center; }
-    .page-hero h1 { font-family:'Russo One',sans-serif; font-size:clamp(1.8rem,5vw,2.6rem); color:var(--bone); margin-bottom:0.5rem; }
-    .page-hero h1 span { color:var(--amber); }
-    .page-hero p { font-family:'Barlow Condensed',sans-serif; font-size:1rem; color:var(--smoke); text-transform:uppercase; letter-spacing:0.05em; }
-    .stock-bar { background:var(--asphalt); border-bottom:1px solid var(--edge); padding:0.6rem 1.25rem; display:flex; align-items:center; gap:1rem; flex-wrap:wrap; }
-    .stock-label { font-family:'Barlow Condensed',sans-serif; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--smoke); }
-    .stock-price { font-family:'Russo One',sans-serif; font-size:1rem; color:var(--amber); }
-    .stock-change { font-family:'Barlow Condensed',sans-serif; font-size:0.85rem; font-weight:700; }
-    .stock-change.up { color:var(--green); }
-    .stock-change.down { color:var(--red); }
-    .stock-delay { font-family:'Barlow Condensed',sans-serif; font-size:0.72rem; color:var(--smoke); }
-    .share-bar { background:var(--asphalt); border-bottom:1px solid var(--edge); padding:0.75rem 1.25rem; display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center; }
-    .share-label { font-family:'Barlow Condensed',sans-serif; font-size:0.8rem; font-weight:700; text-transform:uppercase; color:var(--smoke); letter-spacing:0.06em; }
-    .share-btn { font-family:'Barlow Condensed',sans-serif; font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; padding:6px 14px; border-radius:4px; border:none; cursor:pointer; transition:opacity 0.15s; }
-    .share-btn:hover { opacity:0.85; }
-    .share-native  { background:var(--amber); color:#000; }
-    .share-reddit  { background:#FF4500; color:#fff; }
-    .share-twitter { background:#000; color:#fff; border:1px solid #333; }
-    .share-whatsapp{ background:#25D366; color:#fff; }
-    .share-facebook{ background:#1877F2; color:#fff; }
-    .share-copy    { background:var(--edge); color:var(--bone); border:1px solid var(--smoke); }
-    .news-wrap { max-width:900px; margin:0 auto; padding:2rem 1.25rem 4rem; }
-    .ad-unit { margin:1.5rem 0; }
-    .feed-label { font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--smoke); margin-bottom:1.25rem; padding-bottom:0.5rem; border-bottom:1px solid var(--edge); }
-    .article-card { background:var(--asphalt); border:1px solid var(--edge); border-radius:10px; padding:1.25rem 1.5rem; margin-bottom:1rem; transition:border-color 0.2s, transform 0.2s; }
-    .article-card:hover { border-color:var(--amber); transform:translateY(-2px); }
-    .article-card.featured { border-color:var(--amber); background:linear-gradient(135deg,var(--asphalt) 0%,#1c1610 100%); }
-    .article-card.pinned { border-color:var(--cyan); background:linear-gradient(135deg,var(--asphalt) 0%,#0d1a1c 100%); }
-    .article-card.event { border-color:var(--amber); background:linear-gradient(135deg,var(--asphalt) 0%,#100f0a 100%); }
-    .card-meta { display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.6rem; }
-    .card-tag { font-family:'Barlow Condensed',sans-serif; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; padding:2px 9px; border-radius:3px; }
-    .tag-breaking  { background:var(--red); color:#fff; }
-    .tag-confirmed { background:var(--green); color:#000; }
-    .tag-industry  { background:#7B5EA7; color:#fff; }
-    .tag-security  { background:#1877F2; color:#fff; }
-    .tag-map       { background:#1877F2; color:#fff; }
-    .tag-deep      { background:var(--amber); color:#000; }
-    .tag-pinned    { background:var(--edge); color:var(--cyan); border:1px solid var(--cyan); }
-    .tag-event     { background:var(--asphalt); color:var(--amber); border:1px solid var(--amber); }
-    .card-date { font-family:'Barlow Condensed',sans-serif; font-size:0.78rem; color:var(--smoke); text-transform:uppercase; letter-spacing:0.04em; margin-left:auto; }
-    .card-title { font-family:'Russo One',sans-serif; font-size:1.15rem; line-height:1.3; margin-bottom:0.6rem; }
-    .card-title a { color:var(--bone); text-decoration:none; }
-    .card-title a:hover { color:var(--amber); }
-    .card-excerpt { font-size:0.9rem; color:var(--smoke); line-height:1.55; margin-bottom:0.75rem; }
-    .card-read-more { font-family:'Barlow Condensed',sans-serif; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--amber); text-decoration:none; }
-    .card-read-more:hover { color:var(--amber-dim); text-decoration:none; }
-    .section-divider { font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--smoke); margin:2rem 0 1.25rem; padding-bottom:0.5rem; border-bottom:1px solid var(--edge); }
-    .archive-link-wrap { text-align:center; margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--edge); }
-    .archive-link-wrap a { font-family:'Barlow Condensed',sans-serif; font-size:0.9rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--smoke); border:1px solid var(--edge); padding:8px 20px; border-radius:5px; }
-    .archive-link-wrap a:hover { color:var(--bone); border-color:var(--bone); text-decoration:none; }
-    .reveal { opacity:0; transform:translateY(20px); transition:opacity 0.7s,transform 0.7s; }
-    .reveal.visible { opacity:1; transform:translateY(0); }
-    footer { background:var(--asphalt); border-top:1px solid var(--edge); padding:2rem 1.25rem; text-align:center; }
-    .footer-logo { font-family:'Russo One',sans-serif; font-size:1.1rem; color:var(--amber); margin-bottom:0.5rem; }
-    .footer-tagline { font-family:'Barlow Condensed',sans-serif; font-size:0.8rem; color:var(--smoke); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:1rem; }
-    .footer-links { display:flex; gap:1.25rem; justify-content:center; flex-wrap:wrap; margin-bottom:1rem; }
-    .footer-links a { font-family:'Barlow Condensed',sans-serif; font-size:0.85rem; font-weight:600; text-transform:uppercase; color:var(--smoke); letter-spacing:0.05em; }
-    .footer-links a:hover { color:var(--amber); text-decoration:none; }
-    .footer-copy { font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; color:var(--smoke); }
-    @media (max-width:480px) { .nav-links{gap:1rem} .nav-links a{font-size:0.8rem} .card-date{margin-left:0} }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GTA6 News Hub | 56ViceLane</title>
+<meta name="description" content="Every GTA6 leak, confirmed fact, and launch day update. Where GTA5 Ends And GTA6 Begins.">
+<link rel="canonical" href="https://56vicelane.com/news">
+
+<!-- Social card — original 56ViceLane art, not character key art -->
+<meta property="og:title" content="GTA6 News Hub — 56ViceLane">
+<meta property="og:description" content="Every GTA6 leak, confirmed fact, and launch day update. Where GTA5 Ends And GTA6 Begins.">
+<meta property="og:image" content="https://56vicelane.com/images/og/news-hub.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://56vicelane.com/news">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="56ViceLane">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GTA6 News Hub — 56ViceLane">
+<meta name="twitter:description" content="Every GTA6 leak, confirmed fact, and launch day update.">
+<meta name="twitter:image" content="https://56vicelane.com/images/og/news-hub.jpg">
+
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Shared style — one file, whole site -->
+<link rel="stylesheet" href="/vicelane.css">
+
+<!-- Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9EKF7J4V7W');
+</script>
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
 </head>
 <body>
 
-<div class="ticker-wrap">
-  <div class="ticker-track" id="ticker-track">
-    <span class="ticker-item">Loading latest GTA6 news...</span>
-  </div>
-</div>
+<!-- TICKER -->
+<div class="ticker-wrap"><div class="ticker-track" id="ticker-track"><span class="ticker-item">Loading latest GTA6 news…</span></div></div>
 
-<nav>
-  <a href="/" class="nav-logo">56ViceLane</a>
-  <ul class="nav-links">
-    <li><a href="/news" class="active">News</a></li>
-    <li><a href="/lastdrive">Last Drive</a></li>
-    <li><a href="/shop">Shop</a></li>
-    <li><a href="/gtacon">GTACON</a></li>
-  </ul>
+<!-- STANDARD HEADER -->
+<nav class="nav">
+  <a class="logo" href="/">
+    <span class="logo-mark">56</span>
+    <span class="logo-text">ViceLane</span>
+  </a>
+  <div class="nav-links">
+    <a href="/news">News</a>
+    <a href="/lastdrive">Last Drive</a>
+    <a href="/shop">Gear</a>
+    <a href="/about">About</a>
+  </div>
 </nav>
 
+<!-- TTWO STOCK BAR -->
 <div class="stock-bar">
   <span class="stock-label">TTWO</span>
   <span class="stock-price" id="stock-price">—</span>
@@ -134,11 +74,12 @@
   <p>Every leak · Every confirmed fact · Every launch day update</p>
 </div>
 
-<div class="share-bar">
+<!-- SHARE -->
+<div class="share-bar" style="border-bottom:1px solid var(--edge);padding:.75rem 1.25rem;">
   <span class="share-label">Share</span>
-  <button class="share-btn share-native" onclick="nativeShare()">📤 Share</button>
+  <button class="share-btn share-native" onclick="nativeShare()">Share</button>
   <button class="share-btn share-reddit" onclick="shareReddit()">Reddit</button>
-  <button class="share-btn share-twitter" onclick="shareTwitter()">✕ Post</button>
+  <button class="share-btn share-twitter" onclick="shareTwitter()">X</button>
   <button class="share-btn share-whatsapp" onclick="shareWhatsApp()">WhatsApp</button>
   <button class="share-btn share-facebook" onclick="shareFacebook()">Facebook</button>
   <button class="share-btn share-copy" id="copy-btn" onclick="copyLink('copy-btn')">Copy Link</button>
@@ -160,9 +101,7 @@
       <span class="card-tag tag-map">Map Deep Dive</span>
       <span class="card-date">May 30, 2026</span>
     </div>
-    <h2 class="card-title">
-      <a href="/articles/gta6-leonida-map-confirmed-regions">The GTA6 Leonida Map — Every Confirmed Region Broken Down</a>
-    </h2>
+    <h2 class="card-title"><a href="/articles/gta6-leonida-map-confirmed-regions">The GTA6 Leonida Map — Every Confirmed Region Broken Down</a></h2>
     <p class="card-excerpt">Vice City. Leonida Keys. Grassrivers. Port Gellhorn. Ambrosia. Mount Kalaga. Six regions confirmed by Rockstar. Here's what each one actually is — and what separates official facts from fan speculation.</p>
     <a href="/articles/gta6-leonida-map-confirmed-regions" class="card-read-more">Read More →</a>
   </div>
@@ -174,9 +113,7 @@
       <span class="card-tag tag-security">Security</span>
       <span class="card-date">May 30, 2026</span>
     </div>
-    <h2 class="card-title">
-      <a href="/articles/prompt-injection-attack-ai-coding-gta6-pc-builders">The New Cyber Attack That Targets AI — And Why Your GTA6 Setup Could Be At Risk</a>
-    </h2>
+    <h2 class="card-title"><a href="/articles/prompt-injection-attack-ai-coding-gta6-pc-builders">The New Cyber Attack That Targets AI — And Why Your GTA6 Setup Could Be At Risk</a></h2>
     <p class="card-excerpt">A developer hid a data-nuking instruction inside legitimate code and AI agents followed it. This is the new attack vector every GTA6 PC builder needs to know about before November 19.</p>
     <a href="/articles/prompt-injection-attack-ai-coding-gta6-pc-builders" class="card-read-more">Read More →</a>
   </div>
@@ -188,9 +125,7 @@
       <span class="card-tag tag-industry">Industry Intel</span>
       <span class="card-date">May 29, 2026</span>
     </div>
-    <h2 class="card-title">
-      <a href="/articles/fable-delayed-february-2027-because-of-gta6">Microsoft Just Blinked — Fable Delayed To February 2027 Because Of GTA 6</a>
-    </h2>
+    <h2 class="card-title"><a href="/articles/fable-delayed-february-2027-because-of-gta6">Microsoft Just Blinked — Fable Delayed To February 2027 Because Of GTA 6</a></h2>
     <p class="card-excerpt">Microsoft moved Fable out of GTA6's way and named Grand Theft Auto VI directly. Every major publisher is now scheduling around November 19. The dominoes are falling.</p>
     <a href="/articles/fable-delayed-february-2027-because-of-gta6" class="card-read-more">Read More →</a>
   </div>
@@ -200,33 +135,27 @@
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 
-  <!-- ALWAYS ON SECTION -->
+  <!-- ALWAYS ON -->
   <div class="section-divider reveal">📌 Always On 56ViceLane</div>
 
-  <!-- PC BUILD — PINNED -->
   <div class="article-card pinned reveal">
     <div class="card-meta">
       <span class="card-tag tag-pinned">Pinned</span>
       <span class="card-tag tag-deep">PC Build</span>
       <span class="card-date">May 19, 2026</span>
     </div>
-    <h2 class="card-title">
-      <a href="/articles/gta6-pc-build-guide-2026">One PC To Rule Them All — The GTA6 Launch Day Build Guide</a>
-    </h2>
+    <h2 class="card-title"><a href="/articles/gta6-pc-build-guide-2026">One PC To Rule Them All — The GTA6 Launch Day Build Guide</a></h2>
     <p class="card-excerpt">Three LOTR-themed builds covering every budget. The Shire at $1,150, The Fellowship at $2,000, and The Mordor at $6,200. Everything you need to be ready November 19.</p>
     <a href="/articles/gta6-pc-build-guide-2026" class="card-read-more">Read More →</a>
   </div>
 
-  <!-- LAST DRIVE — PINNED -->
   <div class="article-card event reveal">
     <div class="card-meta">
       <span class="card-tag tag-event">Event</span>
       <span class="card-tag tag-pinned">Pinned</span>
       <span class="card-date">November 18, 2026</span>
     </div>
-    <h2 class="card-title">
-      <a href="/lastdrive">The Last Drive — One Final Cruise Through GTA5 Before GTA6 Launches</a>
-    </h2>
+    <h2 class="card-title"><a href="/lastdrive">The Last Drive — One Final Cruise Through GTA5 Before GTA6 Launches</a></h2>
     <p class="card-excerpt">November 18, 2026. The night before GTA6. One final slow cruise. No missions. No chaos. Just the road and the people who lived on it. Sign up free.</p>
     <a href="/lastdrive" class="card-read-more">Sign Up Free →</a>
   </div>
@@ -243,84 +172,51 @@
 </div>
 
 <footer>
-  <div class="footer-logo">56ViceLane</div>
-  <div class="footer-tagline">Where GTA5 Ends And GTA6 Begins</div>
-  <div class="footer-links">
-    <a href="/">Home</a>
-    <a href="/news">News</a>
-    <a href="/lastdrive">Last Drive</a>
-    <a href="/shop">Shop</a>
-    <a href="/gtacon">GTACON</a>
-    <a href="/about">About</a>
-    <a href="/contact">Contact</a>
-    <a href="/privacy">Privacy</a>
-  </div>
-  <div class="footer-copy">© 2026 56ViceLane · Forged Oak Studios · Not affiliated with Rockstar Games or Take-Two Interactive</div>
+  <p class="disclosure">56ViceLane is an independent fan site. Not affiliated with, endorsed by, or sponsored by Rockstar Games or Take-Two Interactive. All trademarks belong to their respective owners. 56ViceLane earns a small commission on qualifying purchases through affiliate links (Amazon, Newegg, Best Buy) at no extra cost to you.</p>
+  <p>© 2026 56ViceLane · Forged Oak Studios ·
+     <a href="/">Home</a> · <a href="/news">News</a> · <a href="/lastdrive">Last Drive</a> ·
+     <a href="/shop">Shop</a> · <a href="/gtacon">GTACON</a> · <a href="/about">About</a> ·
+     <a href="/contact">Contact</a> · <a href="/privacy">Privacy</a></p>
 </footer>
 
 <script>
-  fetch('/articles.json?v=' + Date.now())
-    .then(r => r.json())
-    .then(articles => {
-      const track = document.getElementById('ticker-track');
-      const items = [...articles, ...articles].map(a =>
-        `<span class="ticker-item" onclick="location.href='${a.url}'">${a.emoji} ${a.title}</span>`
-      ).join('');
-      track.innerHTML = items;
-    })
-    .catch(() => {
-      document.getElementById('ticker-track').innerHTML =
-        '<span class="ticker-item">🔥 56ViceLane — Where GTA5 Ends And GTA6 Begins</span>';
-    });
+const ARTICLE_TITLE = 'GTA6 News Hub — 56ViceLane';
+const ARTICLE_URL = window.location.href;
 
-  async function loadStock() {
-    try {
-      const url = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/TTWO?interval=1d&range=1d');
-      const res = await fetch(url);
-      const raw = await res.json();
-      const data = JSON.parse(raw.contents);
-      const meta = data.chart.result[0].meta;
-      const price = meta.regularMarketPrice.toFixed(2);
-      const prev = meta.chartPreviousClose;
-      const change = (meta.regularMarketPrice - prev).toFixed(2);
-      const pct = ((meta.regularMarketPrice - prev) / prev * 100).toFixed(2);
-      const isUp = change >= 0;
-      document.getElementById('stock-price').textContent = '$' + price;
-      const el = document.getElementById('stock-change');
-      el.textContent = (isUp ? '+' : '') + change + ' (' + (isUp ? '+' : '') + pct + '%)';
-      el.className = 'stock-change ' + (isUp ? 'up' : 'down');
-    } catch(e) {}
-  }
-  loadStock();
+/* TICKER (20s, from articles.json) */
+fetch('/articles.json?v='+Date.now())
+  .then(r=>r.json())
+  .then(a=>{const t=document.getElementById('ticker-track');
+    t.innerHTML=[...a,...a].map(x=>`<span class="ticker-item" onclick="location.href='${x.url}'">${x.emoji} ${x.title}</span>`).join('');})
+  .catch(()=>{document.getElementById('ticker-track').innerHTML='<span class="ticker-item">🔥 Where GTA5 Ends And GTA6 Begins</span>';});
 
-  function nativeShare() {
-    if (navigator.share) { navigator.share({ title: 'GTA6 News Hub — 56ViceLane', url: window.location.href }); }
-    else { navigator.clipboard.writeText(window.location.href); }
-  }
-  function shareReddit() {
-    window.open('https://www.reddit.com/r/GTA6/submit?url=' + encodeURIComponent(window.location.href) + '&title=' + encodeURIComponent('GTA6 News Hub — 56ViceLane'), '_blank');
-  }
-  function shareTwitter() {
-    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('GTA6 News Hub — Every leak, every confirmed fact. #GTA6') + '&url=' + encodeURIComponent(window.location.href), '_blank');
-  }
-  function shareWhatsApp() {
-    window.open('https://wa.me/?text=' + encodeURIComponent('GTA6 News Hub — 56ViceLane ' + window.location.href), '_blank');
-  }
-  function shareFacebook() {
-    window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank');
-  }
-  function copyLink(btnId) {
-    navigator.clipboard.writeText(window.location.href).then(() => {
-      const btn = document.getElementById(btnId);
-      btn.textContent = 'Copied!';
-      setTimeout(() => btn.textContent = 'Copy Link', 2000);
-    });
-  }
+/* TTWO stock — NOTE: still on allorigins; replace with stock-price worker per your roadmap */
+async function loadStock(){
+  try{
+    const url='https://api.allorigins.win/get?url='+encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/TTWO?interval=1d&range=1d');
+    const raw=await (await fetch(url)).json();
+    const meta=JSON.parse(raw.contents).chart.result[0].meta;
+    const price=meta.regularMarketPrice, prev=meta.chartPreviousClose;
+    const change=(price-prev).toFixed(2), pct=((price-prev)/prev*100).toFixed(2), up=change>=0;
+    document.getElementById('stock-price').textContent='$'+price.toFixed(2);
+    const el=document.getElementById('stock-change');
+    el.textContent=(up?'+':'')+change+' ('+(up?'+':'')+pct+'%)';
+    el.className='stock-change '+(up?'up':'down');
+  }catch(e){}
+}
+loadStock();
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+/* SHARE */
+function nativeShare(){if(navigator.share){navigator.share({title:ARTICLE_TITLE,url:ARTICLE_URL});}else{navigator.clipboard.writeText(ARTICLE_URL);}}
+function shareReddit(){window.open('https://www.reddit.com/r/GTA6/submit?url='+encodeURIComponent(ARTICLE_URL)+'&title='+encodeURIComponent(ARTICLE_TITLE),'_blank');}
+function shareTwitter(){window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent('GTA6 News Hub — Every leak, every confirmed fact. #GTA6')+'&url='+encodeURIComponent(ARTICLE_URL),'_blank');}
+function shareWhatsApp(){window.open('https://wa.me/?text='+encodeURIComponent(ARTICLE_TITLE+' '+ARTICLE_URL),'_blank');}
+function shareFacebook(){window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(ARTICLE_URL),'_blank');}
+function copyLink(id){navigator.clipboard.writeText(ARTICLE_URL).then(()=>{const b=document.getElementById(id);b.textContent='Copied!';setTimeout(()=>b.textContent='Copy Link',2000);});}
+
+/* REVEAL */
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
 </body>
 </html>
