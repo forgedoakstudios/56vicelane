@@ -49,17 +49,43 @@
 
 <!-- STANDARD HEADER -->
 <nav class="nav">
-  <a class="logo" href="/">
-    <span class="logo-mark">56</span>
-    <span class="logo-text">ViceLane</span>
-  </a>
+  <a class="logo" href="/"><span class="logo-mark">56</span><span class="logo-text">ViceLane</span></a>
   <div class="nav-links">
     <a href="/news">News</a>
+    <a href="/tools">Tools</a>
     <a href="/lastdrive">Last Drive</a>
     <a href="/shop">Gear</a>
-    <a href="/about">About</a>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-btn">More</button>
+      <div class="nav-dropdown-menu">
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <div class="menu-divider"></div>
+        <a href="/editors-vice">Editor's Vice</a>
+        <div class="menu-divider"></div>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+    </div>
   </div>
+  <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<!-- MOBILE NAV -->
+<div class="nav-mobile" id="nav-mobile">
+  <a href="/news">News</a>
+  <a href="/tools">Tools</a>
+  <a href="/lastdrive">Last Drive</a>
+  <a href="/shop">Gear</a>
+  <div class="mobile-divider"></div>
+  <a href="/about">About</a>
+  <a href="/contact">Contact</a>
+  <a href="/editors-vice">Editor's Vice</a>
+  <div class="mobile-divider"></div>
+  <a href="/privacy">Privacy</a>
+  <a href="/terms">Terms</a>
+</div>
 
 <!-- TTWO STOCK BAR -->
 <div class="stock-bar">
@@ -251,6 +277,11 @@ function copyLink(id){navigator.clipboard.writeText(ARTICLE_URL).then(()=>{const
 /* REVEAL */
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+<script>
+const mt=document.getElementById('menu-toggle');
+const nm=document.getElementById('nav-mobile');
+if(mt&&nm)mt.addEventListener('click',()=>nm.classList.toggle('open'));
 </script>
 </body>
 </html>
