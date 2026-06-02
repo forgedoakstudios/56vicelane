@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Extrapolation Tech Could Kill Frame Generation Latency — And GTA6 Performance Could Change Forever | 56ViceLane</title>
+<meta name="description" content="New extrapolation tech promises frame generation without input lag. Here's what it means for GTA6 on PC and console at November 19 launch.">
+<link rel="canonical" href="https://56vicelane.com/articles/extrapolation-frame-generation-gta6-performance">
+
+<meta property="og:title" content="Extrapolation Tech Could Kill Frame Generation Latency — And GTA6 Performance Could Change Forever">
+<meta property="og:description" content="New extrapolation tech promises frame generation without input lag. Here's what it means for GTA6 on PC and console.">
+<meta property="og:image" content="https://56vicelane.com/images/og/extrapolation-gta6-performance.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://56vicelane.com/articles/extrapolation-frame-generation-gta6-performance">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="56ViceLane">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Extrapolation Tech Could Kill Frame Generation Latency — And GTA6 Performance Could Change Forever">
+<meta name="twitter:description" content="New extrapolation tech promises frame generation without input lag. Here's what it means for GTA6.">
+<meta name="twitter:image" content="https://56vicelane.com/images/og/extrapolation-gta6-performance.jpg">
+
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/vicelane.css">
+
+<style>
+.header-scene{position:relative;width:100%;height:280px;background:linear-gradient(180deg,#0a0014 0%,#110022 12%,#1a0535 22%,#2a0a4a 32%,#3a1240 40%,#4a1a30 48%,#5a2218 54%,#6b2e0a 59%,#7a3505 63%,#6a2a08 67%,#4a1a12 72%,#2a0e1a 78%,#150818 85%,#0d1018 92%,#080c10 100%);overflow:hidden;}
+.stars{position:absolute;inset:0;z-index:0;}
+.star{position:absolute;border-radius:50%;background:#fff;animation:twinkle 2s infinite alternate;}
+@keyframes twinkle{from{opacity:.3;}to{opacity:1;}}
+.dither-wrap{position:absolute;inset:0;pointer-events:none;z-index:0;}
+.dband{position:absolute;left:0;right:0;}
+.dither1{background:repeating-linear-gradient(0deg,rgba(80,20,120,.0) 0px,rgba(80,20,120,.0) 1px,rgba(80,20,120,.25) 2px,rgba(80,20,120,.25) 3px,rgba(60,10,100,.0) 4px);}
+.dither2{background:repeating-linear-gradient(0deg,rgba(140,30,100,.0) 0px,rgba(140,30,100,.2) 1px,rgba(180,40,60,.15) 2px,rgba(180,40,60,.0) 3px);}
+.dither3{background:repeating-linear-gradient(0deg,rgba(220,90,20,.0) 0px,rgba(220,90,20,.22) 1px,rgba(255,120,10,.18) 2px,rgba(255,120,10,.0) 3px);}
+.dither4{background:repeating-linear-gradient(0deg,rgba(180,60,5,.0) 0px,rgba(180,60,5,.28) 1px,rgba(120,40,5,.2) 2px,rgba(120,40,5,.0) 3px);}
+.horizon-bloom{position:absolute;bottom:58px;left:0;right:0;height:60px;background:radial-gradient(ellipse 70% 100% at 50% 100%,rgba(255,100,20,.28) 0%,rgba(200,50,10,.12) 50%,transparent 100%);pointer-events:none;z-index:0;}
+.skyline{position:absolute;bottom:60px;left:0;right:0;height:140px;z-index:1;}
+.building{position:absolute;bottom:0;}
+.b1{width:28px;height:90px;left:4%;background:#1a0840;border-top:3px solid #FF6B1A;box-shadow:0 0 8px rgba(255,107,26,.4);}
+.b2{width:20px;height:120px;left:9%;background:#0d1a3a;border-top:3px solid #00D4FF;box-shadow:0 0 8px rgba(0,212,255,.4);}
+.b3{width:36px;height:70px;left:14%;background:#1a0840;}
+.b4{width:16px;height:140px;left:20%;background:#0a1228;border-top:3px solid #FF6B1A;box-shadow:0 0 12px rgba(255,107,26,.5);}
+.b5{width:44px;height:100px;left:26%;background:#1a0535;}
+.b6{width:22px;height:130px;left:34%;background:#0d1a3a;border-top:3px solid #00D4FF;}
+.b7{width:30px;height:80px;left:40%;background:#1a0840;}
+.b8{width:50px;height:110px;left:47%;background:#0a1228;border-top:3px solid #FF6B1A;box-shadow:0 0 10px rgba(255,107,26,.4);}
+.b9{width:18px;height:95px;left:55%;background:#1a0535;}
+.b10{width:28px;height:125px;left:60%;background:#0d1a3a;border-top:3px solid #00D4FF;box-shadow:0 0 8px rgba(0,212,255,.4);}
+.b11{width:40px;height:75px;left:66%;background:#1a0840;}
+.b12{width:24px;height:115px;left:73%;background:#0a1228;border-top:3px solid #FF6B1A;}
+.b13{width:32px;height:88px;left:79%;background:#1a0535;}
+.b14{width:20px;height:132px;left:85%;background:#0d1a3a;border-top:3px solid #00D4FF;box-shadow:0 0 10px rgba(0,212,255,.4);}
+.b15{width:28px;height:68px;left:91%;background:#1a0840;}
+.b16{width:36px;height:105px;left:96%;background:#0a1228;border-top:3px solid #FF6B1A;}
+.window{position:absolute;width:4px;height:4px;background:#FFE44D;opacity:.7;animation:winblink 3s infinite alternate;}
+@keyframes winblink{0%,80%{opacity:.7;}90%{opacity:.1;}100%{opacity:.7;}}
+.win-cyan{background:#aaeeff;}.win-warm{background:#FFE44D;}.win-off{background:#222;opacity:.4;animation:none;}
+.police-light{position:absolute;top:6px;left:28px;width:8px;height:6px;border-radius:2px;animation:policeflash .6s steps(1) infinite;}
+@keyframes policeflash{0%{background:#ff2222;box-shadow:0 0 12px 5px rgba(255,40,40,.9);}50%{background:#2244ff;box-shadow:0 0 12px 5px rgba(40,80,255,.9);}}
+.road{position:absolute;bottom:0;left:0;right:0;height:60px;background:#1a1a1a;z-index:1;}
+.road-line{position:absolute;bottom:26px;height:4px;background:#FFE44D;width:40px;animation:roadlines .6s linear infinite;}
+@keyframes roadlines{from{transform:translateX(0);}to{transform:translateX(-80px);}}
+.grass-strip{position:absolute;bottom:58px;left:0;right:0;height:5px;background:repeating-linear-gradient(90deg,#1a4a0a 0px,#1a4a0a 6px,#224a0a 6px,#224a0a 10px,#183808 10px,#183808 14px,#1a4a0a 14px);z-index:2;}
+.curb{position:absolute;bottom:60px;left:0;right:0;height:3px;background:#2a2a2a;z-index:2;border-top:1px solid #444;}
+.lights-wrap{position:absolute;bottom:0;left:0;right:0;height:100%;z-index:2;overflow:hidden;pointer-events:none;}
+.slight{position:absolute;bottom:58px;}.slight.top{bottom:62px;}.slight.bot{bottom:58px;}
+.pole{position:absolute;bottom:0;width:3px;background:#555;}
+.arm{position:absolute;height:3px;background:#555;}
+.bulb{position:absolute;width:6px;height:6px;border-radius:1px;background:#FFE88A;box-shadow:0 0 8px 3px rgba(255,220,100,.7),0 0 20px 6px rgba(255,180,50,.3);}
+.cone{position:absolute;bottom:0;width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-top:24px solid rgba(255,220,100,.08);filter:blur(2px);}
+.glow-strip{position:absolute;bottom:60px;left:0;right:0;height:12px;background:linear-gradient(90deg,rgba(255,107,26,.0),rgba(255,107,26,.15),rgba(0,212,255,.2),rgba(255,107,26,.1),rgba(0,212,255,.15),rgba(255,107,26,.0));z-index:2;}
+.speed-lines{position:absolute;bottom:70px;left:0;width:100%;height:20px;overflow:hidden;z-index:2;}
+.sline{position:absolute;height:2px;background:linear-gradient(90deg,transparent,rgba(255,107,26,.4),transparent);animation:speedline .4s linear infinite;}
+@keyframes speedline{from{transform:translateX(100%);}to{transform:translateX(-100vw);}}
+.car-group{position:absolute;bottom:60px;left:15%;animation:carDrive 8s linear infinite;image-rendering:pixelated;z-index:3;}
+@keyframes carDrive{0%{left:-20%;opacity:0;}8%{opacity:1;}70%{left:110%;opacity:1;}71%{left:-20%;opacity:0;}100%{left:-20%;opacity:0;}}
+.car-pixel{position:relative;width:96px;height:36px;image-rendering:pixelated;}
+.driver{position:absolute;bottom:24px;left:38px;image-rendering:pixelated;}
+.chopper{position:absolute;top:10px;right:-20%;animation:chopperFly 8s linear infinite;image-rendering:pixelated;z-index:3;}
+@keyframes chopperFly{0%{right:-20%;top:10px;opacity:0;}5%{opacity:0;}15%{opacity:1;right:80%;top:18px;}40%{right:45%;top:30px;}70%{right:5%;top:14px;opacity:1;}80%{right:-20%;opacity:0;}100%{right:-20%;opacity:0;}}
+.rotor{position:absolute;top:0px;left:8px;width:48px;height:8px;z-index:2;}
+.rotor-disc{animation:rotorblur .08s linear infinite;}
+@keyframes rotorblur{0%,100%{opacity:.9;}50%{opacity:.6;}}
+.searchlight{position:absolute;top:28px;left:24px;width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-top:60px solid rgba(255,255,200,.07);filter:blur(4px);transform-origin:top center;animation:swaylight 2s ease-in-out infinite alternate;}
+@keyframes swaylight{from{transform:rotate(-15deg);}to{transform:rotate(15deg);}}
+.header-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:18px 22px;background:linear-gradient(to top,rgba(11,11,15,.85) 0%,rgba(11,11,15,.3) 50%,transparent 100%);z-index:4;}
+.article-eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.15em;font-size:.75rem;color:#00D4FF;text-shadow:0 0 8px #00D4FF;margin-bottom:6px;}
+.article-h1{font-family:'Russo One',sans-serif;font-size:clamp(1.2rem,3.5vw,1.8rem);line-height:1.15;text-shadow:0 2px 12px rgba(0,0,0,.8);max-width:680px;}
+.pixel-badge{position:absolute;top:14px;left:18px;font-family:'Barlow Condensed',sans-serif;font-size:11px;color:rgba(255,107,26,.5);letter-spacing:.1em;text-transform:uppercase;z-index:5;}
+</style>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9EKF7J4V7W');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="ticker-wrap"><div class="ticker-track" id="ticker-track"><span class="ticker-item">Loading…</span></div></div>
+
+<nav class="nav">
+  <a class="logo" href="/"><span class="logo-mark">56</span><span class="logo-text">ViceLane</span></a>
+  <div class="nav-links">
+    <a href="/news">News</a>
+    <a href="/tools">Tools</a>
+    <a href="/lastdrive">Last Drive</a>
+    <a href="/shop">Gear</a>
+  </div>
+</nav>
+
+<!-- 16-BIT ANIMATED HEADER -->
+<div class="header-scene">
+  <div class="stars" id="stars"></div>
+  <div class="dither-wrap">
+    <div class="dband" style="top:0;height:15%;background:rgba(10,0,20,.5);"></div>
+    <div class="dband dither1" style="top:12%;height:18%;"></div>
+    <div class="dband dither2" style="top:28%;height:14%;"></div>
+    <div class="dband dither3" style="top:40%;height:18%;"></div>
+    <div class="dband dither4" style="top:55%;height:12%;"></div>
+    <div class="dband" style="top:65%;height:35%;background:rgba(0,0,0,.35);"></div>
+  </div>
+  <div class="horizon-bloom"></div>
+  <div class="skyline">
+    <div class="building b1"></div>
+    <div class="building b2"><div class="window win-cyan" style="left:4px;top:14px;animation-delay:1.7s;"></div><div class="window win-warm" style="left:4px;top:44px;animation-delay:.8s;"></div></div>
+    <div class="building b3"></div>
+    <div class="building b4"><div class="window win-warm" style="left:4px;top:10px;animation-delay:.3s;"></div><div class="window win-cyan" style="left:4px;top:30px;animation-delay:1.8s;"></div><div class="window win-warm" style="left:4px;top:80px;animation-delay:2.2s;"></div></div>
+    <div class="building b5"></div>
+    <div class="building b6"></div>
+    <div class="building b7"></div>
+    <div class="building b8"><div class="window win-warm" style="left:6px;top:8px;"></div><div class="window win-cyan" style="left:14px;top:22px;animation-delay:1.2s;"></div><div class="window win-warm" style="left:28px;top:12px;animation-delay:.4s;"></div></div>
+    <div class="building b9"></div>
+    <div class="building b10"><div class="window win-cyan" style="left:4px;top:18px;animation-delay:1.5s;"></div><div class="window win-warm" style="left:12px;top:42px;animation-delay:2.8s;"></div></div>
+    <div class="building b11"></div>
+    <div class="building b12"></div>
+    <div class="building b13"></div>
+    <div class="building b14"><div class="window win-warm" style="left:4px;top:12px;animation-delay:.6s;"></div><div class="window win-cyan" style="left:4px;top:36px;animation-delay:2.4s;"></div><div class="window win-warm" style="left:4px;top:88px;animation-delay:.3s;"></div></div>
+    <div class="building b15"></div>
+    <div class="building b16"></div>
+  </div>
+  <div class="glow-strip"></div>
+  <div class="speed-lines">
+    <div class="sline" style="top:4px;width:35%;left:30%;animation-delay:.1s;animation-duration:.35s;"></div>
+    <div class="sline" style="top:10px;width:25%;left:50%;animation-delay:.22s;"></div>
+    <div class="sline" style="top:16px;width:40%;left:20%;animation-delay:.05s;animation-duration:.38s;"></div>
+  </div>
+  <div class="road">
+    <div class="road-line" style="left:5%;"></div>
+    <div class="road-line" style="left:25%;animation-delay:.2s;"></div>
+    <div class="road-line" style="left:45%;animation-delay:.4s;"></div>
+    <div class="road-line" style="left:65%;animation-delay:.1s;"></div>
+    <div class="road-line" style="left:85%;animation-delay:.3s;"></div>
+  </div>
+  <div class="curb"></div>
+  <div class="grass-strip"></div>
+  <div class="lights-wrap" id="lights-wrap"></div>
+  <div class="car-group">
+    <div class="driver"><svg viewBox="0 0 16 20" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges"><rect x="4" y="0" width="8" height="2" fill="#2a1a0a"/><rect x="2" y="2" width="12" height="6" fill="#e8b87a"/><rect x="2" y="2" width="2" height="8" fill="#2a1a0a"/><rect x="4" y="4" width="3" height="2" fill="#111"/><rect x="9" y="4" width="3" height="2" fill="#111"/><rect x="7" y="5" width="2" height="1" fill="#555"/><rect x="3" y="8" width="10" height="8" fill="#f0f0f0"/><rect x="6" y="8" width="4" height="2" fill="#cc8844"/><rect x="1" y="9" width="2" height="5" fill="#e8b87a"/><rect x="13" y="9" width="2" height="4" fill="#e8b87a"/><rect x="0" y="14" width="3" height="2" fill="#e8b87a"/></svg></div>
+    <div class="car-pixel"><svg viewBox="0 0 96 36" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges"><rect x="4" y="16" width="88" height="14" fill="#0a7a6a"/><rect x="60" y="12" width="28" height="8" fill="#0a8a78"/><rect x="4" y="12" width="20" height="8" fill="#0a8a78"/><rect x="28" y="10" width="32" height="8" fill="#0a7060"/><rect x="30" y="11" width="28" height="6" fill="rgba(100,220,255,0.4)"/><rect x="4" y="28" width="88" height="2" fill="#c0c0c0"/><rect x="80" y="14" width="10" height="6" fill="#FFE44D"/><rect x="82" y="15" width="6" height="4" fill="#fff"/><rect x="4" y="14" width="8" height="6" fill="#cc2200"/><rect x="10" y="26" width="16" height="10" rx="2" fill="#222"/><rect x="70" y="26" width="16" height="10" rx="2" fill="#222"/><rect x="14" y="28" width="8" height="6" rx="1" fill="#888"/><rect x="74" y="28" width="8" height="6" rx="1" fill="#888"/></svg></div>
+  </div>
+  <div class="chopper">
+    <div class="rotor"><svg viewBox="0 0 48 8" xmlns="http://www.w3.org/2000/svg"><rect x="22" y="3" width="4" height="5" fill="#666"/><ellipse class="rotor-disc" cx="24" cy="3" rx="24" ry="3" fill="none" stroke="#aaa" stroke-width="2" opacity=".75"/></svg></div>
+    <div class="police-light"></div>
+    <div class="searchlight"></div>
+    <svg viewBox="0 0 64 32" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges" style="width:64px;height:32px"><rect x="0" y="14" width="30" height="4" fill="#1a1a3a"/><rect x="0" y="12" width="8" height="2" fill="#1a1a3a"/><rect x="0" y="18" width="8" height="2" fill="#1a1a3a"/><rect x="2" y="10" width="2" height="12" fill="#555"/><rect x="24" y="8" width="36" height="18" rx="4" fill="#1e2050"/><rect x="44" y="10" width="16" height="12" rx="2" fill="rgba(100,220,255,0.35)"/><rect x="36" y="22" width="8" height="4" fill="#FFE44D"/><rect x="26" y="26" width="32" height="2" fill="#888"/><rect x="30" y="24" width="2" height="4" fill="#666"/><rect x="52" y="24" width="2" height="4" fill="#666"/><rect x="28" y="12" width="12" height="2" fill="#FF6B1A"/></svg>
+  </div>
+  <div class="header-overlay">
+    <div class="article-eyebrow">Industry Intel</div>
+    <h1 class="article-h1">Extrapolation Tech Could Kill Frame Generation Latency — And GTA6 Performance Could Change Forever</h1>
+  </div>
+  <div class="pixel-badge">56ViceLane · Original Art</div>
+</div>
+<!-- END HEADER -->
+
+<div class="wrap">
+  <div class="crumb"><a href="/">Home</a> / <a href="/news">News</a> / Industry Intel</div>
+
+  <div class="share-bar">
+    <button class="share-btn share-native" onclick="nativeShare()">Share</button>
+    <button class="share-btn share-reddit" onclick="shareReddit()">Reddit</button>
+    <button class="share-btn share-twitter" onclick="shareTwitter()">X</button>
+    <button class="share-btn share-whatsapp" onclick="shareWhatsApp()">WhatsApp</button>
+    <button class="share-btn share-facebook" onclick="shareFacebook()">Facebook</button>
+    <button class="share-btn share-copy" id="copyTop" onclick="copyLink('copyTop')">Copy Link</button>
+  </div>
+
+  <div class="legend reveal">
+    <span><b>How we source:</b></span>
+    <span class="lg-c">✅ Confirmed</span>
+    <span class="lg-l">~ Credible / analysis</span>
+    <span class="lg-x">! Correction</span>
+  </div>
+
+  <article class="body">
+
+    <p class="lead">New extrapolation tech promises frame generation without input lag. Frame generation has been a game-changer for high-end gaming, but the input latency tradeoff has been brutal for competitive and story-driven players alike. A technique called extrapolation could deliver smooth framerates without the responsiveness penalty — and it's closer than most players realize. For anyone building a PC for GTA6's November 19, 2026 launch <span class="cf">✅</span>, this is worth understanding now.</p>
+
+    <h2 class="reveal">Frame Generation — What It Is And Why It Hurts</h2>
+    <p class="source-line">Source: PC Gamer hardware analysis ~ ; industry consensus on frame generation latency ~</p>
+    <p class="reveal">Frame generation is exactly what it sounds like — your GPU generates additional frames between the ones it actually renders, boosting the number your display shows per second without requiring the same raw rendering horsepower. NVIDIA's DLSS Frame Generation and AMD's Fluid Motion Frames both use this approach, and the results on paper are impressive: a GPU that renders 40fps can display 80fps with frame generation enabled <span class="lk">~</span>.</p>
+    <p class="reveal">The catch is latency. Generated frames aren't real rendered frames — they're predictions, and predictions take time. That time adds input lag: the gap between when you move the mouse or push the stick and when the game responds visibly. For competitive players, that lag is a dealbreaker. For story-driven open-world players — which is most of GTA's audience — it's subtler but still present, especially in high-speed chases, precision driving, and anything that requires tight timing. You feel it even if you can't name it <span class="lk">~</span>.</p>
+
+    <div class="ad-slot reveal">
+      <div class="ad-label">Advertisement</div>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <h2 class="reveal">What Extrapolation Actually Does Differently</h2>
+    <p class="source-line">Source: PC Gamer hardware analysis ~</p>
+    <p class="reveal">Current frame generation works by interpolation — it generates a frame between two already-rendered frames, using both to synthesize something in the middle. The latency comes from needing to wait for that second frame before the generated one can be inserted. Extrapolation flips the model: instead of generating a frame between two known frames, it predicts what the next frame will look like based on current motion data and generates it ahead of time <span class="lk">~</span>.</p>
+    <p class="reveal">The result — when it works — is that the generated frame arrives at roughly the same time a natively rendered frame would, rather than being inserted after the fact. The latency penalty shrinks dramatically or disappears entirely <span class="lk">~</span>. The obvious challenge is accuracy: predicting the future is harder than filling in the past, and extrapolation errors show up as visual artifacts, ghosting, or incorrect motion in complex scenes. Getting the prediction accurate enough to be invisible is the engineering problem the industry is currently working on.</p>
+
+    <h2 class="reveal">Why This Matters Specifically For GTA6</h2>
+    <p class="source-line">Source: GTA6 confirmed launch details ✅ ; PC performance analysis ~</p>
+    <p class="reveal">GTA6 launches November 19, 2026 on PS5 and Xbox Series X/S <span class="cf">✅</span> — with no confirmed PC date <span class="lk">~</span>. But the hardware conversation around GTA6 is already intense, because the game's confirmed scope — a full fictional state of Leonida <span class="cf">✅</span> with six regions <span class="cf">✅</span> including Vice City, Grassrivers, the Keys, Mount Kalaga, and more — represents one of the most demanding open-world environments ever built. Running that world at 60fps on a mid-range PC rig is going to require every efficiency tool available.</p>
+    <p class="reveal">Frame generation is already a tool PC players lean on to hit smooth framerates in demanding open worlds. If extrapolation matures to the point where it eliminates the latency penalty before GTA6's PC release, it changes the calculus for what hardware you actually need to get a great experience. A GPU that would have required frame generation — with all its responsiveness tradeoffs — to hit 60fps could potentially run extrapolation-boosted frames at near-native feel. For players who don't want to drop $700 on a GPU just for GTA6, that's meaningful <span class="lk">~</span>.</p>
+
+    <div class="ad-slot reveal">
+      <div class="ad-label">Advertisement</div>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <h2 class="reveal">How Close Is It — And What Should You Do Right Now</h2>
+    <p class="source-line">Source: PC Gamer hardware reporting ~ ; industry timeline analysis ~</p>
+    <p class="reveal">The technology is in active development at both NVIDIA and AMD, and PC Gamer's reporting suggests production-ready extrapolation is closer than most players expect <span class="lk">~</span>. Whether it arrives before or after GTA6's console launch is the key question — and for console players, this is less immediately relevant. PS5 and Xbox Series X/S have their own upscaling and framerate tools that Rockstar will work with directly.</p>
+    <p class="reveal">For PC builders planning a GTA6 rig, the practical implication is: don't over-buy GPU on the assumption that frame generation is the only path to smooth frames. The landscape is moving fast. A mid-tier card that pairs well with extrapolation-based upscaling might outperform a high-end card running traditional frame gen by the time a GTA6 PC release materializes <span class="lk">~</span>. Check out 56ViceLane's <a href="/articles/gta6-pc-build-guide-2026" style="color:var(--cyan);">GTA6 PC Build Guide</a> for current hardware recommendations — we'll update it as the extrapolation picture gets clearer.</p>
+
+    <h2 class="bottom-line-header reveal">The bottom line</h2>
+    <p class="bottom-line reveal">If extrapolation tech hits mainstream before GTA6 launches, Rockstar could be working with tools that make 60+ fps feel as tight as native rendering. For a game of GTA's scale and complexity, that's a legitimately massive deal. The next generation of open-world gaming just got a lot more interesting. This isn't a confirmed Rockstar announcement — it's an emerging hardware trend worth tracking closely if you're planning a PC build for November 19 <span class="cf">✅</span> or beyond. Source: PC Gamer hardware analysis <span class="lk">~</span>.</p>
+
+  </article>
+
+  <div class="share-bar">
+    <button class="share-btn share-native" onclick="nativeShare()">Share</button>
+    <button class="share-btn share-reddit" onclick="shareReddit()">Reddit</button>
+    <button class="share-btn share-twitter" onclick="shareTwitter()">X</button>
+    <button class="share-btn share-whatsapp" onclick="shareWhatsApp()">WhatsApp</button>
+    <button class="share-btn share-facebook" onclick="shareFacebook()">Facebook</button>
+    <button class="share-btn share-copy" id="copyBot" onclick="copyLink('copyBot')">Copy Link</button>
+  </div>
+
+  <div class="rate-box">
+    <h3>Was this useful?</h3>
+    <div class="stars" id="stars">
+      <span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span>
+    </div>
+    <p id="rate-msg" style="color:var(--smoke);font-family:'Barlow Condensed',sans-serif;margin-top:8px;font-size:.95rem;">Tap to rate</p>
+  </div>
+
+  <div class="comments">
+    <h3>Community</h3>
+    <p>Comments load here from Airtable via the proxy worker on the live site.</p>
+  </div>
+</div>
+
+<footer>
+  <p class="disclosure">56ViceLane is an independent fan site. Not affiliated with, endorsed by, or sponsored by Rockstar Games or Take-Two Interactive. All trademarks belong to their respective owners. 56ViceLane earns a small commission on qualifying purchases through affiliate links (Amazon, Newegg, Best Buy) at no extra cost to you.</p>
+  <p>© 2026 56ViceLane · Forged Oak Studios · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/contact">Contact</a></p>
+</footer>
+
+<script>
+const ARTICLE_TITLE="Extrapolation Tech Could Kill Frame Generation Latency — And GTA6 Performance Could Change Forever";
+const ARTICLE_URL=window.location.href;
+function nativeShare(){if(navigator.share){navigator.share({title:ARTICLE_TITLE,url:ARTICLE_URL});}else{navigator.clipboard.writeText(ARTICLE_URL);}}
+function shareReddit(){window.open('https://www.reddit.com/submit?url='+encodeURIComponent(ARTICLE_URL)+'&title='+encodeURIComponent(ARTICLE_TITLE),'_blank');}
+function shareTwitter(){window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(ARTICLE_TITLE+' #GTA6 #PCGaming')+'&url='+encodeURIComponent(ARTICLE_URL),'_blank');}
+function shareWhatsApp(){window.open('https://wa.me/?text='+encodeURIComponent(ARTICLE_TITLE+' '+ARTICLE_URL),'_blank');}
+function shareFacebook(){window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(ARTICLE_URL),'_blank');}
+function copyLink(id){navigator.clipboard.writeText(ARTICLE_URL).then(()=>{const b=document.getElementById(id);b.textContent='Copied!';setTimeout(()=>b.textContent='Copy Link',2000);});}
+fetch('/articles.json?v='+Date.now()).then(r=>r.json()).then(a=>{const t=document.getElementById('ticker-track');t.innerHTML=[...a,...a].map(x=>`<span class="ticker-item" onclick="location.href='${x.url}'">${x.emoji} ${x.title}</span>`).join('');}).catch(()=>{document.getElementById('ticker-track').innerHTML='<span class="ticker-item">Where GTA5 Ends And GTA6 Begins</span>';});
+(function(){const wrap=document.getElementById('lights-wrap');if(!wrap)return;const lamps=[{x:'8%',side:'top'},{x:'28%',side:'bot'},{x:'52%',side:'top'},{x:'72%',side:'bot'},{x:'91%',side:'top'}];lamps.forEach(c=>{const poleH=c.side==='top'?58:42;const armDir=c.side==='top'?'right':'left';const botPos=c.side==='top'?'62px':'58px';const armTopPx=-(poleH+3);const g=document.createElement('div');g.className='slight '+c.side;g.style.cssText=`left:${c.x};bottom:${botPos};`;const pole=document.createElement('div');pole.className='pole';pole.style.cssText=`height:${poleH}px;bottom:0;left:0;`;const arm=document.createElement('div');arm.className='arm';arm.style.cssText=`width:16px;top:${armTopPx}px;${armDir}:-16px;`;const bulb=document.createElement('div');bulb.className='bulb';bulb.style.cssText=`top:${armTopPx-7}px;${armDir}:-20px;`;const cone=document.createElement('div');cone.className='cone';cone.style.cssText=`bottom:${poleH-4}px;left:-10px;`;g.appendChild(pole);g.appendChild(arm);g.appendChild(bulb);g.appendChild(cone);wrap.appendChild(g);});const palms=[{x:'38%',h:70},{x:'62%',h:58}];palms.forEach(p=>{const palm=document.createElement('div');palm.style.cssText=`position:absolute;bottom:60px;left:${p.x};z-index:2;`;palm.innerHTML=`<svg width="32" height="${p.h}" viewBox="0 0 32 ${p.h}" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges"><rect x="14" y="${p.h-40}" width="4" height="40" fill="#5a3a10"/><rect x="0" y="${p.h-42}" width="14" height="3" fill="#1a7a1a"/><rect x="18" y="${p.h-42}" width="14" height="3" fill="#1a7a1a"/><rect x="8" y="${p.h-52}" width="16" height="3" fill="#228822"/><rect x="13" y="${p.h-44}" width="6" height="5" rx="2" fill="#7a5520"/></svg>`;wrap.appendChild(palm);});})();
+const starWrap=document.getElementById('stars');for(let i=0;i<40;i++){const s=document.createElement('div');s.style.cssText=`position:absolute;width:${Math.random()>.8?2:1}px;height:${Math.random()>.8?2:1}px;border-radius:50%;background:#fff;top:${Math.random()*55}%;left:${Math.random()*100}%;animation:twinkle ${1.5+Math.random()*2.5}s infinite alternate;animation-delay:${Math.random()*3}s;opacity:${.3+Math.random()*.7}`;starWrap.appendChild(s);}
+const SLUG='extrapolation-frame-generation-gta6-performance';
+const starsEl=document.querySelectorAll('#stars span'),msg=document.getElementById('rate-msg');
+if(localStorage.getItem('rated_'+SLUG)){const v=+localStorage.getItem('rated_'+SLUG);starsEl.forEach(s=>s.classList.toggle('on',+s.dataset.v<=v));if(msg)msg.textContent='Thanks for rating!';}
+document.querySelectorAll('#stars span').forEach(s=>s.addEventListener('click',()=>{const v=+s.dataset.v;document.querySelectorAll('#stars span').forEach(x=>x.classList.toggle('on',+x.dataset.v<=v));localStorage.setItem('rated_'+SLUG,v);if(msg)msg.textContent='Thanks for rating!';}));
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
