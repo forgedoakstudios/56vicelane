@@ -107,6 +107,7 @@
 
 <div class="ticker-wrap"><div class="ticker-track" id="ticker-track"><span class="ticker-item">Loading…</span></div></div>
 
+<!-- HEADER -->
 <nav class="nav">
   <a class="logo" href="/"><span class="logo-mark">56</span><span class="logo-text">ViceLane</span></a>
   <div class="nav-links">
@@ -114,8 +115,37 @@
     <a href="/tools">Tools</a>
     <a href="/lastdrive">Last Drive</a>
     <a href="/shop">Gear</a>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-btn">More</button>
+      <div class="nav-dropdown-menu">
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <div class="menu-divider"></div>
+        <a href="/editors-vice">Editor's Vice</a>
+        <div class="menu-divider"></div>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+    </div>
   </div>
+  <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<!-- MOBILE NAV -->
+<div class="nav-mobile" id="nav-mobile">
+  <a href="/news">News</a>
+  <a href="/tools">Tools</a>
+  <a href="/lastdrive">Last Drive</a>
+  <a href="/shop">Gear</a>
+  <div class="mobile-divider"></div>
+  <a href="/about">About</a>
+  <a href="/contact">Contact</a>
+  <a href="/editors-vice">Editor's Vice</a>
+  <div class="mobile-divider"></div>
+  <a href="/privacy">Privacy</a>
+  <a href="/terms">Terms</a>
+</div>
 
 <!-- 16-BIT ANIMATED HEADER -->
 <div class="header-scene">
@@ -289,6 +319,11 @@ if(localStorage.getItem('rated_'+SLUG)){const v=+localStorage.getItem('rated_'+S
 document.querySelectorAll('#stars span').forEach(s=>s.addEventListener('click',()=>{const v=+s.dataset.v;document.querySelectorAll('#stars span').forEach(x=>x.classList.toggle('on',+x.dataset.v<=v));localStorage.setItem('rated_'+SLUG,v);if(msg)msg.textContent='Thanks for rating!';}));
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+<script>
+const mt=document.getElementById('menu-toggle');
+const nm=document.getElementById('nav-mobile');
+if(mt&&nm)mt.addEventListener('click',()=>nm.classList.toggle('open'));
 </script>
 </body>
 </html>
