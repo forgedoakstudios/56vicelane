@@ -174,8 +174,8 @@ if(mt&&nm)mt.addEventListener("click",()=>nm.classList.toggle("open"));
 <script>
 /* 56ViceLane Debug Mode — tap logo 7x within 2 seconds to toggle */
 (function(){
-  const TAPS=7,WINDOW=2000,KEY='56vl-debug';
-  let taps=[];
+  const HOLD=1500, KEY='56vl-debug'; /* hold copyright 1.5 seconds */
+  let timer=null;
   let active=localStorage.getItem(KEY)==='1';
 
   function applyDebug(){
@@ -184,7 +184,7 @@ if(mt&&nm)mt.addEventListener("click",()=>nm.classList.toggle("open"));
     if(!ind){
       ind=document.createElement('div');
       ind.id='vl-debug-ind';
-      ind.style.cssText='position:fixed;bottom:14px;right:14px;z-index:9999;background:#FF6B1A;color:#000;font-family:monospace;font-weight:800;font-size:12px;padding:6px 14px;border-radius:20px;cursor:pointer;box-shadow:0 0 16px rgba(255,107,26,.7);display:none;';
+      ind.style.cssText='position:fixed;bottom:14px;right:14px;z-index:9999;background:#FF6B1A;color:#000;font-family:monospace;font-weight:800;font-size:12px;padding:6px 14px;border-radius:20px;cursor:pointer;box-shadow:0 0 16px rgba(255,107,26,.7);display:none;user-select:none;';
       ind.textContent='🔧 DEBUG ON — tap to off';
       ind.onclick=function(){active=false;localStorage.setItem(KEY,'0');applyDebug();};
       document.body.appendChild(ind);
@@ -195,23 +195,38 @@ if(mt&&nm)mt.addEventListener("click",()=>nm.classList.toggle("open"));
     });
   }
 
-  document.addEventListener('click',function(e){
-    if(!e.target.closest('#vl-copyright'))return;
-    const now=Date.now();
-    taps.push(now);
-    taps=taps.filter(function(t){return now-t<=WINDOW;});
-    if(taps.length>=TAPS){
-      taps=[];
-      active=!active;
-      localStorage.setItem(KEY,active?'1':'0');
-      applyDebug();
-    }
-  });
+  function setupHold(){
+    const el=document.getElementById('vl-copyright');
+    if(!el)return;
+    /* prevent text selection on long press */
+    el.style.cssText+='user-select:none;-webkit-user-select:none;';
+    el.addEventListener('touchstart',function(e){
+      e.preventDefault();
+      timer=setTimeout(function(){
+        active=!active;
+        localStorage.setItem(KEY,active?'1':'0');
+        applyDebug();
+      },HOLD);
+    },{passive:false});
+    el.addEventListener('touchend',function(){clearTimeout(timer);});
+    el.addEventListener('touchmove',function(){clearTimeout(timer);});
+    /* also support mouse long press for desktop testing */
+    el.addEventListener('mousedown',function(){
+      timer=setTimeout(function(){
+        active=!active;
+        localStorage.setItem(KEY,active?'1':'0');
+        applyDebug();
+      },HOLD);
+    });
+    el.addEventListener('mouseup',function(){clearTimeout(timer);});
+    el.addEventListener('mouseleave',function(){clearTimeout(timer);});
+  }
 
   if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',applyDebug);
+    document.addEventListener('DOMContentLoaded',function(){applyDebug();setupHold();});
   } else {
     applyDebug();
+    setupHold();
   }
 })();
 </script>
