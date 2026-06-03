@@ -710,7 +710,7 @@ document.addEventListener('click', async function(e) {
     } else {
       const errBody = await res.json().catch(()=>({error:'unknown'}));
       console.error('Airtable error:', res.status, JSON.stringify(errBody));
-      btn.textContent = `Error ${res.status} — ${errBody.error?.type || errBody.error || 'Try Again'}`;
+      btn.textContent = `Error: ${errBody.error?.message || errBody.error?.type || 'Unknown'}`;
       btn.disabled = false;
       btn.style.background = '#cc0000';
       return;
