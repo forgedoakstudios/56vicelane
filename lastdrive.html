@@ -490,7 +490,7 @@ PLATFORMS.forEach(p => {
           <div class="opt-grid">
             <button type="button" class="opt-btn" data-p="${p}" data-k="drive" data-v="Solo Drive (one Lap)">Solo Drive<span class="opt-sub">One lap · ~30 mins</span></button>
             <button type="button" class="opt-btn" data-p="${p}" data-k="drive" data-v="Extended Drive">Extended Drive<span class="opt-sub">Up to 5 laps · ~2 hrs</span></button>
-            <button type="button" class="opt-btn" data-p="${p}" data-k="drive" data-v="Marathon (Last Remaining...)">Marathon<span class="opt-sub">Ride until midnight</span></button>
+            <button type="button" class="opt-btn" data-p="${p}" data-k="drive" data-v="Marathon (Last Remaining)">Marathon<span class="opt-sub">Ride until midnight</span></button>
           </div>
         </div>
 
@@ -708,10 +708,16 @@ document.addEventListener('click', async function(e) {
       document.getElementById(`ok_${pid}`).scrollIntoView({behavior:'smooth'});
       loadCounts();
     } else {
-      throw new Error();
+      const errBody = await res.json().catch(()=>({error:'unknown'}));
+      console.error('Airtable error:', res.status, JSON.stringify(errBody));
+      btn.textContent = `Error ${res.status} — ${errBody.error?.type || errBody.error || 'Try Again'}`;
+      btn.disabled = false;
+      btn.style.background = '#cc0000';
+      return;
     }
   } catch(err) {
-    btn.textContent = 'Error — Try Again';
+    console.error('Submit error:', err);
+    btn.textContent = 'Network Error — Try Again';
     btn.disabled = false;
     btn.style.background = '#cc0000';
   }
