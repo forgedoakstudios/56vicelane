@@ -279,7 +279,7 @@ async function loadWall(){
   try {
     let all=[], offset='';
     do {
-      const url=`${AT_URL}?filterByFormula=${encodeURIComponent('{ShowOnWall}=TRUE()')}&fields[]=Gamertag&fields[]=Name&fields[]=Platform&fields[]=StagingTime&fields[]=Staging+Time&fields[]=Region&fields[]=IsOrganizer${offset?'&offset='+offset:''}`;
+      const url=`${AT_URL}?filterByFormula=${encodeURIComponent('{ShowOnWall}=TRUE()')}&fields%5B%5D=Gamertag&fields%5B%5D=Name&fields%5B%5D=Platform&fields%5B%5D=Staging%20Time&fields%5B%5D=Region&fields%5B%5D=IsOrganizer${offset?'&offset='+offset:''}`;
       const r=await fetch(url,{headers:AT_H});
       const d=await r.json();
       if(d.records) all=all.concat(d.records);
