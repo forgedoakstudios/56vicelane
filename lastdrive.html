@@ -381,9 +381,6 @@ footer{padding:40px 24px;border-top:1px solid var(--edge);text-align:center;}
     <div class="s-title">What Are You Rolling On?</div>
     <div class="s-desc">Each platform has its own lobby. Pick yours and we'll show you who's already signed up for your region and time slot.</div>
 
-    <!-- DEBUG BOX — remove after counter is fixed -->
-    <div id="debug-box" style="background:#1a0a00;border:1px solid #FF6B1A;border-radius:8px;padding:12px 16px;margin:12px 0;font-family:monospace;font-size:12px;color:#FF6B1A;display:none;white-space:pre-wrap;word-break:break-all;max-height:200px;overflow-y:auto;"></div>
-
     <div class="platform-tabs" id="ptabs">
       <button class="platform-tab active" data-p="PS5">🎮 PS5 <span class="cnt" id="cnt-PS5">...</span></button>
       <button class="platform-tab" data-p="PS4">🎮 PS4 <span class="cnt" id="cnt-PS4">...</span></button>
@@ -697,7 +694,7 @@ document.addEventListener('click', async function(e) {
         'ChatOther': chatOther,
         'CrewName': crew,
         'StagingLocation': s.staging,
-        'Drive Type': s.drive,
+        'DriveType': s.drive,
         'Passive Mode': passive,
         'IsOrganizer': isOrg,
         'ShowOnWall': showWall,
@@ -712,14 +709,12 @@ document.addEventListener('click', async function(e) {
       loadCounts();
     } else {
       const errBody = await res.json().catch(()=>({error:'unknown'}));
-      console.error('Airtable error:', res.status, JSON.stringify(errBody));
-      btn.textContent = `Error: ${errBody.error?.message || errBody.error?.type || 'Unknown'}`;
+      btn.textContent = `Error: ${errBody.error?.message || errBody.error?.type || res.status}`;
       btn.disabled = false;
       btn.style.background = '#cc0000';
       return;
     }
   } catch(err) {
-    console.error('Submit error:', err);
     btn.textContent = 'Network Error — Try Again';
     btn.disabled = false;
     btn.style.background = '#cc0000';
@@ -727,46 +722,32 @@ document.addEventListener('click', async function(e) {
 });
 
 // ── COUNTS ──────────────────────────────────────────────────
-function isTestRecord(r) {
-  const g = (r.fields.Gamertag || '').toLowerCase().trim();
-  const n = (r.fields.Name || '').toLowerCase().trim();
-  return g === 'test' || n === 'test' || g === 'trst' || n === 'trst';
+function isTestRecord(r){
+  const g=(r.fields.Gamertag||'').toLowerCase().trim();
+  const n=(r.fields.Name||'').toLowerCase().trim();
+  return g==='test'||n==='test'||g==='trst'||n==='trst';
 }
 
 async function loadCounts() {
   try {
-    let allRecords = [];
-    let offset = '';
+    let allRecords=[], offset='';
     do {
-      const url = `${AT_URL}?fields%5B%5D=Platform&fields%5B%5D=Gamertag&fields%5B%5D=Name${offset ? '&offset='+offset : ''}`;
-      const r = await fetch(url, {headers:AT_H});
-      const d = await r.json();
-      if (d.records) allRecords = allRecords.concat(d.records);
-      offset = d.offset || '';
+      const url=`${AT_URL}?fields%5B%5D=Platform&fields%5B%5D=Gamertag&fields%5B%5D=Name${offset?'&offset='+offset:''}`;
+      const r=await fetch(url,{headers:AT_H});
+      const d=await r.json();
+      if(d.records) allRecords=allRecords.concat(d.records);
+      offset=d.offset||'';
     } while(offset);
-
-    // filter out test records
-    const real = allRecords.filter(r => !isTestRecord(r));
-    // visible debug output
-    const dbx = document.getElementById('debug-box');
-    if(dbx) {
-      dbx.style.display='block';
-      let dbgTxt = 'Records from Airtable: '+allRecords.length+'\nAfter test filter: '+real.length+'\n\n';
-      real.forEach(r => { dbgTxt += 'Name: '+(r.fields.Name||'—')+' | Tag: '+(r.fields.Gamertag||'—')+' | Platform: '+(r.fields.Platform||'—')+'\n'; });
-      dbx.textContent = dbgTxt || 'No records returned from Airtable';
-    }
-    const counts = {'PS5':0,'PS4':0,'Xbox Series X/S':0,'Xbox One':0,'PC':0,'Xbox':0};
-    real.forEach(r => { const p = r.fields.Platform; if (counts[p] !== undefined) counts[p]++; });
-    if(dbx) dbx.textContent += '\nCounts: '+JSON.stringify(counts);
-    // merge Xbox into Xbox Series X/S for display
-    counts['Xbox Series X/S'] += counts['Xbox'];
-    Object.entries(CNT_IDS).forEach(([p, id]) => {
-      const el = document.getElementById(id);
-      if (el) el.textContent = counts[p] || 0;
+    const real=allRecords.filter(r=>!isTestRecord(r));
+    const counts={'PS5':0,'PS4':0,'Xbox Series X/S':0,'Xbox One':0,'PC':0,'Xbox':0};
+    real.forEach(r=>{const p=r.fields.Platform;if(counts[p]!==undefined)counts[p]++;});
+    counts['Xbox Series X/S']+=counts['Xbox'];
+    Object.entries(CNT_IDS).forEach(([p,id])=>{
+      const el=document.getElementById(id);
+      if(el) el.textContent=counts[p]||0;
     });
-  } catch(e) {
-    console.error('loadCounts error:', e);
-    Object.values(CNT_IDS).forEach(id => { const el = document.getElementById(id); if(el) el.textContent = '0'; });
+  } catch(e){
+    Object.values(CNT_IDS).forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='0';});
   }
 }
 loadCounts();
@@ -833,12 +814,11 @@ function vl_copy(url){
 }
 </script>
 <script>
-/* 56ViceLane Debug Mode — tap logo 7x within 2 seconds to toggle */
+/* Debug mode — long press footer copyright 1.5s to toggle */
 (function(){
-  const HOLD=1500, KEY='56vl-debug'; /* hold copyright 1.5 seconds */
+  const HOLD=1500,KEY='56vl-debug';
   let timer=null;
   let active=localStorage.getItem(KEY)==='1';
-
   function applyDebug(){
     document.body.classList.toggle('debug-active',active);
     let ind=document.getElementById('vl-debug-ind');
@@ -855,40 +835,20 @@ function vl_copy(url){
       el.style.display=active?'block':'none';
     });
   }
-
-  function setupHold(){
+  function setup(){
     const el=document.getElementById('vl-copyright');
     if(!el)return;
-    /* prevent text selection on long press */
     el.style.cssText+='user-select:none;-webkit-user-select:none;';
-    el.addEventListener('touchstart',function(e){
-      e.preventDefault();
-      timer=setTimeout(function(){
-        active=!active;
-        localStorage.setItem(KEY,active?'1':'0');
-        applyDebug();
-      },HOLD);
-    },{passive:false});
+    el.addEventListener('touchstart',function(e){e.preventDefault();timer=setTimeout(function(){active=!active;localStorage.setItem(KEY,active?'1':'0');applyDebug();},HOLD);},{passive:false});
     el.addEventListener('touchend',function(){clearTimeout(timer);});
     el.addEventListener('touchmove',function(){clearTimeout(timer);});
-    /* also support mouse long press for desktop testing */
-    el.addEventListener('mousedown',function(){
-      timer=setTimeout(function(){
-        active=!active;
-        localStorage.setItem(KEY,active?'1':'0');
-        applyDebug();
-      },HOLD);
-    });
+    el.addEventListener('mousedown',function(){timer=setTimeout(function(){active=!active;localStorage.setItem(KEY,active?'1':'0');applyDebug();},HOLD);});
     el.addEventListener('mouseup',function(){clearTimeout(timer);});
     el.addEventListener('mouseleave',function(){clearTimeout(timer);});
   }
-
   if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',function(){applyDebug();setupHold();});
-  } else {
-    applyDebug();
-    setupHold();
-  }
+    document.addEventListener('DOMContentLoaded',function(){applyDebug();setup();});
+  } else {applyDebug();setup();}
 })();
 </script>
 </body>
