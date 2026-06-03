@@ -3,55 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GTA6 News Hub | 56ViceLane</title>
-<meta name="description" content="Every GTA6 leak, confirmed fact, and launch day update. Where GTA5 Ends And GTA6 Begins.">
+<title>GTA6 News Hub — 56ViceLane</title>
+<meta name="description" content="Every GTA6 leak, confirmed fact, and launch-day update. The most complete GTA6 news hub on the internet.">
 <link rel="canonical" href="https://56vicelane.com/news">
-
-<!-- Social card — original 56ViceLane art, not character key art -->
 <meta property="og:title" content="GTA6 News Hub — 56ViceLane">
-<meta property="og:description" content="Every GTA6 leak, confirmed fact, and launch day update. Where GTA5 Ends And GTA6 Begins.">
-<meta property="og:image" content="https://56vicelane.com/images/og/news-hub.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:description" content="Every GTA6 leak, confirmed fact, and launch-day update.">
 <meta property="og:url" content="https://56vicelane.com/news">
-<meta property="og:type" content="website">
 <meta property="og:site_name" content="56ViceLane">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="GTA6 News Hub — 56ViceLane">
-<meta name="twitter:description" content="Every GTA6 leak, confirmed fact, and launch day update.">
-<meta name="twitter:image" content="https://56vicelane.com/images/og/news-hub.jpg">
-
 <link rel="icon" href="/favicon.ico">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<!-- Shared style — one file, whole site -->
 <link rel="stylesheet" href="/vicelane.css">
-
-<!-- Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-9EKF7J4V7W');
-</script>
-<!-- AdSense -->
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9EKF7J4V7W');</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
+<style>
+/* feed skeleton loader */
+.skeleton{background:linear-gradient(90deg,var(--asphalt) 25%,var(--edge) 50%,var(--asphalt) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:8px;}
+@keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+.skeleton-card{height:140px;margin-bottom:16px;}
+/* feed error state */
+.feed-error{text-align:center;padding:40px 20px;color:var(--smoke);font-family:"Barlow Condensed",sans-serif;font-size:1.1rem;}
+</style>
 </head>
 <body>
 
-<!-- TICKER -->
-<div class="ticker-wrap"><div class="ticker-track" id="ticker-track"><span class="ticker-item">Loading latest GTA6 news…</span></div></div>
+<div class="ticker-wrap"><div class="ticker-track" id="ticker-track"><span class="ticker-item">Loading…</span></div></div>
 
-<!-- STANDARD HEADER -->
 <nav class="nav">
   <a class="logo" href="/"><span class="logo-mark">56</span><span class="logo-text">ViceLane</span></a>
   <div class="nav-links">
-    <a href="/news">News</a>
+    <a href="/news" style="color:var(--amber)">News</a>
     <a href="/tools">Tools</a>
     <a href="/lastdrive">Last Drive</a>
     <a href="/shop">Gear</a>
@@ -72,7 +55,6 @@
     <span></span><span></span><span></span>
   </button>
 </nav>
-<!-- MOBILE NAV -->
 <div class="nav-mobile" id="nav-mobile">
   <a href="/news">News</a>
   <a href="/tools">Tools</a>
@@ -87,201 +69,151 @@
   <a href="/terms">Terms</a>
 </div>
 
-<!-- TTWO STOCK BAR -->
-<div class="stock-bar">
-  <span class="stock-label">TTWO</span>
-  <span class="stock-price" id="stock-price">—</span>
-  <span class="stock-change" id="stock-change">—</span>
-  <span class="stock-delay">~15 min delayed</span>
-</div>
-
-<div class="page-hero">
-  <h1>GTA6 <span>News Hub</span></h1>
-  <p>Every leak · Every confirmed fact · Every launch day update</p>
-</div>
-
-<!-- SHARE -->
-<div class="share-bar" style="border-bottom:1px solid var(--edge);padding:.75rem 1.25rem;">
-  <span class="share-label">Share</span>
-  <button class="share-btn share-native" onclick="nativeShare()">Share</button>
-  <button class="share-btn share-reddit" onclick="shareReddit()">Reddit</button>
-  <button class="share-btn share-twitter" onclick="shareTwitter()">X</button>
-  <button class="share-btn share-whatsapp" onclick="shareWhatsApp()">WhatsApp</button>
-  <button class="share-btn share-facebook" onclick="shareFacebook()">Facebook</button>
-  <button class="share-btn share-copy" id="copy-btn" onclick="copyLink('copy-btn')">Copy Link</button>
-</div>
-
-<div class="news-wrap">
-
-  <div class="ad-unit">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+<div class="hub-wrap">
+  <div class="hub-header">
+    <h1 class="hub-title">GTA6 <span style="color:var(--amber)">News Hub</span></h1>
+    <p class="hub-sub">Every Leak &middot; Every Confirmed Fact &middot; Every Launch Day Update</p>
   </div>
 
-  <div class="feed-label">Latest — June 2026</div>
-
-  <!-- ROCKSTAR NORTH BANNER — BREAKING -->
-  <div class="article-card featured reveal">
-    <div class="card-meta">
-      <span class="card-tag tag-breaking">Breaking</span>
-      <span class="card-date">June 2, 2026</span>
-    </div>
-    <h2 class="card-title"><a href="/articles/rockstar-north-gta6-banner-edinburgh">Rockstar North Just Replaced Red Dead With A GTA6 Banner — It's Really Happening</a></h2>
-    <p class="card-excerpt">A cherry picker outside Rockstar North's Edinburgh studio is taking down the Red Dead mural and putting GTA6 up in its place. The studio that built the game just decorated their own building with it.</p>
-    <a href="/articles/rockstar-north-gta6-banner-edinburgh" class="card-read-more">Read More →</a>
+  <div class="share-bar" style="margin-bottom:24px;">
+    <button class="share-btn share-native" onclick="nativeShare()">Share</button>
+    <button class="share-btn share-reddit" onclick="shareReddit()">Reddit</button>
+    <button class="share-btn share-twitter" onclick="shareTwitter()">X</button>
+    <button class="share-btn share-facebook" onclick="shareFacebook()">Facebook</button>
+    <button class="share-btn share-copy" id="copyTop" onclick="copyLink('copyTop')">Copy Link</button>
   </div>
 
-  <!-- ZELNICK 13 YEAR WAIT -->
-  <div class="article-card reveal">
-    <div class="card-meta">
-      <span class="card-tag tag-industry">Industry Intel</span>
-      <span class="card-date">June 2, 2026</span>
-    </div>
-    <h2 class="card-title"><a href="/articles/zelnick-explains-gta6-13-year-wait">GTA6 Took 13 Years — Strauss Zelnick Finally Explained Why</a></h2>
-    <p class="card-excerpt">Take-Two's CEO went on record about the 13-year gap between GTA5 and GTA6. Here's what he said and what it means for the November 19 launch.</p>
-    <a href="/articles/zelnick-explains-gta6-13-year-wait" class="card-read-more">Read More →</a>
-  </div>
-
-
-  <!-- EXTRAPOLATION / FRAME GEN -->
-  <div class="article-card reveal">
-    <div class="card-meta">
-      <span class="card-tag tag-industry">Industry Intel</span>
-      <span class="card-date">June 2, 2026</span>
-    </div>
-    <h2 class="card-title"><a href="/articles/extrapolation-frame-generation-gta6-performance">Extrapolation Tech Could Kill Frame Generation Latency — And GTA6 Performance Could Change Forever</a></h2>
-    <p class="card-excerpt">New extrapolation tech promises frame generation without input lag. Here's what it means for GTA6 on PC and console — and whether it changes what hardware you actually need for November 19.</p>
-    <a href="/articles/extrapolation-frame-generation-gta6-performance" class="card-read-more">Read More →</a>
-  </div>
-
-  <!-- LEONIDA MAP — FEATURED -->
-  <div class="article-card featured reveal">
-    <div class="card-meta">
-      <span class="card-tag tag-confirmed">Confirmed</span>
-      <span class="card-tag tag-map">Map Deep Dive</span>
-      <span class="card-date">May 30, 2026</span>
-    </div>
-    <h2 class="card-title"><a href="/articles/gta6-leonida-map-confirmed-regions">The GTA6 Leonida Map — Every Confirmed Region Broken Down</a></h2>
-    <p class="card-excerpt">Vice City. Leonida Keys. Grassrivers. Port Gellhorn. Ambrosia. Mount Kalaga. Six regions confirmed by Rockstar. Here's what each one actually is — and what separates official facts from fan speculation.</p>
-    <a href="/articles/gta6-leonida-map-confirmed-regions" class="card-read-more">Read More →</a>
-  </div>
-
-  <!-- PROMPT INJECTION -->
-  <div class="article-card reveal">
-    <div class="card-meta">
-      <span class="card-tag tag-breaking">Breaking</span>
-      <span class="card-tag tag-security">Security</span>
-      <span class="card-date">May 30, 2026</span>
-    </div>
-    <h2 class="card-title"><a href="/articles/prompt-injection-attack-ai-coding-gta6-pc-builders">The New Cyber Attack That Targets AI — And Why Your GTA6 Setup Could Be At Risk</a></h2>
-    <p class="card-excerpt">A developer hid a data-nuking instruction inside legitimate code and AI agents followed it. This is the new attack vector every GTA6 PC builder needs to know about before November 19.</p>
-    <a href="/articles/prompt-injection-attack-ai-coding-gta6-pc-builders" class="card-read-more">Read More →</a>
-  </div>
-
-  <!-- FABLE -->
-  <div class="article-card reveal">
-    <div class="card-meta">
-      <span class="card-tag tag-breaking">Breaking</span>
-      <span class="card-tag tag-industry">Industry Intel</span>
-      <span class="card-date">May 29, 2026</span>
-    </div>
-    <h2 class="card-title"><a href="/articles/fable-delayed-february-2027-because-of-gta6">Microsoft Just Blinked — Fable Delayed To February 2027 Because Of GTA 6</a></h2>
-    <p class="card-excerpt">Microsoft moved Fable out of GTA6's way and named Grand Theft Auto VI directly. Every major publisher is now scheduling around November 19. The dominoes are falling.</p>
-    <a href="/articles/fable-delayed-february-2027-because-of-gta6" class="card-read-more">Read More →</a>
-  </div>
-
-  <div class="ad-unit reveal">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
-
-  <!-- ALWAYS ON -->
-  <div class="section-divider reveal">📌 Always On 56ViceLane</div>
-
-  <div class="article-card pinned reveal">
-    <div class="card-meta">
-      <span class="card-tag tag-pinned">Pinned</span>
-      <span class="card-tag tag-deep">PC Build</span>
-      <span class="card-date">May 19, 2026</span>
-    </div>
-    <h2 class="card-title"><a href="/articles/gta6-pc-build-guide-2026">One PC To Rule Them All — The GTA6 Launch Day Build Guide</a></h2>
-    <p class="card-excerpt">Three LOTR-themed builds covering every budget. The Shire at $1,150, The Fellowship at $2,000, and The Mordor at $6,200. Everything you need to be ready November 19.</p>
-    <a href="/articles/gta6-pc-build-guide-2026" class="card-read-more">Read More →</a>
-  </div>
-
-  <div class="article-card event reveal">
-    <div class="card-meta">
-      <span class="card-tag tag-event">Event</span>
-      <span class="card-tag tag-pinned">Pinned</span>
-      <span class="card-date">November 18, 2026</span>
-    </div>
-    <h2 class="card-title"><a href="/lastdrive">The Last Drive — One Final Cruise Through GTA5 Before GTA6 Launches</a></h2>
-    <p class="card-excerpt">November 18, 2026. The night before GTA6. One final slow cruise. No missions. No chaos. Just the road and the people who lived on it. Sign up free.</p>
-    <a href="/lastdrive" class="card-read-more">Sign Up Free →</a>
-  </div>
-
-  <div class="ad-unit reveal">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
-
-  <div class="archive-link-wrap reveal">
-    <a href="/archive">View All Articles →</a>
+  <!-- DYNAMIC FEED — rendered from articles.json -->
+  <div class="feed-label" id="feed-label">Loading…</div>
+  <div id="article-feed">
+    <!-- skeleton loaders while fetching -->
+    <div class="skeleton skeleton-card"></div>
+    <div class="skeleton skeleton-card"></div>
+    <div class="skeleton skeleton-card"></div>
   </div>
 
 </div>
 
 <footer>
   <p class="disclosure">56ViceLane is an independent fan site. Not affiliated with, endorsed by, or sponsored by Rockstar Games or Take-Two Interactive. All trademarks belong to their respective owners. 56ViceLane earns a small commission on qualifying purchases through affiliate links (Amazon, Newegg, Best Buy) at no extra cost to you.</p>
-  <p>© 2026 56ViceLane · Forged Oak Studios ·
-     <a href="/">Home</a> · <a href="/news">News</a> · <a href="/lastdrive">Last Drive</a> ·
-     <a href="/shop">Shop</a> · <a href="/gtacon">GTACON</a> · <a href="/about">About</a> ·
-     <a href="/contact">Contact</a> · <a href="/privacy">Privacy</a></p>
+  <p><span id="vl-copyright">&copy; 2026 56ViceLane &middot; Forged Oak Studios &middot;</span> <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a> &middot; <a href="/contact">Contact</a></p>
 </footer>
 
 <script>
-const ARTICLE_TITLE = 'GTA6 News Hub — 56ViceLane';
-const ARTICLE_URL = window.location.href;
+// ── share helpers ──────────────────────────────────────
+const HUB_URL = window.location.href;
+const HUB_TITLE = "GTA6 News Hub — 56ViceLane";
+function nativeShare(){if(navigator.share){navigator.share({title:HUB_TITLE,url:HUB_URL});}else{navigator.clipboard.writeText(HUB_URL);}}
+function shareReddit(){window.open("https://www.reddit.com/submit?url="+encodeURIComponent(HUB_URL)+"&title="+encodeURIComponent(HUB_TITLE),"_blank");}
+function shareTwitter(){window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(HUB_TITLE+" #GTA6")+"&url="+encodeURIComponent(HUB_URL),"_blank");}
+function shareFacebook(){window.open("https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(HUB_URL),"_blank");}
+function copyLink(id){navigator.clipboard.writeText(HUB_URL).then(()=>{const b=document.getElementById(id);b.textContent="Copied!";setTimeout(()=>b.textContent="Copy Link",2000);});}
 
-/* TICKER (20s, from articles.json) */
-fetch('/articles.json?v='+Date.now())
-  .then(r=>r.json())
-  .then(a=>{const t=document.getElementById('ticker-track');
-    t.innerHTML=[...a,...a].map(x=>`<span class="ticker-item" onclick="location.href='${x.url}'">${x.emoji} ${x.title}</span>`).join('');})
-  .catch(()=>{document.getElementById('ticker-track').innerHTML='<span class="ticker-item">🔥 Where GTA5 Ends And GTA6 Begins</span>';});
+// ── category tag labels & colors ─────────────────────
+const CATS = {
+  breaking: {label:"Breaking",   cls:"tag-breaking"},
+  industry: {label:"Industry Intel", cls:"tag-industry"},
+  gta:      {label:"GTA Universe",   cls:"tag-gta"},
+  tools:    {label:"Money Tools",    cls:"tag-tools"},
+  event:    {label:"Event",          cls:"tag-breaking"},
+};
 
-/* TTWO stock — NOTE: still on allorigins; replace with stock-price worker per your roadmap */
-async function loadStock(){
-  try{
-    const url='https://api.allorigins.win/get?url='+encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/TTWO?interval=1d&range=1d');
-    const raw=await (await fetch(url)).json();
-    const meta=JSON.parse(raw.contents).chart.result[0].meta;
-    const price=meta.regularMarketPrice, prev=meta.chartPreviousClose;
-    const change=(price-prev).toFixed(2), pct=((price-prev)/prev*100).toFixed(2), up=change>=0;
-    document.getElementById('stock-price').textContent='$'+price.toFixed(2);
-    const el=document.getElementById('stock-change');
-    el.textContent=(up?'+':'')+change+' ('+(up?'+':'')+pct+'%)';
-    el.className='stock-change '+(up?'up':'down');
-  }catch(e){}
+// ── render one article card ───────────────────────────
+function renderCard(a, featured){
+  const cat = CATS[a.category] || {label:a.category, cls:"tag-industry"};
+  const url = a.permanent && a.slug === "lastdrive" ? "/lastdrive" : "/articles/"+a.slug;
+  return `
+  <div class="article-card ${featured?"featured":""} reveal">
+    <div class="card-meta">
+      <span class="card-tag ${cat.cls}">${cat.label}</span>
+      <span class="card-date">${a.date}</span>
+    </div>
+    <h2 class="card-title"><a href="${url}">${a.headline}</a></h2>
+    <p class="card-excerpt">${a.excerpt}</p>
+    <a href="${url}" class="card-read-more">Read More &rarr;</a>
+  </div>`;
 }
-loadStock();
 
-/* SHARE */
-function nativeShare(){if(navigator.share){navigator.share({title:ARTICLE_TITLE,url:ARTICLE_URL});}else{navigator.clipboard.writeText(ARTICLE_URL);}}
-function shareReddit(){window.open('https://www.reddit.com/r/GTA6/submit?url='+encodeURIComponent(ARTICLE_URL)+'&title='+encodeURIComponent(ARTICLE_TITLE),'_blank');}
-function shareTwitter(){window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent('GTA6 News Hub — Every leak, every confirmed fact. #GTA6')+'&url='+encodeURIComponent(ARTICLE_URL),'_blank');}
-function shareWhatsApp(){window.open('https://wa.me/?text='+encodeURIComponent(ARTICLE_TITLE+' '+ARTICLE_URL),'_blank');}
-function shareFacebook(){window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(ARTICLE_URL),'_blank');}
-function copyLink(id){navigator.clipboard.writeText(ARTICLE_URL).then(()=>{const b=document.getElementById(id);b.textContent='Copied!';setTimeout(()=>b.textContent='Copy Link',2000);});}
+// ── fetch articles.json and render everything ─────────
+fetch("/articles.json?v="+Date.now())
+  .then(r => r.json())
+  .then(articles => {
+    // ── TICKER: first 3 non-permanent + both permanent ─
+    const rotating = articles.filter(a => !a.permanent).slice(0,3);
+    const permanent = articles.filter(a => a.permanent);
+    const tickerItems = [...rotating, ...permanent];
+    const track = document.getElementById("ticker-track");
+    track.innerHTML = [...tickerItems,...tickerItems]
+      .map(x => `<span class="ticker-item" onclick="location.href='${x.permanent && x.slug==="lastdrive"?"/lastdrive":"/articles/"+x.slug}'">${x.emoji} ${x.title}</span>`)
+      .join("");
 
-/* REVEAL */
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:.08});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    // ── FEED: all non-permanent articles as cards ──────
+    const feed = articles.filter(a => !a.permanent);
+    const label = document.getElementById("feed-label");
+    if(label) label.textContent = "Latest — June 2026";
+
+    const feedEl = document.getElementById("article-feed");
+    feedEl.innerHTML = feed.map((a,i) => renderCard(a, i===0)).join("");
+
+    // scroll reveal on newly rendered cards
+    const obs = new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");obs.unobserve(e.target);}});},{threshold:.08});
+    feedEl.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
+  })
+  .catch(() => {
+    document.getElementById("article-feed").innerHTML =
+      '<div class="feed-error">Could not load articles. <a href="/" style="color:var(--cyan)">Return home</a></div>';
+    document.getElementById("ticker-track").innerHTML =
+      '<span class="ticker-item">Where GTA5 Ends And GTA6 Begins</span>';
+  });
+
+// ── mobile nav ────────────────────────────────────────
+const mt=document.getElementById("menu-toggle");
+const nm=document.getElementById("nav-mobile");
+if(mt&&nm)mt.addEventListener("click",()=>nm.classList.toggle("open"));
 </script>
 <script>
-const mt=document.getElementById('menu-toggle');
-const nm=document.getElementById('nav-mobile');
-if(mt&&nm)mt.addEventListener('click',()=>nm.classList.toggle('open'));
+/* 56ViceLane Debug Mode — tap logo 7x within 2 seconds to toggle */
+(function(){
+  const TAPS=7,WINDOW=2000,KEY='56vl-debug';
+  let taps=[];
+  let active=localStorage.getItem(KEY)==='1';
+
+  function applyDebug(){
+    document.body.classList.toggle('debug-active',active);
+    let ind=document.getElementById('vl-debug-ind');
+    if(!ind){
+      ind=document.createElement('div');
+      ind.id='vl-debug-ind';
+      ind.style.cssText='position:fixed;bottom:14px;right:14px;z-index:9999;background:#FF6B1A;color:#000;font-family:monospace;font-weight:800;font-size:12px;padding:6px 14px;border-radius:20px;cursor:pointer;box-shadow:0 0 16px rgba(255,107,26,.7);display:none;';
+      ind.textContent='🔧 DEBUG ON — tap to off';
+      ind.onclick=function(){active=false;localStorage.setItem(KEY,'0');applyDebug();};
+      document.body.appendChild(ind);
+    }
+    ind.style.display=active?'block':'none';
+    document.querySelectorAll('.debug-box').forEach(function(el){
+      el.style.display=active?'block':'none';
+    });
+  }
+
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('#vl-copyright'))return;
+    const now=Date.now();
+    taps.push(now);
+    taps=taps.filter(function(t){return now-t<=WINDOW;});
+    if(taps.length>=TAPS){
+      taps=[];
+      active=!active;
+      localStorage.setItem(KEY,active?'1':'0');
+      applyDebug();
+    }
+  });
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',applyDebug);
+  } else {
+    applyDebug();
+  }
+})();
 </script>
 </body>
 </html>

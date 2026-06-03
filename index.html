@@ -508,7 +508,7 @@ section p strong { color: var(--bone); }
 
 <footer>
   <p class="disclosure">56ViceLane is an independent fan site. Not affiliated with, endorsed by, or sponsored by Rockstar Games or Take-Two Interactive. All trademarks belong to their respective owners. 56ViceLane earns a small commission on qualifying purchases through affiliate links (Amazon, Newegg, Best Buy) at no extra cost to you.</p>
-  <p>© 2026 56ViceLane · Forged Oak Studios ·
+  <p><span id="vl-copyright">© 2026 56ViceLane · Forged Oak Studios ·</span>
     <a href="/privacy">Privacy</a> ·
     <a href="#" id="cookie-settings-link">Cookie Settings</a> ·
     <a href="/gtacon" style="color:var(--amber)">GTACON</a> ·
@@ -786,6 +786,50 @@ minBtn.addEventListener('click', (e) => {
 const mt=document.getElementById('menu-toggle');
 const nm=document.getElementById('nav-mobile');
 if(mt&&nm)mt.addEventListener('click',()=>nm.classList.toggle('open'));
+</script>
+<script>
+/* 56ViceLane Debug Mode — tap logo 7x within 2 seconds to toggle */
+(function(){
+  const TAPS=7,WINDOW=2000,KEY='56vl-debug';
+  let taps=[];
+  let active=localStorage.getItem(KEY)==='1';
+
+  function applyDebug(){
+    document.body.classList.toggle('debug-active',active);
+    let ind=document.getElementById('vl-debug-ind');
+    if(!ind){
+      ind=document.createElement('div');
+      ind.id='vl-debug-ind';
+      ind.style.cssText='position:fixed;bottom:14px;right:14px;z-index:9999;background:#FF6B1A;color:#000;font-family:monospace;font-weight:800;font-size:12px;padding:6px 14px;border-radius:20px;cursor:pointer;box-shadow:0 0 16px rgba(255,107,26,.7);display:none;';
+      ind.textContent='🔧 DEBUG ON — tap to off';
+      ind.onclick=function(){active=false;localStorage.setItem(KEY,'0');applyDebug();};
+      document.body.appendChild(ind);
+    }
+    ind.style.display=active?'block':'none';
+    document.querySelectorAll('.debug-box').forEach(function(el){
+      el.style.display=active?'block':'none';
+    });
+  }
+
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('#vl-copyright'))return;
+    const now=Date.now();
+    taps.push(now);
+    taps=taps.filter(function(t){return now-t<=WINDOW;});
+    if(taps.length>=TAPS){
+      taps=[];
+      active=!active;
+      localStorage.setItem(KEY,active?'1':'0');
+      applyDebug();
+    }
+  });
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',applyDebug);
+  } else {
+    applyDebug();
+  }
+})();
 </script>
 </body>
 </html>
