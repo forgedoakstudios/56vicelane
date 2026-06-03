@@ -91,14 +91,19 @@ body::before {
   position: relative;
   padding: 56px 24px 80px;
   overflow: hidden;
+  background-image: url('/images/hero-pier.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: center 30%;
   background-repeat: no-repeat;
 }
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(11,11,15,0.75) 0%, rgba(11,11,15,0.82) 50%, rgba(11,11,15,0.90) 100%);
+  background: linear-gradient(180deg,
+    rgba(11,11,15,0.45) 0%,
+    rgba(11,11,15,0.35) 30%,
+    rgba(11,11,15,0.55) 65%,
+    rgba(11,11,15,0.85) 100%);
   z-index: 1;
   pointer-events: none;
 }
@@ -363,7 +368,6 @@ section p strong { color: var(--bone); }
   <!-- HERO -->
   <section class="hero" id="hero">
     <div class="hero-overlay"></div>
-    <div class="hero-bg" aria-hidden="true">56</div>
     <div class="hero-content">
       <div class="eyebrow">The GTA5 Farewell &amp; GTA6 Launch Hub</div>
       <h1>
