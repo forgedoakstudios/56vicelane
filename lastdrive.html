@@ -381,6 +381,9 @@ footer{padding:40px 24px;border-top:1px solid var(--edge);text-align:center;}
     <div class="s-title">What Are You Rolling On?</div>
     <div class="s-desc">Each platform has its own lobby. Pick yours and we'll show you who's already signed up for your region and time slot.</div>
 
+    <!-- DEBUG BOX — remove after counter is fixed -->
+    <div id="debug-box" style="background:#1a0a00;border:1px solid #FF6B1A;border-radius:8px;padding:12px 16px;margin:12px 0;font-family:monospace;font-size:12px;color:#FF6B1A;display:none;white-space:pre-wrap;word-break:break-all;max-height:200px;overflow-y:auto;"></div>
+
     <div class="platform-tabs" id="ptabs">
       <button class="platform-tab active" data-p="PS5">🎮 PS5 <span class="cnt" id="cnt-PS5">...</span></button>
       <button class="platform-tab" data-p="PS4">🎮 PS4 <span class="cnt" id="cnt-PS4">...</span></button>
@@ -744,11 +747,17 @@ async function loadCounts() {
 
     // filter out test records
     const real = allRecords.filter(r => !isTestRecord(r));
-    console.log('loadCounts: total records='+allRecords.length+', real='+real.length);
-    real.forEach(r => console.log('  record:', r.fields.Name, '|', r.fields.Gamertag, '| platform:', r.fields.Platform));
+    // visible debug output
+    const dbx = document.getElementById('debug-box');
+    if(dbx) {
+      dbx.style.display='block';
+      let dbgTxt = 'Records from Airtable: '+allRecords.length+'\nAfter test filter: '+real.length+'\n\n';
+      real.forEach(r => { dbgTxt += 'Name: '+(r.fields.Name||'—')+' | Tag: '+(r.fields.Gamertag||'—')+' | Platform: '+(r.fields.Platform||'—')+'\n'; });
+      dbx.textContent = dbgTxt || 'No records returned from Airtable';
+    }
     const counts = {'PS5':0,'PS4':0,'Xbox Series X/S':0,'Xbox One':0,'PC':0,'Xbox':0};
     real.forEach(r => { const p = r.fields.Platform; if (counts[p] !== undefined) counts[p]++; });
-    console.log('counts:', JSON.stringify(counts));
+    if(dbx) dbx.textContent += '\nCounts: '+JSON.stringify(counts);
     // merge Xbox into Xbox Series X/S for display
     counts['Xbox Series X/S'] += counts['Xbox'];
     Object.entries(CNT_IDS).forEach(([p, id]) => {
