@@ -744,8 +744,11 @@ async function loadCounts() {
 
     // filter out test records
     const real = allRecords.filter(r => !isTestRecord(r));
+    console.log('loadCounts: total records='+allRecords.length+', real='+real.length);
+    real.forEach(r => console.log('  record:', r.fields.Name, '|', r.fields.Gamertag, '| platform:', r.fields.Platform));
     const counts = {'PS5':0,'PS4':0,'Xbox Series X/S':0,'Xbox One':0,'PC':0,'Xbox':0};
     real.forEach(r => { const p = r.fields.Platform; if (counts[p] !== undefined) counts[p]++; });
+    console.log('counts:', JSON.stringify(counts));
     // merge Xbox into Xbox Series X/S for display
     counts['Xbox Series X/S'] += counts['Xbox'];
     Object.entries(CNT_IDS).forEach(([p, id]) => {
