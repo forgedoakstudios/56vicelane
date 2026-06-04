@@ -263,8 +263,21 @@ const RANGES = {
   'u-z':   c=>c>='u'&&c<='z',
 };
 
-// State
-let allPlayers = [];
+// ── PLATE BACKGROUND ─────────────────────────────────────────
+function getPlateBackground(style) {
+  switch(style) {
+    case 'founder': return `background-image:url('/images/plate-founder.png');background-size:cover;background-position:center;`;
+    case 'vehicle-male-exotic': return `background-image:url('/images/plate-male-exotic.png');background-size:cover;background-position:center;`;
+    case 'vehicle-female-exotic': return `background-image:url('/images/plate-female-exotic.png');background-size:cover;background-position:center;`;
+    case 'color-red': return `background:linear-gradient(135deg,#6B0000,#CC2200);`;
+    case 'color-blue': return `background:linear-gradient(135deg,#000C6B,#0033CC);`;
+    case 'color-purple': return `background:linear-gradient(135deg,#2D0060,#6600AA);`;
+    case 'color-amber': return `background:linear-gradient(135deg,#7A4A00,#C8820A);`;
+    case 'white': return `background:#EFEDE8;`;
+    case 'black': return `background:#0a0a0a;`;
+    default: return `background-image:url('/images/plate-founder.png');background-size:cover;background-position:center;`;
+  }
+}
 let activePlat = 'playstation';
 let activeRange = 'all';
 let participantCounts = {};
@@ -334,12 +347,17 @@ function renderWall(){
     const riderCount = participantCounts[slotKey]||0;
 
     if(isPlate){
+      const plateStyle = f.PlateStyle || 'founder';
+      const plateBg = getPlateBackground(plateStyle);
+      const isPhotoPlate = plateStyle === 'founder' || plateStyle.startsWith('vehicle-');
+      const textColor = plateStyle === 'white' ? '#0a0a0a' : '#FFFFFF';
+      const starColor = plateStyle === 'white' ? 'rgba(0,0,0,0.3)' : 'rgba(255,255,255,0.75)';
       return `<div class="plate-card${isOrg?' organizer':''}">
         ${isOrg?'<div class="org-badge">⭐ Drive Lead</div>':''}
-        <div class="plate-bg">
+        <div class="plate-bg" style="${plateBg}">
           ${signupNum?`<div class="plate-num-badge">#${signupNum} of 100</div>`:''}
-          <div class="plate-stars">★ ★ ★ ★ ★ ★</div>
-          <div class="plate-gamertag">${tag}</div>
+          <div class="plate-stars" style="color:${starColor};">★ ★ ★ ★ ★ ★</div>
+          <div class="plate-gamertag" style="color:${textColor};">${tag}</div>
           <div class="plate-footer-text">The Last Drive · Nov 18 2026</div>
         </div>
         <div style="padding:6px 10px;display:flex;flex-wrap:wrap;gap:4px;align-items:center;">
