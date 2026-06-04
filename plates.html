@@ -48,6 +48,19 @@
 .current-plate-wrap.show{display:block;}
 .current-lbl{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;font-size:10px;color:var(--smoke);margin-bottom:8px;}
 .current-plate{max-width:360px;border:2px solid var(--edge);}
+
+/* Owned plates dropdown */
+.owned-plates-wrap{margin-top:20px;padding-top:20px;border-top:1px solid var(--edge);display:none;}
+.owned-plates-wrap.show{display:block;}
+.owned-lbl{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;font-size:10px;color:var(--amber);margin-bottom:10px;}
+.owned-select-row{display:flex;gap:8px;align-items:stretch;}
+.owned-select{flex:1;background:var(--pitch);border:1px solid var(--edge);color:var(--bone);font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:0.08em;padding:12px 14px;outline:none;cursor:pointer;transition:border-color 0.3s;}
+.owned-select:focus{border-color:var(--amber);}
+.owned-set-btn{background:var(--amber);color:var(--pitch);font-family:'Russo One',sans-serif;text-transform:uppercase;font-size:12px;padding:12px 18px;border:none;cursor:pointer;white-space:nowrap;letter-spacing:0.06em;transition:all 0.3s;}
+.owned-set-btn:hover{box-shadow:0 0 16px rgba(255,107,26,0.4);}
+.owned-preview{margin-top:12px;max-width:360px;border:2px solid rgba(255,107,26,0.3);display:none;}
+.owned-preview.show{display:block;}
+.owned-active-badge{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;font-size:10px;color:var(--green);background:rgba(0,200,117,0.1);border:1px solid rgba(0,200,117,0.2);padding:3px 10px;margin-top:6px;}
 .plate-inner-preview{width:100%;aspect-ratio:2.5/1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px;position:relative;background-size:cover;background-position:center;}
 .plate-stars-sm{font-size:8px;letter-spacing:5px;color:rgba(255,255,255,0.7);margin-bottom:3px;text-shadow:0 0 8px rgba(255,107,26,0.8);}
 .plate-tag-sm{font-family:'Russo One',sans-serif;font-size:clamp(14px,4vw,20px);text-transform:uppercase;letter-spacing:0.1em;color:#fff;text-shadow:0 0 16px rgba(255,107,26,0.5),0 2px 6px rgba(0,0,0,0.9);-webkit-text-stroke:1px rgba(0,0,0,0.5);}
@@ -83,7 +96,19 @@
 .plate-item.selected .plate-select-btn{background:rgba(255,107,26,0.1);}
 .plate-locked-badge{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;font-size:10px;padding:4px 10px;color:var(--smoke);border:1px solid var(--edge);}
 
-/* ── PURCHASE PANEL ────────────────────────────────────────── */
+/* ── BUNDLE CARDS ──────────────────────────────────────────── */
+.bundle-card{background:var(--asphalt);border:2px solid var(--amber);padding:20px;margin-top:16px;position:relative;overflow:hidden;}
+.bundle-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--amber),#FFD700,var(--amber));box-shadow:0 0 12px rgba(255,107,26,0.4);}
+.bundle-badge{position:absolute;top:12px;right:14px;font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;font-size:10px;color:#FFD700;background:rgba(255,215,0,0.12);border:1px solid rgba(255,215,0,0.35);padding:3px 10px;}
+.bundle-title{font-family:'Russo One',sans-serif;font-size:16px;text-transform:uppercase;color:var(--bone);margin-bottom:4px;}
+.bundle-includes{font-size:12px;color:var(--smoke);margin-bottom:12px;line-height:1.5;}
+.bundle-price-row{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.bundle-price{font-family:'Russo One',sans-serif;font-size:28px;color:var(--amber);}
+.bundle-was{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:14px;color:var(--smoke);text-decoration:line-through;}
+.bundle-save{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;font-size:11px;color:var(--green);background:rgba(0,200,117,0.1);border:1px solid rgba(0,200,117,0.2);padding:3px 8px;}
+.bundle-thumbs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+.bundle-thumb{width:60px;height:24px;border:1px solid var(--edge);background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;font-size:7px;font-family:'Barlow Condensed',sans-serif;font-weight:800;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.08em;overflow:hidden;}
+
 .purchase-panel{max-width:480px;margin:0 auto 32px;padding:0 24px;display:none;}
 .purchase-panel.show{display:block;}
 .purchase-box{background:var(--asphalt);border:1px solid var(--edge);border-top:2px solid var(--amber);padding:24px;}
@@ -157,9 +182,22 @@
     <button class="verify-btn" id="verify-btn" onclick="verifyPlayer()">Find My Profile</button>
     <div class="verify-msg" id="verify-msg"></div>
     <div class="current-plate-wrap" id="current-plate-wrap">
-      <div class="current-lbl">Your current plate</div>
+      <div class="current-lbl">Your active plate</div>
       <div class="current-plate" id="current-plate-display"></div>
-      <div style="margin-top:8px;font-size:12px;color:var(--green);">✅ Profile found — scroll down to upgrade your plate</div>
+      <div style="margin-top:8px;font-size:12px;color:var(--green);">✅ Profile found — scroll down to buy a new plate, or switch plates below</div>
+    </div>
+
+    <!-- OWNED PLATES DROPDOWN -->
+    <div class="owned-plates-wrap" id="owned-plates-wrap">
+      <div class="owned-lbl">🏆 Your Plate Collection — Switch Active Plate</div>
+      <div class="owned-select-row">
+        <select class="owned-select" id="owned-select" onchange="previewOwnedPlate()">
+          <option value="">Choose a plate...</option>
+        </select>
+        <button class="owned-set-btn" onclick="setActivePlate()">Set Active</button>
+      </div>
+      <div class="owned-preview" id="owned-preview"></div>
+      <div class="owned-active-badge" id="owned-active-badge" style="display:none;">✅ Active on Wall of Honor</div>
     </div>
   </div>
 </div>
@@ -251,6 +289,27 @@
         </div>
       </div>
     </div>
+
+    <!-- COLOR BUNDLE -->
+    <div class="bundle-card" id="color-bundle-card">
+      <div class="bundle-badge">⚡ Best Value</div>
+      <div class="bundle-title">Color Bundle — All 6 Plates</div>
+      <div class="bundle-includes">Every color plate — Crimson Red, Vice Blue, Royal Purple, Gold Amber + 2 more as they drop. Switch between them anytime from your profile.</div>
+      <div class="bundle-thumbs">
+        <div class="bundle-thumb" style="background:linear-gradient(135deg,#6B0000,#CC2200);">Red</div>
+        <div class="bundle-thumb" style="background:linear-gradient(135deg,#000C6B,#0033CC);">Blue</div>
+        <div class="bundle-thumb" style="background:linear-gradient(135deg,#2D0060,#6600AA);">Purple</div>
+        <div class="bundle-thumb" style="background:linear-gradient(135deg,#7A4A00,#C8820A);">Amber</div>
+        <div class="bundle-thumb" style="background:var(--edge);color:var(--smoke);">+2 Soon</div>
+      </div>
+      <div class="bundle-price-row">
+        <div class="bundle-price">$5.00</div>
+        <div class="bundle-was">6 × $0.99 = $5.94</div>
+        <div class="bundle-save">Save $0.94</div>
+      </div>
+      <div id="paypal-button-color-bundle"></div>
+      <div class="purchase-note" style="margin-top:8px;">Bundle unlocks all current + future color plates automatically.</div>
+    </div>
   </div>
 
   <!-- $2.99 VEHICLE PLATES -->
@@ -282,6 +341,26 @@
           <button class="plate-select-btn">Select</button>
         </div>
       </div>
+    </div>
+
+    <!-- VEHICLE BUNDLE -->
+    <div class="bundle-card" id="vehicle-bundle-card">
+      <div class="bundle-badge">🔥 Save $2.00</div>
+      <div class="bundle-title">Vehicle Bundle — All 4 Plates</div>
+      <div class="bundle-includes">Every vehicle plate — Male Exotic, Female Exotic + 2 more coming (Bike, Muscle). All future vehicle plates included when they drop.</div>
+      <div class="bundle-thumbs">
+        <div class="bundle-thumb" style="background-image:url('/images/plate-male-exotic.png');background-size:cover;background-position:center;">Male</div>
+        <div class="bundle-thumb" style="background-image:url('/images/plate-female-exotic.png');background-size:cover;background-position:center;">Female</div>
+        <div class="bundle-thumb" style="background:var(--edge);color:var(--smoke);">Bike</div>
+        <div class="bundle-thumb" style="background:var(--edge);color:var(--smoke);">Muscle</div>
+      </div>
+      <div class="bundle-price-row">
+        <div class="bundle-price">$10.00</div>
+        <div class="bundle-was">4 × $2.99 = $11.96</div>
+        <div class="bundle-save">Save $1.96</div>
+      </div>
+      <div id="paypal-button-vehicle-bundle"></div>
+      <div class="purchase-note" style="margin-top:8px;">Bundle unlocks all current + future vehicle plates automatically.</div>
     </div>
   </div>
 
@@ -379,17 +458,35 @@ async function verifyPlayer() {
     playerRecord = d.records[0];
     const fields = playerRecord.fields;
 
+    // Build owned plates list
+    const activeStyle = fields.PlateStyle || (fields.PlateStatus === 'Free Premium' ? 'founder' : 'black');
+    let owned = parseOwnedPlates(fields.OwnedPlates);
+
+    // Auto-include founder plate if first 100
+    if (fields.PlateStatus === 'Free Premium' && !owned.includes('founder')) {
+      owned.unshift('founder');
+    }
+    // Auto-include active plate if not in list
+    if (activeStyle && !owned.includes(activeStyle)) {
+      owned.push(activeStyle);
+    }
+
     // Show current plate
-    const currentStyle = fields.PlateStyle || (fields.PlateStatus === 'Free Premium' ? 'founder' : 'black');
-    showCurrentPlate(gamertag, currentStyle);
+    showCurrentPlate(fields.Gamertag || gamertag, activeStyle);
+
+    // Show dropdown if they own multiple plates
+    if (owned.length > 1) {
+      buildOwnedDropdown(owned, activeStyle, fields.Gamertag || gamertag);
+    }
 
     // Update all plate previews with real gamertag
     document.querySelectorAll('[id^="preview-"]').forEach(el => {
-      el.textContent = gamertag.toUpperCase();
+      el.textContent = (fields.Gamertag || gamertag).toUpperCase();
     });
 
-    showMsg(`✅ Found you! Scroll down to choose your plate, ${gamertag}.`, 'success');
+    showMsg(`✅ Found you! Scroll down to buy a new plate, or switch plates below, ${fields.Gamertag || gamertag}.`, 'success');
     document.getElementById('plate-gallery').style.display = 'block';
+    renderBundleButtons();
 
     // Scroll to gallery
     setTimeout(() => {
@@ -525,22 +622,36 @@ async function applyPlate(plateStyle) {
 
   try {
     const recordId = playerRecord.id;
+    const fields   = playerRecord.fields;
+
+    // Build updated owned plates list
+    let owned = parseOwnedPlates(fields.OwnedPlates);
+    if (fields.PlateStatus === 'Free Premium' && !owned.includes('founder')) owned.unshift('founder');
+    if (!owned.includes(plateStyle)) owned.push(plateStyle);
+    const ownedStr = owned.join(',');
+
     await fetch(`${AT_URL}/${recordId}`, {
       method: 'PATCH',
       headers: AT_H,
       body: JSON.stringify({
         fields: {
-          'PlateStyle': plateStyle,
-          'PlateStatus': 'Purchased Premium'
+          'PlateStyle':   plateStyle,
+          'PlateStatus':  'Purchased Premium',
+          'OwnedPlates':  ownedStr
         }
       })
     });
 
+    // Update local state
+    playerRecord.fields.PlateStyle  = plateStyle;
+    playerRecord.fields.OwnedPlates = ownedStr;
+
+    // Refresh dropdown
+    buildOwnedDropdown(owned, plateStyle, fields.Gamertag || '');
+
     showSuccess(plateStyle);
 
   } catch(e) {
-    // Payment went through but Airtable failed
-    // Show success anyway and note to contact support
     showSuccess(plateStyle, true);
   }
 }
@@ -591,6 +702,180 @@ function getPlateBackground(style) {
     case 'black':
     default:
       return 'background:#0a0a0a;';
+  }
+}
+
+// ── OWNED PLATES HELPERS ─────────────────────────────────────
+const PLATE_NAMES = {
+  'founder': '⭐ Founder — City Sunset',
+  'black': '◼ Classic Black',
+  'white': '◻ Classic White',
+  'color-red': '🔴 Crimson Red',
+  'color-blue': '🔵 Vice Blue',
+  'color-purple': '🟣 Royal Purple',
+  'color-amber': '🟡 Gold Amber',
+  'vehicle-male-exotic': '🏎️ Male · Exotic',
+  'vehicle-female-exotic': '🏎️ Female · Exotic'
+};
+
+function parseOwnedPlates(raw) {
+  if (!raw) return [];
+  return raw.split(',').map(s => s.trim()).filter(Boolean);
+}
+
+function buildOwnedDropdown(owned, activeStyle, gamertag) {
+  const wrap = document.getElementById('owned-plates-wrap');
+  const sel  = document.getElementById('owned-select');
+
+  sel.innerHTML = '<option value="">Choose a plate...</option>';
+  owned.forEach(style => {
+    const opt = document.createElement('option');
+    opt.value = style;
+    opt.textContent = (PLATE_NAMES[style] || style) + (style === activeStyle ? ' ← Active' : '');
+    sel.appendChild(opt);
+  });
+
+  wrap.classList.add('show');
+}
+
+function previewOwnedPlate() {
+  const style = document.getElementById('owned-select').value;
+  const preview = document.getElementById('owned-preview');
+  const badge = document.getElementById('owned-active-badge');
+  if (!style) { preview.classList.remove('show'); badge.style.display='none'; return; }
+
+  const gamertag = playerRecord?.fields?.Gamertag || '';
+  const bg = getPlateBackground(style);
+  const isPhoto = style==='founder'||style.startsWith('vehicle-');
+  const textColor = style==='white'?'#0a0a0a':'#fff';
+
+  preview.innerHTML = `<div class="plate-inner-preview" style="${bg}">
+    <div class="plate-stars-sm" style="color:${isPhoto?'rgba(255,255,255,0.75)':'rgba(255,255,255,0.4)'}">★ ★ ★ ★ ★ ★</div>
+    <div class="plate-tag-sm" style="color:${textColor}">${gamertag.toUpperCase()}</div>
+    <div class="plate-footer-sm">THE LAST DRIVE · NOV 18 2026</div>
+  </div>`;
+  preview.classList.add('show');
+
+  const activeStyle = playerRecord?.fields?.PlateStyle || 'founder';
+  badge.style.display = style === activeStyle ? 'inline-block' : 'none';
+}
+
+async function setActivePlate() {
+  const style = document.getElementById('owned-select').value;
+  const badge = document.getElementById('owned-active-badge');
+  if (!style || !playerRecord?.id) return;
+
+  const btn = document.querySelector('.owned-set-btn');
+  btn.textContent = 'Saving...';
+  btn.disabled = true;
+
+  try {
+    await fetch(`${AT_URL}/${playerRecord.id}`, {
+      method: 'PATCH',
+      headers: AT_H,
+      body: JSON.stringify({ fields: { 'PlateStyle': style } })
+    });
+
+    // Update local state
+    playerRecord.fields.PlateStyle = style;
+
+    // Refresh current plate display
+    showCurrentPlate(playerRecord.fields.Gamertag || '', style);
+
+    // Update dropdown to show new active
+    const opts = document.querySelectorAll('#owned-select option');
+    opts.forEach(o => {
+      o.textContent = o.textContent.replace(' ← Active','');
+      if (o.value === style) o.textContent += ' ← Active';
+    });
+
+    badge.style.display = 'inline-block';
+    badge.textContent = '✅ Now active on Wall of Honor';
+
+  } catch(e) {
+    badge.textContent = 'Save failed — try again';
+    badge.style.display = 'inline-block';
+  }
+
+  btn.textContent = 'Set Active';
+  btn.disabled = false;
+}
+
+// ── BUNDLE DEFINITIONS ───────────────────────────────────────
+const BUNDLES = {
+  'color-bundle': {
+    plates: ['color-red','color-blue','color-purple','color-amber'],
+    name: 'Color Bundle',
+    price: 5.00,
+    description: '56ViceLane Color Bundle — All 6 Color Plates'
+  },
+  'vehicle-bundle': {
+    plates: ['vehicle-male-exotic','vehicle-female-exotic'],
+    name: 'Vehicle Bundle',
+    price: 10.00,
+    description: '56ViceLane Vehicle Bundle — All 4 Vehicle Plates'
+  }
+};
+
+function renderBundleButtons() {
+  ['color-bundle','vehicle-bundle'].forEach(bundleKey => {
+    const bundle = BUNDLES[bundleKey];
+    const container = document.getElementById(`paypal-button-${bundleKey}`);
+    if (!container || container.hasChildNodes()) return;
+
+    if (window.paypal) {
+      paypal.Buttons({
+        style: { color:'gold', shape:'rect', label:'pay', height:44 },
+        createOrder: (data, actions) => actions.order.create({
+          purchase_units:[{ amount:{ value: bundle.price.toFixed(2) }, description: bundle.description }]
+        }),
+        onApprove: (data, actions) => actions.order.capture().then(async () => {
+          await applyBundle(bundleKey);
+        }),
+        onError: (err) => {
+          container.innerHTML = '<div style="color:#ff6b6b;font-size:12px;padding:10px;">Payment error — please try again.</div>';
+        }
+      }).render(`#paypal-button-${bundleKey}`);
+    } else {
+      const check = setInterval(() => {
+        if (window.paypal) {
+          clearInterval(check);
+          renderBundleButtons();
+        }
+      }, 300);
+    }
+  });
+}
+
+async function applyBundle(bundleKey) {
+  if (!playerRecord) return;
+  const bundle = BUNDLES[bundleKey];
+  const fields = playerRecord.fields;
+
+  // Build updated owned list
+  let owned = parseOwnedPlates(fields.OwnedPlates);
+  if (fields.PlateStatus === 'Free Premium' && !owned.includes('founder')) owned.unshift('founder');
+  bundle.plates.forEach(p => { if (!owned.includes(p)) owned.push(p); });
+  const firstNew = bundle.plates[0];
+  const ownedStr = owned.join(',');
+
+  try {
+    await fetch(`${AT_URL}/${playerRecord.id}`, {
+      method: 'PATCH', headers: AT_H,
+      body: JSON.stringify({ fields: {
+        'PlateStyle':  firstNew,
+        'PlateStatus': 'Purchased Premium',
+        'OwnedPlates': ownedStr
+      }})
+    });
+    playerRecord.fields.PlateStyle  = firstNew;
+    playerRecord.fields.OwnedPlates = ownedStr;
+    buildOwnedDropdown(owned, firstNew, fields.Gamertag || '');
+    showSuccess(firstNew);
+    document.querySelector('.success-text').innerHTML =
+      `<strong>${bundle.name} unlocked!</strong><br><br>All ${bundle.plates.length} plates are now in your collection. Visit your profile to switch between them anytime.`;
+  } catch(e) {
+    showSuccess(firstNew, true);
   }
 }
 
