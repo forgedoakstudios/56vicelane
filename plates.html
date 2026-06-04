@@ -109,6 +109,41 @@
 .bundle-thumbs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
 .bundle-thumb{width:60px;height:24px;border:1px solid var(--edge);background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;font-size:7px;font-family:'Barlow Condensed',sans-serif;font-weight:800;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.08em;overflow:hidden;}
 
+/* Bundle catalog cards */
+.bundle-thumb-card{background:var(--asphalt);border:1px solid var(--edge);padding:14px 12px;text-align:center;transition:border-color 0.25s;}
+.bundle-thumb-card.available{border-color:var(--amber);}
+.bundle-thumb-card.coming{opacity:0.75;}
+.bundle-thumb-card:hover{border-color:var(--amber);opacity:1;}
+.btc-icon{font-size:24px;margin-bottom:6px;}
+.btc-name{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;font-size:11px;color:var(--bone);margin-bottom:3px;}
+.btc-desc{font-size:10px;color:var(--smoke);margin-bottom:8px;line-height:1.3;}
+.btc-status{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;font-size:9px;padding:2px 8px;display:inline-block;}
+.available-badge{color:var(--amber);background:rgba(255,107,26,0.1);border:1px solid rgba(255,107,26,0.2);}
+.coming-badge{color:var(--smoke);background:var(--pitch);border:1px solid var(--edge);}
+
+/* ── ALL PREMIUM ───────────────────────────────────────────── */
+.premium-section{max-width:900px;margin:0 auto;padding:0 24px 32px;}
+.premium-card{background:linear-gradient(135deg,#0D0D1A,#1A0D2E,#0D1A1A);border:2px solid #FFD700;padding:28px 24px;position:relative;overflow:hidden;}
+.premium-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--amber),#FFD700,var(--cyan),#FFD700,var(--amber));box-shadow:0 0 20px rgba(255,215,0,0.5);}
+.premium-card::after{content:'ALL ACCESS';position:absolute;bottom:20px;right:-20px;font-family:'Russo One',sans-serif;font-size:60px;color:rgba(255,215,0,0.04);text-transform:uppercase;transform:rotate(-12deg);pointer-events:none;}
+.premium-eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.3em;font-size:10px;color:#FFD700;margin-bottom:8px;}
+.premium-title{font-family:'Russo One',sans-serif;font-size:clamp(22px,5vw,36px);text-transform:uppercase;color:var(--bone);margin-bottom:6px;line-height:1.1;}
+.premium-title span{color:#FFD700;}
+.premium-sub{font-size:13px;color:var(--smoke);margin-bottom:20px;max-width:560px;line-height:1.6;}
+.premium-includes{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;}
+@media(max-width:480px){.premium-includes{grid-template-columns:1fr;}}
+.prem-item{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--bone);}
+.prem-item::before{content:'✓';color:#FFD700;font-weight:800;flex-shrink:0;}
+.premium-price-row{display:flex;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap;}
+.premium-price{font-family:'Russo One',sans-serif;font-size:42px;color:#FFD700;text-shadow:0 0 20px rgba(255,215,0,0.3);}
+.premium-save{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;font-size:12px;color:var(--green);background:rgba(0,200,117,0.1);border:1px solid rgba(0,200,117,0.2);padding:4px 12px;}
+.all-access-plate{max-width:320px;border:2px solid #FFD700;box-shadow:0 0 20px rgba(255,215,0,0.2);margin-bottom:20px;}
+.all-access-inner{width:100%;aspect-ratio:2.5/1;background:linear-gradient(135deg,#0D0D1A 0%,#1a0535 40%,#0D1A1A 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px;position:relative;overflow:hidden;}
+.all-access-inner::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 4px,rgba(255,215,0,0.03) 4px,rgba(255,215,0,0.03) 8px);}
+.all-access-stars{font-size:9px;letter-spacing:5px;color:#FFD700;margin-bottom:4px;text-shadow:0 0 8px rgba(255,215,0,0.6);}
+.all-access-tag{font-family:'Russo One',sans-serif;font-size:clamp(14px,4vw,22px);text-transform:uppercase;letter-spacing:0.1em;color:#FFD700;text-shadow:0 0 16px rgba(255,215,0,0.5),0 2px 4px rgba(0,0,0,0.8);}
+.all-access-footer{font-size:6px;text-transform:uppercase;letter-spacing:0.3em;color:rgba(255,215,0,0.6);margin-top:4px;}
+
 .purchase-panel{max-width:480px;margin:0 auto 32px;padding:0 24px;display:none;}
 .purchase-panel.show{display:block;}
 .purchase-box{background:var(--asphalt);border:1px solid var(--edge);border-top:2px solid var(--amber);padding:24px;}
@@ -355,12 +390,141 @@
         <div class="bundle-thumb" style="background:var(--edge);color:var(--smoke);">Muscle</div>
       </div>
       <div class="bundle-price-row">
-        <div class="bundle-price">$10.00</div>
+        <div class="bundle-price">$9.99</div>
         <div class="bundle-was">4 × $2.99 = $11.96</div>
         <div class="bundle-save">Save $1.96</div>
       </div>
       <div id="paypal-button-vehicle-bundle"></div>
       <div class="purchase-note" style="margin-top:8px;">Bundle unlocks all current + future vehicle plates automatically.</div>
+    </div>
+  </div>
+
+  <!-- COMING BUNDLE CATALOG -->
+  <div class="gallery-section">
+    <div class="section-header">
+      <div class="section-name">📦 Monthly Drop Bundles</div>
+      <div class="section-price" style="color:var(--amber);background:rgba(255,107,26,0.1);border:1px solid rgba(255,107,26,0.2);">$9.99 each</div>
+    </div>
+    <p style="font-size:12px;color:var(--smoke);margin-bottom:16px;line-height:1.6;">Every bundle = 2 new plates dropped monthly. Own the bundle, own every plate in it — forever. Available to Annual Pass holders automatically.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;">
+
+      <!-- AVAILABLE NOW -->
+      <div class="bundle-thumb-card available">
+        <div class="btc-icon">🏎️</div>
+        <div class="btc-name">Exotic Bundle</div>
+        <div class="btc-desc">Male + Female exotics</div>
+        <div class="btc-status available-badge">Available</div>
+      </div>
+
+      <!-- COMING SOON -->
+      <div class="bundle-thumb-card coming">
+        <div class="btc-icon">🐕</div>
+        <div class="btc-name">Pets Bundle</div>
+        <div class="btc-desc">Dogs, cats, horses</div>
+        <div class="btc-status coming-badge">Coming Soon</div>
+      </div>
+      <div class="bundle-thumb-card coming">
+        <div class="btc-icon">🚙</div>
+        <div class="btc-name">Off-Road Bundle</div>
+        <div class="btc-desc">Trucks, jeeps, mud</div>
+        <div class="btc-status coming-badge">Coming Soon</div>
+      </div>
+      <div class="bundle-thumb-card coming">
+        <div class="btc-icon">🚁</div>
+        <div class="btc-name">Sky Bundle</div>
+        <div class="btc-desc">Helicopters, parachutes</div>
+        <div class="btc-status coming-badge">Coming Soon</div>
+      </div>
+      <div class="bundle-thumb-card coming">
+        <div class="btc-icon">🏔️</div>
+        <div class="btc-name">Landscape Bundle</div>
+        <div class="btc-desc">Mountains, wilderness</div>
+        <div class="btc-status coming-badge">Coming Soon</div>
+      </div>
+      <div class="bundle-thumb-card coming">
+        <div class="btc-icon">🌊</div>
+        <div class="btc-name">Seaside Bundle</div>
+        <div class="btc-desc">Beach vibes, surf</div>
+        <div class="btc-status coming-badge">Coming Soon</div>
+      </div>
+      <div class="bundle-thumb-card coming">
+        <div class="btc-icon">✈️</div>
+        <div class="btc-name">Flight Bundle</div>
+        <div class="btc-desc">Jets, runways</div>
+        <div class="btc-status coming-badge">Coming Soon</div>
+      </div>
+      <div class="bundle-thumb-card coming">
+        <div class="btc-icon">🏍️</div>
+        <div class="btc-name">Motorcycle Bundle</div>
+        <div class="btc-desc">Superbikes, choppers</div>
+        <div class="btc-status coming-badge">Coming Soon</div>
+      </div>
+      <div class="bundle-thumb-card coming">
+        <div class="btc-icon">👙</div>
+        <div class="btc-name">Bikini Bundle</div>
+        <div class="btc-desc">Women · Coastal vibes</div>
+        <div class="btc-status coming-badge">Coming Soon</div>
+      </div>
+      <div class="bundle-thumb-card coming">
+        <div class="btc-icon">🩳</div>
+        <div class="btc-name">Swimsuit Bundle</div>
+        <div class="btc-desc">Men · Beach lifestyle</div>
+        <div class="btc-status coming-badge">Coming Soon</div>
+      </div>
+      <div class="bundle-thumb-card coming">
+        <div class="btc-icon">🚨</div>
+        <div class="btc-name">First Responder</div>
+        <div class="btc-desc">Police, fire, medic</div>
+        <div class="btc-status coming-badge">Coming Soon</div>
+      </div>
+      <div class="bundle-thumb-card coming">
+        <div class="btc-icon">🏖️</div>
+        <div class="btc-name">Lifeguard Bundle</div>
+        <div class="btc-desc">Beach patrol vibes</div>
+        <div class="btc-status coming-badge">Coming Soon</div>
+      </div>
+      <div class="bundle-thumb-card coming">
+        <div class="btc-icon">🌴</div>
+        <div class="btc-name">Leo Bundle</div>
+        <div class="btc-desc">Leonida · Vice City</div>
+        <div class="btc-status coming-badge">Coming Soon</div>
+      </div>
+      <div class="bundle-thumb-card coming">
+        <div class="btc-icon">💰</div>
+        <div class="btc-name">Gangs Bundle</div>
+        <div class="btc-desc">Street life, crews</div>
+        <div class="btc-status coming-badge">Coming Soon</div>
+      </div>
+      <div class="bundle-thumb-card coming">
+        <div class="btc-icon">💃</div>
+        <div class="btc-name">Dancers Pack</div>
+        <div class="btc-desc">Club life · Nightfall vibes</div>
+        <div class="btc-status coming-badge">Coming Soon</div>
+      </div>
+      <div class="bundle-thumb-card coming">
+        <div class="btc-icon">🔒</div>
+        <div class="btc-name">Prison Bundle</div>
+        <div class="btc-desc">Orange jumpsuits</div>
+        <div class="btc-status coming-badge">Coming Soon</div>
+      </div>
+      <div class="bundle-thumb-card coming">
+        <div class="btc-icon">🛥️</div>
+        <div class="btc-name">Yacht Bundle</div>
+        <div class="btc-desc">Open water luxury</div>
+        <div class="btc-status coming-badge">Coming Soon</div>
+      </div>
+      <div class="bundle-thumb-card coming">
+        <div class="btc-icon">🏠</div>
+        <div class="btc-name">Real Estate Bundle</div>
+        <div class="btc-desc">Mansions, penthouses</div>
+        <div class="btc-status coming-badge">Coming Soon</div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:16px;background:rgba(255,107,26,0.06);border:1px solid rgba(255,107,26,0.2);padding:12px 16px;font-size:12px;color:var(--smoke);line-height:1.6;">
+      💡 <strong style="color:var(--bone);">Annual Pass ($49.99)</strong> covers every bundle drop from November 19, 2026 — 12 free + 48 standard + 24 premium plates. Best value for collectors.
     </div>
   </div>
 
@@ -383,6 +547,106 @@
         </div>
       </div>
     </div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- ALL PREMIUM                                                -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="premium-section" id="premium-section" style="display:none;">
+
+  <!-- CURRENT GENERATION -->
+  <div class="premium-card" style="margin-bottom:16px;">
+    <div class="premium-eyebrow">All Premium — Current Generation</div>
+    <div class="premium-title">Every Plate <span>Right Now</span></div>
+    <p class="premium-sub">Every plate currently in the collection. No future drops — just everything that exists today. Best entry point before the catalog grows.</p>
+
+    <div class="all-access-plate">
+      <div class="all-access-inner">
+        <div class="all-access-stars">★ ★ ★ ★ ★ ★</div>
+        <div class="all-access-tag" id="preview-all-access">YOUR TAG</div>
+        <div class="all-access-footer">ALL ACCESS · THE LAST DRIVE · 2026</div>
+      </div>
+    </div>
+
+    <div class="premium-includes">
+      <div class="prem-item">All 6 color plates</div>
+      <div class="prem-item">All current vehicle plates</div>
+      <div class="prem-item">Exclusive All Access plate</div>
+      <div class="prem-item">👑 Premium Member badge on wall</div>
+    </div>
+
+    <div class="premium-price-row">
+      <div class="premium-price">$19.99</div>
+      <div class="premium-save">Current gen only — no future drops</div>
+    </div>
+    <div id="paypal-button-all-premium"></div>
+    <div class="purchase-note" style="margin-top:10px;">One time. Every plate that exists today. Future drops sold separately or upgrade below.</div>
+  </div>
+
+  <!-- FUTURE ACCESS -->
+  <div class="premium-card" style="border-color:var(--cyan);background:linear-gradient(135deg,#0D1A1A,#0D0D2E,#1A0D1A);">
+    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan),#00FFD4,var(--amber),#00FFD4,var(--cyan));box-shadow:0 0 20px rgba(0,212,255,0.4);"></div>
+    <div style="position:absolute;top:12px;right:14px;font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;font-size:10px;color:var(--cyan);background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);padding:3px 10px;">🔥 Best Deal</div>
+    <div class="premium-eyebrow" style="color:var(--cyan);">Pre-Launch Special · Closes November 18, 2026</div>
+    <div class="premium-title">Every Pre-Launch <span style="color:var(--cyan);">Plate.</span></div>
+    <p class="premium-sub">Every plate we drop between now and November 18, 2026. After GTA6 launches, this purchase window closes permanently. You can no longer buy pre-launch plates. The Last Drive era collection is sealed.</p>
+
+    <div class="premium-includes">
+      <div class="prem-item">Every current plate</div>
+      <div class="prem-item">Every new drop until Nov 18</div>
+      <div class="prem-item">Weekly + monthly packs — auto</div>
+      <div class="prem-item">🚁 Sky Pack · 🛥️ Water Pack</div>
+      <div class="prem-item">🏠 Real Estate · 🐕 Animals · More</div>
+      <div class="prem-item">Exclusive All Access plate</div>
+      <div class="prem-item">👑 Premium badge on wall</div>
+      <div class="prem-item">Complete Last Drive collection</div>
+    </div>
+
+    <div style="background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.2);padding:14px 16px;margin-bottom:16px;font-size:13px;color:var(--bone);line-height:1.7;">
+      <strong style="color:var(--cyan);">After November 18:</strong> The Last Drive ends. Pre-launch plates can no longer be purchased. What you own is what you own — permanently. The era is sealed.
+    </div>
+
+    <div class="premium-price-row">
+      <div class="premium-price" style="color:var(--cyan);">$29.99</div>
+      <div class="premium-save">Lifetime · All future drops included</div>
+    </div>
+    <div id="paypal-button-all-future"></div>
+    <div class="purchase-note" style="margin-top:10px;color:rgba(0,212,255,0.5);">One time. Every Last Drive plate until November 18, 2026. Window closes at GTA6 launch.</div>
+  </div>
+
+  <!-- GTA6 ERA TEASER -->
+  <div style="background:var(--asphalt);border:1px solid var(--edge);padding:20px 24px;margin-top:16px;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--amber),transparent);"></div>
+    <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.25em;font-size:10px;color:var(--smoke);margin-bottom:8px;">Coming November 19, 2026 — GTA6 Era</div>
+    <div style="font-family:'Russo One',sans-serif;font-size:18px;text-transform:uppercase;color:var(--bone);margin-bottom:10px;">The Next Chapter <span style="color:var(--amber);">Begins</span></div>
+    <div style="font-size:12px;color:var(--smoke);line-height:1.7;margin-bottom:16px;">When GTA6 launches, a new plate era starts. New designs, new themes, monthly drops — built for Leonida.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px;">
+      <div style="background:var(--pitch);padding:12px;text-align:center;border:1px solid var(--edge);">
+        <div style="font-family:'Russo One',sans-serif;font-size:13px;color:var(--green);margin-bottom:4px;">Free</div>
+        <div style="font-size:11px;color:var(--smoke);">1 plate/month</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;color:var(--green);margin-top:4px;">$0</div>
+      </div>
+      <div style="background:var(--pitch);padding:12px;text-align:center;border:1px solid var(--edge);">
+        <div style="font-family:'Russo One',sans-serif;font-size:13px;color:var(--cyan);margin-bottom:4px;">Standard</div>
+        <div style="font-size:11px;color:var(--smoke);">4 drops/month</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;color:var(--cyan);margin-top:4px;">$1.99 each</div>
+      </div>
+      <div style="background:var(--pitch);padding:12px;text-align:center;border:1px solid var(--edge);">
+        <div style="font-family:'Russo One',sans-serif;font-size:13px;color:var(--amber);margin-bottom:4px;">Premium</div>
+        <div style="font-size:11px;color:var(--smoke);">2 drops/month</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;color:var(--amber);margin-top:4px;">$3.99 each</div>
+      </div>
+    </div>
+    <div style="background:rgba(255,107,26,0.06);border:1px solid rgba(255,107,26,0.2);padding:12px 16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+      <div>
+        <div style="font-family:'Russo One',sans-serif;font-size:16px;text-transform:uppercase;color:var(--bone);">Annual Pass — $49.99</div>
+        <div style="font-size:11px;color:var(--smoke);margin-top:2px;">All 84 plates for the year · 12 free + 48 standard + 24 premium · $191 value</div>
+      </div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;font-size:11px;color:var(--amber);border:1px solid rgba(255,107,26,0.3);padding:4px 12px;">Coming Nov 19</div>
+    </div>
+  </div>
   </div>
 
 </div>
@@ -486,7 +750,12 @@ async function verifyPlayer() {
 
     showMsg(`✅ Found you! Scroll down to buy a new plate, or switch plates below, ${fields.Gamertag || gamertag}.`, 'success');
     document.getElementById('plate-gallery').style.display = 'block';
+    document.getElementById('premium-section').style.display = 'block';
     renderBundleButtons();
+
+    // Update All Access preview with real gamertag
+    const allAccessEl = document.getElementById('preview-all-access');
+    if (allAccessEl) allAccessEl.textContent = (fields.Gamertag || gamertag).toUpperCase();
 
     // Scroll to gallery
     setTimeout(() => {
@@ -683,6 +952,8 @@ function showSuccess(plateStyle, hadError = false) {
 // ── PLATE BACKGROUND HELPER ───────────────────────────────────
 function getPlateBackground(style) {
   switch(style) {
+    case 'all-access':
+      return 'background:linear-gradient(135deg,#0D0D1A 0%,#1a0535 40%,#0D1A1A 100%);';
     case 'founder':
       return 'background-image:url(\'/images/plate-founder.png\');background-size:cover;background-position:center;';
     case 'vehicle-male-exotic':
@@ -812,20 +1083,41 @@ const BUNDLES = {
   'vehicle-bundle': {
     plates: ['vehicle-male-exotic','vehicle-female-exotic'],
     name: 'Vehicle Bundle',
-    price: 10.00,
+    price: 9.99,
     description: '56ViceLane Vehicle Bundle — All 4 Vehicle Plates'
+  },
+  'all-premium': {
+    plates: ['all-access','color-red','color-blue','color-purple','color-amber','vehicle-male-exotic','vehicle-female-exotic'],
+    name: 'All Premium — Current',
+    price: 19.99,
+    description: '56ViceLane All Premium — Every Current Plate',
+    premiumMember: true,
+    status: 'All Premium'
+  },
+  'all-future': {
+    plates: ['all-access','color-red','color-blue','color-purple','color-amber','vehicle-male-exotic','vehicle-female-exotic'],
+    name: 'All Premium + Future',
+    price: 29.99,
+    description: '56ViceLane All Premium + Future — Every Plate Forever',
+    premiumMember: true,
+    status: 'All Premium Future'
   }
 };
 
 function renderBundleButtons() {
-  ['color-bundle','vehicle-bundle'].forEach(bundleKey => {
+  ['color-bundle','vehicle-bundle','all-premium','all-future'].forEach(bundleKey => {
     const bundle = BUNDLES[bundleKey];
     const container = document.getElementById(`paypal-button-${bundleKey}`);
     if (!container || container.hasChildNodes()) return;
 
     if (window.paypal) {
       paypal.Buttons({
-        style: { color:'gold', shape:'rect', label:'pay', height:44 },
+        style: {
+          color: bundleKey === 'all-premium' ? 'gold' : 'gold',
+          shape: 'rect',
+          label: 'pay',
+          height: bundleKey === 'all-premium' ? 52 : 44
+        },
         createOrder: (data, actions) => actions.order.create({
           purchase_units:[{ amount:{ value: bundle.price.toFixed(2) }, description: bundle.description }]
         }),
@@ -838,10 +1130,7 @@ function renderBundleButtons() {
       }).render(`#paypal-button-${bundleKey}`);
     } else {
       const check = setInterval(() => {
-        if (window.paypal) {
-          clearInterval(check);
-          renderBundleButtons();
-        }
+        if (window.paypal) { clearInterval(check); renderBundleButtons(); }
       }, 300);
     }
   });
@@ -852,28 +1141,32 @@ async function applyBundle(bundleKey) {
   const bundle = BUNDLES[bundleKey];
   const fields = playerRecord.fields;
 
-  // Build updated owned list
   let owned = parseOwnedPlates(fields.OwnedPlates);
   if (fields.PlateStatus === 'Free Premium' && !owned.includes('founder')) owned.unshift('founder');
   bundle.plates.forEach(p => { if (!owned.includes(p)) owned.push(p); });
   const firstNew = bundle.plates[0];
   const ownedStr = owned.join(',');
+    const newStatus = bundle.status || 'Purchased Premium';
 
   try {
     await fetch(`${AT_URL}/${playerRecord.id}`, {
       method: 'PATCH', headers: AT_H,
       body: JSON.stringify({ fields: {
         'PlateStyle':  firstNew,
-        'PlateStatus': 'Purchased Premium',
+        'PlateStatus': newStatus,
         'OwnedPlates': ownedStr
       }})
     });
     playerRecord.fields.PlateStyle  = firstNew;
+    playerRecord.fields.PlateStatus = newStatus;
     playerRecord.fields.OwnedPlates = ownedStr;
     buildOwnedDropdown(owned, firstNew, fields.Gamertag || '');
     showSuccess(firstNew);
-    document.querySelector('.success-text').innerHTML =
-      `<strong>${bundle.name} unlocked!</strong><br><br>All ${bundle.plates.length} plates are now in your collection. Visit your profile to switch between them anytime.`;
+    document.querySelector('.success-text').innerHTML = bundle.status === 'All Premium Future'
+      ? `<strong>All Premium + Future activated. 🔥</strong><br><br>Every plate that exists is in your collection now. Every drop between now and November 18, 2026 lands automatically — Sky Pack, Water Pack, Real Estate, Animals, all of it. When GTA6 launches and The Last Drive ends, your collection is complete. Nobody adds to it after that night.`
+      : bundle.premiumMember
+      ? `<strong>All Premium activated. 👑</strong><br><br>Every current plate is in your collection. Your Premium Member badge is live on the Wall of Honor.`
+      : `<strong>${bundle.name} unlocked!</strong><br><br>All ${bundle.plates.length} plates are now in your collection. Switch between them anytime from your profile.`;
   } catch(e) {
     showSuccess(firstNew, true);
   }
