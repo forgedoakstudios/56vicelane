@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9EKF7J4V7W');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title id="page-title">Player Profile — 56ViceLane</title>
+<meta name="description" id="page-desc" content="Last Drive player profile on 56ViceLane.">
+<meta property="og:title" id="og-title" content="Player Profile — 56ViceLane">
+<meta property="og:url" content="https://56vicelane.com/player">
+<meta property="og:image" id="og-image" content="https://56vicelane.com/images/Jason_and_Lucia_01_landscape.jpg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/vicelane.css">
+<style>
+/* ── PLAYER PROFILE ─────────────────────────────────────────── */
+
+/* HERO / COVER ART */
+.profile-hero{width:100%;aspect-ratio:2.5/1;max-height:300px;background-size:cover;background-position:center;position:relative;overflow:hidden;}
+.profile-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60%;background:linear-gradient(0deg,var(--pitch) 0%,transparent 100%);}
+.profile-hero-overlay{position:absolute;bottom:0;left:0;right:0;padding:20px 24px;z-index:2;}
+
+/* AVATAR */
+.profile-avatar-wrap{position:relative;display:inline-block;margin-bottom:8px;}
+.profile-avatar{width:80px;height:80px;border-radius:50%;border:3px solid var(--amber);object-fit:cover;background:var(--asphalt);display:flex;align-items:center;justify-content:center;font-family:'Russo One',sans-serif;font-size:28px;color:var(--amber);overflow:hidden;}
+.profile-avatar img{width:100%;height:100%;object-fit:cover;}
+.founder-ring{border-color:#FFD700;box-shadow:0 0 12px rgba(255,215,0,0.4);}
+
+/* PROFILE INFO */
+.profile-wrap{max-width:760px;margin:0 auto;padding:0 24px;}
+.profile-top{padding:20px 0 0;}
+.profile-gamertag{font-family:'Russo One',sans-serif;font-size:clamp(24px,5vw,40px);text-transform:uppercase;color:var(--bone);line-height:1.0;margin-bottom:8px;}
+.profile-badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;}
+.badge{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;font-size:11px;padding:4px 10px;}
+.badge-lead{color:#FFD700;background:rgba(255,215,0,0.1);border:1px solid rgba(255,215,0,0.3);}
+.badge-participant{color:var(--cyan);background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.2);}
+.badge-founder{color:#FFD700;background:rgba(255,215,0,0.08);border:1px solid rgba(255,215,0,0.25);}
+.badge-platform{color:var(--smoke);background:var(--asphalt);border:1px solid var(--edge);}
+.badge-region{color:var(--smoke);background:var(--asphalt);border:1px solid var(--edge);}
+
+/* DRIVE DETAILS */
+.drive-card{background:var(--asphalt);border:1px solid var(--edge);padding:16px 20px;margin-bottom:20px;}
+.drive-card-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;font-size:10px;color:var(--amber);margin-bottom:12px;}
+.drive-details-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+@media(max-width:400px){.drive-details-grid{grid-template-columns:1fr;}}
+.drive-detail{background:var(--pitch);padding:10px 12px;}
+.detail-lbl{font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;font-size:9px;color:var(--smoke);margin-bottom:3px;}
+.detail-val{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15px;color:var(--bone);text-transform:uppercase;letter-spacing:0.06em;}
+
+/* ADD ME */
+.add-me-card{background:var(--asphalt);border:1px solid var(--edge);border-left:3px solid var(--amber);padding:16px 20px;margin-bottom:20px;}
+.add-me-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;font-size:10px;color:var(--amber);margin-bottom:8px;}
+.add-me-tag{font-family:'Russo One',sans-serif;font-size:22px;text-transform:uppercase;color:var(--bone);margin-bottom:10px;}
+.copy-btn{background:var(--amber);color:var(--pitch);font-family:'Russo One',sans-serif;text-transform:uppercase;font-size:12px;padding:10px 20px;border:none;cursor:pointer;letter-spacing:0.06em;transition:all 0.3s;}
+.copy-btn:hover{box-shadow:0 0 16px rgba(255,107,26,0.4);}
+
+/* PLATE DISPLAY */
+.plate-section{margin-bottom:20px;}
+.plate-section-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;font-size:10px;color:var(--smoke);margin-bottom:8px;}
+.profile-plate{border:2px solid var(--edge);overflow:hidden;max-width:400px;}
+.profile-plate-inner{width:100%;aspect-ratio:2.5/1;background-size:cover;background-position:center;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px;position:relative;}
+.profile-plate-stars{font-size:9px;letter-spacing:5px;margin-bottom:4px;}
+.profile-plate-tag{font-family:'Russo One',sans-serif;font-size:clamp(14px,4vw,24px);text-transform:uppercase;letter-spacing:0.1em;text-align:center;-webkit-text-stroke:1px rgba(0,0,0,0.5);}
+.profile-plate-footer{font-size:6px;text-transform:uppercase;letter-spacing:0.25em;margin-top:4px;}
+.profile-plate-num{position:absolute;top:4px;right:6px;font-size:7px;font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;text-shadow:0 1px 2px rgba(0,0,0,0.8);}
+.upgrade-plate-link{display:inline-block;margin-top:10px;font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;font-size:12px;color:var(--amber);text-decoration:none;padding:6px 0;}
+.upgrade-plate-link:hover{text-decoration:underline;}
+
+/* SUBMISSION FORM */
+.submission-card{background:var(--asphalt);border:1px solid var(--edge);padding:20px;margin-bottom:20px;}
+.submission-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;font-size:10px;color:var(--smoke);margin-bottom:4px;}
+.submission-title{font-family:'Russo One',sans-serif;font-size:16px;text-transform:uppercase;margin-bottom:6px;}
+.submission-sub{font-size:12px;color:var(--smoke);margin-bottom:16px;line-height:1.6;}
+.submission-select{background:var(--pitch);border:1px solid var(--edge);color:var(--bone);font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:0.1em;padding:12px 14px;width:100%;margin-bottom:12px;outline:none;cursor:pointer;}
+.submission-select:focus{border-color:var(--amber);}
+.submission-textarea{background:var(--pitch);border:1px solid var(--edge);color:var(--bone);font-family:'Inter',sans-serif;font-size:14px;padding:13px 16px;width:100%;min-height:120px;resize:vertical;outline:none;transition:border-color 0.3s;line-height:1.6;}
+.submission-textarea:focus{border-color:var(--amber);}
+.submission-btn{width:100%;background:var(--amber);color:var(--pitch);font-family:'Russo One',sans-serif;text-transform:uppercase;font-size:14px;padding:14px;border:none;cursor:pointer;margin-top:12px;letter-spacing:0.06em;transition:all 0.3s;}
+.submission-btn:hover{box-shadow:0 0 24px rgba(255,107,26,0.4);}
+.submission-btn:disabled{opacity:0.5;cursor:not-allowed;}
+.submission-msg{margin-top:10px;font-size:13px;padding:10px 14px;display:none;}
+.submission-msg.show{display:block;}
+.submission-msg.success{color:var(--green);background:rgba(0,200,117,0.08);border:1px solid rgba(0,200,117,0.2);}
+.submission-msg.error{color:#ff6b6b;background:rgba(255,107,107,0.08);border:1px solid rgba(255,107,107,0.2);}
+
+/* PROFILE PIC UPLOAD */
+.pic-upload-card{background:var(--asphalt);border:1px solid var(--edge);padding:16px 20px;margin-bottom:20px;}
+.pic-upload-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;font-size:10px;color:var(--smoke);margin-bottom:8px;}
+.pic-upload-desc{font-size:12px;color:var(--smoke);margin-bottom:12px;}
+.pic-url-row{display:flex;gap:8px;}
+.pic-url-input{flex:1;background:var(--pitch);border:1px solid var(--edge);color:var(--bone);font-family:'Inter',sans-serif;font-size:13px;padding:11px 14px;outline:none;transition:border-color 0.3s;}
+.pic-url-input:focus{border-color:var(--amber);}
+.pic-save-btn{background:var(--amber);color:var(--pitch);font-family:'Russo One',sans-serif;text-transform:uppercase;font-size:12px;padding:11px 16px;border:none;cursor:pointer;white-space:nowrap;}
+
+/* NOT FOUND */
+.not-found{text-align:center;padding:80px 24px;}
+.not-found-title{font-family:'Russo One',sans-serif;font-size:24px;text-transform:uppercase;margin-bottom:12px;}
+.not-found-text{color:var(--smoke);font-size:14px;margin-bottom:24px;}
+.not-found-cta{display:inline-block;background:var(--amber);color:var(--pitch);font-family:'Russo One',sans-serif;text-transform:uppercase;font-size:14px;padding:14px 28px;text-decoration:none;}
+
+/* LOADING */
+.profile-loading{text-align:center;padding:80px 24px;color:var(--smoke);font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;font-size:14px;}
+
+/* SHARE ROW */
+.share-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;}
+.share-btn-sm{background:none;border:1px solid var(--edge);color:var(--smoke);font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;font-size:11px;padding:8px 14px;cursor:pointer;text-decoration:none;transition:all 0.25s;}
+.share-btn-sm:hover{border-color:var(--amber);color:var(--amber);}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap"><div class="ticker-track" id="ticker-track"><span class="ticker-item">Loading...</span></div></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="logo" href="/"><span class="logo-mark">56</span><span class="logo-text">ViceLane</span></a>
+  <div class="nav-links">
+    <a href="/news" class="nav-link">News</a>
+    <a href="/lastdrive" class="nav-link">Last Drive</a>
+    <a href="/wall" class="nav-link">Wall</a>
+    <a href="/plates" class="nav-link">Plates</a>
+  </div>
+  <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="/news" class="nav-link">News</a>
+  <a href="/lastdrive" class="nav-link">Last Drive</a>
+  <a href="/wall" class="nav-link">Wall of Honor</a>
+  <a href="/plates" class="nav-link">License Plates</a>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="profile-loading" class="profile-loading">Loading profile...</div>
+<div id="profile-content" style="display:none;">
+
+  <!-- HERO PLATE AS COVER ART -->
+  <div class="profile-hero" id="profile-hero">
+    <div class="profile-hero-overlay">
+      <div class="profile-avatar-wrap">
+        <div class="profile-avatar" id="profile-avatar">?</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROFILE BODY -->
+  <div class="profile-wrap">
+    <div class="profile-top">
+      <div class="profile-gamertag" id="profile-gamertag">LOADING</div>
+      <div class="profile-badges" id="profile-badges"></div>
+    </div>
+
+    <!-- DRIVE DETAILS -->
+    <div class="drive-card" id="drive-card" style="display:none;">
+      <div class="drive-card-label">Drive Details — November 18, 2026</div>
+      <div class="drive-details-grid" id="drive-details-grid"></div>
+    </div>
+
+    <!-- ADD ME -->
+    <div class="add-me-card" id="add-me-card">
+      <div class="add-me-label">📋 Add Me In-Game</div>
+      <div class="add-me-tag" id="add-me-gamertag"></div>
+      <button class="copy-btn" id="copy-btn" onclick="copyGamertag()">Copy Gamertag</button>
+    </div>
+
+    <!-- PLATE -->
+    <div class="plate-section">
+      <div class="plate-section-label">License Plate</div>
+      <div class="profile-plate" id="profile-plate-card">
+        <div class="profile-plate-inner" id="profile-plate-inner">
+          <div class="profile-plate-num" id="profile-plate-num"></div>
+          <div class="profile-plate-stars" id="profile-plate-stars">★ ★ ★ ★ ★ ★</div>
+          <div class="profile-plate-tag" id="profile-plate-tag">LOADING</div>
+          <div class="profile-plate-footer">THE LAST DRIVE · NOV 18 2026</div>
+        </div>
+      </div>
+      <a href="/plates" class="upgrade-plate-link">🏆 Upgrade Your Plate →</a>
+    </div>
+
+    <!-- SHARE ROW -->
+    <div class="share-row">
+      <button class="share-btn-sm" onclick="shareProfile()">📱 Share Profile</button>
+      <button class="share-btn-sm" onclick="copyProfileLink()">🔗 Copy Link</button>
+      <a href="/wall" class="share-btn-sm">🏁 Wall of Honor</a>
+    </div>
+
+    <!-- PROFILE PIC UPLOAD -->
+    <div class="pic-upload-card" id="pic-upload-card" style="display:none;">
+      <div class="pic-upload-label">Profile Picture</div>
+      <div class="pic-upload-desc">Paste an image URL (Imgur, etc.) to set your profile picture.</div>
+      <div class="pic-url-row">
+        <input type="url" class="pic-url-input" id="pic-url-input" placeholder="https://i.imgur.com/yourimage.jpg">
+        <button class="pic-save-btn" onclick="saveProfilePic()">Save</button>
+      </div>
+      <div class="submission-msg" id="pic-msg"></div>
+    </div>
+
+    <!-- SUBMIT TO EDITORIAL -->
+    <div class="submission-card">
+      <div class="submission-label">Submit Your Voice</div>
+      <div class="submission-title">Trevor's Take · Letters to the Editor</div>
+      <div class="submission-sub">Got an opinion on GTA5, the Last Drive, or GTA6? Submit to Trevor's Take for hot takes, or Letters to the Editor for community letters. We read every submission.</div>
+      <select class="submission-select" id="submission-type">
+        <option value="">Choose a column...</option>
+        <option value="Trevors Take">Trevor's Take — Hot takes, opinions, rants</option>
+        <option value="Letters to Editor">Letters to the Editor — Community voice, stories, thoughts</option>
+      </select>
+      <textarea class="submission-textarea" id="submission-text" placeholder="Write your submission here... (50-500 words)"></textarea>
+      <button class="submission-btn" id="submission-btn" onclick="submitContent()">Submit</button>
+      <div class="submission-msg" id="submission-msg"></div>
+    </div>
+
+    <div style="margin-bottom:60px;"></div>
+  </div>
+
+</div>
+
+<!-- NOT FOUND -->
+<div id="profile-not-found" class="not-found" style="display:none;">
+  <div class="not-found-title">Player Not Found</div>
+  <div class="not-found-text">That gamertag isn't on the wall yet. Sign up for the Last Drive to get your profile.</div>
+  <a href="/lastdrive" class="not-found-cta">Sign Up →</a>
+</div>
+
+<footer>
+  <p class="disclosure">56ViceLane is an independent fan site. Not affiliated with Rockstar Games or Take-Two Interactive.</p>
+  <p><span id="vl-copyright">© 2026 56ViceLane · Forged Oak Studios ·</span> <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p>
+</footer>
+
+<script>
+// ── CONSTANTS ────────────────────────────────────────────────
+const AT_TOKEN     = 'pattxJ12NQzpHMejD.2eb992f22f1a43e032d866df028dbb33958635234f6cfd30769e3e12f10d5588';
+const AT_BASE      = 'appVViGbmcu5gbn8B';
+const AT_LAST_DRIVE = `https://api.airtable.com/v0/${AT_BASE}/Last%20Drive`;
+const AT_SUBS      = `https://api.airtable.com/v0/${AT_BASE}/Submissions`;
+const AT_H         = { 'Authorization': `Bearer ${AT_TOKEN}`, 'Content-Type': 'application/json' };
+
+let playerData = null;
+const isOwner = false; // future: set true if player verifies via email
+
+// ── PLATE BACKGROUND ─────────────────────────────────────────
+function getPlateBackground(style) {
+  switch(style) {
+    case 'founder': return `url('/images/plate-founder.png')`;
+    case 'vehicle-male-exotic': return `url('/images/plate-male-exotic.png')`;
+    case 'vehicle-female-exotic': return `url('/images/plate-female-exotic.png')`;
+    case 'color-red': return `linear-gradient(135deg,#6B0000,#CC2200)`;
+    case 'color-blue': return `linear-gradient(135deg,#000C6B,#0033CC)`;
+    case 'color-purple': return `linear-gradient(135deg,#2D0060,#6600AA)`;
+    case 'color-amber': return `linear-gradient(135deg,#7A4A00,#C8820A)`;
+    case 'white': return `#EFEDE8`;
+    case 'black':
+    default: return `#0a0a0a`;
+  }
+}
+
+function isPhotoPlate(style) {
+  return style === 'founder' || (style && style.startsWith('vehicle-'));
+}
+
+// ── LOAD PROFILE ─────────────────────────────────────────────
+async function loadProfile() {
+  const params = new URLSearchParams(window.location.search);
+  const gamertag = params.get('g') || params.get('gamertag') || '';
+
+  if (!gamertag) {
+    showNotFound();
+    return;
+  }
+
+  try {
+    const f = encodeURIComponent(`{Gamertag}="${gamertag}"`);
+    const r = await fetch(`${AT_LAST_DRIVE}?filterByFormula=${f}&maxRecords=1`, { headers: AT_H });
+    const d = await r.json();
+
+    if (!d.records || d.records.length === 0) {
+      showNotFound();
+      return;
+    }
+
+    playerData = d.records[0].fields;
+    playerData._id = d.records[0].id;
+    renderProfile(playerData, gamertag);
+
+  } catch(e) {
+    showNotFound();
+  }
+}
+
+// ── RENDER PROFILE ────────────────────────────────────────────
+function renderProfile(f, gamertag) {
+  const tag = (f.Gamertag || gamertag).toUpperCase();
+  const plateStyle = f.PlateStyle || (f.PlateStatus === 'Free Premium' ? 'founder' : 'black');
+  const isLead = f.IsOrganizer;
+  const isFounder = f.SignupNumber && f.SignupNumber <= 100;
+  const plateBg = getPlateBackground(plateStyle);
+  const isPhoto = isPhotoPlate(plateStyle);
+  const textColor = plateStyle === 'white' ? '#0a0a0a' : '#FFFFFF';
+
+  // Page title
+  document.title = `${tag} — The Last Drive — 56ViceLane`;
+  document.getElementById('page-title').textContent = `${tag} — The Last Drive — 56ViceLane`;
+  document.getElementById('page-desc').setAttribute('content', `${tag} is on the Wall of Honor for The Last Drive — November 18, 2026.`);
+  document.getElementById('og-title').setAttribute('content', `${tag} — Last Drive Profile`);
+
+  // Hero — plate as cover art
+  const hero = document.getElementById('profile-hero');
+  if (isPhoto) {
+    hero.style.backgroundImage = `linear-gradient(135deg,rgba(0,0,0,0.3),rgba(0,0,0,0.1)),${plateBg}`;
+  } else {
+    hero.style.background = `linear-gradient(135deg,rgba(0,0,0,0.4),rgba(0,0,0,0.2)),${plateBg}`;
+  }
+
+  // Avatar
+  const avatar = document.getElementById('profile-avatar');
+  if (f.ImgurLink) {
+    avatar.innerHTML = `<img src="${f.ImgurLink}" alt="${tag}" onerror="this.parentElement.textContent='${tag.charAt(0)}'">`;
+    if (isFounder) avatar.classList.add('founder-ring');
+  } else {
+    avatar.textContent = tag.charAt(0);
+    if (isFounder) avatar.classList.add('founder-ring');
+  }
+
+  // Gamertag
+  document.getElementById('profile-gamertag').textContent = tag;
+
+  // Badges
+  const badges = document.getElementById('profile-badges');
+  let badgeHTML = '';
+  if (isLead) badgeHTML += `<span class="badge badge-lead">⭐ Drive Lead</span>`;
+  else badgeHTML += `<span class="badge badge-participant">🚗 Participant</span>`;
+  if (isFounder) badgeHTML += `<span class="badge badge-founder">🏆 Founder #${f.SignupNumber}</span>`;
+  if (f.Platform) badgeHTML += `<span class="badge badge-platform">${f.Platform}</span>`;
+  if (f.Region) badgeHTML += `<span class="badge badge-region">${f.Region}</span>`;
+  badges.innerHTML = badgeHTML;
+
+  // Drive details
+  if (f['Staging Time'] || f.StagingLocation || f['Drive Type']) {
+    const grid = document.getElementById('drive-details-grid');
+    let detailsHTML = '';
+    if (f['Staging Time']) detailsHTML += `<div class="drive-detail"><div class="detail-lbl">Time Slot</div><div class="detail-val">${f['Staging Time']}</div></div>`;
+    if (f.StagingLocation) detailsHTML += `<div class="drive-detail"><div class="detail-lbl">Staging Location</div><div class="detail-val">${f.StagingLocation}</div></div>`;
+    if (f['Drive Type']) detailsHTML += `<div class="drive-detail"><div class="detail-lbl">Drive Type</div><div class="detail-val">${f['Drive Type']}</div></div>`;
+    if (f.AccessType) detailsHTML += `<div class="drive-detail"><div class="detail-lbl">Access</div><div class="detail-val">${f.AccessType || 'Open'}</div></div>`;
+    grid.innerHTML = detailsHTML;
+    document.getElementById('drive-card').style.display = 'block';
+  }
+
+  // Add me
+  document.getElementById('add-me-gamertag').textContent = tag;
+
+  // Plate
+  const plateInner = document.getElementById('profile-plate-inner');
+  if (isPhoto) {
+    plateInner.style.backgroundImage = plateBg;
+    plateInner.style.backgroundSize = 'cover';
+    plateInner.style.backgroundPosition = 'center';
+  } else {
+    plateInner.style.background = plateBg;
+  }
+
+  const stars = document.getElementById('profile-plate-stars');
+  const plateTag = document.getElementById('profile-plate-tag');
+  const plateNum = document.getElementById('profile-plate-num');
+
+  stars.style.color = isPhoto ? 'rgba(255,255,255,0.75)' : (plateStyle==='white' ? 'rgba(0,0,0,0.3)' : 'rgba(255,255,255,0.4)');
+  stars.style.textShadow = isPhoto ? '0 0 10px rgba(255,107,26,0.8)' : 'none';
+  plateTag.style.color = textColor;
+  plateTag.style.textShadow = isPhoto ? '0 0 16px rgba(255,107,26,0.5),0 2px 6px rgba(0,0,0,0.9)' : (plateStyle==='white' ? '0 1px 2px rgba(0,0,0,0.1)' : '0 0 16px rgba(255,107,26,0.3)');
+  plateTag.textContent = tag;
+
+  if (isFounder && f.SignupNumber) {
+    plateNum.textContent = `#${f.SignupNumber} of 100`;
+    plateNum.style.color = isPhoto ? 'rgba(255,255,255,0.75)' : 'rgba(255,215,0,0.8)';
+  }
+
+  // Pic upload (show always so they can set one)
+  document.getElementById('pic-upload-card').style.display = 'block';
+  if (f.ImgurLink) {
+    document.getElementById('pic-url-input').value = f.ImgurLink;
+  }
+
+  // Show profile
+  document.getElementById('profile-loading').style.display = 'none';
+  document.getElementById('profile-content').style.display = 'block';
+}
+
+function showNotFound() {
+  document.getElementById('profile-loading').style.display = 'none';
+  document.getElementById('profile-not-found').style.display = 'block';
+}
+
+// ── COPY GAMERTAG ─────────────────────────────────────────────
+function copyGamertag() {
+  const tag = playerData?.Gamertag || '';
+  navigator.clipboard.writeText(tag).then(() => {
+    const btn = document.getElementById('copy-btn');
+    btn.textContent = 'Copied! ✓';
+    btn.style.background = 'var(--green)';
+    setTimeout(() => { btn.textContent = 'Copy Gamertag'; btn.style.background = 'var(--amber)'; }, 2500);
+  });
+}
+
+// ── SHARE PROFILE ─────────────────────────────────────────────
+function shareProfile() {
+  const tag = playerData?.Gamertag || '';
+  const url = `https://56vicelane.com/player?g=${encodeURIComponent(tag)}`;
+  if (navigator.share) {
+    navigator.share({ title: `${tag} — The Last Drive`, url });
+  } else {
+    copyProfileLink();
+  }
+}
+
+function copyProfileLink() {
+  const tag = playerData?.Gamertag || '';
+  const url = `https://56vicelane.com/player?g=${encodeURIComponent(tag)}`;
+  navigator.clipboard.writeText(url).then(() => {
+    alert('Profile link copied!');
+  });
+}
+
+// ── SAVE PROFILE PIC ─────────────────────────────────────────
+async function saveProfilePic() {
+  const url = document.getElementById('pic-url-input').value.trim();
+  const msg = document.getElementById('pic-msg');
+  if (!url || !playerData?._id) return;
+
+  try {
+    await fetch(`${AT_LAST_DRIVE}/${playerData._id}`, {
+      method: 'PATCH',
+      headers: AT_H,
+      body: JSON.stringify({ fields: { 'ImgurLink': url } })
+    });
+    msg.textContent = '✅ Profile picture updated!';
+    msg.className = 'submission-msg show success';
+    // Update avatar display
+    const avatar = document.getElementById('profile-avatar');
+    avatar.innerHTML = `<img src="${url}" alt="avatar" onerror="this.parentElement.textContent='?'">`;
+    setTimeout(() => { msg.className = 'submission-msg'; }, 3000);
+  } catch(e) {
+    msg.textContent = 'Save failed. Try again.';
+    msg.className = 'submission-msg show error';
+  }
+}
+
+// ── SUBMIT CONTENT ────────────────────────────────────────────
+async function submitContent() {
+  const type = document.getElementById('submission-type').value;
+  const text = document.getElementById('submission-text').value.trim();
+  const btn  = document.getElementById('submission-btn');
+  const msg  = document.getElementById('submission-msg');
+  const tag  = playerData?.Gamertag || 'Anonymous';
+
+  if (!type) { msg.textContent = 'Please choose a column.'; msg.className='submission-msg show error'; return; }
+  if (!text || text.length < 30) { msg.textContent = 'Please write at least 30 characters.'; msg.className='submission-msg show error'; return; }
+  if (text.length > 3000) { msg.textContent = 'Please keep it under 3000 characters.'; msg.className='submission-msg show error'; return; }
+
+  btn.textContent = 'Submitting...';
+  btn.disabled = true;
+
+  try {
+    await fetch(AT_SUBS, {
+      method: 'POST',
+      headers: AT_H,
+      body: JSON.stringify({ records: [{ fields: {
+        'Gamertag': tag,
+        'SubmissionType': type,
+        'Content': text,
+        'Status': 'Pending'
+      }}]})
+    });
+    msg.textContent = `✅ Submitted to ${type === 'Trevors Take' ? "Trevor's Take" : "Letters to the Editor"}! We'll review it soon.`;
+    msg.className = 'submission-msg show success';
+    document.getElementById('submission-text').value = '';
+    document.getElementById('submission-type').value = '';
+  } catch(e) {
+    msg.textContent = 'Submission failed. Please try again.';
+    msg.className = 'submission-msg show error';
+  }
+
+  btn.textContent = 'Submit';
+  btn.disabled = false;
+}
+
+// ── TICKER ────────────────────────────────────────────────────
+fetch('/articles.json?v='+Date.now()).then(r=>r.json()).then(a=>{
+  const t=document.getElementById('ticker-track');
+  t.innerHTML=[...a,...a].map(x=>`<span class="ticker-item" onclick="location.href='/articles/${x.slug}'">${x.emoji} ${x.title}</span>`).join('');
+}).catch(()=>{});
+
+// ── NAV ───────────────────────────────────────────────────────
+document.getElementById('menu-toggle')?.addEventListener('click',()=>{
+  document.getElementById('nav-mobile')?.classList.toggle('open');
+});
+
+// ── DEBUG ─────────────────────────────────────────────────────
+(function(){const HOLD=1500,KEY='56vl-debug';let timer=null,active=localStorage.getItem(KEY)==='1';function applyDebug(){let ind=document.getElementById('vl-debug-ind');if(!ind){ind=document.createElement('div');ind.id='vl-debug-ind';ind.style.cssText='position:fixed;bottom:14px;right:14px;z-index:9999;background:#FF6B1A;color:#000;font-family:monospace;font-weight:800;font-size:12px;padding:6px 14px;border-radius:20px;cursor:pointer;display:none;';ind.textContent='🔧 DEBUG ON';ind.onclick=function(){active=false;localStorage.setItem(KEY,'0');applyDebug();};document.body.appendChild(ind);}ind.style.display=active?'block':'none';}const el=document.getElementById('vl-copyright');if(el){el.addEventListener('touchstart',function(e){e.preventDefault();timer=setTimeout(function(){active=!active;localStorage.setItem(KEY,active?'1':'0');applyDebug();},HOLD);},{passive:false});el.addEventListener('touchend',function(){clearTimeout(timer);});}applyDebug();})();
+
+// ── LOAD ──────────────────────────────────────────────────────
+loadProfile();
+</script>
+</body>
+</html>

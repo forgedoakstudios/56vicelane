@@ -403,6 +403,10 @@ footer{border-top:1px solid var(--edge);padding:40px 24px;text-align:center;}
       <div class="success-title">You're In The Lane</div>
       <div class="success-text" id="join-success-text">See you November 18. Check your email for details closer to the date.</div>
       <a href="/wall" class="success-link">View Wall of Honor →</a>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px;">
+        <a href="/plates" style="display:inline-block;background:none;border:1px solid var(--amber);color:var(--amber);font-family:Russo One,sans-serif;text-transform:uppercase;font-size:13px;padding:12px 24px;text-decoration:none;">🏆 Upgrade Your Plate →</a>
+        <a href="/player" id="join-profile-link" style="display:inline-block;background:none;border:1px solid var(--edge);color:var(--smoke);font-family:Barlow Condensed,sans-serif;font-weight:800;text-transform:uppercase;font-size:12px;padding:10px 20px;text-decoration:none;">👤 View My Profile →</a>
+      </div>
     </div>
   </div>
 
@@ -589,6 +593,8 @@ PLATFORMS.forEach(p => {
           ⚠️ Action Required — Add your riders to your in-game friends list before November 18 so you can send session invites on the night.
         </div></div>
         <a href="/wall" class="success-link">View Wall of Honor →</a>
+        <a href="/plates" style="display:inline-block;margin-top:10px;background:none;border:1px solid var(--amber);color:var(--amber);font-family:'Russo One',sans-serif;text-transform:uppercase;font-size:13px;padding:12px 24px;text-decoration:none;letter-spacing:0.06em;">🏆 Upgrade Your Plate →</a>
+        <a href="/player" id="lead-profile-link" style="display:inline-block;margin-top:8px;background:none;border:1px solid var(--edge);color:var(--smoke);font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:12px;padding:10px 20px;text-decoration:none;letter-spacing:0.1em;">👤 View My Profile →</a>
       </div>
     </div>
   `;
@@ -649,13 +655,14 @@ async function buildSlots(p, pid, region) {
     const isFirst = checks[i];
     const card = document.createElement('div');
     card.className = 'slot-card';
+    // ALL slots open for Drive Leads — badge shows first vs additional lead
     card.innerHTML = `
       <div>
         <div class="slot-time">${time}<span class="slot-period">${region.tz}</span></div>
         <div class="slot-label">${TIME_LABELS[i]}</div>
       </div>
       <div>
-        <div class="slot-status ${isFirst?'open':'taken'}">${isFirst?'⭐ Organizer Spot Open':'✓ Join The Crew'}</div>
+        <div class="slot-status open">🏁 Create a Drive</div>
       </div>`;
     card.addEventListener('click', () => {
       sgDiv.querySelectorAll('.slot-card').forEach(c => c.classList.remove('selected'));
@@ -973,6 +980,9 @@ async function submitParticipant() {
       document.getElementById('join-success').classList.add('show');
       document.getElementById('join-form-wrap').querySelector('.form-grid').style.display='none';
       document.getElementById('join-form-wrap').querySelector('.submit-row').style.display='none';
+      // Wire profile link with gamertag
+      const profileLink = document.getElementById('lead-profile-link');
+      if(profileLink) profileLink.href = `/player?g=${encodeURIComponent(gamertag)}`;
       document.getElementById('join-success').scrollIntoView({behavior:'smooth'});
 
       // Notify Brew via ntfy
