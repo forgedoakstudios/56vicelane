@@ -118,6 +118,7 @@
     <a href="/news">News</a>
     <a href="/tools">Tools</a>
     <a href="/lastdrive" style="color:var(--amber)">Last Drive</a>
+    <a href="/wall" style="color:var(--amber)">Members</a>
     <a href="/shop">Gear</a>
     <div class="nav-dropdown">
       <button class="nav-dropdown-btn">More</button>
@@ -125,6 +126,7 @@
         <a href="/about">About</a>
         <a href="/contact">Contact</a>
         <div class="menu-divider"></div>
+        <a href="/plates">License Plates</a>
         <a href="/editors-vice">Editor's Vice</a>
         <div class="menu-divider"></div>
         <a href="/privacy">Privacy</a>
@@ -140,6 +142,8 @@
   <a href="/news">News</a>
   <a href="/tools">Tools</a>
   <a href="/lastdrive">Last Drive</a>
+  <a href="/wall" style="color:var(--amber)">Members</a>
+  <a href="/plates">License Plates</a>
   <a href="/shop">Gear</a>
   <div class="mobile-divider"></div>
   <a href="/about">About</a>
@@ -147,6 +151,8 @@
   <div class="mobile-divider"></div>
   <a href="/privacy">Privacy</a>
   <a href="/terms">Terms</a>
+  <div class="mobile-divider"></div>
+  <a href="/plates#verify" style="color:var(--amber);font-weight:800;">🔑 Sign In</a>
 </div>
 
 <!-- HERO -->
@@ -352,7 +358,7 @@ function renderWall(){
       const isPhotoPlate = plateStyle === 'founder' || plateStyle.startsWith('vehicle-');
       const textColor = plateStyle === 'white' ? '#0a0a0a' : '#FFFFFF';
       const starColor = plateStyle === 'white' ? 'rgba(0,0,0,0.3)' : 'rgba(255,255,255,0.75)';
-      return `<div class="plate-card${isOrg?' organizer':''}">
+      return `<div class="plate-card${isOrg?' organizer':''}" onclick="location.href='/player?g=${encodeURIComponent(f.Gamertag||f.Name||'')}'" style="cursor:pointer;" title="View ${tag}'s profile">
         ${isOrg?'<div class="org-badge">⭐ Drive Lead</div>':''}
         <div class="plate-bg" style="${plateBg}">
           ${signupNum?`<div class="plate-num-badge">#${signupNum} of 100</div>`:''}
@@ -368,7 +374,7 @@ function renderWall(){
       </div>`;
     }
 
-    return `<div class="player-card${isOrg?' organizer':''}">
+    return `<div class="player-card${isOrg?' organizer':''}" onclick="location.href='/player?g=${encodeURIComponent(f.Gamertag||f.Name||'')}'" style="cursor:pointer;" title="View ${tag}'s profile">
       ${isOrg?'<div class="org-badge">⭐ Drive Lead</div>':''}
       <div class="player-tag">${tag}</div>
       <div class="player-meta">${region}${region&&slot?' · ':''}${slot}</div>
