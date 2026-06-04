@@ -287,6 +287,38 @@ footer{border-top:1px solid var(--edge);padding:40px 24px;text-align:center;}
     <p>See everyone already signed up. Find your crew before November 18.</p>
     <a href="/wall">View The Wall →</a>
   </div>
+
+  <!-- HOW IT WORKS -->
+  <div style="margin-top:32px;border:1px solid var(--edge);padding:24px;">
+    <div style="font-family:'Russo One',sans-serif;font-size:18px;text-transform:uppercase;margin-bottom:20px;color:var(--bone);">How The Last Drive Works</div>
+
+    <div style="margin-bottom:20px;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;font-size:11px;color:var(--amber);margin-bottom:10px;">⭐ For Drive Leads</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:13px;color:#c8c4be;padding-left:16px;border-left:2px solid var(--amber);">Sign up and claim your slot — platform, region, time, and staging location</div>
+        <div style="font-size:13px;color:#c8c4be;padding-left:16px;border-left:2px solid var(--amber);">Your gamertag goes on the Wall of Honor — share it so riders can find and add you</div>
+        <div style="font-size:13px;color:#c8c4be;padding-left:16px;border-left:2px solid var(--amber);">Before November 18: add all riders from your drive to your friends list in-game</div>
+        <div style="font-size:13px;color:#c8c4be;padding-left:16px;border-left:2px solid var(--amber);">On the night: stage at your location, enable Passive Mode, invite your crew to a session</div>
+        <div style="font-size:13px;color:#c8c4be;padding-left:16px;border-left:2px solid var(--amber);">Rules: No killing · No chaos · No grieving · Just the road</div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;font-size:11px;color:var(--cyan);margin-bottom:10px;">🚗 For Participants</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:13px;color:#c8c4be;padding-left:16px;border-left:2px solid var(--cyan);">Browse available drives, pick one that matches your platform, region, and time</div>
+        <div style="font-size:13px;color:#c8c4be;padding-left:16px;border-left:2px solid var(--cyan);">Join the drive — your name goes on the wall under your Drive Lead</div>
+        <div style="font-size:13px;color:#c8c4be;padding-left:16px;border-left:2px solid var(--cyan);">Add your Drive Lead to your in-game friends list RIGHT NOW — don't wait until November 18</div>
+        <div style="font-size:13px;color:#c8c4be;padding-left:16px;border-left:2px solid var(--cyan);">On the night: your Drive Lead will send you a session invite at your agreed time</div>
+        <div style="font-size:13px;color:#c8c4be;padding-left:16px;border-left:2px solid var(--cyan);">Enable Passive Mode before you join — keep the drive clean</div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;background:rgba(255,107,26,0.06);border:1px solid rgba(255,107,26,0.2);padding:14px 16px;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;font-size:10px;color:var(--amber);margin-bottom:6px;">🔑 The Golden Rule</div>
+      <div style="font-size:13px;color:var(--bone);">Add every person in your drive to your friends list <strong>before November 18.</strong> Session invites only work if you're friends in-game. Don't wait until the night — do it now.</div>
+    </div>
+  </div>
 </div>
 
 <!-- ══════════════════════════════════════════════════════════ -->
@@ -354,7 +386,7 @@ footer{border-top:1px solid var(--edge);padding:40px 24px;text-align:center;}
       <div class="form-field full">
         <div class="toggle-row">
           <div class="toggle-lbl">Show my gamertag on the Wall of Honor<span>Your tag will be publicly visible on 56ViceLane</span></div>
-          <label class="toggle"><input type="checkbox" id="j-showwall"><span class="toggle-slider"></span></label>
+          <label class="toggle"><input type="checkbox" id="j-showwall" checked><span class="toggle-slider"></span></label>
         </div>
         <div class="toggle-row">
           <div class="toggle-lbl">Sign the #ClearTheLane petition<span>Add my name asking Rockstar to clear NPC traffic for the night</span></div>
@@ -536,7 +568,7 @@ PLATFORMS.forEach(p => {
           </div>
           <div class="toggle-row">
             <div class="toggle-lbl">Show my gamertag on the Wall of Honor<span>Your tag will be publicly visible on 56ViceLane</span></div>
-            <label class="toggle"><input type="checkbox" id="tw_${pid}"><span class="toggle-slider"></span></label>
+            <label class="toggle"><input type="checkbox" id="tw_${pid}" checked><span class="toggle-slider"></span></label>
           </div>
           <div class="toggle-row">
             <div class="toggle-lbl">Sign the #ClearTheLane petition<span>Ask Rockstar to clear NPC traffic for the night</span></div>
@@ -552,7 +584,10 @@ PLATFORMS.forEach(p => {
       <div class="success-box" id="ok_${pid}">
         <div class="success-icon">🏁</div>
         <div class="success-title">Drive Lead Confirmed</div>
-        <div class="success-text"><strong>See you November 18.</strong><br><br>Check your email for details closer to the date. Visit the Wall of Honor to see your slot and find riders.</div>
+        <div class="success-text"><strong>See you November 18.</strong><br><br>Your gamertag is now on the Wall of Honor. Share the wall so your riders can find you and add you to their friends list.<br><br>
+        <div style="background:rgba(255,107,26,0.08);border:1px solid rgba(255,107,26,0.25);padding:12px;margin-top:12px;font-size:12px;color:var(--amber);font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;">
+          ⚠️ Action Required — Add your riders to your in-game friends list before November 18 so you can send session invites on the night.
+        </div></div>
         <a href="/wall" class="success-link">View Wall of Honor →</a>
       </div>
     </div>
@@ -700,7 +735,13 @@ document.addEventListener('click', async function(e) {
   }
   btn.textContent='Locking In...';btn.disabled=true;
 
-  const isOrg = await isFirstSignup(p, s.region, s.slot);
+  const [isOrg, signupNum] = await Promise.all([
+    isFirstSignup(p, s.region, s.slot),
+    getSignupNumber()
+  ]);
+  // If count failed (null), still mark as Free Premium — we're under 100
+  const plateStatus = (signupNum === null || signupNum <= 100) ? 'Free Premium' : 'Standard';
+  const safeNum = signupNum || ''; // empty string if count failed — wall assigns position
   const linkedSlot = `${p}||${s.region}||${s.staging}||${s.slot}`;
 
   try {
@@ -716,12 +757,15 @@ document.addEventListener('click', async function(e) {
         'SignupType': 'Drive Lead',
         'AccessType': s.access||'Open',
         'JoinStatus': 'Active',
-        'LinkedSlot': linkedSlot
+        'LinkedSlot': linkedSlot,
+        'SignupNumber': safeNum||undefined,
+        'PlateStatus': plateStatus
       }}]})
     });
     if (res.ok) {
       document.getElementById(`sf_${pid}`).style.display='none';
       document.getElementById(`ok_${pid}`).classList.add('show');
+      document.getElementById(`ok_${pid}`).querySelector('.success-text').innerHTML += getPlateSuccessHTML(signupNum);
       document.getElementById(`ok_${pid}`).scrollIntoView({behavior:'smooth'});
       loadCounts();
       ntfyNotify(`🏁 New Drive Lead: ${gamertag} (${p} · ${s.region} · ${s.slot}) — ${s.access}`);
@@ -890,6 +934,10 @@ async function submitParticipant() {
   btn.textContent = isApproval ? 'Sending Request...' : 'Joining...';
   btn.disabled = true;
 
+  const signupNum = await getSignupNumber();
+  const plateStatus = (signupNum === null || signupNum <= 100) ? 'Free Premium' : 'Standard';
+  const safeNum = signupNum || '';
+
   try {
     const res = await fetch(AT_URL, {
       method:'POST', headers:AT_H,
@@ -904,14 +952,24 @@ async function submitParticipant() {
         'SignupType': 'Participant',
         'JoinStatus': joinStatus,
         'LinkedSlot': linkedSlot,
-        'IsOrganizer': false
+        'SignupNumber': safeNum||undefined,
+        'PlateStatus': plateStatus
       }}]})
     });
 
     if (res.ok) {
-      document.getElementById('join-success-text').innerHTML = isApproval
-        ? `<strong>Request sent!</strong><br><br>The drive lead has been notified. You'll receive an email when your spot is approved. Check the Wall of Honor to track your status.`
-        : `<strong>You're in!</strong><br><br>See you November 18. Check the Wall of Honor to find your drive lead and add them before the night.`;
+      document.getElementById('join-success-text').innerHTML = (isApproval
+        ? `<strong>Request sent!</strong><br><br>The drive lead has been notified. You'll receive an email when your spot is approved.`
+        : `<strong>You're in!</strong><br><br>See you November 18. Your name is going on the Wall of Honor.`)
+        + `<div style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);padding:12px;margin-top:14px;font-size:12px;text-align:left;">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--cyan);margin-bottom:6px;">📋 Do This Now — Don't Wait</div>
+            <div style="color:#c8c4be;line-height:1.6;">
+              1. Add <strong style="color:var(--bone);">${drive.Gamertag}</strong> to your in-game friends list right now<br>
+              2. They'll send you a session invite on November 18 at your agreed time<br>
+              3. Enable Passive Mode before you join the drive
+            </div>
+          </div>`
+        + getPlateSuccessHTML(signupNum);
       document.getElementById('join-success').classList.add('show');
       document.getElementById('join-form-wrap').querySelector('.form-grid').style.display='none';
       document.getElementById('join-form-wrap').querySelector('.submit-row').style.display='none';
@@ -1004,6 +1062,38 @@ async function loadCounts() {
   } catch(e){ Object.values(CNT_IDS).forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='0';}); }
 }
 loadCounts();
+
+// ── SIGNUP NUMBER & PLATE ────────────────────────────────────
+async function getSignupNumber() {
+  try {
+    // Small delay to avoid rate limiting with concurrent Airtable calls
+    await new Promise(res => setTimeout(res, 400));
+    let all=[], offset='';
+    do {
+      const url=`${AT_URL}?fields%5B%5D=Gamertag${offset?'&offset='+offset:''}`;
+      const r=await fetch(url,{headers:{Authorization:`Bearer ${AT_TOKEN}`}});
+      if(!r.ok) return null; // Let wall handle assignment
+      const d=await r.json();
+      if(d.records) all=all.concat(d.records);
+      offset=d.offset||'';
+    } while(offset);
+    const real = all.filter(rec=>{
+      const g=(rec.fields?.Gamertag||'').toLowerCase().trim();
+      return g && g!=='test' && g!=='trst';
+    });
+    return real.length + 1;
+  } catch(e){ return null; } // null = let wall assign position
+}
+
+function getPlateSuccessHTML(num) {
+  if (num > 100) return '';
+  return `
+    <div style="margin-top:20px;background:linear-gradient(135deg,rgba(255,215,0,0.12),rgba(255,107,26,0.08));border:2px solid rgba(255,215,0,0.4);padding:16px 20px;text-align:center;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;font-size:10px;color:#FFD700;margin-bottom:6px;">⭐ Founder Reward Unlocked</div>
+      <div style="font-family:'Russo One',sans-serif;font-size:16px;text-transform:uppercase;color:var(--bone);margin-bottom:4px;">You're #${num} of 100</div>
+      <div style="font-size:12px;color:var(--smoke);">Your free premium license plate has been reserved. It will appear on the Wall of Honor — one of only 100 ever issued.</div>
+    </div>`;
+}
 
 // ── NOTIFICATIONS ────────────────────────────────────────────
 async function ntfyNotify(msg) {

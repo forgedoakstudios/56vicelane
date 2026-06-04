@@ -325,8 +325,8 @@ function renderWall(){
     const isOrg = f.IsOrganizer;
     const slot = esc(f['Staging Time']||f.StagingTime||'');
     const region = esc(f.Region||'');
-    const isPlate = (f.PlateStatus||'')==='Free Premium';
-    const signupNum = f.SignupNumber||'';
+    const isPlate = allPlayers.length <= 100 || (f.PlateStatus === 'Free Premium');
+    const signupNum = r._pos || f.SignupNumber || '';
     const isApproval = (f.AccessType||'Open')==='Approval Required';
     const platform = f.Platform||'';
     const location = esc(f.StagingLocation||'');
@@ -361,9 +361,9 @@ function renderWall(){
 }
 
 function updateFounderBar(){
-  const count = allPlayers.filter(r=>(r.fields.PlateStatus||'')==='Free Premium').length;
-  const remaining = Math.max(0,100-count);
-  const pct = Math.min(100,count);
+  const founderCount = Math.min(allPlayers.length, 100);
+  const remaining = Math.max(0, 100 - founderCount);
+  const pct = Math.min(100, founderCount);
   const el=document.getElementById('plates-remaining');
   const fill=document.getElementById('founder-bar-fill');
   if(el) el.textContent=remaining;
@@ -444,6 +444,15 @@ async function loadWall(){
     } while(offset);
 
     allPlayers = all.filter(r=>!isTest(r));
+
+    // Sort by SignupNumber if set, otherwise keep submission order
+    allPlayers.sort((a,b)=>{
+      const an = a.fields.SignupNumber||9999;
+      const bn = b.fields.SignupNumber||9999;
+      return an - bn;
+    });
+    // Assign position number as fallback for missing SignupNumber
+    allPlayers.forEach((p,i)=>{ p._pos = p.fields.SignupNumber || (i+1); });
 
     // Load participant counts in parallel
     participantCounts = await loadParticipantCounts();
