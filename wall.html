@@ -61,6 +61,51 @@
 @keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
 
 .last-updated{text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:.8rem;color:var(--smoke);padding:12px 18px;border-top:1px solid var(--edge);}
+
+/* ── FOUNDER PLATE COUNTER ── */
+.founder-strip{max-width:960px;margin:16px auto 0;padding:0 18px;}
+.founder-bar{display:flex;align-items:center;justify-content:space-between;background:rgba(255,215,0,0.06);border:1px solid rgba(255,215,0,0.25);padding:10px 16px;flex-wrap:wrap;gap:8px;}
+.founder-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;font-size:11px;color:#FFD700;}
+.founder-count{font-family:'Russo One',sans-serif;font-size:14px;color:var(--bone);}
+.founder-count span{color:#FFD700;}
+.founder-bar-track{width:100%;height:4px;background:var(--edge);margin-top:6px;}
+.founder-bar-fill{height:4px;background:linear-gradient(90deg,#C8960A,#FFD700);transition:width 0.5s;}
+
+/* ── FRIEND FINDER ── */
+.finder-wrap{max-width:960px;margin:16px auto 0;padding:0 18px;}
+.finder-inner{background:var(--asphalt);border:1px solid var(--edge);padding:16px 18px;}
+.finder-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;font-size:10px;color:var(--smoke);margin-bottom:10px;}
+.finder-row{display:flex;gap:8px;}
+.finder-input{flex:1;background:var(--pitch);border:1px solid var(--edge);color:var(--bone);font-family:'Inter',sans-serif;font-size:14px;padding:11px 14px;outline:none;transition:border-color 0.3s;}
+.finder-input:focus{border-color:var(--amber);}
+.finder-btn{background:var(--amber);color:var(--pitch);font-family:'Russo One',sans-serif;text-transform:uppercase;font-size:12px;padding:11px 18px;border:none;cursor:pointer;white-space:nowrap;letter-spacing:0.06em;}
+.finder-result{margin-top:12px;display:none;}
+.finder-result.show{display:block;}
+.finder-found{border:1px solid rgba(255,107,26,0.4);padding:14px 16px;background:rgba(255,107,26,0.04);}
+.finder-tag{font-family:'Russo One',sans-serif;font-size:18px;text-transform:uppercase;color:var(--amber);margin-bottom:6px;}
+.finder-meta{display:flex;flex-wrap:wrap;gap:6px;}
+.finder-tag-item{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;padding:3px 8px;border:1px solid var(--edge);color:var(--smoke);}
+.finder-tag-item.plate{color:#FFD700;border-color:rgba(255,215,0,0.3);background:rgba(255,215,0,0.06);}
+.finder-not-found{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:0.1em;color:var(--smoke);padding:10px 0;}
+
+/* ── ACCESS BADGE ON CARDS ── */
+.access-badge{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:9px;text-transform:uppercase;letter-spacing:0.15em;padding:2px 6px;margin-top:4px;}
+.access-badge.open{color:#00C875;background:rgba(0,200,117,0.1);border:1px solid rgba(0,200,117,0.2);}
+.access-badge.approval{color:#FFB347;background:rgba(255,179,71,0.1);border:1px solid rgba(255,179,71,0.2);}
+
+/* ── PARTICIPANT COUNT BADGE ── */
+.rider-count{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--cyan);margin-top:4px;}
+
+/* ── FOUNDER PLATE CARD ── */
+.plate-card{grid-column:span 2;background:var(--asphalt);border:2px solid #C8960A;position:relative;overflow:hidden;cursor:default;}
+.plate-card:hover{border-color:#FFD700;}
+@media(max-width:380px){.plate-card{grid-column:span 1;}}
+.plate-bg{width:100%;aspect-ratio:2.5/1;background-image:url('/images/plate-founder.png');background-size:cover;background-position:center;background-color:#C8960A;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px;}
+.plate-stars{font-size:10px;letter-spacing:6px;color:rgba(255,255,255,0.7);margin-bottom:2px;text-shadow:0 0 8px rgba(255,107,26,0.8);}
+.plate-gamertag{font-family:'Russo One',sans-serif;font-size:clamp(12px,3.5vw,18px);text-transform:uppercase;letter-spacing:0.12em;color:#FFFFFF;text-shadow:0 0 12px rgba(255,107,26,0.6),0 2px 4px rgba(0,0,0,0.8);text-align:center;word-break:break-all;line-height:1.2;}
+.plate-footer-text{font-size:7px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.3em;margin-top:3px;text-shadow:0 1px 3px rgba(0,0,0,0.8);}
+.plate-num-badge{position:absolute;top:4px;right:6px;font-size:7px;font-family:'Barlow Condensed',sans-serif;font-weight:800;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.1em;text-shadow:0 1px 2px rgba(0,0,0,0.8);}
+.plate-card .org-badge{font-size:.62rem;padding:4px 10px;border-bottom:1px solid rgba(200,150,10,0.3);color:#C8960A;font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;background:rgba(200,150,10,0.06);}
 </style>
 </head>
 <body>
@@ -113,6 +158,32 @@
     <span>Signed up:</span>
     <strong id="total-count">...</strong>
     <span>players</span>
+  </div>
+</div>
+
+<!-- FOUNDER PLATE COUNTER -->
+<div class="founder-strip">
+  <div class="founder-bar">
+    <div>
+      <div class="founder-label">⭐ Founder License Plates</div>
+      <div class="founder-count">First 100 signups get a free plate — <span id="plates-remaining">...</span> remaining</div>
+    </div>
+    <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:#FFD700;cursor:pointer;" onclick="location.href='/lastdrive'">Claim Yours →</div>
+    <div class="founder-bar-track" style="flex-basis:100%;">
+      <div class="founder-bar-fill" id="founder-bar-fill" style="width:0%"></div>
+    </div>
+  </div>
+</div>
+
+<!-- FRIEND FINDER -->
+<div class="finder-wrap">
+  <div class="finder-inner">
+    <div class="finder-label">🔍 Find a Friend</div>
+    <div class="finder-row">
+      <input type="text" class="finder-input" id="finder-input" placeholder="Enter gamertag..." onkeypress="if(event.key==='Enter')wallSearch()">
+      <button class="finder-btn" onclick="wallSearch()">Search</button>
+    </div>
+    <div class="finder-result" id="finder-result"></div>
   </div>
 </div>
 
@@ -193,9 +264,10 @@ const RANGES = {
 };
 
 // State
-let allPlayers = [];   // all real records
+let allPlayers = [];
 let activePlat = 'playstation';
 let activeRange = 'all';
+let participantCounts = {};
 
 // Filter test records
 function isTest(r){
@@ -207,58 +279,128 @@ function isTest(r){
 // HTML escape
 function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 
-// Render the wall based on current filters
+// Render the wall
 function renderWall(){
   const grid = document.getElementById('wall-grid');
   const info = document.getElementById('results-info');
-  const rangeFn = RANGES[activeRange]||RANGES['all'];
 
   const filtered = allPlayers.filter(r=>{
-    // platform filter
     const p = r.fields.Platform||'';
     if(PLAT_GROUP[p]!==activePlat) return false;
-    // letter range filter
     const tag = (r.fields.Gamertag||r.fields.Name||'').trim();
     if(!tag) return false;
-    const first = tag[0].toLowerCase();
-    return rangeFn(first);
+    if(activeRange==='all') return true;
+    const c = tag[0].toLowerCase();
+    if(activeRange==='0-9') return c>='0'&&c<='9';
+    if(activeRange==='a-e') return c>='a'&&c<='e';
+    if(activeRange==='f-l') return c>='f'&&c<='l';
+    if(activeRange==='m-t') return c>='m'&&c<='t';
+    if(activeRange==='u-z') return c>='u'&&c<='z';
+    return true;
   });
 
-  // sort: organizers first, then alphabetical by gamertag
   filtered.sort((a,b)=>{
-    const aOrg = a.fields.IsOrganizer?1:0;
-    const bOrg = b.fields.IsOrganizer?1:0;
+    const aOrg=a.fields.IsOrganizer?1:0;
+    const bOrg=b.fields.IsOrganizer?1:0;
     if(bOrg!==aOrg) return bOrg-aOrg;
     const aTag=(a.fields.Gamertag||a.fields.Name||'').toLowerCase();
     const bTag=(b.fields.Gamertag||b.fields.Name||'').toLowerCase();
     return aTag<bTag?-1:aTag>bTag?1:0;
   });
 
-  if(filtered.length===0){
+  if(!filtered.length){
     const platLabel={'playstation':'PlayStation','xbox':'Xbox','pc':'PC'}[activePlat];
-    grid.innerHTML=`<div class="wall-empty">
-      No players found for ${platLabel}${activeRange!=='all'?' ('+activeRange.toUpperCase()+')'  :''}.
-      <br><br><a href="/lastdrive#signup">Be the first to sign up →</a>
-    </div>`;
+    grid.innerHTML=`<div class="wall-empty">No players found for ${platLabel}.<br><br><a href="/lastdrive">Be the first to sign up →</a></div>`;
     info.innerHTML='';
     return;
   }
 
   const platLabel={'playstation':'PlayStation','xbox':'Xbox','pc':'PC'}[activePlat];
-  const rangeLabel = activeRange==='all'?'All letters':activeRange.toUpperCase().replace('-',' – ');
+  const rangeLabel=activeRange==='all'?'All letters':activeRange.toUpperCase().replace('-',' – ');
   info.innerHTML=`<strong>${filtered.length}</strong> players · ${platLabel} · ${rangeLabel}`;
 
   grid.innerHTML = filtered.map(r=>{
-    const tag  = esc(r.fields.Gamertag||r.fields.Name||'Unknown');
-    const isOrg= r.fields.IsOrganizer;
-    const slot = esc(r.fields.StagingTime||r.fields['Staging Time']||'');
-    const region=esc(r.fields.Region||'');
+    const f = r.fields;
+    const tag = esc(f.Gamertag||f.Name||'Unknown');
+    const isOrg = f.IsOrganizer;
+    const slot = esc(f['Staging Time']||f.StagingTime||'');
+    const region = esc(f.Region||'');
+    const isPlate = (f.PlateStatus||'')==='Free Premium';
+    const signupNum = f.SignupNumber||'';
+    const isApproval = (f.AccessType||'Open')==='Approval Required';
+    const platform = f.Platform||'';
+    const location = esc(f.StagingLocation||'');
+    const slotKey = `${platform}||${f.Region||''}||${f.StagingLocation||''}||${f['Staging Time']||''}`;
+    const riderCount = participantCounts[slotKey]||0;
+
+    if(isPlate){
+      return `<div class="plate-card${isOrg?' organizer':''}">
+        ${isOrg?'<div class="org-badge">⭐ Drive Lead</div>':''}
+        <div class="plate-bg">
+          ${signupNum?`<div class="plate-num-badge">#${signupNum} of 100</div>`:''}
+          <div class="plate-stars">★ ★ ★ ★ ★ ★</div>
+          <div class="plate-gamertag">${tag}</div>
+          <div class="plate-footer-text">The Last Drive · Nov 18 2026</div>
+        </div>
+        <div style="padding:6px 10px;display:flex;flex-wrap:wrap;gap:4px;align-items:center;">
+          <div class="player-meta">${region}${region&&slot?' · ':''}${slot}</div>
+          ${isOrg?`<div class="access-badge ${isApproval?'approval':'open'}">${isApproval?'🔒 Approval':'🟢 Open'}</div>`:''}
+          ${riderCount>0?`<div class="rider-count">🚗 ${riderCount} rider${riderCount!==1?'s':''}</div>`:''}
+        </div>
+      </div>`;
+    }
+
     return `<div class="player-card${isOrg?' organizer':''}">
       ${isOrg?'<div class="org-badge">⭐ Drive Lead</div>':''}
       <div class="player-tag">${tag}</div>
       <div class="player-meta">${region}${region&&slot?' · ':''}${slot}</div>
+      ${isOrg?`<div class="access-badge ${isApproval?'approval':'open'}">${isApproval?'🔒 Approval':'🟢 Open'}</div>`:''}
+      ${riderCount>0?`<div class="rider-count">🚗 ${riderCount} rider${riderCount!==1?'s':''}</div>`:''}
     </div>`;
   }).join('');
+}
+
+function updateFounderBar(){
+  const count = allPlayers.filter(r=>(r.fields.PlateStatus||'')==='Free Premium').length;
+  const remaining = Math.max(0,100-count);
+  const pct = Math.min(100,count);
+  const el=document.getElementById('plates-remaining');
+  const fill=document.getElementById('founder-bar-fill');
+  if(el) el.textContent=remaining;
+  if(fill) fill.style.width=pct+'%';
+}
+
+// Friend finder
+async function wallSearch(){
+  const q=(document.getElementById('finder-input')?.value||'').trim();
+  const result=document.getElementById('finder-result');
+  if(!q){result.className='finder-result';return;}
+  result.className='finder-result show';
+  result.innerHTML='<div class="finder-not-found">Searching...</div>';
+  try{
+    const f=encodeURIComponent(`{Gamertag}="${q}"`);
+    const r=await fetch(`${AT_URL}?filterByFormula=${f}&fields%5B%5D=Gamertag&fields%5B%5D=Platform&fields%5B%5D=Region&fields%5B%5D=Staging%20Time&fields%5B%5D=StagingLocation&fields%5B%5D=SignupType&fields%5B%5D=PlateStatus&fields%5B%5D=SignupNumber`,{headers:AT_H});
+    const d=await r.json();
+    const recs=(d.records||[]).filter(r=>!isTest(r));
+    if(!recs.length){
+      result.innerHTML=`<div class="finder-not-found">"${esc(q)}" isn't on the wall yet. <a href="/lastdrive" style="color:var(--amber)">Sign them up →</a></div>`;
+      return;
+    }
+    const f2=recs[0].fields;
+    const isLead=(f2.SignupType||'Drive Lead')==='Drive Lead';
+    const isPlate=(f2.PlateStatus||'')==='Free Premium';
+    result.innerHTML=`<div class="finder-found">
+      <div class="finder-tag">${esc(f2.Gamertag||'')}</div>
+      <div class="finder-meta">
+        <div class="finder-tag-item">${esc(f2.Platform||'?')}</div>
+        <div class="finder-tag-item">${esc(f2.Region||'?')}</div>
+        ${f2.StagingLocation?`<div class="finder-tag-item">📍 ${esc(f2.StagingLocation)}</div>`:''}
+        ${f2['Staging Time']?`<div class="finder-tag-item">🕐 ${esc(f2['Staging Time'])}</div>`:''}
+        <div class="finder-tag-item" style="color:var(--green);">✅ ${isLead?'⭐ Drive Lead':'🚗 Participant'}</div>
+        ${isPlate?`<div class="finder-tag-item plate">🏆 Founder Plate #${f2.SignupNumber||'?'}</div>`:''}
+      </div>
+    </div>`;
+  }catch(e){result.innerHTML='<div class="finder-not-found">Search error — try again.</div>';}
 }
 
 // Update platform counts
@@ -274,12 +416,27 @@ function updateCounts(){
   document.getElementById('total-count').textContent = allPlayers.length;
 }
 
+// Fetch participant counts per slot
+async function loadParticipantCounts() {
+  try {
+    const f = encodeURIComponent(`AND({SignupType}='Participant',OR({JoinStatus}='Active',{JoinStatus}='Approved'))`);
+    const r = await fetch(`${AT_URL}?filterByFormula=${f}&fields%5B%5D=LinkedSlot`,{headers:AT_H});
+    const d = await r.json();
+    const counts = {};
+    (d.records||[]).forEach(rec=>{
+      const slot = rec.fields.LinkedSlot||'';
+      if(slot) counts[slot]=(counts[slot]||0)+1;
+    });
+    return counts;
+  } catch(e){ return {}; }
+}
+
 // Fetch from Airtable
 async function loadWall(){
   try {
     let all=[], offset='';
     do {
-      const url=`${AT_URL}?filterByFormula=${encodeURIComponent('{ShowOnWall}=TRUE()')}&fields%5B%5D=Gamertag&fields%5B%5D=Name&fields%5B%5D=Platform&fields%5B%5D=Staging%20Time&fields%5B%5D=Region&fields%5B%5D=IsOrganizer${offset?'&offset='+offset:''}`;
+      const url=`${AT_URL}?filterByFormula=${encodeURIComponent('{ShowOnWall}=TRUE()')}&fields%5B%5D=Gamertag&fields%5B%5D=Name&fields%5B%5D=Platform&fields%5B%5D=Staging%20Time&fields%5B%5D=Region&fields%5B%5D=IsOrganizer&fields%5B%5D=StagingLocation&fields%5B%5D=PlateStatus&fields%5B%5D=SignupNumber&fields%5B%5D=AccessType&fields%5B%5D=SignupType&fields%5B%5D=LinkedSlot${offset?'&offset='+offset:''}`;
       const r=await fetch(url,{headers:AT_H});
       const d=await r.json();
       if(d.records) all=all.concat(d.records);
@@ -287,8 +444,13 @@ async function loadWall(){
     } while(offset);
 
     allPlayers = all.filter(r=>!isTest(r));
+
+    // Load participant counts in parallel
+    participantCounts = await loadParticipantCounts();
+
     updateCounts();
     renderWall();
+    updateFounderBar();
 
     const now = new Date();
     document.getElementById('last-updated').innerHTML=
