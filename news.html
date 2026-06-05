@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/vicelane.css">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
 <style>
-.news-hero{background:linear-gradient(135deg,#0B0B0F 0%,#16161D 100%);padding:40px 24px 32px;border-bottom:1px solid var(--edge);}
+.news-hero{background:url('/images/gta6-hero.png') center/cover no-repeat;padding:40px 24px 32px;border-bottom:1px solid var(--edge);position:relative;}.news-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,15,0.55) 0%,rgba(11,11,15,0.85) 100%);}.news-hero-eyebrow,.news-hero-title,.news-hero-sub{position:relative;z-index:1;}
 .news-hero-eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.3em;font-size:10px;color:var(--amber);margin-bottom:8px;}
 .news-hero-title{font-family:'Russo One',sans-serif;font-size:clamp(28px,6vw,48px);text-transform:uppercase;color:var(--bone);margin-bottom:6px;line-height:1.0;}
 .news-hero-sub{font-size:13px;color:var(--smoke);max-width:480px;}
@@ -103,8 +103,7 @@
   <p class="news-hero-sub">GTA6, Rockstar, Take-Two and the industry moves that matter to the community.</p>
 </div>
 
-<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
 
 <div class="news-wrap">
 
@@ -339,16 +338,17 @@ function clearFilters() {
 // LOAD ARTICLES
 fetch('/articles.json?v='+Date.now()).then(r=>r.json()).then(articles => {
   const now = Date.now();
-  const active = articles.filter(a => a.date && (now - new Date(a.date).getTime()) < CUTOFF);
-  const archive = articles.filter(a => !a.date || (now - new Date(a.date).getTime()) >= CUTOFF);
+  // ALL articles show in grid — archive is additional organized view below
+  const active = articles;
+  const archive = articles.filter(a => a.date && (now - new Date(a.date).getTime()) >= CUTOFF);
 
   const grid = document.getElementById('cards-grid');
 
-  // Always show archive toggle
+  // Always show archive section, auto-expanded
   const archiveWrap = document.getElementById('archive-wrap');
   archiveWrap.style.display = 'block';
   document.getElementById('archive-toggle').querySelector('span').textContent =
-    archive.length > 0 ? `📁 Article Archive (${archive.length})` : '📁 Article Archive — Nothing archived yet';
+    `📁 Browse By Date (${articles.length} articles)`;
 
   if (active.length === 0) {
     document.getElementById('no-active').classList.add('show');
@@ -366,10 +366,11 @@ fetch('/articles.json?v='+Date.now()).then(r=>r.json()).then(articles => {
     });
   }
 
-  if (archive.length > 0) {
-    allArchive = archive;
-    buildArchive(archive);
-  }
+  // Always build archive with all articles for organized browsing
+  allArchive = articles;
+  buildArchive(articles);
+  // Auto-expand archive section
+  toggleArchive();
 
   // Ticker
   const t = document.getElementById('ticker-track');
