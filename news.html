@@ -25,7 +25,7 @@
 
 /* ACTIVE CARDS */
 .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:40px;}
-.news-card{background:var(--asphalt);border:1px solid var(--edge);cursor:pointer;transition:border-color 0.25s;padding:16px;}
+.news-card{background:var(--asphalt);border:1px solid var(--edge);cursor:pointer;transition:border-color 0.25s;overflow:hidden;}
 .news-card:hover{border-color:var(--amber);}
 .card-tag{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;font-size:9px;color:var(--amber);margin-bottom:6px;}
 .card-emoji{font-size:24px;margin-bottom:8px;}
@@ -173,6 +173,15 @@ function heroImg(slug) {
 
 const CUTOFF = 14 * 24 * 60 * 60 * 1000;
 let allArchive = [];
+
+// Hero image by category
+function getHero(slug){
+  const s=(slug||'').toLowerCase();
+  if(/gta5|ragemp|fivem|switch2/.test(s)) return 'gta5-hero.png';
+  if(/gpu|pc-build|amd|nvidia|frame-gen|extrapolation|samsung|prompt-inject|tech/.test(s)) return 'tech-hero.png';
+  if(/online|heist|shark|gtao/.test(s)) return 'gtao-hero.png';
+  return 'gta6-hero.png';
+}
 
 function formatDate(d) {
   return new Date(d).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
@@ -343,8 +352,8 @@ fetch('/articles.json?v='+Date.now()).then(r=>r.json()).then(articles => {
       card.className = 'news-card';
       card.onclick = () => location.href = '/articles/' + a.slug;
     card.innerHTML = `
+        <div style="width:100%;aspect-ratio:2.5/1;background:url('/images/${getHero(a.slug)}') center/cover no-repeat;margin-bottom:12px;"></div>
         <div class="card-tag">GTA6</div>
-        <div class="card-emoji">${a.emoji||'⚡'}</div>
         <div class="card-title">${a.title||''}</div>
         <div class="card-date">${a.date ? formatDate(a.date) : ''}</div>`;
       grid.appendChild(card);
