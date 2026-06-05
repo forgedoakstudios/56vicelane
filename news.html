@@ -117,7 +117,7 @@
   <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
 
   <!-- ARCHIVE -->
-  <div id="archive-wrap" style="display:none;">
+  <div id="archive-wrap">
     <button class="archive-toggle" id="archive-toggle" onclick="toggleArchive()">
       <span>📁 Article Archive</span>
       <span class="arrow">▼</span>
@@ -171,7 +171,7 @@ function heroImg(slug) {
   return '/images/' + HERO_IMAGES[idx];
 }
 
-const CUTOFF = 14 * 24 * 60 * 60 * 1000;
+const CUTOFF = 15 * 24 * 60 * 60 * 1000; // articles stay active for 14 full days
 let allArchive = [];
 
 // Hero image by category
@@ -344,6 +344,12 @@ fetch('/articles.json?v='+Date.now()).then(r=>r.json()).then(articles => {
 
   const grid = document.getElementById('cards-grid');
 
+  // Always show archive toggle
+  const archiveWrap = document.getElementById('archive-wrap');
+  archiveWrap.style.display = 'block';
+  document.getElementById('archive-toggle').querySelector('span').textContent =
+    archive.length > 0 ? `📁 Article Archive (${archive.length})` : '📁 Article Archive — Nothing archived yet';
+
   if (active.length === 0) {
     document.getElementById('no-active').classList.add('show');
   } else {
@@ -362,10 +368,7 @@ fetch('/articles.json?v='+Date.now()).then(r=>r.json()).then(articles => {
 
   if (archive.length > 0) {
     allArchive = archive;
-    document.getElementById('archive-wrap').style.display = 'block';
     buildArchive(archive);
-    document.getElementById('archive-toggle').querySelector('span').textContent =
-      `📁 Article Archive (${archive.length})`;
   }
 
   // Ticker
