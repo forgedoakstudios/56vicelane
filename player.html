@@ -100,8 +100,21 @@
 .pic-url-input:focus{border-color:var(--amber);}
 .pic-save-btn{background:var(--amber);color:var(--pitch);font-family:'Russo One',sans-serif;text-transform:uppercase;font-size:12px;padding:11px 16px;border:none;cursor:pointer;white-space:nowrap;}
 
-/* NOT FOUND */
-.not-found{text-align:center;padding:80px 24px;}
+/* OWNER LOCK */
+.owner-lock{background:var(--asphalt);border:1px solid var(--edge);border-left:3px solid var(--amber);padding:16px 20px;margin-bottom:20px;}
+.owner-lock-title{font-family:'Russo One',sans-serif;font-size:14px;text-transform:uppercase;color:var(--bone);margin-bottom:4px;}
+.owner-lock-sub{font-size:12px;color:var(--smoke);margin-bottom:14px;line-height:1.5;}
+.unlock-btn{background:var(--amber);color:var(--pitch);font-family:'Russo One',sans-serif;text-transform:uppercase;font-size:13px;padding:11px 22px;border:none;cursor:pointer;letter-spacing:0.06em;transition:all 0.3s;width:100%;}
+.unlock-btn:hover{box-shadow:0 0 20px rgba(255,107,26,0.4);}
+.locked-section{opacity:0.35;pointer-events:none;filter:blur(1px);user-select:none;}
+
+/* ABOUT */
+.about-card{background:var(--asphalt);border:1px solid var(--edge);padding:20px;margin-bottom:20px;}
+.about-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;font-size:10px;color:var(--smoke);margin-bottom:8px;}
+.about-text{font-family:'Inter',sans-serif;font-size:14px;color:var(--bone);line-height:1.7;white-space:pre-wrap;}
+.about-empty{font-size:13px;color:var(--smoke);font-style:italic;}
+
+{text-align:center;padding:80px 24px;}
 .not-found-title{font-family:'Russo One',sans-serif;font-size:24px;text-transform:uppercase;margin-bottom:12px;}
 .not-found-text{color:var(--smoke);font-size:14px;margin-bottom:24px;}
 .not-found-cta{display:inline-block;background:var(--amber);color:var(--pitch);font-family:'Russo One',sans-serif;text-transform:uppercase;font-size:14px;padding:14px 28px;text-decoration:none;}
@@ -195,37 +208,55 @@
       <a href="/wall" class="share-btn-sm">🏁 Wall of Honor</a>
     </div>
 
-    <!-- PROFILE PIC UPLOAD -->
-    <div class="pic-upload-card" id="pic-upload-card" style="display:none;">
-      <div class="pic-upload-label">Profile Picture</div>
-      <div class="pic-upload-desc">Paste an image URL (Imgur, etc.) to set your profile picture.</div>
-      <div class="pic-url-row">
-        <input type="url" class="pic-url-input" id="pic-url-input" placeholder="https://i.imgur.com/yourimage.jpg">
-        <button class="pic-save-btn" onclick="saveProfilePic()">Save</button>
-      </div>
-      <div class="submission-msg" id="pic-msg"></div>
+    <!-- ABOUT (public display) -->
+    <div class="about-card" id="about-card">
+      <div class="about-label">About</div>
+      <div class="about-text" id="about-display"></div>
     </div>
 
-    <!-- DRIVE MANAGEMENT -->
-    <div class="submission-card" id="drive-manage-section" style="scroll-margin-top:20px;">
-      <div class="submission-label">Drive Settings</div>
-      <div class="submission-title" id="manage-title">Manage Your Drive</div>
-      <div style="font-size:12px;color:var(--smoke);margin-bottom:16px;line-height:1.6;">Join a drive, switch drives, or step up as a Drive Lead. Enter your signup email to unlock your settings.</div>
+    <!-- OWNER LOCK GATE -->
+    <div class="owner-lock" id="owner-lock-gate">
+      <div class="owner-lock-title">🔑 Is This Your Profile?</div>
+      <div class="owner-lock-sub">Enter your signup email to unlock your profile settings — profile picture, about section, and drive management.</div>
+      <div class="pic-url-row" style="margin-bottom:10px;">
+        <input type="email" class="pic-url-input" id="owner-email" placeholder="Your signup email">
+        <button class="pic-save-btn" onclick="unlockOwner()">Unlock</button>
+      </div>
+      <div class="submission-msg" id="owner-lock-msg"></div>
+    </div>
 
-      <!-- Email verify -->
-      <div id="manage-verify-wrap">
-        <div class="pic-url-row">
-          <input type="email" class="pic-url-input" id="manage-email" placeholder="Your signup email">
-          <button class="pic-save-btn" onclick="verifyManage()">Unlock</button>
-        </div>
-        <div class="submission-msg" id="manage-verify-msg"></div>
+    <!-- OWNER PANEL (hidden until verified) -->
+    <div id="owner-panel" style="display:none;">
+
+      <!-- ABOUT EDIT -->
+      <div class="submission-card">
+        <div class="submission-label">Your Profile</div>
+        <div class="submission-title">About You</div>
+        <div style="font-size:12px;color:var(--smoke);margin-bottom:12px;">Tell the community about yourself — your GTA history, your crew, anything.</div>
+        <textarea class="submission-textarea" id="about-input" placeholder="I've been playing GTA since..." style="min-height:100px;"></textarea>
+        <button class="submission-btn" onclick="saveAbout()" style="margin-top:10px;">Save About</button>
+        <div class="submission-msg" id="about-msg"></div>
       </div>
 
-      <!-- Management panel (shown after verify) -->
-      <div id="manage-panel" style="display:none;margin-top:16px;">
+      <!-- PROFILE PIC -->
+      <div class="pic-upload-card">
+        <div class="pic-upload-label">Profile Picture</div>
+        <div class="pic-upload-desc">Paste an image URL (Imgur, etc.) to set your profile picture.</div>
+        <div class="pic-url-row">
+          <input type="url" class="pic-url-input" id="pic-url-input" placeholder="https://i.imgur.com/yourimage.jpg">
+          <button class="pic-save-btn" onclick="saveProfilePic()">Save</button>
+        </div>
+        <div class="submission-msg" id="pic-msg"></div>
+      </div>
+
+      <!-- DRIVE MANAGEMENT -->
+      <div class="submission-card" id="drive-manage-section" style="scroll-margin-top:20px;">
+        <div class="submission-label">Drive Settings</div>
+        <div class="submission-title" id="manage-title">Manage Your Drive</div>
+        <div style="font-size:12px;color:var(--smoke);margin-bottom:16px;line-height:1.6;">Join a drive, switch drives, or step up as a Drive Lead.</div>
 
         <!-- Current status -->
-        <div id="manage-current" style="background:var(--pitch);border:1px solid var(--edge);padding:12px 14px;margin-bottom:16px;"></div>
+        <div id="manage-current" style="background:var(--pitch);border:1px solid var(--edge);padding:12px 14px;margin-bottom:16px;display:none;"></div>
 
         <!-- Switch options -->
         <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;font-size:10px;color:var(--amber);margin-bottom:10px;">What do you want to do?</div>
@@ -285,27 +316,26 @@
 
         <div class="submission-msg" id="manage-action-msg"></div>
       </div>
-    </div>
 
-    <!-- SUBMIT TO EDITORIAL -->
-    <div class="submission-card">
-      <div class="submission-label">Submit Your Voice</div>
-      <div class="submission-title">Trevor's Take · Letters to the Editor</div>
-      <div class="submission-sub">Got an opinion on GTA5, the Last Drive, or GTA6? Submit to Trevor's Take for hot takes, or Letters to the Editor for community letters. We read every submission.</div>
-      <select class="submission-select" id="submission-type">
-        <option value="">Choose a column...</option>
-        <option value="Trevors Take">Trevor's Take — Hot takes, opinions, rants</option>
-        <option value="Letters to Editor">Letters to the Editor — Community voice, stories, thoughts</option>
-      </select>
-      <textarea class="submission-textarea" id="submission-text" placeholder="Write your submission here... (50-500 words)"></textarea>
-      <button class="submission-btn" id="submission-btn" onclick="submitContent()">Submit</button>
-      <div class="submission-msg" id="submission-msg"></div>
-    </div>
+      <!-- SUBMIT TO EDITORIAL -->
+      <div class="submission-card">
+        <div class="submission-label">Submit Your Voice</div>
+        <div class="submission-title">Trevor's Take · Letters to the Editor</div>
+        <div class="submission-sub">Got an opinion on GTA5, the Last Drive, or GTA6? Submit to Trevor's Take for hot takes, or Letters to the Editor for community letters. We read every submission.</div>
+        <select class="submission-select" id="submission-type">
+          <option value="">Choose a column...</option>
+          <option value="Trevors Take">Trevor's Take — Hot takes, opinions, rants</option>
+          <option value="Letters to Editor">Letters to the Editor — Community voice, stories, thoughts</option>
+        </select>
+        <textarea class="submission-textarea" id="submission-text" placeholder="Write your submission here... (50-500 words)"></textarea>
+        <button class="submission-btn" id="submission-btn" onclick="submitContent()">Submit</button>
+        <div class="submission-msg" id="submission-msg"></div>
+      </div>
+
+    </div><!-- /owner-panel -->
 
     <div style="margin-bottom:60px;"></div>
   </div>
-
-</div>
 
 <!-- NOT FOUND -->
 <div id="profile-not-found" class="not-found" style="display:none;">
@@ -466,10 +496,14 @@ function renderProfile(f, gamertag) {
     plateNum.style.color = isPhoto ? 'rgba(255,255,255,0.75)' : 'rgba(255,215,0,0.8)';
   }
 
-  // Pic upload (show always so they can set one)
-  document.getElementById('pic-upload-card').style.display = 'block';
-  if (f.ImgurLink) {
-    document.getElementById('pic-url-input').value = f.ImgurLink;
+  // About — public display
+  const aboutDisplay = document.getElementById('about-display');
+  if (f.About) {
+    aboutDisplay.textContent = f.About;
+    aboutDisplay.className = 'about-text';
+  } else {
+    aboutDisplay.textContent = 'Nothing here yet.';
+    aboutDisplay.className = 'about-empty';
   }
 
   // Show profile
@@ -575,12 +609,12 @@ async function submitContent() {
   btn.disabled = false;
 }
 
-// ── DRIVE MANAGEMENT ─────────────────────────────────────────
+// ── OWNER UNLOCK ─────────────────────────────────────────────
 let verifiedId = null;
 
-async function verifyManage() {
-  const email = document.getElementById('manage-email')?.value.trim();
-  const msg   = document.getElementById('manage-verify-msg');
+async function unlockOwner() {
+  const email = document.getElementById('owner-email')?.value.trim();
+  const msg   = document.getElementById('owner-lock-msg');
   const tag   = playerData?.Gamertag || '';
 
   if (!email) { msg.textContent='Enter your signup email.'; msg.className='submission-msg show error'; return; }
@@ -598,17 +632,30 @@ async function verifyManage() {
     verifiedId = d.records[0].id;
     playerData._id = verifiedId;
     const fields = d.records[0].fields;
+
+    // Hide lock gate, show owner panel
+    document.getElementById('owner-lock-gate').style.display = 'none';
+    document.getElementById('owner-panel').style.display = 'block';
+
+    // Pre-fill about
+    if (fields.About) {
+      document.getElementById('about-input').value = fields.About;
+    }
+
+    // Pre-fill pic url
+    if (fields.ImgurLink) {
+      document.getElementById('pic-url-input').value = fields.ImgurLink;
+    }
+
+    // Show drive current status
     const isLead      = fields.SignupType === 'Drive Lead';
     const currentSlot = fields['Staging Time'] || '';
     const currentLoc  = fields.StagingLocation || '';
     const currentType = fields['Drive Type'] || '';
     const linkedSlot  = fields.LinkedSlot || '';
 
-    document.getElementById('manage-verify-wrap').style.display = 'none';
-    document.getElementById('manage-panel').style.display = 'block';
-
-    // Build current status block
-    let statusHTML = `<div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;font-size:10px;color:var(--smoke);margin-bottom:6px;">Your Current Status</div>`;
+    const manageCurrent = document.getElementById('manage-current');
+    let statusHTML = `<div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;font-size:10px;color:var(--smoke);margin-bottom:6px;">Your Current Drive Status</div>`;
     statusHTML += `<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">`;
     statusHTML += `<span style="font-family:'Russo One',sans-serif;font-size:15px;color:var(--amber);">${isLead ? '⭐ Drive Lead' : '🚗 Participant'}</span>`;
     if (currentSlot) statusHTML += `<span style="font-size:12px;color:var(--smoke);">${currentSlot}</span>`;
@@ -616,7 +663,6 @@ async function verifyManage() {
     if (currentType) statusHTML += `<span style="font-size:12px;color:var(--smoke);">· ${currentType}</span>`;
     statusHTML += `</div>`;
 
-    // If already joined a drive, show leader info
     if (linkedSlot && !isLead) {
       const parts = linkedSlot.split('||');
       const leaderTag = parts[3] || '';
@@ -629,7 +675,8 @@ async function verifyManage() {
       }
     }
 
-    document.getElementById('manage-current').innerHTML = statusHTML;
+    manageCurrent.innerHTML = statusHTML;
+    manageCurrent.style.display = 'block';
 
     if (isLead) {
       document.getElementById('opt-lead')?.classList.add('active');
@@ -640,7 +687,6 @@ async function verifyManage() {
       document.getElementById('opt-join')?.classList.add('active');
     }
 
-    msg.className = 'submission-msg';
     if (window.location.hash === '#manage') {
       document.getElementById('drive-manage-section')?.scrollIntoView({behavior:'smooth'});
     }
@@ -650,6 +696,36 @@ async function verifyManage() {
   }
 }
 
+// ── SAVE ABOUT ────────────────────────────────────────────────
+async function saveAbout() {
+  const text = document.getElementById('about-input').value.trim();
+  const msg  = document.getElementById('about-msg');
+  if (!verifiedId) { msg.textContent='Not verified.'; msg.className='submission-msg show error'; return; }
+
+  msg.textContent='Saving...'; msg.className='submission-msg show success';
+  try {
+    await fetch(`${AT_LAST_DRIVE}/${verifiedId}`, {
+      method: 'PATCH',
+      headers: AT_H,
+      body: JSON.stringify({ fields: { 'About': text } })
+    });
+    // Update public display
+    const display = document.getElementById('about-display');
+    if (text) {
+      display.textContent = text;
+      display.className = 'about-text';
+    } else {
+      display.textContent = 'Nothing here yet.';
+      display.className = 'about-empty';
+    }
+    msg.textContent='✅ About saved!'; msg.className='submission-msg show success';
+    setTimeout(() => { msg.className='submission-msg'; }, 3000);
+  } catch(e) {
+    msg.textContent='Save failed — try again.'; msg.className='submission-msg show error';
+  }
+}
+
+// ── DRIVE MANAGEMENT ─────────────────────────────────────────
 function showDriveBrowser() {
   document.querySelectorAll('.manage-option').forEach(o => o.classList.remove('active'));
   document.getElementById('opt-join')?.classList.add('active');
@@ -724,7 +800,7 @@ async function loadAvailableDrives() {
 
 async function joinDrive(leadRecordId, leaderTag, platform, region, location) {
   const msg = document.getElementById('join-msg');
-  if (!verifiedId) { msg.textContent='Please verify your email first.'; msg.className='submission-msg show error'; return; }
+  if (!verifiedId) { msg.textContent='Not verified.'; msg.className='submission-msg show error'; return; }
   msg.textContent='Joining...'; msg.className='submission-msg show success';
 
   const linkedSlot = `${platform}||${region}||${location}||${leaderTag}`;
@@ -739,14 +815,12 @@ async function joinDrive(leadRecordId, leaderTag, platform, region, location) {
         'LinkedSlot': linkedSlot
       }})
     });
-
     msg.innerHTML = `✅ You joined <strong>${leaderTag}</strong>'s drive!<br>
       <div style="margin-top:10px;padding:10px 12px;background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.2);">
         <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--cyan);margin-bottom:6px;">Next Step</div>
         <div style="font-size:13px;color:var(--bone);">Add <strong>${leaderTag}</strong> on ${platform} and send them a message: <em>"I joined your Last Drive on 56ViceLane — see you November 18."</em></div>
       </div>`;
     msg.className = 'submission-msg show success';
-
   } catch(e) {
     msg.textContent='Join failed — please try again.'; msg.className='submission-msg show error';
   }
@@ -759,12 +833,8 @@ async function saveLead() {
   const access   = document.getElementById('lead-access').value;
   const msg      = document.getElementById('lead-msg');
 
-  if (!time || !location || !type) {
-    msg.textContent='Please fill in all fields.'; msg.className='submission-msg show error'; return;
-  }
-  if (!verifiedId) {
-    msg.textContent='Verification error — reload and try again.'; msg.className='submission-msg show error'; return;
-  }
+  if (!time || !location || !type) { msg.textContent='Please fill in all fields.'; msg.className='submission-msg show error'; return; }
+  if (!verifiedId) { msg.textContent='Verification error — reload and try again.'; msg.className='submission-msg show error'; return; }
   msg.textContent='Saving...'; msg.className='submission-msg show success';
 
   try {
@@ -781,11 +851,9 @@ async function saveLead() {
         'AccessType': access
       }})
     });
-
     msg.innerHTML = `✅ Your drive is live! Others can now find and join your slot.<br>
       <div style="margin-top:8px;font-size:12px;color:var(--smoke);">When someone joins, add them on your platform before November 18.</div>`;
     msg.className = 'submission-msg show success';
-
     const badges = document.getElementById('profile-badges');
     if (badges && !badges.querySelector('.badge-lead')) {
       const b = document.createElement('span');
@@ -793,12 +861,10 @@ async function saveLead() {
       b.textContent = '⭐ Drive Lead';
       badges.prepend(b);
     }
-
   } catch(e) {
     msg.textContent='Save failed — please try again.'; msg.className='submission-msg show error';
   }
 }
-
 // Auto-scroll to manage section if hash = #manage
 window.addEventListener('load', () => {
   if (window.location.hash === '#manage') {
