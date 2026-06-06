@@ -64,3 +64,31 @@
   if (og) og.content = 'https://56vicelane.com/images/' + img;
 
 })();
+
+// ── TICKER SPEED FIX — 30s cycle on all pages ─────────────────
+// Patches any JS-driven ticker that used the wrong speed formula
+(function(){
+  const track = document.getElementById('tickerTrack') || document.getElementById('ticker-track');
+  if (!track) return;
+  // If CSS animation is handling it, nothing to do
+  const style = getComputedStyle(track);
+  if (style.animationName && style.animationName !== 'none') return;
+  // JS-driven ticker — re-run with correct 30s speed after content loads
+  let pos = 0;
+  let raf = null;
+  function startTicker() {
+    if (raf) cancelAnimationFrame(raf);
+    const totalWidth = track.scrollWidth / 2;
+    if (totalWidth <= 0) return;
+    const speed = totalWidth / 30;
+    function animate() {
+      pos -= speed / 60;
+      if (Math.abs(pos) >= totalWidth) pos = 0;
+      track.style.transform = `translateX(${pos}px)`;
+      raf = requestAnimationFrame(animate);
+    }
+    animate();
+  }
+  // Wait for ticker content to load then start
+  setTimeout(startTicker, 800);
+})();
