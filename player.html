@@ -104,10 +104,6 @@
 .owner-lock{background:var(--asphalt);border:1px solid var(--edge);border-left:3px solid var(--amber);padding:16px 20px;margin-bottom:20px;}
 .owner-lock-title{font-family:'Russo One',sans-serif;font-size:14px;text-transform:uppercase;color:var(--bone);margin-bottom:4px;}
 .owner-lock-sub{font-size:12px;color:var(--smoke);margin-bottom:14px;line-height:1.5;}
-.unlock-btn{background:var(--amber);color:var(--pitch);font-family:'Russo One',sans-serif;text-transform:uppercase;font-size:13px;padding:11px 22px;border:none;cursor:pointer;letter-spacing:0.06em;transition:all 0.3s;width:100%;}
-.unlock-btn:hover{box-shadow:0 0 20px rgba(255,107,26,0.4);}
-.locked-section{opacity:0.35;pointer-events:none;filter:blur(1px);user-select:none;}
-
 /* ADMIN */
 .admin-gate{background:var(--asphalt);border:1px solid var(--edge);border-left:3px solid var(--cyan);padding:16px 20px;margin-bottom:20px;display:none;}
 .admin-panel{background:var(--asphalt);border:1px solid var(--cyan);padding:20px;margin-bottom:20px;display:none;}
@@ -119,14 +115,13 @@
 .plate-check-item.owned{border-color:var(--amber);}
 .plate-check-item input{accent-color:var(--amber);width:16px;height:16px;cursor:pointer;}
 .plate-check-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:var(--bone);}
-
 /* ABOUT */
 .about-card{background:var(--asphalt);border:1px solid var(--edge);padding:20px;margin-bottom:20px;}
 .about-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;font-size:10px;color:var(--smoke);margin-bottom:8px;}
 .about-text{font-family:'Inter',sans-serif;font-size:14px;color:var(--bone);line-height:1.7;white-space:pre-wrap;}
 .about-empty{font-size:13px;color:var(--smoke);font-style:italic;}
-
-{text-align:center;padding:80px 24px;}
+/* NOT FOUND */
+.not-found{text-align:center;padding:80px 24px;}
 .not-found-title{font-family:'Russo One',sans-serif;font-size:24px;text-transform:uppercase;margin-bottom:12px;}
 .not-found-text{color:var(--smoke);font-size:14px;margin-bottom:24px;}
 .not-found-cta{display:inline-block;background:var(--amber);color:var(--pitch);font-family:'Russo One',sans-serif;text-transform:uppercase;font-size:14px;padding:14px 28px;text-decoration:none;}
@@ -220,16 +215,16 @@
       <a href="/wall" class="share-btn-sm">🏁 Wall of Honor</a>
     </div>
 
-    <!-- ABOUT (public display) -->
+    <!-- ABOUT (public) -->
     <div class="about-card" id="about-card">
       <div class="about-label">About</div>
-      <div class="about-text" id="about-display"></div>
+      <div id="about-display" class="about-empty">Nothing here yet.</div>
     </div>
 
     <!-- OWNER LOCK GATE -->
     <div class="owner-lock" id="owner-lock-gate">
-      <div class="owner-lock-title">🔑 Is This Your Profile?</div>
-      <div class="owner-lock-sub">Enter your signup email to unlock your profile settings — profile picture, about section, and drive management.</div>
+      <div class="owner-lock-title">Is This Your Profile?</div>
+      <div class="owner-lock-sub">Enter your signup email to unlock your profile settings.</div>
       <div class="pic-url-row" style="margin-bottom:10px;">
         <input type="email" class="pic-url-input" id="owner-email" placeholder="Your signup email">
         <button class="pic-save-btn" onclick="unlockOwner()">Unlock</button>
@@ -237,15 +232,15 @@
       <div class="submission-msg" id="owner-lock-msg"></div>
     </div>
 
-    <!-- OWNER PANEL (hidden until verified) -->
+    <!-- OWNER PANEL -->
     <div id="owner-panel" style="display:none;">
 
       <!-- ABOUT EDIT -->
       <div class="submission-card">
         <div class="submission-label">Your Profile</div>
         <div class="submission-title">About You</div>
-        <div style="font-size:12px;color:var(--smoke);margin-bottom:12px;">Tell the community about yourself — your GTA history, your crew, anything.</div>
-        <textarea class="submission-textarea" id="about-input" placeholder="I've been playing GTA since..." style="min-height:100px;"></textarea>
+        <div style="font-size:12px;color:var(--smoke);margin-bottom:12px;">Tell the community about yourself.</div>
+        <textarea class="submission-textarea" id="about-input" placeholder="I have been playing GTA since..." style="min-height:100px;"></textarea>
         <button class="submission-btn" onclick="saveAbout()" style="margin-top:10px;">Save About</button>
         <div class="submission-msg" id="about-msg"></div>
       </div>
@@ -264,38 +259,30 @@
       <!-- DRIVE MANAGEMENT -->
       <div class="submission-card" id="drive-manage-section" style="scroll-margin-top:20px;">
         <div class="submission-label">Drive Settings</div>
-        <div class="submission-title" id="manage-title">Manage Your Drive</div>
+        <div class="submission-title">Manage Your Drive</div>
         <div style="font-size:12px;color:var(--smoke);margin-bottom:16px;line-height:1.6;">Join a drive, switch drives, or step up as a Drive Lead.</div>
-
-        <!-- Current status -->
         <div id="manage-current" style="background:var(--pitch);border:1px solid var(--edge);padding:12px 14px;margin-bottom:16px;display:none;"></div>
-
-        <!-- Switch options -->
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;font-size:10px;color:var(--amber);margin-bottom:10px;">What do you want to do?</div>
+        <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;color:var(--amber);margin-bottom:10px;">What do you want to do?</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;">
           <div class="manage-option" id="opt-lead" onclick="showLeadForm()">
-            <div style="font-size:24px;margin-bottom:6px;">🏁</div>
-            <div style="font-family:'Russo One',sans-serif;font-size:13px;text-transform:uppercase;color:var(--bone);margin-bottom:4px;">Lead a Drive</div>
+            <div style="font-size:24px;margin-bottom:6px;">&#127937;</div>
+            <div style="font-size:13px;text-transform:uppercase;color:var(--bone);margin-bottom:4px;">Lead a Drive</div>
             <div style="font-size:11px;color:var(--smoke);">Set your slot and let others join you</div>
           </div>
           <div class="manage-option" id="opt-join" onclick="showDriveBrowser()">
-            <div style="font-size:24px;margin-bottom:6px;">🚗</div>
-            <div style="font-family:'Russo One',sans-serif;font-size:13px;text-transform:uppercase;color:var(--bone);margin-bottom:4px;">Join a Drive</div>
+            <div style="font-size:24px;margin-bottom:6px;">&#128663;</div>
+            <div style="font-size:13px;text-transform:uppercase;color:var(--bone);margin-bottom:4px;">Join a Drive</div>
             <div style="font-size:11px;color:var(--smoke);">Browse open drives and pick your crew</div>
           </div>
         </div>
-
-        <!-- DRIVE BROWSER -->
         <div id="drive-browser" style="display:none;">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;font-size:10px;color:var(--cyan);margin-bottom:10px;">Open Drives — November 18, 2026</div>
+          <div style="font-size:10px;font-weight:800;text-transform:uppercase;color:var(--cyan);margin-bottom:10px;">Open Drives - November 18, 2026</div>
           <div id="drives-loading" style="font-size:13px;color:var(--smoke);padding:12px 0;">Loading available drives...</div>
           <div id="drives-list"></div>
           <div class="submission-msg" id="join-msg"></div>
         </div>
-
-        <!-- LEAD FORM -->
         <div id="lead-form" style="display:none;">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;font-size:10px;color:var(--amber);margin-bottom:12px;">Set Up Your Drive</div>
+          <div style="font-size:10px;font-weight:800;text-transform:uppercase;color:var(--amber);margin-bottom:12px;">Set Up Your Drive</div>
           <select class="submission-select" id="lead-time" style="margin-bottom:10px;">
             <option value="">Choose your time slot...</option>
             <option value="6:00 PM EST">6:00 PM EST</option>
@@ -314,30 +301,29 @@
           </select>
           <select class="submission-select" id="lead-type" style="margin-bottom:10px;">
             <option value="">Choose drive type...</option>
-            <option value="Marathon (Last Roads)">Marathon — Last Roads</option>
-            <option value="Solo Drive (online)">Solo Drive — Online</option>
+            <option value="Marathon (Last Roads)">Marathon - Last Roads</option>
+            <option value="Solo Drive (online)">Solo Drive - Online</option>
             <option value="Crew Cruise">Crew Cruise</option>
           </select>
           <select class="submission-select" id="lead-access" style="margin-bottom:16px;">
-            <option value="Open">Open — Anyone can join</option>
+            <option value="Open">Open - Anyone can join</option>
             <option value="Invite Only">Invite Only</option>
           </select>
           <button class="submission-btn" onclick="saveLead()">Claim This Drive Slot</button>
           <div class="submission-msg" id="lead-msg"></div>
         </div>
-
         <div class="submission-msg" id="manage-action-msg"></div>
       </div>
 
-      <!-- SUBMIT TO EDITORIAL -->
+      <!-- EDITORIAL -->
       <div class="submission-card">
         <div class="submission-label">Submit Your Voice</div>
-        <div class="submission-title">Trevor's Take · Letters to the Editor</div>
-        <div class="submission-sub">Got an opinion on GTA5, the Last Drive, or GTA6? Submit to Trevor's Take for hot takes, or Letters to the Editor for community letters. We read every submission.</div>
+        <div class="submission-title">Trevor Take - Letters to the Editor</div>
+        <div class="submission-sub">Got an opinion on GTA5, the Last Drive, or GTA6? We read every submission.</div>
         <select class="submission-select" id="submission-type">
           <option value="">Choose a column...</option>
-          <option value="Trevors Take">Trevor's Take — Hot takes, opinions, rants</option>
-          <option value="Letters to Editor">Letters to the Editor — Community voice, stories, thoughts</option>
+          <option value="Trevors Take">Trevor Take - Hot takes, opinions, rants</option>
+          <option value="Letters to Editor">Letters to the Editor - Community voice</option>
         </select>
         <textarea class="submission-textarea" id="submission-text" placeholder="Write your submission here... (50-500 words)"></textarea>
         <button class="submission-btn" id="submission-btn" onclick="submitContent()">Submit</button>
@@ -346,47 +332,37 @@
 
       <!-- ADMIN GATE (Musashi13 only) -->
       <div class="admin-gate" id="admin-gate">
-        <div class="admin-label">⚡ Admin Access</div>
+        <div class="admin-label">Admin Access</div>
         <div class="admin-title">Admin Panel</div>
-        <div style="font-size:12px;color:var(--smoke);margin-bottom:14px;line-height:1.5;" id="admin-gate-desc">Enter your admin password to unlock plate gifting and player management.</div>
+        <div style="font-size:12px;color:var(--smoke);margin-bottom:14px;" id="admin-gate-desc">Enter your admin password to unlock plate gifting.</div>
         <div class="pic-url-row" style="margin-bottom:10px;">
           <input type="password" class="pic-url-input" id="admin-pass-input" placeholder="Admin password">
           <button class="pic-save-btn" onclick="unlockAdmin()">Enter</button>
         </div>
-        <div style="font-size:11px;color:var(--smoke);margin-bottom:10px;" id="admin-set-hint" style="display:none;"></div>
         <div class="submission-msg" id="admin-gate-msg"></div>
       </div>
 
       <!-- ADMIN PANEL -->
       <div class="admin-panel" id="admin-panel">
-        <div class="admin-label">⚡ Admin Panel</div>
+        <div class="admin-label">Admin Panel</div>
         <div class="admin-title" style="margin-bottom:16px;">Gift Plates</div>
-
-        <!-- Search player -->
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;font-size:10px;color:var(--smoke);margin-bottom:8px;">Find Player</div>
-        <input type="text" class="pic-url-input" id="admin-search-tag" placeholder="Type gamertag..." 
-          style="width:100%;margin-bottom:6px;" oninput="adminFilterPlayers(this.value)" autocomplete="off">
+        <div style="font-size:10px;font-weight:800;text-transform:uppercase;color:var(--smoke);margin-bottom:8px;">Find Player</div>
+        <input type="text" class="pic-url-input" id="admin-search-tag" placeholder="Type gamertag..." style="width:100%;margin-bottom:6px;" oninput="adminFilterPlayers(this.value)" autocomplete="off">
         <div id="admin-player-dropdown" style="display:none;background:var(--pitch);border:1px solid var(--edge);max-height:180px;overflow-y:auto;margin-bottom:10px;"></div>
         <div class="submission-msg" id="admin-search-msg"></div>
-
-        <!-- Player found panel -->
         <div id="admin-player-found" style="display:none;margin-top:14px;">
           <div style="background:var(--pitch);border:1px solid var(--edge);padding:12px 14px;margin-bottom:14px;">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--smoke);margin-bottom:4px;">Player</div>
-            <div style="font-family:'Russo One',sans-serif;font-size:18px;color:var(--bone);" id="admin-found-tag"></div>
+            <div style="font-size:10px;font-weight:800;text-transform:uppercase;color:var(--smoke);margin-bottom:4px;">Player</div>
+            <div style="font-size:18px;color:var(--bone);" id="admin-found-tag"></div>
             <div style="font-size:12px;color:var(--smoke);margin-top:4px;" id="admin-found-plates"></div>
           </div>
-
-          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;font-size:10px;color:var(--amber);margin-bottom:10px;">Select Plates to Gift</div>
+          <div style="font-size:10px;font-weight:800;text-transform:uppercase;color:var(--amber);margin-bottom:10px;">Select Plates to Gift</div>
           <div class="plate-checkbox-grid" id="admin-plate-checkboxes"></div>
-
           <button class="submission-btn" onclick="adminGiftPlates()" style="margin-top:4px;">Gift Selected Plates</button>
           <div class="submission-msg" id="admin-gift-msg"></div>
         </div>
-
-        <!-- Change admin password -->
         <div style="margin-top:24px;padding-top:18px;border-top:1px solid var(--edge);">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;font-size:10px;color:var(--smoke);margin-bottom:8px;">Change Admin Password</div>
+          <div style="font-size:10px;font-weight:800;text-transform:uppercase;color:var(--smoke);margin-bottom:8px;">Change Admin Password</div>
           <div class="pic-url-row">
             <input type="password" class="pic-url-input" id="admin-new-pass" placeholder="New password">
             <button class="pic-save-btn" onclick="saveAdminPass()">Save</button>
@@ -395,10 +371,10 @@
         </div>
       </div>
 
-    </div><!-- /owner-panel -->
+    </div>
 
     <div style="margin-bottom:60px;"></div>
-  </div>
+</div>
 
 <!-- NOT FOUND -->
 <div id="profile-not-found" class="not-found" style="display:none;">
@@ -412,7 +388,9 @@
   <p><span id="vl-copyright">© 2026 56ViceLane · Forged Oak Studios ·</span> <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p>
 </footer>
 
+
 <script>
+
 // ── CONSTANTS ────────────────────────────────────────────────
 const AT_TOKEN     = 'pattxJ12NQzpHMejD.2eb992f22f1a43e032d866df028dbb33958635234f6cfd30769e3e12f10d5588';
 const AT_BASE      = 'appVViGbmcu5gbn8B';
@@ -559,14 +537,10 @@ function renderProfile(f, gamertag) {
     plateNum.style.color = isPhoto ? 'rgba(255,255,255,0.75)' : 'rgba(255,215,0,0.8)';
   }
 
-  // About — public display
-  const aboutDisplay = document.getElementById('about-display');
-  if (f.About) {
-    aboutDisplay.textContent = f.About;
-    aboutDisplay.className = 'about-text';
-  } else {
-    aboutDisplay.textContent = 'Nothing here yet.';
-    aboutDisplay.className = 'about-empty';
+  // Pic upload (show always so they can set one)
+  document.getElementById('pic-upload-card').style.display = 'block';
+  if (f.ImgurLink) {
+    document.getElementById('pic-url-input').value = f.ImgurLink;
   }
 
   // Show profile
@@ -671,457 +645,273 @@ async function submitContent() {
   btn.textContent = 'Submit';
   btn.disabled = false;
 }
+// === OWNER + DRIVE + ADMIN ===
+var verifiedId = null;
+var allPlayers = [];
+var adminTargetId = null;
+var adminTargetPlates = [];
+var PLATE_STYLES = [
+  {id:'founder',label:'Founder'},
+  {id:'vehicle-male-exotic',label:'Male Exotic'},
+  {id:'vehicle-female-exotic',label:'Female Exotic'},
+  {id:'color-red',label:'Red'},
+  {id:'color-blue',label:'Blue'},
+  {id:'color-purple',label:'Purple'},
+  {id:'color-amber',label:'Amber'},
+  {id:'white',label:'White'},
+  {id:'black',label:'Black'}
+];
 
-// ── OWNER UNLOCK ─────────────────────────────────────────────
-let verifiedId = null;
+function showMsg(el, text, type) {
+  el.textContent = text;
+  el.className = 'submission-msg show ' + type;
+}
 
 async function unlockOwner() {
-  const email = document.getElementById('owner-email')?.value.trim();
-  const msg   = document.getElementById('owner-lock-msg');
-  const tag   = playerData?.Gamertag || '';
-
-  if (!email) { msg.textContent='Enter your signup email.'; msg.className='submission-msg show error'; return; }
-  msg.textContent='Checking...'; msg.className='submission-msg show success';
-
+  var email = document.getElementById('owner-email').value.trim();
+  var msg = document.getElementById('owner-lock-msg');
+  var tag = playerData ? (playerData.Gamertag || '') : '';
+  if (!email) { showMsg(msg,'Enter your signup email.','error'); return; }
+  showMsg(msg,'Checking...','success');
   try {
-    const f = encodeURIComponent(`AND({Gamertag}="${tag}",{Email}="${email}")`);
-    const r = await fetch(`${AT_LAST_DRIVE}?filterByFormula=${f}&maxRecords=1`, {headers:AT_H});
-    const d = await r.json();
-
-    if (!d.records?.length) {
-      msg.textContent='Email does not match this profile.'; msg.className='submission-msg show error'; return;
-    }
-
+    var f = encodeURIComponent('AND({Gamertag}="' + tag + '",{Email}="' + email + '")');
+    var r = await fetch(AT_LAST_DRIVE + '?filterByFormula=' + f + '&maxRecords=1', {headers:AT_H});
+    var d = await r.json();
+    if (!d.records || !d.records.length) { showMsg(msg,'Email does not match.','error'); return; }
     verifiedId = d.records[0].id;
     playerData._id = verifiedId;
-    const fields = d.records[0].fields;
-
-    // Hide lock gate, show owner panel
+    var flds = d.records[0].fields;
     document.getElementById('owner-lock-gate').style.display = 'none';
     document.getElementById('owner-panel').style.display = 'block';
-
-    // Pre-fill about
-    if (fields.About) {
-      document.getElementById('about-input').value = fields.About;
+    if (flds.About) document.getElementById('about-input').value = flds.About;
+    if (flds.ImgurLink) document.getElementById('pic-url-input').value = flds.ImgurLink;
+    var isLead = flds.SignupType === 'Drive Lead';
+    var slot = flds['Staging Time'] || '';
+    var dloc = flds.StagingLocation || '';
+    var dtype = flds['Drive Type'] || '';
+    var linked = flds.LinkedSlot || '';
+    var sh = '<b>' + (isLead ? 'Drive Lead' : 'Participant') + '</b>';
+    if (slot) sh += ' &middot; ' + slot;
+    if (dloc) sh += ' &middot; ' + dloc;
+    if (dtype) sh += ' &middot; ' + dtype;
+    if (linked && !isLead) {
+      var parts = linked.split('||');
+      if (parts[3]) sh += '<br><small>Leader: <b>' + parts[3] + '</b> on ' + (parts[0] || 'your platform') + ' - add them and message that you joined.</small>';
     }
-
-    // Pre-fill pic url
-    if (fields.ImgurLink) {
-      document.getElementById('pic-url-input').value = fields.ImgurLink;
-    }
-
-    // Show drive current status
-    const isLead      = fields.SignupType === 'Drive Lead';
-    const currentSlot = fields['Staging Time'] || '';
-    const currentLoc  = fields.StagingLocation || '';
-    const currentType = fields['Drive Type'] || '';
-    const linkedSlot  = fields.LinkedSlot || '';
-
-    const manageCurrent = document.getElementById('manage-current');
-    let statusHTML = `<div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;font-size:10px;color:var(--smoke);margin-bottom:6px;">Your Current Drive Status</div>`;
-    statusHTML += `<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">`;
-    statusHTML += `<span style="font-family:'Russo One',sans-serif;font-size:15px;color:var(--amber);">${isLead ? '⭐ Drive Lead' : '🚗 Participant'}</span>`;
-    if (currentSlot) statusHTML += `<span style="font-size:12px;color:var(--smoke);">${currentSlot}</span>`;
-    if (currentLoc)  statusHTML += `<span style="font-size:12px;color:var(--smoke);">· ${currentLoc}</span>`;
-    if (currentType) statusHTML += `<span style="font-size:12px;color:var(--smoke);">· ${currentType}</span>`;
-    statusHTML += `</div>`;
-
-    if (linkedSlot && !isLead) {
-      const parts = linkedSlot.split('||');
-      const leaderTag = parts[3] || '';
-      if (leaderTag) {
-        statusHTML += `<div style="margin-top:10px;padding:10px 12px;background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.2);">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--cyan);margin-bottom:4px;">📋 Your Drive Leader</div>
-          <div style="font-family:'Russo One',sans-serif;font-size:18px;color:var(--bone);">${leaderTag}</div>
-          <div style="font-size:11px;color:var(--smoke);margin-top:4px;">Add them on ${parts[0]||'your platform'} and message them that you joined their drive.</div>
-        </div>`;
-      }
-    }
-
-    manageCurrent.innerHTML = statusHTML;
-    manageCurrent.style.display = 'block';
-
+    var mc = document.getElementById('manage-current');
+    mc.innerHTML = sh; mc.style.display = 'block';
     if (isLead) {
-      document.getElementById('opt-lead')?.classList.add('active');
-      if (currentSlot) document.getElementById('lead-time').value = currentSlot;
-      if (currentLoc)  document.getElementById('lead-location').value = currentLoc;
-      if (currentType) document.getElementById('lead-type').value = currentType;
-    } else if (fields.JoinStatus === 'Active' && linkedSlot) {
-      document.getElementById('opt-join')?.classList.add('active');
+      document.getElementById('opt-lead').classList.add('active');
+      if (slot) document.getElementById('lead-time').value = slot;
+      if (dloc) document.getElementById('lead-location').value = dloc;
+      if (dtype) document.getElementById('lead-type').value = dtype;
+    } else if (flds.JoinStatus === 'Active' && linked) {
+      document.getElementById('opt-join').classList.add('active');
     }
-
-    // Show admin gate if this is Musashi13
     if (tag.toLowerCase() === 'musashi13') {
-      const adminGate = document.getElementById('admin-gate');
-      adminGate.style.display = 'block';
-      if (!fields.AdminPass) {
-        document.getElementById('admin-gate-desc').textContent = 'No admin password set yet. Enter a password below to set one.';
-        document.getElementById('admin-pass-input').placeholder = 'Set your admin password';
-      }
+      document.getElementById('admin-gate').style.display = 'block';
+      if (!flds.AdminPass) document.getElementById('admin-gate-desc').textContent = 'No password set yet - create one below.';
+      playerData.AdminPass = flds.AdminPass || '';
     }
-
-    if (window.location.hash === '#manage') {
-      document.getElementById('drive-manage-section')?.scrollIntoView({behavior:'smooth'});
-    }
-
-  } catch(e) {
-    msg.textContent='Verification error — try again.'; msg.className='submission-msg show error';
-  }
+    msg.className = 'submission-msg';
+  } catch(e) { showMsg(msg,'Verification error.','error'); }
 }
 
-// ── SAVE ABOUT ────────────────────────────────────────────────
 async function saveAbout() {
-  const text = document.getElementById('about-input').value.trim();
-  const msg  = document.getElementById('about-msg');
-  if (!verifiedId) { msg.textContent='Not verified.'; msg.className='submission-msg show error'; return; }
-
-  msg.textContent='Saving...'; msg.className='submission-msg show success';
+  var text = document.getElementById('about-input').value.trim();
+  var msg = document.getElementById('about-msg');
+  if (!verifiedId) return;
+  showMsg(msg,'Saving...','success');
   try {
-    await fetch(`${AT_LAST_DRIVE}/${verifiedId}`, {
-      method: 'PATCH',
-      headers: AT_H,
-      body: JSON.stringify({ fields: { 'About': text } })
-    });
-    // Update public display
-    const display = document.getElementById('about-display');
-    if (text) {
-      display.textContent = text;
-      display.className = 'about-text';
-    } else {
-      display.textContent = 'Nothing here yet.';
-      display.className = 'about-empty';
-    }
-    msg.textContent='✅ About saved!'; msg.className='submission-msg show success';
-    setTimeout(() => { msg.className='submission-msg'; }, 3000);
-  } catch(e) {
-    msg.textContent='Save failed — try again.'; msg.className='submission-msg show error';
-  }
+    await fetch(AT_LAST_DRIVE + '/' + verifiedId, {method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{About:text}})});
+    var d = document.getElementById('about-display');
+    if (text) { d.textContent = text; d.className = 'about-text'; }
+    else { d.textContent = 'Nothing here yet.'; d.className = 'about-empty'; }
+    showMsg(msg,'Saved!','success');
+    setTimeout(function(){ msg.className='submission-msg'; }, 3000);
+  } catch(e) { showMsg(msg,'Failed.','error'); }
 }
 
-// ── DRIVE MANAGEMENT ─────────────────────────────────────────
 function showDriveBrowser() {
-  document.querySelectorAll('.manage-option').forEach(o => o.classList.remove('active'));
-  document.getElementById('opt-join')?.classList.add('active');
+  document.querySelectorAll('.manage-option').forEach(function(o){ o.classList.remove('active'); });
+  document.getElementById('opt-join').classList.add('active');
   document.getElementById('drive-browser').style.display = 'block';
   document.getElementById('lead-form').style.display = 'none';
   loadAvailableDrives();
 }
 
 function showLeadForm() {
-  document.querySelectorAll('.manage-option').forEach(o => o.classList.remove('active'));
-  document.getElementById('opt-lead')?.classList.add('active');
+  document.querySelectorAll('.manage-option').forEach(function(o){ o.classList.remove('active'); });
+  document.getElementById('opt-lead').classList.add('active');
   document.getElementById('lead-form').style.display = 'block';
   document.getElementById('drive-browser').style.display = 'none';
 }
 
 async function loadAvailableDrives() {
-  const loadingEl = document.getElementById('drives-loading');
-  const listEl    = document.getElementById('drives-list');
-  loadingEl.style.display = 'block';
-  listEl.innerHTML = '';
-
+  var loadEl = document.getElementById('drives-loading');
+  var listEl = document.getElementById('drives-list');
+  loadEl.style.display = 'block'; listEl.innerHTML = '';
   try {
-    const f = encodeURIComponent(`AND({SignupType}="Drive Lead",{JoinStatus}="Active")`);
-    const r = await fetch(`${AT_LAST_DRIVE}?filterByFormula=${f}&maxRecords=20`, {headers:AT_H});
-    const d = await r.json();
-    loadingEl.style.display = 'none';
-
-    if (!d.records?.length) {
-      listEl.innerHTML = `<div style="font-size:13px;color:var(--smoke);padding:12px 0;">No open drives yet — be the first to lead one!</div>`;
-      return;
-    }
-
-    const myPlatform = (playerData?.Platform || '').toLowerCase();
-
-    listEl.innerHTML = d.records.map(rec => {
-      const fl       = rec.fields;
-      const leadTag  = fl.Gamertag || 'Unknown';
-      const time     = fl['Staging Time'] || 'TBD';
-      const loc      = fl.StagingLocation || 'TBD';
-      const type     = fl['Drive Type'] || 'Open Drive';
-      const platform = fl.Platform || '';
-      const region   = fl.Region || '';
-      const access   = fl.AccessType || 'Open';
-      const isMatch  = myPlatform && platform && myPlatform.includes(platform.split(' ')[0].toLowerCase());
-
-      return `<div style="background:var(--pitch);border:1px solid ${isMatch?'var(--cyan)':'var(--edge)'};padding:14px 16px;margin-bottom:10px;">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
-          <div style="font-family:'Russo One',sans-serif;font-size:16px;text-transform:uppercase;color:var(--bone);">${leadTag}</div>
-          ${isMatch?'<span style="font-family:\'Barlow Condensed\',sans-serif;font-weight:800;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--cyan);border:1px solid var(--cyan);padding:2px 8px;">✓ Match</span>':''}
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px;">
-          <div style="font-size:12px;color:var(--smoke);">⏰ ${time}</div>
-          <div style="font-size:12px;color:var(--smoke);">📍 ${loc}</div>
-          <div style="font-size:12px;color:var(--smoke);">🏁 ${type}</div>
-          <div style="font-size:12px;color:var(--smoke);">🎮 ${platform}${region?' · '+region:''}</div>
-        </div>
-        <div style="display:flex;gap:8px;align-items:center;">
-          <button onclick="joinDrive('${rec.id}','${leadTag}','${platform}','${region}','${loc}')"
-            style="background:var(--amber);color:var(--pitch);font-family:'Russo One',sans-serif;font-size:12px;text-transform:uppercase;padding:9px 18px;border:none;cursor:pointer;letter-spacing:0.5px;">
-            Join This Drive
-          </button>
-          <span style="font-size:11px;color:var(--smoke);">${access}</span>
-        </div>
-      </div>`;
-    }).join('');
-
-  } catch(e) {
-    loadingEl.style.display = 'none';
-    listEl.innerHTML = `<div style="font-size:13px;color:#ff6b6b;">Could not load drives. Try again.</div>`;
-  }
+    var f = encodeURIComponent('AND({SignupType}="Drive Lead",{JoinStatus}="Active")');
+    var r = await fetch(AT_LAST_DRIVE + '?filterByFormula=' + f + '&maxRecords=20', {headers:AT_H});
+    var d = await r.json();
+    loadEl.style.display = 'none';
+    if (!d.records || !d.records.length) { listEl.innerHTML = '<p style="font-size:13px;color:var(--smoke)">No open drives yet.</p>'; return; }
+    var myPlat = (playerData && playerData.Platform ? playerData.Platform : '').toLowerCase();
+    var html = '';
+    d.records.forEach(function(rec) {
+      var fl = rec.fields;
+      var lt = fl.Gamertag || 'Unknown';
+      var tm = fl['Staging Time'] || 'TBD';
+      var lc = fl.StagingLocation || 'TBD';
+      var tp = fl['Drive Type'] || 'Open';
+      var pl = fl.Platform || '';
+      var rg = fl.Region || '';
+      var match = myPlat && pl && myPlat.indexOf(pl.split(' ')[0].toLowerCase()) >= 0;
+      var border = match ? 'var(--cyan)' : 'var(--edge)';
+      html += '<div style="background:var(--pitch);border:1px solid ' + border + ';padding:14px;margin-bottom:10px;">';
+      html += '<div style="font-size:16px;color:var(--bone);margin-bottom:8px;">' + lt + (match ? ' <span style="font-size:10px;color:var(--cyan);border:1px solid var(--cyan);padding:1px 6px;">MATCH</span>' : '') + '</div>';
+      html += '<div style="font-size:12px;color:var(--smoke);margin-bottom:10px;">' + tm + ' - ' + lc + ' - ' + tp + ' - ' + pl + (rg ? ' ' + rg : '') + '</div>';
+      html += '<button onclick="joinDrive(\'' + rec.id + '\',\'' + lt + '\',\'' + pl + '\',\'' + rg + '\',\'' + lc + '\')" style="background:var(--amber);color:#000;font-size:12px;text-transform:uppercase;padding:9px 18px;border:none;cursor:pointer;font-weight:800;">Join This Drive</button>';
+      html += '</div>';
+    });
+    listEl.innerHTML = html;
+  } catch(e) { document.getElementById('drives-loading').style.display='none'; listEl.innerHTML='<p style="color:#f66">Could not load drives.</p>'; }
 }
 
-async function joinDrive(leadRecordId, leaderTag, platform, region, location) {
-  const msg = document.getElementById('join-msg');
-  if (!verifiedId) { msg.textContent='Not verified.'; msg.className='submission-msg show error'; return; }
-  msg.textContent='Joining...'; msg.className='submission-msg show success';
-
-  const linkedSlot = `${platform}||${region}||${location}||${leaderTag}`;
-
+async function joinDrive(rid, lt, pl, rg, lc) {
+  var msg = document.getElementById('join-msg');
+  if (!verifiedId) { showMsg(msg,'Not verified.','error'); return; }
+  showMsg(msg,'Joining...','success');
   try {
-    await fetch(`${AT_LAST_DRIVE}/${verifiedId}`, {
-      method: 'PATCH',
-      headers: AT_H,
-      body: JSON.stringify({ fields: {
-        'SignupType': 'Participant',
-        'JoinStatus': 'Active',
-        'LinkedSlot': linkedSlot
-      }})
-    });
-    msg.innerHTML = `✅ You joined <strong>${leaderTag}</strong>'s drive!<br>
-      <div style="margin-top:10px;padding:10px 12px;background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.2);">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--cyan);margin-bottom:6px;">Next Step</div>
-        <div style="font-size:13px;color:var(--bone);">Add <strong>${leaderTag}</strong> on ${platform} and send them a message: <em>"I joined your Last Drive on 56ViceLane — see you November 18."</em></div>
-      </div>`;
+    await fetch(AT_LAST_DRIVE + '/' + verifiedId, {method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{SignupType:'Participant',JoinStatus:'Active',LinkedSlot:pl+'||'+rg+'||'+lc+'||'+lt}})});
+    msg.innerHTML = 'Joined <b>' + lt + '</b> drive! Add them on ' + pl + ' and message them you joined.';
     msg.className = 'submission-msg show success';
-  } catch(e) {
-    msg.textContent='Join failed — please try again.'; msg.className='submission-msg show error';
-  }
+  } catch(e) { showMsg(msg,'Join failed.','error'); }
 }
 
 async function saveLead() {
-  const time     = document.getElementById('lead-time').value;
-  const location = document.getElementById('lead-location').value;
-  const type     = document.getElementById('lead-type').value;
-  const access   = document.getElementById('lead-access').value;
-  const msg      = document.getElementById('lead-msg');
-
-  if (!time || !location || !type) { msg.textContent='Please fill in all fields.'; msg.className='submission-msg show error'; return; }
-  if (!verifiedId) { msg.textContent='Verification error — reload and try again.'; msg.className='submission-msg show error'; return; }
-  msg.textContent='Saving...'; msg.className='submission-msg show success';
-
+  var time = document.getElementById('lead-time').value;
+  var loc = document.getElementById('lead-location').value;
+  var tp = document.getElementById('lead-type').value;
+  var ac = document.getElementById('lead-access').value;
+  var msg = document.getElementById('lead-msg');
+  if (!time || !loc || !tp) { showMsg(msg,'Fill in all fields.','error'); return; }
+  if (!verifiedId) { showMsg(msg,'Not verified.','error'); return; }
+  showMsg(msg,'Saving...','success');
   try {
-    await fetch(`${AT_LAST_DRIVE}/${verifiedId}`, {
-      method: 'PATCH',
-      headers: AT_H,
-      body: JSON.stringify({ fields: {
-        'SignupType': 'Drive Lead',
-        'IsOrganizer': true,
-        'JoinStatus': 'Active',
-        'Staging Time': time,
-        'StagingLocation': location,
-        'Drive Type': type,
-        'AccessType': access
-      }})
-    });
-    msg.innerHTML = `✅ Your drive is live! Others can now find and join your slot.<br>
-      <div style="margin-top:8px;font-size:12px;color:var(--smoke);">When someone joins, add them on your platform before November 18.</div>`;
-    msg.className = 'submission-msg show success';
-    const badges = document.getElementById('profile-badges');
-    if (badges && !badges.querySelector('.badge-lead')) {
-      const b = document.createElement('span');
-      b.className = 'badge badge-lead';
-      b.textContent = '⭐ Drive Lead';
-      badges.prepend(b);
-    }
-  } catch(e) {
-    msg.textContent='Save failed — please try again.'; msg.className='submission-msg show error';
-  }
+    await fetch(AT_LAST_DRIVE + '/' + verifiedId, {method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{SignupType:'Drive Lead',IsOrganizer:true,JoinStatus:'Active','Staging Time':time,StagingLocation:loc,'Drive Type':tp,AccessType:ac}})});
+    showMsg(msg,'Your drive is live!','success');
+  } catch(e) { showMsg(msg,'Save failed.','error'); }
 }
-// Auto-scroll to manage section if hash = #manage
-window.addEventListener('load', () => {
-  if (window.location.hash === '#manage') {
-    setTimeout(() => {
-      document.getElementById('drive-manage-section')?.scrollIntoView({behavior:'smooth'});
-    }, 800);
-  }
-});
-
-// ── ADMIN ─────────────────────────────────────────────────────
-const PLATE_STYLES = [
-  { id: 'founder',              label: '🏆 Founder' },
-  { id: 'vehicle-male-exotic',  label: '🚗 Male Exotic' },
-  { id: 'vehicle-female-exotic',label: '🚗 Female Exotic' },
-  { id: 'color-red',            label: '🔴 Red' },
-  { id: 'color-blue',           label: '🔵 Blue' },
-  { id: 'color-purple',         label: '🟣 Purple' },
-  { id: 'color-amber',          label: '🟡 Amber' },
-  { id: 'white',                label: '⬜ White' },
-  { id: 'black',                label: '⬛ Black' }
-];
-
-let adminVerified = false;
-let adminTargetId = null;
-let adminTargetPlates = [];
 
 async function unlockAdmin() {
-  const pass = document.getElementById('admin-pass-input').value.trim();
-  const msg  = document.getElementById('admin-gate-msg');
-  if (!pass) { msg.textContent='Enter a password.'; msg.className='submission-msg show error'; return; }
-
-  // First time setup — no password set yet
-  const storedPass = playerData?.AdminPass || '';
-  if (!storedPass) {
-    // Set the password
+  var pass = document.getElementById('admin-pass-input').value.trim();
+  var msg = document.getElementById('admin-gate-msg');
+  if (!pass) { showMsg(msg,'Enter a password.','error'); return; }
+  var stored = playerData.AdminPass || '';
+  if (!stored) {
     try {
-      await fetch(`${AT_LAST_DRIVE}/${verifiedId}`, {
-        method: 'PATCH', headers: AT_H,
-        body: JSON.stringify({ fields: { 'AdminPass': pass } })
-      });
+      await fetch(AT_LAST_DRIVE + '/' + verifiedId, {method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{AdminPass:pass}})});
       playerData.AdminPass = pass;
-      adminVerified = true;
       document.getElementById('admin-gate').style.display = 'none';
       document.getElementById('admin-panel').style.display = 'block';
-      msg.textContent = ''; msg.className = 'submission-msg';
-    } catch(e) {
-      msg.textContent='Failed to save password.'; msg.className='submission-msg show error';
-    }
+      loadAllPlayers();
+    } catch(e) { showMsg(msg,'Failed to save.','error'); }
     return;
   }
-
-  // Check password
-  if (pass !== storedPass) {
-    msg.textContent='Incorrect password.'; msg.className='submission-msg show error'; return;
-  }
-
-  adminVerified = true;
+  if (pass !== stored) { showMsg(msg,'Incorrect password.','error'); return; }
   document.getElementById('admin-gate').style.display = 'none';
   document.getElementById('admin-panel').style.display = 'block';
-  msg.textContent = ''; msg.className = 'submission-msg';
-  loadAllPlayers(); // preload player list in background
-
-let allPlayers = [];
+  loadAllPlayers();
+}
 
 async function loadAllPlayers() {
-  if (allPlayers.length) return; // already loaded
+  if (allPlayers.length) return;
   try {
-    const r = await fetch(`${AT_LAST_DRIVE}?fields%5B%5D=Gamertag&fields%5B%5D=OwnedPlates&maxRecords=200`, {headers:AT_H});
-    const d = await r.json();
-    allPlayers = (d.records || []).map(rec => ({
-      id: rec.id,
-      tag: rec.fields.Gamertag || '',
-      plates: rec.fields.OwnedPlates || ''
-    })).filter(p => p.tag);
-  } catch(e) {}
+    var r = await fetch(AT_LAST_DRIVE + '?fields[]=Gamertag&fields[]=OwnedPlates&maxRecords=200', {headers:AT_H});
+    var d = await r.json();
+    allPlayers = (d.records || []).map(function(rec){ return {id:rec.id, tag:rec.fields.Gamertag||'', plates:rec.fields.OwnedPlates||''}; }).filter(function(p){ return !!p.tag; });
+  } catch(e){}
 }
 
 function adminFilterPlayers(val) {
-  const dropdown = document.getElementById('admin-player-dropdown');
-  if (!val || val.length < 1) { dropdown.style.display = 'none'; return; }
-
-  loadAllPlayers().then(() => {
-    const matches = allPlayers.filter(p =>
-      p.tag.toLowerCase().includes(val.toLowerCase())
-    ).slice(0, 10);
-
-    if (!matches.length) { dropdown.style.display = 'none'; return; }
-
-    dropdown.innerHTML = matches.map(p =>
-      `<div onclick="adminSelectPlayer('${p.id}','${p.tag}','${p.plates.replace(/'/g,"\\'")}' )"
-        style="padding:10px 14px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;color:var(--bone);border-bottom:1px solid var(--edge);"
-        onmouseover="this.style.background='var(--asphalt)'" onmouseout="this.style.background=''"
-      >${p.tag}<span style="font-size:11px;color:var(--smoke);font-weight:400;text-transform:none;margin-left:8px;">${p.plates||'no plates'}</span></div>`
-    ).join('');
-    dropdown.style.display = 'block';
+  var dd = document.getElementById('admin-player-dropdown');
+  if (!val) { dd.style.display = 'none'; return; }
+  loadAllPlayers().then(function() {
+    var matches = allPlayers.filter(function(p){ return p.tag.toLowerCase().indexOf(val.toLowerCase()) >= 0; }).slice(0,10);
+    if (!matches.length) { dd.style.display = 'none'; return; }
+    var html = '';
+    matches.forEach(function(p) {
+      var div = document.createElement('div');
+      div.style.padding = '10px 14px';
+      div.style.cursor = 'pointer';
+      div.style.fontSize = '14px';
+      div.style.fontWeight = '800';
+      div.style.textTransform = 'uppercase';
+      div.style.color = 'var(--bone)';
+      div.style.borderBottom = '1px solid var(--edge)';
+      div.innerHTML = p.tag + ' <span style="font-size:11px;color:var(--smoke);font-weight:400;text-transform:none;">' + (p.plates || 'no plates') + '</span>';
+      div.addEventListener('mouseover', function(){ this.style.background = 'var(--asphalt)'; });
+      div.addEventListener('mouseout', function(){ this.style.background = ''; });
+      div.addEventListener('click', function(){ adminSelectPlayer(p.id, p.tag, p.plates); });
+      dd.appendChild(div);
+    });
+    dd.style.display = 'block';
   });
 }
 
 function adminSelectPlayer(id, tag, plates) {
   adminTargetId = id;
-  adminTargetPlates = plates ? plates.split(',').map(p => p.trim()).filter(Boolean) : [];
-
+  adminTargetPlates = plates ? plates.split(',').map(function(p){ return p.trim(); }).filter(Boolean) : [];
   document.getElementById('admin-search-tag').value = tag;
   document.getElementById('admin-player-dropdown').style.display = 'none';
-
   document.getElementById('admin-found-tag').textContent = tag;
-  document.getElementById('admin-found-plates').textContent = adminTargetPlates.length
-    ? 'Current plates: ' + adminTargetPlates.join(', ')
-    : 'No plates owned yet.';
-
-  // Build checkboxes
-  const grid = document.getElementById('admin-plate-checkboxes');
-  grid.innerHTML = PLATE_STYLES.map(p => {
-    const owned = adminTargetPlates.includes(p.id);
-    return `<label class="plate-check-item${owned?' owned':''}" id="chk-wrap-${p.id}">
-      <input type="checkbox" id="chk-${p.id}" value="${p.id}" ${owned?'checked':''}>
-      <span class="plate-check-label">${p.label}${owned?' ✓':''}</span>
-    </label>`;
-  }).join('');
-
+  document.getElementById('admin-found-plates').textContent = adminTargetPlates.length ? 'Current: ' + adminTargetPlates.join(', ') : 'No plates yet.';
+  var grid = document.getElementById('admin-plate-checkboxes');
+  var html = '';
+  PLATE_STYLES.forEach(function(p) {
+    var owned = adminTargetPlates.indexOf(p.id) >= 0;
+    html += '<label class="plate-check-item' + (owned ? ' owned' : '') + '">';
+    html += '<input type="checkbox" id="chk-' + p.id + '" value="' + p.id + '" ' + (owned ? 'checked' : '') + '>';
+    html += '<span class="plate-check-label">' + p.label + (owned ? ' ✓' : '') + '</span></label>';
+  });
+  grid.innerHTML = html;
   document.getElementById('admin-player-found').style.display = 'block';
   document.getElementById('admin-search-msg').className = 'submission-msg';
 }
 
-async function adminSearchPlayer() {
-  // Legacy — now handled by autocomplete, but keep as fallback
-  const tag = document.getElementById('admin-search-tag').value.trim();
-  if (!tag) return;
-  await loadAllPlayers();
-  const match = allPlayers.find(p => p.tag.toLowerCase() === tag.toLowerCase());
-  if (match) {
-    adminSelectPlayer(match.id, match.tag, match.plates);
-  } else {
-    document.getElementById('admin-search-msg').textContent = 'Player not found.';
-    document.getElementById('admin-search-msg').className = 'submission-msg show error';
-  }
-}
-
 async function adminGiftPlates() {
-  const msg = document.getElementById('admin-gift-msg');
-  if (!adminTargetId) { msg.textContent='No player selected.'; msg.className='submission-msg show error'; return; }
-
-  // Collect checked plates
-  const selected = PLATE_STYLES
-    .filter(p => document.getElementById(`chk-${p.id}`)?.checked)
-    .map(p => p.id);
-
-  if (!selected.length) { msg.textContent='Select at least one plate.'; msg.className='submission-msg show error'; return; }
-
-  msg.textContent='Saving...'; msg.className='submission-msg show success';
-
+  var msg = document.getElementById('admin-gift-msg');
+  if (!adminTargetId) { showMsg(msg,'No player selected.','error'); return; }
+  var selected = PLATE_STYLES.filter(function(p){ var el = document.getElementById('chk-' + p.id); return el && el.checked; }).map(function(p){ return p.id; });
+  if (!selected.length) { showMsg(msg,'Select at least one plate.','error'); return; }
+  showMsg(msg,'Saving...','success');
   try {
-    await fetch(`${AT_LAST_DRIVE}/${adminTargetId}`, {
-      method: 'PATCH', headers: AT_H,
-      body: JSON.stringify({ fields: { 'OwnedPlates': selected.join(', ') } })
-    });
-
-    document.getElementById('admin-found-plates').textContent = 'Current plates: ' + selected.join(', ');
-    adminTargetPlates = selected;
-    msg.textContent = `✅ Plates saved for ${document.getElementById('admin-found-tag').textContent}`;
-    msg.className = 'submission-msg show success';
-  } catch(e) {
-    msg.textContent='Save failed — try again.'; msg.className='submission-msg show error';
-  }
+    await fetch(AT_LAST_DRIVE + '/' + adminTargetId, {method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{OwnedPlates:selected.join(', ')}})});
+    document.getElementById('admin-found-plates').textContent = 'Current: ' + selected.join(', ');
+    showMsg(msg,'Plates saved for ' + document.getElementById('admin-found-tag').textContent, 'success');
+  } catch(e) { showMsg(msg,'Save failed.','error'); }
 }
 
 async function saveAdminPass() {
-  const pass = document.getElementById('admin-new-pass').value.trim();
-  const msg  = document.getElementById('admin-pass-msg');
-  if (!pass) { msg.textContent='Enter a new password.'; msg.className='submission-msg show error'; return; }
-
+  var pass = document.getElementById('admin-new-pass').value.trim();
+  var msg = document.getElementById('admin-pass-msg');
+  if (!pass) { showMsg(msg,'Enter a password.','error'); return; }
   try {
-    await fetch(`${AT_LAST_DRIVE}/${verifiedId}`, {
-      method: 'PATCH', headers: AT_H,
-      body: JSON.stringify({ fields: { 'AdminPass': pass } })
-    });
+    await fetch(AT_LAST_DRIVE + '/' + verifiedId, {method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{AdminPass:pass}})});
     playerData.AdminPass = pass;
-    msg.textContent='✅ Password updated.'; msg.className='submission-msg show success';
     document.getElementById('admin-new-pass').value = '';
-    setTimeout(() => { msg.className='submission-msg'; }, 3000);
-  } catch(e) {
-    msg.textContent='Failed — try again.'; msg.className='submission-msg show error';
-  }
+    showMsg(msg,'Password updated.','success');
+    setTimeout(function(){ msg.className='submission-msg'; }, 3000);
+  } catch(e) { showMsg(msg,'Failed.','error'); }
 }
+
+window.addEventListener('load', function() {
+  if (window.location.hash === '#manage') {
+    setTimeout(function(){ var el = document.getElementById('drive-manage-section'); if(el) el.scrollIntoView({behavior:'smooth'}); }, 800);
+  }
+});
 
 // ── TICKER ────────────────────────────────────────────────────
 fetch('/articles.json?v='+Date.now()).then(r=>r.json()).then(a=>{
@@ -1139,6 +929,7 @@ document.getElementById('menu-toggle')?.addEventListener('click',()=>{
 
 // ── LOAD ──────────────────────────────────────────────────────
 loadProfile();
+
 </script>
 </body>
 </html>
