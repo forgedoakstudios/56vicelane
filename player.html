@@ -207,8 +207,6 @@
     </div>
 
     <!-- DRIVE MANAGEMENT -->
-
-    <!-- DRIVE MANAGEMENT -->
     <div class="submission-card" id="drive-manage-section" style="scroll-margin-top:20px;">
       <div class="submission-label">Drive Settings</div>
       <div class="submission-title" id="manage-title">Manage Your Drive</div>
@@ -288,6 +286,10 @@
         <div class="submission-msg" id="manage-action-msg"></div>
       </div>
     </div>
+
+    <!-- SUBMIT TO EDITORIAL -->
+    <div class="submission-card">
+      <div class="submission-label">Submit Your Voice</div>
       <div class="submission-title">Trevor's Take · Letters to the Editor</div>
       <div class="submission-sub">Got an opinion on GTA5, the Last Drive, or GTA6? Submit to Trevor's Take for hot takes, or Letters to the Editor for community letters. We read every submission.</div>
       <select class="submission-select" id="submission-type">
@@ -324,16 +326,33 @@ const AT_BASE      = 'appVViGbmcu5gbn8B';
 const AT_LAST_DRIVE = `https://api.airtable.com/v0/${AT_BASE}/Last%20Drive`;
 const AT_SUBS      = `https://api.airtable.com/v0/${AT_BASE}/Submissions`;
 const AT_H         = { 'Authorization': `Bearer ${AT_TOKEN}`, 'Content-Type': 'application/json' };
-// ── CONSTANTS ────────────────────────────────────────────────
-const AT_TOKEN     = 'pattxJ12NQzpHMejD.2eb992f22f1a43e032d866df028dbb33958635234f6cfd30769e3e12f10d5588';
-const AT_BASE      = 'appVViGbmcu5gbn8B';
-const AT_LAST_DRIVE = `https://api.airtable.com/v0/${AT_BASE}/Last%20Drive`;
-const AT_SUBS      = `https://api.airtable.com/v0/${AT_BASE}/Submissions`;
-const AT_H         = { 'Authorization': `Bearer ${AT_TOKEN}`, 'Content-Type': 'application/json' };
 
 let playerData = null;
-let verifiedId = null;
+const isOwner = false; // future: set true if player verifies via email
 
+// ── PLATE BACKGROUND ─────────────────────────────────────────
+function getPlateBackground(style) {
+  switch(style) {
+    case 'founder': return `url('/images/plate-founder.png')`;
+    case 'vehicle-male-exotic': return `url('/images/plate-male-exotic.png')`;
+    case 'vehicle-female-exotic': return `url('/images/plate-female-exotic.png')`;
+    case 'color-red': return `linear-gradient(135deg,#6B0000,#CC2200)`;
+    case 'color-blue': return `linear-gradient(135deg,#000C6B,#0033CC)`;
+    case 'color-purple': return `linear-gradient(135deg,#2D0060,#6600AA)`;
+    case 'color-amber': return `linear-gradient(135deg,#7A4A00,#C8820A)`;
+    case 'white': return `#EFEDE8`;
+    case 'black':
+    default: return `#0a0a0a`;
+  }
+}
+
+function isPhotoPlate(style) {
+  return style === 'founder' || (style && style.startsWith('vehicle-'));
+}
+
+// ── LOAD PROFILE ─────────────────────────────────────────────
+async function loadProfile() {
+  const params = new URLSearchParams(window.location.search);
   const gamertag = params.get('g') || params.get('gamertag') || '';
 
   if (!gamertag) {
@@ -547,8 +566,18 @@ async function submitContent() {
     msg.className = 'submission-msg show success';
     document.getElementById('submission-text').value = '';
     document.getElementById('submission-type').value = '';
+  } catch(e) {
+    msg.textContent = 'Submission failed. Please try again.';
+    msg.className = 'submission-msg show error';
+  }
+
+  btn.textContent = 'Submit';
+  btn.disabled = false;
+}
 
 // ── DRIVE MANAGEMENT ─────────────────────────────────────────
+let verifiedId = null;
+
 async function verifyManage() {
   const email = document.getElementById('manage-email')?.value.trim();
   const msg   = document.getElementById('manage-verify-msg');
@@ -569,28 +598,25 @@ async function verifyManage() {
     verifiedId = d.records[0].id;
     playerData._id = verifiedId;
     const fields = d.records[0].fields;
-    const isLead = fields.SignupType === 'Drive Lead';
-    const currentSlot  = fields['Staging Time'] || '';
-    const currentLoc   = fields.StagingLocation || '';
-    const currentType  = fields['Drive Type'] || '';
-    const linkedSlot   = fields.LinkedSlot || '';
+    const isLead      = fields.SignupType === 'Drive Lead';
+    const currentSlot = fields['Staging Time'] || '';
+    const currentLoc  = fields.StagingLocation || '';
+    const currentType = fields['Drive Type'] || '';
+    const linkedSlot  = fields.LinkedSlot || '';
 
     document.getElementById('manage-verify-wrap').style.display = 'none';
     document.getElementById('manage-panel').style.display = 'block';
 
-    // Show current status
+    // Build current status block
     let statusHTML = `<div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;font-size:10px;color:var(--smoke);margin-bottom:6px;">Your Current Status</div>`;
     statusHTML += `<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">`;
     statusHTML += `<span style="font-family:'Russo One',sans-serif;font-size:15px;color:var(--amber);">${isLead ? '⭐ Drive Lead' : '🚗 Participant'}</span>`;
     if (currentSlot) statusHTML += `<span style="font-size:12px;color:var(--smoke);">${currentSlot}</span>`;
     if (currentLoc)  statusHTML += `<span style="font-size:12px;color:var(--smoke);">· ${currentLoc}</span>`;
     if (currentType) statusHTML += `<span style="font-size:12px;color:var(--smoke);">· ${currentType}</span>`;
-    if (linkedSlot && !isLead) {
-      const parts = linkedSlot.split('||');
-      const leaderTag = parts[3] || '';
-      if (leaderTag) statusHTML += `<span style="font-size:12px;color:var(--cyan);">· Lead: ${leaderTag}</span>`;
-    }
     statusHTML += `</div>`;
+
+    // If already joined a drive, show leader info
     if (linkedSlot && !isLead) {
       const parts = linkedSlot.split('||');
       const leaderTag = parts[3] || '';
@@ -602,11 +628,11 @@ async function verifyManage() {
         </div>`;
       }
     }
+
     document.getElementById('manage-current').innerHTML = statusHTML;
 
     if (isLead) {
       document.getElementById('opt-lead')?.classList.add('active');
-      // Pre-fill lead form with their existing data
       if (currentSlot) document.getElementById('lead-time').value = currentSlot;
       if (currentLoc)  document.getElementById('lead-location').value = currentLoc;
       if (currentType) document.getElementById('lead-type').value = currentType;
@@ -615,7 +641,6 @@ async function verifyManage() {
     }
 
     msg.className = 'submission-msg';
-
     if (window.location.hash === '#manage') {
       document.getElementById('drive-manage-section')?.scrollIntoView({behavior:'smooth'});
     }
@@ -650,7 +675,6 @@ async function loadAvailableDrives() {
     const f = encodeURIComponent(`AND({SignupType}="Drive Lead",{JoinStatus}="Active")`);
     const r = await fetch(`${AT_LAST_DRIVE}?filterByFormula=${f}&maxRecords=20`, {headers:AT_H});
     const d = await r.json();
-
     loadingEl.style.display = 'none';
 
     if (!d.records?.length) {
@@ -658,32 +682,32 @@ async function loadAvailableDrives() {
       return;
     }
 
-    const myPlatform = playerData?.Platform || '';
+    const myPlatform = (playerData?.Platform || '').toLowerCase();
 
     listEl.innerHTML = d.records.map(rec => {
-      const f = rec.fields;
-      const tag      = f.Gamertag || 'Unknown';
-      const time     = f['Staging Time'] || 'TBD';
-      const loc      = f.StagingLocation || 'TBD';
-      const type     = f['Drive Type'] || 'Open Drive';
-      const platform = f.Platform || '';
-      const region   = f.Region || '';
-      const access   = f.AccessType || 'Open';
-      const isMatch  = myPlatform && platform && myPlatform.toLowerCase().includes(platform.split(' ')[0].toLowerCase());
+      const fl       = rec.fields;
+      const leadTag  = fl.Gamertag || 'Unknown';
+      const time     = fl['Staging Time'] || 'TBD';
+      const loc      = fl.StagingLocation || 'TBD';
+      const type     = fl['Drive Type'] || 'Open Drive';
+      const platform = fl.Platform || '';
+      const region   = fl.Region || '';
+      const access   = fl.AccessType || 'Open';
+      const isMatch  = myPlatform && platform && myPlatform.includes(platform.split(' ')[0].toLowerCase());
 
-      return `<div style="background:var(--pitch);border:1px solid ${isMatch?'var(--cyan)':'var(--edge)'};padding:14px 16px;margin-bottom:10px;border-radius:2px;">
+      return `<div style="background:var(--pitch);border:1px solid ${isMatch?'var(--cyan)':'var(--edge)'};padding:14px 16px;margin-bottom:10px;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
-          <div style="font-family:'Russo One',sans-serif;font-size:16px;text-transform:uppercase;color:var(--bone);">${tag}</div>
-          ${isMatch?'<span style="font-family:\'Barlow Condensed\',sans-serif;font-weight:800;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--cyan);border:1px solid var(--cyan);padding:2px 8px;">✓ Platform Match</span>':''}
+          <div style="font-family:'Russo One',sans-serif;font-size:16px;text-transform:uppercase;color:var(--bone);">${leadTag}</div>
+          ${isMatch?'<span style="font-family:\'Barlow Condensed\',sans-serif;font-weight:800;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--cyan);border:1px solid var(--cyan);padding:2px 8px;">✓ Match</span>':''}
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px;">
           <div style="font-size:12px;color:var(--smoke);">⏰ ${time}</div>
           <div style="font-size:12px;color:var(--smoke);">📍 ${loc}</div>
           <div style="font-size:12px;color:var(--smoke);">🏁 ${type}</div>
-          <div style="font-size:12px;color:var(--smoke);">🎮 ${platform} · ${region}</div>
+          <div style="font-size:12px;color:var(--smoke);">🎮 ${platform}${region?' · '+region:''}</div>
         </div>
         <div style="display:flex;gap:8px;align-items:center;">
-          <button onclick="joinDrive('${rec.id}','${tag}','${platform}','${region}','${loc}')" 
+          <button onclick="joinDrive('${rec.id}','${leadTag}','${platform}','${region}','${loc}')"
             style="background:var(--amber);color:var(--pitch);font-family:'Russo One',sans-serif;font-size:12px;text-transform:uppercase;padding:9px 18px;border:none;cursor:pointer;letter-spacing:0.5px;">
             Join This Drive
           </button>
@@ -701,10 +725,8 @@ async function loadAvailableDrives() {
 async function joinDrive(leadRecordId, leaderTag, platform, region, location) {
   const msg = document.getElementById('join-msg');
   if (!verifiedId) { msg.textContent='Please verify your email first.'; msg.className='submission-msg show error'; return; }
-
   msg.textContent='Joining...'; msg.className='submission-msg show success';
 
-  // LinkedSlot format: Platform||Region||Location||LeaderGamertag
   const linkedSlot = `${platform}||${region}||${location}||${leaderTag}`;
 
   try {
@@ -719,14 +741,11 @@ async function joinDrive(leadRecordId, leaderTag, platform, region, location) {
     });
 
     msg.innerHTML = `✅ You joined <strong>${leaderTag}</strong>'s drive!<br>
-      <div style="margin-top:10px;padding:10px 12px;background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.2);border-radius:2px;">
+      <div style="margin-top:10px;padding:10px 12px;background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.2);">
         <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--cyan);margin-bottom:6px;">Next Step</div>
         <div style="font-size:13px;color:var(--bone);">Add <strong>${leaderTag}</strong> on ${platform} and send them a message: <em>"I joined your Last Drive on 56ViceLane — see you November 18."</em></div>
       </div>`;
     msg.className = 'submission-msg show success';
-
-    // Refresh current status display
-    document.getElementById('manage-current').querySelector('span').textContent = '🚗 Participant';
 
   } catch(e) {
     msg.textContent='Join failed — please try again.'; msg.className='submission-msg show error';
@@ -746,7 +765,6 @@ async function saveLead() {
   if (!verifiedId) {
     msg.textContent='Verification error — reload and try again.'; msg.className='submission-msg show error'; return;
   }
-
   msg.textContent='Saving...'; msg.className='submission-msg show success';
 
   try {
@@ -765,17 +783,15 @@ async function saveLead() {
     });
 
     msg.innerHTML = `✅ Your drive is live! Others can now find and join your slot.<br>
-      <div style="margin-top:10px;font-size:12px;color:var(--smoke);">When someone joins you'll see their gamertag in your drive details. Add them on your platform before November 18.</div>`;
+      <div style="margin-top:8px;font-size:12px;color:var(--smoke);">When someone joins, add them on your platform before November 18.</div>`;
     msg.className = 'submission-msg show success';
 
-    // Update profile badges
-    document.querySelector('#profile-badges .badge-participant')?.remove();
     const badges = document.getElementById('profile-badges');
     if (badges && !badges.querySelector('.badge-lead')) {
-      const leadBadge = document.createElement('span');
-      leadBadge.className = 'badge badge-lead';
-      leadBadge.textContent = '⭐ Drive Lead';
-      badges.prepend(leadBadge);
+      const b = document.createElement('span');
+      b.className = 'badge badge-lead';
+      b.textContent = '⭐ Drive Lead';
+      badges.prepend(b);
     }
 
   } catch(e) {
@@ -783,6 +799,12 @@ async function saveLead() {
   }
 }
 
+// Auto-scroll to manage section if hash = #manage
+window.addEventListener('load', () => {
+  if (window.location.hash === '#manage') {
+    setTimeout(() => {
+      document.getElementById('drive-manage-section')?.scrollIntoView({behavior:'smooth'});
+    }, 800);
   }
 });
 
