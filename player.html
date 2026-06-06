@@ -364,10 +364,9 @@
 
         <!-- Search player -->
         <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;font-size:10px;color:var(--smoke);margin-bottom:8px;">Find Player</div>
-        <div class="pic-url-row" style="margin-bottom:14px;">
-          <input type="text" class="pic-url-input" id="admin-search-tag" placeholder="Enter gamertag...">
-          <button class="pic-save-btn" onclick="adminSearchPlayer()">Find</button>
-        </div>
+        <input type="text" class="pic-url-input" id="admin-search-tag" placeholder="Type gamertag..." 
+          style="width:100%;margin-bottom:6px;" oninput="adminFilterPlayers(this.value)" autocomplete="off">
+        <div id="admin-player-dropdown" style="display:none;background:var(--pitch);border:1px solid var(--edge);max-height:180px;overflow-y:auto;margin-bottom:10px;"></div>
         <div class="submission-msg" id="admin-search-msg"></div>
 
         <!-- Player found panel -->
@@ -999,49 +998,81 @@ async function unlockAdmin() {
   document.getElementById('admin-gate').style.display = 'none';
   document.getElementById('admin-panel').style.display = 'block';
   msg.textContent = ''; msg.className = 'submission-msg';
+  loadAllPlayers(); // preload player list in background
+
+let allPlayers = [];
+
+async function loadAllPlayers() {
+  if (allPlayers.length) return; // already loaded
+  try {
+    const r = await fetch(`${AT_LAST_DRIVE}?fields%5B%5D=Gamertag&fields%5B%5D=OwnedPlates&maxRecords=200`, {headers:AT_H});
+    const d = await r.json();
+    allPlayers = (d.records || []).map(rec => ({
+      id: rec.id,
+      tag: rec.fields.Gamertag || '',
+      plates: rec.fields.OwnedPlates || ''
+    })).filter(p => p.tag);
+  } catch(e) {}
+}
+
+function adminFilterPlayers(val) {
+  const dropdown = document.getElementById('admin-player-dropdown');
+  if (!val || val.length < 1) { dropdown.style.display = 'none'; return; }
+
+  loadAllPlayers().then(() => {
+    const matches = allPlayers.filter(p =>
+      p.tag.toLowerCase().includes(val.toLowerCase())
+    ).slice(0, 10);
+
+    if (!matches.length) { dropdown.style.display = 'none'; return; }
+
+    dropdown.innerHTML = matches.map(p =>
+      `<div onclick="adminSelectPlayer('${p.id}','${p.tag}','${p.plates.replace(/'/g,"\\'")}' )"
+        style="padding:10px 14px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;color:var(--bone);border-bottom:1px solid var(--edge);"
+        onmouseover="this.style.background='var(--asphalt)'" onmouseout="this.style.background=''"
+      >${p.tag}<span style="font-size:11px;color:var(--smoke);font-weight:400;text-transform:none;margin-left:8px;">${p.plates||'no plates'}</span></div>`
+    ).join('');
+    dropdown.style.display = 'block';
+  });
+}
+
+function adminSelectPlayer(id, tag, plates) {
+  adminTargetId = id;
+  adminTargetPlates = plates ? plates.split(',').map(p => p.trim()).filter(Boolean) : [];
+
+  document.getElementById('admin-search-tag').value = tag;
+  document.getElementById('admin-player-dropdown').style.display = 'none';
+
+  document.getElementById('admin-found-tag').textContent = tag;
+  document.getElementById('admin-found-plates').textContent = adminTargetPlates.length
+    ? 'Current plates: ' + adminTargetPlates.join(', ')
+    : 'No plates owned yet.';
+
+  // Build checkboxes
+  const grid = document.getElementById('admin-plate-checkboxes');
+  grid.innerHTML = PLATE_STYLES.map(p => {
+    const owned = adminTargetPlates.includes(p.id);
+    return `<label class="plate-check-item${owned?' owned':''}" id="chk-wrap-${p.id}">
+      <input type="checkbox" id="chk-${p.id}" value="${p.id}" ${owned?'checked':''}>
+      <span class="plate-check-label">${p.label}${owned?' ✓':''}</span>
+    </label>`;
+  }).join('');
+
+  document.getElementById('admin-player-found').style.display = 'block';
+  document.getElementById('admin-search-msg').className = 'submission-msg';
 }
 
 async function adminSearchPlayer() {
+  // Legacy — now handled by autocomplete, but keep as fallback
   const tag = document.getElementById('admin-search-tag').value.trim();
-  const msg = document.getElementById('admin-search-msg');
-  if (!tag) { msg.textContent='Enter a gamertag.'; msg.className='submission-msg show error'; return; }
-  msg.textContent='Searching...'; msg.className='submission-msg show success';
-
-  try {
-    const f = encodeURIComponent(`{Gamertag}="${tag}"`);
-    const r = await fetch(`${AT_LAST_DRIVE}?filterByFormula=${f}&maxRecords=1`, {headers:AT_H});
-    const d = await r.json();
-
-    if (!d.records?.length) {
-      msg.textContent='Player not found.'; msg.className='submission-msg show error';
-      document.getElementById('admin-player-found').style.display = 'none';
-      return;
-    }
-
-    adminTargetId = d.records[0].id;
-    const fields = d.records[0].fields;
-    adminTargetPlates = (fields.OwnedPlates || '').split(',').map(p => p.trim()).filter(Boolean);
-
-    document.getElementById('admin-found-tag').textContent = fields.Gamertag || tag;
-    document.getElementById('admin-found-plates').textContent = adminTargetPlates.length
-      ? 'Current plates: ' + adminTargetPlates.join(', ')
-      : 'No plates owned yet.';
-
-    // Build checkboxes
-    const grid = document.getElementById('admin-plate-checkboxes');
-    grid.innerHTML = PLATE_STYLES.map(p => {
-      const owned = adminTargetPlates.includes(p.id);
-      return `<label class="plate-check-item${owned?' owned':''}" id="chk-wrap-${p.id}">
-        <input type="checkbox" id="chk-${p.id}" value="${p.id}" ${owned?'checked':''}>
-        <span class="plate-check-label">${p.label}${owned?' ✓':''}</span>
-      </label>`;
-    }).join('');
-
-    document.getElementById('admin-player-found').style.display = 'block';
-    msg.textContent = ''; msg.className = 'submission-msg';
-
-  } catch(e) {
-    msg.textContent='Search failed — try again.'; msg.className='submission-msg show error';
+  if (!tag) return;
+  await loadAllPlayers();
+  const match = allPlayers.find(p => p.tag.toLowerCase() === tag.toLowerCase());
+  if (match) {
+    adminSelectPlayer(match.id, match.tag, match.plates);
+  } else {
+    document.getElementById('admin-search-msg').textContent = 'Player not found.';
+    document.getElementById('admin-search-msg').className = 'submission-msg show error';
   }
 }
 
