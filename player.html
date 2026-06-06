@@ -108,6 +108,18 @@
 .unlock-btn:hover{box-shadow:0 0 20px rgba(255,107,26,0.4);}
 .locked-section{opacity:0.35;pointer-events:none;filter:blur(1px);user-select:none;}
 
+/* ADMIN */
+.admin-gate{background:var(--asphalt);border:1px solid var(--edge);border-left:3px solid var(--cyan);padding:16px 20px;margin-bottom:20px;display:none;}
+.admin-panel{background:var(--asphalt);border:1px solid var(--cyan);padding:20px;margin-bottom:20px;display:none;}
+.admin-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;font-size:10px;color:var(--cyan);margin-bottom:8px;}
+.admin-title{font-family:'Russo One',sans-serif;font-size:16px;text-transform:uppercase;color:var(--bone);margin-bottom:4px;}
+.plate-checkbox-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0;}
+.plate-check-item{background:var(--pitch);border:1px solid var(--edge);padding:10px 12px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:border-color 0.2s;}
+.plate-check-item:hover{border-color:var(--cyan);}
+.plate-check-item.owned{border-color:var(--amber);}
+.plate-check-item input{accent-color:var(--amber);width:16px;height:16px;cursor:pointer;}
+.plate-check-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:var(--bone);}
+
 /* ABOUT */
 .about-card{background:var(--asphalt);border:1px solid var(--edge);padding:20px;margin-bottom:20px;}
 .about-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;font-size:10px;color:var(--smoke);margin-bottom:8px;}
@@ -330,6 +342,58 @@
         <textarea class="submission-textarea" id="submission-text" placeholder="Write your submission here... (50-500 words)"></textarea>
         <button class="submission-btn" id="submission-btn" onclick="submitContent()">Submit</button>
         <div class="submission-msg" id="submission-msg"></div>
+      </div>
+
+      <!-- ADMIN GATE (Musashi13 only) -->
+      <div class="admin-gate" id="admin-gate">
+        <div class="admin-label">⚡ Admin Access</div>
+        <div class="admin-title">Admin Panel</div>
+        <div style="font-size:12px;color:var(--smoke);margin-bottom:14px;line-height:1.5;" id="admin-gate-desc">Enter your admin password to unlock plate gifting and player management.</div>
+        <div class="pic-url-row" style="margin-bottom:10px;">
+          <input type="password" class="pic-url-input" id="admin-pass-input" placeholder="Admin password">
+          <button class="pic-save-btn" onclick="unlockAdmin()">Enter</button>
+        </div>
+        <div style="font-size:11px;color:var(--smoke);margin-bottom:10px;" id="admin-set-hint" style="display:none;"></div>
+        <div class="submission-msg" id="admin-gate-msg"></div>
+      </div>
+
+      <!-- ADMIN PANEL -->
+      <div class="admin-panel" id="admin-panel">
+        <div class="admin-label">⚡ Admin Panel</div>
+        <div class="admin-title" style="margin-bottom:16px;">Gift Plates</div>
+
+        <!-- Search player -->
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;font-size:10px;color:var(--smoke);margin-bottom:8px;">Find Player</div>
+        <div class="pic-url-row" style="margin-bottom:14px;">
+          <input type="text" class="pic-url-input" id="admin-search-tag" placeholder="Enter gamertag...">
+          <button class="pic-save-btn" onclick="adminSearchPlayer()">Find</button>
+        </div>
+        <div class="submission-msg" id="admin-search-msg"></div>
+
+        <!-- Player found panel -->
+        <div id="admin-player-found" style="display:none;margin-top:14px;">
+          <div style="background:var(--pitch);border:1px solid var(--edge);padding:12px 14px;margin-bottom:14px;">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--smoke);margin-bottom:4px;">Player</div>
+            <div style="font-family:'Russo One',sans-serif;font-size:18px;color:var(--bone);" id="admin-found-tag"></div>
+            <div style="font-size:12px;color:var(--smoke);margin-top:4px;" id="admin-found-plates"></div>
+          </div>
+
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;font-size:10px;color:var(--amber);margin-bottom:10px;">Select Plates to Gift</div>
+          <div class="plate-checkbox-grid" id="admin-plate-checkboxes"></div>
+
+          <button class="submission-btn" onclick="adminGiftPlates()" style="margin-top:4px;">Gift Selected Plates</button>
+          <div class="submission-msg" id="admin-gift-msg"></div>
+        </div>
+
+        <!-- Change admin password -->
+        <div style="margin-top:24px;padding-top:18px;border-top:1px solid var(--edge);">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;font-size:10px;color:var(--smoke);margin-bottom:8px;">Change Admin Password</div>
+          <div class="pic-url-row">
+            <input type="password" class="pic-url-input" id="admin-new-pass" placeholder="New password">
+            <button class="pic-save-btn" onclick="saveAdminPass()">Save</button>
+          </div>
+          <div class="submission-msg" id="admin-pass-msg"></div>
+        </div>
       </div>
 
     </div><!-- /owner-panel -->
@@ -687,6 +751,16 @@ async function unlockOwner() {
       document.getElementById('opt-join')?.classList.add('active');
     }
 
+    // Show admin gate if this is Musashi13
+    if (tag.toLowerCase() === 'musashi13') {
+      const adminGate = document.getElementById('admin-gate');
+      adminGate.style.display = 'block';
+      if (!fields.AdminPass) {
+        document.getElementById('admin-gate-desc').textContent = 'No admin password set yet. Enter a password below to set one.';
+        document.getElementById('admin-pass-input').placeholder = 'Set your admin password';
+      }
+    }
+
     if (window.location.hash === '#manage') {
       document.getElementById('drive-manage-section')?.scrollIntoView({behavior:'smooth'});
     }
@@ -873,6 +947,150 @@ window.addEventListener('load', () => {
     }, 800);
   }
 });
+
+// ── ADMIN ─────────────────────────────────────────────────────
+const PLATE_STYLES = [
+  { id: 'founder',              label: '🏆 Founder' },
+  { id: 'vehicle-male-exotic',  label: '🚗 Male Exotic' },
+  { id: 'vehicle-female-exotic',label: '🚗 Female Exotic' },
+  { id: 'color-red',            label: '🔴 Red' },
+  { id: 'color-blue',           label: '🔵 Blue' },
+  { id: 'color-purple',         label: '🟣 Purple' },
+  { id: 'color-amber',          label: '🟡 Amber' },
+  { id: 'white',                label: '⬜ White' },
+  { id: 'black',                label: '⬛ Black' }
+];
+
+let adminVerified = false;
+let adminTargetId = null;
+let adminTargetPlates = [];
+
+async function unlockAdmin() {
+  const pass = document.getElementById('admin-pass-input').value.trim();
+  const msg  = document.getElementById('admin-gate-msg');
+  if (!pass) { msg.textContent='Enter a password.'; msg.className='submission-msg show error'; return; }
+
+  // First time setup — no password set yet
+  const storedPass = playerData?.AdminPass || '';
+  if (!storedPass) {
+    // Set the password
+    try {
+      await fetch(`${AT_LAST_DRIVE}/${verifiedId}`, {
+        method: 'PATCH', headers: AT_H,
+        body: JSON.stringify({ fields: { 'AdminPass': pass } })
+      });
+      playerData.AdminPass = pass;
+      adminVerified = true;
+      document.getElementById('admin-gate').style.display = 'none';
+      document.getElementById('admin-panel').style.display = 'block';
+      msg.textContent = ''; msg.className = 'submission-msg';
+    } catch(e) {
+      msg.textContent='Failed to save password.'; msg.className='submission-msg show error';
+    }
+    return;
+  }
+
+  // Check password
+  if (pass !== storedPass) {
+    msg.textContent='Incorrect password.'; msg.className='submission-msg show error'; return;
+  }
+
+  adminVerified = true;
+  document.getElementById('admin-gate').style.display = 'none';
+  document.getElementById('admin-panel').style.display = 'block';
+  msg.textContent = ''; msg.className = 'submission-msg';
+}
+
+async function adminSearchPlayer() {
+  const tag = document.getElementById('admin-search-tag').value.trim();
+  const msg = document.getElementById('admin-search-msg');
+  if (!tag) { msg.textContent='Enter a gamertag.'; msg.className='submission-msg show error'; return; }
+  msg.textContent='Searching...'; msg.className='submission-msg show success';
+
+  try {
+    const f = encodeURIComponent(`{Gamertag}="${tag}"`);
+    const r = await fetch(`${AT_LAST_DRIVE}?filterByFormula=${f}&maxRecords=1`, {headers:AT_H});
+    const d = await r.json();
+
+    if (!d.records?.length) {
+      msg.textContent='Player not found.'; msg.className='submission-msg show error';
+      document.getElementById('admin-player-found').style.display = 'none';
+      return;
+    }
+
+    adminTargetId = d.records[0].id;
+    const fields = d.records[0].fields;
+    adminTargetPlates = (fields.OwnedPlates || '').split(',').map(p => p.trim()).filter(Boolean);
+
+    document.getElementById('admin-found-tag').textContent = fields.Gamertag || tag;
+    document.getElementById('admin-found-plates').textContent = adminTargetPlates.length
+      ? 'Current plates: ' + adminTargetPlates.join(', ')
+      : 'No plates owned yet.';
+
+    // Build checkboxes
+    const grid = document.getElementById('admin-plate-checkboxes');
+    grid.innerHTML = PLATE_STYLES.map(p => {
+      const owned = adminTargetPlates.includes(p.id);
+      return `<label class="plate-check-item${owned?' owned':''}" id="chk-wrap-${p.id}">
+        <input type="checkbox" id="chk-${p.id}" value="${p.id}" ${owned?'checked':''}>
+        <span class="plate-check-label">${p.label}${owned?' ✓':''}</span>
+      </label>`;
+    }).join('');
+
+    document.getElementById('admin-player-found').style.display = 'block';
+    msg.textContent = ''; msg.className = 'submission-msg';
+
+  } catch(e) {
+    msg.textContent='Search failed — try again.'; msg.className='submission-msg show error';
+  }
+}
+
+async function adminGiftPlates() {
+  const msg = document.getElementById('admin-gift-msg');
+  if (!adminTargetId) { msg.textContent='No player selected.'; msg.className='submission-msg show error'; return; }
+
+  // Collect checked plates
+  const selected = PLATE_STYLES
+    .filter(p => document.getElementById(`chk-${p.id}`)?.checked)
+    .map(p => p.id);
+
+  if (!selected.length) { msg.textContent='Select at least one plate.'; msg.className='submission-msg show error'; return; }
+
+  msg.textContent='Saving...'; msg.className='submission-msg show success';
+
+  try {
+    await fetch(`${AT_LAST_DRIVE}/${adminTargetId}`, {
+      method: 'PATCH', headers: AT_H,
+      body: JSON.stringify({ fields: { 'OwnedPlates': selected.join(', ') } })
+    });
+
+    document.getElementById('admin-found-plates').textContent = 'Current plates: ' + selected.join(', ');
+    adminTargetPlates = selected;
+    msg.textContent = `✅ Plates saved for ${document.getElementById('admin-found-tag').textContent}`;
+    msg.className = 'submission-msg show success';
+  } catch(e) {
+    msg.textContent='Save failed — try again.'; msg.className='submission-msg show error';
+  }
+}
+
+async function saveAdminPass() {
+  const pass = document.getElementById('admin-new-pass').value.trim();
+  const msg  = document.getElementById('admin-pass-msg');
+  if (!pass) { msg.textContent='Enter a new password.'; msg.className='submission-msg show error'; return; }
+
+  try {
+    await fetch(`${AT_LAST_DRIVE}/${verifiedId}`, {
+      method: 'PATCH', headers: AT_H,
+      body: JSON.stringify({ fields: { 'AdminPass': pass } })
+    });
+    playerData.AdminPass = pass;
+    msg.textContent='✅ Password updated.'; msg.className='submission-msg show success';
+    document.getElementById('admin-new-pass').value = '';
+    setTimeout(() => { msg.className='submission-msg'; }, 3000);
+  } catch(e) {
+    msg.textContent='Failed — try again.'; msg.className='submission-msg show error';
+  }
+}
 
 // ── TICKER ────────────────────────────────────────────────────
 fetch('/articles.json?v='+Date.now()).then(r=>r.json()).then(a=>{
