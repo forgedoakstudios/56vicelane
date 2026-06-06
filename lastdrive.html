@@ -33,7 +33,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 /* TICKER */
 .ticker{background:var(--amber);color:var(--pitch);font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;font-size:12px;padding:7px 0;overflow:hidden;white-space:nowrap;position:relative;z-index:10;}
-.ticker-track{display:inline-block;animation:ticker-scroll 30s linear infinite;padding-left:100%;}
+.ticker-track{display:inline-block;animation:ticker-scroll 60s linear infinite;padding-left:100%;}
 .ticker-track span{margin:0 28px;}
 .ticker-track span::after{content:'◆';margin-left:28px;font-size:8px;opacity:0.6;}
 @keyframes ticker-scroll{from{transform:translateX(0);}to{transform:translateX(-100%);}}
@@ -228,7 +228,6 @@ footer{border-top:1px solid var(--edge);padding:40px 24px;text-align:center;}
     <a href="/wall" class="nav-link">Wall of Honor</a>
     <a href="/privacy" class="nav-link">Privacy</a>
     <a href="/terms" class="nav-link">Terms</a>
-  <a href="/plates#verify" style="color:var(--amber);font-weight:800;">🔑 Sign In</a>
   </div>
 </nav>
 
