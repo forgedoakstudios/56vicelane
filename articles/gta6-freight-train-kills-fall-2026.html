@@ -596,7 +596,7 @@
         track.innerHTML = items + items;
         const totalWidth = track.scrollWidth / 2;
         let pos = 0;
-        const speed = totalWidth / 20;
+        const speed = totalWidth / 30; // 30s cycle
         function animate() {
           pos -= speed / 60;
           if (Math.abs(pos) >= totalWidth) pos = 0;
