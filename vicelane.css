@@ -30,7 +30,7 @@ img{max-width:100%;height:auto;display:block;}
 
 /* ---------- TICKER (locked 20s) ---------- */
 .ticker-wrap{background:var(--amber);overflow:hidden;padding:7px 0;position:sticky;top:0;z-index:100;}
-.ticker-track{display:flex;gap:60px;white-space:nowrap;animation:ticker 20s linear infinite;}
+.ticker-track{display:flex;gap:60px;white-space:nowrap;animation:ticker 30s linear infinite;}
 .ticker-item{font-family:'Barlow Condensed',sans-serif;font-size:.9rem;font-weight:700;color:#000;text-transform:uppercase;letter-spacing:.04em;cursor:pointer;flex-shrink:0;}
 @keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
