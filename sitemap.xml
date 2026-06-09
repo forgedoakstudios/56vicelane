@@ -4,65 +4,113 @@
   <!-- Core Pages -->
   <url>
     <loc>https://56vicelane.com/</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2026-06-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://56vicelane.com/news.html</loc>
-    <lastmod>2026-05-20</lastmod>
+    <loc>https://56vicelane.com/news</loc>
+    <lastmod>2026-06-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://56vicelane.com/lastdrive.html</loc>
-    <lastmod>2026-05-19</lastmod>
+    <loc>https://56vicelane.com/lastdrive</loc>
+    <lastmod>2026-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://56vicelane.com/shop.html</loc>
+    <loc>https://56vicelane.com/wall</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/shop</loc>
     <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://56vicelane.com/wall.html</loc>
-    <lastmod>2026-05-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://56vicelane.com/about.html</loc>
+    <loc>https://56vicelane.com/about</loc>
     <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://56vicelane.com/contact.html</loc>
+    <loc>https://56vicelane.com/contact</loc>
     <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://56vicelane.com/archive.html</loc>
-    <lastmod>2026-05-19</lastmod>
+    <loc>https://56vicelane.com/archive</loc>
+    <lastmod>2026-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://56vicelane.com/privacy.html</loc>
+    <loc>https://56vicelane.com/privacy</loc>
     <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
 
-  <!-- Articles -->
+  <!-- Articles — June 8 2026 -->
+  <url>
+    <loc>https://56vicelane.com/articles/clear-the-lanes-petition-last-drive.html</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-trailer-3-when-is-it-dropping.html</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-rumors-starting-to-sound-real.html</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-file-size-leaked-storage-requirements.html</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Articles — June 3 2026 -->
+  <url>
+    <loc>https://56vicelane.com/articles/ned-luke-swatter-sentenced.html</loc>
+    <lastmod>2026-06-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Articles — June 2 2026 -->
+  <url>
+    <loc>https://56vicelane.com/articles/amd-rx-9070-gre-gta6-performance.html</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/extrapolation-frame-generation-gta6.html</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Articles — May 2026 -->
   <url>
     <loc>https://56vicelane.com/articles/gta6-samsung-strike-ai-npc-memory-crisis.html</loc>
     <lastmod>2026-05-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://56vicelane.com/articles/gta6-pc-build-guide-2026.html</loc>
@@ -73,14 +121,14 @@
   <url>
     <loc>https://56vicelane.com/articles/gta6-preorders-secretly-went-live-italy.html</loc>
     <lastmod>2026-05-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://56vicelane.com/articles/gta6-preorder-chaos-debunked.html</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://56vicelane.com/articles/gta6-price-115-dutch-leak.html</loc>
