@@ -1,141 +1,502 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9EKF7J4V7W');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>GTA6 News Hub — 56ViceLane</title>
-<meta name="description" content="GTA6 news, updates, leaks and analysis. Where GTA5 ends and GTA6 begins.">
+<meta name="description" content="GTA6 news, updates, leaks and analysis. Where GTA5 ends and GTA6 begins. Updated daily.">
 <link rel="canonical" href="https://56vicelane.com/news">
+
+<!-- OG / Social -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="56ViceLane">
 <meta property="og:title" content="GTA6 News Hub — 56ViceLane">
-<meta property="og:image" content="https://56vicelane.com/images/Jason_and_Lucia_01_landscape.jpg">
+<meta property="og:description" content="GTA6 news, updates, leaks and analysis. Updated daily.">
+<meta property="og:image" content="https://56vicelane.com/images/gta6-hero.png">
+<meta property="og:url" content="https://56vicelane.com/news">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GTA6 News Hub — 56ViceLane">
+<meta name="twitter:image" content="https://56vicelane.com/images/gta6-hero.png">
+
+<!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Shared stylesheet -->
 <link rel="stylesheet" href="/vicelane.css">
+
+<!-- AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
+
 <style>
-.news-hero{background:url('/images/gta6-hero.png') center/cover no-repeat;padding:40px 24px 32px;border-bottom:1px solid var(--edge);position:relative;}.news-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,15,0.55) 0%,rgba(11,11,15,0.85) 100%);}.news-hero-eyebrow,.news-hero-title,.news-hero-sub{position:relative;z-index:1;}
-.news-hero-eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.3em;font-size:10px;color:var(--amber);margin-bottom:8px;}
-.news-hero-title{font-family:'Russo One',sans-serif;font-size:clamp(28px,6vw,48px);text-transform:uppercase;color:var(--bone);margin-bottom:6px;line-height:1.0;}
-.news-hero-sub{font-size:13px;color:var(--smoke);max-width:480px;}
-.news-wrap{max-width:900px;margin:0 auto;padding:32px 24px;}
-.section-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.25em;font-size:10px;color:var(--amber);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--edge);}
+/* ── NEWS PAGE ONLY ───────────────────────────────────────── */
 
-/* ACTIVE CARDS */
-.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:40px;}
-.news-card{background:var(--asphalt);border:1px solid var(--edge);cursor:pointer;transition:border-color 0.25s;overflow:hidden;}
-.news-card:hover{border-color:var(--amber);}
-.card-tag{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;font-size:9px;color:var(--amber);margin-bottom:6px;}
-.card-emoji{font-size:24px;margin-bottom:8px;}
-.card-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;color:var(--bone);line-height:1.3;margin-bottom:8px;}
-.card-date{font-size:11px;color:var(--smoke);}
+.news-hero {
+  background: url('/images/gta6-hero.png') center/cover no-repeat;
+  padding: 48px 24px 36px;
+  border-bottom: 1px solid var(--edge);
+  position: relative;
+}
+.news-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(11,11,15,.6) 0%,
+    rgba(11,11,15,.88) 100%);
+}
+.news-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--wide-width);
+  margin: 0 auto;
+}
+.news-hero-eyebrow {
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .3em;
+  font-size: .7rem;
+  color: var(--amber);
+  margin-bottom: 10px;
+}
+.news-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 6vw, 52px);
+  text-transform: uppercase;
+  color: var(--bone);
+  margin-bottom: 8px;
+  line-height: 1.0;
+}
+.news-hero-sub {
+  font-size: .95rem;
+  color: #C8C4BE;
+  max-width: 480px;
+}
 
-/* ARCHIVE */
-.archive-toggle{background:none;border:1px solid var(--edge);color:var(--smoke);font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;font-size:12px;padding:12px 20px;cursor:pointer;width:100%;text-align:left;display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;transition:all 0.25s;}
-.archive-toggle:hover{border-color:var(--amber);color:var(--amber);}
-.archive-toggle .arrow{transition:transform 0.3s;}
-.archive-toggle.open .arrow{transform:rotate(180deg);}
+/* NEWS WRAP */
+.news-wrap {
+  max-width: var(--wide-width);
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+}
 
-/* FILTERS */
-.filter-bar{background:var(--asphalt);border:1px solid var(--edge);padding:16px;margin-bottom:20px;display:none;}
-.filter-bar.show{display:block;}
-.filter-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
-@media(max-width:480px){.filter-row{grid-template-columns:1fr;}}
-.filter-input{background:var(--pitch);border:1px solid var(--edge);color:var(--bone);font-family:'Inter',sans-serif;font-size:13px;padding:10px 12px;width:100%;outline:none;transition:border-color 0.3s;}
-.filter-input:focus{border-color:var(--amber);}
-.filter-input::placeholder{color:var(--smoke);}
-.filter-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;font-size:9px;color:var(--smoke);margin-bottom:4px;}
-.filter-actions{display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;}
-.filter-count{font-size:12px;color:var(--smoke);}
-.filter-clear{background:none;border:1px solid var(--edge);color:var(--smoke);font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;font-size:11px;padding:8px 14px;cursor:pointer;}
-.filter-clear:hover{border-color:var(--amber);color:var(--amber);}
+/* ACTIVE CARDS — COD.com style with image */
+.active-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 48px;
+}
 
-/* MONTH/WEEK GROUPS */
-.archive-content{display:none;}
-.archive-content.show{display:block;}
-.month-group{margin-bottom:24px;}
-.month-header{font-family:'Russo One',sans-serif;font-size:16px;text-transform:uppercase;color:var(--bone);padding:10px 14px;background:var(--asphalt);border:1px solid var(--edge);border-left:3px solid var(--amber);cursor:pointer;display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;}
-.month-header:hover{border-left-color:var(--cyan);}
-.month-header .month-count{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:12px;color:var(--smoke);}
-.month-body{display:none;}
-.month-body.open{display:block;}
-.week-group{margin:2px 0;}
-.week-header{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;font-size:10px;color:var(--smoke);padding:8px 14px;background:var(--pitch);border-left:3px solid var(--edge);cursor:pointer;display:flex;justify-content:space-between;}
-.week-header:hover{color:var(--bone);}
-.week-body{display:none;border-left:3px solid rgba(255,107,26,0.15);}
-.week-body.open{display:block;}
-.archive-row{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--edge);cursor:pointer;transition:background 0.2s;text-decoration:none;}
-.archive-row:hover{background:var(--asphalt);}
-.archive-row.hidden{display:none;}
-.ar-emoji{font-size:16px;flex-shrink:0;width:22px;text-align:center;}
-.ar-date{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:11px;color:var(--smoke);flex-shrink:0;width:70px;}
-.ar-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:14px;color:var(--bone);line-height:1.3;flex:1;}
-.ar-title:hover{color:var(--amber);}
+.active-card {
+  background: var(--asphalt);
+  border: 1px solid var(--edge);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color .25s, transform .2s;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+.active-card:hover {
+  border-color: var(--amber);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.active-card-img {
+  width: 100%;
+  aspect-ratio: 2.4 / 1;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--edge);
+  position: relative;
+}
+.active-card-img-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(0deg, rgba(11,11,15,.8), transparent);
+}
+.active-card-body {
+  padding: 14px 16px 16px;
+}
+.active-card-tag {
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: .7rem;
+  color: var(--amber);
+  margin-bottom: 6px;
+}
+.active-card-title {
+  font-family: var(--font-label);
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--bone);
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+.active-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.active-card-date {
+  font-size: .75rem;
+  color: var(--smoke);
+}
+.active-card-arrow {
+  font-family: var(--font-label);
+  font-weight: 700;
+  font-size: .75rem;
+  color: var(--amber);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
 
-/* EMPTY STATE */
-.no-results{text-align:center;padding:32px;color:var(--smoke);font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;font-size:13px;display:none;}
-.no-results.show{display:block;}
+/* GET MORE NEWS button */
+.more-news-row {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.more-news-btn {
+  display: inline-block;
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  font-size: .88rem;
+  padding: 14px 36px;
+  border: 1px solid var(--edge);
+  background: none;
+  color: var(--smoke);
+  cursor: pointer;
+  transition: all .25s;
+  text-decoration: none;
+}
+.more-news-btn:hover {
+  border-color: var(--amber);
+  color: var(--amber);
+  text-decoration: none;
+}
+
+/* ARCHIVE SECTION */
+.archive-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  border: 1px solid var(--edge);
+  color: var(--smoke);
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  font-size: .88rem;
+  padding: 14px 20px;
+  cursor: pointer;
+  transition: all .25s;
+  margin-bottom: 16px;
+}
+.archive-toggle:hover {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+.archive-toggle.open {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+.archive-arrow {
+  transition: transform .3s;
+  font-size: 1rem;
+}
+.archive-toggle.open .archive-arrow {
+  transform: rotate(180deg);
+}
+
+/* FILTER BAR */
+.filter-bar {
+  background: var(--asphalt);
+  border: 1px solid var(--edge);
+  padding: 18px;
+  margin-bottom: 20px;
+  display: none;
+}
+.filter-bar.show { display: block; }
+
+.filter-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+@media (max-width: 480px) {
+  .filter-row { grid-template-columns: 1fr; }
+}
+
+.filter-label {
+  font-family: var(--font-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: .7rem;
+  color: var(--smoke);
+  margin-bottom: 5px;
+}
+
+.filter-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.filter-count {
+  font-size: .82rem;
+  color: var(--smoke);
+}
+.filter-clear {
+  background: none;
+  border: 1px solid var(--edge);
+  color: var(--smoke);
+  font-family: var(--font-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: .78rem;
+  padding: 7px 14px;
+  cursor: pointer;
+  transition: all .25s;
+}
+.filter-clear:hover {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+/* ARCHIVE CONTENT */
+.archive-content { display: none; }
+.archive-content.show { display: block; }
+
+.month-group { margin-bottom: 24px; }
+
+.month-header {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: var(--bone);
+  padding: 10px 14px;
+  background: var(--asphalt);
+  border: 1px solid var(--edge);
+  border-left: 3px solid var(--amber);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2px;
+  transition: border-left-color .2s;
+}
+.month-header:hover { border-left-color: var(--cyan); }
+.month-count {
+  font-family: var(--font-label);
+  font-size: .78rem;
+  color: var(--smoke);
+  font-weight: 600;
+}
+
+.month-body { display: none; }
+.month-body.open { display: block; }
+
+.week-header {
+  font-family: var(--font-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: .72rem;
+  color: var(--smoke);
+  padding: 8px 14px;
+  background: var(--pitch);
+  border-left: 3px solid var(--edge);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  transition: color .2s;
+}
+.week-header:hover { color: var(--bone); }
+
+.week-body { display: none; border-left: 3px solid rgba(255,107,26,.15); }
+.week-body.open { display: block; }
+
+.archive-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--edge);
+  cursor: pointer;
+  transition: background .2s;
+  text-decoration: none;
+  color: inherit;
+}
+.archive-row:hover { background: var(--asphalt); text-decoration: none; }
+.archive-row.hidden { display: none; }
+
+.ar-emoji { font-size: 15px; flex-shrink: 0; width: 20px; text-align: center; }
+.ar-date {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: .72rem;
+  color: var(--smoke);
+  flex-shrink: 0;
+  width: 68px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.ar-title {
+  font-family: var(--font-label);
+  font-weight: 800;
+  font-size: .9rem;
+  color: var(--bone);
+  line-height: 1.3;
+  flex: 1;
+  transition: color .2s;
+}
+.archive-row:hover .ar-title { color: var(--amber); }
+
+/* NO RESULTS */
+.no-results {
+  text-align: center;
+  padding: 32px;
+  color: var(--smoke);
+  font-family: var(--font-label);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: .88rem;
+  display: none;
+}
+.no-results.show { display: block; }
 </style>
 </head>
 <body>
-<div class="ticker-wrap"><div class="ticker-track" id="ticker-track"><span class="ticker-item">Loading...</span></div></div>
-<nav class="nav">
-  <a class="logo" href="/"><span class="logo-mark">56</span><span class="logo-text">ViceLane</span></a>
-  <div class="nav-links">
-    <a href="/news">News</a><a href="/tools">Tools</a><a href="/lastdrive">Last Drive</a><a href="/wall">Wall</a><a href="/plates">Plates</a>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker-track">
+    <span class="ticker-item">56ViceLane — Where GTA5 Ends And GTA6 Begins</span>
   </div>
-  <button class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></button>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="logo" href="/">
+    <span class="logo-mark">56</span>
+    <span class="logo-text">ViceLane</span>
+  </a>
+  <div class="nav-links">
+    <a href="/news" class="active">News</a>
+    <a href="/gtacon">GTACON</a>
+    <a href="/lastdrive">Last Drive</a>
+    <a href="/members">Members</a>
+    <a href="/store">Store</a>
+    <a href="/gear">Gear</a>
+    <a href="/tools">Tools</a>
+    <a href="/forum">Forum</a>
+  </div>
+  <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 <div class="nav-mobile" id="nav-mobile">
-  <a href="/news">News</a><a href="/tools">Tools</a><a href="/lastdrive">Last Drive</a>
-  <a href="/wall">Members</a><a href="/plates">Plates</a>
+  <a href="/news" class="active">News</a>
+  <a href="/gtacon">GTACON</a>
+  <a href="/lastdrive">Last Drive</a>
+  <a href="/members">Members</a>
+  <a href="/store">Store</a>
+  <a href="/gear">Gear</a>
+  <a href="/tools">Tools</a>
+  <a href="/forum">Forum</a>
   <div class="mobile-divider"></div>
-  <a href="/privacy">Privacy</a><a href="/terms">Terms</a>
+  <a href="/about">About</a>
+  <a href="/contact">Contact</a>
   <div class="mobile-divider"></div>
-  <a href="/plates#verify" style="color:var(--amber);font-weight:800;">🔑 Sign In</a>
+  <a href="/privacy">Privacy</a>
+  <a href="/terms">Terms</a>
 </div>
 
+<!-- HERO -->
 <div class="news-hero">
-  <div class="news-hero-eyebrow">GTA6 News Hub</div>
-  <div class="news-hero-title">What's Happening<br>In The Lane</div>
-  <p class="news-hero-sub">GTA6, Rockstar, Take-Two and the industry moves that matter to the community.</p>
+  <div class="news-hero-inner">
+    <div class="news-hero-eyebrow">GTA6 News Hub</div>
+    <div class="news-hero-title">What's Happening<br>In The Lane</div>
+    <p class="news-hero-sub">GTA6, Rockstar, Take-Two and the industry moves that matter to the community.</p>
+  </div>
 </div>
 
-<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+<!-- AdSense -->
+<div style="max-width:var(--wide-width);margin:0 auto;padding:16px 24px 0;">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
 
+<!-- NEWS WRAP -->
 <div class="news-wrap">
 
   <!-- ACTIVE ARTICLES -->
-  <div class="section-label" id="active-label">Latest — Last 14 Days</div>
-  <div class="cards-grid" id="cards-grid"></div>
+  <div class="section-header-row" style="margin-bottom:20px;">
+    <div class="section-title" id="active-label">Latest — Last 14 Days</div>
+  </div>
+  <div class="active-grid" id="active-grid">
+    <div style="color:var(--smoke);font-size:.9rem;">Loading...</div>
+  </div>
   <div class="no-results" id="no-active">No recent articles yet. Check back soon.</div>
 
+  <!-- GET MORE NEWS -->
+  <div class="more-news-row">
+    <button class="more-news-btn" id="more-news-btn" onclick="toggleArchive()">
+      📁 Browse All Articles
+    </button>
+  </div>
+
+  <!-- AdSense -->
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
   <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
 
   <!-- ARCHIVE -->
-  <div id="archive-wrap">
+  <div id="archive-wrap" style="margin-top:32px;">
     <button class="archive-toggle" id="archive-toggle" onclick="toggleArchive()">
       <span>📁 Article Archive</span>
-      <span class="arrow">▼</span>
+      <span class="archive-arrow">▼</span>
     </button>
 
     <!-- FILTERS -->
     <div class="filter-bar" id="filter-bar">
-      <div style="margin-bottom:12px;">
+      <div style="margin-bottom:14px;">
         <div class="filter-label">Search by title</div>
-        <input type="text" class="filter-input" id="filter-title" placeholder="Search articles..." oninput="applyFilters()">
+        <input type="text" class="form-input" id="filter-title" placeholder="Search articles..." oninput="applyFilters()">
       </div>
       <div class="filter-row">
         <div>
           <div class="filter-label">From date</div>
-          <input type="date" class="filter-input" id="filter-from" onchange="applyFilters()">
+          <input type="date" class="form-input" id="filter-from" onchange="applyFilters()">
         </div>
         <div>
           <div class="filter-label">To date</div>
-          <input type="date" class="filter-input" id="filter-to" onchange="applyFilters()">
+          <input type="date" class="form-input" id="filter-to" onchange="applyFilters()">
         </div>
       </div>
       <div class="filter-actions">
@@ -151,123 +512,167 @@
 
 </div>
 
+<!-- FOOTER -->
 <footer>
-  <p class="disclosure">56ViceLane is an independent fan site. Not affiliated with Rockstar Games or Take-Two Interactive.</p>
-  <p><span id="vl-copyright">© 2026 56ViceLane · Forged Oak Studios ·</span> <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p>
+  <div class="footer-brand">
+    <span class="logo-mark">56</span>ViceLane
+  </div>
+  <div class="footer-tag">Where GTA5 Ends And GTA6 Begins</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/news">News</a>
+    <a href="/gtacon">GTACON</a>
+    <a href="/lastdrive">Last Drive</a>
+    <a href="/members">Members</a>
+    <a href="/store">Store</a>
+    <a href="/gear">Gear</a>
+    <a href="/tools">Tools</a>
+    <a href="/forum">Forum</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="/admin" class="admin-link">Admin</a>
+  </div>
+  <p class="footer-disclosure">
+    56ViceLane is an independent fan site. Not affiliated with, endorsed by,
+    or sponsored by Rockstar Games or Take-Two Interactive. All trademarks
+    belong to their respective owners. 56ViceLane earns a small commission
+    on qualifying purchases through affiliate links at no extra cost to you.
+  </p>
+  <p class="footer-copy" id="vl-copyright">© 2026 56ViceLane · Forged Oak Studios</p>
 </footer>
 
+<!-- SCRIPTS -->
 <script>
-// Hero images pool
-const HERO_IMAGES = [
-  'Jason_and_Lucia_01_landscape.jpg',
-  'plate-founder.png',
-  'plate-male-exotic.png',
-  'plate-female-exotic.png'
-];
+var allArchive = [];
+var CUTOFF = 14 * 24 * 60 * 60 * 1000;
 
-function heroImg(slug) {
-  const idx = Math.abs(slug.split('').reduce((a,c)=>a+c.charCodeAt(0),0)) % HERO_IMAGES.length;
-  return '/images/' + HERO_IMAGES[idx];
-}
-
-const CUTOFF = 15 * 24 * 60 * 60 * 1000; // articles stay active for 14 full days
-let allArchive = [];
-
-// Hero image by category
-function getHero(slug){
-  const s=(slug||'').toLowerCase();
-  if(/gta5|ragemp|fivem|switch2/.test(s)) return 'gta5-hero.png';
-  if(/gpu|pc-build|amd|nvidia|frame-gen|extrapolation|samsung|prompt-inject|tech/.test(s)) return 'tech-hero.png';
-  if(/online|heist|shark|gtao/.test(s)) return 'gtao-hero.png';
+// ── IMAGE PICKER ───────────────────────────────────────────
+function getHero(slug) {
+  var s = (slug || '').toLowerCase();
+  if (/gta5|ragemp|fivem|switch/.test(s)) return 'gta5-hero.png';
+  if (/gpu|pc-build|amd|nvidia|tech|frame/.test(s)) return 'tech-hero.png';
+  if (/online|heist|gtao/.test(s)) return 'gtao-hero.png';
   return 'gta6-hero.png';
 }
 
-function formatDate(d) {
-  return new Date(d).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+// ── FORMAT DATE ────────────────────────────────────────────
+function fmtDate(d) {
+  return new Date(d).toLocaleDateString('en-US', {
+    month: 'short', day: 'numeric', year: 'numeric'
+  });
 }
 
-function getWeekOfMonth(date) {
-  const d = new Date(date);
-  const day = d.getDate();
-  if (day <= 7) return 'Week 1';
-  if (day <= 14) return 'Week 2';
-  if (day <= 21) return 'Week 3';
-  if (day <= 28) return 'Week 4';
+// ── WEEK OF MONTH ──────────────────────────────────────────
+function getWeek(date) {
+  var d = new Date(date).getDate();
+  if (d <= 7)  return 'Week 1';
+  if (d <= 14) return 'Week 2';
+  if (d <= 21) return 'Week 3';
+  if (d <= 28) return 'Week 4';
   return 'Week 5';
 }
 
-function getMonthKey(date) {
-  const d = new Date(date);
-  return d.toLocaleDateString('en-US',{month:'long',year:'numeric'});
+function getMonth(date) {
+  return new Date(date).toLocaleDateString('en-US', {
+    month: 'long', year: 'numeric'
+  });
 }
 
+// ── BUILD ARCHIVE ──────────────────────────────────────────
 function buildArchive(articles) {
-  const grouped = {};
-  articles.forEach(a => {
-    const month = getMonthKey(a.date);
-    const week = getWeekOfMonth(a.date);
+  var grouped = {};
+  articles.forEach(function(a) {
+    var month = getMonth(a.date);
+    var week  = getWeek(a.date);
     if (!grouped[month]) grouped[month] = {};
     if (!grouped[month][week]) grouped[month][week] = [];
     grouped[month][week].push(a);
   });
 
-  const container = document.getElementById('archive-content');
+  var container = document.getElementById('archive-content');
   container.innerHTML = '';
 
-  Object.keys(grouped).sort((a,b) => new Date(b) - new Date(a)).forEach(month => {
-    const monthDiv = document.createElement('div');
+  var months = Object.keys(grouped).sort(function(a, b) {
+    return new Date(b) - new Date(a);
+  });
+
+  months.forEach(function(month) {
+    var total = Object.values(grouped[month]).reduce(function(sum, arr) {
+      return sum + arr.length;
+    }, 0);
+
+    var monthDiv = document.createElement('div');
     monthDiv.className = 'month-group';
     monthDiv.dataset.month = month;
 
-    const totalInMonth = Object.values(grouped[month]).flat().length;
-    monthDiv.innerHTML = `
-      <div class="month-header" onclick="toggleMonth(this)">
-        <span>${month}</span>
-        <span class="month-count">${totalInMonth} article${totalInMonth!==1?'s':''}</span>
-      </div>
-      <div class="month-body"></div>`;
-
-    const monthBody = monthDiv.querySelector('.month-body');
-    const weekOrder = ['Week 1','Week 2','Week 3','Week 4','Week 5'];
-
-    weekOrder.filter(w => grouped[month][w]).forEach(week => {
-      const weekArticles = grouped[month][week];
-      const weekDiv = document.createElement('div');
-      weekDiv.className = 'week-group';
-      weekDiv.innerHTML = `
-        <div class="week-header" onclick="toggleWeek(this)">
-          <span>${week} — ${weekArticles.length} article${weekArticles.length!==1?'s':''}</span>
-          <span>▸</span>
-        </div>
-        <div class="week-body"></div>`;
-
-      const weekBody = weekDiv.querySelector('.week-body');
-      weekArticles.sort((a,b)=>new Date(b.date)-new Date(a.date)).forEach(article => {
-        const row = document.createElement('a');
-        row.href = '/articles/' + article.slug;
-        row.className = 'archive-row';
-        row.dataset.title = (article.title||'').toLowerCase();
-        row.dataset.date = article.date||'';
-        row.innerHTML = `
-          <span class="ar-emoji">${article.emoji||'📰'}</span>
-          <span class="ar-date">${formatDate(article.date)}</span>
-          <span class="ar-title">${article.title||''}</span>`;
-        weekBody.appendChild(row);
-      });
-      monthBody.appendChild(weekDiv);
+    var header = document.createElement('div');
+    header.className = 'month-header';
+    header.innerHTML =
+      '<span>' + month + '</span>' +
+      '<span class="month-count">' + total + ' article' + (total !== 1 ? 's' : '') + '</span>';
+    header.addEventListener('click', function() {
+      this.nextElementSibling.classList.toggle('open');
     });
 
+    var body = document.createElement('div');
+    body.className = 'month-body';
+
+    ['Week 1','Week 2','Week 3','Week 4','Week 5'].forEach(function(week) {
+      if (!grouped[month][week]) return;
+      var warts = grouped[month][week];
+
+      var weekDiv = document.createElement('div');
+
+      var wh = document.createElement('div');
+      wh.className = 'week-header';
+      wh.innerHTML =
+        '<span>' + week + ' — ' + warts.length + ' article' + (warts.length !== 1 ? 's' : '') + '</span>' +
+        '<span>▸</span>';
+      wh.addEventListener('click', function() {
+        this.nextElementSibling.classList.toggle('open');
+      });
+
+      var wb = document.createElement('div');
+      wb.className = 'week-body';
+
+      warts.sort(function(a, b) {
+        return new Date(b.date) - new Date(a.date);
+      }).forEach(function(article) {
+        var row = document.createElement('a');
+        row.href = '/articles/' + article.slug;
+        row.className = 'archive-row';
+        row.dataset.title = (article.title || '').toLowerCase();
+        row.dataset.date  = article.date || '';
+        row.innerHTML =
+          '<span class="ar-emoji">' + (article.emoji || '📰') + '</span>' +
+          '<span class="ar-date">' + fmtDate(article.date) + '</span>' +
+          '<span class="ar-title">' + (article.title || '') + '</span>';
+        wb.appendChild(row);
+      });
+
+      weekDiv.appendChild(wh);
+      weekDiv.appendChild(wb);
+      body.appendChild(weekDiv);
+    });
+
+    monthDiv.appendChild(header);
+    monthDiv.appendChild(body);
     container.appendChild(monthDiv);
   });
 }
 
+// ── TOGGLE ARCHIVE ─────────────────────────────────────────
 function toggleArchive() {
-  const btn = document.getElementById('archive-toggle');
-  const content = document.getElementById('archive-content');
-  const filters = document.getElementById('filter-bar');
-  btn.classList.toggle('open');
-  content.classList.toggle('show');
-  filters.classList.toggle('show');
+  var btn     = document.getElementById('archive-toggle');
+  var content = document.getElementById('archive-content');
+  var filters = document.getElementById('filter-bar');
+  var moreBtn = document.getElementById('more-news-btn');
+  var open = content.classList.toggle('show');
+  btn.classList.toggle('open', open);
+  filters.classList.toggle('show', open);
+  if (moreBtn) moreBtn.style.display = open ? 'none' : 'inline-block';
   updateFilterCount();
 }
 
@@ -275,40 +680,38 @@ function toggleMonth(el) {
   el.nextElementSibling.classList.toggle('open');
 }
 
-function toggleWeek(el) {
-  el.nextElementSibling.classList.toggle('open');
-}
-
+// ── FILTERS ────────────────────────────────────────────────
 function applyFilters() {
-  const titleQ = (document.getElementById('filter-title').value||'').toLowerCase().trim();
-  const fromQ  = document.getElementById('filter-from').value;
-  const toQ    = document.getElementById('filter-to').value;
+  var titleQ = (document.getElementById('filter-title').value || '').toLowerCase().trim();
+  var fromQ  = document.getElementById('filter-from').value;
+  var toQ    = document.getElementById('filter-to').value;
+  var rows   = document.querySelectorAll('.archive-row');
+  var visible = 0;
 
-  const rows = document.querySelectorAll('.archive-row');
-  let visible = 0;
-
-  rows.forEach(row => {
-    const title = row.dataset.title || '';
-    const date  = row.dataset.date  || '';
-    let show = true;
+  rows.forEach(function(row) {
+    var title = row.dataset.title || '';
+    var date  = row.dataset.date  || '';
+    var show  = true;
     if (titleQ && !title.includes(titleQ)) show = false;
-    if (fromQ && date < fromQ) show = false;
-    if (toQ   && date > toQ)   show = false;
+    if (fromQ  && date < fromQ) show = false;
+    if (toQ    && date > toQ)   show = false;
     row.classList.toggle('hidden', !show);
     if (show) visible++;
   });
 
-  // Show/hide months and weeks based on visible rows
-  document.querySelectorAll('.week-body').forEach(wb => {
-    const hasVisible = wb.querySelectorAll('.archive-row:not(.hidden)').length > 0;
-    wb.previousElementSibling.style.display = hasVisible ? '' : 'none';
-    if (hasVisible) wb.classList.add('open');
+  // Show/hide month and week containers
+  document.querySelectorAll('.week-body').forEach(function(wb) {
+    var has = wb.querySelectorAll('.archive-row:not(.hidden)').length > 0;
+    wb.previousElementSibling.style.display = has ? '' : 'none';
+    if (has) wb.classList.add('open');
   });
-
-  document.querySelectorAll('.month-body').forEach(mb => {
-    const hasVisible = mb.querySelectorAll('.archive-row:not(.hidden)').length > 0;
-    mb.closest('.month-group').style.display = hasVisible ? '' : 'none';
-    if (hasVisible) { mb.classList.add('open'); mb.previousElementSibling.style.display='flex'; }
+  document.querySelectorAll('.month-body').forEach(function(mb) {
+    var has = mb.querySelectorAll('.archive-row:not(.hidden)').length > 0;
+    mb.closest('.month-group').style.display = has ? '' : 'none';
+    if (has) {
+      mb.classList.add('open');
+      mb.previousElementSibling.style.display = '';
+    }
   });
 
   updateFilterCount(visible, rows.length);
@@ -316,76 +719,147 @@ function applyFilters() {
 }
 
 function updateFilterCount(visible, total) {
-  const el = document.getElementById('filter-count');
-  if (visible !== undefined) el.textContent = `Showing ${visible} of ${total} articles`;
-  else el.textContent = `${document.querySelectorAll('.archive-row').length} articles in archive`;
+  var el = document.getElementById('filter-count');
+  if (!el) return;
+  if (visible !== undefined) {
+    el.textContent = 'Showing ' + visible + ' of ' + total + ' articles';
+  } else {
+    el.textContent = document.querySelectorAll('.archive-row').length + ' articles in archive';
+  }
 }
 
 function clearFilters() {
   document.getElementById('filter-title').value = '';
   document.getElementById('filter-from').value  = '';
   document.getElementById('filter-to').value    = '';
-  document.querySelectorAll('.archive-row').forEach(r => r.classList.remove('hidden'));
-  document.querySelectorAll('.week-body,.month-body').forEach(el => {
+  document.querySelectorAll('.archive-row').forEach(function(r) {
+    r.classList.remove('hidden');
+  });
+  document.querySelectorAll('.week-body, .month-body').forEach(function(el) {
     el.classList.remove('open');
     if (el.previousElementSibling) el.previousElementSibling.style.display = '';
   });
-  document.querySelectorAll('.month-group').forEach(g => g.style.display = '');
+  document.querySelectorAll('.month-group').forEach(function(g) {
+    g.style.display = '';
+  });
   document.getElementById('no-archive').classList.remove('show');
   updateFilterCount();
 }
 
-// LOAD ARTICLES
-fetch('/articles.json?v='+Date.now()).then(r=>r.json()).then(articles => {
-  const now = Date.now();
-  // ALL articles show in grid — archive is additional organized view below
-  const active = articles;
-  const archive = articles.filter(a => a.date && (now - new Date(a.date).getTime()) >= CUTOFF);
-
-  const grid = document.getElementById('cards-grid');
-
-  // Always show archive section, auto-expanded
-  const archiveWrap = document.getElementById('archive-wrap');
-  archiveWrap.style.display = 'block';
-  document.getElementById('archive-toggle').querySelector('span').textContent =
-    `📁 Browse By Date (${articles.length} articles)`;
-
-  if (active.length === 0) {
-    document.getElementById('no-active').classList.add('show');
-  } else {
-    active.forEach(a => {
-      const card = document.createElement('div');
-      card.className = 'news-card';
-      card.onclick = () => location.href = '/articles/' + a.slug;
-    card.innerHTML = `
-        <div style="width:100%;aspect-ratio:2.5/1;background:url('/images/${getHero(a.slug)}') center/cover no-repeat;margin-bottom:12px;"></div>
-        <div class="card-tag">GTA6</div>
-        <div class="card-title">${a.title||''}</div>
-        <div class="card-date">${a.date ? formatDate(a.date) : ''}</div>`;
-      grid.appendChild(card);
+// ── LOAD ARTICLES ──────────────────────────────────────────
+fetch('/articles.json?v=' + Date.now())
+  .then(function(r) { return r.json(); })
+  .then(function(articles) {
+    var now    = Date.now();
+    var active = articles.filter(function(a) {
+      return !a.date || (now - new Date(a.date).getTime()) < CUTOFF;
     });
-  }
+    if (active.length === 0) active = articles.slice(0, 8);
 
-  // Always build archive with all articles for organized browsing
-  allArchive = articles;
-  buildArchive(articles);
-  // Auto-expand archive section
-  toggleArchive();
+    var grid = document.getElementById('active-grid');
+    if (!grid) return;
 
-  // Ticker
-  const t = document.getElementById('ticker-track');
-  if (t && articles.length) {
-    t.innerHTML = [...articles,...articles].map(x =>
-      `<span class="ticker-item" onclick="location.href='/articles/${x.slug}'">${x.emoji||'⚡'} ${x.title}</span>`
-    ).join('');
-  }
-}).catch(() => {
-  document.getElementById('no-active').classList.add('show');
+    if (active.length === 0) {
+      document.getElementById('no-active').classList.add('show');
+      grid.style.display = 'none';
+    } else {
+      grid.innerHTML = '';
+      active.forEach(function(a) {
+        var card = document.createElement('a');
+        card.className = 'active-card';
+        card.href = '/articles/' + a.slug;
+        card.innerHTML =
+          '<div class="active-card-img" style="background-image:url(\'/images/' + getHero(a.slug) + '\')">' +
+            '<div class="active-card-img-overlay"></div>' +
+          '</div>' +
+          '<div class="active-card-body">' +
+            '<div class="active-card-tag">GTA6</div>' +
+            '<div class="active-card-title">' + (a.title || '') + '</div>' +
+            '<div class="active-card-meta">' +
+              '<span class="active-card-date">' +
+                (a.date ? fmtDate(a.date) : '') +
+              '</span>' +
+              '<span class="active-card-arrow">Read →</span>' +
+            '</div>' +
+          '</div>';
+        grid.appendChild(card);
+      });
+    }
+
+    // Build archive with all articles
+    allArchive = articles;
+    buildArchive(articles);
+
+    // Ticker
+    var track = document.getElementById('ticker-track');
+    if (track && articles.length) {
+      track.innerHTML = [].concat(articles, articles).map(function(x) {
+        return '<span class="ticker-item" onclick="location.href=\'/articles/' + x.slug + '\'">' +
+          (x.emoji || '⚡') + ' ' + x.title + '</span>';
+      }).join('');
+    }
+  })
+  .catch(function() {
+    document.getElementById('no-active').classList.add('show');
+    var grid = document.getElementById('active-grid');
+    if (grid) grid.style.display = 'none';
+  });
+
+// ── NAV TOGGLE ────────────────────────────────────────────
+var mt = document.getElementById('menu-toggle');
+var nm = document.getElementById('nav-mobile');
+if (mt && nm) mt.addEventListener('click', function() {
+  nm.classList.toggle('open');
 });
 
-document.getElementById('menu-toggle')?.addEventListener('click',()=>{
-  document.getElementById('nav-mobile')?.classList.toggle('open');
-});
+// ── REVEAL ────────────────────────────────────────────────
+var obs = new IntersectionObserver(function(es) {
+  es.forEach(function(e) {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: .08 });
+document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+
+// ── DEBUG MODE ────────────────────────────────────────────
+(function() {
+  var KEY = '56vl-debug';
+  var active = localStorage.getItem(KEY) === '1';
+  function applyDebug() {
+    var ind = document.getElementById('vl-debug-ind');
+    if (!ind) {
+      ind = document.createElement('div');
+      ind.id = 'vl-debug-ind';
+      ind.textContent = '🔧 DEBUG ON — tap to off';
+      ind.onclick = function() {
+        active = false;
+        localStorage.setItem(KEY, '0');
+        applyDebug();
+      };
+      document.body.appendChild(ind);
+    }
+    ind.style.display = active ? 'block' : 'none';
+  }
+  var el = document.getElementById('vl-copyright');
+  var timer = null;
+  if (el) {
+    el.style.userSelect = 'none';
+    el.style.webkitUserSelect = 'none';
+    el.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      timer = setTimeout(function() {
+        active = !active;
+        localStorage.setItem(KEY, active ? '1' : '0');
+        applyDebug();
+      }, 1500);
+    }, { passive: false });
+    el.addEventListener('touchend', function() { clearTimeout(timer); });
+    el.addEventListener('touchmove', function() { clearTimeout(timer); });
+  }
+  applyDebug();
+})();
 </script>
 </body>
 </html>
