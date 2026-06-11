@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9EKF7J4V7W');</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Members — 56ViceLane</title>
+<meta name="description" content="The 56ViceLane community. Find your profile, view the Wall of Honor, and manage your Last Drive details.">
+<link rel="canonical" href="https://56vicelane.com/members">
+
+<!-- OG / Social -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="56ViceLane">
+<meta property="og:title" content="Members — 56ViceLane">
+<meta property="og:description" content="The 56ViceLane community. Wall of Honor. Player profiles. The Last Drive.">
+<meta property="og:image" content="https://56vicelane.com/images/Jason_and_Lucia_01_landscape.jpg">
+<meta property="og:url" content="https://56vicelane.com/members">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://56vicelane.com/images/Jason_and_Lucia_01_landscape.jpg">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Shared stylesheet -->
+<link rel="stylesheet" href="/vicelane.css">
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
+
+<style>
+/* ── MEMBERS PAGE ONLY ────────────────────────────────────── */
+
+/* HERO */
+.members-hero {
+  padding: 56px 24px 48px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+.members-hero-eyebrow {
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .3em;
+  font-size: .72rem;
+  color: var(--amber);
+  margin-bottom: 14px;
+}
+.members-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 7vw, 60px);
+  text-transform: uppercase;
+  line-height: 1.0;
+  margin-bottom: 14px;
+}
+.members-hero-title span { color: var(--amber); }
+.members-hero-sub {
+  font-size: .95rem;
+  color: #C8C4BE;
+  max-width: 500px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+}
+
+/* STATS ROW */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 600px;
+  margin: 0 auto 48px;
+}
+@media (max-width: 400px) {
+  .stats-row { grid-template-columns: 1fr; }
+}
+.stat-card {
+  background: var(--asphalt);
+  border: 1px solid var(--edge);
+  border-top: 2px solid var(--amber);
+  padding: 16px 12px;
+  text-align: center;
+}
+.stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 5vw, 32px);
+  color: var(--amber);
+  line-height: 1;
+  margin-bottom: 5px;
+}
+.stat-lbl {
+  font-family: var(--font-label);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: .65rem;
+  color: var(--smoke);
+}
+
+/* FIND PROFILE */
+.find-section {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 24px 52px;
+}
+.find-box {
+  background: var(--asphalt);
+  border: 1px solid var(--edge);
+  border-top: 3px solid var(--amber);
+  padding: 28px 24px;
+}
+.find-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: var(--bone);
+  margin-bottom: 6px;
+}
+.find-sub {
+  font-size: .88rem;
+  color: #C8C4BE;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+.find-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.find-result { margin-top: 16px; }
+.find-found {
+  background: var(--pitch);
+  border: 1px solid rgba(255,107,26,.3);
+  padding: 16px 18px;
+}
+.find-found-tag {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 10px;
+}
+.find-found-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.find-tag-item {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  padding: 3px 8px;
+  border: 1px solid var(--edge);
+  color: var(--smoke);
+}
+.find-tag-item.green { color: var(--green); border-color: rgba(0,200,117,.2); }
+.find-tag-item.gold  { color: var(--gold);  border-color: rgba(255,215,0,.3); background: rgba(255,215,0,.05); }
+.find-not-found {
+  font-size: .88rem;
+  color: var(--smoke);
+  padding: 10px 0;
+}
+
+/* SECTION BLOCKS */
+.members-section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px 56px;
+}
+.members-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--edge);
+}
+
+/* FEATURED MEMBERS */
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.featured-member {
+  background: var(--asphalt);
+  border: 1px solid var(--edge);
+  padding: 16px;
+  cursor: pointer;
+  transition: all .25s;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+.featured-member:hover {
+  border-color: var(--amber);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.featured-member.lead { border-color: var(--amber); }
+.fm-badge {
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: .65rem;
+  color: var(--amber);
+  margin-bottom: 6px;
+}
+.fm-tag {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  color: var(--bone);
+  margin-bottom: 4px;
+  word-break: break-all;
+}
+.fm-meta {
+  font-family: var(--font-label);
+  font-size: .72rem;
+  color: var(--smoke);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+/* SECTION LINKS */
+.section-links-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 500px) {
+  .section-links-grid { grid-template-columns: 1fr; }
+}
+.section-link-card {
+  background: var(--asphalt);
+  border: 1px solid var(--edge);
+  padding: 20px;
+  cursor: pointer;
+  transition: all .25s;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+}
+.section-link-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--amber);
+  opacity: 0;
+  transition: opacity .25s;
+}
+.section-link-card:hover {
+  border-color: var(--amber);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.section-link-card:hover::before { opacity: 1; }
+.slc-icon { font-size: 28px; margin-bottom: 10px; }
+.slc-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: var(--bone);
+  margin-bottom: 4px;
+}
+.slc-desc { font-size: .82rem; color: #C8C4BE; line-height: 1.5; }
+.slc-arrow {
+  font-family: var(--font-label);
+  font-weight: 800;
+  font-size: .75rem;
+  color: var(--amber);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  margin-top: 10px;
+  display: block;
+}
+
+/* NEW MEMBER CTA */
+.new-member-cta {
+  background: linear-gradient(135deg, #0B0B0F, #16161D);
+  border: 1px solid var(--edge);
+  border-left: 4px solid var(--amber);
+  padding: 28px 24px;
+  position: relative;
+  overflow: hidden;
+}
+.new-member-cta::after {
+  content: 'JOIN';
+  position: absolute;
+  right: -10px;
+  bottom: -10px;
+  font-family: var(--font-display);
+  font-size: 80px;
+  color: rgba(255,107,26,.04);
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.nmc-eyebrow {
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .25em;
+  font-size: .7rem;
+  color: var(--amber);
+  margin-bottom: 8px;
+}
+.nmc-title {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 4vw, 28px);
+  text-transform: uppercase;
+  color: var(--bone);
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+.nmc-sub {
+  font-size: .88rem;
+  color: #C8C4BE;
+  max-width: 460px;
+  margin-bottom: 20px;
+  line-height: 1.65;
+}
+.nmc-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker-track">
+    <span class="ticker-item">56ViceLane — Where GTA5 Ends And GTA6 Begins</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="logo" href="/">
+    <span class="logo-mark">56</span>
+    <span class="logo-text">ViceLane</span>
+  </a>
+  <div class="nav-links">
+    <a href="/news">News</a>
+    <a href="/gtacon">GTACON</a>
+    <a href="/lastdrive">Last Drive</a>
+    <a href="/members" class="active">Members</a>
+    <a href="/store">Store</a>
+    <a href="/gear">Gear</a>
+    <a href="/tools">Tools</a>
+    <a href="/forum">Forum</a>
+  </div>
+  <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="/news">News</a>
+  <a href="/gtacon">GTACON</a>
+  <a href="/lastdrive">Last Drive</a>
+  <a href="/members" class="active">Members</a>
+  <a href="/store">Store</a>
+  <a href="/gear">Gear</a>
+  <a href="/tools">Tools</a>
+  <a href="/forum">Forum</a>
+  <div class="mobile-divider"></div>
+  <a href="/about">About</a>
+  <a href="/contact">Contact</a>
+  <div class="mobile-divider"></div>
+  <a href="/privacy">Privacy</a>
+  <a href="/terms">Terms</a>
+</div>
+
+<!-- HERO -->
+<div class="members-hero">
+  <div class="members-hero-eyebrow">56ViceLane Community</div>
+  <h1 class="members-hero-title">The <span>Community</span><br>Is Here</h1>
+  <p class="members-hero-sub">Every driver signed up for The Last Drive. Find your profile, update your details, and connect with your crew before November 18.</p>
+
+  <div class="stats-row" id="stats-row">
+    <div class="stat-card">
+      <div class="stat-num" id="stat-total">...</div>
+      <div class="stat-lbl">Total Members</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="stat-leads">...</div>
+      <div class="stat-lbl">Drive Leads</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="stat-plates">...</div>
+      <div class="stat-lbl">Plates Claimed</div>
+    </div>
+  </div>
+</div>
+
+<!-- AdSense -->
+<div style="max-width:700px;margin:0 auto;padding:0 24px 16px;">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<!-- FIND YOUR PROFILE -->
+<div class="find-section">
+  <div class="find-box">
+    <div class="find-title">Find Your Profile</div>
+    <p class="find-sub">Enter your gamertag to find your profile page. Your page shows your plate, drive details, and lets you update your info.</p>
+    <div class="find-row">
+      <input type="text" class="form-input" id="search-tag" placeholder="Enter your gamertag..." onkeypress="if(event.key==='Enter')findProfile()" style="flex:1;">
+      <button onclick="findProfile()" class="btn btn-primary" style="padding:12px 20px;white-space:nowrap;">Find Me →</button>
+    </div>
+    <p style="font-size:.75rem;color:var(--smoke-dim);margin-top:6px;">Not signed up yet? <a href="/lastdrive" style="color:var(--amber);">Join The Last Drive →</a></p>
+    <div class="find-result" id="find-result"></div>
+  </div>
+</div>
+
+<!-- SECTION LINKS -->
+<div class="members-section">
+  <div class="members-section-header">
+    <div class="section-title">Member Areas</div>
+  </div>
+  <div class="section-links-grid">
+    <a href="/wall" class="section-link-card reveal">
+      <div class="slc-icon">🏆</div>
+      <div class="slc-title">Wall of Honor</div>
+      <div class="slc-desc">Every player signed up for The Last Drive. Browse by platform, search by gamertag, find your crew.</div>
+      <span class="slc-arrow">View Wall →</span>
+    </a>
+    <a href="/lastdrive" class="section-link-card reveal">
+      <div class="slc-icon">🏁</div>
+      <div class="slc-title">The Last Drive</div>
+      <div class="slc-desc">Lead a drive or join one. November 18, 2026. Free. All platforms. Your spot is waiting.</div>
+      <span class="slc-arrow">Sign Up →</span>
+    </a>
+    <a href="/store" class="section-link-card reveal">
+      <div class="slc-icon">🏷️</div>
+      <div class="slc-title">License Plates</div>
+      <div class="slc-desc">Upgrade your Wall of Honor profile with a custom plate. First 100 signups get one free.</div>
+      <span class="slc-arrow">Get Your Plate →</span>
+    </a>
+    <a href="/forum" class="section-link-card reveal">
+      <div class="slc-icon">💬</div>
+      <div class="slc-title">Community Forum</div>
+      <div class="slc-desc">Connect with the community. Discuss GTA6, coordinate drives, and meet your crew.</div>
+      <span class="slc-arrow">Join The Conversation →</span>
+    </a>
+  </div>
+</div>
+
+<!-- FEATURED MEMBERS -->
+<div class="members-section">
+  <div class="members-section-header">
+    <div class="section-title">Recent Drive Leads</div>
+    <a href="/wall" class="section-link">Full Wall →</a>
+  </div>
+  <div class="featured-grid" id="featured-grid">
+    <div style="color:var(--smoke);font-size:.88rem;">Loading...</div>
+  </div>
+</div>
+
+<!-- AdSense -->
+<div style="max-width:960px;margin:0 auto;padding:0 24px 16px;">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<!-- NOT A MEMBER YET -->
+<div class="members-section">
+  <div class="new-member-cta reveal">
+    <div class="nmc-eyebrow">Not Signed Up Yet?</div>
+    <div class="nmc-title">Your Spot Is Waiting</div>
+    <p class="nmc-sub">Sign up for The Last Drive and your gamertag goes on the Wall of Honor instantly. Free. All platforms. November 18, 2026.</p>
+    <div class="nmc-btns">
+      <a href="/lastdrive" class="btn btn-primary">🏁 Join The Last Drive</a>
+      <a href="/wall" class="btn btn-ghost">View Wall of Honor</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand"><span class="logo-mark">56</span>ViceLane</div>
+  <div class="footer-tag">Where GTA5 Ends And GTA6 Begins</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/news">News</a>
+    <a href="/gtacon">GTACON</a>
+    <a href="/lastdrive">Last Drive</a>
+    <a href="/members">Members</a>
+    <a href="/store">Store</a>
+    <a href="/gear">Gear</a>
+    <a href="/tools">Tools</a>
+    <a href="/forum">Forum</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="/admin" class="admin-link">Admin</a>
+  </div>
+  <p class="footer-disclosure">56ViceLane is an independent fan site. Not affiliated with Rockstar Games or Take-Two Interactive.</p>
+  <p class="footer-copy" id="vl-copyright">© 2026 56ViceLane · Forged Oak Studios</p>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+var AT_TOKEN = 'pattxJ12NQzpHMejD.2eb992f22f1a43e032d866df028dbb33958635234f6cfd30769e3e12f10d5588';
+var AT_BASE  = 'appVViGbmcu5gbn8B';
+var AT_URL   = 'https://api.airtable.com/v0/' + AT_BASE + '/Last%20Drive';
+var AT_H     = { 'Authorization': 'Bearer ' + AT_TOKEN };
+
+// ── FIND PROFILE ───────────────────────────────────────────
+function findProfile() {
+  var q = (document.getElementById('search-tag').value || '').trim();
+  var result = document.getElementById('find-result');
+  if (!q) return;
+
+  result.innerHTML = '<div style="color:var(--smoke);font-size:.88rem;margin-top:10px;">Searching...</div>';
+
+  var f = encodeURIComponent('{Gamertag}="' + q + '"');
+  fetch(AT_URL + '?filterByFormula=' + f +
+    '&fields%5B%5D=Gamertag&fields%5B%5D=Platform&fields%5B%5D=Region' +
+    '&fields%5B%5D=Staging%20Time&fields%5B%5D=StagingLocation' +
+    '&fields%5B%5D=SignupType&fields%5B%5D=PlateStatus&fields%5B%5D=SignupNumber' +
+    '&maxRecords=1', {headers: AT_H})
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      var recs = (d.records || []).filter(function(r) {
+        var g = (r.fields.Gamertag || '').toLowerCase();
+        return g !== 'test' && g !== 'trst';
+      });
+
+      if (!recs.length) {
+        result.innerHTML =
+          '<div class="find-not-found">' +
+            '"' + q + '" isn\'t in the system yet.<br>' +
+            '<a href="/lastdrive" style="color:var(--amber);">Sign up for The Last Drive →</a>' +
+          '</div>';
+        return;
+      }
+
+      var f2  = recs[0].fields;
+      var tag = f2.Gamertag || q;
+      var isLead  = (f2.SignupType || 'Drive Lead') === 'Drive Lead';
+      var isPlate = (f2.PlateStatus || '') === 'Free Premium';
+
+      result.innerHTML =
+        '<div class="find-found">' +
+          '<div class="find-found-tag">' + tag + '</div>' +
+          '<div class="find-found-meta">' +
+            (f2.Platform ? '<div class="find-tag-item">' + f2.Platform + '</div>' : '') +
+            (f2.Region ? '<div class="find-tag-item">' + f2.Region + '</div>' : '') +
+            (f2.StagingLocation ? '<div class="find-tag-item">📍 ' + f2.StagingLocation + '</div>' : '') +
+            (f2['Staging Time'] ? '<div class="find-tag-item">🕐 ' + f2['Staging Time'] + '</div>' : '') +
+            '<div class="find-tag-item green">✅ ' + (isLead ? '⭐ Drive Lead' : '🚗 Participant') + '</div>' +
+            (isPlate ? '<div class="find-tag-item gold">🏆 Founder #' + (f2.SignupNumber || '?') + '</div>' : '') +
+          '</div>' +
+          '<a href="/player?g=' + encodeURIComponent(tag) + '" class="btn btn-primary" style="width:100%;text-align:center;display:block;">View My Profile →</a>' +
+        '</div>';
+    })
+    .catch(function() {
+      result.innerHTML = '<div class="find-not-found">Search error — please try again.</div>';
+    });
+}
+
+// ── LOAD STATS + FEATURED ──────────────────────────────────
+function loadMemberData() {
+  var allRec = [];
+  var offset = '';
+
+  function fetchPage() {
+    var url = AT_URL +
+      '?fields%5B%5D=Gamertag&fields%5B%5D=Platform&fields%5B%5D=Region' +
+      '&fields%5B%5D=Staging%20Time&fields%5B%5D=IsOrganizer' +
+      '&fields%5B%5D=SignupType&fields%5B%5D=PlateStatus&fields%5B%5D=SignupNumber' +
+      '&fields%5B%5D=StagingLocation&fields%5B%5D=ShowOnWall' +
+      (offset ? '&offset=' + offset : '');
+
+    return fetch(url, {headers: AT_H})
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        if (d.records) allRec = allRec.concat(d.records);
+        offset = d.offset || '';
+        if (offset) return fetchPage();
+
+        var real = allRec.filter(function(r) {
+          var g = (r.fields.Gamertag || '').toLowerCase().trim();
+          return g && g !== 'test' && g !== 'trst';
+        });
+
+        // Stats
+        var total  = real.length;
+        var leads  = real.filter(function(r) { return r.fields.IsOrganizer; }).length;
+        var plates = real.filter(function(r) { return r.fields.PlateStatus === 'Free Premium'; }).length;
+
+        document.getElementById('stat-total').textContent  = total;
+        document.getElementById('stat-leads').textContent  = leads;
+        document.getElementById('stat-plates').textContent = plates;
+
+        // Featured — recent drive leads on wall
+        var featured = real
+          .filter(function(r) {
+            return r.fields.IsOrganizer && r.fields.ShowOnWall;
+          })
+          .slice(0, 8);
+
+        var grid = document.getElementById('featured-grid');
+        if (!featured.length) {
+          grid.innerHTML = '<div style="color:var(--smoke);font-size:.88rem;">No drive leads yet. <a href="/lastdrive" style="color:var(--amber);">Be the first →</a></div>';
+          return;
+        }
+
+        grid.innerHTML = '';
+        featured.forEach(function(r) {
+          var f   = r.fields;
+          var tag = f.Gamertag || 'Unknown';
+          var card = document.createElement('a');
+          card.className = 'featured-member lead';
+          card.href = '/player?g=' + encodeURIComponent(tag);
+          card.innerHTML =
+            '<div class="fm-badge">⭐ Drive Lead</div>' +
+            '<div class="fm-tag">' + tag + '</div>' +
+            '<div class="fm-meta">' +
+              (f.Platform ? f.Platform : '') +
+              (f.Region ? ' · ' + f.Region : '') +
+              (f['Staging Time'] ? '<br>' + f['Staging Time'] : '') +
+            '</div>';
+          grid.appendChild(card);
+        });
+      });
+  }
+
+  fetchPage().catch(function() {
+    document.getElementById('stat-total').textContent  = '—';
+    document.getElementById('stat-leads').textContent  = '—';
+    document.getElementById('stat-plates').textContent = '—';
+  });
+}
+
+loadMemberData();
+
+// ── TICKER ─────────────────────────────────────────────────
+fetch('/articles.json?v=' + Date.now())
+  .then(function(r) { return r.json(); })
+  .then(function(a) {
+    var t = document.getElementById('ticker-track');
+    if (!t) return;
+    t.innerHTML = [].concat(a, a).map(function(x) {
+      return '<span class="ticker-item" onclick="location.href=\'/articles/' + x.slug + '\'">' + (x.emoji || '⚡') + ' ' + x.title + '</span>';
+    }).join('');
+  }).catch(function() {});
+
+// ── NAV TOGGLE ─────────────────────────────────────────────
+var mt = document.getElementById('menu-toggle');
+var nm = document.getElementById('nav-mobile');
+if (mt && nm) mt.addEventListener('click', function() { nm.classList.toggle('open'); });
+
+// ── REVEAL ─────────────────────────────────────────────────
+var obs = new IntersectionObserver(function(es) {
+  es.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, {threshold: .08});
+document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+
+// ── DEBUG MODE ─────────────────────────────────────────────
+(function() {
+  var KEY = '56vl-debug';
+  var active = localStorage.getItem(KEY) === '1';
+  function applyDebug() {
+    var ind = document.getElementById('vl-debug-ind');
+    if (!ind) {
+      ind = document.createElement('div');
+      ind.id = 'vl-debug-ind';
+      ind.textContent = '🔧 DEBUG ON — tap to off';
+      ind.onclick = function() { active = false; localStorage.setItem(KEY,'0'); applyDebug(); };
+      document.body.appendChild(ind);
+    }
+    ind.style.display = active ? 'block' : 'none';
+  }
+  var el = document.getElementById('vl-copyright');
+  var timer = null;
+  if (el) {
+    el.style.userSelect = 'none';
+    el.style.webkitUserSelect = 'none';
+    el.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      timer = setTimeout(function() { active = !active; localStorage.setItem(KEY, active ? '1' : '0'); applyDebug(); }, 1500);
+    }, {passive: false});
+    el.addEventListener('touchend', function() { clearTimeout(timer); });
+    el.addEventListener('touchmove', function() { clearTimeout(timer); });
+  }
+  applyDebug();
+})();
+</script>
+</body>
+</html>
