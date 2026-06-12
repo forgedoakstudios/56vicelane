@@ -1,12 +1,122 @@
 [
-  {"emoji":"💰","title":"GTA6 Could Break Every Sales Record","slug":"gta6-sales-record-40-million-copies","headline":"GTA6 Could Sell 40 Million Copies In Year One — Here's Why The Numbers Make Sense","category":"industry","date":"June 9, 2026","excerpt":"Analysts project GTA6 will sell 35-40 million copies in its first year — numbers no game has ever hit. Here's a full breakdown of why the projections actually make sense.","permanent":false},
-  {"emoji":"🛣️","title":"Clear The Lanes — The GTA5 Farewell Movement","slug":"clear-the-lanes-petition-last-drive","headline":"Clear The Lanes — Why We're Asking Rockstar To Give GTA5 A Proper Goodbye","category":"community","date":"June 8, 2026","excerpt":"The Clear the Lanes movement is asking Rockstar Games to open GTA5 Online highways for one final night on November 18th. Here's why it matters and how to join.","permanent":false},
-  {"emoji":"🎬","title":"GTA6 Trailer 3 — When Is It Dropping?","slug":"gta6-trailer-3-when-is-it-dropping","headline":"GTA6 Trailer 3 — When Is It Actually Dropping?","category":"news","date":"June 8, 2026","excerpt":"Trailer 3 is coming. The World Cup theory is wrong. Here's our honest prediction on when Rockstar drops it and what to expect.","permanent":false},
-  {"emoji":"🔥","title":"9 GTA6 Rumors Starting To Sound Real","slug":"gta6-rumors-starting-to-sound-real","headline":"9 GTA6 Rumors That Are Starting To Sound Very Real","category":"analysis","date":"June 8, 2026","excerpt":"Years ago these sounded like fan fiction. Now they sound like exactly what Rockstar has been building for 13 years. Here's the full breakdown.","permanent":false},
-  {"emoji":"⚡","title":"GTA6 File Size Leaked — Is Your PS5 Ready?","slug":"gta6-file-size-leaked-storage-requirements","headline":"GTA6 File Size Leaked — And Your PS5 Might Not Be Ready","category":"news","date":"June 8, 2026","excerpt":"GTA6 could arrive at nearly 200GB. Here's what that means for your PS5, Xbox, and PC storage situation before November 19th launch day.","permanent":false},
-  {"emoji":"🚨","title":"Michael Actor's Swatter Gets 4 Years","slug":"ned-luke-swatter-sentenced","headline":"GTA V's Michael Actor Was Swatted — His Attacker Just Got 4 Years","category":"community","date":"June 3, 2026","excerpt":"Ned Luke posted the federal court sentencing letter himself. The perpetrator is headed to prison for 4 years.","permanent":false},
-  {"emoji":"⚡","title":"AMD RX 9070 GRE — GTA6 Performance","slug":"amd-rx-9070-gre-gta6-performance","headline":"AMD RX 9070 GRE GTA6 Performance Breakdown","category":"industry","date":"June 2, 2026","excerpt":"How the AMD RX 9070 GRE stacks up for GTA6 at launch.","permanent":false},
-  {"emoji":"🖼️","title":"Extrapolation Frame Gen & GTA6","slug":"extrapolation-frame-generation-gta6","headline":"Extrapolation Frame Generation And What It Means For GTA6","category":"industry","date":"June 2, 2026","excerpt":"The new frame generation tech and what GTA6 players can expect.","permanent":false},
-  {"emoji":"🖥️","title":"PC Build Guide — GTA6 Ready","slug":"gta6-pc-build-guide-2026","headline":"GTA6 PC Build Guide 2026 — What You Actually Need","category":"guides","date":"May 28, 2026","excerpt":"Everything you need to build or upgrade for GTA6 on PC.","permanent":true},
-  {"emoji":"🏁","title":"The Last Drive — Nov 18","slug":"lastdrive","headline":"The Last Drive — GTA5 Community Farewell Event","category":"event","date":"May 28, 2026","excerpt":"One final cruise through the city that raised us. November 18, 2026. Free. All platforms.","permanent":true}
+  {
+    "emoji": "🎮",
+    "title": "GTA V Story Mode Added To GTA+ — What It Means For The Last Drive",
+    "slug": "gta-v-added-to-gta-plus-2026",
+    "headline": "What it means with 159 days until GTA6",
+    "category": "GTA5 News",
+    "date": "2026-06-12",
+    "excerpt": "Rockstar just added GTA V Story Mode to GTA+ for $7.99/month. With 159 days until GTA6, here is what this move really means for the community and The Last Drive.",
+    "permanent": false
+  },
+  {
+    "emoji": "🖥️",
+    "title": "GTA6 PC Build Guide 2026 — What You Actually Need",
+    "slug": "gta6-pc-build-guide-2026",
+    "headline": "The hardware you need to run GTA6 at launch",
+    "category": "Tech",
+    "date": "2026-05-28",
+    "excerpt": "GTA6 PC requirements will be demanding. Here is every component you need to build a rig that handles GTA6 at launch — GPU, CPU, RAM, storage and more.",
+    "permanent": false
+  },
+  {
+    "emoji": "📈",
+    "title": "GTA6 Pre-Order Stock Surge — What The Numbers Tell Us",
+    "slug": "gta6-preorder-stock-surge",
+    "headline": "Pre-order numbers are moving faster than expected",
+    "category": "GTA6 News",
+    "date": "2026-05-20",
+    "excerpt": "GTA6 pre-order activity is surging across platforms. Here is what the numbers tell us about launch day demand and what it means for online servers on day one.",
+    "permanent": false
+  },
+  {
+    "emoji": "💰",
+    "title": "GTA6 Price — What To Expect At Launch",
+    "slug": "gta6-price-what-to-expect",
+    "headline": "Breaking down every pricing signal we have",
+    "category": "GTA6 News",
+    "date": "2026-05-14",
+    "excerpt": "With GTA6 launching November 19, pricing signals are everywhere. We break down every leak, every regional listing, and what you should actually budget for.",
+    "permanent": false
+  },
+  {
+    "emoji": "✅",
+    "title": "GTA6 — Everything Officially Confirmed So Far",
+    "slug": "gta6-everything-confirmed",
+    "headline": "The definitive list of confirmed GTA6 facts",
+    "category": "GTA6 News",
+    "date": "2026-05-08",
+    "excerpt": "No speculation, no leaks. This is every single thing Rockstar and Take-Two have officially confirmed about GTA6 — characters, setting, platforms, date, and more.",
+    "permanent": true
+  },
+  {
+    "emoji": "📅",
+    "title": "GTA6 November 19 Confirmed — The Date Is Locked",
+    "slug": "gta6-november-19-confirmed",
+    "headline": "Rockstar and Take-Two confirm the launch date",
+    "category": "GTA6 News",
+    "date": "2026-04-30",
+    "excerpt": "November 19, 2026 is officially locked. Rockstar and Take-Two have confirmed the GTA6 launch date. Here is everything you need to know about what comes next.",
+    "permanent": true
+  },
+  {
+    "emoji": "🎮",
+    "title": "GTA5 Coming To Nintendo Switch 2 — What Virtuos Is Building",
+    "slug": "gta6-gta5-switch2-virtuos",
+    "headline": "GTA5 Switch 2 port details emerge via Virtuos",
+    "category": "GTA5 News",
+    "date": "2026-04-22",
+    "excerpt": "Virtuos — the studio behind dozens of major ports — appears to be bringing GTA5 to Nintendo Switch 2. Here is what we know and what it means for the community.",
+    "permanent": false
+  },
+  {
+    "emoji": "🚫",
+    "title": "GTA6 Will Have No Review Copies — What That Means",
+    "slug": "gta6-no-review-copies",
+    "headline": "Rockstar breaking with tradition on launch day reviews",
+    "category": "GTA6 News",
+    "date": "2026-04-15",
+    "excerpt": "Reports indicate Rockstar will not send review copies for GTA6 ahead of launch. Here is what that decision means for buyers and the Day 1 experience.",
+    "permanent": false
+  },
+  {
+    "emoji": "📦",
+    "title": "GTA6 Six Editions Leak — Which One Is Right For You",
+    "slug": "gta6-six-editions-leak",
+    "headline": "Six editions leaked — breakdown of every tier",
+    "category": "GTA6 News",
+    "date": "2026-04-08",
+    "excerpt": "A credible leak points to six GTA6 editions at launch. We break down every reported tier, what is included, and which one actually makes sense to buy.",
+    "permanent": false
+  },
+  {
+    "emoji": "💸",
+    "title": "GTA6 Priced At $115 In Dutch Leak — Real Or Not?",
+    "slug": "gta6-price-115-dutch-leak",
+    "headline": "Dutch retailer listing surfaces $115 price point",
+    "category": "GTA6 News",
+    "date": "2026-04-01",
+    "excerpt": "A Dutch retailer listing showed GTA6 at $115. We dig into whether this is a real signal, a placeholder, or a conversion artifact — and what it means for US pricing.",
+    "permanent": false
+  },
+  {
+    "emoji": "🔍",
+    "title": "GTA6 Pre-Order Chaos Debunked — What Actually Happened",
+    "slug": "gta6-preorder-chaos-debunked",
+    "headline": "Separating the real pre-order story from the noise",
+    "category": "GTA6 News",
+    "date": "2026-03-25",
+    "excerpt": "GTA6 pre-order listings caused chaos across social media. Here is a clear breakdown of what actually happened, what was real, and what was misinformation.",
+    "permanent": false
+  },
+  {
+    "emoji": "🇮🇹",
+    "title": "GTA6 Pre-Orders Secretly Went Live In Italy — Here Is The Evidence",
+    "slug": "gta6-preorders-secretly-went-live-italy",
+    "headline": "Italian retailer listings surfaced before being pulled",
+    "category": "GTA6 News",
+    "date": "2026-03-18",
+    "excerpt": "An Italian retailer briefly listed GTA6 pre-orders before pulling them. We captured everything before it went down — pricing, editions, and what it signals about the official date.",
+    "permanent": false
+  }
 ]
