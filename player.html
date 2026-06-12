@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9EKF7J4V7W');</script>
 <meta charset="UTF-8">
@@ -10,173 +11,131 @@
 <meta property="og:title" id="og-title" content="Player Profile — 56ViceLane">
 <meta property="og:url" content="https://56vicelane.com/player">
 <meta property="og:image" id="og-image" content="https://56vicelane.com/images/Jason_and_Lucia_01_landscape.jpg">
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="56ViceLane">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/vicelane.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
 <style>
-.profile-hero{width:100%;aspect-ratio:2.5/1;max-height:300px;background-size:cover;background-position:center;position:relative;overflow:hidden;}
+.profile-loading{text-align:center;padding:80px 24px;color:var(--smoke);font-family:var(--font-label);font-weight:600;text-transform:uppercase;letter-spacing:.15em;font-size:.88rem;}
+.not-found{text-align:center;padding:80px 24px;max-width:500px;margin:0 auto;}
+.not-found-title{font-family:var(--font-display);font-size:1.5rem;text-transform:uppercase;margin-bottom:12px;}
+.not-found-text{color:var(--smoke);font-size:.9rem;margin-bottom:24px;}
+.profile-hero{width:100%;aspect-ratio:2.5/1;max-height:280px;background-size:cover;background-position:center;position:relative;overflow:hidden;}
 .profile-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60%;background:linear-gradient(0deg,var(--pitch) 0%,transparent 100%);}
-.profile-hero-overlay{position:absolute;bottom:0;left:0;right:0;padding:20px 24px;z-index:2;}
-.profile-avatar-wrap{position:relative;display:inline-block;margin-bottom:8px;}
-.profile-avatar{width:80px;height:80px;border-radius:50%;border:3px solid var(--amber);object-fit:cover;background:var(--asphalt);display:flex;align-items:center;justify-content:center;font-family:'Russo One',sans-serif;font-size:28px;color:var(--amber);overflow:hidden;}
-.profile-avatar img{width:100%;height:100%;object-fit:cover;}
-.founder-ring{border-color:#FFD700;box-shadow:0 0 12px rgba(255,215,0,0.4);}
-.profile-wrap{max-width:760px;margin:0 auto;padding:0 24px;}
+.profile-wrap{max-width:760px;margin:0 auto;padding:0 24px 80px;position:relative;z-index:2;}
 .profile-top{padding:20px 0 0;}
-.profile-gamertag{font-family:'Russo One',sans-serif;font-size:clamp(24px,5vw,40px);text-transform:uppercase;color:var(--bone);line-height:1.0;margin-bottom:8px;}
-.profile-badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;}
-.badge{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;font-size:11px;padding:4px 10px;}
-.badge-lead{color:#FFD700;background:rgba(255,215,0,0.1);border:1px solid rgba(255,215,0,0.3);}
-.badge-participant{color:var(--cyan);background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.2);}
-.badge-founder{color:#FFD700;background:rgba(255,215,0,0.08);border:1px solid rgba(255,215,0,0.25);}
-.badge-platform{color:var(--smoke);background:var(--asphalt);border:1px solid var(--edge);}
-.badge-region{color:var(--smoke);background:var(--asphalt);border:1px solid var(--edge);}
+.profile-avatar{width:80px;height:80px;border-radius:50%;border:3px solid var(--amber);background:var(--asphalt);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.8rem;color:var(--amber);overflow:hidden;margin-bottom:12px;}
+.profile-avatar img{width:100%;height:100%;object-fit:cover;}
+.profile-avatar.founder-ring{border-color:var(--gold);box-shadow:0 0 12px rgba(255,215,0,.4);}
+.profile-gamertag{font-family:var(--font-display);font-size:clamp(24px,5vw,40px);text-transform:uppercase;color:var(--bone);line-height:1.0;margin-bottom:10px;}
+.profile-badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;}
 .drive-card{background:var(--asphalt);border:1px solid var(--edge);padding:16px 20px;margin-bottom:20px;}
-.drive-card-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;font-size:10px;color:var(--amber);margin-bottom:12px;}
+.drive-card-label{font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.2em;font-size:.7rem;color:var(--amber);margin-bottom:12px;}
 .drive-details-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 @media(max-width:400px){.drive-details-grid{grid-template-columns:1fr;}}
 .drive-detail{background:var(--pitch);padding:10px 12px;}
-.detail-lbl{font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;font-size:9px;color:var(--smoke);margin-bottom:3px;}
-.detail-val{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15px;color:var(--bone);text-transform:uppercase;letter-spacing:0.06em;}
+.detail-lbl{font-family:var(--font-label);font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:.65rem;color:var(--smoke);margin-bottom:3px;}
+.detail-val{font-family:var(--font-label);font-weight:800;font-size:.95rem;color:var(--bone);text-transform:uppercase;letter-spacing:.05em;}
 .add-me-card{background:var(--asphalt);border:1px solid var(--edge);border-left:3px solid var(--amber);padding:16px 20px;margin-bottom:20px;}
-.add-me-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;font-size:10px;color:var(--amber);margin-bottom:8px;}
-.add-me-tag{font-family:'Russo One',sans-serif;font-size:22px;text-transform:uppercase;color:var(--bone);margin-bottom:10px;}
-.copy-btn{background:var(--amber);color:var(--pitch);font-family:'Russo One',sans-serif;text-transform:uppercase;font-size:12px;padding:10px 20px;border:none;cursor:pointer;letter-spacing:0.06em;transition:all 0.3s;}
-.copy-btn:hover{box-shadow:0 0 16px rgba(255,107,26,0.4);}
+.add-me-label{font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.2em;font-size:.7rem;color:var(--amber);margin-bottom:8px;}
+.add-me-tag{font-family:var(--font-display);font-size:1.4rem;text-transform:uppercase;color:var(--bone);margin-bottom:12px;}
 .plate-section{margin-bottom:20px;}
-.plate-section-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;font-size:10px;color:var(--smoke);margin-bottom:8px;}
-.profile-plate{border:2px solid var(--edge);overflow:hidden;max-width:400px;}
+.plate-section-label{font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.2em;font-size:.7rem;color:var(--smoke);margin-bottom:8px;}
+.profile-plate{border:2px solid var(--edge);overflow:hidden;max-width:380px;}
 .profile-plate-inner{width:100%;aspect-ratio:2.5/1;background-size:cover;background-position:center;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px;position:relative;}
 .profile-plate-stars{font-size:9px;letter-spacing:5px;margin-bottom:4px;}
-.profile-plate-tag{font-family:'Russo One',sans-serif;font-size:clamp(14px,4vw,24px);text-transform:uppercase;letter-spacing:0.1em;text-align:center;-webkit-text-stroke:1px rgba(0,0,0,0.5);}
-.profile-plate-footer{font-size:6px;text-transform:uppercase;letter-spacing:0.25em;margin-top:4px;}
-.profile-plate-num{position:absolute;top:4px;right:6px;font-size:7px;font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;text-shadow:0 1px 2px rgba(0,0,0,0.8);}
-.upgrade-plate-link{display:inline-block;margin-top:10px;font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;font-size:12px;color:var(--amber);text-decoration:none;padding:6px 0;}
+.profile-plate-tag{font-family:var(--font-display);font-size:clamp(14px,4vw,24px);text-transform:uppercase;letter-spacing:.1em;text-align:center;-webkit-text-stroke:1px rgba(0,0,0,.5);}
+.profile-plate-footer{font-size:6px;text-transform:uppercase;letter-spacing:.25em;margin-top:4px;}
+.profile-plate-num{position:absolute;top:4px;right:6px;font-size:.65rem;font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.08em;text-shadow:0 1px 2px rgba(0,0,0,.8);}
+.upgrade-plate-link{display:inline-block;margin-top:10px;font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:.78rem;color:var(--amber);text-decoration:none;padding:6px 0;}
 .upgrade-plate-link:hover{text-decoration:underline;}
-.submission-card{background:var(--asphalt);border:1px solid var(--edge);padding:20px;margin-bottom:20px;}
-.submission-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;font-size:10px;color:var(--smoke);margin-bottom:4px;}
-.submission-title{font-family:'Russo One',sans-serif;font-size:16px;text-transform:uppercase;margin-bottom:6px;}
-.submission-sub{font-size:12px;color:var(--smoke);margin-bottom:16px;line-height:1.6;}
-.submission-select{background:var(--pitch);border:1px solid var(--edge);color:var(--bone);font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:0.1em;padding:12px 14px;width:100%;margin-bottom:12px;outline:none;cursor:pointer;}
-.submission-select:focus{border-color:var(--amber);}
-.submission-textarea{background:var(--pitch);border:1px solid var(--edge);color:var(--bone);font-family:'Inter',sans-serif;font-size:14px;padding:13px 16px;width:100%;min-height:120px;resize:vertical;outline:none;transition:border-color 0.3s;line-height:1.6;box-sizing:border-box;}
-.submission-textarea:focus{border-color:var(--amber);}
-.submission-btn{width:100%;background:var(--amber);color:var(--pitch);font-family:'Russo One',sans-serif;text-transform:uppercase;font-size:14px;padding:14px;border:none;cursor:pointer;margin-top:12px;letter-spacing:0.06em;transition:all 0.3s;}
-.submission-btn:hover{box-shadow:0 0 24px rgba(255,107,26,0.4);}
-.submission-btn:disabled{opacity:0.5;cursor:not-allowed;}
-.submission-msg{margin-top:10px;font-size:13px;padding:10px 14px;display:none;}
-.submission-msg.show{display:block;}
-.submission-msg.success{color:var(--green);background:rgba(0,200,117,0.08);border:1px solid rgba(0,200,117,0.2);}
-.submission-msg.error{color:#ff6b6b;background:rgba(255,107,107,0.08);border:1px solid rgba(255,107,107,0.2);}
-.manage-option{background:var(--pitch);border:2px solid var(--edge);padding:16px 12px;text-align:center;cursor:pointer;transition:all 0.25s;}
-.manage-option:hover{border-color:var(--amber);}
-.manage-option.active{border-color:var(--amber);background:rgba(255,107,26,0.06);}
-.pic-upload-card{background:var(--asphalt);border:1px solid var(--edge);padding:16px 20px;margin-bottom:20px;}
-.pic-upload-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;font-size:10px;color:var(--smoke);margin-bottom:8px;}
-.pic-upload-desc{font-size:12px;color:var(--smoke);margin-bottom:12px;}
-.pic-url-row{display:flex;gap:8px;}
-.pic-url-input{flex:1;background:var(--pitch);border:1px solid var(--edge);color:var(--bone);font-family:'Inter',sans-serif;font-size:13px;padding:11px 14px;outline:none;transition:border-color 0.3s;}
-.pic-url-input:focus{border-color:var(--amber);}
-.pic-save-btn{background:var(--amber);color:var(--pitch);font-family:'Russo One',sans-serif;text-transform:uppercase;font-size:12px;padding:11px 16px;border:none;cursor:pointer;white-space:nowrap;}
+.about-card{background:var(--asphalt);border:1px solid var(--edge);padding:18px 20px;margin-bottom:20px;}
+.about-label{font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.2em;font-size:.7rem;color:var(--smoke);margin-bottom:8px;}
+.about-text{font-size:.92rem;color:var(--bone);line-height:1.75;white-space:pre-wrap;}
+.about-empty{font-size:.88rem;color:var(--smoke);font-style:italic;}
+.share-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;}
 .owner-lock{background:var(--asphalt);border:1px solid var(--edge);border-left:3px solid var(--amber);padding:16px 20px;margin-bottom:20px;}
-.owner-lock-title{font-family:'Russo One',sans-serif;font-size:14px;text-transform:uppercase;color:var(--bone);margin-bottom:4px;}
-.owner-lock-sub{font-size:12px;color:var(--smoke);margin-bottom:14px;line-height:1.5;}
-.admin-gate{background:var(--asphalt);border:1px solid var(--edge);border-left:3px solid var(--cyan);padding:16px 20px;margin-bottom:20px;display:none;}
-.admin-panel{background:var(--asphalt);border:1px solid var(--cyan);padding:20px;margin-bottom:20px;display:none;}
-.admin-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;font-size:10px;color:var(--cyan);margin-bottom:8px;}
-.admin-title{font-family:'Russo One',sans-serif;font-size:16px;text-transform:uppercase;color:var(--bone);margin-bottom:4px;}
-.plate-checkbox-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0;}
-.plate-check-item{background:var(--pitch);border:1px solid var(--edge);padding:10px 12px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:border-color 0.2s;}
+.owner-lock-title{font-family:var(--font-display);font-size:.9rem;text-transform:uppercase;color:var(--bone);margin-bottom:4px;}
+.owner-lock-sub{font-size:.82rem;color:#C8C4BE;margin-bottom:14px;line-height:1.5;}
+.verify-row{display:flex;gap:8px;}
+.owner-panel-section{background:var(--asphalt);border:1px solid var(--edge);padding:20px;margin-bottom:16px;}
+.owner-panel-label{font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.2em;font-size:.7rem;color:var(--smoke);margin-bottom:4px;}
+.owner-panel-title{font-family:var(--font-display);font-size:1rem;text-transform:uppercase;color:var(--bone);margin-bottom:6px;}
+.owner-panel-sub{font-size:.82rem;color:#C8C4BE;margin-bottom:16px;line-height:1.5;}
+.manage-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+.manage-option{background:var(--pitch);border:2px solid var(--edge);padding:16px 12px;text-align:center;cursor:pointer;transition:all .25s;}
+.manage-option:hover{border-color:var(--amber);}
+.manage-option.active{border-color:var(--amber);background:rgba(255,107,26,.05);}
+.manage-icon{font-size:24px;margin-bottom:6px;}
+.manage-name{font-family:var(--font-display);font-size:.85rem;text-transform:uppercase;color:var(--bone);margin-bottom:3px;}
+.manage-desc{font-size:.75rem;color:var(--smoke);}
+.admin-gate{background:var(--asphalt);border:1px solid var(--edge);border-left:3px solid var(--cyan);padding:16px 20px;margin-bottom:16px;display:none;}
+.admin-panel{background:var(--asphalt);border:1px solid var(--cyan);padding:20px;margin-bottom:16px;display:none;}
+.admin-label{font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.2em;font-size:.7rem;color:var(--cyan);margin-bottom:8px;}
+.admin-title{font-family:var(--font-display);font-size:1rem;text-transform:uppercase;color:var(--bone);margin-bottom:4px;}
+.plate-check-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0;}
+.plate-check-item{background:var(--pitch);border:1px solid var(--edge);padding:10px 12px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:border-color .2s;}
 .plate-check-item:hover{border-color:var(--cyan);}
 .plate-check-item.owned{border-color:var(--amber);}
 .plate-check-item input{accent-color:var(--amber);width:16px;height:16px;cursor:pointer;}
-.plate-check-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:var(--bone);}
-.about-card{background:var(--asphalt);border:1px solid var(--edge);padding:20px;margin-bottom:20px;}
-.about-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;font-size:10px;color:var(--smoke);margin-bottom:8px;}
-.about-text{font-family:'Inter',sans-serif;font-size:14px;color:var(--bone);line-height:1.7;white-space:pre-wrap;}
-.about-empty{font-size:13px;color:var(--smoke);font-style:italic;}
-.not-found{text-align:center;padding:80px 24px;}
-.not-found-title{font-family:'Russo One',sans-serif;font-size:24px;text-transform:uppercase;margin-bottom:12px;}
-.not-found-text{color:var(--smoke);font-size:14px;margin-bottom:24px;}
-.not-found-cta{display:inline-block;background:var(--amber);color:var(--pitch);font-family:'Russo One',sans-serif;text-transform:uppercase;font-size:14px;padding:14px 28px;text-decoration:none;}
-.profile-loading{text-align:center;padding:80px 24px;color:var(--smoke);font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;font-size:14px;}
-.share-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;}
-.share-btn-sm{background:none;border:1px solid var(--edge);color:var(--smoke);font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;font-size:11px;padding:8px 14px;cursor:pointer;text-decoration:none;transition:all 0.25s;}
-.share-btn-sm:hover{border-color:var(--amber);color:var(--amber);}
+.plate-check-label{font-family:var(--font-label);font-weight:800;font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;color:var(--bone);}
+.drives-loading{padding:16px 0;font-size:.88rem;color:var(--smoke);}
+.drive-browser-card{background:var(--pitch);border:1px solid var(--edge);padding:14px;margin-bottom:8px;}
+.drive-browser-tag{font-family:var(--font-display);font-size:1rem;text-transform:uppercase;color:var(--bone);margin-bottom:6px;}
+.drive-browser-meta{font-size:.82rem;color:var(--smoke);margin-bottom:8px;}
 </style>
 </head>
 <body>
-
-<!-- TICKER -->
-<div class="ticker-wrap"><div class="ticker-track" id="ticker-track"><span class="ticker-item">Loading...</span></div></div>
-
-<!-- NAV -->
+<div class="ticker-wrap"><div class="ticker-track" id="ticker-track"><span class="ticker-item">56ViceLane — Where GTA5 Ends And GTA6 Begins</span></div></div>
 <nav class="nav">
   <a class="logo" href="/"><span class="logo-mark">56</span><span class="logo-text">ViceLane</span></a>
   <div class="nav-links">
-    <a href="/news" class="nav-link">News</a>
-    <a href="/lastdrive" class="nav-link">Last Drive</a>
-    <a href="/wall" class="nav-link">Members</a>
-    <a href="/plates" class="nav-link">Plates</a>
+    <a href="/news">News</a><a href="/gtacon">GTACON</a><a href="/lastdrive">Last Drive</a>
+    <a href="/members" class="active">Members</a><a href="/store">Store</a>
+    <a href="/gear">Gear</a><a href="/tools">Tools</a><a href="/forum">Forum</a>
   </div>
-  <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="menu-toggle" id="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="nav-mobile" id="nav-mobile">
-  <a href="/news" class="nav-link">News</a>
-  <a href="/lastdrive" class="nav-link">Last Drive</a>
-  <a href="/wall" class="nav-link">Wall of Honor</a>
-  <a href="/plates" class="nav-link">License Plates</a>
-  <a href="/plates#verify" style="color:var(--amber);font-weight:800;">&#128273; Sign In</a>
+  <a href="/news">News</a><a href="/gtacon">GTACON</a><a href="/lastdrive">Last Drive</a>
+  <a href="/members" class="active">Members</a><a href="/store">Store</a>
+  <a href="/gear">Gear</a><a href="/tools">Tools</a><a href="/forum">Forum</a>
+  <div class="mobile-divider"></div>
+  <a href="/about">About</a><a href="/contact">Contact</a>
+  <div class="mobile-divider"></div>
+  <a href="/privacy">Privacy</a><a href="/terms">Terms</a>
 </div>
 
-<!-- LOADING -->
 <div id="profile-loading" class="profile-loading">Loading profile...</div>
-
-<!-- NOT FOUND -->
 <div id="profile-not-found" class="not-found" style="display:none;">
   <div class="not-found-title">Player Not Found</div>
-  <div class="not-found-text">That gamertag isn't on the wall yet. Sign up for the Last Drive to get your profile.</div>
-  <a href="/lastdrive" class="not-found-cta">Sign Up &rarr;</a>
+  <p class="not-found-text">That gamertag isn't on the wall yet. Sign up for The Last Drive to get your profile.</p>
+  <a href="/lastdrive" class="btn btn-primary">Sign Up &rarr;</a>
 </div>
 
-<!-- PROFILE CONTENT -->
 <div id="profile-content" style="display:none;">
-
-  <!-- HERO -->
-  <div class="profile-hero" id="profile-hero">
-    <div class="profile-hero-overlay">
-      <div class="profile-avatar-wrap">
-        <div class="profile-avatar" id="profile-avatar">?</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- BODY -->
+  <div class="profile-hero" id="profile-hero"></div>
   <div class="profile-wrap">
     <div class="profile-top">
+      <div class="profile-avatar" id="profile-avatar">?</div>
       <div class="profile-gamertag" id="profile-gamertag">LOADING</div>
       <div class="profile-badges" id="profile-badges"></div>
     </div>
-
-    <!-- DRIVE DETAILS -->
     <div class="drive-card" id="drive-card" style="display:none;">
       <div class="drive-card-label">Drive Details &mdash; November 18, 2026</div>
       <div class="drive-details-grid" id="drive-details-grid"></div>
     </div>
-
-    <!-- ADD ME -->
     <div class="add-me-card">
       <div class="add-me-label">&#128203; Add Me In-Game</div>
       <div class="add-me-tag" id="add-me-gamertag"></div>
-      <button class="copy-btn" id="copy-btn" onclick="copyGamertag()">Copy Gamertag</button>
+      <button class="btn btn-primary" id="copy-btn" onclick="copyGamertag()" style="padding:10px 20px;font-size:.82rem;">Copy Gamertag</button>
     </div>
-
-    <!-- PLATE -->
     <div class="plate-section">
       <div class="plate-section-label">License Plate</div>
       <div class="profile-plate" id="profile-plate-card">
@@ -187,862 +146,245 @@
           <div class="profile-plate-footer">THE LAST DRIVE &middot; NOV 18 2026</div>
         </div>
       </div>
-      <a href="/plates" class="upgrade-plate-link">&#127942; Upgrade Your Plate &rarr;</a>
+      <a href="/store" class="upgrade-plate-link">&#127942; Upgrade Your Plate &rarr;</a>
     </div>
-
-    <!-- SHARE ROW -->
     <div class="share-row">
-      <button class="share-btn-sm" onclick="shareProfile()">&#128241; Share Profile</button>
-      <button class="share-btn-sm" onclick="copyProfileLink()">&#128279; Copy Link</button>
-      <a href="/wall" class="share-btn-sm">&#127937; Wall of Honor</a>
+      <button class="share-btn share-native" onclick="shareProfile()">&#128241; Share Profile</button>
+      <button class="share-btn share-copy" onclick="copyProfileLink()">&#128279; Copy Link</button>
+      <a href="/members" class="share-btn">&#127937; Wall of Honor</a>
     </div>
-
-    <!-- ABOUT (public display) -->
     <div class="about-card">
       <div class="about-label">About</div>
       <div id="about-display" class="about-empty">Nothing here yet.</div>
     </div>
-
-    <!-- OWNER LOCK GATE -->
     <div class="owner-lock" id="owner-lock-gate">
       <div class="owner-lock-title">Is This Your Profile?</div>
-      <div class="owner-lock-sub">Enter your signup email to unlock your profile settings.</div>
-      <div class="pic-url-row" style="margin-bottom:10px;">
-        <input type="email" class="pic-url-input" id="owner-email" placeholder="Your signup email">
-        <button class="pic-save-btn" onclick="unlockOwner()">Unlock</button>
+      <p class="owner-lock-sub">Enter your signup email to unlock your profile settings.</p>
+      <div class="verify-row">
+        <input type="email" class="form-input" id="owner-email" placeholder="Your signup email" style="flex:1;">
+        <button class="btn btn-primary" onclick="unlockOwner()" style="padding:12px 18px;white-space:nowrap;">Unlock</button>
       </div>
-      <div class="submission-msg" id="owner-lock-msg"></div>
+      <div class="msg" id="owner-lock-msg"></div>
     </div>
-
-    <!-- OWNER PANEL (hidden until email verified) -->
     <div id="owner-panel" style="display:none;">
-
-      <!-- ABOUT EDIT -->
-      <div class="submission-card">
-        <div class="submission-label">Your Profile</div>
-        <div class="submission-title">About You</div>
-        <div style="font-size:12px;color:var(--smoke);margin-bottom:12px;">Tell the community about yourself.</div>
-        <textarea class="submission-textarea" id="about-input" placeholder="I have been playing GTA since..." style="min-height:100px;"></textarea>
-        <button class="submission-btn" onclick="saveAbout()" style="margin-top:10px;">Save About</button>
-        <div class="submission-msg" id="about-msg"></div>
+      <div class="owner-panel-section">
+        <div class="owner-panel-label">Your Profile</div>
+        <div class="owner-panel-title">About You</div>
+        <p class="owner-panel-sub">Tell the community about yourself.</p>
+        <textarea class="form-textarea" id="about-input" placeholder="I have been playing GTA since..." style="min-height:90px;"></textarea>
+        <button class="form-submit" onclick="saveAbout()" style="margin-top:10px;">Save About</button>
+        <div class="msg" id="about-msg"></div>
       </div>
-
-      <!-- PROFILE PIC -->
-      <div class="pic-upload-card">
-        <div class="pic-upload-label">Profile Picture</div>
-        <div class="pic-upload-desc">Paste an image URL (Imgur, etc.) to set your profile picture.</div>
-        <div class="pic-url-row">
-          <input type="url" class="pic-url-input" id="pic-url-input" placeholder="https://i.imgur.com/yourimage.jpg">
-          <button class="pic-save-btn" onclick="saveProfilePic()">Save</button>
+      <div class="owner-panel-section">
+        <div class="owner-panel-label">Profile Picture</div>
+        <div class="owner-panel-title">Avatar</div>
+        <p class="owner-panel-sub">Paste an Imgur image URL to set your profile picture.</p>
+        <div style="display:flex;gap:8px;">
+          <input type="url" class="form-input" id="pic-url-input" placeholder="https://i.imgur.com/yourimage.jpg" style="flex:1;">
+          <button class="btn btn-primary" onclick="saveProfilePic()" style="padding:12px 16px;white-space:nowrap;">Save</button>
         </div>
-        <div class="submission-msg" id="pic-msg"></div>
+        <div class="msg" id="pic-msg"></div>
       </div>
-
-      <!-- DRIVE MANAGEMENT -->
-      <div class="submission-card" id="drive-manage-section" style="scroll-margin-top:20px;">
-        <div class="submission-label">Drive Settings</div>
-        <div class="submission-title">Manage Your Drive</div>
-        <div style="font-size:12px;color:var(--smoke);margin-bottom:16px;line-height:1.6;">Join a drive, switch drives, or step up as a Drive Lead.</div>
-        <div id="manage-current" style="background:var(--pitch);border:1px solid var(--edge);padding:12px 14px;margin-bottom:16px;display:none;font-size:13px;color:var(--bone);line-height:1.6;"></div>
-        <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;color:var(--amber);margin-bottom:10px;">What do you want to do?</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;">
-          <div class="manage-option" id="opt-lead" onclick="showLeadForm()">
-            <div style="font-size:24px;margin-bottom:6px;">&#127937;</div>
-            <div style="font-size:13px;text-transform:uppercase;color:var(--bone);margin-bottom:4px;">Lead a Drive</div>
-            <div style="font-size:11px;color:var(--smoke);">Set your slot and let others join you</div>
-          </div>
-          <div class="manage-option" id="opt-join" onclick="showDriveBrowser()">
-            <div style="font-size:24px;margin-bottom:6px;">&#128663;</div>
-            <div style="font-size:13px;text-transform:uppercase;color:var(--bone);margin-bottom:4px;">Join a Drive</div>
-            <div style="font-size:11px;color:var(--smoke);">Browse open drives and pick your crew</div>
-          </div>
+      <div class="owner-panel-section" id="drive-manage-section">
+        <div class="owner-panel-label">Drive Settings</div>
+        <div class="owner-panel-title">Manage Your Drive</div>
+        <p class="owner-panel-sub">Join a drive, switch drives, or step up as a Drive Lead.</p>
+        <div id="manage-current" style="background:var(--pitch);border:1px solid var(--edge);padding:12px 14px;margin-bottom:16px;display:none;font-size:.88rem;color:var(--bone);line-height:1.6;"></div>
+        <div class="manage-grid">
+          <div class="manage-option" id="opt-lead" onclick="showLeadForm()"><div class="manage-icon">&#127937;</div><div class="manage-name">Lead a Drive</div><div class="manage-desc">Set your slot and let others join you</div></div>
+          <div class="manage-option" id="opt-join" onclick="showDriveBrowser()"><div class="manage-icon">&#128663;</div><div class="manage-name">Join a Drive</div><div class="manage-desc">Browse open drives and pick your crew</div></div>
         </div>
-
-        <!-- DRIVE BROWSER -->
         <div id="drive-browser" style="display:none;">
-          <div style="font-size:10px;font-weight:800;text-transform:uppercase;color:var(--cyan);margin-bottom:10px;">Open Drives &mdash; November 18, 2026</div>
-          <div id="drives-loading" style="font-size:13px;color:var(--smoke);padding:12px 0;">Loading available drives...</div>
+          <div style="font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.15em;font-size:.7rem;color:var(--cyan);margin-bottom:10px;">Open Drives &mdash; November 18, 2026</div>
+          <div id="drives-loading" class="drives-loading">Loading available drives...</div>
           <div id="drives-list"></div>
-          <div class="submission-msg" id="join-msg"></div>
+          <div class="msg" id="join-msg"></div>
         </div>
-
-        <!-- LEAD FORM -->
         <div id="lead-form" style="display:none;">
-          <div style="font-size:10px;font-weight:800;text-transform:uppercase;color:var(--amber);margin-bottom:12px;">Set Up Your Drive</div>
-          <select class="submission-select" id="lead-time" style="margin-bottom:10px;">
-            <option value="">Choose your time slot...</option>
-            <option value="6:00 PM EST">6:00 PM EST</option>
-            <option value="8:00 PM EST">8:00 PM EST</option>
-            <option value="10:00 PM EST">10:00 PM EST</option>
-            <option value="12:00 AM EST">12:00 AM EST (midnight)</option>
-            <option value="10:00 PM CET">10:00 PM CET (Europe)</option>
-          </select>
-          <select class="submission-select" id="lead-location" style="margin-bottom:10px;">
-            <option value="">Choose staging location...</option>
-            <option value="Airport">Airport</option>
-            <option value="Pier">Pier</option>
-            <option value="Casino">Casino</option>
-            <option value="Vinewood Hills">Vinewood Hills</option>
-            <option value="Sandy Shores">Sandy Shores</option>
-          </select>
-          <select class="submission-select" id="lead-type" style="margin-bottom:10px;">
-            <option value="">Choose drive type...</option>
-            <option value="Marathon (Last Roads)">Marathon - Last Roads</option>
-            <option value="Solo Drive (online)">Solo Drive - Online</option>
-            <option value="Crew Cruise">Crew Cruise</option>
-          </select>
-          <select class="submission-select" id="lead-access" style="margin-bottom:16px;">
-            <option value="Open">Open - Anyone can join</option>
-            <option value="Invite Only">Invite Only</option>
-          </select>
-          <button class="submission-btn" onclick="saveLead()">Claim This Drive Slot</button>
-          <div class="submission-msg" id="lead-msg"></div>
+          <div style="font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.15em;font-size:.7rem;color:var(--amber);margin-bottom:12px;">Set Up Your Drive</div>
+          <select class="form-select" id="lead-time" style="margin-bottom:10px;"><option value="">Choose your time slot...</option><option value="6:00 PM EST">6:00 PM EST</option><option value="8:00 PM EST">8:00 PM EST</option><option value="10:00 PM EST">10:00 PM EST</option><option value="12:00 AM EST">12:00 AM EST</option><option value="10:00 PM CET">10:00 PM CET (Europe)</option></select>
+          <select class="form-select" id="lead-location" style="margin-bottom:10px;"><option value="">Choose staging location...</option><option value="Airport">Airport</option><option value="Pier">Pier</option><option value="Casino">Casino</option><option value="Vinewood Hills">Vinewood Hills</option><option value="Sandy Shores">Sandy Shores</option></select>
+          <select class="form-select" id="lead-type" style="margin-bottom:10px;"><option value="">Choose drive type...</option><option value="Marathon (Last Roads)">Marathon - Last Roads</option><option value="Solo Drive (online)">Solo Drive - Online</option><option value="Crew Cruise">Crew Cruise</option></select>
+          <select class="form-select" id="lead-access" style="margin-bottom:16px;"><option value="Open">Open - Anyone can join</option><option value="Invite Only">Invite Only</option></select>
+          <button class="form-submit" onclick="saveLead()">Claim This Drive Slot</button>
+          <div class="msg" id="lead-msg"></div>
         </div>
-
-        <div class="submission-msg" id="manage-action-msg"></div>
+        <div class="msg" id="manage-action-msg"></div>
       </div>
-
-      <!-- EDITORIAL -->
-      <div class="submission-card">
-        <div class="submission-label">Submit Your Voice</div>
-        <div class="submission-title">Trevor Take - Letters to the Editor</div>
-        <div class="submission-sub">Got an opinion on GTA5, the Last Drive, or GTA6? We read every submission.</div>
-        <select class="submission-select" id="submission-type">
-          <option value="">Choose a column...</option>
-          <option value="Trevors Take">Trevor Take - Hot takes, opinions, rants</option>
-          <option value="Letters to Editor">Letters to the Editor - Community voice</option>
-        </select>
-        <textarea class="submission-textarea" id="submission-text" placeholder="Write your submission here... (50-500 words)"></textarea>
-        <button class="submission-btn" id="submission-btn" onclick="submitContent()">Submit</button>
-        <div class="submission-msg" id="submission-msg"></div>
+      <div class="owner-panel-section">
+        <div class="owner-panel-label">Submit Your Voice</div>
+        <div class="owner-panel-title">Trevor Take / Letters to the Editor</div>
+        <p class="owner-panel-sub">Got an opinion on GTA5, the Last Drive, or GTA6? We read every submission.</p>
+        <select class="form-select" id="submission-type" style="margin-bottom:12px;"><option value="">Choose a column...</option><option value="Trevors Take">Trevor Take</option><option value="Letters to Editor">Letters to the Editor</option></select>
+        <textarea class="form-textarea" id="submission-text" placeholder="Write your submission here..."></textarea>
+        <button class="form-submit" id="submission-btn" onclick="submitContent()" style="margin-top:10px;">Submit</button>
+        <div class="msg" id="submission-msg"></div>
       </div>
-
-      <!-- ADMIN GATE (Musashi13 only) -->
       <div class="admin-gate" id="admin-gate">
         <div class="admin-label">Admin Access</div>
         <div class="admin-title">Admin Panel</div>
-        <div style="font-size:12px;color:var(--smoke);margin-bottom:14px;" id="admin-gate-desc">Enter your admin password to unlock plate gifting.</div>
-        <div class="pic-url-row" style="margin-bottom:10px;">
-          <input type="password" class="pic-url-input" id="admin-pass-input" placeholder="Admin password">
-          <button class="pic-save-btn" onclick="unlockAdmin()">Enter</button>
+        <p style="font-size:.82rem;color:#C8C4BE;margin-bottom:14px;" id="admin-gate-desc">Enter your admin password to unlock plate gifting.</p>
+        <div style="display:flex;gap:8px;">
+          <input type="password" class="form-input" id="admin-pass-input" placeholder="Admin password" style="flex:1;">
+          <button class="btn btn-cyan" onclick="unlockAdmin()" style="padding:12px 16px;white-space:nowrap;">Enter</button>
         </div>
-        <div class="submission-msg" id="admin-gate-msg"></div>
+        <div class="msg" id="admin-gate-msg"></div>
       </div>
-
-      <!-- ADMIN PANEL -->
       <div class="admin-panel" id="admin-panel">
-        <div class="admin-label">Admin Panel</div>
+        <div class="admin-label">Admin Panel &mdash; Musashi13</div>
         <div class="admin-title" style="margin-bottom:16px;">Gift Plates</div>
-        <div style="font-size:10px;font-weight:800;text-transform:uppercase;color:var(--smoke);margin-bottom:8px;">Find Player</div>
-        <input type="text" class="pic-url-input" id="admin-search-tag" placeholder="Type gamertag..." style="width:100%;margin-bottom:6px;" oninput="adminFilterPlayers(this.value)" autocomplete="off">
+        <div style="font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.7rem;color:var(--smoke);margin-bottom:8px;">Find Player</div>
+        <input type="text" class="form-input" id="admin-search-tag" placeholder="Type gamertag..." style="margin-bottom:6px;" oninput="adminFilterPlayers(this.value)" autocomplete="off">
         <div id="admin-player-dropdown" style="display:none;background:var(--pitch);border:1px solid var(--edge);max-height:180px;overflow-y:auto;margin-bottom:10px;"></div>
-        <div class="submission-msg" id="admin-search-msg"></div>
+        <div class="msg" id="admin-search-msg"></div>
         <div id="admin-player-found" style="display:none;margin-top:14px;">
           <div style="background:var(--pitch);border:1px solid var(--edge);padding:12px 14px;margin-bottom:14px;">
-            <div style="font-size:10px;font-weight:800;text-transform:uppercase;color:var(--smoke);margin-bottom:4px;">Player</div>
-            <div style="font-family:'Russo One',sans-serif;font-size:18px;color:var(--bone);" id="admin-found-tag"></div>
-            <div style="font-size:12px;color:var(--smoke);margin-top:4px;" id="admin-found-plates"></div>
+            <div style="font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:.7rem;color:var(--smoke);margin-bottom:4px;">Player</div>
+            <div style="font-family:var(--font-display);font-size:1.2rem;color:var(--bone);" id="admin-found-tag"></div>
+            <div style="font-size:.78rem;color:var(--smoke);margin-top:4px;" id="admin-found-plates"></div>
           </div>
-          <div style="font-size:10px;font-weight:800;text-transform:uppercase;color:var(--amber);margin-bottom:10px;">Select Plates to Gift</div>
-          <div class="plate-checkbox-grid" id="admin-plate-checkboxes"></div>
-          <button class="submission-btn" onclick="adminGiftPlates()" style="margin-top:4px;">Gift Selected Plates</button>
-          <div class="submission-msg" id="admin-gift-msg"></div>
+          <div style="font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.7rem;color:var(--amber);margin-bottom:10px;">Select Plates to Gift</div>
+          <div class="plate-check-grid" id="admin-plate-checkboxes"></div>
+          <button class="form-submit" onclick="adminGiftPlates()" style="margin-top:4px;">Gift Selected Plates</button>
+          <div class="msg" id="admin-gift-msg"></div>
         </div>
         <div style="margin-top:24px;padding-top:18px;border-top:1px solid var(--edge);">
-          <div style="font-size:10px;font-weight:800;text-transform:uppercase;color:var(--smoke);margin-bottom:8px;">Change Admin Password</div>
-          <div class="pic-url-row">
-            <input type="password" class="pic-url-input" id="admin-new-pass" placeholder="New password">
-            <button class="pic-save-btn" onclick="saveAdminPass()">Save</button>
+          <div style="font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.7rem;color:var(--smoke);margin-bottom:8px;">Change Admin Password</div>
+          <div style="display:flex;gap:8px;">
+            <input type="password" class="form-input" id="admin-new-pass" placeholder="New password" style="flex:1;">
+            <button class="btn btn-ghost" onclick="saveAdminPass()" style="padding:12px 16px;white-space:nowrap;">Save</button>
           </div>
-          <div class="submission-msg" id="admin-pass-msg"></div>
+          <div class="msg" id="admin-pass-msg"></div>
         </div>
       </div>
-
-    </div><!-- /owner-panel -->
-
-    <div style="margin-bottom:60px;"></div>
-  </div><!-- /profile-wrap -->
-</div><!-- /profile-content -->
+    </div>
+  </div>
+</div>
 
 <footer>
-  <p class="disclosure">56ViceLane is an independent fan site. Not affiliated with Rockstar Games or Take-Two Interactive.</p>
-  <p><span id="vl-copyright">&copy; 2026 56ViceLane &middot; Forged Oak Studios &middot;</span> <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a></p>
+  <div class="footer-brand"><span class="logo-mark">56</span>ViceLane</div>
+  <div class="footer-tag">Where GTA5 Ends And GTA6 Begins</div>
+  <div class="footer-links">
+    <a href="/">Home</a><a href="/news">News</a><a href="/gtacon">GTACON</a>
+    <a href="/lastdrive">Last Drive</a><a href="/members">Members</a>
+    <a href="/store">Store</a><a href="/gear">Gear</a><a href="/tools">Tools</a>
+    <a href="/forum">Forum</a><a href="/about">About</a><a href="/contact">Contact</a>
+    <a href="/privacy">Privacy</a><a href="/terms">Terms</a>
+    <a href="/admin" class="admin-link">Admin</a>
+  </div>
+  <p class="footer-disclosure">56ViceLane is an independent fan site. Not affiliated with Rockstar Games or Take-Two Interactive.</p>
+  <p class="footer-copy" id="vl-copyright">&copy; 2026 56ViceLane &middot; Forged Oak Studios</p>
 </footer>
 
 <script>
-// ── CONSTANTS ─────────────────────────────────────────────────
-var AT_TOKEN      = 'pattxJ12NQzpHMejD.2eb992f22f1a43e032d866df028dbb33958635234f6cfd30769e3e12f10d5588';
-var AT_BASE       = 'appVViGbmcu5gbn8B';
-var AT_LAST_DRIVE = 'https://api.airtable.com/v0/' + AT_BASE + '/Last%20Drive';
-var AT_SUBS       = 'https://api.airtable.com/v0/' + AT_BASE + '/Submissions';
-var AT_H          = {'Authorization':'Bearer ' + AT_TOKEN, 'Content-Type':'application/json'};
-
-var playerData     = null;
-var verifiedId     = null;
-var allPlayers     = [];
-var adminTargetId  = null;
-var adminTargetPlates = [];
-
-var PLATE_STYLES = [
-  {id:'founder',          label:'Founder'},
-  {id:'vehicle-male-exotic',   label:'Male Exotic'},
-  {id:'vehicle-female-exotic', label:'Female Exotic'},
-  {id:'color-red',        label:'Red'},
-  {id:'color-blue',       label:'Blue'},
-  {id:'color-purple',     label:'Purple'},
-  {id:'color-amber',      label:'Amber'},
-  {id:'white',            label:'White'},
-  {id:'black',            label:'Black'}
+var AT_TOKEN='pattxJ12NQzpHMejD.2eb992f22f1a43e032d866df028dbb33958635234f6cfd30769e3e12f10d5588';
+var AT_BASE='appVViGbmcu5gbn8B';
+var AT_LAST_DRIVE='https://api.airtable.com/v0/'+AT_BASE+'/Last%20Drive';
+var AT_SUBS='https://api.airtable.com/v0/'+AT_BASE+'/Submissions';
+var AT_H={'Authorization':'Bearer '+AT_TOKEN,'Content-Type':'application/json'};
+var playerData=null,verifiedId=null,allPlayers=[],adminTargetId=null,adminTargetPlates=[];
+var PLATE_STYLES=[
+  {id:'founder',label:'Founder'},{id:'vehicle-male-exotic',label:'Male Exotic'},
+  {id:'vehicle-female-exotic',label:'Female Exotic'},{id:'color-red',label:'Red'},
+  {id:'color-blue',label:'Blue'},{id:'color-purple',label:'Purple'},
+  {id:'color-amber',label:'Amber'},{id:'color-green',label:'Green'},
+  {id:'color-yellow',label:'Yellow'},{id:'white',label:'White'},{id:'black',label:'Black'}
 ];
-
-// ── HELPERS ───────────────────────────────────────────────────
-function showMsg(el, text, type) {
-  el.textContent = text;
-  el.className = 'submission-msg show ' + type;
+function showMsg(el,text,type){el.textContent=text;el.className='msg show '+type;}
+function hideMsg(el){el.className='msg';}
+function getPlateBg(s){
+  if(s==='founder')return"url('/images/plate-founder.png')";
+  if(s==='vehicle-male-exotic')return"url('/images/plate-male-exotic.png')";
+  if(s==='vehicle-female-exotic')return"url('/images/plate-female-exotic.png')";
+  if(s==='color-red')return'linear-gradient(135deg,#6B0000,#CC2200)';
+  if(s==='color-blue')return'linear-gradient(135deg,#000C6B,#0033CC)';
+  if(s==='color-purple')return'linear-gradient(135deg,#2D0060,#6600AA)';
+  if(s==='color-amber')return'linear-gradient(135deg,#7A4A00,#C8820A)';
+  if(s==='color-green')return'linear-gradient(135deg,#004D00,#007A00)';
+  if(s==='color-yellow')return'linear-gradient(135deg,#7A6A00,#C8B000)';
+  if(s==='white')return'#EFEDE8';
+  return'#0a0a0a';
 }
-
-function hideMsg(el) {
-  el.className = 'submission-msg';
+function isPhoto(s){return s==='founder'||(s&&s.indexOf('vehicle-')===0);}
+function loadProfile(){
+  var params=new URLSearchParams(window.location.search);
+  var g=params.get('g')||params.get('gamertag')||'';
+  if(!g){showNotFound();return;}
+  fetch(AT_LAST_DRIVE+'?filterByFormula='+encodeURIComponent('{Gamertag}="'+g+'"')+'&maxRecords=1',{headers:AT_H})
+    .then(function(r){return r.json();})
+    .then(function(d){
+      if(!d.records||!d.records.length){showNotFound();return;}
+      playerData=d.records[0].fields;playerData._id=d.records[0].id;
+      renderProfile(playerData,g);
+    }).catch(showNotFound);
 }
-
-// ── PLATE BACKGROUND ─────────────────────────────────────────
-function getPlateBackground(style) {
-  if (style === 'founder')              return "url('/images/plate-founder.png')";
-  if (style === 'vehicle-male-exotic')  return "url('/images/plate-male-exotic.png')";
-  if (style === 'vehicle-female-exotic') return "url('/images/plate-female-exotic.png')";
-  if (style === 'color-red')    return 'linear-gradient(135deg,#6B0000,#CC2200)';
-  if (style === 'color-blue')   return 'linear-gradient(135deg,#000C6B,#0033CC)';
-  if (style === 'color-purple') return 'linear-gradient(135deg,#2D0060,#6600AA)';
-  if (style === 'color-amber')  return 'linear-gradient(135deg,#7A4A00,#C8820A)';
-  if (style === 'white')        return '#EFEDE8';
-  return '#0a0a0a';
+function showNotFound(){
+  document.getElementById('profile-loading').style.display='none';
+  document.getElementById('profile-not-found').style.display='block';
 }
-
-function isPhotoPlate(style) {
-  return style === 'founder' || (style && style.indexOf('vehicle-') === 0);
-}
-
-// ── LOAD PROFILE ─────────────────────────────────────────────
-function loadProfile() {
-  var params = new URLSearchParams(window.location.search);
-  var gamertag = params.get('g') || params.get('gamertag') || '';
-  if (!gamertag) { showNotFound(); return; }
-  var f = encodeURIComponent('{Gamertag}="' + gamertag + '"');
-  fetch(AT_LAST_DRIVE + '?filterByFormula=' + f + '&maxRecords=1', {headers: AT_H})
-    .then(function(r) { return r.json(); })
-    .then(function(d) {
-      if (!d.records || !d.records.length) { showNotFound(); return; }
-      playerData = d.records[0].fields;
-      playerData._id = d.records[0].id;
-      renderProfile(playerData, gamertag);
-    })
-    .catch(function() { showNotFound(); });
-}
-
-function showNotFound() {
-  document.getElementById('profile-loading').style.display = 'none';
-  document.getElementById('profile-not-found').style.display = 'block';
-}
-
-// ── RENDER PROFILE ────────────────────────────────────────────
-function renderProfile(f, gamertag) {
-  var tag = (f.Gamertag || gamertag).toUpperCase();
-  var plateStyle = f.PlateStyle || (f.PlateStatus === 'Free Premium' ? 'founder' : 'black');
-  var isLead = !!f.IsOrganizer;
-  var isFounder = !!(f.SignupNumber && f.SignupNumber <= 100);
-  var plateBg = getPlateBackground(plateStyle);
-  var isPhoto = isPhotoPlate(plateStyle);
-  var textColor = (plateStyle === 'white') ? '#0a0a0a' : '#FFFFFF';
-
-  // Page title / meta
-  document.title = tag + ' \u2014 The Last Drive \u2014 56ViceLane';
-  document.getElementById('page-title').textContent = tag + ' \u2014 The Last Drive \u2014 56ViceLane';
-  document.getElementById('page-desc').setAttribute('content', tag + ' is on the Wall of Honor for The Last Drive \u2014 November 18, 2026.');
-  document.getElementById('og-title').setAttribute('content', tag + ' \u2014 Last Drive Profile');
-
-  // Hero cover art
-  var hero = document.getElementById('profile-hero');
-  if (isPhoto) {
-    hero.style.backgroundImage = 'linear-gradient(135deg,rgba(0,0,0,0.3),rgba(0,0,0,0.1)),' + plateBg;
-  } else {
-    hero.style.background = 'linear-gradient(135deg,rgba(0,0,0,0.4),rgba(0,0,0,0.2)),' + plateBg;
-  }
-
-  // Avatar
-  var avatar = document.getElementById('profile-avatar');
-  if (f.ImgurLink) {
-    var img = document.createElement('img');
-    img.src = f.ImgurLink;
-    img.alt = tag;
-    img.onerror = function() { avatar.textContent = tag.charAt(0); };
-    avatar.innerHTML = '';
-    avatar.appendChild(img);
-  } else {
-    avatar.textContent = tag.charAt(0);
-  }
-  if (isFounder) avatar.classList.add('founder-ring');
-
-  // Gamertag + add me
-  document.getElementById('profile-gamertag').textContent = tag;
-  document.getElementById('add-me-gamertag').textContent = tag;
-
-  // Badges
-  var badges = document.getElementById('profile-badges');
-  badges.innerHTML = '';
-  var b1 = document.createElement('span');
-  b1.className = isLead ? 'badge badge-lead' : 'badge badge-participant';
-  b1.textContent = isLead ? '\u2B50 Drive Lead' : '\uD83D\uDE97 Participant';
-  badges.appendChild(b1);
-  if (isFounder) {
-    var b2 = document.createElement('span');
-    b2.className = 'badge badge-founder';
-    b2.textContent = '\uD83C\uDFC6 Founder #' + f.SignupNumber;
-    badges.appendChild(b2);
-  }
-  if (f.Platform) {
-    var b3 = document.createElement('span');
-    b3.className = 'badge badge-platform';
-    b3.textContent = f.Platform;
-    badges.appendChild(b3);
-  }
-  if (f.Region) {
-    var b4 = document.createElement('span');
-    b4.className = 'badge badge-region';
-    b4.textContent = f.Region;
-    badges.appendChild(b4);
-  }
-
-  // Drive details
-  var grid = document.getElementById('drive-details-grid');
-  grid.innerHTML = '';
-  var driveFields = [
-    {key:'Staging Time', label:'Time Slot'},
-    {key:'StagingLocation', label:'Staging Location'},
-    {key:'Drive Type', label:'Drive Type'},
-    {key:'AccessType', label:'Access'}
-  ];
-  var hasAny = false;
-  driveFields.forEach(function(df) {
-    if (f[df.key]) {
-      hasAny = true;
-      var cell = document.createElement('div');
-      cell.className = 'drive-detail';
-      var lbl = document.createElement('div');
-      lbl.className = 'detail-lbl';
-      lbl.textContent = df.label;
-      var val = document.createElement('div');
-      val.className = 'detail-val';
-      val.textContent = f[df.key];
-      cell.appendChild(lbl);
-      cell.appendChild(val);
-      grid.appendChild(cell);
-    }
+function renderProfile(f,gamertag){
+  var tag=(f.Gamertag||gamertag).toUpperCase();
+  var ps=f.PlateStyle||(f.PlateStatus==='Free Premium'?'founder':'black');
+  var isLead=!!f.IsOrganizer,isFounder=!!(f.SignupNumber&&f.SignupNumber<=100);
+  var bg=getPlateBg(ps),ip=isPhoto(ps),tc=ps==='white'?'#0a0a0a':'#FFFFFF';
+  document.title=tag+' \u2014 The Last Drive \u2014 56ViceLane';
+  document.getElementById('page-title').textContent=tag+' \u2014 The Last Drive \u2014 56ViceLane';
+  document.getElementById('page-desc').setAttribute('content',tag+' is on the Wall of Honor for The Last Drive \u2014 November 18, 2026.');
+  document.getElementById('og-title').setAttribute('content',tag+' \u2014 Last Drive Profile');
+  var hero=document.getElementById('profile-hero');
+  if(ip){hero.style.backgroundImage='linear-gradient(135deg,rgba(0,0,0,.3),rgba(0,0,0,.1)),'+bg;}
+  else{hero.style.background='linear-gradient(135deg,rgba(0,0,0,.4),rgba(0,0,0,.2)),'+bg;}
+  var avatar=document.getElementById('profile-avatar');
+  if(f.ImgurLink){var img=document.createElement('img');img.src=f.ImgurLink;img.alt=tag;img.onerror=function(){avatar.textContent=tag.charAt(0);};avatar.innerHTML='';avatar.appendChild(img);}
+  else{avatar.textContent=tag.charAt(0);}
+  if(isFounder)avatar.classList.add('founder-ring');
+  document.getElementById('profile-gamertag').textContent=tag;
+  document.getElementById('add-me-gamertag').textContent=tag;
+  var badges=document.getElementById('profile-badges');badges.innerHTML='';
+  var b1=document.createElement('span');b1.className=isLead?'badge badge-amber':'badge badge-cyan';b1.textContent=isLead?'\u2B50 Drive Lead':'\uD83D\uDE97 Participant';badges.appendChild(b1);
+  if(isFounder){var b2=document.createElement('span');b2.className='badge badge-gold';b2.textContent='\uD83C\uDFC6 Founder #'+f.SignupNumber;badges.appendChild(b2);}
+  if(f.Platform){var b3=document.createElement('span');b3.className='badge badge-smoke';b3.textContent=f.Platform;badges.appendChild(b3);}
+  if(f.Region){var b4=document.createElement('span');b4.className='badge badge-smoke';b4.textContent=f.Region;badges.appendChild(b4);}
+  var grid=document.getElementById('drive-details-grid');grid.innerHTML='';var hasAny=false;
+  [{key:'Staging Time',label:'Time Slot'},{key:'StagingLocation',label:'Staging Location'},{key:'Drive Type',label:'Drive Type'},{key:'AccessType',label:'Access'}].forEach(function(df){
+    if(f[df.key]){hasAny=true;var cell=document.createElement('div');cell.className='drive-detail';cell.innerHTML='<div class="detail-lbl">'+df.label+'</div><div class="detail-val">'+f[df.key]+'</div>';grid.appendChild(cell);}
   });
-  if (hasAny) document.getElementById('drive-card').style.display = 'block';
-
-  // Plate
-  var plateInner = document.getElementById('profile-plate-inner');
-  if (isPhoto) {
-    plateInner.style.backgroundImage = plateBg;
-    plateInner.style.backgroundSize = 'cover';
-    plateInner.style.backgroundPosition = 'center';
-    plateInner.style.background = '';
-  } else {
-    plateInner.style.backgroundImage = '';
-    plateInner.style.background = plateBg;
-  }
-  var stars = document.getElementById('profile-plate-stars');
-  var plateTag = document.getElementById('profile-plate-tag');
-  var plateNum = document.getElementById('profile-plate-num');
-  stars.style.color = isPhoto ? 'rgba(255,255,255,0.75)' : (plateStyle === 'white' ? 'rgba(0,0,0,0.3)' : 'rgba(255,255,255,0.4)');
-  stars.style.textShadow = isPhoto ? '0 0 10px rgba(255,107,26,0.8)' : 'none';
-  plateTag.style.color = textColor;
-  plateTag.style.textShadow = isPhoto ? '0 0 16px rgba(255,107,26,0.5),0 2px 6px rgba(0,0,0,0.9)' : (plateStyle === 'white' ? '0 1px 2px rgba(0,0,0,0.1)' : '0 0 16px rgba(255,107,26,0.3)');
-  plateTag.textContent = tag;
-  if (isFounder && f.SignupNumber) {
-    plateNum.textContent = '#' + f.SignupNumber + ' of 100';
-    plateNum.style.color = isPhoto ? 'rgba(255,255,255,0.75)' : 'rgba(255,215,0,0.8)';
-  }
-
-  // About
-  if (f.About) {
-    var ad = document.getElementById('about-display');
-    ad.textContent = f.About;
-    ad.className = 'about-text';
-  }
-
-  // Show profile
-  document.getElementById('profile-loading').style.display = 'none';
-  document.getElementById('profile-content').style.display = 'block';
+  if(hasAny)document.getElementById('drive-card').style.display='block';
+  var pi=document.getElementById('profile-plate-inner');
+  if(ip){pi.style.backgroundImage=bg;pi.style.backgroundSize='cover';pi.style.backgroundPosition='center';pi.style.background='';}
+  else{pi.style.backgroundImage='';pi.style.background=bg;}
+  var stars=document.getElementById('profile-plate-stars'),ptag=document.getElementById('profile-plate-tag'),pnum=document.getElementById('profile-plate-num');
+  stars.style.color=ip?'rgba(255,255,255,.75)':(ps==='white'?'rgba(0,0,0,.3)':'rgba(255,255,255,.4)');
+  ptag.style.color=tc;ptag.textContent=tag;
+  if(isFounder&&f.SignupNumber){pnum.textContent='#'+f.SignupNumber+' of 100';pnum.style.color=ip?'rgba(255,255,255,.75)':'rgba(255,215,0,.8)';}
+  if(f.About){var ad=document.getElementById('about-display');ad.textContent=f.About;ad.className='about-text';}
+  document.getElementById('profile-loading').style.display='none';
+  document.getElementById('profile-content').style.display='block';
 }
-
-// ── COPY / SHARE ──────────────────────────────────────────────
-function copyGamertag() {
-  var tag = playerData ? (playerData.Gamertag || '') : '';
-  navigator.clipboard.writeText(tag).then(function() {
-    var btn = document.getElementById('copy-btn');
-    btn.textContent = 'Copied! \u2713';
-    btn.style.background = 'var(--green)';
-    setTimeout(function() { btn.textContent = 'Copy Gamertag'; btn.style.background = 'var(--amber)'; }, 2500);
-  });
-}
-
-function shareProfile() {
-  var tag = playerData ? (playerData.Gamertag || '') : '';
-  var url = 'https://56vicelane.com/player?g=' + encodeURIComponent(tag);
-  if (navigator.share) {
-    navigator.share({title: tag + ' \u2014 The Last Drive', url: url});
-  } else {
-    copyProfileLink();
-  }
-}
-
-function copyProfileLink() {
-  var tag = playerData ? (playerData.Gamertag || '') : '';
-  var url = 'https://56vicelane.com/player?g=' + encodeURIComponent(tag);
-  navigator.clipboard.writeText(url).then(function() { alert('Profile link copied!'); });
-}
-
-// ── SAVE PROFILE PIC ─────────────────────────────────────────
-function saveProfilePic() {
-  var url = document.getElementById('pic-url-input').value.trim();
-  var msg = document.getElementById('pic-msg');
-  if (!url || !playerData || !playerData._id) return;
-  showMsg(msg, 'Saving...', 'success');
-  fetch(AT_LAST_DRIVE + '/' + playerData._id, {
-    method: 'PATCH', headers: AT_H,
-    body: JSON.stringify({fields:{ImgurLink: url}})
-  }).then(function() {
-    var avatar = document.getElementById('profile-avatar');
-    var img = document.createElement('img');
-    img.src = url;
-    img.alt = 'avatar';
-    img.onerror = function() { avatar.textContent = '?'; };
-    avatar.innerHTML = '';
-    avatar.appendChild(img);
-    showMsg(msg, '\u2705 Profile picture updated!', 'success');
-    setTimeout(function() { hideMsg(msg); }, 3000);
-  }).catch(function() { showMsg(msg, 'Save failed. Try again.', 'error'); });
-}
-
-// ── SUBMIT EDITORIAL ─────────────────────────────────────────
-function submitContent() {
-  var type = document.getElementById('submission-type').value;
-  var text = document.getElementById('submission-text').value.trim();
-  var btn  = document.getElementById('submission-btn');
-  var msg  = document.getElementById('submission-msg');
-  var tag  = playerData ? (playerData.Gamertag || 'Anonymous') : 'Anonymous';
-  if (!type) { showMsg(msg, 'Please choose a column.', 'error'); return; }
-  if (!text || text.length < 30) { showMsg(msg, 'Please write at least 30 characters.', 'error'); return; }
-  if (text.length > 3000) { showMsg(msg, 'Please keep it under 3000 characters.', 'error'); return; }
-  btn.textContent = 'Submitting...';
-  btn.disabled = true;
-  fetch(AT_SUBS, {
-    method: 'POST', headers: AT_H,
-    body: JSON.stringify({records:[{fields:{Gamertag:tag, SubmissionType:type, Content:text, Status:'Pending'}}]})
-  }).then(function() {
-    var colName = type === 'Trevors Take' ? "Trevor's Take" : "Letters to the Editor";
-    showMsg(msg, '\u2705 Submitted to ' + colName + '! We\'ll review it soon.', 'success');
-    document.getElementById('submission-text').value = '';
-    document.getElementById('submission-type').value = '';
-  }).catch(function() {
-    showMsg(msg, 'Submission failed. Please try again.', 'error');
-  }).finally(function() {
-    btn.textContent = 'Submit';
-    btn.disabled = false;
-  });
-}
-
-// ── UNLOCK OWNER ─────────────────────────────────────────────
-function unlockOwner() {
-  var email = document.getElementById('owner-email').value.trim();
-  var msg   = document.getElementById('owner-lock-msg');
-  var tag   = playerData ? (playerData.Gamertag || '') : '';
-  if (!email) { showMsg(msg, 'Enter your signup email.', 'error'); return; }
-  showMsg(msg, 'Checking...', 'success');
-  var formula = encodeURIComponent('AND({Gamertag}="' + tag + '",{Email}="' + email + '")');
-  fetch(AT_LAST_DRIVE + '?filterByFormula=' + formula + '&maxRecords=1', {headers: AT_H})
-    .then(function(r) { return r.json(); })
-    .then(function(d) {
-      if (!d.records || !d.records.length) { showMsg(msg, 'Email does not match.', 'error'); return; }
-      verifiedId = d.records[0].id;
-      playerData._id = verifiedId;
-      var flds = d.records[0].fields;
-
-      // Hide gate, show panel
-      document.getElementById('owner-lock-gate').style.display = 'none';
-      document.getElementById('owner-panel').style.display = 'block';
-
-      // Pre-fill about + pic
-      if (flds.About) document.getElementById('about-input').value = flds.About;
-      if (flds.ImgurLink) document.getElementById('pic-url-input').value = flds.ImgurLink;
-
-      // Current drive status summary
-      var isLeadRole = flds.SignupType === 'Drive Lead';
-      var slot   = flds['Staging Time'] || '';
-      var dloc   = flds.StagingLocation || '';
-      var dtype  = flds['Drive Type'] || '';
-      var linked = flds.LinkedSlot || '';
-
-      var mc = document.getElementById('manage-current');
-      var summary = (isLeadRole ? 'Drive Lead' : 'Participant');
-      if (slot)  summary += ' &middot; ' + slot;
-      if (dloc)  summary += ' &middot; ' + dloc;
-      if (dtype) summary += ' &middot; ' + dtype;
-      if (linked && !isLeadRole) {
-        var parts = linked.split('||');
-        if (parts[3]) summary += '<br><small style="color:var(--smoke);">Leader: <b>' + parts[3] + '</b> on ' + (parts[0] || 'your platform') + ' &mdash; add them and message that you joined.</small>';
-      }
-      mc.innerHTML = summary;
-      mc.style.display = 'block';
-
-      if (isLeadRole) {
-        document.getElementById('opt-lead').classList.add('active');
-        if (slot) document.getElementById('lead-time').value = slot;
-        if (dloc) document.getElementById('lead-location').value = dloc;
-        if (dtype) document.getElementById('lead-type').value = dtype;
-      } else if (flds.JoinStatus === 'Active' && linked) {
-        document.getElementById('opt-join').classList.add('active');
-      }
-
-      // Admin gate: Musashi13 only
-      if (tag.toLowerCase() === 'musashi13') {
-        document.getElementById('admin-gate').style.display = 'block';
-        if (!flds.AdminPass) {
-          document.getElementById('admin-gate-desc').textContent = 'No password set yet - create one below.';
-        }
-        playerData.AdminPass = flds.AdminPass || '';
-      }
-
-      hideMsg(msg);
-    })
-    .catch(function() { showMsg(msg, 'Verification error.', 'error'); });
-}
-
-// ── SAVE ABOUT ────────────────────────────────────────────────
-function saveAbout() {
-  var text = document.getElementById('about-input').value.trim();
-  var msg  = document.getElementById('about-msg');
-  if (!verifiedId) return;
-  showMsg(msg, 'Saving...', 'success');
-  fetch(AT_LAST_DRIVE + '/' + verifiedId, {
-    method: 'PATCH', headers: AT_H,
-    body: JSON.stringify({fields:{About: text}})
-  }).then(function() {
-    var d = document.getElementById('about-display');
-    if (text) { d.textContent = text; d.className = 'about-text'; }
-    else { d.textContent = 'Nothing here yet.'; d.className = 'about-empty'; }
-    showMsg(msg, 'Saved!', 'success');
-    setTimeout(function() { hideMsg(msg); }, 3000);
-  }).catch(function() { showMsg(msg, 'Failed.', 'error'); });
-}
-
-// ── DRIVE BROWSER / LEAD FORM ─────────────────────────────────
-function showDriveBrowser() {
-  document.getElementById('opt-lead').classList.remove('active');
-  document.getElementById('opt-join').classList.add('active');
-  document.getElementById('drive-browser').style.display = 'block';
-  document.getElementById('lead-form').style.display = 'none';
-  loadAvailableDrives();
-}
-
-function showLeadForm() {
-  document.getElementById('opt-join').classList.remove('active');
-  document.getElementById('opt-lead').classList.add('active');
-  document.getElementById('lead-form').style.display = 'block';
-  document.getElementById('drive-browser').style.display = 'none';
-}
-
-function loadAvailableDrives() {
-  var loadEl = document.getElementById('drives-loading');
-  var listEl = document.getElementById('drives-list');
-  loadEl.style.display = 'block';
-  listEl.innerHTML = '';
-  var formula = encodeURIComponent('AND({SignupType}="Drive Lead",{JoinStatus}="Active")');
-  fetch(AT_LAST_DRIVE + '?filterByFormula=' + formula + '&maxRecords=20', {headers: AT_H})
-    .then(function(r) { return r.json(); })
-    .then(function(d) {
-      loadEl.style.display = 'none';
-      if (!d.records || !d.records.length) {
-        var p = document.createElement('p');
-        p.style.cssText = 'font-size:13px;color:var(--smoke)';
-        p.textContent = 'No open drives yet. Be the first Drive Lead!';
-        listEl.appendChild(p);
-        return;
-      }
-      var myPlat = (playerData && playerData.Platform) ? playerData.Platform.toLowerCase() : '';
-      d.records.forEach(function(rec) {
-        var fl  = rec.fields;
-        var lt  = fl.Gamertag || 'Unknown';
-        var tm  = fl['Staging Time'] || 'TBD';
-        var lc  = fl.StagingLocation || 'TBD';
-        var tp  = fl['Drive Type'] || 'Open';
-        var pl  = fl.Platform || '';
-        var rg  = fl.Region || '';
-        var match = myPlat && pl && myPlat.indexOf(pl.split(' ')[0].toLowerCase()) >= 0;
-
-        var card = document.createElement('div');
-        card.style.cssText = 'background:var(--pitch);border:1px solid ' + (match ? 'var(--cyan)' : 'var(--edge)') + ';padding:14px;margin-bottom:10px;';
-
-        var nameRow = document.createElement('div');
-        nameRow.style.cssText = 'font-family:Russo One,sans-serif;font-size:16px;color:var(--bone);margin-bottom:8px;';
-        nameRow.textContent = lt;
-        if (match) {
-          var matchBadge = document.createElement('span');
-          matchBadge.style.cssText = 'font-size:10px;color:var(--cyan);border:1px solid var(--cyan);padding:1px 6px;margin-left:8px;font-family:Barlow Condensed,sans-serif;font-weight:800;';
-          matchBadge.textContent = 'MATCH';
-          nameRow.appendChild(matchBadge);
-        }
-
-        var meta = document.createElement('div');
-        meta.style.cssText = 'font-size:12px;color:var(--smoke);margin-bottom:10px;';
-        meta.textContent = tm + ' - ' + lc + ' - ' + tp + (pl ? ' - ' + pl : '') + (rg ? ' ' + rg : '');
-
-        var joinBtn = document.createElement('button');
-        joinBtn.style.cssText = 'background:var(--amber);color:#000;font-size:12px;text-transform:uppercase;padding:9px 18px;border:none;cursor:pointer;font-weight:800;font-family:Barlow Condensed,sans-serif;letter-spacing:0.1em;';
-        joinBtn.textContent = 'Join This Drive';
-        joinBtn.dataset.rid = rec.id;
-        joinBtn.dataset.lt  = lt;
-        joinBtn.dataset.pl  = pl;
-        joinBtn.dataset.rg  = rg;
-        joinBtn.dataset.lc  = lc;
-        joinBtn.addEventListener('click', function() {
-          joinDrive(this.dataset.rid, this.dataset.lt, this.dataset.pl, this.dataset.rg, this.dataset.lc);
-        });
-
-        card.appendChild(nameRow);
-        card.appendChild(meta);
-        card.appendChild(joinBtn);
-        listEl.appendChild(card);
-      });
-    })
-    .catch(function() {
-      loadEl.style.display = 'none';
-      listEl.innerHTML = '<p style="color:#f66;font-size:13px;">Could not load drives.</p>';
-    });
-}
-
-function joinDrive(rid, lt, pl, rg, lc) {
-  var msg = document.getElementById('join-msg');
-  if (!verifiedId) { showMsg(msg, 'Not verified.', 'error'); return; }
-  showMsg(msg, 'Joining...', 'success');
-  fetch(AT_LAST_DRIVE + '/' + verifiedId, {
-    method: 'PATCH', headers: AT_H,
-    body: JSON.stringify({fields:{SignupType:'Participant', JoinStatus:'Active', LinkedSlot: pl+'||'+rg+'||'+lc+'||'+lt}})
-  }).then(function() {
-    msg.innerHTML = 'Joined <b>' + lt + '</b> drive! Add them on ' + pl + ' and message them you joined.';
-    msg.className = 'submission-msg show success';
-  }).catch(function() { showMsg(msg, 'Join failed.', 'error'); });
-}
-
-function saveLead() {
-  var time = document.getElementById('lead-time').value;
-  var loc  = document.getElementById('lead-location').value;
-  var tp   = document.getElementById('lead-type').value;
-  var ac   = document.getElementById('lead-access').value;
-  var msg  = document.getElementById('lead-msg');
-  if (!time || !loc || !tp) { showMsg(msg, 'Fill in all fields.', 'error'); return; }
-  if (!verifiedId) { showMsg(msg, 'Not verified.', 'error'); return; }
-  showMsg(msg, 'Saving...', 'success');
-  fetch(AT_LAST_DRIVE + '/' + verifiedId, {
-    method: 'PATCH', headers: AT_H,
-    body: JSON.stringify({fields:{SignupType:'Drive Lead', IsOrganizer:true, JoinStatus:'Active', 'Staging Time':time, StagingLocation:loc, 'Drive Type':tp, AccessType:ac}})
-  }).then(function() {
-    showMsg(msg, 'Your drive is live!', 'success');
-  }).catch(function() { showMsg(msg, 'Save failed.', 'error'); });
-}
-
-// ── ADMIN ─────────────────────────────────────────────────────
-function unlockAdmin() {
-  var pass = document.getElementById('admin-pass-input').value.trim();
-  var msg  = document.getElementById('admin-gate-msg');
-  if (!pass) { showMsg(msg, 'Enter a password.', 'error'); return; }
-  var stored = playerData.AdminPass || '';
-  if (!stored) {
-    // First time: set the password
-    fetch(AT_LAST_DRIVE + '/' + verifiedId, {
-      method: 'PATCH', headers: AT_H,
-      body: JSON.stringify({fields:{AdminPass: pass}})
-    }).then(function() {
-      playerData.AdminPass = pass;
-      document.getElementById('admin-gate').style.display = 'none';
-      document.getElementById('admin-panel').style.display = 'block';
-      loadAllPlayers();
-    }).catch(function() { showMsg(msg, 'Failed to save.', 'error'); });
-    return;
-  }
-  if (pass !== stored) { showMsg(msg, 'Incorrect password.', 'error'); return; }
-  document.getElementById('admin-gate').style.display = 'none';
-  document.getElementById('admin-panel').style.display = 'block';
-  loadAllPlayers();
-}
-
-function loadAllPlayers() {
-  if (allPlayers.length) return;
-  fetch(AT_LAST_DRIVE + '?fields[]=Gamertag&fields[]=OwnedPlates&maxRecords=200', {headers: AT_H})
-    .then(function(r) { return r.json(); })
-    .then(function(d) {
-      allPlayers = (d.records || [])
-        .map(function(rec) { return {id: rec.id, tag: rec.fields.Gamertag || '', plates: rec.fields.OwnedPlates || ''}; })
-        .filter(function(p) { return !!p.tag; });
-    })
-    .catch(function() {});
-}
-
-function adminFilterPlayers(val) {
-  var dd = document.getElementById('admin-player-dropdown');
-  dd.innerHTML = '';
-  if (!val) { dd.style.display = 'none'; return; }
-  var matches = allPlayers.filter(function(p) { return p.tag.toLowerCase().indexOf(val.toLowerCase()) >= 0; }).slice(0, 10);
-  if (!matches.length) { dd.style.display = 'none'; return; }
-  matches.forEach(function(p) {
-    var row = document.createElement('div');
-    row.style.cssText = 'padding:10px 14px;cursor:pointer;font-size:14px;font-weight:800;text-transform:uppercase;color:var(--bone);border-bottom:1px solid var(--edge);';
-    var nameSpan = document.createElement('span');
-    nameSpan.textContent = p.tag;
-    var platesSpan = document.createElement('span');
-    platesSpan.style.cssText = 'font-size:11px;color:var(--smoke);font-weight:400;text-transform:none;margin-left:6px;';
-    platesSpan.textContent = p.plates || 'no plates';
-    row.appendChild(nameSpan);
-    row.appendChild(platesSpan);
-    row.addEventListener('mouseover', function() { this.style.background = 'var(--asphalt)'; });
-    row.addEventListener('mouseout',  function() { this.style.background = ''; });
-    row.addEventListener('click', function() { adminSelectPlayer(p.id, p.tag, p.plates); });
-    dd.appendChild(row);
-  });
-  dd.style.display = 'block';
-}
-
-function adminSelectPlayer(id, tag, plates) {
-  adminTargetId = id;
-  adminTargetPlates = plates ? plates.split(',').map(function(p) { return p.trim(); }).filter(Boolean) : [];
-  document.getElementById('admin-search-tag').value = tag;
-  document.getElementById('admin-player-dropdown').style.display = 'none';
-  document.getElementById('admin-found-tag').textContent = tag;
-  document.getElementById('admin-found-plates').textContent = adminTargetPlates.length ? 'Current: ' + adminTargetPlates.join(', ') : 'No plates yet.';
-
-  var grid = document.getElementById('admin-plate-checkboxes');
-  grid.innerHTML = '';
-  PLATE_STYLES.forEach(function(p) {
-    var owned = adminTargetPlates.indexOf(p.id) >= 0;
-    var item = document.createElement('label');
-    item.className = 'plate-check-item' + (owned ? ' owned' : '');
-    var chk = document.createElement('input');
-    chk.type = 'checkbox';
-    chk.id = 'chk-' + p.id;
-    chk.value = p.id;
-    if (owned) chk.checked = true;
-    var lbl = document.createElement('span');
-    lbl.className = 'plate-check-label';
-    lbl.textContent = p.label + (owned ? ' \u2713' : '');
-    item.appendChild(chk);
-    item.appendChild(lbl);
-    grid.appendChild(item);
-  });
-
-  document.getElementById('admin-player-found').style.display = 'block';
-  document.getElementById('admin-search-msg').className = 'submission-msg';
-}
-
-function adminGiftPlates() {
-  var msg = document.getElementById('admin-gift-msg');
-  if (!adminTargetId) { showMsg(msg, 'No player selected.', 'error'); return; }
-  var selected = PLATE_STYLES.filter(function(p) {
-    var el = document.getElementById('chk-' + p.id);
-    return el && el.checked;
-  }).map(function(p) { return p.id; });
-  if (!selected.length) { showMsg(msg, 'Select at least one plate.', 'error'); return; }
-  showMsg(msg, 'Saving...', 'success');
-  fetch(AT_LAST_DRIVE + '/' + adminTargetId, {
-    method: 'PATCH', headers: AT_H,
-    body: JSON.stringify({fields:{OwnedPlates: selected.join(', ')}})
-  }).then(function() {
-    document.getElementById('admin-found-plates').textContent = 'Current: ' + selected.join(', ');
-    showMsg(msg, 'Plates saved for ' + document.getElementById('admin-found-tag').textContent, 'success');
-  }).catch(function() { showMsg(msg, 'Save failed.', 'error'); });
-}
-
-function saveAdminPass() {
-  var pass = document.getElementById('admin-new-pass').value.trim();
-  var msg  = document.getElementById('admin-pass-msg');
-  if (!pass) { showMsg(msg, 'Enter a password.', 'error'); return; }
-  fetch(AT_LAST_DRIVE + '/' + verifiedId, {
-    method: 'PATCH', headers: AT_H,
-    body: JSON.stringify({fields:{AdminPass: pass}})
-  }).then(function() {
-    playerData.AdminPass = pass;
-    document.getElementById('admin-new-pass').value = '';
-    showMsg(msg, 'Password updated.', 'success');
-    setTimeout(function() { hideMsg(msg); }, 3000);
-  }).catch(function() { showMsg(msg, 'Failed.', 'error'); });
-}
-
-// ── TICKER ────────────────────────────────────────────────────
-fetch('/articles.json?v=' + Date.now())
-  .then(function(r) { return r.json(); })
-  .then(function(a) {
-    var t = document.getElementById('ticker-track');
-    t.innerHTML = '';
-    var items = a.concat(a);
-    items.forEach(function(x) {
-      var sp = document.createElement('span');
-      sp.className = 'ticker-item';
-      sp.textContent = (x.emoji || '') + ' ' + x.title;
-      sp.addEventListener('click', function() { location.href = '/articles/' + x.slug; });
-      t.appendChild(sp);
-    });
-  })
-  .catch(function() {});
-
-// ── NAV HAMBURGER ─────────────────────────────────────────────
-var menuToggle = document.getElementById('menu-toggle');
-if (menuToggle) {
-  menuToggle.addEventListener('click', function() {
-    var nm = document.getElementById('nav-mobile');
-    if (nm) nm.classList.toggle('open');
-  });
-}
-
-// ── #manage SCROLL ────────────────────────────────────────────
-if (window.location.hash === '#manage') {
-  setTimeout(function() {
-    var el = document.getElementById('drive-manage-section');
-    if (el) el.scrollIntoView({behavior: 'smooth'});
-  }, 800);
-}
-
-// ── DEBUG ─────────────────────────────────────────────────────
-(function() {
-  var HOLD = 1500;
-  var KEY = '56vl-debug';
-  var timer = null;
-  var active = localStorage.getItem(KEY) === '1';
-  function applyDebug() {
-    var ind = document.getElementById('vl-debug-ind');
-    if (!ind) {
-      ind = document.createElement('div');
-      ind.id = 'vl-debug-ind';
-      ind.style.cssText = 'position:fixed;bottom:14px;right:14px;z-index:9999;background:#FF6B1A;color:#000;font-family:monospace;font-weight:800;font-size:12px;padding:6px 14px;border-radius:20px;cursor:pointer;display:none;';
-      ind.textContent = 'DEBUG ON';
-      ind.onclick = function() { active = false; localStorage.setItem(KEY, '0'); applyDebug(); };
-      document.body.appendChild(ind);
-    }
-    ind.style.display = active ? 'block' : 'none';
-  }
-  var el = document.getElementById('vl-copyright');
-  if (el) {
-    el.addEventListener('touchstart', function(e) {
-      e.preventDefault();
-      timer = setTimeout(function() { active = !active; localStorage.setItem(KEY, active ? '1' : '0'); applyDebug(); }, HOLD);
-    }, {passive: false});
-    el.addEventListener('touchend', function() { clearTimeout(timer); });
-  }
-  applyDebug();
-})();
-
-// ── INIT ──────────────────────────────────────────────────────
+function copyGamertag(){var tag=playerData?(playerData.Gamertag||''):'';navigator.clipboard.writeText(tag).then(function(){var btn=document.getElementById('copy-btn');btn.textContent='Copied! \u2713';btn.style.background='var(--green)';setTimeout(function(){btn.textContent='Copy Gamertag';btn.style.background='';},2500);});}
+function shareProfile(){var tag=playerData?(playerData.Gamertag||''):'';var url='https://56vicelane.com/player?g='+encodeURIComponent(tag);if(navigator.share){navigator.share({title:tag+' \u2014 The Last Drive',url:url});}else{copyProfileLink();}}
+function copyProfileLink(){var tag=playerData?(playerData.Gamertag||''):'';navigator.clipboard.writeText('https://56vicelane.com/player?g='+encodeURIComponent(tag)).then(function(){var b=document.querySelectorAll('.share-btn');b.forEach(function(x){if(x.textContent.includes('Copy')){x.textContent='Copied! \u2713';setTimeout(function(){x.textContent='\uD83D\uDD17 Copy Link';},2000);}});});}
+function saveProfilePic(){var url=document.getElementById('pic-url-input').value.trim(),msg=document.getElementById('pic-msg');if(!url||!playerData||!playerData._id)return;showMsg(msg,'Saving...','success');fetch(AT_LAST_DRIVE+'/'+playerData._id,{method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{ImgurLink:url}})}).then(function(){var a=document.getElementById('profile-avatar'),img=document.createElement('img');img.src=url;img.alt='avatar';img.onerror=function(){a.textContent='?';};a.innerHTML='';a.appendChild(img);showMsg(msg,'\u2705 Updated!','success');setTimeout(function(){hideMsg(msg);},3000);}).catch(function(){showMsg(msg,'Failed.','error');});}
+function saveAbout(){var text=document.getElementById('about-input').value.trim(),msg=document.getElementById('about-msg');if(!verifiedId)return;showMsg(msg,'Saving...','success');fetch(AT_LAST_DRIVE+'/'+verifiedId,{method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{About:text}})}).then(function(){var d=document.getElementById('about-display');if(text){d.textContent=text;d.className='about-text';}else{d.textContent='Nothing here yet.';d.className='about-empty';}showMsg(msg,'Saved!','success');setTimeout(function(){hideMsg(msg);},3000);}).catch(function(){showMsg(msg,'Failed.','error');});}
+function submitContent(){var type=document.getElementById('submission-type').value,text=document.getElementById('submission-text').value.trim(),btn=document.getElementById('submission-btn'),msg=document.getElementById('submission-msg'),tag=playerData?(playerData.Gamertag||'Anonymous'):'Anonymous';if(!type){showMsg(msg,'Choose a column.','error');return;}if(!text||text.length<30){showMsg(msg,'Write at least 30 characters.','error');return;}btn.textContent='Submitting...';btn.disabled=true;fetch(AT_SUBS,{method:'POST',headers:AT_H,body:JSON.stringify({records:[{fields:{Gamertag:tag,SubmissionType:type,Content:text,Status:'Pending'}}]})}).then(function(){showMsg(msg,'\u2705 Submitted!','success');document.getElementById('submission-text').value='';document.getElementById('submission-type').value='';}).catch(function(){showMsg(msg,'Failed. Try again.','error');}).finally(function(){btn.textContent='Submit';btn.disabled=false;});}
+function unlockOwner(){var email=document.getElementById('owner-email').value.trim(),msg=document.getElementById('owner-lock-msg'),tag=playerData?(playerData.Gamertag||''):'';if(!email){showMsg(msg,'Enter your signup email.','error');return;}showMsg(msg,'Checking...','info');fetch(AT_LAST_DRIVE+'?filterByFormula='+encodeURIComponent('AND({Gamertag}="'+tag+'",{Email}="'+email+'")')+'&maxRecords=1',{headers:AT_H}).then(function(r){return r.json();}).then(function(d){if(!d.records||!d.records.length){showMsg(msg,'Email does not match.','error');return;}verifiedId=d.records[0].id;playerData._id=verifiedId;var flds=d.records[0].fields;document.getElementById('owner-lock-gate').style.display='none';document.getElementById('owner-panel').style.display='block';if(flds.About)document.getElementById('about-input').value=flds.About;if(flds.ImgurLink)document.getElementById('pic-url-input').value=flds.ImgurLink;var mc=document.getElementById('manage-current'),isLR=flds.SignupType==='Drive Lead';var sum=(isLR?'Drive Lead':'Participant')+(flds['Staging Time']?' \u00b7 '+flds['Staging Time']:'')+(flds.StagingLocation?' \u00b7 '+flds.StagingLocation:'');mc.innerHTML=sum;mc.style.display='block';if(isLR){document.getElementById('opt-lead').classList.add('active');if(flds['Staging Time'])document.getElementById('lead-time').value=flds['Staging Time'];if(flds.StagingLocation)document.getElementById('lead-location').value=flds.StagingLocation;if(flds['Drive Type'])document.getElementById('lead-type').value=flds['Drive Type'];}if(tag.toLowerCase()==='musashi13'){document.getElementById('admin-gate').style.display='block';if(!flds.AdminPass)document.getElementById('admin-gate-desc').textContent='No password set yet \u2014 create one below.';playerData.AdminPass=flds.AdminPass||'';}hideMsg(msg);}).catch(function(){showMsg(msg,'Verification error.','error');});}
+function showDriveBrowser(){document.getElementById('opt-lead').classList.remove('active');document.getElementById('opt-join').classList.add('active');document.getElementById('drive-browser').style.display='block';document.getElementById('lead-form').style.display='none';loadAvailableDrives();}
+function showLeadForm(){document.getElementById('opt-join').classList.remove('active');document.getElementById('opt-lead').classList.add('active');document.getElementById('lead-form').style.display='block';document.getElementById('drive-browser').style.display='none';}
+function loadAvailableDrives(){var le=document.getElementById('drives-loading'),li=document.getElementById('drives-list');le.style.display='block';li.innerHTML='';fetch(AT_LAST_DRIVE+'?filterByFormula='+encodeURIComponent('AND({SignupType}="Drive Lead",{JoinStatus}="Active")')+'&maxRecords=20',{headers:AT_H}).then(function(r){return r.json();}).then(function(d){le.style.display='none';if(!d.records||!d.records.length){li.innerHTML='<p style="font-size:.88rem;color:var(--smoke);">No open drives yet.</p>';return;}var mp=(playerData&&playerData.Platform)?playerData.Platform.toLowerCase():'';d.records.forEach(function(rec){var fl=rec.fields,lt=fl.Gamertag||'Unknown',tm=fl['Staging Time']||'TBD',lc=fl.StagingLocation||'TBD',pl=fl.Platform||'',rg=fl.Region||'',match=mp&&pl&&mp.indexOf(pl.split(' ')[0].toLowerCase())>=0;var card=document.createElement('div');card.className='drive-browser-card';card.style.borderColor=match?'var(--cyan)':'';var nr=document.createElement('div');nr.className='drive-browser-tag';nr.textContent=lt;if(match){var mb=document.createElement('span');mb.style.cssText='font-size:.68rem;color:var(--cyan);border:1px solid var(--cyan);padding:1px 6px;margin-left:8px;font-family:var(--font-label);font-weight:800;';mb.textContent='MATCH';nr.appendChild(mb);}var meta=document.createElement('div');meta.className='drive-browser-meta';meta.textContent=tm+' \u2014 '+lc+(pl?' \u2014 '+pl:'')+(rg?' '+rg:'');var btn=document.createElement('button');btn.className='btn btn-primary';btn.style.cssText='font-size:.78rem;padding:9px 18px;';btn.textContent='Join This Drive';btn.dataset.rid=rec.id;btn.dataset.lt=lt;btn.dataset.pl=pl;btn.dataset.rg=rg;btn.dataset.lc=lc;btn.addEventListener('click',function(){joinDrive(this.dataset.rid,this.dataset.lt,this.dataset.pl,this.dataset.rg,this.dataset.lc);});card.appendChild(nr);card.appendChild(meta);card.appendChild(btn);li.appendChild(card);});}).catch(function(){document.getElementById('drives-loading').style.display='none';document.getElementById('drives-list').innerHTML='<p style="color:var(--red);font-size:.88rem;">Could not load drives.</p>';});}
+function joinDrive(rid,lt,pl,rg,lc){var msg=document.getElementById('join-msg');if(!verifiedId){showMsg(msg,'Not verified.','error');return;}showMsg(msg,'Joining...','info');fetch(AT_LAST_DRIVE+'/'+verifiedId,{method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{SignupType:'Participant',JoinStatus:'Active',LinkedSlot:pl+'||'+rg+'||'+lc+'||'+lt}})}).then(function(){msg.innerHTML='Joined <b>'+lt+'</b> drive! Add them on '+pl+' and message them you joined.';msg.className='msg show success';}).catch(function(){showMsg(msg,'Join failed.','error');});}
+function saveLead(){var time=document.getElementById('lead-time').value,loc=document.getElementById('lead-location').value,tp=document.getElementById('lead-type').value,ac=document.getElementById('lead-access').value,msg=document.getElementById('lead-msg');if(!time||!loc||!tp){showMsg(msg,'Fill in all fields.','error');return;}if(!verifiedId){showMsg(msg,'Not verified.','error');return;}showMsg(msg,'Saving...','info');fetch(AT_LAST_DRIVE+'/'+verifiedId,{method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{SignupType:'Drive Lead',IsOrganizer:true,JoinStatus:'Active','Staging Time':time,StagingLocation:loc,'Drive Type':tp,AccessType:ac}})}).then(function(){showMsg(msg,'\u2705 Your drive is live!','success');}).catch(function(){showMsg(msg,'Save failed.','error');});}
+function unlockAdmin(){var pass=document.getElementById('admin-pass-input').value.trim(),msg=document.getElementById('admin-gate-msg');if(!pass){showMsg(msg,'Enter a password.','error');return;}var stored=playerData.AdminPass||'';if(!stored){fetch(AT_LAST_DRIVE+'/'+verifiedId,{method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{AdminPass:pass}})}).then(function(){playerData.AdminPass=pass;document.getElementById('admin-gate').style.display='none';document.getElementById('admin-panel').style.display='block';loadAllPlayers();}).catch(function(){showMsg(msg,'Failed to save.','error');});return;}if(pass!==stored){showMsg(msg,'Incorrect password.','error');return;}document.getElementById('admin-gate').style.display='none';document.getElementById('admin-panel').style.display='block';loadAllPlayers();}
+function loadAllPlayers(){if(allPlayers.length)return;fetch(AT_LAST_DRIVE+'?fields[]=Gamertag&fields[]=OwnedPlates&maxRecords=200',{headers:AT_H}).then(function(r){return r.json();}).then(function(d){allPlayers=(d.records||[]).map(function(rec){return{id:rec.id,tag:rec.fields.Gamertag||'',plates:rec.fields.OwnedPlates||''};}).filter(function(p){return!!p.tag;});}).catch(function(){});}
+function adminFilterPlayers(val){var dd=document.getElementById('admin-player-dropdown');dd.innerHTML='';if(!val){dd.style.display='none';return;}var matches=allPlayers.filter(function(p){return p.tag.toLowerCase().indexOf(val.toLowerCase())>=0;}).slice(0,10);if(!matches.length){dd.style.display='none';return;}matches.forEach(function(p){var row=document.createElement('div');row.style.cssText='padding:10px 14px;cursor:pointer;font-size:.88rem;font-weight:800;text-transform:uppercase;color:var(--bone);border-bottom:1px solid var(--edge);';row.textContent=p.tag;row.addEventListener('mouseover',function(){this.style.background='var(--asphalt)';});row.addEventListener('mouseout',function(){this.style.background='';});row.addEventListener('click',function(){adminSelectPlayer(p.id,p.tag,p.plates);});dd.appendChild(row);});dd.style.display='block';}
+function adminSelectPlayer(id,tag,plates){adminTargetId=id;adminTargetPlates=plates?plates.split(',').map(function(p){return p.trim();}).filter(Boolean):[];document.getElementById('admin-search-tag').value=tag;document.getElementById('admin-player-dropdown').style.display='none';document.getElementById('admin-found-tag').textContent=tag;document.getElementById('admin-found-plates').textContent=adminTargetPlates.length?'Current: '+adminTargetPlates.join(', '):'No plates yet.';var grid=document.getElementById('admin-plate-checkboxes');grid.innerHTML='';PLATE_STYLES.forEach(function(p){var owned=adminTargetPlates.indexOf(p.id)>=0,item=document.createElement('label');item.className='plate-check-item'+(owned?' owned':'');var chk=document.createElement('input');chk.type='checkbox';chk.id='chk-'+p.id;chk.value=p.id;if(owned)chk.checked=true;var lbl=document.createElement('span');lbl.className='plate-check-label';lbl.textContent=p.label+(owned?' \u2713':'');item.appendChild(chk);item.appendChild(lbl);grid.appendChild(item);});document.getElementById('admin-player-found').style.display='block';document.getElementById('admin-search-msg').className='msg';}
+function adminGiftPlates(){var msg=document.getElementById('admin-gift-msg');if(!adminTargetId){showMsg(msg,'No player selected.','error');return;}var selected=PLATE_STYLES.filter(function(p){var el=document.getElementById('chk-'+p.id);return el&&el.checked;}).map(function(p){return p.id;});if(!selected.length){showMsg(msg,'Select at least one plate.','error');return;}showMsg(msg,'Saving...','info');fetch(AT_LAST_DRIVE+'/'+adminTargetId,{method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{OwnedPlates:selected.join(', ')}})}).then(function(){document.getElementById('admin-found-plates').textContent='Current: '+selected.join(', ');showMsg(msg,'\u2705 Plates saved for '+document.getElementById('admin-found-tag').textContent,'success');}).catch(function(){showMsg(msg,'Save failed.','error');});}
+function saveAdminPass(){var pass=document.getElementById('admin-new-pass').value.trim(),msg=document.getElementById('admin-pass-msg');if(!pass){showMsg(msg,'Enter a password.','error');return;}fetch(AT_LAST_DRIVE+'/'+verifiedId,{method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{AdminPass:pass}})}).then(function(){playerData.AdminPass=pass;document.getElementById('admin-new-pass').value='';showMsg(msg,'\u2705 Password updated.','success');setTimeout(function(){hideMsg(msg);},3000);}).catch(function(){showMsg(msg,'Failed.','error');});}
+fetch('/articles.json?v='+Date.now()).then(function(r){return r.json();}).then(function(a){var t=document.getElementById('ticker-track');if(!t)return;t.innerHTML=[].concat(a,a).map(function(x){return'<span class="ticker-item" onclick="location.href=\'/articles/'+x.slug+'\'">'+( x.emoji||'⚡')+' '+x.title+'</span>';}).join('');}).catch(function(){});
+var mt=document.getElementById('menu-toggle'),nm=document.getElementById('nav-mobile');
+if(mt&&nm)mt.addEventListener('click',function(){nm.classList.toggle('open');});
+(function(){var KEY='56vl-debug',active=localStorage.getItem(KEY)==='1';function applyDebug(){var ind=document.getElementById('vl-debug-ind');if(!ind){ind=document.createElement('div');ind.id='vl-debug-ind';ind.textContent='\uD83D\uDD27 DEBUG ON \u2014 tap to off';ind.onclick=function(){active=false;localStorage.setItem(KEY,'0');applyDebug();};document.body.appendChild(ind);}ind.style.display=active?'block':'none';}var el=document.getElementById('vl-copyright'),timer=null;if(el){el.style.userSelect='none';el.style.webkitUserSelect='none';el.addEventListener('touchstart',function(e){e.preventDefault();timer=setTimeout(function(){active=!active;localStorage.setItem(KEY,active?'1':'0');applyDebug();},1500);},{passive:false});el.addEventListener('touchend',function(){clearTimeout(timer);});el.addEventListener('touchmove',function(){clearTimeout(timer);});}applyDebug();})();
 loadProfile();
-
+if(window.location.hash==='#manage'){setTimeout(function(){var el=document.getElementById('drive-manage-section');if(el)el.scrollIntoView({behavior:'smooth'});},800);}
 </script>
 </body>
 </html>
