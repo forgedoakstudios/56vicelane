@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9EKF7J4V7W');</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Store — 56ViceLane</title>
+<meta name="description" content="License plates, bundles, merch, and gear. Own your spot on the Wall of Honor. November 18, 2026.">
+<link rel="canonical" href="https://56vicelane.com/store">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="56ViceLane">
+<meta property="og:title" content="Store — 56ViceLane">
+<meta property="og:description" content="License plates, bundles, merch and gear. Own your spot on the Wall of Honor.">
+<meta property="og:image" content="https://56vicelane.com/images/Jason_and_Lucia_01_landscape.jpg">
+<meta property="og:url" content="https://56vicelane.com/store">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/vicelane.css">
+
+<!-- PayPal SDK — Live -->
+<script src="https://www.paypal.com/sdk/js?client-id=AbrYB4rsTfrCe0ZUB-PkKxe7cmXudT7k0eENrVqps46NZlZ3g2PpExPr9-ijVGjiqhrSWJ4-d86gKjJM&currency=USD" async></script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
+
+<style>
+/* ── STORE PAGE ONLY ──────────────────────────────────────── */
+
+/* HERO */
+.store-hero {
+  padding: 52px 24px 36px;
+  max-width: var(--wide-width);
+  margin: 0 auto;
+  text-align: center;
+}
+.store-eyebrow {
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .3em;
+  font-size: .72rem;
+  color: var(--amber);
+  margin-bottom: 12px;
+}
+.store-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 7vw, 56px);
+  text-transform: uppercase;
+  line-height: 1.0;
+  margin-bottom: 14px;
+}
+.store-title span { color: var(--amber); }
+.store-sub {
+  font-size: .95rem;
+  color: #C8C4BE;
+  max-width: 480px;
+  margin: 0 auto 32px;
+  line-height: 1.7;
+}
+
+/* VERIFY STRIP */
+.verify-section {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px 32px;
+}
+.verify-box {
+  background: var(--asphalt);
+  border: 1px solid var(--edge);
+  border-top: 3px solid var(--amber);
+  padding: 24px;
+}
+.verify-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: var(--bone);
+  margin-bottom: 6px;
+}
+.verify-sub { font-size: .85rem; color: #C8C4BE; margin-bottom: 18px; line-height: 1.6; }
+.verify-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+@media (max-width: 520px) { .verify-grid { grid-template-columns: 1fr; } }
+
+/* Current plate display */
+.current-plate-wrap { margin-top: 18px; display: none; }
+.current-plate-wrap.show { display: block; }
+.current-plate-label {
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  font-size: .7rem;
+  color: var(--smoke);
+  margin-bottom: 8px;
+}
+.current-plate { max-width: 360px; border: 2px solid var(--edge); }
+
+/* Owned plates dropdown */
+.owned-plates-wrap { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--edge); display: none; }
+.owned-plates-wrap.show { display: block; }
+.owned-plates-label {
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  font-size: .7rem;
+  color: var(--amber);
+  margin-bottom: 10px;
+}
+.owned-select-row { display: flex; gap: 8px; align-items: stretch; }
+.owned-preview { margin-top: 10px; max-width: 360px; border: 2px solid rgba(255,107,26,.3); display: none; }
+.owned-preview.show { display: block; }
+.owned-active-badge {
+  display: none;
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: .7rem;
+  color: var(--green);
+  background: rgba(0,200,117,.1);
+  border: 1px solid rgba(0,200,117,.2);
+  padding: 3px 10px;
+  margin-top: 6px;
+}
+
+/* PLATE PREVIEW INNER */
+.plate-inner {
+  width: 100%;
+  aspect-ratio: 2.5 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+.plate-stars { font-size: 9px; letter-spacing: 5px; margin-bottom: 3px; }
+.plate-tag {
+  font-family: var(--font-display);
+  font-size: clamp(14px, 4.5vw, 24px);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: #fff;
+  text-shadow: 0 0 16px rgba(255,107,26,.5), 0 2px 6px rgba(0,0,0,.9);
+  -webkit-text-stroke: 1px rgba(0,0,0,.5);
+  text-align: center;
+}
+.plate-footer {
+  font-size: 6px;
+  text-transform: uppercase;
+  letter-spacing: .25em;
+  margin-top: 3px;
+}
+
+/* SECTION BLOCKS */
+.store-block {
+  padding: 52px 24px;
+  border-bottom: 1px solid var(--edge);
+  position: relative;
+  z-index: 2;
+}
+.store-block-alt { background: rgba(22,22,29,.5); }
+.store-block-inner { max-width: var(--wide-width); margin: 0 auto; }
+.block-section-num {
+  font-family: var(--font-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .25em;
+  font-size: .7rem;
+  color: var(--smoke);
+  margin-bottom: 6px;
+}
+.block-title {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 5vw, 40px);
+  text-transform: uppercase;
+  color: var(--bone);
+  margin-bottom: 8px;
+  line-height: 1.05;
+}
+.block-title span { color: var(--amber); }
+.block-sub {
+  font-size: .92rem;
+  color: #C8C4BE;
+  max-width: 560px;
+  line-height: 1.7;
+}
+.block-divider {
+  width: 48px;
+  height: 3px;
+  background: var(--amber);
+  margin: 14px 0 28px;
+  box-shadow: 0 0 8px rgba(255,107,26,.4);
+}
+
+/* PLATE CARD GRID */
+.plate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+  margin-bottom: 36px;
+}
+.plate-card {
+  background: var(--asphalt);
+  border: 1px solid var(--edge);
+  overflow: hidden;
+  transition: all .25s;
+  cursor: pointer;
+}
+.plate-card:hover { border-color: var(--amber); transform: translateY(-2px); }
+.plate-card.locked { opacity: .7; cursor: default; }
+.plate-card.locked:hover { border-color: var(--edge); transform: none; }
+.plate-meta {
+  padding: 11px 14px;
+  background: #111118;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.plate-name {
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: .82rem;
+  color: var(--bone);
+}
+.plate-price { font-family: var(--font-display); font-size: .9rem; }
+.price-free  { color: var(--green); }
+.price-paid  { color: var(--amber); }
+.price-gold  { color: var(--gold); }
+.plate-action {
+  width: 100%;
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: .78rem;
+  padding: 11px;
+  border: none;
+  cursor: pointer;
+  transition: all .25s;
+}
+.btn-buy-plate { background: var(--amber); color: #000; }
+.btn-buy-plate:hover { background: var(--amber-dim); }
+.btn-locked { background: none; color: var(--smoke); border-top: 1px solid var(--edge); cursor: default; }
+
+/* BUNDLES SUBSECTION */
+.bundles-label {
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  font-size: .72rem;
+  color: var(--amber);
+  margin-bottom: 14px;
+  padding-top: 8px;
+  border-top: 1px solid var(--edge);
+}
+.bundle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+}
+.bundle-card {
+  background: var(--asphalt);
+  border: 2px solid var(--amber);
+  overflow: hidden;
+  position: relative;
+  transition: all .25s;
+  cursor: pointer;
+}
+.bundle-card:hover { box-shadow: 0 0 24px rgba(255,107,26,.2); transform: translateY(-2px); }
+.bundle-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--amber), var(--gold), var(--amber));
+  box-shadow: 0 0 10px rgba(255,107,26,.4);
+}
+.bundle-card.ultimate {
+  grid-column: 1 / -1;
+  border-color: var(--gold);
+  background: linear-gradient(135deg, #0D0D1A, #1A0D2E, #0D1A1A);
+}
+.bundle-card.ultimate::before {
+  background: linear-gradient(90deg, var(--amber), var(--gold), var(--cyan), var(--gold), var(--amber));
+  box-shadow: 0 0 20px rgba(255,215,0,.5);
+}
+.bundle-save-badge {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: .68rem;
+  color: var(--gold);
+  background: rgba(255,215,0,.12);
+  border: 1px solid rgba(255,215,0,.3);
+  padding: 3px 10px;
+}
+.bundle-body { padding: 20px 20px 0; }
+.bundle-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  color: var(--bone);
+  margin-bottom: 6px;
+}
+.bundle-desc { font-size: .82rem; color: #C8C4BE; line-height: 1.6; margin-bottom: 12px; }
+.bundle-swatches { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.swatch { width: 38px; height: 16px; border: 1px solid var(--edge); border-radius: 2px; }
+.swatch-lbl {
+  width: 38px; height: 16px;
+  border: 1px solid var(--edge);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 7px;
+  font-family: var(--font-label);
+  font-weight: 700;
+  color: var(--smoke);
+  text-transform: uppercase;
+}
+.bundle-price-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+.bundle-price { font-family: var(--font-display); font-size: 1.8rem; color: var(--amber); }
+.bundle-was { font-family: var(--font-label); font-size: .82rem; color: var(--smoke); text-decoration: line-through; }
+.bundle-save-tag {
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: .68rem;
+  color: var(--green);
+  background: rgba(0,200,117,.1);
+  border: 1px solid rgba(0,200,117,.2);
+  padding: 2px 8px;
+}
+.bundle-checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 14px; max-width: 480px; }
+@media (max-width: 480px) { .bundle-checklist { grid-template-columns: 1fr; } }
+.bundle-check {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: .82rem;
+  color: var(--bone);
+}
+.bundle-check::before { content: '✓'; color: var(--gold); font-weight: 800; flex-shrink: 0; }
+.bundle-window {
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: .68rem;
+  color: var(--green);
+  background: rgba(0,200,117,.1);
+  border: 1px solid rgba(0,200,117,.2);
+  padding: 3px 10px;
+}
+.bundle-btn {
+  width: 100%;
+  background: var(--amber);
+  color: #000;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: .95rem;
+  padding: 14px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: .05em;
+  transition: all .3s;
+}
+.bundle-btn:hover { box-shadow: 0 0 20px rgba(255,107,26,.4); }
+.bundle-btn.gold-btn { background: var(--gold); font-size: 1rem; padding: 16px; }
+.bundle-btn.gold-btn:hover { box-shadow: 0 0 24px rgba(255,215,0,.4); }
+.bundle-btn.cyan-btn { background: var(--cyan); }
+.bundle-btn.cyan-btn:hover { box-shadow: 0 0 20px rgba(0,212,255,.4); }
+
+/* FEATURED ALL ACCESS */
+.featured-block {
+  background: linear-gradient(135deg, #0D0D1A, #1A0D2E, #0D1A1A);
+  border-top: 4px solid var(--gold);
+  border-bottom: 1px solid var(--edge);
+  padding: 52px 24px;
+  position: relative;
+  overflow: hidden;
+}
+.featured-block::after {
+  content: 'ALL ACCESS';
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  font-family: var(--font-display);
+  font-size: 80px;
+  color: rgba(255,215,0,.04);
+  text-transform: uppercase;
+  transform: rotate(-8deg);
+  pointer-events: none;
+}
+.featured-inner { max-width: var(--wide-width); margin: 0 auto; }
+.feat-eyebrow {
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .3em;
+  font-size: .7rem;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.feat-title {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 5vw, 40px);
+  text-transform: uppercase;
+  color: var(--bone);
+  margin-bottom: 8px;
+}
+.feat-title span { color: var(--gold); }
+.feat-sub { font-size: .92rem; color: #C8C4BE; max-width: 560px; margin-bottom: 22px; line-height: 1.7; }
+.feat-checklist {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 22px;
+  max-width: 500px;
+}
+@media (max-width: 480px) { .feat-checklist { grid-template-columns: 1fr; } }
+.feat-check { display: flex; align-items: center; gap: 8px; font-size: .85rem; color: var(--bone); }
+.feat-check::before { content: '✓'; color: var(--gold); font-weight: 800; flex-shrink: 0; }
+.feat-price-row { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; flex-wrap: wrap; }
+.feat-price { font-family: var(--font-display); font-size: 2.8rem; color: var(--gold); text-shadow: 0 0 20px rgba(255,215,0,.3); }
+.feat-window {
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: .72rem;
+  color: var(--green);
+  background: rgba(0,200,117,.1);
+  border: 1px solid rgba(0,200,117,.2);
+  padding: 4px 12px;
+}
+#paypal-button-featured { max-width: 400px; }
+
+/* MERCH BLOCK */
+.merch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+.merch-card {
+  background: var(--asphalt);
+  border: 1px solid var(--edge);
+  overflow: hidden;
+  transition: border-color .25s;
+}
+.merch-card:hover { border-color: var(--amber); }
+.merch-preview {
+  width: 100%;
+  aspect-ratio: 1.6 / 1;
+  background: var(--edge);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.merch-icon { font-size: 48px; margin-bottom: 8px; }
+.merch-coming {
+  position: absolute;
+  inset: 0;
+  background: rgba(11,11,15,.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.merch-coming span {
+  font-family: var(--font-display);
+  font-size: .75rem;
+  text-transform: uppercase;
+  color: var(--smoke);
+  letter-spacing: .1em;
+  border: 1px solid var(--edge);
+  padding: 6px 14px;
+}
+.merch-song { background: rgba(0,212,255,.06); border-top: 2px solid var(--cyan); }
+.merch-song .merch-coming span { color: var(--cyan); border-color: var(--cyan); }
+.merch-meta {
+  padding: 12px 14px;
+  background: #111118;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.merch-name { font-family: var(--font-label); font-weight: 800; text-transform: uppercase; letter-spacing: .1em; font-size: .82rem; color: var(--bone); }
+.merch-date { font-family: var(--font-label); font-weight: 800; font-size: .75rem; }
+.merch-action {
+  width: 100%;
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: .78rem;
+  padding: 11px;
+  border: none;
+  cursor: pointer;
+  transition: all .25s;
+  background: none;
+  color: var(--smoke);
+  border-top: 1px solid var(--edge);
+}
+.merch-action:hover { color: var(--amber); }
+.merch-action.song-action { background: var(--cyan); color: #000; }
+.merch-action.song-action:hover { box-shadow: 0 0 16px rgba(0,212,255,.4); }
+
+/* FOUNDER BLOCK */
+.founder-block {
+  background: linear-gradient(135deg, #0D0D1A, #1a0535 50%, #0D1A1A);
+  border-top: 3px solid var(--gold);
+  border-bottom: 3px solid var(--gold);
+  padding: 52px 24px;
+}
+.founder-block-inner { max-width: var(--wide-width); margin: 0 auto; }
+.founder-eyebrow {
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .3em;
+  font-size: .7rem;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.founder-title { font-family: var(--font-display); font-size: clamp(24px, 5vw, 40px); text-transform: uppercase; color: var(--bone); margin-bottom: 8px; }
+.founder-title span { color: var(--gold); }
+.founder-sub { font-size: .92rem; color: #C8C4BE; max-width: 480px; margin-bottom: 24px; line-height: 1.7; }
+.founder-plate-preview {
+  max-width: 360px;
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 24px rgba(255,215,0,.2);
+  margin-bottom: 22px;
+}
+.founder-bar-wrap { max-width: 360px; margin-bottom: 22px; }
+.founder-bar-label {
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  font-size: .72rem;
+  color: var(--gold);
+  margin-bottom: 7px;
+}
+.founder-bar-count { font-family: var(--font-display); font-size: 1.1rem; color: var(--bone); margin-bottom: 7px; }
+.founder-bar-count span { color: var(--gold); }
+.founder-bar-track { width: 100%; height: 5px; background: var(--edge); border-radius: 3px; }
+.founder-bar-fill { height: 5px; background: linear-gradient(90deg, #C8960A, var(--gold)); border-radius: 3px; box-shadow: 0 0 10px rgba(255,215,0,.4); transition: width .5s; }
+
+/* PURCHASE PANEL */
+.purchase-panel { max-width: 480px; margin: 0 auto; padding: 0 24px 32px; display: none; }
+.purchase-panel.show { display: block; }
+.purchase-box { background: var(--asphalt); border: 1px solid var(--edge); border-top: 2px solid var(--amber); padding: 24px; }
+.purchase-title { font-family: var(--font-display); font-size: 1rem; text-transform: uppercase; margin-bottom: 6px; }
+.purchase-sub { font-size: .82rem; color: #C8C4BE; margin-bottom: 18px; }
+.purchase-preview { margin-bottom: 18px; border: 1px solid var(--edge); }
+#paypal-button-container { margin-top: 14px; }
+
+/* SUCCESS OVERLAY */
+.success-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(11,11,15,.95);
+  z-index: 500;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.success-overlay.show { display: flex; }
+.success-box {
+  background: var(--asphalt);
+  border: 1px solid var(--edge);
+  border-top: 3px solid var(--amber);
+  padding: 32px 24px;
+  max-width: 460px;
+  width: 100%;
+  text-align: center;
+}
+.success-icon { font-size: 48px; margin-bottom: 14px; }
+.success-title { font-family: var(--font-display); font-size: 1.4rem; text-transform: uppercase; color: var(--amber); margin-bottom: 8px; }
+.success-plate { margin: 16px auto; max-width: 340px; border: 2px solid var(--amber); box-shadow: 0 0 20px rgba(255,107,26,.3); }
+.success-text { font-size: .85rem; color: #C8C4BE; margin-bottom: 20px; line-height: 1.7; }
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker-track">
+    <span class="ticker-item">56ViceLane — Where GTA5 Ends And GTA6 Begins</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="logo" href="/"><span class="logo-mark">56</span><span class="logo-text">ViceLane</span></a>
+  <div class="nav-links">
+    <a href="/news">News</a>
+    <a href="/gtacon">GTACON</a>
+    <a href="/lastdrive">Last Drive</a>
+    <a href="/members">Members</a>
+    <a href="/store" class="active">Store</a>
+    <a href="/gear">Gear</a>
+    <a href="/tools">Tools</a>
+    <a href="/forum">Forum</a>
+  </div>
+  <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="/news">News</a>
+  <a href="/gtacon">GTACON</a>
+  <a href="/lastdrive">Last Drive</a>
+  <a href="/members">Members</a>
+  <a href="/store" class="active">Store</a>
+  <a href="/gear">Gear</a>
+  <a href="/tools">Tools</a>
+  <a href="/forum">Forum</a>
+  <div class="mobile-divider"></div>
+  <a href="/about">About</a>
+  <a href="/contact">Contact</a>
+  <div class="mobile-divider"></div>
+  <a href="/privacy">Privacy</a>
+  <a href="/terms">Terms</a>
+</div>
+
+<!-- HERO -->
+<div class="store-hero">
+  <div class="store-eyebrow">56ViceLane · Official Store</div>
+  <h1 class="store-title">Own Your <span>Spot</span><br>In The Lane</h1>
+  <p class="store-sub">License plates, bundles, merch, and gear. Everything ships before November 18.</p>
+</div>
+
+<!-- ANCHOR NAV -->
+<div class="anchor-nav">
+  <a href="#plates">Plates</a>
+  <a href="#merch">Merch</a>
+  <a href="#founder">Founder</a>
+  <a href="#gear">Gear</a>
+</div>
+
+<!-- AdSense -->
+<div style="max-width:var(--wide-width);margin:0 auto;padding:16px 24px 0;">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<!-- VERIFY STRIP -->
+<div class="verify-section" id="verify">
+  <div class="verify-box">
+    <div class="verify-title">Find Your Profile First</div>
+    <p class="verify-sub">Enter the gamertag and email you used to sign up. We'll load your current plate and unlock the shop so purchases apply to your account.</p>
+    <div class="verify-grid">
+      <input type="text"  class="form-input" id="v-gamertag" placeholder="Your gamertag">
+      <input type="email" class="form-input" id="v-email"    placeholder="Your signup email">
+    </div>
+    <button class="form-submit" id="verify-btn" onclick="verifyPlayer()">Find My Profile</button>
+    <div class="msg" id="verify-msg"></div>
+
+    <!-- Current plate -->
+    <div class="current-plate-wrap" id="current-plate-wrap">
+      <div class="current-plate-label">Your active plate</div>
+      <div class="current-plate" id="current-plate-display"></div>
+      <div style="margin-top:8px;font-size:.82rem;color:var(--green);">✅ Profile found — scroll down to buy a new plate</div>
+    </div>
+
+    <!-- Owned plates dropdown -->
+    <div class="owned-plates-wrap" id="owned-plates-wrap">
+      <div class="owned-plates-label">🏆 Your Plate Collection — Switch Active Plate</div>
+      <div class="owned-select-row">
+        <select class="form-select" id="owned-select" onchange="previewOwnedPlate()" style="flex:1;">
+          <option value="">Choose a plate...</option>
+        </select>
+        <button class="btn btn-primary" onclick="setActivePlate()" style="padding:12px 18px;white-space:nowrap;">Set Active</button>
+      </div>
+      <div class="owned-preview" id="owned-preview"></div>
+      <div class="owned-active-badge" id="owned-active-badge">✅ Active on Wall of Honor</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FEATURED — ALL ACCESS (Ultimate Bundle)
+     ═══════════════════════════════════════════════════════════ -->
+<div class="featured-block">
+  <div class="featured-inner">
+    <div class="feat-eyebrow">⭐ Best Value — Pre-Launch Special</div>
+    <div class="feat-title">All Premium + <span>Future</span></div>
+    <p class="feat-sub">Every plate ever created on 56ViceLane — past, present, and future — until GTA6 launches November 19, 2026. The moment a new plate drops, it's automatically yours. When The Last Drive ends, this window closes permanently.</p>
+    <div class="feat-checklist">
+      <div class="feat-check">Every plate ever made</div>
+      <div class="feat-check">Every future drop until Nov 19</div>
+      <div class="feat-check">Auto-unlocks every new plate</div>
+      <div class="feat-check">👑 Premium badge on wall</div>
+      <div class="feat-check">Exclusive All Access plate</div>
+      <div class="feat-check">Window closes at launch — forever</div>
+    </div>
+    <div class="feat-price-row">
+      <div class="feat-price">$29.99</div>
+      <div class="feat-window">Window Closes Nov 19</div>
+    </div>
+    <div id="paypal-button-featured"></div>
+    <p style="font-size:.72rem;color:var(--smoke-dim);margin-top:10px;">One time. Every Last Drive plate until November 19, 2026. Window closes at GTA6 launch.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PLATES BLOCK
+     ═══════════════════════════════════════════════════════════ -->
+<div class="store-block" id="plates">
+  <div class="store-block-inner">
+    <div class="block-section-num">Section 01</div>
+    <div class="block-title">License <span>Plates</span></div>
+    <p class="block-sub">Your name. Your plate. On the Wall of Honor forever. Every signup gets a free plate — upgrade anytime.</p>
+    <div class="block-divider"></div>
+
+    <!-- FREE PLATES -->
+    <div class="plate-grid">
+
+      <div class="plate-card locked">
+        <div class="plate-inner" style="background:#0a0a0a;">
+          <div class="plate-stars" style="color:rgba(255,255,255,.4);">★ ★ ★ ★ ★ ★</div>
+          <div class="plate-tag" id="preview-black">YOUR TAG</div>
+          <div class="plate-footer" style="color:rgba(255,255,255,.3);">THE LAST DRIVE · NOV 18 2026</div>
+        </div>
+        <div class="plate-meta"><span class="plate-name">Classic Black</span><span class="plate-price price-free">FREE</span></div>
+        <button class="plate-action btn-locked">Included With Signup</button>
+      </div>
+
+      <div class="plate-card locked">
+        <div class="plate-inner" style="background:#EFEDE8;">
+          <div class="plate-stars" style="color:rgba(0,0,0,.3);">★ ★ ★ ★ ★ ★</div>
+          <div class="plate-tag" id="preview-white" style="color:#0a0a0a;text-shadow:none;-webkit-text-stroke:1px rgba(0,0,0,.2);">YOUR TAG</div>
+          <div class="plate-footer" style="color:rgba(0,0,0,.3);">THE LAST DRIVE · NOV 18 2026</div>
+        </div>
+        <div class="plate-meta"><span class="plate-name">Classic White</span><span class="plate-price price-free">FREE</span></div>
+        <button class="plate-action btn-locked">Included With Signup</button>
+      </div>
+
+    </div>
+
+    <!-- $0.99 COLOR PLATES -->
+    <div style="font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.2em;font-size:.72rem;color:var(--smoke);margin-bottom:14px;">Color Plates — $0.99 each</div>
+    <div class="plate-grid">
+
+      <div class="plate-card" onclick="selectPlate('color-red',0.99,'Crimson Red')" id="plate-color-red">
+        <div class="plate-inner" style="background:linear-gradient(135deg,#6B0000,#CC2200);">
+          <div class="plate-stars" style="color:rgba(255,255,255,.6);">★ ★ ★ ★ ★ ★</div>
+          <div class="plate-tag" id="preview-color-red">YOUR TAG</div>
+          <div class="plate-footer" style="color:rgba(255,255,255,.6);">THE LAST DRIVE · NOV 18 2026</div>
+        </div>
+        <div class="plate-meta"><span class="plate-name">Crimson Red</span><span class="plate-price price-paid">$0.99</span></div>
+        <button class="plate-action btn-buy-plate">Add To Cart →</button>
+      </div>
+
+      <div class="plate-card" onclick="selectPlate('color-blue',0.99,'Vice Blue')" id="plate-color-blue">
+        <div class="plate-inner" style="background:linear-gradient(135deg,#000C6B,#0033CC);">
+          <div class="plate-stars" style="color:rgba(255,255,255,.6);">★ ★ ★ ★ ★ ★</div>
+          <div class="plate-tag" id="preview-color-blue">YOUR TAG</div>
+          <div class="plate-footer" style="color:rgba(255,255,255,.6);">THE LAST DRIVE · NOV 18 2026</div>
+        </div>
+        <div class="plate-meta"><span class="plate-name">Vice Blue</span><span class="plate-price price-paid">$0.99</span></div>
+        <button class="plate-action btn-buy-plate">Add To Cart →</button>
+      </div>
+
+      <div class="plate-card" onclick="selectPlate('color-purple',0.99,'Royal Purple')" id="plate-color-purple">
+        <div class="plate-inner" style="background:linear-gradient(135deg,#2D0060,#6600AA);">
+          <div class="plate-stars" style="color:rgba(255,255,255,.6);">★ ★ ★ ★ ★ ★</div>
+          <div class="plate-tag" id="preview-color-purple">YOUR TAG</div>
+          <div class="plate-footer" style="color:rgba(255,255,255,.6);">THE LAST DRIVE · NOV 18 2026</div>
+        </div>
+        <div class="plate-meta"><span class="plate-name">Royal Purple</span><span class="plate-price price-paid">$0.99</span></div>
+        <button class="plate-action btn-buy-plate">Add To Cart →</button>
+      </div>
+
+      <div class="plate-card" onclick="selectPlate('color-amber',0.99,'Gold Amber')" id="plate-color-amber">
+        <div class="plate-inner" style="background:linear-gradient(135deg,#7A4A00,#C8820A);">
+          <div class="plate-stars" style="color:rgba(255,255,255,.6);">★ ★ ★ ★ ★ ★</div>
+          <div class="plate-tag" id="preview-color-amber">YOUR TAG</div>
+          <div class="plate-footer" style="color:rgba(255,255,255,.6);">THE LAST DRIVE · NOV 18 2026</div>
+        </div>
+        <div class="plate-meta"><span class="plate-name">Gold Amber</span><span class="plate-price price-paid">$0.99</span></div>
+        <button class="plate-action btn-buy-plate">Add To Cart →</button>
+      </div>
+
+      <!-- NEW: GREEN -->
+      <div class="plate-card" onclick="selectPlate('color-green',0.99,'Leonida Green')" id="plate-color-green">
+        <div class="plate-inner" style="background:linear-gradient(135deg,#004D00,#007A00);">
+          <div class="plate-stars" style="color:rgba(255,255,255,.6);">★ ★ ★ ★ ★ ★</div>
+          <div class="plate-tag" id="preview-color-green">YOUR TAG</div>
+          <div class="plate-footer" style="color:rgba(255,255,255,.6);">THE LAST DRIVE · NOV 18 2026</div>
+        </div>
+        <div class="plate-meta"><span class="plate-name">Leonida Green</span><span class="plate-price price-paid">$0.99</span></div>
+        <button class="plate-action btn-buy-plate">Add To Cart →</button>
+      </div>
+
+      <!-- NEW: YELLOW -->
+      <div class="plate-card" onclick="selectPlate('color-yellow',0.99,'Vice Yellow')" id="plate-color-yellow">
+        <div class="plate-inner" style="background:linear-gradient(135deg,#7A6A00,#C8B000);">
+          <div class="plate-stars" style="color:rgba(255,255,255,.6);">★ ★ ★ ★ ★ ★</div>
+          <div class="plate-tag" id="preview-color-yellow">YOUR TAG</div>
+          <div class="plate-footer" style="color:rgba(255,255,255,.6);">THE LAST DRIVE · NOV 18 2026</div>
+        </div>
+        <div class="plate-meta"><span class="plate-name">Vice Yellow</span><span class="plate-price price-paid">$0.99</span></div>
+        <button class="plate-action btn-buy-plate">Add To Cart →</button>
+      </div>
+
+    </div>
+
+    <!-- $2.99 VEHICLE PLATES -->
+    <div style="font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.2em;font-size:.72rem;color:var(--smoke);margin-bottom:14px;margin-top:28px;">Vehicle Plates — $2.99 each</div>
+    <div class="plate-grid">
+
+      <div class="plate-card" onclick="selectPlate('vehicle-male-exotic',2.99,'Male · Exotic')" id="plate-vehicle-male-exotic">
+        <div class="plate-inner" style="background-image:url('/images/plate-male-exotic.png');background-size:cover;background-position:center;">
+          <div class="plate-stars" style="color:rgba(255,255,255,.85);text-shadow:0 0 10px rgba(255,107,26,.8);">★ ★ ★ ★ ★ ★</div>
+          <div class="plate-tag" id="preview-male" style="text-shadow:0 0 20px rgba(255,107,26,.4),0 3px 8px rgba(0,0,0,.9);">YOUR TAG</div>
+          <div class="plate-footer" style="color:rgba(255,255,255,.7);">THE LAST DRIVE · NOV 18 2026</div>
+        </div>
+        <div class="plate-meta"><span class="plate-name">Male · Exotic</span><span class="plate-price price-paid">$2.99</span></div>
+        <button class="plate-action btn-buy-plate">Add To Cart →</button>
+      </div>
+
+      <div class="plate-card" onclick="selectPlate('vehicle-female-exotic',2.99,'Female · Exotic')" id="plate-vehicle-female-exotic">
+        <div class="plate-inner" style="background-image:url('/images/plate-female-exotic.png');background-size:cover;background-position:center;">
+          <div class="plate-stars" style="color:rgba(255,255,255,.85);text-shadow:0 0 10px rgba(255,107,26,.8);">★ ★ ★ ★ ★ ★</div>
+          <div class="plate-tag" id="preview-female" style="text-shadow:0 0 20px rgba(255,107,26,.4),0 3px 8px rgba(0,0,0,.9);">YOUR TAG</div>
+          <div class="plate-footer" style="color:rgba(255,255,255,.7);">THE LAST DRIVE · NOV 18 2026</div>
+        </div>
+        <div class="plate-meta"><span class="plate-name">Female · Exotic</span><span class="plate-price price-paid">$2.99</span></div>
+        <button class="plate-action btn-buy-plate">Add To Cart →</button>
+      </div>
+
+    </div>
+
+    <!-- BUNDLES -->
+    <div class="bundles-label" style="margin-top:32px;">📦 Plate Bundles — Best Value</div>
+    <div class="bundle-grid">
+
+      <!-- COLOR BUNDLE -->
+      <div class="bundle-card">
+        <div class="bundle-save-badge">⚡ Save $0.94</div>
+        <div class="bundle-body">
+          <div class="bundle-name">Color Bundle</div>
+          <div class="bundle-desc">All 8 color plates — Crimson Red, Vice Blue, Royal Purple, Gold Amber, Leonida Green, Vice Yellow + 2 more as they drop. Switch anytime.</div>
+          <div class="bundle-swatches">
+            <div class="swatch" style="background:linear-gradient(135deg,#6B0000,#CC2200);"></div>
+            <div class="swatch" style="background:linear-gradient(135deg,#000C6B,#0033CC);"></div>
+            <div class="swatch" style="background:linear-gradient(135deg,#2D0060,#6600AA);"></div>
+            <div class="swatch" style="background:linear-gradient(135deg,#7A4A00,#C8820A);"></div>
+            <div class="swatch" style="background:linear-gradient(135deg,#004D00,#007A00);"></div>
+            <div class="swatch" style="background:linear-gradient(135deg,#7A6A00,#C8B000);"></div>
+            <div class="swatch-lbl">+2</div>
+          </div>
+          <div class="bundle-price-row">
+            <div class="bundle-price">$5.00</div>
+            <div class="bundle-was">$7.92</div>
+            <div class="bundle-save-tag">Save $2.92</div>
+          </div>
+        </div>
+        <div id="paypal-button-color-bundle"></div>
+      </div>
+
+      <!-- VEHICLE BUNDLE -->
+      <div class="bundle-card">
+        <div class="bundle-save-badge">🔥 Save $1.96</div>
+        <div class="bundle-body">
+          <div class="bundle-name">Vehicle Bundle</div>
+          <div class="bundle-desc">All 4 vehicle plates — Male Exotic, Female Exotic + Bike and Muscle when they drop. Auto-unlocks future vehicle drops.</div>
+          <div class="bundle-swatches">
+            <div class="swatch" style="background:linear-gradient(135deg,#1a0535,#3a0a6a);"></div>
+            <div class="swatch" style="background:linear-gradient(135deg,#0a1228,#1a0535);"></div>
+            <div class="swatch-lbl">Bike</div>
+            <div class="swatch-lbl">Muscle</div>
+          </div>
+          <div class="bundle-price-row">
+            <div class="bundle-price">$9.99</div>
+            <div class="bundle-was">$11.96</div>
+            <div class="bundle-save-tag">Save $1.96</div>
+          </div>
+        </div>
+        <div id="paypal-button-vehicle-bundle"></div>
+      </div>
+
+      <!-- ALL PREMIUM CURRENT -->
+      <div class="bundle-card" style="border-color:var(--cyan);background:linear-gradient(135deg,#0D1A1A,#0D0D2E);">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan),#00FFD4,var(--amber));"></div>
+        <div class="bundle-save-badge" style="color:var(--cyan);background:rgba(0,212,255,.1);border-color:rgba(0,212,255,.3);">🔥 Best Deal</div>
+        <div class="bundle-body">
+          <div class="bundle-name" style="color:var(--cyan);">All Premium · Current</div>
+          <div class="bundle-desc">Every plate in the collection right now. No future drops — everything that exists today, yours forever.</div>
+          <div class="bundle-price-row">
+            <div class="bundle-price" style="color:var(--cyan);">$19.99</div>
+            <div class="bundle-save-tag">Current gen only</div>
+          </div>
+        </div>
+        <div id="paypal-button-all-premium"></div>
+      </div>
+
+      <!-- ULTIMATE BUNDLE -->
+      <div class="bundle-card ultimate">
+        <div class="bundle-save-badge" style="font-size:.72rem;">👑 Ultimate</div>
+        <div class="bundle-body">
+          <div class="bundle-name" style="color:var(--gold);font-size:1.3rem;">Ultimate Bundle</div>
+          <div class="bundle-desc">Every plate ever created on 56ViceLane — past, present, and future — until GTA6 launches November 19, 2026. The moment a new plate drops, it's automatically yours. When The Last Drive ends, your collection is sealed forever.</div>
+          <div class="bundle-checklist">
+            <div class="bundle-check">Every plate ever made</div>
+            <div class="bundle-check">Every future drop until Nov 19</div>
+            <div class="bundle-check">Auto-unlocks every new plate</div>
+            <div class="bundle-check">👑 Premium badge on wall</div>
+            <div class="bundle-check">Exclusive All Access plate</div>
+            <div class="bundle-check">Window closes at launch forever</div>
+          </div>
+          <div class="bundle-price-row">
+            <div class="bundle-price" style="color:var(--gold);font-size:2.2rem;">$29.99</div>
+            <div class="bundle-save-tag">Best Value</div>
+            <div class="bundle-window">Window Closes Nov 19</div>
+          </div>
+        </div>
+        <div id="paypal-button-ultimate"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MERCH BLOCK
+     ═══════════════════════════════════════════════════════════ -->
+<div class="store-block store-block-alt" id="merch">
+  <div class="store-block-inner">
+    <div class="block-section-num">Section 02</div>
+    <div class="block-title">Merch <span>&amp;</span> Music</div>
+    <p class="block-sub">Original 56ViceLane gear and the Boone Crockett Last Drive song. Dropping November 18.</p>
+    <div class="block-divider"></div>
+    <div class="merch-grid">
+
+      <!-- SONG -->
+      <div class="merch-card">
+        <div class="merch-preview merch-song" style="background:linear-gradient(135deg,#0a0a14,#1a0535);">
+          <div style="text-align:center;">
+            <div class="merch-icon">🎵</div>
+            <div style="font-family:var(--font-display);font-size:.88rem;text-transform:uppercase;color:var(--cyan);">Boone Crockett</div>
+            <div style="font-size:.78rem;color:var(--smoke);margin-top:4px;">Last Drive Song · 3 Mixes</div>
+          </div>
+          <div class="merch-coming"><span style="color:var(--cyan);border-color:var(--cyan);">Drops Nov 18</span></div>
+        </div>
+        <div class="merch-meta">
+          <span class="merch-name">Last Drive Song</span>
+          <span class="merch-date" style="color:var(--cyan);">Nov 18</span>
+        </div>
+        <button class="merch-action song-action" onclick="notifyMerch('song')">Get Notified →</button>
+      </div>
+
+      <!-- TEE -->
+      <div class="merch-card">
+        <div class="merch-preview">
+          <div class="merch-icon">👕</div>
+          <div style="font-family:var(--font-label);font-weight:800;text-transform:uppercase;font-size:.82rem;color:var(--smoke);">Last Drive Tee</div>
+          <div class="merch-coming"><span>Coming Soon</span></div>
+        </div>
+        <div class="merch-meta">
+          <span class="merch-name">Last Drive Tee</span>
+          <span class="merch-date" style="color:var(--smoke);">TBA</span>
+        </div>
+        <button class="merch-action" onclick="notifyMerch('tee')">Notify Me →</button>
+      </div>
+
+      <!-- CAP -->
+      <div class="merch-card">
+        <div class="merch-preview">
+          <div class="merch-icon">🧢</div>
+          <div style="font-family:var(--font-label);font-weight:800;text-transform:uppercase;font-size:.82rem;color:var(--smoke);">56ViceLane Cap</div>
+          <div class="merch-coming"><span>Coming Soon</span></div>
+        </div>
+        <div class="merch-meta">
+          <span class="merch-name">56ViceLane Cap</span>
+          <span class="merch-date" style="color:var(--smoke);">TBA</span>
+        </div>
+        <button class="merch-action" onclick="notifyMerch('cap')">Notify Me →</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOUNDER BLOCK
+     ═══════════════════════════════════════════════════════════ -->
+<div class="founder-block" id="founder">
+  <div class="founder-block-inner">
+    <div class="founder-eyebrow">⭐ Exclusive · First 100 Signups Only</div>
+    <div class="founder-title">Founder <span>Plate</span></div>
+    <p class="founder-sub">The first 100 players to sign up for The Last Drive get this plate free. It will never be available again after the 100th spot is claimed.</p>
+
+    <div class="founder-plate-preview">
+      <div class="plate-inner" style="background-image:url('/images/plate-founder.png');background-size:cover;background-position:center;">
+        <div class="plate-stars" style="color:var(--gold);text-shadow:0 0 8px rgba(255,215,0,.6);">★ ★ ★ ★ ★ ★</div>
+        <div class="plate-tag" id="preview-founder" style="color:var(--gold);text-shadow:0 0 16px rgba(255,215,0,.5),0 2px 6px rgba(0,0,0,.9);">FOUNDER</div>
+        <div class="plate-footer" style="color:rgba(255,215,0,.6);">THE LAST DRIVE · NOV 18 2026</div>
+      </div>
+    </div>
+
+    <div class="founder-bar-wrap">
+      <div class="founder-bar-label">⭐ Plates Claimed</div>
+      <div class="founder-bar-count"><span id="plates-claimed">0</span> of 100 claimed</div>
+      <div class="founder-bar-track">
+        <div class="founder-bar-fill" id="founder-bar-fill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <a href="/lastdrive" class="btn btn-gold" style="display:inline-block;padding:16px 32px;font-size:.95rem;">Claim Your Founder Plate →</a>
+  </div>
+</div>
+
+<!-- PURCHASE PANEL -->
+<div class="purchase-panel" id="purchase-panel">
+  <div class="purchase-box">
+    <div class="purchase-title" id="purchase-title">Complete Your Purchase</div>
+    <p class="purchase-sub" id="purchase-sub">Your plate will update on the Wall of Honor immediately after payment.</p>
+    <div class="purchase-preview" id="purchase-preview"></div>
+    <div id="paypal-button-container"></div>
+    <p style="font-size:.72rem;color:var(--smoke-dim);text-align:center;margin-top:10px;">Payment processed securely by PayPal. Your plate activates instantly. No refunds on digital goods.</p>
+  </div>
+</div>
+
+<!-- SUCCESS OVERLAY -->
+<div class="success-overlay" id="success-overlay">
+  <div class="success-box">
+    <div class="success-icon">🏆</div>
+    <div class="success-title">Plate Activated!</div>
+    <div class="success-plate" id="success-plate-display"></div>
+    <p class="success-text">Your custom plate is now live on the Wall of Honor. Every driver on the wall can see it.</p>
+    <a href="/members" class="btn btn-primary" style="display:inline-block;width:100%;text-align:center;">View Wall of Honor →</a>
+    <div style="margin-top:10px;">
+      <button onclick="document.getElementById('success-overlay').classList.remove('show')" style="background:none;border:none;color:var(--smoke);font-size:.78rem;cursor:pointer;text-decoration:underline;">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand"><span class="logo-mark">56</span>ViceLane</div>
+  <div class="footer-tag">Where GTA5 Ends And GTA6 Begins</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/news">News</a>
+    <a href="/gtacon">GTACON</a>
+    <a href="/lastdrive">Last Drive</a>
+    <a href="/members">Members</a>
+    <a href="/store">Store</a>
+    <a href="/gear">Gear</a>
+    <a href="/tools">Tools</a>
+    <a href="/forum">Forum</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="/admin" class="admin-link">Admin</a>
+  </div>
+  <p class="footer-disclosure">56ViceLane is an independent fan site. Not affiliated with Rockstar Games or Take-Two Interactive. PayPal processes all payments securely.</p>
+  <p class="footer-copy" id="vl-copyright">© 2026 56ViceLane · Forged Oak Studios</p>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+var AT_TOKEN = 'pattxJ12NQzpHMejD.2eb992f22f1a43e032d866df028dbb33958635234f6cfd30769e3e12f10d5588';
+var AT_BASE  = 'appVViGbmcu5gbn8B';
+var AT_URL   = 'https://api.airtable.com/v0/' + AT_BASE + '/Last%20Drive';
+var AT_H     = {'Authorization':'Bearer ' + AT_TOKEN, 'Content-Type':'application/json'};
+
+var playerRecord  = null;
+var selectedPlate = null;
+
+// ── PLATE BACKGROUND ───────────────────────────────────────
+function getPlateBg(s) {
+  if (s === 'founder')              return "url('/images/plate-founder.png')";
+  if (s === 'vehicle-male-exotic')  return "url('/images/plate-male-exotic.png')";
+  if (s === 'vehicle-female-exotic')return "url('/images/plate-female-exotic.png')";
+  if (s === 'color-red')    return 'linear-gradient(135deg,#6B0000,#CC2200)';
+  if (s === 'color-blue')   return 'linear-gradient(135deg,#000C6B,#0033CC)';
+  if (s === 'color-purple') return 'linear-gradient(135deg,#2D0060,#6600AA)';
+  if (s === 'color-amber')  return 'linear-gradient(135deg,#7A4A00,#C8820A)';
+  if (s === 'color-green')  return 'linear-gradient(135deg,#004D00,#007A00)';
+  if (s === 'color-yellow') return 'linear-gradient(135deg,#7A6A00,#C8B000)';
+  if (s === 'white')        return '#EFEDE8';
+  return '#0a0a0a';
+}
+function isPhoto(s) { return s === 'founder' || (s && s.indexOf('vehicle-') === 0); }
+
+// ── SHOW MSG ───────────────────────────────────────────────
+function showMsg(el, text, type) { el.textContent = text; el.className = 'msg show ' + type; }
+function hideMsg(el) { el.className = 'msg'; }
+
+// ── VERIFY PLAYER ──────────────────────────────────────────
+function verifyPlayer() {
+  var gamertag = document.getElementById('v-gamertag').value.trim();
+  var email    = document.getElementById('v-email').value.trim();
+  var btn      = document.getElementById('verify-btn');
+  var msg      = document.getElementById('verify-msg');
+
+  if (!gamertag || !email) { showMsg(msg, 'Please enter your gamertag and email.', 'error'); return; }
+  btn.textContent = 'Checking...';
+  btn.disabled = true;
+
+  var f = encodeURIComponent('AND({Gamertag}="' + gamertag + '",{Email}="' + email + '")');
+  fetch(AT_URL + '?filterByFormula=' + f + '&maxRecords=1', {headers: AT_H})
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (!d.records || !d.records.length) {
+        showMsg(msg, 'No signup found for "' + gamertag + '" with that email. Check that it matches exactly.', 'error');
+        btn.textContent = 'Find My Profile'; btn.disabled = false;
+        return;
+      }
+      playerRecord = d.records[0];
+      var fields = playerRecord.fields;
+      var activeStyle = fields.PlateStyle || (fields.PlateStatus === 'Free Premium' ? 'founder' : 'black');
+      var owned = parseOwned(fields.OwnedPlates);
+      if (fields.PlateStatus === 'Free Premium' && owned.indexOf('founder') < 0) owned.unshift('founder');
+      if (activeStyle && owned.indexOf(activeStyle) < 0) owned.push(activeStyle);
+
+      // Update previews with real gamertag
+      document.querySelectorAll('[id^="preview-"]').forEach(function(el) {
+        el.textContent = (fields.Gamertag || gamertag).toUpperCase();
+      });
+
+      showCurrentPlate(fields.Gamertag || gamertag, activeStyle);
+      if (owned.length > 1) buildOwnedDropdown(owned, activeStyle, fields.Gamertag || gamertag);
+      showMsg(msg, '✅ Found you, ' + (fields.Gamertag || gamertag) + '! Scroll down to shop.', 'success');
+
+      // Render bundle PayPal buttons
+      renderAllBundleButtons();
+      loadFounderCount();
+
+      setTimeout(function() {
+        document.getElementById('plates').scrollIntoView({behavior:'smooth', block:'start'});
+      }, 500);
+    })
+    .catch(function() { showMsg(msg, 'Connection error. Please try again.', 'error'); })
+    .finally(function() { btn.textContent = 'Find My Profile'; btn.disabled = false; });
+}
+
+// ── CURRENT PLATE ──────────────────────────────────────────
+function showCurrentPlate(gamertag, style) {
+  var wrap    = document.getElementById('current-plate-wrap');
+  var display = document.getElementById('current-plate-display');
+  var bg = getPlateBg(style);
+  var ip = isPhoto(style);
+  var tc = style === 'white' ? '#0a0a0a' : '#fff';
+
+  display.innerHTML = buildPlateHTML(gamertag, style, bg, ip, tc);
+  wrap.classList.add('show');
+}
+
+function buildPlateHTML(gamertag, style, bg, ip, tc) {
+  var bgStyle = ip ? 'background-image:' + bg + ';background-size:cover;background-position:center;' : 'background:' + bg + ';';
+  var starColor = ip ? 'rgba(255,255,255,.75)' : (style === 'white' ? 'rgba(0,0,0,.3)' : 'rgba(255,255,255,.4)');
+  return '<div class="plate-inner" style="' + bgStyle + '">' +
+    '<div class="plate-stars" style="color:' + starColor + ';">★ ★ ★ ★ ★ ★</div>' +
+    '<div class="plate-tag" style="color:' + tc + ';">' + gamertag.toUpperCase() + '</div>' +
+    '<div class="plate-footer" style="color:rgba(255,255,255,.55);">THE LAST DRIVE · NOV 18 2026</div>' +
+  '</div>';
+}
+
+// ── OWNED PLATES ───────────────────────────────────────────
+var PLATE_NAMES = {
+  'founder':'⭐ Founder — City Sunset','black':'◼ Classic Black','white':'◻ Classic White',
+  'color-red':'🔴 Crimson Red','color-blue':'🔵 Vice Blue','color-purple':'🟣 Royal Purple',
+  'color-amber':'🟡 Gold Amber','color-green':'🟢 Leonida Green','color-yellow':'🟨 Vice Yellow',
+  'vehicle-male-exotic':'🏎️ Male · Exotic','vehicle-female-exotic':'🏎️ Female · Exotic'
+};
+
+function parseOwned(raw) {
+  if (!raw) return [];
+  return raw.split(',').map(function(s) { return s.trim(); }).filter(Boolean);
+}
+
+function buildOwnedDropdown(owned, activeStyle, gamertag) {
+  var wrap = document.getElementById('owned-plates-wrap');
+  var sel  = document.getElementById('owned-select');
+  sel.innerHTML = '<option value="">Choose a plate...</option>';
+  owned.forEach(function(style) {
+    var opt = document.createElement('option');
+    opt.value = style;
+    opt.textContent = (PLATE_NAMES[style] || style) + (style === activeStyle ? ' ← Active' : '');
+    sel.appendChild(opt);
+  });
+  wrap.classList.add('show');
+}
+
+function previewOwnedPlate() {
+  var style   = document.getElementById('owned-select').value;
+  var preview = document.getElementById('owned-preview');
+  var badge   = document.getElementById('owned-active-badge');
+  if (!style) { preview.classList.remove('show'); badge.style.display = 'none'; return; }
+  var bg = getPlateBg(style);
+  var ip = isPhoto(style);
+  var tc = style === 'white' ? '#0a0a0a' : '#fff';
+  var gamertag = playerRecord ? (playerRecord.fields.Gamertag || '') : '';
+  preview.innerHTML = buildPlateHTML(gamertag, style, bg, ip, tc);
+  preview.classList.add('show');
+  var active = playerRecord ? (playerRecord.fields.PlateStyle || 'founder') : '';
+  badge.style.display = style === active ? 'inline-block' : 'none';
+}
+
+function setActivePlate() {
+  var style = document.getElementById('owned-select').value;
+  var badge = document.getElementById('owned-active-badge');
+  if (!style || !playerRecord) return;
+  var btn = document.querySelector('.owned-select-row .btn');
+  if (btn) { btn.textContent = 'Saving...'; btn.disabled = true; }
+  fetch(AT_URL + '/' + playerRecord.id, {
+    method: 'PATCH', headers: AT_H,
+    body: JSON.stringify({fields:{'PlateStyle': style}})
+  }).then(function() {
+    playerRecord.fields.PlateStyle = style;
+    showCurrentPlate(playerRecord.fields.Gamertag || '', style);
+    var opts = document.querySelectorAll('#owned-select option');
+    opts.forEach(function(o) {
+      o.textContent = o.textContent.replace(' ← Active', '');
+      if (o.value === style) o.textContent += ' ← Active';
+    });
+    badge.style.display = 'inline-block';
+    badge.textContent = '✅ Now active on Wall of Honor';
+  }).catch(function() {
+    badge.textContent = 'Save failed — try again';
+    badge.style.display = 'inline-block';
+  }).finally(function() {
+    if (btn) { btn.textContent = 'Set Active'; btn.disabled = false; }
+  });
+}
+
+// ── SELECT PLATE ───────────────────────────────────────────
+function selectPlate(style, price, name) {
+  if (!playerRecord) {
+    document.getElementById('v-gamertag').focus();
+    window.scrollTo({top: 0, behavior: 'smooth'});
+    return;
+  }
+
+  document.querySelectorAll('.plate-card').forEach(function(el) { el.classList.remove('selected'); });
+  document.querySelectorAll('.plate-action').forEach(function(el) {
+    if (el.classList.contains('btn-buy-plate')) el.textContent = 'Add To Cart →';
+  });
+
+  var item = document.getElementById('plate-' + style);
+  if (item) {
+    item.classList.add('selected');
+    var btn = item.querySelector('.plate-action');
+    if (btn) btn.textContent = 'Selected ✓';
+  }
+
+  selectedPlate = {style: style, price: price, name: name};
+  var gamertag = playerRecord.fields.Gamertag || '';
+  var bg = getPlateBg(style);
+  var ip = isPhoto(style);
+  var tc = style === 'white' ? '#0a0a0a' : '#fff';
+
+  document.getElementById('purchase-title').textContent = name + ' — $' + price.toFixed(2);
+  document.getElementById('purchase-preview').innerHTML = buildPlateHTML(gamertag, style, bg, ip, tc);
+
+  var panel = document.getElementById('purchase-panel');
+  panel.classList.add('show');
+
+  var container = document.getElementById('paypal-button-container');
+  container.innerHTML = '';
+
+  if (window.paypal) {
+    renderSinglePayPal(price, name, style);
+  } else {
+    var check = setInterval(function() {
+      if (window.paypal) { clearInterval(check); renderSinglePayPal(price, name, style); }
+    }, 300);
+  }
+
+  setTimeout(function() { panel.scrollIntoView({behavior:'smooth', block:'start'}); }, 200);
+}
+
+function renderSinglePayPal(price, name, style) {
+  paypal.Buttons({
+    style: {color:'gold', shape:'rect', label:'pay', height:48},
+    createOrder: function(data, actions) {
+      return actions.order.create({purchase_units:[{
+        amount:{value: price.toFixed(2)},
+        description: '56ViceLane ' + name + ' — Wall of Honor'
+      }]});
+    },
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function() { applyPlate(style); });
+    },
+    onError: function() {
+      document.getElementById('paypal-button-container').innerHTML =
+        '<div class="msg show error">Payment error. Please try again or refresh.</div>';
+    }
+  }).render('#paypal-button-container');
+}
+
+// ── APPLY PLATE (after purchase) ───────────────────────────
+function applyPlate(style) {
+  if (!playerRecord) return;
+  var fields  = playerRecord.fields;
+  var owned   = parseOwned(fields.OwnedPlates);
+  if (fields.PlateStatus === 'Free Premium' && owned.indexOf('founder') < 0) owned.unshift('founder');
+  if (owned.indexOf(style) < 0) owned.push(style);
+  var ownedStr = owned.join(',');
+
+  fetch(AT_URL + '/' + playerRecord.id, {
+    method: 'PATCH', headers: AT_H,
+    body: JSON.stringify({fields:{
+      'PlateStyle': style,
+      'PlateStatus': 'Purchased Premium',
+      'OwnedPlates': ownedStr
+    }})
+  }).then(function() {
+    playerRecord.fields.PlateStyle  = style;
+    playerRecord.fields.OwnedPlates = ownedStr;
+    buildOwnedDropdown(owned, style, fields.Gamertag || '');
+    showSuccess(style);
+  }).catch(function() { showSuccess(style, true); });
+}
+
+// ── BUNDLE DEFINITIONS ─────────────────────────────────────
+var BUNDLES = {
+  'color-bundle': {
+    plates: ['color-red','color-blue','color-purple','color-amber','color-green','color-yellow'],
+    name: 'Color Bundle', price: 5.00,
+    desc: '56ViceLane Color Bundle — All 8 Color Plates'
+  },
+  'vehicle-bundle': {
+    plates: ['vehicle-male-exotic','vehicle-female-exotic'],
+    name: 'Vehicle Bundle', price: 9.99,
+    desc: '56ViceLane Vehicle Bundle — All Vehicle Plates'
+  },
+  'all-premium': {
+    plates: ['color-red','color-blue','color-purple','color-amber','color-green','color-yellow',
+             'vehicle-male-exotic','vehicle-female-exotic'],
+    name: 'All Premium · Current', price: 19.99,
+    desc: '56ViceLane All Premium — Every Current Plate',
+    status: 'All Premium'
+  },
+  'ultimate': {
+    plates: ['color-red','color-blue','color-purple','color-amber','color-green','color-yellow',
+             'vehicle-male-exotic','vehicle-female-exotic'],
+    name: 'Ultimate Bundle', price: 29.99,
+    desc: '56ViceLane Ultimate Bundle — Every Plate Past Present and Future',
+    status: 'Ultimate',
+    ultimate: true
+  },
+  'featured': {
+    plates: ['color-red','color-blue','color-purple','color-amber','color-green','color-yellow',
+             'vehicle-male-exotic','vehicle-female-exotic'],
+    name: 'All Premium + Future', price: 29.99,
+    desc: '56ViceLane All Premium + Future — Every Last Drive Plate',
+    status: 'Ultimate',
+    ultimate: true
+  }
+};
+
+function renderAllBundleButtons() {
+  Object.keys(BUNDLES).forEach(function(key) {
+    var b   = BUNDLES[key];
+    var cid = 'paypal-button-' + key;
+    var el  = document.getElementById(cid);
+    if (!el || el.hasChildNodes()) return;
+    if (window.paypal) {
+      renderBundleButton(key, b, cid);
+    } else {
+      var check = setInterval(function() {
+        if (window.paypal) { clearInterval(check); renderBundleButton(key, b, cid); }
+      }, 300);
+    }
+  });
+}
+
+function renderBundleButton(key, b, cid) {
+  var isUlt = key === 'ultimate' || key === 'featured';
+  paypal.Buttons({
+    style: {
+      color: isUlt ? 'gold' : 'orange',
+      shape: 'rect', label: 'pay',
+      height: isUlt ? 52 : 44
+    },
+    createOrder: function(data, actions) {
+      return actions.order.create({purchase_units:[{
+        amount: {value: b.price.toFixed(2)},
+        description: b.desc
+      }]});
+    },
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function() { applyBundle(key); });
+    },
+    onError: function() {
+      var el = document.getElementById(cid);
+      if (el) el.innerHTML = '<div class="msg show error" style="margin:8px 20px 16px;">Payment error — please try again.</div>';
+    }
+  }).render('#' + cid);
+}
+
+function applyBundle(key) {
+  if (!playerRecord) return;
+  var b      = BUNDLES[key];
+  var fields = playerRecord.fields;
+  var owned  = parseOwned(fields.OwnedPlates);
+  if (fields.PlateStatus === 'Free Premium' && owned.indexOf('founder') < 0) owned.unshift('founder');
+  b.plates.forEach(function(p) { if (owned.indexOf(p) < 0) owned.push(p); });
+  var ownedStr  = owned.join(',');
+  var firstNew  = b.plates[0];
+  var newStatus = b.status || 'Purchased Premium';
+
+  fetch(AT_URL + '/' + playerRecord.id, {
+    method: 'PATCH', headers: AT_H,
+    body: JSON.stringify({fields:{
+      'PlateStyle':  firstNew,
+      'PlateStatus': newStatus,
+      'OwnedPlates': ownedStr
+    }})
+  }).then(function() {
+    playerRecord.fields.PlateStyle  = firstNew;
+    playerRecord.fields.PlateStatus = newStatus;
+    playerRecord.fields.OwnedPlates = ownedStr;
+    buildOwnedDropdown(owned, firstNew, fields.Gamertag || '');
+    showSuccess(firstNew, false, b.name, b.ultimate);
+  }).catch(function() { showSuccess(firstNew, true); });
+}
+
+// ── SUCCESS ────────────────────────────────────────────────
+function showSuccess(style, hadError, bundleName, isUltimate) {
+  var gamertag = (playerRecord ? playerRecord.fields.Gamertag : '') || 'DRIVER';
+  var bg = getPlateBg(style);
+  var ip = isPhoto(style);
+  var tc = style === 'white' ? '#0a0a0a' : '#fff';
+  document.getElementById('success-plate-display').innerHTML = buildPlateHTML(gamertag, style, bg, ip, tc);
+  if (isUltimate) {
+    document.querySelector('.success-text').innerHTML =
+      '<strong>Ultimate Bundle activated. 👑</strong><br><br>Every plate that exists is yours now. Every drop between now and November 19 lands automatically. When GTA6 launches and The Last Drive ends — your collection is sealed permanently.';
+  } else if (bundleName) {
+    document.querySelector('.success-text').innerHTML =
+      '<strong>' + bundleName + ' unlocked!</strong><br><br>All plates are in your collection. Switch between them anytime from your profile.';
+  } else if (hadError) {
+    document.querySelector('.success-text').textContent =
+      'Payment received! Your plate may take a few minutes. If it does not update, email forgedoakstudios@gmail.com with your gamertag.';
+  } else {
+    document.querySelector('.success-text').textContent =
+      'Your custom plate is now live on the Wall of Honor. Every driver on the wall can see it.';
+  }
+  document.getElementById('purchase-panel').classList.remove('show');
+  document.getElementById('success-overlay').classList.add('show');
+  showCurrentPlate(playerRecord ? (playerRecord.fields.Gamertag || '') : '', style);
+}
+
+// ── FOUNDER COUNT ──────────────────────────────────────────
+function loadFounderCount() {
+  fetch(AT_URL + '?fields%5B%5D=Gamertag&fields%5B%5D=PlateStatus', {headers: AT_H})
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      var founders = (d.records || []).filter(function(rec) {
+        var g = (rec.fields.Gamertag || '').toLowerCase();
+        return g && g !== 'test' && g !== 'trst' && rec.fields.PlateStatus === 'Free Premium';
+      }).length;
+      var claimed = Math.min(founders, 100);
+      var el   = document.getElementById('plates-claimed');
+      var fill = document.getElementById('founder-bar-fill');
+      if (el)   el.textContent = claimed;
+      if (fill) fill.style.width = claimed + '%';
+    }).catch(function() {});
+}
+loadFounderCount();
+
+// ── MERCH NOTIFY ───────────────────────────────────────────
+function notifyMerch(item) {
+  var names = {song:'Last Drive Song',tee:'Last Drive Tee',cap:'56ViceLane Cap'};
+  alert('We\'ll notify you when the ' + (names[item] || item) + ' drops! Make sure you\'re signed up for The Last Drive to get updates.');
+}
+
+// ── TICKER ─────────────────────────────────────────────────
+fetch('/articles.json?v=' + Date.now())
+  .then(function(r) { return r.json(); })
+  .then(function(a) {
+    var t = document.getElementById('ticker-track');
+    if (!t) return;
+    t.innerHTML = [].concat(a, a).map(function(x) {
+      return '<span class="ticker-item" onclick="location.href=\'/articles/' + x.slug + '\'">' + (x.emoji || '⚡') + ' ' + x.title + '</span>';
+    }).join('');
+  }).catch(function() {});
+
+// ── NAV TOGGLE ─────────────────────────────────────────────
+var mt = document.getElementById('menu-toggle');
+var nm = document.getElementById('nav-mobile');
+if (mt && nm) mt.addEventListener('click', function() { nm.classList.toggle('open'); });
+
+// ── REVEAL ─────────────────────────────────────────────────
+var obs = new IntersectionObserver(function(es) {
+  es.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, {threshold: .08});
+document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+
+// ── EMAIL VERIFY ON ENTER ──────────────────────────────────
+document.getElementById('v-email').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') verifyPlayer();
+});
+
+// ── DEBUG MODE ─────────────────────────────────────────────
+(function() {
+  var KEY = '56vl-debug';
+  var active = localStorage.getItem(KEY) === '1';
+  function applyDebug() {
+    var ind = document.getElementById('vl-debug-ind');
+    if (!ind) {
+      ind = document.createElement('div');
+      ind.id = 'vl-debug-ind';
+      ind.textContent = '🔧 DEBUG ON — tap to off';
+      ind.onclick = function() { active = false; localStorage.setItem(KEY,'0'); applyDebug(); };
+      document.body.appendChild(ind);
+    }
+    ind.style.display = active ? 'block' : 'none';
+  }
+  var el = document.getElementById('vl-copyright');
+  var timer = null;
+  if (el) {
+    el.style.userSelect = 'none';
+    el.style.webkitUserSelect = 'none';
+    el.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      timer = setTimeout(function() { active = !active; localStorage.setItem(KEY, active ? '1' : '0'); applyDebug(); }, 1500);
+    }, {passive: false});
+    el.addEventListener('touchend', function() { clearTimeout(timer); });
+    el.addEventListener('touchmove', function() { clearTimeout(timer); });
+  }
+  applyDebug();
+})();
+</script>
+</body>
+</html>
