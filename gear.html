@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9EKF7J4V7W');</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Gear — Gaming Setup, Controllers & Accessories | 56ViceLane</title>
+<meta name="description" content="The best gaming gear for GTA6 launch. Controllers, headsets, monitors, and accessories. Ready for November 19, 2026.">
+<link rel="canonical" href="https://56vicelane.com/gear">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="56ViceLane">
+<meta property="og:title" content="Gear — Gaming Setup for GTA6 Launch | 56ViceLane">
+<meta property="og:description" content="The best gaming gear for GTA6 launch. Controllers, headsets, monitors, and accessories.">
+<meta property="og:image" content="https://56vicelane.com/images/gta6-hero.png">
+<meta property="og:url" content="https://56vicelane.com/gear">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/vicelane.css">
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
+
+<style>
+/* ── GEAR PAGE ONLY ───────────────────────────────────────── */
+
+/* HERO */
+.gear-hero {
+  padding: 52px 24px 36px;
+  max-width: var(--wide-width);
+  margin: 0 auto;
+  text-align: center;
+}
+.gear-eyebrow {
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .3em;
+  font-size: .72rem;
+  color: var(--amber);
+  margin-bottom: 12px;
+}
+.gear-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 7vw, 58px);
+  text-transform: uppercase;
+  line-height: 1.0;
+  margin-bottom: 12px;
+}
+.gear-title span { color: var(--amber); }
+.gear-sub {
+  font-size: .92rem;
+  color: #C8C4BE;
+  max-width: 480px;
+  margin: 0 auto 16px;
+  line-height: 1.7;
+}
+.affiliate-note {
+  display: inline-block;
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: .72rem;
+  color: var(--smoke);
+  background: var(--asphalt);
+  border: 1px solid var(--edge);
+  padding: 5px 14px;
+  margin-bottom: 36px;
+}
+
+/* SECTION WRAP */
+.gear-wrap {
+  max-width: var(--wide-width);
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+/* SECTION LABEL */
+.gear-section-label {
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .25em;
+  font-size: .72rem;
+  color: var(--smoke);
+  margin-bottom: 6px;
+}
+.gear-section-title {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 4vw, 32px);
+  text-transform: uppercase;
+  color: var(--bone);
+  margin-bottom: 6px;
+}
+.gear-section-sub {
+  font-size: .88rem;
+  color: #C8C4BE;
+  max-width: 520px;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+.gear-divider {
+  width: 40px;
+  height: 3px;
+  background: var(--amber);
+  margin: 10px 0 24px;
+  box-shadow: 0 0 8px rgba(255,107,26,.4);
+}
+
+/* GEAR GRID */
+.gear-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+  margin-bottom: 52px;
+}
+
+/* GEAR CARD */
+.gear-card {
+  background: var(--asphalt);
+  border: 1px solid var(--edge);
+  overflow: hidden;
+  transition: all .25s;
+  display: flex;
+  flex-direction: column;
+}
+.gear-card:hover { border-color: var(--amber); transform: translateY(-2px); }
+.gear-card.featured { border-color: var(--amber); }
+.gear-card.featured::before {
+  content: '⭐ TOP PICK';
+  display: block;
+  background: var(--amber);
+  color: #000;
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  font-size: .65rem;
+  padding: 4px 12px;
+  text-align: center;
+}
+.gear-img {
+  width: 100%;
+  aspect-ratio: 1.8 / 1;
+  background: var(--edge);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 52px;
+  position: relative;
+  overflow: hidden;
+}
+.gear-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 12px;
+}
+.gear-platform-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: .62rem;
+  padding: 2px 8px;
+  background: var(--pitch);
+  border: 1px solid var(--edge);
+  color: var(--smoke);
+}
+.gear-body {
+  padding: 14px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.gear-cat {
+  font-family: var(--font-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: .65rem;
+  color: var(--amber);
+  margin-bottom: 4px;
+}
+.gear-name {
+  font-family: var(--font-label);
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--bone);
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+.gear-desc {
+  font-size: .78rem;
+  color: #C8C4BE;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  flex: 1;
+}
+.gear-why {
+  font-size: .75rem;
+  color: var(--green);
+  line-height: 1.4;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+.gear-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.gear-price {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--bone);
+}
+.gear-rating {
+  font-family: var(--font-label);
+  font-size: .72rem;
+  color: var(--gold);
+}
+.gear-btn {
+  display: block;
+  width: 100%;
+  background: var(--amber);
+  color: #000;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  font-size: .82rem;
+  padding: 11px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: all .25s;
+}
+.gear-btn:hover {
+  background: var(--amber-dim);
+  text-decoration: none;
+  color: #000;
+  box-shadow: 0 0 16px rgba(255,107,26,.3);
+}
+.gear-btn.secondary {
+  background: none;
+  color: var(--smoke);
+  border: 1px solid var(--edge);
+}
+.gear-btn.secondary:hover { border-color: var(--amber); color: var(--amber); }
+
+/* LAUNCH READY BANNER */
+.launch-ready-banner {
+  background: linear-gradient(135deg, #0D0D1A, #1A0D0A);
+  border: 1px solid var(--amber);
+  border-left: 4px solid var(--amber);
+  padding: 24px 24px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.lrb-icon { font-size: 32px; flex-shrink: 0; }
+.lrb-content { flex: 1; min-width: 200px; }
+.lrb-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 4px;
+}
+.lrb-desc { font-size: .82rem; color: #C8C4BE; line-height: 1.5; }
+
+/* COMPARE TABLE */
+.compare-wrap {
+  overflow-x: auto;
+  margin-bottom: 52px;
+  -webkit-overflow-scrolling: touch;
+}
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 520px;
+}
+.compare-table th {
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: .72rem;
+  color: var(--smoke);
+  padding: 10px 14px;
+  border-bottom: 2px solid var(--edge);
+  text-align: left;
+  background: var(--asphalt);
+  white-space: nowrap;
+}
+.compare-table th:first-child { color: var(--amber); }
+.compare-table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--edge);
+  font-size: .82rem;
+  color: #C8C4BE;
+  vertical-align: middle;
+}
+.compare-table tr:hover td { background: rgba(255,107,26,.03); }
+.compare-table .td-name {
+  font-family: var(--font-label);
+  font-weight: 800;
+  color: var(--bone);
+  font-size: .88rem;
+}
+.compare-table .td-check { color: var(--green); font-size: 1rem; }
+.compare-table .td-x { color: var(--red); font-size: 1rem; }
+.compare-table .td-price { font-family: var(--font-display); color: var(--amber); font-size: .88rem; }
+.compare-table .td-pick {
+  font-family: var(--font-label);
+  font-weight: 800;
+  font-size: .65rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--gold);
+  background: rgba(255,215,0,.08);
+  border: 1px solid rgba(255,215,0,.2);
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker-track">
+    <span class="ticker-item">56ViceLane — Where GTA5 Ends And GTA6 Begins</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="logo" href="/"><span class="logo-mark">56</span><span class="logo-text">ViceLane</span></a>
+  <div class="nav-links">
+    <a href="/news">News</a>
+    <a href="/gtacon">GTACON</a>
+    <a href="/lastdrive">Last Drive</a>
+    <a href="/members">Members</a>
+    <a href="/store">Store</a>
+    <a href="/gear" class="active">Gear</a>
+    <a href="/tools">Tools</a>
+    <a href="/forum">Forum</a>
+  </div>
+  <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="/news">News</a>
+  <a href="/gtacon">GTACON</a>
+  <a href="/lastdrive">Last Drive</a>
+  <a href="/members">Members</a>
+  <a href="/store">Store</a>
+  <a href="/gear" class="active">Gear</a>
+  <a href="/tools">Tools</a>
+  <a href="/forum">Forum</a>
+  <div class="mobile-divider"></div>
+  <a href="/about">About</a>
+  <a href="/contact">Contact</a>
+  <div class="mobile-divider"></div>
+  <a href="/privacy">Privacy</a>
+  <a href="/terms">Terms</a>
+</div>
+
+<!-- HERO -->
+<div class="gear-hero">
+  <div class="gear-eyebrow">GTA6 Launch Setup</div>
+  <h1 class="gear-title">Get Your <span>Rig Ready</span></h1>
+  <p class="gear-sub">November 19 is coming. Controllers, headsets, monitors, and everything else you need to experience GTA6 the right way.</p>
+  <div class="affiliate-note">🛒 Affiliate links — 56ViceLane earns a small commission at no extra cost to you</div>
+</div>
+
+<!-- ANCHOR NAV -->
+<div class="anchor-nav">
+  <a href="#controllers">Controllers</a>
+  <a href="#headsets">Headsets</a>
+  <a href="#monitors">Monitors</a>
+  <a href="#pc">PC Gear</a>
+  <a href="#accessories">Accessories</a>
+</div>
+
+<!-- AdSense -->
+<div style="max-width:var(--wide-width);margin:0 auto;padding:16px 24px 0;">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<div class="gear-wrap">
+
+  <!-- LAUNCH BANNER -->
+  <div class="launch-ready-banner reveal" style="margin-top:32px;">
+    <div class="lrb-icon">🚀</div>
+    <div class="lrb-content">
+      <div class="lrb-title">GTA6 Launch Is 159 Days Away</div>
+      <div class="lrb-desc">Every link on this page ships to your door before November 19. Order now — don't be the driver with a broken controller on launch night.</div>
+    </div>
+    <a href="/lastdrive" class="btn btn-primary" style="padding:12px 20px;font-size:.82rem;white-space:nowrap;">Join The Last Drive →</a>
+  </div>
+
+  <!-- ── CONTROLLERS ── -->
+  <div id="controllers" style="padding-top:16px;">
+    <div class="gear-section-label">Section 01</div>
+    <div class="gear-section-title">Controllers</div>
+    <p class="gear-section-sub">GTA6 is built for the DualSense and Xbox controller. The haptic feedback on PS5 for car crashes alone is worth the upgrade.</p>
+    <div class="gear-divider"></div>
+    <div class="gear-grid">
+
+      <div class="gear-card featured reveal">
+        <div class="gear-img">
+          🎮
+          <div class="gear-platform-badge">PS5</div>
+        </div>
+        <div class="gear-body">
+          <div class="gear-cat">Controller · PlayStation</div>
+          <div class="gear-name">PlayStation DualSense Wireless</div>
+          <div class="gear-desc">Haptic feedback and adaptive triggers built for PS5. GTA6 will use both heavily — every crash, tire screech, and gunshot.</div>
+          <div class="gear-why">Why: The definitive GTA6 controller. Haptics make open world feel alive.</div>
+          <div class="gear-price-row">
+            <span class="gear-price">~$69.99</span>
+            <span class="gear-rating">★★★★★ 4.8</span>
+          </div>
+          <a href="https://www.amazon.com/s?k=PlayStation+DualSense+Wireless+Controller&tag=56vicelane-20" target="_blank" rel="noopener sponsored" class="gear-btn">View on Amazon →</a>
+        </div>
+      </div>
+
+      <div class="gear-card reveal">
+        <div class="gear-img">
+          🎮
+          <div class="gear-platform-badge">PS5</div>
+        </div>
+        <div class="gear-body">
+          <div class="gear-cat">Controller · PlayStation</div>
+          <div class="gear-name">DualSense Edge Wireless</div>
+          <div class="gear-desc">Pro controller with swappable stick caps, back buttons, and trigger dead zone adjustment. For serious players.</div>
+          <div class="gear-why">Why: Customizable for GTA6 on-foot vs driving — swap stick tension for each.</div>
+          <div class="gear-price-row">
+            <span class="gear-price">~$199.99</span>
+            <span class="gear-rating">★★★★☆ 4.6</span>
+          </div>
+          <a href="https://www.amazon.com/s?k=DualSense+Edge+Wireless+Controller&tag=56vicelane-20" target="_blank" rel="noopener sponsored" class="gear-btn">View on Amazon →</a>
+        </div>
+      </div>
+
+      <div class="gear-card reveal">
+        <div class="gear-img">
+          🟢
+          <div class="gear-platform-badge">Xbox</div>
+        </div>
+        <div class="gear-body">
+          <div class="gear-cat">Controller · Xbox</div>
+          <div class="gear-name">Xbox Wireless Controller</div>
+          <div class="gear-desc">The standard for Xbox Series X/S. Textured grip, Share button, USB-C charging. Clean and reliable.</div>
+          <div class="gear-why">Why: Best ergonomics on the market for long GTA sessions. No fatigue.</div>
+          <div class="gear-price-row">
+            <span class="gear-price">~$59.99</span>
+            <span class="gear-rating">★★★★★ 4.7</span>
+          </div>
+          <a href="https://www.amazon.com/s?k=Xbox+Wireless+Controller+Series+X&tag=56vicelane-20" target="_blank" rel="noopener sponsored" class="gear-btn">View on Amazon →</a>
+        </div>
+      </div>
+
+      <div class="gear-card reveal">
+        <div class="gear-img">
+          🖥️
+          <div class="gear-platform-badge">PC</div>
+        </div>
+        <div class="gear-body">
+          <div class="gear-cat">Controller · PC</div>
+          <div class="gear-name">Xbox Elite Series 2</div>
+          <div class="gear-desc">Hair trigger locks, adjustable-tension thumbsticks, paddle buttons. The best PC controller money can buy.</div>
+          <div class="gear-why">Why: Programmable paddles are game-changing for GTA6 combat.</div>
+          <div class="gear-price-row">
+            <span class="gear-price">~$179.99</span>
+            <span class="gear-rating">★★★★☆ 4.5</span>
+          </div>
+          <a href="https://www.amazon.com/s?k=Xbox+Elite+Series+2+Controller&tag=56vicelane-20" target="_blank" rel="noopener sponsored" class="gear-btn">View on Amazon →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- AdSense mid -->
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+
+  <!-- ── HEADSETS ── -->
+  <div id="headsets" style="margin-top:40px;">
+    <div class="gear-section-label">Section 02</div>
+    <div class="gear-section-title">Headsets</div>
+    <p class="gear-section-sub">GTA6's audio is going to be massive. Leonida's soundscape — ocean, city, swamps — needs a headset that can handle it. And for The Last Drive, you need to hear your convoy.</p>
+    <div class="gear-divider"></div>
+    <div class="gear-grid">
+
+      <div class="gear-card featured reveal">
+        <div class="gear-img">🎧<div class="gear-platform-badge">PS5</div></div>
+        <div class="gear-body">
+          <div class="gear-cat">Headset · PlayStation</div>
+          <div class="gear-name">Sony Pulse 3D Wireless</div>
+          <div class="gear-desc">Built for PS5 3D Audio. No lag, no interference. Dual noise-cancelling mics for crystal clear Last Drive comms.</div>
+          <div class="gear-why">Why: 3D Audio on PS5 is incredible — this headset was built for it.</div>
+          <div class="gear-price-row">
+            <span class="gear-price">~$99.99</span>
+            <span class="gear-rating">★★★★☆ 4.5</span>
+          </div>
+          <a href="https://www.amazon.com/s?k=Sony+Pulse+3D+Wireless+Headset+PS5&tag=56vicelane-20" target="_blank" rel="noopener sponsored" class="gear-btn">View on Amazon →</a>
+        </div>
+      </div>
+
+      <div class="gear-card reveal">
+        <div class="gear-img">🎧<div class="gear-platform-badge">All</div></div>
+        <div class="gear-body">
+          <div class="gear-cat">Headset · Multi-Platform</div>
+          <div class="gear-name">SteelSeries Arctis Nova Pro</div>
+          <div class="gear-desc">Active noise cancellation, multi-system connect, 360° Spatial Audio. Works on PS5, Xbox, and PC simultaneously.</div>
+          <div class="gear-why">Why: Best multi-platform headset. Switch between your console and phone for The Last Drive Discord.</div>
+          <div class="gear-price-row">
+            <span class="gear-price">~$249.99</span>
+            <span class="gear-rating">★★★★★ 4.7</span>
+          </div>
+          <a href="https://www.amazon.com/s?k=SteelSeries+Arctis+Nova+Pro+Wireless&tag=56vicelane-20" target="_blank" rel="noopener sponsored" class="gear-btn">View on Amazon →</a>
+        </div>
+      </div>
+
+      <div class="gear-card reveal">
+        <div class="gear-img">🎧<div class="gear-platform-badge">Xbox</div></div>
+        <div class="gear-body">
+          <div class="gear-cat">Headset · Xbox</div>
+          <div class="gear-name">Xbox Wireless Headset</div>
+          <div class="gear-desc">Official Microsoft headset. Spatial audio, auto-mute, simple setup. Connects directly to Xbox with no dongle.</div>
+          <div class="gear-why">Why: Most reliable Xbox headset for the price. Just works.</div>
+          <div class="gear-price-row">
+            <span class="gear-price">~$99.99</span>
+            <span class="gear-rating">★★★★☆ 4.4</span>
+          </div>
+          <a href="https://www.amazon.com/s?k=Xbox+Wireless+Headset&tag=56vicelane-20" target="_blank" rel="noopener sponsored" class="gear-btn">View on Amazon →</a>
+        </div>
+      </div>
+
+      <div class="gear-card reveal">
+        <div class="gear-img">🎧<div class="gear-platform-badge">Budget</div></div>
+        <div class="gear-body">
+          <div class="gear-cat">Headset · Budget Pick</div>
+          <div class="gear-name">HyperX Cloud II</div>
+          <div class="gear-desc">53mm drivers, virtual 7.1 surround, memory foam ear cushions. The most trusted budget gaming headset for a decade.</div>
+          <div class="gear-why">Why: Best sound under $100. Proven reliable for all-night sessions.</div>
+          <div class="gear-price-row">
+            <span class="gear-price">~$69.99</span>
+            <span class="gear-rating">★★★★★ 4.6</span>
+          </div>
+          <a href="https://www.amazon.com/s?k=HyperX+Cloud+II+Gaming+Headset&tag=56vicelane-20" target="_blank" rel="noopener sponsored" class="gear-btn">View on Amazon →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── MONITORS ── -->
+  <div id="monitors" style="margin-top:40px;">
+    <div class="gear-section-label">Section 03</div>
+    <div class="gear-section-title">Monitors &amp; TVs</div>
+    <p class="gear-section-sub">GTA6 is built for 4K. Leonida at 60fps on a 4K display is going to look unlike anything in gaming history. Don't play it on a 1080p TV from 2016.</p>
+    <div class="gear-divider"></div>
+    <div class="gear-grid">
+
+      <div class="gear-card featured reveal">
+        <div class="gear-img">🖥️<div class="gear-platform-badge">4K</div></div>
+        <div class="gear-body">
+          <div class="gear-cat">Monitor · Console</div>
+          <div class="gear-name">LG 27" UHD 4K Monitor</div>
+          <div class="gear-desc">4K IPS panel, 144Hz, HDR600, 1ms response time. HDMI 2.1 for PS5/Xbox Series X. The sweet spot for console GTA6.</div>
+          <div class="gear-why">Why: 4K + 60fps console output looks stunning. HDMI 2.1 is required for true 4K 120fps.</div>
+          <div class="gear-price-row">
+            <span class="gear-price">~$349.99</span>
+            <span class="gear-rating">★★★★★ 4.7</span>
+          </div>
+          <a href="https://www.amazon.com/s?k=LG+27+4K+UHD+Gaming+Monitor+HDMI+2.1&tag=56vicelane-20" target="_blank" rel="noopener sponsored" class="gear-btn">View on Amazon →</a>
+        </div>
+      </div>
+
+      <div class="gear-card reveal">
+        <div class="gear-img">📺<div class="gear-platform-badge">TV</div></div>
+        <div class="gear-body">
+          <div class="gear-cat">TV · Living Room</div>
+          <div class="gear-name">LG C3 OLED 55"</div>
+          <div class="gear-desc">OLED panel, 4K 120Hz, Dolby Vision, HDMI 2.1 on all ports. The best TV for GTA6 period. Colors and blacks are unreal.</div>
+          <div class="gear-why">Why: OLED blacks make night driving in GTA6 look cinematic. Nothing comes close.</div>
+          <div class="gear-price-row">
+            <span class="gear-price">~$1,099.99</span>
+            <span class="gear-rating">★★★★★ 4.8</span>
+          </div>
+          <a href="https://www.amazon.com/s?k=LG+C3+OLED+55+inch+4K+TV&tag=56vicelane-20" target="_blank" rel="noopener sponsored" class="gear-btn">View on Amazon →</a>
+        </div>
+      </div>
+
+      <div class="gear-card reveal">
+        <div class="gear-img">🖥️<div class="gear-platform-badge">PC</div></div>
+        <div class="gear-body">
+          <div class="gear-cat">Monitor · PC</div>
+          <div class="gear-name">Samsung Odyssey G7 32"</div>
+          <div class="gear-desc">1440p 240Hz curved VA panel. G-Sync and FreeSync compatible. If you're on PC, this is the move before 4K.</div>
+          <div class="gear-why">Why: 240Hz at 1440p is smoother than 4K at 60fps for competitive driving.</div>
+          <div class="gear-price-row">
+            <span class="gear-price">~$499.99</span>
+            <span class="gear-rating">★★★★☆ 4.5</span>
+          </div>
+          <a href="https://www.amazon.com/s?k=Samsung+Odyssey+G7+32+inch+gaming+monitor&tag=56vicelane-20" target="_blank" rel="noopener sponsored" class="gear-btn">View on Amazon →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- AdSense mid -->
+  <ins class="adsbygoogle" style="display:block;margin:8px 0 32px;" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+
+  <!-- ── PC GEAR ── -->
+  <div id="pc" style="margin-top:8px;">
+    <div class="gear-section-label">Section 04</div>
+    <div class="gear-section-title">PC Gear</div>
+    <p class="gear-section-sub">GTA6 PC requirements will be demanding. If you're playing on PC, make sure your rig is ready. These are the key upgrades that make the biggest difference.</p>
+    <div class="gear-divider"></div>
+    <div class="gear-grid">
+
+      <div class="gear-card featured reveal">
+        <div class="gear-img">🔧<div class="gear-platform-badge">GPU</div></div>
+        <div class="gear-body">
+          <div class="gear-cat">PC · Graphics Card</div>
+          <div class="gear-name">NVIDIA RTX 4070 Super</div>
+          <div class="gear-desc">1440p at max settings. Ray tracing capable. DLSS 3 support for frame generation. The sweet spot for GTA6 PC.</div>
+          <div class="gear-why">Why: Best price-to-performance GPU for GTA6 at 1440p ultra settings.</div>
+          <div class="gear-price-row">
+            <span class="gear-price">~$599.99</span>
+            <span class="gear-rating">★★★★★ 4.8</span>
+          </div>
+          <a href="https://www.amazon.com/s?k=RTX+4070+Super+graphics+card&tag=56vicelane-20" target="_blank" rel="noopener sponsored" class="gear-btn">View on Amazon →</a>
+        </div>
+      </div>
+
+      <div class="gear-card reveal">
+        <div class="gear-img">💾<div class="gear-platform-badge">SSD</div></div>
+        <div class="gear-body">
+          <div class="gear-cat">PC · Storage</div>
+          <div class="gear-name">Samsung 990 Pro 2TB NVMe</div>
+          <div class="gear-desc">7,450 MB/s read speeds. GTA6 will be massive — expect 100GB+. NVMe means near-instant load times vs hard drive.</div>
+          <div class="gear-why">Why: Fast storage is the single biggest load time upgrade. Required for modern AAA games.</div>
+          <div class="gear-price-row">
+            <span class="gear-price">~$159.99</span>
+            <span class="gear-rating">★★★★★ 4.8</span>
+          </div>
+          <a href="https://www.amazon.com/s?k=Samsung+990+Pro+2TB+NVMe+SSD&tag=56vicelane-20" target="_blank" rel="noopener sponsored" class="gear-btn">View on Amazon →</a>
+        </div>
+      </div>
+
+      <div class="gear-card reveal">
+        <div class="gear-img">🧠<div class="gear-platform-badge">RAM</div></div>
+        <div class="gear-body">
+          <div class="gear-cat">PC · Memory</div>
+          <div class="gear-name">Corsair Vengeance 32GB DDR5</div>
+          <div class="gear-desc">32GB DDR5-6000. GTA5 recommended 8GB — GTA6 will likely want 16GB minimum. Get ahead of it with 32GB.</div>
+          <div class="gear-why">Why: 32GB future-proofs your build through GTA6's entire lifespan.</div>
+          <div class="gear-price-row">
+            <span class="gear-price">~$109.99</span>
+            <span class="gear-rating">★★★★★ 4.7</span>
+          </div>
+          <a href="https://www.amazon.com/s?k=Corsair+Vengeance+32GB+DDR5+6000&tag=56vicelane-20" target="_blank" rel="noopener sponsored" class="gear-btn">View on Amazon →</a>
+        </div>
+      </div>
+
+      <div class="gear-card reveal">
+        <div class="gear-img">⌨️<div class="gear-platform-badge">PC</div></div>
+        <div class="gear-body">
+          <div class="gear-cat">PC · Keyboard</div>
+          <div class="gear-name">Logitech G Pro X TKL</div>
+          <div class="gear-desc">Tenkeyless mechanical keyboard. Hot-swappable switches, per-key RGB, compact for desk space. Used by pros.</div>
+          <div class="gear-why">Why: Tenkeyless keeps your mouse closer for better aim. Proven in competitive gaming.</div>
+          <div class="gear-price-row">
+            <span class="gear-price">~$129.99</span>
+            <span class="gear-rating">★★★★☆ 4.5</span>
+          </div>
+          <a href="https://www.amazon.com/s?k=Logitech+G+Pro+X+TKL+mechanical+keyboard&tag=56vicelane-20" target="_blank" rel="noopener sponsored" class="gear-btn">View on Amazon →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── ACCESSORIES ── -->
+  <div id="accessories" style="margin-top:40px;">
+    <div class="gear-section-label">Section 05</div>
+    <div class="gear-section-title">Accessories</div>
+    <p class="gear-section-sub">The finishing touches. Charging stations, capture cards, and the small things that make launch night run smooth.</p>
+    <div class="gear-divider"></div>
+    <div class="gear-grid">
+
+      <div class="gear-card featured reveal">
+        <div class="gear-img">🔋<div class="gear-platform-badge">PS5</div></div>
+        <div class="gear-body">
+          <div class="gear-cat">Accessories · Charging</div>
+          <div class="gear-name">PS5 DualSense Charging Station</div>
+          <div class="gear-desc">Charge two DualSense controllers simultaneously. You don't want to be mid-Last Drive when your controller dies.</div>
+          <div class="gear-why">Why: Essential for November 18. Swap to a full controller instantly without unplugging.</div>
+          <div class="gear-price-row">
+            <span class="gear-price">~$29.99</span>
+            <span class="gear-rating">★★★★★ 4.8</span>
+          </div>
+          <a href="https://www.amazon.com/s?k=PS5+DualSense+Charging+Station+official&tag=56vicelane-20" target="_blank" rel="noopener sponsored" class="gear-btn">View on Amazon →</a>
+        </div>
+      </div>
+
+      <div class="gear-card reveal">
+        <div class="gear-img">📹<div class="gear-platform-badge">All</div></div>
+        <div class="gear-body">
+          <div class="gear-cat">Accessories · Capture</div>
+          <div class="gear-name">Elgato HD60 X Capture Card</div>
+          <div class="gear-desc">4K60 HDR pass-through capture. Record your Last Drive, stream GTA6 launch night, clip your best moments.</div>
+          <div class="gear-why">Why: If you plan to document The Last Drive or stream GTA6, this is the one to get.</div>
+          <div class="gear-price-row">
+            <span class="gear-price">~$149.99</span>
+            <span class="gear-rating">★★★★☆ 4.5</span>
+          </div>
+          <a href="https://www.amazon.com/s?k=Elgato+HD60+X+capture+card&tag=56vicelane-20" target="_blank" rel="noopener sponsored" class="gear-btn">View on Amazon →</a>
+        </div>
+      </div>
+
+      <div class="gear-card reveal">
+        <div class="gear-img">🌐<div class="gear-platform-badge">Network</div></div>
+        <div class="gear-body">
+          <div class="gear-cat">Accessories · Network</div>
+          <div class="gear-name">TP-Link WiFi 6E Router</div>
+          <div class="gear-desc">WiFi 6E tri-band. GTA6 Online will have massive server traffic on launch night. Hardwire if you can — but if not, get WiFi 6E.</div>
+          <div class="gear-why">Why: Launch night servers will be brutal. A fast router buys you every advantage.</div>
+          <div class="gear-price-row">
+            <span class="gear-price">~$199.99</span>
+            <span class="gear-rating">★★★★☆ 4.4</span>
+          </div>
+          <a href="https://www.amazon.com/s?k=TP-Link+WiFi+6E+gaming+router&tag=56vicelane-20" target="_blank" rel="noopener sponsored" class="gear-btn">View on Amazon →</a>
+        </div>
+      </div>
+
+      <div class="gear-card reveal">
+        <div class="gear-img">💡<div class="gear-platform-badge">Desk</div></div>
+        <div class="gear-body">
+          <div class="gear-cat">Accessories · Ambiance</div>
+          <div class="gear-name">Govee LED TV Backlights</div>
+          <div class="gear-desc">RGBIC bias lighting behind your TV. Syncs to screen content. Vice City neon vibes for GTA6 night sessions.</div>
+          <div class="gear-why">Why: Bias lighting reduces eye strain during long sessions. Looks incredible with GTA6's neon aesthetic.</div>
+          <div class="gear-price-row">
+            <span class="gear-price">~$39.99</span>
+            <span class="gear-rating">★★★★★ 4.6</span>
+          </div>
+          <a href="https://www.amazon.com/s?k=Govee+RGBIC+TV+backlight+LED&tag=56vicelane-20" target="_blank" rel="noopener sponsored" class="gear-btn">View on Amazon →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- AFFILIATE DISCLOSURE -->
+  <div style="background:var(--asphalt);border:1px solid var(--edge);padding:16px 20px;margin-top:20px;">
+    <p style="font-size:.78rem;color:var(--smoke);line-height:1.6;margin:0;">
+      <strong style="color:var(--bone);">Affiliate Disclosure:</strong> 56ViceLane participates in the Amazon Associates Program. Links on this page use the affiliate tag <code style="font-size:.72rem;color:var(--amber);">56vicelane-20</code> and we earn a small commission on qualifying purchases at no extra cost to you. All gear recommendations are based on community preference and independent research — 56ViceLane is not paid to recommend any specific product.
+    </p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand"><span class="logo-mark">56</span>ViceLane</div>
+  <div class="footer-tag">Where GTA5 Ends And GTA6 Begins</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/news">News</a>
+    <a href="/gtacon">GTACON</a>
+    <a href="/lastdrive">Last Drive</a>
+    <a href="/members">Members</a>
+    <a href="/store">Store</a>
+    <a href="/gear">Gear</a>
+    <a href="/tools">Tools</a>
+    <a href="/forum">Forum</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="/admin" class="admin-link">Admin</a>
+  </div>
+  <p class="footer-disclosure">56ViceLane is an independent fan site. Not affiliated with Rockstar Games or Take-Two Interactive. Amazon, the Amazon logo, and Amazon Associates are trademarks of Amazon.com Inc.</p>
+  <p class="footer-copy" id="vl-copyright">© 2026 56ViceLane · Forged Oak Studios</p>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+fetch('/articles.json?v=' + Date.now())
+  .then(function(r) { return r.json(); })
+  .then(function(a) {
+    var t = document.getElementById('ticker-track');
+    if (!t) return;
+    t.innerHTML = [].concat(a, a).map(function(x) {
+      return '<span class="ticker-item" onclick="location.href=\'/articles/' + x.slug + '\'">' + (x.emoji || '⚡') + ' ' + x.title + '</span>';
+    }).join('');
+  }).catch(function() {});
+
+var mt = document.getElementById('menu-toggle');
+var nm = document.getElementById('nav-mobile');
+if (mt && nm) mt.addEventListener('click', function() { nm.classList.toggle('open'); });
+
+var obs = new IntersectionObserver(function(es) {
+  es.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, {threshold: .08});
+document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+
+(function() {
+  var KEY = '56vl-debug';
+  var active = localStorage.getItem(KEY) === '1';
+  function applyDebug() {
+    var ind = document.getElementById('vl-debug-ind');
+    if (!ind) {
+      ind = document.createElement('div');
+      ind.id = 'vl-debug-ind';
+      ind.textContent = '🔧 DEBUG ON — tap to off';
+      ind.onclick = function() { active = false; localStorage.setItem(KEY,'0'); applyDebug(); };
+      document.body.appendChild(ind);
+    }
+    ind.style.display = active ? 'block' : 'none';
+  }
+  var el = document.getElementById('vl-copyright');
+  var timer = null;
+  if (el) {
+    el.style.userSelect = 'none';
+    el.style.webkitUserSelect = 'none';
+    el.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      timer = setTimeout(function() { active = !active; localStorage.setItem(KEY, active ? '1' : '0'); applyDebug(); }, 1500);
+    }, {passive: false});
+    el.addEventListener('touchend', function() { clearTimeout(timer); });
+    el.addEventListener('touchmove', function() { clearTimeout(timer); });
+  }
+  applyDebug();
+})();
+</script>
+</body>
+</html>
