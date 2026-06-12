@@ -769,7 +769,7 @@ fetch('/articles.json?v=' + Date.now())
         card.className = 'active-card';
         card.href = '/articles/' + a.slug;
         card.innerHTML =
-          '<div class="active-card-img" style="background-image:url(\'/images/' + getHero(a.slug) + '\')">' +
+          '<div class="active-card-img" style="background-image:url(\'/images/' + (a.image || 'Gta6.png') + '\')">' +
             '<div class="active-card-img-overlay"></div>' +
           '</div>' +
           '<div class="active-card-body">' +

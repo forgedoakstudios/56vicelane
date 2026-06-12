@@ -7,6 +7,7 @@
     "category": "GTA6 News",
     "date": "2026-06-12",
     "excerpt": "GTA6 Trailer 3 — the final trailer before launch — is expected within weeks. Here is everything we know about timing, content, and what it means for The Last Drive.",
+    "image": "Gta6trailer3.png",
     "permanent": false
   },
   {
@@ -17,6 +18,7 @@
     "category": "GTA5 News",
     "date": "2026-06-12",
     "excerpt": "Rockstar just added GTA V Story Mode to GTA+ for $7.99/month. With 159 days until GTA6, here is what this move really means for the community and The Last Drive.",
+    "image": "GtaV.png",
     "permanent": false
   },
   {
@@ -27,6 +29,7 @@
     "category": "Tech",
     "date": "2026-05-28",
     "excerpt": "GTA6 PC requirements will be demanding. Here is every component you need to build a rig that handles GTA6 at launch — GPU, CPU, RAM, storage and more.",
+    "image": "Gta6.png",
     "permanent": false
   },
   {
@@ -37,6 +40,7 @@
     "category": "GTA6 News",
     "date": "2026-05-20",
     "excerpt": "GTA6 pre-order activity is surging across platforms. Here is what the numbers tell us about launch day demand and what it means for online servers on day one.",
+    "image": "Gta6.png",
     "permanent": false
   },
   {
@@ -47,6 +51,7 @@
     "category": "GTA6 News",
     "date": "2026-05-14",
     "excerpt": "With GTA6 launching November 19, pricing signals are everywhere. We break down every leak, every regional listing, and what you should actually budget for.",
+    "image": "Gta6.png",
     "permanent": false
   },
   {
@@ -57,6 +62,7 @@
     "category": "GTA6 News",
     "date": "2026-05-08",
     "excerpt": "No speculation, no leaks. This is every single thing Rockstar and Take-Two have officially confirmed about GTA6 — characters, setting, platforms, date, and more.",
+    "image": "Gta6.png",
     "permanent": true
   },
   {
@@ -67,6 +73,7 @@
     "category": "GTA6 News",
     "date": "2026-04-30",
     "excerpt": "November 19, 2026 is officially locked. Rockstar and Take-Two have confirmed the GTA6 launch date. Here is everything you need to know about what comes next.",
+    "image": "Gta6.png",
     "permanent": true
   },
   {
@@ -77,6 +84,7 @@
     "category": "GTA5 News",
     "date": "2026-04-22",
     "excerpt": "Virtuos — the studio behind dozens of major ports — appears to be bringing GTA5 to Nintendo Switch 2. Here is what we know and what it means for the community.",
+    "image": "GtaV.png",
     "permanent": false
   },
   {
@@ -87,6 +95,7 @@
     "category": "GTA6 News",
     "date": "2026-04-15",
     "excerpt": "Reports indicate Rockstar will not send review copies for GTA6 ahead of launch. Here is what that decision means for buyers and the Day 1 experience.",
+    "image": "Gta6.png",
     "permanent": false
   },
   {
@@ -97,6 +106,7 @@
     "category": "GTA6 News",
     "date": "2026-04-08",
     "excerpt": "A credible leak points to six GTA6 editions at launch. We break down every reported tier, what is included, and which one actually makes sense to buy.",
+    "image": "Gta6.png",
     "permanent": false
   },
   {
@@ -107,6 +117,7 @@
     "category": "GTA6 News",
     "date": "2026-04-01",
     "excerpt": "A Dutch retailer listing showed GTA6 at $115. We dig into whether this is a real signal, a placeholder, or a conversion artifact — and what it means for US pricing.",
+    "image": "Gta6.png",
     "permanent": false
   },
   {
@@ -117,6 +128,7 @@
     "category": "GTA6 News",
     "date": "2026-03-25",
     "excerpt": "GTA6 pre-order chaos hit social media hard. Here is a clear breakdown of what actually happened, what was real, and what was misinformation.",
+    "image": "Gta6.png",
     "permanent": false
   },
   {
@@ -127,6 +139,7 @@
     "category": "GTA6 News",
     "date": "2026-03-18",
     "excerpt": "An Italian retailer briefly listed GTA6 pre-orders before pulling them. We captured everything before it went down — pricing, editions, and what it signals.",
+    "image": "Gta6.png",
     "permanent": false
   }
 ]

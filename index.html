@@ -523,12 +523,7 @@ fetch('/articles.json?v=' + Date.now())
       card.className = 'news-card';
       card.href = '/articles/' + a.slug;
 
-      // Pick hero image based on slug
-      var img = 'gta6-hero.png';
-      var s = (a.slug || '').toLowerCase();
-      if (/gta5|ragemp|fivem/.test(s)) img = 'gta5-hero.png';
-      if (/gpu|pc-build|amd|nvidia|tech/.test(s)) img = 'tech-hero.png';
-      if (/online|heist|gtao/.test(s)) img = 'gtao-hero.png';
+      var img = a.image || 'Gta6.png';
 
       card.innerHTML =
         '<div class="news-card-img" style="background-image:url(\'/images/' + img + '\')"></div>' +
