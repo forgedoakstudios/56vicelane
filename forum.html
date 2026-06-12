@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9EKF7J4V7W');</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Community Forum — 56ViceLane</title>
+<meta name="description" content="Join the 56ViceLane Discord. Talk GTA6, coordinate your Last Drive, and connect with the community.">
+<link rel="canonical" href="https://56vicelane.com/forum">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="56ViceLane">
+<meta property="og:title" content="Community Forum — 56ViceLane">
+<meta property="og:description" content="Join the 56ViceLane Discord. Talk GTA6, coordinate The Last Drive, connect with the community.">
+<meta property="og:image" content="https://56vicelane.com/images/Jason_and_Lucia_01_landscape.jpg">
+<meta property="og:url" content="https://56vicelane.com/forum">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/vicelane.css">
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
+
+<style>
+/* ── FORUM PAGE ONLY ──────────────────────────────────────── */
+
+/* HERO */
+.forum-hero {
+  padding: 56px 24px 48px;
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+.forum-eyebrow {
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .3em;
+  font-size: .72rem;
+  color: #5865F2;
+  margin-bottom: 14px;
+}
+.forum-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 7vw, 60px);
+  text-transform: uppercase;
+  line-height: 1.0;
+  margin-bottom: 14px;
+}
+.forum-title span { color: var(--amber); }
+.forum-sub {
+  font-size: .95rem;
+  color: #C8C4BE;
+  max-width: 500px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+}
+
+/* MAIN JOIN CARD */
+.join-card {
+  max-width: 700px;
+  margin: 0 auto 52px;
+  padding: 0 24px;
+}
+.join-box {
+  background: linear-gradient(135deg, #23272A, #2C2F33);
+  border: 2px solid #5865F2;
+  position: relative;
+  overflow: hidden;
+}
+.join-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #5865F2, #EB459E, #FEE75C, #57F287);
+}
+.join-box-inner { padding: 32px 28px; }
+.join-discord-logo {
+  font-size: 48px;
+  margin-bottom: 14px;
+  display: block;
+}
+.join-server-name {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.join-server-desc {
+  font-size: .88rem;
+  color: #B9BBBE;
+  margin-bottom: 22px;
+  line-height: 1.6;
+}
+.join-btn {
+  display: block;
+  width: 100%;
+  background: #5865F2;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  padding: 16px 24px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: all .25s;
+}
+.join-btn:hover {
+  background: #4752C4;
+  text-decoration: none;
+  color: #fff;
+  box-shadow: 0 0 24px rgba(88,101,242,.5);
+}
+.join-note {
+  font-size: .75rem;
+  color: #72767D;
+  text-align: center;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+.join-owner-strip {
+  background: rgba(88,101,242,.1);
+  border-top: 1px solid rgba(88,101,242,.2);
+  padding: 12px 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.join-owner-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--amber);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: .88rem;
+  color: #000;
+  flex-shrink: 0;
+}
+.join-owner-info { flex: 1; }
+.join-owner-name {
+  font-family: var(--font-label);
+  font-weight: 800;
+  font-size: .88rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.join-owner-role {
+  font-size: .72rem;
+  color: var(--amber);
+  font-family: var(--font-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+/* CHANNELS SECTION */
+.forum-section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px 52px;
+}
+.channels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  margin-bottom: 36px;
+}
+.channel-card {
+  background: var(--asphalt);
+  border: 1px solid var(--edge);
+  padding: 18px 20px;
+  transition: border-color .25s;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+.channel-card:hover {
+  border-color: #5865F2;
+  text-decoration: none;
+}
+.channel-name {
+  font-family: var(--font-label);
+  font-weight: 800;
+  font-size: 1rem;
+  color: #B9BBBE;
+  text-transform: lowercase;
+  margin-bottom: 5px;
+}
+.channel-name span { color: #72767D; margin-right: 2px; }
+.channel-card:hover .channel-name { color: #fff; }
+.channel-desc { font-size: .82rem; color: var(--smoke); line-height: 1.5; }
+.channel-tag {
+  display: inline-block;
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: .65rem;
+  padding: 2px 8px;
+  margin-top: 8px;
+}
+.tag-announce { color: var(--amber); background: rgba(255,107,26,.1); border: 1px solid rgba(255,107,26,.2); }
+.tag-event    { color: #57F287; background: rgba(87,242,135,.1); border: 1px solid rgba(87,242,135,.2); }
+.tag-news     { color: var(--cyan); background: rgba(0,212,255,.1); border: 1px solid rgba(0,212,255,.2); }
+.tag-social   { color: #B9BBBE; background: rgba(185,187,190,.1); border: 1px solid rgba(185,187,190,.2); }
+.tag-plates   { color: var(--gold); background: rgba(255,215,0,.08); border: 1px solid rgba(255,215,0,.2); }
+
+/* RULES BLOCK */
+.rules-block {
+  background: var(--asphalt);
+  border: 1px solid var(--edge);
+  border-left: 4px solid #5865F2;
+  padding: 24px 24px 20px;
+  margin-bottom: 36px;
+}
+.rules-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: var(--bone);
+  margin-bottom: 16px;
+}
+.rule-item {
+  display: flex;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--edge);
+  font-size: .85rem;
+  color: #C8C4BE;
+  line-height: 1.5;
+}
+.rule-item:last-child { border-bottom: none; }
+.rule-num {
+  font-family: var(--font-display);
+  font-size: .88rem;
+  color: #5865F2;
+  flex-shrink: 0;
+  width: 20px;
+}
+
+/* WHY JOIN */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin-bottom: 36px;
+}
+.why-card {
+  background: var(--asphalt);
+  border: 1px solid var(--edge);
+  padding: 20px;
+  text-align: center;
+}
+.why-icon { font-size: 32px; margin-bottom: 10px; }
+.why-title {
+  font-family: var(--font-display);
+  font-size: .9rem;
+  text-transform: uppercase;
+  color: var(--bone);
+  margin-bottom: 6px;
+}
+.why-desc { font-size: .8rem; color: var(--smoke); line-height: 1.5; }
+
+/* BOTTOM CTA */
+.bottom-cta {
+  background: linear-gradient(135deg, #23272A, #2C2F33);
+  border: 1px solid #5865F2;
+  padding: 36px 28px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.bottom-cta::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #5865F2, #EB459E, #FEE75C, #57F287);
+}
+.bottom-cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 4vw, 32px);
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.bottom-cta-sub {
+  font-size: .88rem;
+  color: #B9BBBE;
+  max-width: 420px;
+  margin: 0 auto 22px;
+  line-height: 1.65;
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker-track">
+    <span class="ticker-item">56ViceLane — Where GTA5 Ends And GTA6 Begins</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="logo" href="/"><span class="logo-mark">56</span><span class="logo-text">ViceLane</span></a>
+  <div class="nav-links">
+    <a href="/news">News</a>
+    <a href="/gtacon">GTACON</a>
+    <a href="/lastdrive">Last Drive</a>
+    <a href="/members">Members</a>
+    <a href="/store">Store</a>
+    <a href="/gear">Gear</a>
+    <a href="/tools">Tools</a>
+    <a href="/forum" class="active">Forum</a>
+  </div>
+  <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="/news">News</a>
+  <a href="/gtacon">GTACON</a>
+  <a href="/lastdrive">Last Drive</a>
+  <a href="/members">Members</a>
+  <a href="/store">Store</a>
+  <a href="/gear">Gear</a>
+  <a href="/tools">Tools</a>
+  <a href="/forum" class="active">Forum</a>
+  <div class="mobile-divider"></div>
+  <a href="/about">About</a>
+  <a href="/contact">Contact</a>
+  <div class="mobile-divider"></div>
+  <a href="/privacy">Privacy</a>
+  <a href="/terms">Terms</a>
+</div>
+
+<!-- HERO -->
+<div class="forum-hero">
+  <div class="forum-eyebrow">💬 Discord Community</div>
+  <h1 class="forum-title">Talk To The <span>Community</span></h1>
+  <p class="forum-sub">GTA6 discussion, Last Drive coordination, plates, news, and everything in between. The community lives on Discord.</p>
+</div>
+
+<!-- JOIN CARD -->
+<div class="join-card reveal">
+  <div class="join-box">
+    <div class="join-box-inner">
+      <span class="join-discord-logo">💬</span>
+      <div class="join-server-name">56 Vice Lane</div>
+      <p class="join-server-desc">The official 56ViceLane Discord server. Coordinate The Last Drive, talk GTA6 news, show off your plate, and connect with thousands of drivers before November 18.</p>
+      <a href="https://discord.gg/ewdRcjsbg5" target="_blank" rel="noopener" class="join-btn">
+        Join The Server →
+      </a>
+      <p class="join-note">Free to join · Opens in Discord · invite never expires</p>
+    </div>
+    <div class="join-owner-strip">
+      <div class="join-owner-avatar">B</div>
+      <div class="join-owner-info">
+        <div class="join-owner-name">Brew-ForgedOak</div>
+        <div class="join-owner-role">⭐ Server Owner · Forged Oak Studios</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AdSense -->
+<div style="max-width:960px;margin:0 auto;padding:0 24px 16px;">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<!-- WHY JOIN -->
+<div class="forum-section">
+  <div class="section-header-row" style="margin-bottom:20px;">
+    <div class="section-title">Why Join?</div>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-icon">🏁</div>
+      <div class="why-title">Last Drive Coordination</div>
+      <div class="why-desc">Find your drive crew, coordinate times, and lock in your spot before November 18.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">📡</div>
+      <div class="why-title">GTA6 News First</div>
+      <div class="why-desc">Breaking news, leaks, and analysis hits the Discord before it hits the site.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">🏆</div>
+      <div class="why-title">Show Your Plate</div>
+      <div class="why-desc">Post your Wall of Honor plate. Flex your founder status. Connect with other drivers.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">🎮</div>
+      <div class="why-title">Direct Access</div>
+      <div class="why-desc">Talk directly to Brew-ForgedOak and the team. Your feedback shapes the site.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CHANNELS -->
+<div class="forum-section">
+  <div class="section-header-row" style="margin-bottom:20px;">
+    <div class="section-title">Channels</div>
+  </div>
+  <div class="channels-grid">
+    <a href="https://discord.gg/ewdRcjsbg5" target="_blank" rel="noopener" class="channel-card reveal">
+      <div class="channel-name"><span>#</span>announcements</div>
+      <div class="channel-desc">Official updates from Brew-ForgedOak. New plates, event updates, GTA6 news drops.</div>
+      <span class="channel-tag tag-announce">Owners Only</span>
+    </a>
+    <a href="https://discord.gg/ewdRcjsbg5" target="_blank" rel="noopener" class="channel-card reveal">
+      <div class="channel-name"><span>#</span>last-drive</div>
+      <div class="channel-desc">Everything November 18. Find a drive, coordinate your crew, set your time slot.</div>
+      <span class="channel-tag tag-event">Event</span>
+    </a>
+    <a href="https://discord.gg/ewdRcjsbg5" target="_blank" rel="noopener" class="channel-card reveal">
+      <div class="channel-name"><span>#</span>gta6-news</div>
+      <div class="channel-desc">Leaks, trailers, confirmed features, and hot takes. Drop your sources.</div>
+      <span class="channel-tag tag-news">News</span>
+    </a>
+    <a href="https://discord.gg/ewdRcjsbg5" target="_blank" rel="noopener" class="channel-card reveal">
+      <div class="channel-name"><span>#</span>plates</div>
+      <div class="channel-desc">Show off your Wall of Honor plate. Flex your founder number. See the collection.</div>
+      <span class="channel-tag tag-plates">Plates</span>
+    </a>
+    <a href="https://discord.gg/ewdRcjsbg5" target="_blank" rel="noopener" class="channel-card reveal">
+      <div class="channel-name"><span>#</span>general</div>
+      <div class="channel-desc">Everything else. GTA5 war stories, GTA6 speculation, introduce yourself.</div>
+      <span class="channel-tag tag-social">Community</span>
+    </a>
+  </div>
+</div>
+
+<!-- RULES -->
+<div class="forum-section">
+  <div class="section-header-row" style="margin-bottom:20px;">
+    <div class="section-title">Server Rules</div>
+  </div>
+  <div class="rules-block reveal">
+    <div class="rules-title">Keep It Clean. Keep It Real.</div>
+    <div class="rule-item"><span class="rule-num">1</span><span>No griefing — same rules as The Last Drive. Keep it respectful.</span></div>
+    <div class="rule-item"><span class="rule-num">2</span><span>No spam, self-promo, or ads without permission from Brew-ForgedOak.</span></div>
+    <div class="rule-item"><span class="rule-num">3</span><span>Keep GTA6 speculation clearly labeled as speculation — don't spread rumors as facts.</span></div>
+    <div class="rule-item"><span class="rule-num">4</span><span>No hate speech, harassment, or toxicity. This is a community for everyone.</span></div>
+    <div class="rule-item"><span class="rule-num">5</span><span>Post in the right channel. Last Drive stuff in #last-drive. News in #gta6-news.</span></div>
+    <div class="rule-item"><span class="rule-num">6</span><span>Have fun. This is a celebration of GTA5 and a countdown to GTA6. Enjoy it.</span></div>
+  </div>
+</div>
+
+<!-- BOTTOM CTA -->
+<div style="max-width:960px;margin:0 auto;padding:0 24px 60px;">
+  <div class="bottom-cta reveal">
+    <div class="bottom-cta-title">The Community Is Waiting</div>
+    <p class="bottom-cta-sub">Every driver signed up for The Last Drive should be in the Discord. It's where the convoy gets organized.</p>
+    <a href="https://discord.gg/ewdRcjsbg5" target="_blank" rel="noopener" class="join-btn" style="max-width:360px;margin:0 auto;display:block;">
+      Join 56ViceLane on Discord →
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand"><span class="logo-mark">56</span>ViceLane</div>
+  <div class="footer-tag">Where GTA5 Ends And GTA6 Begins</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/news">News</a>
+    <a href="/gtacon">GTACON</a>
+    <a href="/lastdrive">Last Drive</a>
+    <a href="/members">Members</a>
+    <a href="/store">Store</a>
+    <a href="/gear">Gear</a>
+    <a href="/tools">Tools</a>
+    <a href="/forum">Forum</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="/admin" class="admin-link">Admin</a>
+  </div>
+  <p class="footer-disclosure">56ViceLane is an independent fan site. Not affiliated with Rockstar Games or Take-Two Interactive. Discord is a trademark of Discord Inc.</p>
+  <p class="footer-copy" id="vl-copyright">© 2026 56ViceLane · Forged Oak Studios</p>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+fetch('/articles.json?v=' + Date.now())
+  .then(function(r) { return r.json(); })
+  .then(function(a) {
+    var t = document.getElementById('ticker-track');
+    if (!t) return;
+    t.innerHTML = [].concat(a, a).map(function(x) {
+      return '<span class="ticker-item" onclick="location.href=\'/articles/' + x.slug + '\'">' + (x.emoji || '⚡') + ' ' + x.title + '</span>';
+    }).join('');
+  }).catch(function() {});
+
+var mt = document.getElementById('menu-toggle');
+var nm = document.getElementById('nav-mobile');
+if (mt && nm) mt.addEventListener('click', function() { nm.classList.toggle('open'); });
+
+var obs = new IntersectionObserver(function(es) {
+  es.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, {threshold: .08});
+document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+
+(function() {
+  var KEY = '56vl-debug';
+  var active = localStorage.getItem(KEY) === '1';
+  function applyDebug() {
+    var ind = document.getElementById('vl-debug-ind');
+    if (!ind) {
+      ind = document.createElement('div');
+      ind.id = 'vl-debug-ind';
+      ind.textContent = '🔧 DEBUG ON — tap to off';
+      ind.onclick = function() { active = false; localStorage.setItem(KEY,'0'); applyDebug(); };
+      document.body.appendChild(ind);
+    }
+    ind.style.display = active ? 'block' : 'none';
+  }
+  var el = document.getElementById('vl-copyright');
+  var timer = null;
+  if (el) {
+    el.style.userSelect = 'none';
+    el.style.webkitUserSelect = 'none';
+    el.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      timer = setTimeout(function() { active = !active; localStorage.setItem(KEY, active ? '1' : '0'); applyDebug(); }, 1500);
+    }, {passive: false});
+    el.addEventListener('touchend', function() { clearTimeout(timer); });
+    el.addEventListener('touchmove', function() { clearTimeout(timer); });
+  }
+  applyDebug();
+})();
+</script>
+</body>
+</html>
