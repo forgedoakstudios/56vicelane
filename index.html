@@ -511,21 +511,22 @@ function nlSubmit() {
     },
     body: JSON.stringify({records:[{fields:{
       'Email copy': email,
-      'Source': 'Homepage',
-      'Signupdate': today
+      'Source': 'Homepage'
     }}]})
   }).then(function(r) {
     if (r.ok) {
       document.getElementById('nl-form-wrap').style.display = 'none';
       document.getElementById('nl-success').style.display = 'block';
     } else {
-      msg.textContent = 'Something went wrong. Please try again.';
-      msg.className = 'msg show error';
+      r.text().then(function(t) {
+        msg.textContent = 'Error ' + r.status + ': ' + t;
+        msg.className = 'msg show error';
+      });
       btn.textContent = 'Get Updates →';
       btn.disabled = false;
     }
-  }).catch(function() {
-    msg.textContent = 'Connection error. Please try again.';
+  }).catch(function(e) {
+    msg.textContent = 'Connection error: ' + e;
     msg.className = 'msg show error';
     btn.textContent = 'Get Updates →';
     btn.disabled = false;
