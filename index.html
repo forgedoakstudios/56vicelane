@@ -413,6 +413,33 @@
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════
+     EMAIL CAPTURE
+     ═══════════════════════════════════════════════════════════ -->
+<div style="padding:0 24px 48px;">
+  <div style="max-width:700px;margin:0 auto;">
+    <div style="background:linear-gradient(135deg,#0B0B0F,#16161D);border:1px solid var(--edge);border-top:3px solid var(--cyan);padding:32px 28px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-10px;bottom:-10px;font-family:var(--font-display);font-size:80px;color:rgba(0,212,255,.04);text-transform:uppercase;pointer-events:none;">GTA6</div>
+      <div style="font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.25em;font-size:.7rem;color:var(--cyan);margin-bottom:8px;">📡 Stay In The Lane</div>
+      <div style="font-family:var(--font-display);font-size:clamp(18px,4vw,28px);text-transform:uppercase;color:var(--bone);margin-bottom:8px;line-height:1.1;">GTA6 News. Last Drive Updates.<br>Direct To Your Inbox.</div>
+      <p style="font-size:.88rem;color:#C8C4BE;margin-bottom:22px;line-height:1.65;max-width:460px;">No spam. No fluff. Just the biggest GTA6 developments and Last Drive event updates — straight to you before anyone else.</p>
+      <div id="nl-form-wrap">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <input type="email" id="nl-email" class="form-input" placeholder="your@email.com" style="flex:1;min-width:200px;" onkeypress="if(event.key==='Enter')nlSubmit()">
+          <button onclick="nlSubmit()" id="nl-btn" class="btn btn-cyan" style="padding:12px 24px;white-space:nowrap;">Get Updates →</button>
+        </div>
+        <p style="font-size:.72rem;color:var(--smoke-dim);margin-top:8px;">No spam. Unsubscribe anytime. We respect your inbox.</p>
+        <div class="msg" id="nl-msg" style="margin-top:10px;"></div>
+      </div>
+      <div id="nl-success" style="display:none;text-align:center;padding:16px 0;">
+        <div style="font-size:32px;margin-bottom:10px;">✅</div>
+        <div style="font-family:var(--font-display);font-size:1.1rem;text-transform:uppercase;color:var(--cyan);margin-bottom:6px;">You're In The Lane</div>
+        <p style="font-size:.88rem;color:#C8C4BE;line-height:1.6;">GTA6 news and Last Drive updates coming your way. See you November 18.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
      GTA6 LAUNCH BANNER
      ═══════════════════════════════════════════════════════════ -->
 <div class="launch-banner">
@@ -463,6 +490,48 @@
      SCRIPTS
      ═══════════════════════════════════════════════════════════ -->
 <script>
+// ── NEWSLETTER SIGNUP ─────────────────────────────────────
+function nlSubmit() {
+  var email = (document.getElementById('nl-email').value || '').trim();
+  var btn   = document.getElementById('nl-btn');
+  var msg   = document.getElementById('nl-msg');
+  if (!email || !email.includes('@')) {
+    msg.textContent = 'Please enter a valid email address.';
+    msg.className = 'msg show error';
+    return;
+  }
+  btn.textContent = 'Signing up...';
+  btn.disabled = true;
+  var today = new Date().toISOString().split('T')[0];
+  fetch('https://api.airtable.com/v0/appVViGbmcu5gbn8B/Newsletter', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer pattxJ12NQzpHMejD.2eb992f22f1a43e032d866df028dbb33958635234f6cfd30769e3e12f10d5588',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({records:[{fields:{
+      'Email copy': email,
+      'Source': 'Homepage',
+      'Signupdate': today
+    }}]})
+  }).then(function(r) {
+    if (r.ok) {
+      document.getElementById('nl-form-wrap').style.display = 'none';
+      document.getElementById('nl-success').style.display = 'block';
+    } else {
+      msg.textContent = 'Something went wrong. Please try again.';
+      msg.className = 'msg show error';
+      btn.textContent = 'Get Updates →';
+      btn.disabled = false;
+    }
+  }).catch(function() {
+    msg.textContent = 'Connection error. Please try again.';
+    msg.className = 'msg show error';
+    btn.textContent = 'Get Updates →';
+    btn.disabled = false;
+  });
+}
+
 // ── COUNTDOWN ─────────────────────────────────────────────
 function updateCountdown() {
   var launch = new Date('2026-11-19T00:00:00').getTime();
