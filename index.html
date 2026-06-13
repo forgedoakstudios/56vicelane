@@ -1,723 +1,613 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9EKF7J4V7W');</script>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>56ViceLane — GTA 6 Headquarters</title>
-<meta name="description" content="The internet's GTA 6 headquarters. News, leaks, launch guides, and the #ClearTheLanes community.">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>56ViceLane — Where GTA5 Ends And GTA6 Begins</title>
+<meta name="description" content="The GTA5 to GTA6 fan hub. The Last Drive community farewell event. Wall of Honor. GTA6 news. November 19, 2026.">
+<link rel="canonical" href="https://56vicelane.com">
+
+<!-- OG / Social -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="56ViceLane">
+<meta property="og:title" content="56ViceLane — Where GTA5 Ends And GTA6 Begins">
+<meta property="og:description" content="The GTA5 to GTA6 fan hub. The Last Drive. Wall of Honor. November 19, 2026.">
+<meta property="og:image" content="https://56vicelane.com/images/lastdrive-hero.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://56vicelane.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="56ViceLane — Where GTA5 Ends And GTA6 Begins">
+<meta name="twitter:image" content="https://56vicelane.com/images/lastdrive-hero.jpg">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Shared stylesheet — single source of truth -->
+<link rel="stylesheet" href="/vicelane.css">
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+/* ── HOME-ONLY STYLES ─────────────────────────────────────── */
 
-:root {
-  --black:  #0a0a0a;
-  --amber:  #f5a623;
-  --amber2: #c47f0f;
-  --white:  #f0ede8;
-  --grey:   #141414;
-  --mid:    #2a2a2a;
-  --muted:  #666;
-  --cc:     #aaa;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--black);
-  color: var(--white);
-  font-family: 'Inter', sans-serif;
-  font-size: 15px;
-  line-height: 1.6;
-  min-height: 100vh;
-}
-
-a { color: var(--amber); text-decoration: none; }
-a:hover { text-decoration: underline; }
-
-/* ── NAV ── */
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(10,10,10,0.95);
-  border-bottom: 2px solid var(--amber);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 24px;
-  height: 56px;
-  backdrop-filter: blur(8px);
-}
-
-.nav-logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 24px;
-  color: var(--white);
-  letter-spacing: 1px;
-}
-
-.nav-logo span { color: var(--amber); }
-
-.nav-links {
-  display: flex;
-  gap: 24px;
-  list-style: none;
-}
-
-.nav-links a {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--cc);
-  transition: color 0.2s;
-}
-
-.nav-links a:hover { color: var(--amber); text-decoration: none; }
-
-.nav-cta {
-  background: var(--amber);
-  color: var(--black) !important;
-  padding: 6px 14px;
-  border-radius: 3px;
-  font-weight: 700 !important;
-}
-
-/* ── TICKER ── */
-.ticker-bar {
-  background: var(--amber);
-  color: var(--black);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  overflow: hidden;
-  padding: 6px 0;
-  white-space: nowrap;
-}
-
-.ticker-inner {
-  display: inline-block;
-  animation: ticker 30s linear infinite;
-}
-
-@keyframes ticker {
-  from { transform: translateX(100vw); }
-  to   { transform: translateX(-100%); }
-}
-
-/* ── HERO ── */
-.hero {
+/* HERO */
+.site-hero {
   position: relative;
   min-height: 88vh;
+  background: url('/images/lastdrive-hero.jpg') center/cover no-repeat;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 60px 24px;
+  align-items: flex-end;
   overflow: hidden;
 }
-
-.hero::before {
+.site-hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse 70% 50% at 50% 60%, rgba(245,166,35,0.07) 0%, transparent 70%),
-    linear-gradient(180deg, #0a0a0a 0%, #111 50%, #0a0a0a 100%);
-  z-index: 0;
+  background: linear-gradient(180deg,
+    rgba(11,11,15,.15) 0%,
+    rgba(11,11,15,.45) 50%,
+    rgba(11,11,15,.96) 100%);
 }
-
-.hero-grid {
+.site-hero::after {
+  content: '';
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(245,166,35,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(245,166,35,0.04) 1px, transparent 1px);
-  background-size: 48px 48px;
-  z-index: 0;
+  background: linear-gradient(90deg,
+    rgba(11,11,15,.55) 0%,
+    transparent 65%);
 }
-
-.hero-content { position: relative; z-index: 1; max-width: 780px; }
-
-.hero-eyebrow {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: var(--amber);
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-
-.hero h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(56px, 12vw, 120px);
-  line-height: 0.92;
-  color: var(--white);
-  margin-bottom: 8px;
-}
-
-.hero h1 .hl { color: var(--amber); }
-
-.hero-sub {
-  font-size: clamp(14px, 2vw, 18px);
-  color: var(--cc);
-  max-width: 540px;
-  margin: 16px auto 36px;
-  line-height: 1.5;
-}
-
-/* ── EMAIL CAPTURE ── */
-.capture-box {
-  background: var(--grey);
-  border: 1px solid var(--amber);
-  border-radius: 6px;
-  padding: 28px 32px;
-  max-width: 520px;
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 24px 52px;
+  max-width: var(--wide-width);
   margin: 0 auto;
-  text-align: left;
+  width: 100%;
 }
-
-.capture-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--amber);
-  letter-spacing: 3px;
+.hero-eyebrow {
+  font-family: var(--font-label);
+  font-weight: 800;
   text-transform: uppercase;
-  margin-bottom: 6px;
+  letter-spacing: .3em;
+  font-size: .72rem;
+  color: var(--amber);
+  margin-bottom: 14px;
 }
-
-.capture-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 26px;
-  color: var(--white);
-  line-height: 1.1;
-  margin-bottom: 6px;
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 9vw, 84px);
+  text-transform: uppercase;
+  color: var(--bone);
+  line-height: .95;
+  margin-bottom: 18px;
 }
-
-.capture-desc {
-  font-size: 13px;
-  color: var(--cc);
-  margin-bottom: 16px;
-  line-height: 1.5;
+.hero-title span { color: var(--amber); }
+.hero-sub {
+  font-size: clamp(14px, 2vw, 17px);
+  color: #C8C4BE;
+  max-width: 500px;
+  margin-bottom: 30px;
+  line-height: 1.65;
 }
-
-.capture-form {
+.hero-ctas {
   display: flex;
-  gap: 8px;
   flex-wrap: wrap;
+  gap: 12px;
 }
 
-.capture-form input {
-  flex: 1;
-  min-width: 200px;
-  background: var(--black);
-  border: 1px solid var(--mid);
-  color: var(--white);
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  padding: 11px 14px;
-  border-radius: 4px;
-  outline: none;
-  transition: border-color 0.2s;
+/* LAST DRIVE CTA BLOCK */
+.ld-cta {
+  background: linear-gradient(135deg, #0B0B0F, #16161D);
+  border: 1px solid var(--edge);
+  border-left: 4px solid var(--amber);
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
 }
-
-.capture-form input:focus { border-color: var(--amber); }
-.capture-form input::placeholder { color: var(--muted); }
-
-.capture-btn {
-  background: var(--amber);
-  color: var(--black);
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  padding: 11px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.2s;
-  white-space: nowrap;
-}
-
-.capture-btn:hover { background: var(--amber2); }
-.capture-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-
-.capture-fine {
-  font-size: 11px;
-  color: var(--muted);
-  margin-top: 10px;
-}
-
-.capture-success {
-  display: none;
-  background: rgba(245,166,35,0.1);
-  border: 1px solid var(--amber);
-  border-radius: 4px;
-  padding: 14px 16px;
-  font-size: 14px;
-  color: var(--amber);
-  font-weight: 600;
-  text-align: center;
-  margin-top: 8px;
-}
-
-.capture-error {
-  display: none;
-  font-size: 12px;
-  color: #e05252;
-  margin-top: 8px;
-}
-
-/* ── SECTION COMMON ── */
-.section { padding: 72px 24px; }
-.container { max-width: 1000px; margin: 0 auto; }
-
-.section-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--amber);
-  letter-spacing: 3px;
+.ld-cta::after {
+  content: 'NOV 18';
+  position: absolute;
+  right: -10px;
+  bottom: -10px;
+  font-family: var(--font-display);
+  font-size: 80px;
+  color: rgba(255,107,26,.04);
   text-transform: uppercase;
+  pointer-events: none;
+}
+.ld-cta-eyebrow {
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .25em;
+  font-size: .7rem;
+  color: var(--amber);
   margin-bottom: 8px;
 }
-
-.section-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(32px, 5vw, 52px);
-  color: var(--white);
-  line-height: 1;
+.ld-cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 4vw, 32px);
+  text-transform: uppercase;
+  color: var(--bone);
   margin-bottom: 8px;
+  line-height: 1.1;
+}
+.ld-cta-sub {
+  font-size: .92rem;
+  color: #C8C4BE;
+  max-width: 500px;
+  margin-bottom: 22px;
+  line-height: 1.65;
+}
+.ld-cta-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.section-body {
-  color: var(--cc);
-  max-width: 600px;
-  font-size: 14px;
-  line-height: 1.7;
-  margin-bottom: 36px;
+/* GTA6 LAUNCH BANNER */
+.launch-banner {
+  background: linear-gradient(135deg, #0D0D1A, #1A0D2E);
+  border-top: 1px solid rgba(0,212,255,.15);
+  border-bottom: 1px solid rgba(0,212,255,.15);
+  padding: 20px 24px;
+  text-align: center;
 }
-
-hr.amber { border: none; border-top: 1px solid var(--mid); margin: 0; }
-
-/* ── WHY 56 ── */
-.why-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
+.lb-inner {
+  max-width: var(--wide-width);
+  margin: 0 auto;
 }
-
-.why-card {
-  background: var(--grey);
-  border: 1px solid var(--mid);
-  border-left: 3px solid var(--amber);
-  border-radius: 4px;
-  padding: 20px;
-}
-
-.why-icon { font-size: 22px; margin-bottom: 8px; }
-
-.why-title {
+.lb-label {
+  font-family: var(--font-label);
   font-weight: 700;
-  font-size: 14px;
-  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: .25em;
+  font-size: .7rem;
+  color: var(--cyan);
   margin-bottom: 6px;
 }
-
-.why-desc { font-size: 13px; color: var(--cc); line-height: 1.5; }
-
-/* ── ARTICLES ── */
-.articles-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-.article-card {
-  background: var(--grey);
-  border: 1px solid var(--mid);
-  border-radius: 4px;
-  padding: 24px;
-  transition: border-color 0.2s;
-}
-
-.article-card:hover { border-color: var(--amber); }
-
-.article-tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  color: var(--amber);
-  letter-spacing: 2px;
+.lb-title {
+  font-family: var(--font-display);
+  font-size: clamp(15px, 3vw, 22px);
   text-transform: uppercase;
-  margin-bottom: 8px;
+  color: var(--bone);
 }
+.lb-title span { color: var(--cyan); }
 
-.article-title {
-  font-weight: 700;
-  font-size: 15px;
-  color: var(--white);
-  line-height: 1.3;
-  margin-bottom: 8px;
+/* GTACON STRIP */
+.gtacon-strip {
+  background: var(--asphalt);
+  border-top: 1px solid var(--edge);
+  border-bottom: 1px solid var(--edge);
+  padding: 16px 24px;
 }
-
-.article-excerpt { font-size: 13px; color: var(--cc); line-height: 1.5; margin-bottom: 12px; }
-
-.article-link {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--amber);
-  letter-spacing: 0.5px;
-}
-
-/* ── PDF PROMO ── */
-.pdf-promo {
-  background: linear-gradient(135deg, var(--grey) 0%, #1a1500 100%);
-  border: 1px solid var(--amber);
-  border-radius: 6px;
-  padding: 40px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 24px;
+.gtacon-inner {
+  max-width: var(--wide-width);
+  margin: 0 auto;
+  display: flex;
   align-items: center;
-}
-
-.pdf-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 32px;
-  color: var(--white);
-  line-height: 1.1;
-  margin-bottom: 8px;
-}
-
-.pdf-desc { font-size: 14px; color: var(--cc); line-height: 1.5; max-width: 480px; }
-
-.pdf-badge {
-  background: var(--amber);
-  color: var(--black);
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 18px;
-  padding: 12px 20px;
-  border-radius: 4px;
-  text-align: center;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.pdf-badge:hover { background: var(--amber2); }
-
-.pdf-badge small {
-  display: block;
-  font-family: 'Inter', sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-/* ── HASHTAG ── */
-.hashtag-section {
-  background: var(--amber);
-  padding: 56px 24px;
-  text-align: center;
-}
-
-.hashtag-section h2 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(48px, 10vw, 96px);
-  color: var(--black);
-  line-height: 0.9;
-  margin-bottom: 12px;
-}
-
-.hashtag-section p {
-  color: rgba(0,0,0,0.6);
-  font-size: 14px;
-  max-width: 480px;
-  margin: 0 auto 24px;
-}
-
-.hashtag-btn {
-  display: inline-block;
-  background: var(--black);
-  color: var(--amber);
-  font-weight: 700;
-  font-size: 13px;
-  padding: 12px 24px;
-  border-radius: 4px;
-  letter-spacing: 1px;
-  transition: opacity 0.2s;
-}
-
-.hashtag-btn:hover { opacity: 0.85; text-decoration: none; }
-
-/* ── FOOTER ── */
-footer {
-  background: var(--grey);
-  border-top: 2px solid var(--amber);
-  padding: 40px 24px;
-  text-align: center;
-}
-
-.footer-logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 28px;
-  color: var(--white);
-  margin-bottom: 8px;
-}
-
-.footer-logo span { color: var(--amber); }
-
-.footer-links {
-  display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 20px;
-  list-style: none;
-  margin: 16px 0;
+  gap: 12px;
 }
-
-.footer-links a {
-  font-size: 12px;
-  color: var(--muted);
-  letter-spacing: 1px;
+.gtacon-label {
+  font-family: var(--font-label);
+  font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: .2em;
+  font-size: .72rem;
+  color: var(--smoke);
+}
+.gtacon-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.gtacon-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #FFCC00;
+  box-shadow: 0 0 8px rgba(255,204,0,.6);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity:1; }
+  50% { opacity:.5; }
+}
+.gtacon-con {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: #FFCC00;
+}
+.gtacon-name {
+  font-family: var(--font-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: .8rem;
+  color: var(--smoke);
 }
 
-.footer-links a:hover { color: var(--amber); }
-
-.footer-copy {
-  font-size: 11px;
-  color: var(--muted);
-  font-family: 'JetBrains Mono', monospace;
-}
-
-/* ── MOBILE ── */
-@media (max-width: 600px) {
-  .nav-links { display: none; }
-  .pdf-promo { grid-template-columns: 1fr; }
-  .pdf-badge { width: 100%; }
-  .capture-form { flex-direction: column; }
-  .capture-form input, .capture-btn { width: 100%; }
+/* HOME SECTIONS */
+.home-section {
+  max-width: var(--wide-width);
+  margin: 0 auto;
+  padding: 40px 24px;
 }
 </style>
 </head>
 <body>
 
-<!-- TICKER -->
-<div class="ticker-bar">
-  <span class="ticker-inner">
-    🎮 GTA 6 LAUNCHES NOVEMBER 19 &nbsp;•&nbsp; PS5 &amp; XBOX SERIES X &nbsp;•&nbsp; 13 YEARS IN THE MAKING &nbsp;•&nbsp; #CLEARTHELANES &nbsp;•&nbsp; FREE SURVIVAL GUIDE — SIGN UP BELOW &nbsp;•&nbsp; 56VICELANE.COM — YOUR GTA 6 HEADQUARTERS &nbsp;•&nbsp; 🎮 GTA 6 LAUNCHES NOVEMBER 19 &nbsp;•&nbsp; PS5 &amp; XBOX SERIES X &nbsp;•&nbsp; 13 YEARS IN THE MAKING &nbsp;•&nbsp; #CLEARTHELANES &nbsp;•&nbsp; FREE SURVIVAL GUIDE — SIGN UP BELOW &nbsp;•&nbsp; 56VICELANE.COM — YOUR GTA 6 HEADQUARTERS &nbsp;•&nbsp;
-  </span>
+<!-- ═══════════════════════════════════════════════════════════
+     TICKER — identical on every page
+     ═══════════════════════════════════════════════════════════ -->
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker-track">
+    <span class="ticker-item">56ViceLane — Where GTA5 Ends And GTA6 Begins</span>
+  </div>
 </div>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">56<span>Vice</span>Lane</div>
-  <ul class="nav-links">
-    <li><a href="#news">News</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#guide">Survival Guide</a></li>
-    <li><a href="#signup" class="nav-cta">Free Guide</a></li>
-  </ul>
+<!-- ═══════════════════════════════════════════════════════════
+     NAV — identical on every page
+     ═══════════════════════════════════════════════════════════ -->
+<nav class="nav">
+  <a class="logo" href="/">
+    <span class="logo-mark">56</span>
+    <span class="logo-text">ViceLane</span>
+  </a>
+  <div class="nav-links">
+    <a href="/news">News</a>
+    <a href="/gtacon">GTACON</a>
+    <a href="/lastdrive">Last Drive</a>
+    <a href="/members">Members</a>
+    <a href="/store">Store</a>
+    <a href="/gear">Gear</a>
+    <a href="/tools">Tools</a>
+    <a href="/forum">Forum</a>
+  </div>
+  <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-grid"></div>
+<!-- Mobile nav drawer -->
+<div class="nav-mobile" id="nav-mobile">
+  <a href="/news">News</a>
+  <a href="/gtacon">GTACON</a>
+  <a href="/lastdrive">Last Drive</a>
+  <a href="/members">Members</a>
+  <a href="/store">Store</a>
+  <a href="/gear">Gear</a>
+  <a href="/tools">Tools</a>
+  <a href="/forum">Forum</a>
+  <div class="mobile-divider"></div>
+  <a href="/about">About</a>
+  <a href="/contact">Contact</a>
+  <div class="mobile-divider"></div>
+  <a href="/privacy">Privacy</a>
+  <a href="/terms">Terms</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════════ -->
+<div class="site-hero">
   <div class="hero-content">
-    <div class="hero-eyebrow">GTA 6 Headquarters &nbsp;|&nbsp; Est. Before Launch &nbsp;|&nbsp; #ClearTheLanes</div>
-    <h1>WELCOME TO<br><span class="hl">VICE CITY.</span></h1>
-    <p class="hero-sub">The internet's home for GTA 6 news, leaks, launch guides, and the community that's been waiting 13 years for this moment.</p>
-
-    <!-- EMAIL CAPTURE -->
-    <div class="capture-box" id="signup">
-      <div class="capture-label">Free Download</div>
-      <div class="capture-title">GTA 6 Launch Day Survival Guide</div>
-      <div class="capture-desc">Food. Gear. Day-off templates. Finance prep. A minute-by-minute launch night timeline. From a former pro gamer who's done this before.</div>
-      <div class="capture-form">
-        <input type="email" id="email-input" placeholder="your@email.com" autocomplete="email">
-        <button class="capture-btn" id="submit-btn" onclick="submitEmail()">GET THE GUIDE &#9658;</button>
-      </div>
-      <div class="capture-fine">No spam. Just GTA 6 updates and the free PDF. Unsubscribe anytime.</div>
-      <div class="capture-success" id="capture-success">&#10003; &nbsp;You're in! Check your inbox for the Survival Guide.</div>
-      <div class="capture-error" id="capture-error">Something went wrong. Try again.</div>
+    <div class="hero-eyebrow">56ViceLane · Est. 2026</div>
+    <h1 class="hero-title">
+      Where GTA5 Ends<br>
+      <span>And GTA6</span> Begins
+    </h1>
+    <p class="hero-sub">
+      The Last Drive is November 18, 2026 — the night before GTA6 launches.
+      Join the community farewell to GTA5. Free. All platforms.
+    </p>
+    <div class="hero-ctas">
+      <a href="/lastdrive" class="btn btn-primary">🏁 Join The Last Drive</a>
+      <a href="/news" class="btn btn-secondary">Latest GTA6 News</a>
     </div>
   </div>
-</section>
+</div>
 
-<hr class="amber">
-
-<!-- WHY 56 -->
-<section class="section" id="about">
-  <div class="container">
-    <div class="section-label">Who We Are</div>
-    <h2 class="section-title">Built by a Gamer.<br>For Gamers.</h2>
-    <p class="section-body">56ViceLane is run by Brew — former competitive gamer, active delivery driver, and GTA obsessive. We cover GTA 6 from the inside. No clickbait. No fluff. Just real coverage from someone who's been waiting since 2013.</p>
-    <div class="why-grid">
-      <div class="why-card">
-        <div class="why-icon">🏆</div>
-        <div class="why-title">Pro Gaming Background</div>
-        <div class="why-desc">World-ranked competitive history. We know what launch night looks like at the highest level.</div>
+<!-- ═══════════════════════════════════════════════════════════
+     COUNTDOWN
+     ═══════════════════════════════════════════════════════════ -->
+<div class="countdown-bar">
+  <div class="countdown-inner">
+    <div class="countdown-label">⏳ GTA6 Launches In</div>
+    <div class="countdown-timer" id="countdown-timer">
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-days">--</span>
+        <span class="countdown-unit-label">Days</span>
       </div>
-      <div class="why-card">
-        <div class="why-icon">🚗</div>
-        <div class="why-title">Inside the Delivery World</div>
-        <div class="why-desc">Active DoorDash driver. We know exactly what GTA 6 launch night will do to delivery. And we're warning you now.</div>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-hours">--</span>
+        <span class="countdown-unit-label">Hours</span>
       </div>
-      <div class="why-card">
-        <div class="why-icon">📡</div>
-        <div class="why-title">Real Coverage</div>
-        <div class="why-desc">News, leaks, analysis. No filler. Built on Cloudflare for speed. Updated constantly as launch approaches.</div>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-mins">--</span>
+        <span class="countdown-unit-label">Mins</span>
       </div>
-      <div class="why-card">
-        <div class="why-icon">🔥</div>
-        <div class="why-title">#ClearTheLanes</div>
-        <div class="why-desc">A community movement built around the biggest launch in gaming history. Join it. Spread it. Own it.</div>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-secs">--</span>
+        <span class="countdown-unit-label">Secs</span>
       </div>
     </div>
+    <a href="/lastdrive" class="section-link">The Last Drive →</a>
   </div>
-</section>
+</div>
 
-<hr class="amber">
-
-<!-- PDF PROMO -->
-<section class="section" id="guide" style="background: var(--grey);">
-  <div class="container">
-    <div class="pdf-promo">
-      <div>
-        <div class="section-label">Free Download</div>
-        <div class="pdf-title">GTA 6 LAUNCH DAY<br>SURVIVAL GUIDE</div>
-        <p class="pdf-desc">9 sections. Food prep, gear checklist, day-off request templates, finance prep, the DoorDash warning, a hour-by-hour body survival guide, and a full launch night timeline. Written by someone who's been on both sides of this.</p>
-      </div>
-      <div class="pdf-badge" onclick="document.getElementById('email-input').focus(); document.querySelector('.hero').scrollIntoView({behavior:'smooth'})">
-        GET IT FREE
-        <small>EMAIL REQUIRED</small>
-      </div>
+<!-- ═══════════════════════════════════════════════════════════
+     GTACON STRIP
+     ═══════════════════════════════════════════════════════════ -->
+<div class="gtacon-strip">
+  <div class="gtacon-inner">
+    <div class="gtacon-label">🎮 GTA6 Launch Readiness</div>
+    <div class="gtacon-status">
+      <div class="gtacon-dot"></div>
+      <div class="gtacon-con" id="gtacon-con">CON 3</div>
+      <div class="gtacon-name" id="gtacon-name">Significant</div>
     </div>
+    <a href="/gtacon" class="section-link">Full GTACON →</a>
   </div>
-</section>
+</div>
 
-<hr class="amber">
+<!-- AdSense -->
+<div style="max-width:var(--wide-width);margin:0 auto;padding:0 24px;">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
 
-<!-- LATEST NEWS -->
-<section class="section" id="news">
-  <div class="container">
-    <div class="section-label">Latest Coverage</div>
-    <h2 class="section-title">From 56ViceLane</h2>
-    <p class="section-body">Real takes on the biggest gaming launch of the generation.</p>
-    <div class="articles-grid" id="articles-grid">
-      <!-- Articles loaded from articles.json -->
-      <div class="article-card">
-        <div class="article-tag">Launch Night</div>
-        <div class="article-title">GTA 6 Launch Night Will Break DoorDash. Here's Why.</div>
-        <div class="article-excerpt">A former pro gamer and active delivery driver tells you exactly what's coming — and how to survive it.</div>
-        <a class="article-link" href="#">READ MORE &#9658;</a>
-      </div>
-      <div class="article-card">
-        <div class="article-tag">Pro Tips</div>
-        <div class="article-title">The Pro Gamer's Guide to Requesting Launch Day Off</div>
-        <div class="article-excerpt">We used to do this every major release. Here's the template that works — and why giving 4-6 weeks notice is non-negotiable.</div>
-        <a class="article-link" href="#">READ MORE &#9658;</a>
-      </div>
-      <div class="article-card">
-        <div class="article-tag">GTA 6</div>
-        <div class="article-title">Everything We Know About GTA 6 — November 19 Edition</div>
-        <div class="article-excerpt">PS5 and Xbox Series X. 13 years in the making. Here's the full confirmed breakdown heading into launch.</div>
-        <a class="article-link" href="#">READ MORE &#9658;</a>
+<!-- ═══════════════════════════════════════════════════════════
+     LATEST NEWS
+     ═══════════════════════════════════════════════════════════ -->
+<div class="home-section">
+  <div class="section-header-row">
+    <div class="section-title">Latest News</div>
+    <a href="/news" class="section-link">All Articles →</a>
+  </div>
+  <div class="news-grid" id="news-grid">
+    <div style="color:var(--smoke);font-size:.9rem;">Loading...</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     LAST DRIVE CTA
+     ═══════════════════════════════════════════════════════════ -->
+<div style="padding:0 24px 48px;">
+  <div style="max-width:var(--wide-width);margin:0 auto;">
+    <div class="ld-cta reveal">
+      <div class="ld-cta-eyebrow">Community Event · November 18, 2026</div>
+      <div class="ld-cta-title">The Last Drive</div>
+      <p class="ld-cta-sub">
+        One final night in GTA5. Thousands of players. One last cruise before
+        GTA6 takes over forever. Free to join. Your spot is waiting on the
+        Wall of Honor.
+      </p>
+      <div class="ld-cta-btns">
+        <a href="/lastdrive" class="btn btn-primary">🏁 Sign Up Free</a>
+        <a href="/members" class="btn btn-ghost">Wall of Honor</a>
+        <a href="/store" class="btn btn-ghost">Get Your Plate</a>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- HASHTAG SECTION -->
-<section class="hashtag-section">
-  <h2>#CLEAR<br>THE LANES</h2>
-  <p>The GTA 6 community movement. Show up for the biggest launch of your generation. Spread the word. Own the moment.</p>
-  <a href="https://x.com/search?q=%23ClearTheLanes" target="_blank" class="hashtag-btn">JOIN THE MOVEMENT ON X &#9658;</a>
-</section>
+<!-- AdSense -->
+<div style="max-width:var(--wide-width);margin:0 auto;padding:0 24px;">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
 
-<!-- FOOTER -->
+<!-- ═══════════════════════════════════════════════════════════
+     GTA6 LAUNCH BANNER
+     ═══════════════════════════════════════════════════════════ -->
+<div class="launch-banner">
+  <div class="lb-inner">
+    <div class="lb-label">Coming November 19, 2026</div>
+    <div class="lb-title">
+      GTA6 Launches — <span>New Plate Era Begins</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER — identical on every page
+     ═══════════════════════════════════════════════════════════ -->
 <footer>
-  <div class="footer-logo">56<span>Vice</span>Lane</div>
-  <p style="font-size:13px; color:var(--muted); margin-bottom:12px;">GTA 6 Headquarters — Forged Oak Studios</p>
-  <ul class="footer-links">
-    <li><a href="#news">News</a></li>
-    <li><a href="#guide">Survival Guide</a></li>
-    <li><a href="https://x.com" target="_blank">X / Twitter</a></li>
-    <li><a href="https://tiktok.com" target="_blank">TikTok</a></li>
-    <li><a href="https://youtube.com" target="_blank">YouTube</a></li>
-    <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
-  </ul>
-  <div class="footer-copy">56VICELANE.COM — FORGED OAK STUDIOS — NOT AFFILIATED WITH ROCKSTAR GAMES</div>
+  <div class="footer-brand">
+    <span class="logo-mark">56</span>ViceLane
+  </div>
+  <div class="footer-tag">Where GTA5 Ends And GTA6 Begins</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/news">News</a>
+    <a href="/gtacon">GTACON</a>
+    <a href="/lastdrive">Last Drive</a>
+    <a href="/members">Members</a>
+    <a href="/store">Store</a>
+    <a href="/gear">Gear</a>
+    <a href="/tools">Tools</a>
+    <a href="/forum">Forum</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="/admin" class="admin-link">Admin</a>
+  </div>
+  <p class="footer-disclosure">
+    56ViceLane is an independent fan site. Not affiliated with, endorsed by,
+    or sponsored by Rockstar Games or Take-Two Interactive. All trademarks
+    belong to their respective owners. 56ViceLane earns a small commission
+    on qualifying purchases through affiliate links at no extra cost to you.
+  </p>
+  <p class="footer-copy" id="vl-copyright">
+    © 2026 56ViceLane · Forged Oak Studios
+  </p>
 </footer>
 
+<!-- ═══════════════════════════════════════════════════════════
+     SCRIPTS
+     ═══════════════════════════════════════════════════════════ -->
 <script>
-// ── AIRTABLE CONFIG ──────────────────────────────────────────────
-// TODO: Replace these with your actual Airtable values
-// 1. Go to airtable.com → create a base called "56ViceLane Emails"
-// 2. Add a table called "Subscribers" with fields: Email, Date, Source
-// 3. Get your API key from airtable.com/create/tokens
-// 4. Get your Base ID from the API docs at airtable.com/api
-var AIRTABLE_API_KEY = 'pat8InYZ0CwiqnM3V.9b8697486b2b51406954ff3fa3613f35db1c4706c71546f5a4914961cf9bb754';
-var AIRTABLE_BASE_ID = 'appmCDK9WqSnxI57U';
-var AIRTABLE_TABLE   = 'Newsletter';
-
-function submitEmail() {
-  var email = document.getElementById('email-input').value.trim();
-  var btn   = document.getElementById('submit-btn');
-  var succ  = document.getElementById('capture-success');
-  var err   = document.getElementById('capture-error');
-
-  // Basic validation
-  if (!email || !email.includes('@') || !email.includes('.')) {
-    err.textContent = 'Please enter a valid email address.';
-    err.style.display = 'block';
+// ── COUNTDOWN ─────────────────────────────────────────────
+function updateCountdown() {
+  var launch = new Date('2026-11-19T00:00:00').getTime();
+  var now = Date.now();
+  var diff = launch - now;
+  if (diff <= 0) {
+    document.getElementById('countdown-timer').innerHTML =
+      '<span style="color:var(--amber);font-family:var(--font-display);">GTA6 IS LIVE</span>';
     return;
   }
+  var d = Math.floor(diff / 86400000);
+  var h = Math.floor((diff % 86400000) / 3600000);
+  var m = Math.floor((diff % 3600000) / 60000);
+  var s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-mins').textContent  = String(m).padStart(2,'0');
+  document.getElementById('cd-secs').textContent  = String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
 
-  err.style.display  = 'none';
-  succ.style.display = 'none';
-  btn.disabled       = true;
-  btn.textContent    = 'SENDING...';
+// ── GTACON STATUS ─────────────────────────────────────────
+(function() {
+  var COLORS = {1:'#FF1A1A',2:'#FF6600',3:'#FFCC00',4:'#88CC00',5:'#00CC66'};
+  var NAMES  = {1:'Maximum',2:'Critical',3:'Significant',4:'Elevated',5:'Cold'};
+  function applyGTACON(con) {
+    var conEl  = document.getElementById('gtacon-con');
+    var nameEl = document.getElementById('gtacon-name');
+    var dot    = document.querySelector('.gtacon-dot');
+    if (!conEl) return;
+    var color = COLORS[con] || '#FFCC00';
+    conEl.textContent  = 'CON ' + con;
+    conEl.style.color  = color;
+    if (nameEl) { nameEl.textContent = NAMES[con] || ''; }
+    if (dot) { dot.style.background = color; dot.style.boxShadow = '0 0 8px ' + color; }
+  }
+  // Default CON 3, try to fetch fresh
+  applyGTACON(3);
+  fetch('/gtacon.json?t=' + Date.now())
+    .then(function(r) { return r.json(); })
+    .then(function(d) { if (d && d.condition) applyGTACON(d.condition); })
+    .catch(function() {});
+})();
 
-  fetch('https://api.airtable.com/v0/' + AIRTABLE_BASE_ID + '/' + encodeURIComponent(AIRTABLE_TABLE), {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer ' + AIRTABLE_API_KEY,
-      'Content-Type':  'application/json'
-    },
-    body: JSON.stringify({
-      fields: {
-        'Email copy': email,
-        Signupdate: new Date().toISOString().split('T')[0],
-        Source: 'Homepage Hero'
-      }
-    })
-  })
-  .then(function(res) {
-    if (res.ok) {
-      succ.style.display = 'block';
-      document.getElementById('email-input').value = '';
-      btn.textContent = 'GOT IT ✓';
-    } else {
-      throw new Error('Airtable error');
+// ── NEWS GRID ─────────────────────────────────────────────
+fetch('/articles.json?v=' + Date.now())
+  .then(function(r) { return r.json(); })
+  .then(function(articles) {
+    var grid = document.getElementById('news-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+
+    // Show latest 6
+    var recent = articles.slice(0, 6);
+    recent.forEach(function(a) {
+      var card = document.createElement('a');
+      card.className = 'news-card';
+      card.href = '/articles/' + a.slug;
+
+      var img = a.image || 'Gta6.png';
+
+      card.innerHTML =
+        '<div class="news-card-img" style="background-image:url(\'/images/' + img + '\')"></div>' +
+        '<div class="news-card-body">' +
+          '<div class="news-card-tag">GTA6</div>' +
+          '<div class="news-card-title">' + (a.title || '') + '</div>' +
+          '<div class="news-card-date">' +
+            (a.date ? new Date(a.date).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) : '') +
+          '</div>' +
+        '</div>';
+      grid.appendChild(card);
+    });
+
+    // Build ticker from articles
+    var track = document.getElementById('ticker-track');
+    if (track) {
+      var items = [].concat(articles, articles).map(function(x) {
+        return '<span class="ticker-item" onclick="location.href=\'/articles/' + x.slug + '\'">' +
+          (x.emoji || '⚡') + ' ' + x.title + '</span>';
+      }).join('');
+      track.innerHTML = items;
     }
   })
   .catch(function() {
-    err.textContent    = 'Something went wrong. Try again in a moment.';
-    err.style.display  = 'block';
-    btn.disabled       = false;
-    btn.textContent    = 'GET THE GUIDE ▸';
+    var grid = document.getElementById('news-grid');
+    if (grid) grid.innerHTML = '<div style="color:var(--smoke);font-size:.9rem;">Check back soon.</div>';
   });
-}
 
-// Enter key support
-document.getElementById('email-input').addEventListener('keydown', function(e) {
-  if (e.key === 'Enter') submitEmail();
+// ── NAV TOGGLE ────────────────────────────────────────────
+var mt = document.getElementById('menu-toggle');
+var nm = document.getElementById('nav-mobile');
+if (mt && nm) mt.addEventListener('click', function() {
+  nm.classList.toggle('open');
 });
-</script>
 
+// ── REVEAL ────────────────────────────────────────────────
+var obs = new IntersectionObserver(function(es) {
+  es.forEach(function(e) {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: .08 });
+document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+
+// ── DEBUG MODE ────────────────────────────────────────────
+(function() {
+  var KEY = '56vl-debug';
+  var active = localStorage.getItem(KEY) === '1';
+  function applyDebug() {
+    var ind = document.getElementById('vl-debug-ind');
+    if (!ind) {
+      ind = document.createElement('div');
+      ind.id = 'vl-debug-ind';
+      ind.textContent = '🔧 DEBUG ON — tap to off';
+      ind.onclick = function() {
+        active = false;
+        localStorage.setItem(KEY, '0');
+        applyDebug();
+      };
+      document.body.appendChild(ind);
+    }
+    ind.style.display = active ? 'block' : 'none';
+  }
+  // Copyright long-press triggers debug (mobile fallback)
+  var el = document.getElementById('vl-copyright');
+  var timer = null;
+  if (el) {
+    el.style.userSelect = 'none';
+    el.style.webkitUserSelect = 'none';
+    el.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      timer = setTimeout(function() {
+        active = !active;
+        localStorage.setItem(KEY, active ? '1' : '0');
+        applyDebug();
+      }, 1500);
+    }, { passive: false });
+    el.addEventListener('touchend', function() { clearTimeout(timer); });
+    el.addEventListener('touchmove', function() { clearTimeout(timer); });
+  }
+  applyDebug();
+})();
+</script>
 </body>
 </html>
