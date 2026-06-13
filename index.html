@@ -511,7 +511,8 @@ function nlSubmit() {
     },
     body: JSON.stringify({records:[{fields:{
       'Email copy': email,
-      'Source': 'Homepage'
+      'Source': 'Homepage',
+      'Signupdate': new Date().toISOString().split('T')[0]
     }}]})
   }).then(function(r) {
     if (r.ok) {
