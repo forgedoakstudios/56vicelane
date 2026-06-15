@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fan Is Building His Own 'GTA6-Caliber' Game With AI Agents — First Look | 56ViceLane</title>
+<meta name="description" content="An indie dev is using AI coding agents to build a GTA6-style open world game in public. Here's what's been built so far — and what it doesn't mean for the real GTA6.">
+<meta property="og:title" content="Fan Is Building His Own 'GTA6-Caliber' Game With AI Agents — First Look">
+<meta property="og:description" content="An indie dev is using AI coding agents to build a GTA6-style open world game in public. Here's what's been built so far — and what it doesn't mean for the real GTA6.">
+<meta property="og:image" content="https://56vicelane.com/images/GtaCaliber.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://56vicelane.com/articles/gta6-style-game-built-with-ai-agents">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="56ViceLane">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fan Is Building His Own 'GTA6-Caliber' Game With AI Agents — First Look">
+<meta name="twitter:description" content="An indie dev is building a GTA6-style open world game using AI agents — and the internet can't stop watching.">
+<meta name="twitter:image" content="https://56vicelane.com/images/GtaCaliber.png">
+<link rel="canonical" href="https://56vicelane.com/articles/gta6-style-game-built-with-ai-agents">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9EKF7J4V7W');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+--pitch:#0B0B0F;--asphalt:#16161D;--amber:#FF6B1A;--amber-dim:#cc4a00;
+--cyan:#00D4FF;--bone:#F0EDE8;--smoke:#7A7A8C;--edge:#26262F;
+--green:#00C875;--red:#FF3B3B;
+}
+body{background:var(--pitch);color:var(--bone);font-family:'Inter',sans-serif;font-size:1rem;line-height:1.7;}
+a{color:var(--amber);text-decoration:none;}
+a:hover{color:var(--cyan);}
+
+/* NAV */
+nav{background:var(--asphalt);border-bottom:2px solid var(--amber);padding:0 20px;position:sticky;top:0;z-index:200;}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo-box{background:var(--amber);color:#000;font-family:'Russo One',sans-serif;font-size:1.1rem;padding:4px 8px;border-radius:4px;}
+.nav-logo-text{font-family:'Russo One',sans-serif;font-size:1.1rem;color:var(--bone);letter-spacing:1px;}
+.nav-links{display:flex;gap:24px;list-style:none;}
+.nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;color:var(--smoke);letter-spacing:1px;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--amber);}
+
+/* TICKER */
+.ticker-wrap{background:var(--amber);overflow:hidden;padding:6px 0;position:sticky;top:56px;z-index:100;}
+.ticker-track{display:flex;gap:60px;white-space:nowrap;animation:ticker 30s linear infinite;}
+.ticker-item{font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;font-weight:700;color:#000;text-transform:uppercase;cursor:pointer;flex-shrink:0;}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ARTICLE */
+.article-wrap{max-width:780px;margin:0 auto;padding:40px 20px 80px;}
+.article-category{font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:12px;}
+.article-title{font-family:'Russo One',sans-serif;font-size:2rem;line-height:1.2;color:var(--bone);margin-bottom:16px;}
+.article-meta{font-size:0.85rem;color:var(--smoke);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
+.article-meta span{display:flex;align-items:center;gap:4px;}
+.article-hero{width:100%;border-radius:8px;margin-bottom:32px;display:block;}
+.article-body h2{font-family:'Russo One',sans-serif;font-size:1.3rem;color:var(--amber);margin:36px 0 14px;}
+.article-body h3{font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;font-weight:700;color:var(--cyan);margin:24px 0 10px;text-transform:uppercase;letter-spacing:1px;}
+.article-body p{margin-bottom:18px;color:var(--bone);line-height:1.75;}
+.article-body ul,.article-body ol{margin:0 0 18px 24px;}
+.article-body li{margin-bottom:8px;color:var(--bone);}
+.article-body strong{color:var(--bone);font-weight:600;}
+
+/* CALLOUT BOXES */
+.callout{background:var(--edge);border-left:4px solid var(--amber);border-radius:6px;padding:20px 24px;margin:28px 0;}
+.callout.cyan{border-color:var(--cyan);}
+.callout.green{border-color:var(--green);}
+.callout.red{border-color:var(--red);}
+.callout-label{font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:8px;}
+.callout.cyan .callout-label{color:var(--cyan);}
+.callout.green .callout-label{color:var(--green);}
+.callout.red .callout-label{color:var(--red);}
+.callout p{margin:0;font-size:0.95rem;}
+
+/* FACT BOX */
+.fact-box{background:var(--asphalt);border:1px solid var(--edge);border-radius:8px;padding:24px;margin:28px 0;}
+.fact-box-title{font-family:'Russo One',sans-serif;font-size:1rem;color:var(--amber);margin-bottom:16px;}
+.fact-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--edge);}
+.fact-row:last-child{border-bottom:none;}
+.fact-label{font-size:0.9rem;color:var(--smoke);}
+.fact-value{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;color:var(--bone);}
+.fact-value.confirmed{color:var(--green);}
+.fact-value.unconfirmed{color:var(--amber);}
+
+/* SHARE BAR */
+.share-bar{display:flex;gap:10px;flex-wrap:wrap;margin:32px 0;}
+.share-bar a{display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:6px;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s;}
+.share-bar a:hover{opacity:0.85;}
+.share-facebook{background:#1877F2;color:#fff;}
+.share-twitter{background:#000;color:#fff;}
+.share-reddit{background:#FF4500;color:#fff;}
+.share-copy{background:var(--edge);color:var(--bone);border:1px solid var(--smoke);}
+
+/* GEAR SECTION */
+.gear-section{background:var(--asphalt);border:1px solid var(--edge);border-radius:8px;padding:28px;margin:40px 0;}
+.gear-section h3{font-family:'Russo One',sans-serif;font-size:1.1rem;color:var(--amber);margin-bottom:6px;}
+.gear-section p{font-size:0.9rem;color:var(--smoke);margin-bottom:20px;}
+.gear-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.gear-item{background:var(--edge);border-radius:6px;padding:14px;display:flex;flex-direction:column;gap:8px;}
+.gear-item-name{font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;font-weight:700;color:var(--bone);}
+.gear-item-link{display:inline-block;background:var(--amber);color:#000;font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;font-weight:700;padding:6px 12px;border-radius:4px;text-transform:uppercase;letter-spacing:1px;text-align:center;}
+.gear-item-link:hover{background:var(--amber-dim);color:#000;}
+
+/* LAST DRIVE CTA */
+.lastdrive-cta{background:linear-gradient(135deg,#1a0a00,var(--edge));border:2px solid var(--amber);border-radius:8px;padding:28px;margin:40px 0;text-align:center;}
+.lastdrive-cta h3{font-family:'Russo One',sans-serif;font-size:1.2rem;color:var(--amber);margin-bottom:8px;}
+.lastdrive-cta p{font-size:0.95rem;color:var(--smoke);margin-bottom:20px;}
+.lastdrive-cta a{display:inline-block;background:var(--amber);color:#000;font-family:'Russo One',sans-serif;font-size:1rem;padding:12px 28px;border-radius:6px;text-decoration:none;letter-spacing:1px;}
+.lastdrive-cta a:hover{background:var(--amber-dim);}
+
+/* AD UNIT */
+.ad-unit{margin:32px 0;text-align:center;}
+
+/* FOOTER */
+footer{background:var(--asphalt);border-top:1px solid var(--edge);padding:40px 20px;}
+.footer-inner{max-width:1100px;margin:0 auto;text-align:center;}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:16px;}
+.footer-links a{font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;color:var(--smoke);text-transform:uppercase;letter-spacing:1px;}
+.footer-links a:hover{color:var(--amber);}
+.footer-disclaimer{font-size:0.8rem;color:var(--smoke);line-height:1.6;max-width:600px;margin:0 auto;}
+
+@media(max-width:600px){
+.article-title{font-size:1.5rem;}
+.gear-grid{grid-template-columns:1fr;}
+.nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+<div class="nav-inner">
+<a href="/" class="nav-logo">
+<span class="nav-logo-box">56</span>
+<span class="nav-logo-text">VICELANE</span>
+</a>
+<ul class="nav-links">
+<li><a href="/news">News</a></li>
+<li><a href="/gtacon">GTACON</a></li>
+<li><a href="/lastdrive">Last Drive</a></li>
+<li><a href="/wall">Wall of Honor</a></li>
+<li><a href="/shop">Gear</a></li>
+</ul>
+</div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+<div class="ticker-track" id="ticker-track">
+<span class="ticker-item">Loading latest GTA6 news...</span>
+</div>
+</div>
+
+<!-- ARTICLE -->
+<div class="article-wrap">
+
+<div class="article-category">⚡ GTA6 News</div>
+<h1 class="article-title">Fan Is Building His Own "GTA6-Caliber" Game With AI Agents — First Look</h1>
+<div class="article-meta">
+<span>📅 June 15, 2026</span>
+<span>✍️ 56ViceLane News Desk</span>
+<span>⏱️ 9 min read</span>
+</div>
+
+<img src="/images/GtaCaliber.png" alt="A glowing neon city skyline at night with a lone character standing in the street, representing an AI-built open world game project" class="article-hero">
+
+<!-- SHARE BAR TOP -->
+<div class="share-bar">
+<a href="https://www.facebook.com/sharer/sharer.php?u=https://56vicelane.com/articles/gta6-style-game-built-with-ai-agents" target="_blank" class="share-facebook">📘 Facebook</a>
+<a href="https://twitter.com/intent/tweet?url=https://56vicelane.com/articles/gta6-style-game-built-with-ai-agents&text=Someone%20is%20building%20their%20own%20GTA6%20with%20AI%20agents...">𝕏 Twitter</a>
+<a href="https://www.reddit.com/submit?url=https://56vicelane.com/articles/gta6-style-game-built-with-ai-agents&title=Fan%20Is%20Building%20A%20GTA6-Caliber%20Game%20With%20AI%20Agents" target="_blank" class="share-reddit">🔴 Reddit</a>
+<a href="#" onclick="navigator.clipboard.writeText(window.location.href);alert('Link copied!');return false;" class="share-copy">🔗 Copy Link</a>
+</div>
+
+<!-- AD UNIT 1 -->
+<div class="ad-unit">
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<div class="article-body">
+
+<p>While the rest of us are refreshing our feeds every few hours hoping for an actual <a href="https://www.youtube.com/@RockstarGames" target="_blank" style="color:var(--amber);">Rockstar Games</a> announcement, one developer decided he wasn't going to wait around at all. He's building his own open-world game — one he's openly calling "GTA-VI-caliber" — using a team of AI coding agents, a free game engine, and absolutely zero studio backing. And he's doing the entire thing in public, one daily post at a time.</p>
+
+<p>It's not GTA6. It's not affiliated with Rockstar or Take-Two in any way. But it's racking up millions of views, and it's exactly the kind of thing a starved-for-content GTA6 community latches onto. Here's what's actually been built so far — and what it does (and doesn't) mean for the real thing.</p>
+
+<h2>Who's Behind The Project, And What Is "GTA-Caliber"?</h2>
+
+<p>The developer goes by Ziwen online, posting under the handle <a href="https://x.com/ziwenxu_" target="_blank" style="color:var(--cyan);">@ziwenxu_</a> to nearly 20,000 followers. A few days ago, he kicked things off with a post that read almost like a confession: "Day 1 of building GTA6. Still feels fake typing that out." From there, things moved fast. He upgraded to a high-end AI coding subscription specifically for the project, spent a couple of hours getting the entire project structured, and pushed a working sandbox build to a public code repository before the day was out.</p>
+
+<p>The pitch is simple and a little wild: no studio, no publisher, no pitch deck. Just an open build log, a game engine, and a loop of AI agents doing a chunk of the heavy lifting on code. The project runs on Godot — the free, open-source engine that's become a favorite among indie devs precisely because there's no licensing fee standing between an idea and a build.</p>
+
+<div class="callout cyan">
+<div class="callout-label">ℹ️ Good To Know</div>
+<p>This project has nothing to do with Rockstar Games, Take-Two Interactive, or the actual Grand Theft Auto VI. It's an independent, fan-made tech demo that borrows the name and aesthetic because that's the genre everyone's talking about right now. Nothing here changes anything about the real GTA6 or its November 19, 2026 launch date.</p>
+</div>
+
+<h2>From A Blue Capsule In An Empty Field To Running, Jumping, Neon Streets</h2>
+
+<p>If you want to understand how fast this moved, look at where it started. The very first piece of footage Ziwen shared was about as bare-bones as game development gets: a single blue capsule — the default placeholder shape every game engine uses before any actual character model exists — standing in a flat green void, casting a shadow, doing absolutely nothing. That's it. That's "Day 1." It's the kind of screenshot that, on its own, would mean nothing to anyone outside of game development.</p>
+
+<p>But a few days later, the same project looked dramatically different. By what Ziwen labeled "Day 4," the build log included several concrete updates: a first version of a collision system (handling how the player and objects interact with the world), a rebuilt movement system described as controlling "like a real person now, not a placeholder," and the addition of a "wasted" screen — the unmistakable death/respawn screen that's been a GTA franchise signature since the PS2 era.</p>
+
+<p>Alongside those updates came the first real footage — and it's worth being precise about what that footage actually is, because it's easy to overstate. It is <strong>not</strong> a trailer in any official sense. It's one short, rough dev clip that opens with a mock news broadcast cutting in — the kind of in-world "breaking news" moment GTA games use to set tone and humor — before cutting to a player character sprinting down a street and vaulting between parked cars, with a dense wall of glowing high-rise windows filling the background. That skyline, lit up at night, immediately reads as "neon coastal city" in the way GTA6's own reveal trailers have trained everyone to recognize.</p>
+
+<div class="callout">
+<div class="callout-label">📌 Note</div>
+<p>Calling this clip a "trailer" would be misleading. It's early, rough dev-build footage from a project that's days old — closer to a tech demo than a cinematic. Treat it as exactly that: a fast-moving work in progress, not a finished product.</p>
+</div>
+
+<h2>"Vibe Coding": Why This Term Is Suddenly Everywhere</h2>
+
+<p>This project didn't appear in a vacuum. It's part of a broader trend that's been bubbling up across tech and gaming circles for months, sometimes called "vibe coding" — the practice of using AI agents to write, test, and refine software in tight loops based on natural-language direction, with a human steering the overall vision rather than typing every line themselves.</p>
+
+<p>A separate post from another creator, developer Matt Shumer, captured just how much appetite there is for this idea. He suggested someone should set up a community-funded project built around a prompt that essentially says: keep looping the AI agents until they've produced an open-world game with quality and scope that rivals — or surpasses — the genre's biggest names. That single post pulled in roughly 6 million views, more than 3,300 likes, 372 reposts, and nearly 350 comments. People aren't just curious about whether AI can build a game like this. A lot of people clearly want to watch it happen, in real time, for free.</p>
+
+<p>Ziwen's project is effectively a live answer to that exact appetite — and it's why a build that's only a few days old is already getting the kind of attention most indie projects wait years for.</p>
+
+<h2>The Numbers Behind The Hype</h2>
+
+<p>Engagement on these posts has been genuinely outsized for a project this young. The "Day 4" update — the one with the collision system, reworked movement, and the neon-city footage — pulled in over 11,000 views within its first day, along with dozens of likes and a steady stream of comments and reposts. The earlier "Day 1" post, the one that introduced the whole concept, has continued climbing toward tens of thousands of views on its own.</p>
+
+<div class="fact-box">
+<div class="fact-box-title">📋 What We Know</div>
+<div class="fact-row">
+<span class="fact-label">Real GTA6 launch date</span>
+<span class="fact-value confirmed">November 19, 2026 ✓ Confirmed</span>
+</div>
+<div class="fact-row">
+<span class="fact-label">Real GTA6 launch platforms</span>
+<span class="fact-value confirmed">PS5 &amp; Xbox Series X|S, same day ✓ Confirmed</span>
+</div>
+<div class="fact-row">
+<span class="fact-label">Real GTA6 PC version</span>
+<span class="fact-value unconfirmed">Timing unknown — Unconfirmed</span>
+</div>
+<div class="fact-row">
+<span class="fact-label">"GTA-Caliber" AI project status</span>
+<span class="fact-value unconfirmed">Days-old prototype — Unconfirmed scope</span>
+</div>
+<div class="fact-row">
+<span class="fact-label">"GTA-Caliber" affiliation with Rockstar</span>
+<span class="fact-value unconfirmed">None — independent fan project</span>
+</div>
+<div class="fact-row">
+<span class="fact-label">Footage released so far</span>
+<span class="fact-value unconfirmed">One short dev clip — not a trailer</span>
+</div>
+</div>
+
+<!-- AD UNIT 2 -->
+<div class="ad-unit">
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<h2>Why Is A Days-Old Tech Demo Getting This Much Attention?</h2>
+
+<p>Part of it is simple timing. Right now, the actual GTA6 news cycle is quiet — fans are deep into the waiting game between trailers, and anything that even visually resembles the genre gets pulled into recommendation feeds by algorithms that have learned exactly how hungry this audience is. A neon skyline at night, a character running between cars, a "wasted" screen — these are visual shorthand the GTA community responds to instantly, regardless of who made them or how.</p>
+
+<p>The other part is the AI angle itself. Watching a solo developer go from a blue capsule in a green void to a moving, collision-aware character with a styled city block in roughly four days is, frankly, compelling television — even if everyone involved knows it's a long, long way from a finished game. It's less "is this GTA6" and more "how far can this actually go," and people are sticking around to find out.</p>
+
+<h2>What's Coming Next — According To The Build Log</h2>
+
+<p>Ziwen has been upfront about what's next on the list, and it's worth laying out because it shows just how early-stage this still is, even with footage already circulating. The next steps he's described include bringing in proper purchased assets into Godot — replacing the placeholder blocky buildings and capsule character with real 3D models — and shrinking the overall map down to something small and tightly scoped, specifically so the underlying systems "look more legit" once they're running in a denser, more detailed space.</p>
+
+<p>That second point matters more than it might seem. A huge open world with broken systems looks worse than a tiny, polished one with working systems — and it's a sign this project is being built the way most successful indie games actually get built: small, functional core loop first, scale later. The build log even ends with a half-joking note that the AI agents are "still looping," a nod to the fact that progress here is happening through repeated automated passes rather than a single marathon coding session.</p>
+
+<h2>How This Compares To Other "AI Built A Game" Moments</h2>
+
+<p>This isn't the first time an AI-assisted build has gone viral, and it almost certainly won't be the last. What makes this one stand out is the specific framing — tying the project directly to GTA6 by name and aesthetic, at the exact moment the real game's marketing has gone quiet between trailers. That combination is what's pushing it into Shorts feeds and For You pages well outside the usual indie-dev audience, the same way unrelated trend audio sometimes drags unrelated videos into massive reach.</p>
+
+<p>For context, the kind of numbers this project pulled in days one through four — tens of thousands of views, thousands of likes on the surrounding discussion — would normally take a solo indie dev months or years of consistent posting to reach. The AI angle plus the GTA6 timing did that in under a week. Whether the project still has that kind of attention in a month, once the novelty of "Day 1 vs Day 4" wears off, is the real test.</p>
+
+<h2>What This Means — And Doesn't Mean — For The Real GTA6</h2>
+
+<p>To be clear: none of this changes anything about Rockstar's actual Grand Theft Auto VI. The confirmed November 19, 2026 launch date stands, with PS5 and Xbox Series X|S launching the same day. PC remains unconfirmed for timing. This AI-built project is a fan curiosity running in parallel — entertaining to follow, but not a substitute for, or a preview of, anything Rockstar is actually shipping.</p>
+
+<p>If you want official news, the only place that matters is <a href="https://www.youtube.com/@RockstarGames" target="_blank" style="color:var(--amber);">Rockstar Games' own YouTube channel</a>. Everything else — including projects like this one — is community noise. Fun noise, sometimes. But noise.</p>
+
+<p>What this story really tells us is about the temperature of the GTA6 community right now: starved, engaged, and ready to click on anything that even looks like the genre. That same energy is exactly what's fueling the countdown to November 19 — and to the night before it.</p>
+
+</div><!-- end article-body -->
+
+<!-- SHARE BAR BOTTOM -->
+<div class="share-bar">
+<a href="https://www.facebook.com/sharer/sharer.php?u=https://56vicelane.com/articles/gta6-style-game-built-with-ai-agents" target="_blank" class="share-facebook">📘 Facebook</a>
+<a href="https://twitter.com/intent/tweet?url=https://56vicelane.com/articles/gta6-style-game-built-with-ai-agents&text=Someone%20is%20building%20their%20own%20GTA6%20with%20AI%20agents...">𝕏 Twitter</a>
+<a href="https://www.reddit.com/submit?url=https://56vicelane.com/articles/gta6-style-game-built-with-ai-agents&title=Fan%20Is%20Building%20A%20GTA6-Caliber%20Game%20With%20AI%20Agents" target="_blank" class="share-reddit">🔴 Reddit</a>
+<a href="#" onclick="navigator.clipboard.writeText(window.location.href);alert('Link copied!');return false;" class="share-copy">🔗 Copy Link</a>
+</div>
+
+<!-- GEAR SECTION -->
+<div class="gear-section">
+<h3>🎮 Building Or Gaming — Gear Up For The Long Haul</h3>
+<p>Whether you're tinkering with your own builds or just want your rig ready for GTA6 launch night, these are solid picks.</p>
+<div class="gear-grid">
+<div class="gear-item">
+<div class="gear-item-name">RTX 4070 Graphics Card</div>
+<a href="https://www.amazon.com/s?k=rtx+4070+graphics+card&tag=56vicelane-20" target="_blank" class="gear-item-link">Check Price →</a>
+</div>
+<div class="gear-item">
+<div class="gear-item-name">32GB DDR5 Gaming RAM</div>
+<a href="https://www.amazon.com/s?k=32gb+ddr5+ram+gaming&tag=56vicelane-20" target="_blank" class="gear-item-link">Check Price →</a>
+</div>
+<div class="gear-item">
+<div class="gear-item-name">2TB NVMe Gaming SSD</div>
+<a href="https://www.amazon.com/s?k=2tb+nvme+ssd+gaming+pc&tag=56vicelane-20" target="_blank" class="gear-item-link">Check Price →</a>
+</div>
+<div class="gear-item">
+<div class="gear-item-name">LG C-Series OLED Gaming TV</div>
+<a href="https://www.amazon.com/s?k=lg+c4+oled+tv+gaming&tag=56vicelane-20" target="_blank" class="gear-item-link">Check Price →</a>
+</div>
+</div>
+</div>
+
+<!-- LAST DRIVE CTA -->
+<div class="lastdrive-cta">
+<h3>🏁 The Last Drive — November 18, 2026</h3>
+<p>The night before GTA6 launches — join thousands of players for one final cruise through GTA5. Free. All platforms. No killing. No chaos. Just the road.</p>
+<a href="/lastdrive">Sign Up Free →</a>
+</div>
+
+<p style="font-size:0.8rem;color:var(--smoke);margin-top:24px;">*Affiliate disclosure: 56ViceLane uses Amazon affiliate links. We may earn a small commission on qualifying purchases at no extra cost to you.</p>
+
+</div><!-- end article-wrap -->
+
+<!-- FOOTER -->
+<footer>
+<div class="footer-inner">
+<div class="footer-links">
+<a href="/">Home</a>
+<a href="/news">News</a>
+<a href="/lastdrive">Last Drive</a>
+<a href="/wall">Wall of Honor</a>
+<a href="/gtacon">GTACON</a>
+<a href="/shop">Gear</a>
+<a href="/privacy">Privacy</a>
+<a href="/contact">Contact</a>
+</div>
+<p class="footer-disclaimer">56ViceLane is an independent fan site. Not affiliated with Rockstar Games or Take-Two Interactive. All trademarks belong to their respective owners. Leak information presented as community speculation only — not confirmed fact.<br><br>© 2026 56ViceLane · Forged Oak Studios</p>
+</div>
+</footer>
+
+<script>
+fetch('/articles.json?v='+Date.now())
+.then(function(r){return r.json();})
+.then(function(articles){
+var track=document.getElementById('ticker-track');
+if(!track)return;
+var items=articles.map(function(a){
+var span=document.createElement('span');
+span.className='ticker-item';
+span.textContent=(a.emoji||'⚡')+' '+a.title;
+span.onclick=function(){window.location.href=a.url;};
+return span;
+});
+var doubled=items.concat(items.map(function(el){return el.cloneNode(true);}));
+track.innerHTML='';
+doubled.forEach(function(el){track.appendChild(el);});
+})
+.catch(function(){});
+</script>
+
+</body>
+</html>
