@@ -1,20 +1,53 @@
 [
   {
-    "emoji": "🎤",
-    "title": "Take-Two CEO Gets Ambushed on the Street — Confirms GTA6 Date",
-    "slug": "gta6-take-two-ceo-ambushed-confirms-release-date",
-    "headline": "Zelnick confirmed November 19 to a TikToker who didn't even know who he was",
-    "category": "GTA6 News",
+    "emoji": "\u2696\ufe0f",
+    "title": "Tribunal Rules Against Rockstar \u2014 Blacklisting Claims Proceed to Trial Sept 10",
+    "slug": "rockstar-tribunal-blacklisting-claims-trial-september-2026",
+    "headline": "Full trial starts September 10 \u2014 six weeks before GTA6 launches",
+    "category": "Industry News",
     "date": "2026-06-17",
-    "excerpt": "Take-Two CEO Strauss Zelnick got stopped in a surprise street interview and confirmed GTA6 launches November 19 — unprompted, unscripted, and on camera.",
+    "excerpt": "A UK employment tribunal rejected Rockstar's attempt to strip blacklisting claims from the union-busting case. Every allegation proceeds to full trial starting September 10 \u2014 with GTA6 launching five weeks later on November 19.",
     "image": "gta6-hero.png",
     "permanent": false
   },
   {
-    "emoji": "🕵️",
+    "emoji": "\ud83c\udfdb\ufe0f",
+    "title": "GTA Online's Final Big Heist Before GTA6 \u2014 Kortz Center Drops July 2026",
+    "slug": "gta-online-kortz-center-heist-july-2026",
+    "headline": "Art theft, counterfeiting, multi-stage \u2014 and likely the last major send-off before GTA6",
+    "category": "GTA5 Online",
+    "date": "2026-06-17",
+    "excerpt": "Rockstar just announced The Kortz Center Heist for GTA Online in July 2026. Multi-stage art theft heist at Los Santos most famous landmark \u2014 and almost certainly the final major update before GTA6 launches November 19.",
+    "image": "GtaV.png",
+    "permanent": false
+  },
+  {
+    "emoji": "\ud83e\udd16",
+    "title": "She Gets 33M Views a Month Working One Day a Week \u2014 Here's the AI System",
+    "slug": "sabrina-ramonov-blotato-ai-content-system",
+    "headline": "Sabrina Ramonov built a 2.4M follower empire using Blotato and Claude",
+    "category": "AI & Creator Tools",
+    "date": "2026-06-17",
+    "excerpt": "Forbes 30 Under 30 AI founder Sabrina Ramonov gets 33 million monthly views working one day a week. Here is the exact AI system she built \u2014 and how to get her free resources.",
+    "image": "gta6-hero.png",
+    "permanent": false
+  },
+  {
+    "emoji": "\ud83c\udfa4",
+    "title": "Take-Two CEO Gets Ambushed on the Street \u2014 Confirms GTA6 Date",
+    "slug": "gta6-take-two-ceo-ambushed-confirms-release-date",
+    "headline": "Zelnick confirmed November 19 to a TikToker who didn't even know who he was",
+    "category": "GTA6 News",
+    "date": "2026-06-17",
+    "excerpt": "Take-Two CEO Strauss Zelnick got stopped in a surprise street interview and confirmed GTA6 launches November 19 \u2014 unprompted, unscripted, and on camera.",
+    "image": "gta6-hero.png",
+    "permanent": false
+  },
+  {
+    "emoji": "\ud83d\udd75\ufe0f",
     "title": "The GTA Construction Theory: A Hidden Timeline?",
     "slug": "gta-construction-timeline-theory",
-    "headline": "One skyscraper, five games — and it might finally be done",
+    "headline": "One skyscraper, five games \u2014 and it might finally be done",
     "category": "Theories",
     "date": "2026-06-15",
     "excerpt": "A fan theory connects half-built skyscrapers across every GTA game into a hidden timeline. If it's real, the implications stretch all the way to Red Dead Redemption.",
@@ -22,30 +55,30 @@
     "permanent": false
   },
   {
-    "emoji": "🤖",
-    "title": "Fan Builds 'GTA6-Caliber' Game With AI Agents — First Look",
+    "emoji": "\ud83e\udd16",
+    "title": "Fan Builds 'GTA6-Caliber' Game With AI Agents \u2014 First Look",
     "slug": "gta6-style-game-built-with-ai-agents",
     "headline": "An indie dev is building a GTA6-style open world using AI coding agents",
     "category": "GTA6 News",
     "date": "2026-06-15",
-    "excerpt": "An indie dev is using AI coding agents to build a GTA6-style open world game in public. Here is what's been built so far — and what it doesn't mean for the real GTA6.",
+    "excerpt": "An indie dev is using AI coding agents to build a GTA6-style open world game in public. Here is what's been built so far \u2014 and what it doesn't mean for the real GTA6.",
     "image": "GtaCaliber.png",
     "permanent": false
   },
   {
-    "emoji": "🎬",
-    "title": "GTA6 Trailer 3 — When Is It Dropping And What Will It Show?",
+    "emoji": "\ud83c\udfac",
+    "title": "GTA6 Trailer 3 \u2014 When Is It Dropping And What Will It Show?",
     "slug": "gta6-trailer-3-when-is-it-dropping",
     "headline": "Expected within the next three weeks",
     "category": "GTA6 News",
     "date": "2026-06-12",
-    "excerpt": "GTA6 Trailer 3 — the final trailer before launch — is expected within weeks. Here is everything we know about timing, content, and what it means for The Last Drive.",
+    "excerpt": "GTA6 Trailer 3 \u2014 the final trailer before launch \u2014 is expected within weeks. Here is everything we know about timing, content, and what it means for The Last Drive.",
     "image": "Gta6trailer3.png",
     "permanent": false
   },
   {
-    "emoji": "🎮",
-    "title": "GTA V Story Mode Added To GTA+ — What It Means For The Last Drive",
+    "emoji": "\ud83c\udfae",
+    "title": "GTA V Story Mode Added To GTA+ \u2014 What It Means For The Last Drive",
     "slug": "gta-v-added-to-gta-plus-2026",
     "headline": "What it means with 159 days until GTA6",
     "category": "GTA5 News",
@@ -55,19 +88,19 @@
     "permanent": false
   },
   {
-    "emoji": "🖥️",
-    "title": "GTA6 PC Build Guide 2026 — What You Actually Need",
+    "emoji": "\ud83d\udda5\ufe0f",
+    "title": "GTA6 PC Build Guide 2026 \u2014 What You Actually Need",
     "slug": "gta6-pc-build-guide-2026",
     "headline": "The hardware you need to run GTA6 at launch",
     "category": "Tech",
     "date": "2026-05-28",
-    "excerpt": "GTA6 PC requirements will be demanding. Here is every component you need to build a rig that handles GTA6 at launch — GPU, CPU, RAM, storage and more.",
+    "excerpt": "GTA6 PC requirements will be demanding. Here is every component you need to build a rig that handles GTA6 at launch \u2014 GPU, CPU, RAM, storage and more.",
     "image": "Gta6.png",
     "permanent": false
   },
   {
-    "emoji": "📈",
-    "title": "GTA6 Pre-Order Stock Surge — What The Numbers Tell Us",
+    "emoji": "\ud83d\udcc8",
+    "title": "GTA6 Pre-Order Stock Surge \u2014 What The Numbers Tell Us",
     "slug": "gta6-preorder-stock-surge",
     "headline": "Pre-order numbers are moving faster than expected",
     "category": "GTA6 News",
@@ -77,8 +110,8 @@
     "permanent": false
   },
   {
-    "emoji": "💰",
-    "title": "GTA6 Price — What To Expect At Launch",
+    "emoji": "\ud83d\udcb0",
+    "title": "GTA6 Price \u2014 What To Expect At Launch",
     "slug": "gta6-price-what-to-expect",
     "headline": "Breaking down every pricing signal we have",
     "category": "GTA6 News",
@@ -88,19 +121,19 @@
     "permanent": false
   },
   {
-    "emoji": "✅",
-    "title": "GTA6 — Everything Officially Confirmed So Far",
+    "emoji": "\u2705",
+    "title": "GTA6 \u2014 Everything Officially Confirmed So Far",
     "slug": "gta6-everything-confirmed",
     "headline": "The definitive list of confirmed GTA6 facts",
     "category": "GTA6 News",
     "date": "2026-05-08",
-    "excerpt": "No speculation, no leaks. This is every single thing Rockstar and Take-Two have officially confirmed about GTA6 — characters, setting, platforms, date, and more.",
+    "excerpt": "No speculation, no leaks. This is every single thing Rockstar and Take-Two have officially confirmed about GTA6 \u2014 characters, setting, platforms, date, and more.",
     "image": "Gta6.png",
     "permanent": true
   },
   {
-    "emoji": "📅",
-    "title": "GTA6 November 19 Confirmed — The Date Is Locked",
+    "emoji": "\ud83d\udcc5",
+    "title": "GTA6 November 19 Confirmed \u2014 The Date Is Locked",
     "slug": "gta6-november-19-confirmed",
     "headline": "Rockstar and Take-Two confirm the launch date",
     "category": "GTA6 News",
@@ -110,19 +143,19 @@
     "permanent": true
   },
   {
-    "emoji": "🎮",
-    "title": "GTA5 Coming To Nintendo Switch 2 — What Virtuos Is Building",
+    "emoji": "\ud83c\udfae",
+    "title": "GTA5 Coming To Nintendo Switch 2 \u2014 What Virtuos Is Building",
     "slug": "gta6-gta5-switch2-virtuos",
     "headline": "GTA5 Switch 2 port details emerge via Virtuos",
     "category": "GTA5 News",
     "date": "2026-04-22",
-    "excerpt": "Virtuos — the studio behind dozens of major ports — appears to be bringing GTA5 to Nintendo Switch 2. Here is what we know and what it means for the community.",
+    "excerpt": "Virtuos \u2014 the studio behind dozens of major ports \u2014 appears to be bringing GTA5 to Nintendo Switch 2. Here is what we know and what it means for the community.",
     "image": "GtaV.png",
     "permanent": false
   },
   {
-    "emoji": "🚫",
-    "title": "GTA6 Will Have No Review Copies — What That Means",
+    "emoji": "\ud83d\udeab",
+    "title": "GTA6 Will Have No Review Copies \u2014 What That Means",
     "slug": "gta6-no-review-copies",
     "headline": "Rockstar breaking with tradition on launch day reviews",
     "category": "GTA6 News",
@@ -132,10 +165,10 @@
     "permanent": false
   },
   {
-    "emoji": "📦",
-    "title": "GTA6 Six Editions Leak — Which One Is Right For You",
+    "emoji": "\ud83d\udce6",
+    "title": "GTA6 Six Editions Leak \u2014 Which One Is Right For You",
     "slug": "gta6-six-editions-leak",
-    "headline": "Six editions leaked — breakdown of every tier",
+    "headline": "Six editions leaked \u2014 breakdown of every tier",
     "category": "GTA6 News",
     "date": "2026-04-08",
     "excerpt": "A credible leak points to six GTA6 editions at launch. We break down every reported tier, what is included, and which one actually makes sense to buy.",
@@ -143,19 +176,19 @@
     "permanent": false
   },
   {
-    "emoji": "💸",
-    "title": "GTA6 Priced At $115 In Dutch Leak — Real Or Not?",
+    "emoji": "\ud83d\udcb8",
+    "title": "GTA6 Priced At $115 In Dutch Leak \u2014 Real Or Not?",
     "slug": "gta6-price-115-dutch-leak",
     "headline": "Dutch retailer listing surfaces $115 price point",
     "category": "GTA6 News",
     "date": "2026-04-01",
-    "excerpt": "A Dutch retailer listing showed GTA6 at $115. We dig into whether this is a real signal, a placeholder, or a conversion artifact — and what it means for US pricing.",
+    "excerpt": "A Dutch retailer listing showed GTA6 at $115. We dig into whether this is a real signal, a placeholder, or a conversion artifact \u2014 and what it means for US pricing.",
     "image": "Gta6.png",
     "permanent": false
   },
   {
-    "emoji": "🔍",
-    "title": "GTA6 Pre-Order Chaos Debunked — What Actually Happened",
+    "emoji": "\ud83d\udd0d",
+    "title": "GTA6 Pre-Order Chaos Debunked \u2014 What Actually Happened",
     "slug": "gta6-preorder-chaos-debunked",
     "headline": "Separating the real pre-order story from the noise",
     "category": "GTA6 News",
@@ -165,13 +198,13 @@
     "permanent": false
   },
   {
-    "emoji": "🇮🇹",
-    "title": "GTA6 Pre-Orders Secretly Went Live In Italy — Here Is The Evidence",
+    "emoji": "\ud83c\uddee\ud83c\uddf9",
+    "title": "GTA6 Pre-Orders Secretly Went Live In Italy \u2014 Here Is The Evidence",
     "slug": "gta6-preorders-secretly-went-live-italy",
     "headline": "Italian retailer listings surfaced before being pulled",
     "category": "GTA6 News",
     "date": "2026-03-18",
-    "excerpt": "An Italian retailer briefly listed GTA6 pre-orders before pulling them. We captured everything before it went down — pricing, editions, and what it signals.",
+    "excerpt": "An Italian retailer briefly listed GTA6 pre-orders before pulling them. We captured everything before it went down \u2014 pricing, editions, and what it signals.",
     "image": "Gta6.png",
     "permanent": false
   }
