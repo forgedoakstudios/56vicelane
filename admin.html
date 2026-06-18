@@ -218,6 +218,74 @@
 .log-entry { margin-bottom: 3px; line-height: 1.4; }
 .log-entry.error { color: var(--red); }
 .log-entry.warn { color: #FFCC00; }
+
+/* CONTENT ENGINE */
+.ce-pill-row { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:14px; }
+.ce-pill {
+  font-family:var(--font-label); font-weight:800; font-size:.68rem;
+  text-transform:uppercase; letter-spacing:.1em;
+  padding:5px 12px; border:1px solid var(--edge);
+  color:var(--smoke); cursor:pointer; transition:all .15s;
+  background:none;
+}
+.ce-pill:hover { border-color:var(--cyan); color:var(--cyan); }
+.ce-pill.active { background:var(--cyan); border-color:var(--cyan); color:#000; }
+.ce-pill.active.amber { background:var(--amber); border-color:var(--amber); }
+.ce-gen-btn {
+  font-family:var(--font-display); font-size:.9rem; text-transform:uppercase;
+  letter-spacing:.08em; background:var(--amber); color:#000; border:none;
+  padding:10px 22px; cursor:pointer; transition:opacity .2s; display:flex;
+  align-items:center; gap:8px;
+}
+.ce-gen-btn:hover { opacity:.85; }
+.ce-gen-btn:disabled { opacity:.4; cursor:not-allowed; }
+.ce-gen-btn.cyan { background:var(--cyan); }
+.ce-output { display:none; margin-top:18px; }
+.ce-output.visible { display:block; }
+.ce-out-tabs { display:flex; border-bottom:1px solid var(--edge); overflow-x:auto; margin-bottom:0; }
+.ce-out-tab {
+  font-family:var(--font-label); font-weight:800; font-size:.62rem;
+  letter-spacing:.1em; text-transform:uppercase; padding:8px 14px;
+  color:var(--smoke); cursor:pointer; white-space:nowrap;
+  border-bottom:2px solid transparent; transition:all .15s;
+}
+.ce-out-tab:hover { color:var(--bone); }
+.ce-out-tab.active { color:var(--cyan); border-bottom-color:var(--cyan); }
+.ce-out-panel {
+  background:var(--pitch); border:1px solid var(--edge); border-top:none;
+  padding:16px; display:none; min-height:120px;
+}
+.ce-out-panel.active { display:block; }
+.ce-out-content {
+  font-size:.82rem; color:#C8C4BE; white-space:pre-wrap;
+  line-height:1.8; font-family:'Inter',sans-serif;
+}
+.ce-copy-btn {
+  font-family:var(--font-label); font-weight:800; font-size:.6rem;
+  letter-spacing:.1em; text-transform:uppercase; background:none;
+  border:1px solid var(--edge); color:var(--smoke); padding:4px 10px;
+  cursor:pointer; margin-top:10px; transition:all .15s;
+}
+.ce-copy-btn:hover { border-color:var(--cyan); color:var(--cyan); }
+.ce-skel {
+  background:linear-gradient(90deg,var(--asphalt) 25%,var(--edge) 50%,var(--asphalt) 75%);
+  background-size:200% 100%; animation:ce-shimmer 1.5s infinite;
+  height:12px; border-radius:2px; margin-bottom:8px;
+}
+.ce-skel.w90{width:90%} .ce-skel.w70{width:70%} .ce-skel.w50{width:50%}
+@keyframes ce-shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.ce-defcon {
+  background:rgba(255,26,26,.08); border:1px solid rgba(255,26,26,.3);
+  padding:10px 14px; margin-bottom:14px; font-size:.82rem; color:#C8C4BE;
+  display:flex; align-items:flex-start; gap:10px;
+}
+.ce-defcon-label { font-family:var(--font-display); color:#FF4444; font-size:.9rem; flex-shrink:0; }
+.ce-info {
+  border-left:3px solid var(--cyan); background:rgba(0,212,255,.05);
+  padding:8px 12px; margin:10px 0; font-size:.8rem; color:#C8C4BE;
+}
+.ce-step { display:flex; gap:10px; margin-bottom:10px; font-size:.82rem; color:#C8C4BE; }
+.ce-step-num { font-family:var(--font-display); color:var(--cyan); font-size:1rem; flex-shrink:0; width:22px; }
 </style>
 </head>
 <body>
@@ -389,6 +457,198 @@
         <a href="https://search.google.com/search-console" target="_blank" class="btn btn-ghost" style="font-size:.78rem;padding:10px;text-align:center;">🔍 Search Console</a>
       </div>
     </div>
+  </div>
+
+  <!-- CONTENT ENGINE -->
+  <div class="admin-section">
+    <div class="admin-section-header" onclick="toggleSection('ce')">
+      <div class="admin-section-title">⚡ Content Engine</div>
+      <span style="color:var(--smoke);">▼</span>
+    </div>
+    <div class="admin-section-body" id="sec-ce">
+
+      <!-- API key notice -->
+      <div class="ce-info" id="ce-api-notice">
+        <strong style="color:var(--cyan);">First-time setup:</strong> Enter your Anthropic API key below to power this tool. Get one at console.anthropic.com — costs pennies per generation.
+      </div>
+      <div style="display:flex;gap:8px;margin-bottom:18px;" id="ce-apikey-row">
+        <input type="password" class="form-input" id="ce-api-key" placeholder="sk-ant-api03-..." style="flex:1;font-size:.8rem;">
+        <button class="ce-gen-btn" style="padding:8px 14px;font-size:.72rem;" onclick="ceSaveKey()">SAVE KEY</button>
+      </div>
+
+      <!-- TAB NAV -->
+      <div class="ce-pill-row" id="ce-mode-tabs">
+        <button class="ce-pill active" data-mode="generate" onclick="ceSwitchMode(this)">⚡ Generate</button>
+        <button class="ce-pill" data-mode="defcon" onclick="ceSwitchMode(this)">🚨 DEFCON 1</button>
+        <button class="ce-pill" data-mode="notebook" onclick="ceSwitchMode(this)">🎙️ NotebookLM</button>
+        <button class="ce-pill" data-mode="seo" onclick="ceSwitchMode(this)">🔍 SEO</button>
+        <button class="ce-pill" data-mode="distribute" onclick="ceSwitchMode(this)">📣 Distribute</button>
+      </div>
+
+      <!-- ── GENERATE MODE ── -->
+      <div id="ce-pane-generate">
+        <div style="margin-bottom:10px;">
+          <label class="form-label">Content Pillar</label>
+          <div class="ce-pill-row">
+            <button class="ce-pill active amber" data-pillar="breaking" onclick="ceSelectPillar(this)">⚡ Breaking Signal</button>
+            <button class="ce-pill" data-pillar="lore" onclick="ceSelectPillar(this)">🔬 Deep Frequency</button>
+            <button class="ce-pill" data-pillar="short" onclick="ceSelectPillar(this)">📱 Static Cut</button>
+            <button class="ce-pill" data-pillar="debate" onclick="ceSelectPillar(this)">💬 Debate</button>
+            <button class="ce-pill" data-pillar="evergreen" onclick="ceSelectPillar(this)">🌲 Evergreen</button>
+          </div>
+        </div>
+        <div style="margin-bottom:10px;">
+          <label class="form-label">Platform</label>
+          <div class="ce-pill-row">
+            <button class="ce-pill active" data-plat="both" onclick="ceSelectPlat(this)">YouTube + TikTok</button>
+            <button class="ce-pill" data-plat="youtube" onclick="ceSelectPlat(this)">YouTube</button>
+            <button class="ce-pill" data-plat="tiktok" onclick="ceSelectPlat(this)">TikTok</button>
+          </div>
+        </div>
+        <div class="form-field" style="margin-bottom:10px;">
+          <label class="form-label">Topic / News Item</label>
+          <input type="text" class="form-input" id="ce-topic" placeholder="e.g. GTA 6 Trailer 3 just dropped, 32-player lobbies confirmed...">
+        </div>
+        <div class="form-field" style="margin-bottom:10px;">
+          <label class="form-label">Extra Context <span style="color:var(--smoke);font-size:.72rem;font-weight:400;">(optional — paste raw notes or article text)</span></label>
+          <textarea class="form-input" id="ce-context" rows="3" style="resize:vertical;" placeholder="Paste research, news text, Reddit threads..."></textarea>
+        </div>
+        <div class="form-field" style="margin-bottom:14px;">
+          <label class="form-label">Tone</label>
+          <select class="form-select" id="ce-tone">
+            <option value="authoritative">Authoritative — confident, informed</option>
+            <option value="hype">Hype — high energy, fan-first</option>
+            <option value="analytical">Analytical — theory-heavy, detail-focused</option>
+            <option value="debate">Debate — two sides, audience decides</option>
+            <option value="humor">Humor — GTA chaos energy, meme-aware</option>
+          </select>
+        </div>
+        <button class="ce-gen-btn" id="ce-gen-btn" onclick="ceGenerate()">⚡ GENERATE FULL PACKAGE</button>
+
+        <div class="ce-output" id="ce-gen-output">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+            <div style="font-family:var(--font-label);font-weight:800;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);">// Generated Package</div>
+            <button class="ce-copy-btn" onclick="ceCopyAll()">Copy All</button>
+          </div>
+          <div class="ce-out-tabs">
+            <div class="ce-out-tab active" data-out="script" onclick="ceSwitchOut(this)">Script</div>
+            <div class="ce-out-tab" data-out="titles" onclick="ceSwitchOut(this)">Titles</div>
+            <div class="ce-out-tab" data-out="description" onclick="ceSwitchOut(this)">Description</div>
+            <div class="ce-out-tab" data-out="thumbnail" onclick="ceSwitchOut(this)">Thumbnail</div>
+            <div class="ce-out-tab" data-out="tags" onclick="ceSwitchOut(this)">Tags</div>
+            <div class="ce-out-tab" data-out="reddit" onclick="ceSwitchOut(this)">Reddit</div>
+            <div class="ce-out-tab" data-out="tiktok" onclick="ceSwitchOut(this)">TikTok Hook</div>
+            <div class="ce-out-tab" data-out="nlm" onclick="ceSwitchOut(this)">NotebookLM</div>
+          </div>
+          <div class="ce-out-panel active" id="ce-out-script"><div class="ce-out-content" id="ce-c-script"></div><button class="ce-copy-btn" onclick="ceCopySection('script')">📋 Copy</button></div>
+          <div class="ce-out-panel" id="ce-out-titles"><div class="ce-out-content" id="ce-c-titles"></div><button class="ce-copy-btn" onclick="ceCopySection('titles')">📋 Copy</button></div>
+          <div class="ce-out-panel" id="ce-out-description"><div class="ce-out-content" id="ce-c-description"></div><button class="ce-copy-btn" onclick="ceCopySection('description')">📋 Copy</button></div>
+          <div class="ce-out-panel" id="ce-out-thumbnail"><div class="ce-out-content" id="ce-c-thumbnail"></div><button class="ce-copy-btn" onclick="ceCopySection('thumbnail')">📋 Copy</button></div>
+          <div class="ce-out-panel" id="ce-out-tags"><div class="ce-out-content" id="ce-c-tags"></div><button class="ce-copy-btn" onclick="ceCopySection('tags')">📋 Copy</button></div>
+          <div class="ce-out-panel" id="ce-out-reddit"><div class="ce-out-content" id="ce-c-reddit"></div><button class="ce-copy-btn" onclick="ceCopySection('reddit')">📋 Copy</button></div>
+          <div class="ce-out-panel" id="ce-out-tiktok"><div class="ce-out-content" id="ce-c-tiktok"></div><button class="ce-copy-btn" onclick="ceCopySection('tiktok')">📋 Copy</button></div>
+          <div class="ce-out-panel" id="ce-out-nlm"><div class="ce-out-content" id="ce-c-nlm"></div><button class="ce-copy-btn" onclick="ceCopySection('nlm')">📋 Copy</button></div>
+        </div>
+      </div>
+
+      <!-- ── DEFCON 1 MODE ── -->
+      <div id="ce-pane-defcon" style="display:none;">
+        <div class="ce-defcon">
+          <div class="ce-defcon-label">⚠ DEFCON 1</div>
+          <div>GTA 6 Trailer just dropped. Paste everything you observed. Publish the breakdown within 60 minutes. This event outweighs 10 normal videos combined.</div>
+        </div>
+        <div class="form-field" style="margin-bottom:10px;">
+          <label class="form-label">Trailer Details — Everything You Noticed</label>
+          <textarea class="form-input" id="ce-trailer-details" rows="5" style="resize:vertical;" placeholder="Locations, characters, mechanics, dialogue, text on screen, vehicles, anything..."></textarea>
+        </div>
+        <div class="form-field" style="margin-bottom:14px;">
+          <label class="form-label">Trailer URL (if live)</label>
+          <input type="text" class="form-input" id="ce-trailer-url" placeholder="https://youtube.com/watch?v=...">
+        </div>
+        <button class="ce-gen-btn" style="background:#FF4444;color:#fff;" id="ce-defcon-btn" onclick="ceGenDefcon()">🚨 GENERATE BREAKDOWN PACKAGE</button>
+        <div class="ce-output" id="ce-defcon-output">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;margin-top:18px;">
+            <div style="font-family:var(--font-label);font-weight:800;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:#FF4444;">// DEFCON 1 Package</div>
+            <button class="ce-copy-btn" onclick="ceCopyById('ce-defcon-content')">Copy All</button>
+          </div>
+          <div style="background:var(--pitch);border:1px solid var(--edge);padding:16px;">
+            <div class="ce-out-content" id="ce-defcon-content"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── NOTEBOOKLM MODE ── -->
+      <div id="ce-pane-notebook" style="display:none;">
+        <div class="ce-info"><strong style="color:var(--cyan);">When to use:</strong> Deep Frequency lore/theory videos only (12–18 min). The two-host Audio Overview holds retention better than a single narrator for long content. ElevenLabs handles everything else.</div>
+        <div class="form-field" style="margin-bottom:14px;">
+          <label class="form-label">Topic for Research Brief</label>
+          <input type="text" class="form-input" id="ce-nlm-topic" placeholder="e.g. The real-world Miami influences hidden in GTA 6's Vice City map">
+        </div>
+        <button class="ce-gen-btn cyan" id="ce-nlm-btn" onclick="ceGenNLM()">🎙️ GENERATE RESEARCH BRIEF</button>
+        <div class="ce-output" id="ce-nlm-output">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;margin-top:18px;">
+            <div style="font-family:var(--font-label);font-weight:800;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);">// NotebookLM Research Brief</div>
+            <button class="ce-copy-btn" onclick="ceCopyById('ce-nlm-content')">Copy All</button>
+          </div>
+          <div style="background:var(--pitch);border:1px solid var(--edge);padding:16px;">
+            <div class="ce-out-content" id="ce-nlm-content"></div>
+          </div>
+        </div>
+        <div style="margin-top:20px;background:var(--asphalt);border:1px solid var(--edge);padding:14px;">
+          <div style="font-family:var(--font-label);font-weight:800;font-size:.75rem;text-transform:uppercase;color:var(--bone);margin-bottom:12px;">How to use in NotebookLM</div>
+          <div class="ce-step"><div class="ce-step-num">1</div><div>Copy the brief above. Go to <strong>notebooklm.google.com</strong> → New Notebook.</div></div>
+          <div class="ce-step"><div class="ce-step-num">2</div><div>Add Source → Paste text. Add 2–3 more sources: relevant Reddit threads, GTA wiki pages, article text.</div></div>
+          <div class="ce-step"><div class="ce-step-num">3</div><div>Click <strong>Audio Overview → Generate</strong>. Two-host podcast conversation is created automatically.</div></div>
+          <div class="ce-step"><div class="ce-step-num">4</div><div>Download the MP3. Import into <strong>CapCut</strong> as audio. Cut GTA footage to the conversation beats. Export 1080p.</div></div>
+        </div>
+      </div>
+
+      <!-- ── SEO MODE ── -->
+      <div id="ce-pane-seo" style="display:none;">
+        <div class="form-field" style="margin-bottom:14px;">
+          <label class="form-label">Video Topic</label>
+          <input type="text" class="form-input" id="ce-seo-topic" placeholder="e.g. GTA 6 Lucia character breakdown">
+        </div>
+        <button class="ce-gen-btn" id="ce-seo-btn" onclick="ceGenSEO()">🔍 GENERATE SEO PACKAGE</button>
+        <div class="ce-output" id="ce-seo-output">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;margin-top:18px;">
+            <div style="font-family:var(--font-label);font-weight:800;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);">// SEO Package</div>
+            <button class="ce-copy-btn" onclick="ceCopyById('ce-seo-content')">Copy All</button>
+          </div>
+          <div style="background:var(--pitch);border:1px solid var(--edge);padding:16px;">
+            <div class="ce-out-content" id="ce-seo-content"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── DISTRIBUTE MODE ── -->
+      <div id="ce-pane-distribute" style="display:none;">
+        <div class="form-field" style="margin-bottom:10px;">
+          <label class="form-label">Video Title / Topic</label>
+          <input type="text" class="form-input" id="ce-dist-topic" placeholder="Your video title or topic...">
+        </div>
+        <div class="form-field" style="margin-bottom:14px;">
+          <label class="form-label">Platform</label>
+          <select class="form-select" id="ce-dist-plat">
+            <option value="reddit">Reddit (r/GTA6, r/gtaonline, r/gaming)</option>
+            <option value="discord">Discord (GTA servers)</option>
+            <option value="twitter">X / Twitter</option>
+            <option value="facebook">Facebook Gaming Groups</option>
+          </select>
+        </div>
+        <button class="ce-gen-btn" id="ce-dist-btn" onclick="ceGenDist()">📣 GENERATE DISTRIBUTION COPY</button>
+        <div class="ce-output" id="ce-dist-output">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;margin-top:18px;">
+            <div style="font-family:var(--font-label);font-weight:800;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);">// Distribution Copy</div>
+            <button class="ce-copy-btn" onclick="ceCopyById('ce-dist-content')">Copy All</button>
+          </div>
+          <div style="background:var(--pitch);border:1px solid var(--edge);padding:16px;">
+            <div class="ce-out-content" id="ce-dist-content"></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /sec-ce -->
   </div>
 
   <!-- ADMIN LOG -->
@@ -768,6 +1028,242 @@ function loadContacts() {
 var mt = document.getElementById('menu-toggle');
 var nm = document.getElementById('nav-mobile');
 if (mt && nm) mt.addEventListener('click', function() { nm.classList.toggle('open'); });
+
+// ── CONTENT ENGINE ────────────────────────────────────────
+
+var cePillar   = 'breaking';
+var cePlatform = 'both';
+var CE_CHANNEL = '56ViceLane';
+var CE_YT_URL  = 'https://youtube.com/@56ViceLane';
+
+var CE_PILLARS = {
+  breaking:  'Breaking GTA 6 news/update. Speed matters. Target: 6-10 min YouTube + 45s TikTok. Publish within 2 hours.',
+  lore:      'Deep lore / theory. 12-18 min YouTube. High retention. For hardcore fans wanting depth.',
+  short:     'Short-form only. 45-60 seconds. TikTok/YouTube Shorts. No intro — jump straight to the hook.',
+  debate:    'Opinion/debate. Present both sides, drive comments. 8-12 min.',
+  evergreen: 'Evergreen search-optimized. Long-term traffic. "Everything you need to know" format.'
+};
+
+function ceLoadKey() {
+  var k = localStorage.getItem('vl_ce_apikey') || '';
+  if (k) {
+    document.getElementById('ce-api-key').value = k;
+    document.getElementById('ce-api-notice').style.display = 'none';
+  }
+}
+
+function ceSaveKey() {
+  var k = (document.getElementById('ce-api-key').value || '').trim();
+  if (!k) return;
+  localStorage.setItem('vl_ce_apikey', k);
+  document.getElementById('ce-api-notice').style.display = 'none';
+  log('Content Engine: API key saved');
+}
+
+function ceSwitchMode(el) {
+  document.querySelectorAll('#ce-mode-tabs .ce-pill').forEach(function(p) { p.classList.remove('active'); });
+  el.classList.add('active');
+  ['generate','defcon','notebook','seo','distribute'].forEach(function(m) {
+    document.getElementById('ce-pane-' + m).style.display = (el.dataset.mode === m) ? 'block' : 'none';
+  });
+}
+
+function ceSelectPillar(el) {
+  document.querySelectorAll('[data-pillar]').forEach(function(p) { p.classList.remove('active','amber'); });
+  el.classList.add('active','amber');
+  cePillar = el.dataset.pillar;
+}
+
+function ceSelectPlat(el) {
+  document.querySelectorAll('[data-plat]').forEach(function(p) { p.classList.remove('active'); });
+  el.classList.add('active');
+  cePlatform = el.dataset.plat;
+}
+
+function ceSwitchOut(el) {
+  document.querySelectorAll('.ce-out-tab').forEach(function(t) { t.classList.remove('active'); });
+  document.querySelectorAll('.ce-out-panel').forEach(function(p) { p.classList.remove('active'); });
+  el.classList.add('active');
+  document.getElementById('ce-out-' + el.dataset.out).classList.add('active');
+}
+
+async function ceCallAPI(system, user, btnId, outputId, contentId) {
+  var apiKey = localStorage.getItem('vl_ce_apikey') || '';
+  if (!apiKey) { log('Content Engine: No API key saved — enter it above', 'warn'); return null; }
+  var btn = document.getElementById(btnId);
+  if (btn) { btn.disabled = true; btn.textContent = 'GENERATING...'; }
+  var outEl = document.getElementById(outputId);
+  if (outEl) outEl.classList.add('visible');
+  var cEl = document.getElementById(contentId);
+  if (cEl) cEl.innerHTML = '<div class="ce-skel w90"></div><div class="ce-skel w70"></div><div class="ce-skel w90"></div><div class="ce-skel w50"></div>';
+
+  try {
+    var resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01'},
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6', max_tokens: 4000,
+        system: system,
+        messages: [{role:'user', content:user}]
+      })
+    });
+    if (!resp.ok) { var e = await resp.json(); throw new Error(e.error?.message || 'API error ' + resp.status); }
+    var data = await resp.json();
+    var text = data.content[0].text;
+    if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label || 'GENERATE'; }
+    return text;
+  } catch(err) {
+    if (cEl) cEl.textContent = 'Error: ' + err.message;
+    if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label || 'GENERATE'; }
+    log('Content Engine error: ' + err.message, 'error');
+    return null;
+  }
+}
+
+function ceExtract(text, start, end) {
+  var si = text.indexOf('### ' + start);
+  if (si < 0) return '';
+  var from = si + start.length + 4;
+  if (!end) return text.slice(from).trim();
+  var ei = text.indexOf('### ' + end, from);
+  return ei < 0 ? text.slice(from).trim() : text.slice(from, ei).trim();
+}
+
+async function ceGenerate() {
+  var topic   = (document.getElementById('ce-topic').value || '').trim();
+  var context = (document.getElementById('ce-context').value || '').trim();
+  var tone    = document.getElementById('ce-tone').value;
+  if (!topic) { log('Content Engine: Enter a topic first', 'warn'); return; }
+
+  var system = 'You are the content director for ' + CE_CHANNEL + ', a GTA 6 fan channel on YouTube and TikTok. Tone: ' + tone + '. Channel: ' + CE_YT_URL + '. Generate complete content packages with these exact section headers: ### SCRIPT, ### TITLES, ### DESCRIPTION, ### THUMBNAIL BRIEF, ### TAGS, ### REDDIT SEED POST, ### TIKTOK HOOK, ### NOTEBOOKLM BRIEF';
+  var user = 'Generate a complete content package.\n\nCONTENT TYPE: ' + CE_PILLARS[cePillar] + '\nPLATFORM: ' + cePlatform + '\nTOPIC: ' + topic + (context ? '\nCONTEXT:\n' + context : '') + '\n\nOutput all 8 sections. Script: include timestamps. Titles: 5 options. Tags: 20 comma-separated. TikTok Hook: 45-second script. NotebookLM Brief: 500+ word research document for Audio Overview generation.';
+
+  var btn = document.getElementById('ce-gen-btn');
+  btn.dataset.label = '⚡ GENERATE FULL PACKAGE';
+
+  var raw = await ceCallAPI(system, user, 'ce-gen-btn', 'ce-gen-output', 'ce-c-script');
+  if (!raw) return;
+
+  var sections = {
+    script: ceExtract(raw,'SCRIPT','TITLES'),
+    titles: ceExtract(raw,'TITLES','DESCRIPTION'),
+    description: ceExtract(raw,'DESCRIPTION','THUMBNAIL BRIEF'),
+    thumbnail: ceExtract(raw,'THUMBNAIL BRIEF','TAGS'),
+    tags: ceExtract(raw,'TAGS','REDDIT SEED POST'),
+    reddit: ceExtract(raw,'REDDIT SEED POST','TIKTOK HOOK'),
+    tiktok: ceExtract(raw,'TIKTOK HOOK','NOTEBOOKLM BRIEF'),
+    nlm: ceExtract(raw,'NOTEBOOKLM BRIEF',null)
+  };
+
+  var keyMap = {script:'script',titles:'titles',description:'description',thumbnail:'thumbnail',tags:'tags',reddit:'reddit',tiktok:'tiktok',nlm:'nlm'};
+  Object.keys(keyMap).forEach(function(k) {
+    var el = document.getElementById('ce-c-' + k);
+    if (el) el.textContent = sections[k] || '(not generated)';
+  });
+  btn.textContent = '⚡ GENERATE FULL PACKAGE';
+  log('Content Engine: package generated for "' + topic + '"');
+}
+
+async function ceGenDefcon() {
+  var details = (document.getElementById('ce-trailer-details').value || '').trim();
+  var url     = (document.getElementById('ce-trailer-url').value || '').trim();
+  if (!details) { log('Content Engine: Paste trailer details first', 'warn'); return; }
+
+  var btn = document.getElementById('ce-defcon-btn');
+  btn.dataset.label = '🚨 GENERATE BREAKDOWN PACKAGE';
+
+  var system = 'You are the emergency content director for ' + CE_CHANNEL + '. A GTA 6 trailer just dropped. Generate a complete 60-minute emergency breakdown package. This is the highest-priority content event of the year.';
+  var user = 'GTA 6 TRAILER DROPPED. Generate the full emergency package.\n\nTRAILER DETAILS:\n' + details + (url ? '\nURL: ' + url : '') + '\n\nInclude: 1) Full breakdown script (10-12 min, timestamped) 2) Five title options 3) YouTube description with timestamps 4) Thumbnail brief 5) Three 45-second TikTok scripts for three different trailer moments 6) Reddit post (link goes in comments) 7) X/Twitter thread (5 tweets, no links in tweet body) 8) 25 tags';
+
+  var raw = await ceCallAPI(system, user, 'ce-defcon-btn', 'ce-defcon-output', 'ce-defcon-content');
+  if (!raw) return;
+  document.getElementById('ce-defcon-content').textContent = raw;
+  btn.textContent = '🚨 GENERATE BREAKDOWN PACKAGE';
+  log('Content Engine: DEFCON 1 package generated');
+}
+
+async function ceGenNLM() {
+  var topic = (document.getElementById('ce-nlm-topic').value || '').trim();
+  if (!topic) { log('Content Engine: Enter a topic', 'warn'); return; }
+
+  var btn = document.getElementById('ce-nlm-btn');
+  btn.dataset.label = '🎙️ GENERATE RESEARCH BRIEF';
+
+  var system = 'You are a research writer for ' + CE_CHANNEL + '. Generate dense research briefs to feed into NotebookLM Audio Overview. Structure them as readable documents with background, key facts, theories, debatable angles, and questions two hosts can explore. 600-900 words.';
+  var user = 'Generate a NotebookLM research brief for: "' + topic + '"\n\nInclude: background/context, confirmed facts, theories (labeled), interesting debatable angles, connections to GTA lore or real-world parallels, questions the hosts might explore. Write as flowing prose — not bullet points.';
+
+  var raw = await ceCallAPI(system, user, 'ce-nlm-btn', 'ce-nlm-output', 'ce-nlm-content');
+  if (!raw) return;
+  document.getElementById('ce-nlm-content').textContent = raw;
+  btn.textContent = '🎙️ GENERATE RESEARCH BRIEF';
+  log('Content Engine: NotebookLM brief generated for "' + topic + '"');
+}
+
+async function ceGenSEO() {
+  var topic = (document.getElementById('ce-seo-topic').value || '').trim();
+  if (!topic) { log('Content Engine: Enter a topic', 'warn'); return; }
+
+  var btn = document.getElementById('ce-seo-btn');
+  btn.dataset.label = '🔍 GENERATE SEO PACKAGE';
+
+  var system = 'You are an SEO specialist for ' + CE_CHANNEL + ', a GTA 6 YouTube channel. Generate YouTube SEO packages optimized for 2026 search.';
+  var user = 'Generate a complete SEO package for: "' + topic + '"\n\nInclude: PRIMARY KEYWORD, 4 SECONDARY KEYWORDS, TITLE FORMULA using primary keyword, FIRST SENTENCE of description (natural keyword use), 25 TAGS (comma separated), 5 HASHTAGS, THUMBNAIL TEXT (3 words max), SUGGESTED VIDEO LENGTH for best retention in this category.';
+
+  var raw = await ceCallAPI(system, user, 'ce-seo-btn', 'ce-seo-output', 'ce-seo-content');
+  if (!raw) return;
+  document.getElementById('ce-seo-content').textContent = raw;
+  btn.textContent = '🔍 GENERATE SEO PACKAGE';
+  log('Content Engine: SEO package generated');
+}
+
+async function ceGenDist() {
+  var topic = (document.getElementById('ce-dist-topic').value || '').trim();
+  var plat  = document.getElementById('ce-dist-plat').value;
+  if (!topic) { log('Content Engine: Enter a topic', 'warn'); return; }
+
+  var btn = document.getElementById('ce-dist-btn');
+  btn.dataset.label = '📣 GENERATE DISTRIBUTION COPY';
+
+  var system = 'You are writing distribution copy for ' + CE_CHANNEL + ' (' + CE_YT_URL + '). Copy must feel organic and community-first — never spammy. On Reddit and Discord, the link goes as a reply/comment, never in the main post body.';
+  var user = 'Write distribution copy for platform: ' + plat + '\nVideo topic: "' + topic + '"\nChannel: ' + CE_CHANNEL + ' (' + CE_YT_URL + ')\n\nMake it feel genuine. Start a conversation. The content sells itself when people click.';
+
+  var raw = await ceCallAPI(system, user, 'ce-dist-btn', 'ce-dist-output', 'ce-dist-content');
+  if (!raw) return;
+  document.getElementById('ce-dist-content').textContent = raw;
+  btn.textContent = '📣 GENERATE DISTRIBUTION COPY';
+  log('Content Engine: distribution copy generated');
+}
+
+function ceCopyAll() {
+  var keys = ['script','titles','description','thumbnail','tags','reddit','tiktok','nlm'];
+  var text = keys.map(function(k) {
+    var el = document.getElementById('ce-c-' + k);
+    return el ? '=== ' + k.toUpperCase() + ' ===\n' + el.textContent : '';
+  }).join('\n\n');
+  navigator.clipboard.writeText(text);
+  log('Content Engine: full package copied');
+}
+
+function ceCopySection(key) {
+  var el = document.getElementById('ce-c-' + key);
+  if (!el) return;
+  navigator.clipboard.writeText(el.textContent);
+  log('Content Engine: ' + key + ' copied');
+}
+
+function ceCopyById(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  navigator.clipboard.writeText(el.textContent);
+  log('Content Engine: output copied');
+}
+
+// Init CE on dashboard load — patch into existing adminLogin flow
+var _origLoadStats = loadStats;
+loadStats = function() {
+  _origLoadStats.apply(this, arguments);
+  ceLoadKey();
+};
 
 // ── ENTER KEY ON LOGIN ─────────────────────────────────────
 document.getElementById('gate-tag').addEventListener('keypress', function(e) {
