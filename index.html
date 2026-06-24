@@ -376,11 +376,19 @@
      ═══════════════════════════════════════════════════════════ -->
 <div class="home-section">
   <div class="section-header-row">
-    <div class="section-title">Latest News</div>
+    <div class="section-title">Latest — Last 14 Days</div>
     <a href="/news" class="section-link">All Articles →</a>
   </div>
+
+  <!-- FILTER BAR -->
+  <div id="filter-bar" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;"></div>
+
   <div class="news-grid" id="news-grid">
     <div style="color:var(--smoke);font-size:.9rem;">Loading...</div>
+  </div>
+
+  <div id="news-load-more" style="display:none;text-align:center;margin-top:28px;">
+    <button onclick="newsLoadMore()" style="background:var(--edge);border:1px solid var(--amber);color:var(--amber);font-family:var(--font-label);font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;padding:12px 28px;border-radius:4px;cursor:pointer;">Load More →</button>
   </div>
 </div>
 
@@ -433,9 +441,7 @@
       <div id="nl-success" style="display:none;text-align:center;padding:16px 0;">
         <div style="font-size:32px;margin-bottom:10px;">✅</div>
         <div style="font-family:var(--font-display);font-size:1.1rem;text-transform:uppercase;color:var(--cyan);margin-bottom:6px;">You're In The Lane</div>
-        <p style="font-size:.88rem;color:#C8C4BE;line-height:1.6;margin-bottom:16px;">GTA6 news and Last Drive updates coming your way. See you November 18.</p>
-        <a href="https://56vicelane.com/downloads/GTA6_Survival_Guide.pdf" target="_blank" rel="noopener" download style="display:inline-block;background:var(--amber);color:#000;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.05em;font-size:.9rem;padding:14px 28px;text-decoration:none;transition:all .25s;">📥 Download Your Free GTA6 Survival Guide →</a>
-        <p style="font-size:.72rem;color:var(--smoke);margin-top:10px;">Free PDF — No strings attached</p>
+        <p style="font-size:.88rem;color:#C8C4BE;line-height:1.6;">GTA6 news and Last Drive updates coming your way. See you November 18.</p>
       </div>
     </div>
   </div>
@@ -581,41 +587,145 @@ setInterval(updateCountdown, 1000);
     .catch(function() {});
 })();
 
-// ── NEWS GRID ─────────────────────────────────────────────
+// ── NEWS GRID — date fix + filter + load more ─────────────
+var allArticles = [];
+var activeFilter = 'All';
+var visibleCount = 6;
+var PAGE_SIZE = 6;
+
+function fixDate(dateStr) {
+  if (!dateStr) return '';
+  // Parse YYYY-MM-DD without timezone shift
+  var parts = dateStr.split('-');
+  if (parts.length !== 3) return dateStr;
+  var d = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+  return d.toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
+}
+
+function getCategories(articles) {
+  var seen = {};
+  var cats = [];
+  articles.forEach(function(a) {
+    var c = (a.category || 'GTA6 News');
+    if (!seen[c]) { seen[c] = true; cats.push(c); }
+  });
+  return cats;
+}
+
+function buildFilterBar(articles) {
+  var bar = document.getElementById('filter-bar');
+  if (!bar) return;
+  bar.innerHTML = '';
+
+  var filters = ['All', 'Newest', 'Oldest'].concat(getCategories(articles));
+  filters.forEach(function(f) {
+    var btn = document.createElement('button');
+    btn.textContent = f;
+    btn.dataset.filter = f;
+    btn.style.cssText = 'background:' + (f === activeFilter ? 'var(--amber)' : 'var(--edge)') + ';' +
+      'color:' + (f === activeFilter ? '#000' : 'var(--bone)') + ';' +
+      'border:1px solid ' + (f === activeFilter ? 'var(--amber)' : 'var(--edge)') + ';' +
+      'font-family:var(--font-label);font-weight:700;font-size:.75rem;letter-spacing:.1em;' +
+      'text-transform:uppercase;padding:7px 14px;border-radius:4px;cursor:pointer;transition:all .15s;';
+    btn.addEventListener('click', function() {
+      activeFilter = f;
+      visibleCount = PAGE_SIZE;
+      buildFilterBar(allArticles);
+      renderGrid();
+    });
+    bar.appendChild(btn);
+  });
+}
+
+function getFiltered() {
+  var list = allArticles.slice();
+  if (activeFilter === 'Newest') {
+    list.sort(function(a,b) { return (b.date||'').localeCompare(a.date||''); });
+  } else if (activeFilter === 'Oldest') {
+    list.sort(function(a,b) { return (a.date||'').localeCompare(b.date||''); });
+  } else if (activeFilter !== 'All') {
+    list = list.filter(function(a) { return (a.category || 'GTA6 News') === activeFilter; });
+  }
+  return list;
+}
+
+function renderGrid() {
+  var grid = document.getElementById('news-grid');
+  var moreBtn = document.getElementById('news-load-more');
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  var filtered = getFiltered();
+  var slice = filtered.slice(0, visibleCount);
+
+  if (slice.length === 0) {
+    grid.innerHTML = '<div style="color:var(--smoke);font-size:.9rem;">No articles in this category yet.</div>';
+    if (moreBtn) moreBtn.style.display = 'none';
+    return;
+  }
+
+  slice.forEach(function(a) {
+    var card = document.createElement('a');
+    card.className = 'news-card';
+    card.href = '/articles/' + a.slug;
+
+    var img = a.image || 'Gta6.png';
+    var tag = a.category || 'GTA6 News';
+
+    var imgEl = document.createElement('div');
+    imgEl.className = 'news-card-img';
+    imgEl.style.backgroundImage = "url('/images/" + img + "')";
+
+    var body = document.createElement('div');
+    body.className = 'news-card-body';
+
+    var tagEl = document.createElement('div');
+    tagEl.className = 'news-card-tag';
+    tagEl.textContent = tag;
+
+    var titleEl = document.createElement('div');
+    titleEl.className = 'news-card-title';
+    titleEl.textContent = a.title || '';
+
+    var dateEl = document.createElement('div');
+    dateEl.className = 'news-card-date';
+    dateEl.textContent = fixDate(a.date);
+
+    body.appendChild(tagEl);
+    body.appendChild(titleEl);
+    body.appendChild(dateEl);
+    card.appendChild(imgEl);
+    card.appendChild(body);
+    grid.appendChild(card);
+  });
+
+  if (moreBtn) {
+    moreBtn.style.display = filtered.length > visibleCount ? 'block' : 'none';
+  }
+}
+
+function newsLoadMore() {
+  visibleCount += PAGE_SIZE;
+  renderGrid();
+}
+
 fetch('/articles.json?v=' + Date.now())
   .then(function(r) { return r.json(); })
   .then(function(articles) {
-    var grid = document.getElementById('news-grid');
-    if (!grid) return;
-    grid.innerHTML = '';
+    allArticles = articles;
 
-    // Show latest 6
-    var recent = articles.slice(0, 6);
-    recent.forEach(function(a) {
-      var card = document.createElement('a');
-      card.className = 'news-card';
-      card.href = '/articles/' + a.slug;
+    buildFilterBar(allArticles);
+    renderGrid();
 
-      var img = a.image || 'Gta6.png';
-
-      card.innerHTML =
-        '<div class="news-card-img" style="background-image:url(\'/images/' + img + '\')"></div>' +
-        '<div class="news-card-body">' +
-          '<div class="news-card-tag">GTA6</div>' +
-          '<div class="news-card-title">' + (a.title || '') + '</div>' +
-          '<div class="news-card-date">' +
-            (a.date ? new Date(a.date).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) : '') +
-          '</div>' +
-        '</div>';
-      grid.appendChild(card);
-    });
-
-    // Build ticker from articles
+    // Build ticker
     var track = document.getElementById('ticker-track');
     if (track) {
       var items = [].concat(articles, articles).map(function(x) {
-        return '<span class="ticker-item" onclick="location.href=\'/articles/' + x.slug + '\'">' +
-          (x.emoji || '⚡') + ' ' + x.title + '</span>';
+        var span = document.createElement('span');
+        span.className = 'ticker-item';
+        span.textContent = (x.emoji || '⚡') + ' ' + x.title;
+        span.addEventListener('click', function() { location.href = '/articles/' + x.slug; });
+        return span.outerHTML;
       }).join('');
       track.innerHTML = items;
     }
