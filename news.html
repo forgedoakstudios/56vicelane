@@ -749,8 +749,26 @@ function clearFilters() {
 // ── LOAD ARTICLES ──────────────────────────────────────────
 fetch('/articles.json?v=' + Date.now())
   .then(function(r) { return r.json(); })
-  .then(function(articles) {
+  .then(function(rawArticles) {
+    // BUG FIX 1: Deduplicate by slug — keep first occurrence (newest is first in the array)
+    var seen = {};
+    var articles = [];
+    rawArticles.forEach(function(a) {
+      var key = (a.slug || a.url || a.title || '').toLowerCase().trim();
+      if (!key || seen[key]) return;
+      seen[key] = true;
+      articles.push(a);
+    });
+
+    // BUG FIX 2: Sort newest first by date before rendering anything
+    articles.sort(function(a, b) {
+      var da = a.date ? new Date(a.date).getTime() : 0;
+      var db = b.date ? new Date(b.date).getTime() : 0;
+      return db - da;
+    });
+
     var now    = Date.now();
+    // BUG FIX 3: Active = articles within CUTOFF window, already sorted newest first
     var active = articles.filter(function(a) {
       return !a.date || (now - new Date(a.date).getTime()) < CUTOFF;
     });
@@ -786,11 +804,11 @@ fetch('/articles.json?v=' + Date.now())
       });
     }
 
-    // Build archive with all articles
+    // Build archive with deduped sorted articles
     allArchive = articles;
     buildArchive(articles);
 
-    // Ticker
+    // Ticker — deduped sorted
     var track = document.getElementById('ticker-track');
     if (track && articles.length) {
       track.innerHTML = [].concat(articles, articles).map(function(x) {
