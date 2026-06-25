@@ -683,11 +683,14 @@ function verifyPlayer() {
   btn.disabled = true;
   var f = encodeURIComponent('AND({Gamertag}="' + gamertag + '",{Email}="' + email + '")');
   fetch(AT_URL + '?filterByFormula=' + f + '&maxRecords=1', {headers: AT_H})
-    .then(function(r) { return r.json(); })
+    .then(function(r) {
+      if (!r.ok) throw new Error('network');
+      return r.json();
+    })
     .then(function(d) {
+      btn.textContent = 'Find My Profile'; btn.disabled = false;
       if (!d.records || !d.records.length) {
         showMsg(msg, 'No signup found for "' + gamertag + '" with that email.', 'error');
-        btn.textContent = 'Find My Profile'; btn.disabled = false;
         return;
       }
       playerRecord = d.records[0];
@@ -706,14 +709,16 @@ function verifyPlayer() {
       showCurrentPlate(fields.Gamertag || gamertag, activeStyle);
       if (owned.length > 1) buildOwnedDropdown(owned, activeStyle, fields.Gamertag || gamertag);
       showMsg(msg, '✅ Found you, ' + (fields.Gamertag || gamertag) + '! Scroll down to shop.', 'success');
-      renderAllBundleButtons();
-      loadFounderCount();
+      try { renderAllBundleButtons(); } catch(e) {}
+      try { loadFounderCount(); } catch(e) {}
       setTimeout(function() {
         document.getElementById('plates').scrollIntoView({behavior:'smooth', block:'start'});
       }, 500);
     })
-    .catch(function() { showMsg(msg, 'Connection error. Please try again.', 'error'); })
-    .finally(function() { btn.textContent = 'Find My Profile'; btn.disabled = false; });
+    .catch(function() {
+      btn.textContent = 'Find My Profile'; btn.disabled = false;
+      showMsg(msg, 'Connection error. Please try again.', 'error');
+    });
 }
 
 // ── MARK OWNED PLATES ON GRID ──────────────────────────────
