@@ -38,7 +38,8 @@
 .current-plate-wrap{margin-top:18px;display:none;}
 .current-plate-wrap.show{display:block;}
 .current-plate-label{font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.15em;font-size:.7rem;color:var(--smoke);margin-bottom:8px;}
-.current-plate{max-width:360px;border:2px solid var(--edge);}
+.current-plate{max-width:360px;border:2px solid var(--edge);transition:border-color .2s;}
+.current-plate:hover{border-color:var(--amber);}
 .owned-plates-wrap{margin-top:18px;padding-top:18px;border-top:1px solid var(--edge);display:none;}
 .owned-plates-wrap.show{display:block;}
 .owned-plates-label{font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.15em;font-size:.7rem;color:var(--amber);margin-bottom:10px;}
@@ -194,8 +195,8 @@
     <div class="msg" id="verify-msg"></div>
     <div class="current-plate-wrap" id="current-plate-wrap">
       <div class="current-plate-label">Your active plate</div>
-      <div class="current-plate" id="current-plate-display"></div>
-      <div style="margin-top:8px;font-size:.82rem;color:var(--green);">✅ Profile found — scroll down to shop</div>
+      <div class="current-plate" id="current-plate-display" onclick="goToProfile()" style="cursor:pointer;" title="Tap to view your profile"></div>
+      <div style="margin-top:8px;font-size:.82rem;color:var(--green);">✅ Profile found — <span onclick="goToProfile()" style="cursor:pointer;text-decoration:underline;color:var(--amber);">view your profile</span> · scroll down to shop</div>
     </div>
     <div class="owned-plates-wrap" id="owned-plates-wrap">
       <div class="owned-plates-label">🏆 Your Plate Collection — Switch Active Plate</div>
@@ -1017,6 +1018,13 @@ function showSuccess(style, hadError, bundleName, isUltimate) {
   document.getElementById('purchase-panel').classList.remove('show');
   document.getElementById('success-overlay').classList.add('show');
   showCurrentPlate(playerRecord ? (playerRecord.fields.Gamertag || '') : '', style);
+}
+
+// ── GO TO PROFILE ──────────────────────────────────────────
+function goToProfile(){
+  if(playerRecord && playerRecord.fields.Gamertag){
+    window.location.href='/player?g='+encodeURIComponent(playerRecord.fields.Gamertag);
+  }
 }
 
 // ── FOUNDER COUNT ──────────────────────────────────────────

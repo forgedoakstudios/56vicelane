@@ -52,6 +52,8 @@
 .profile-plate-tag{font-family:var(--font-display);font-size:clamp(14px,4vw,24px);text-transform:uppercase;letter-spacing:.1em;text-align:center;-webkit-text-stroke:1px rgba(0,0,0,.5);}
 .profile-plate-footer{font-size:6px;text-transform:uppercase;letter-spacing:.25em;margin-top:4px;}
 .profile-plate-num{position:absolute;top:4px;right:6px;font-size:.65rem;font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.08em;text-shadow:0 1px 2px rgba(0,0,0,.8);}
+.profile-plate:hover{border-color:var(--amber);transition:border-color .2s;}
+.profile-gamertag:hover{opacity:.85;transition:opacity .2s;}
 .upgrade-plate-link{display:inline-block;margin-top:10px;font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:.78rem;color:var(--amber);text-decoration:none;padding:6px 0;}
 .upgrade-plate-link:hover{text-decoration:underline;}
 .about-card{background:var(--asphalt);border:1px solid var(--edge);padding:18px 20px;margin-bottom:20px;}
@@ -136,7 +138,7 @@
   <div class="profile-wrap">
     <div class="profile-top">
       <div class="profile-avatar" id="profile-avatar">?</div>
-      <div class="profile-gamertag" id="profile-gamertag">LOADING</div>
+      <div class="profile-gamertag" id="profile-gamertag" onclick="scrollToOwnerPanel()" style="cursor:pointer;" title="Tap to manage your profile">LOADING</div>
       <div class="profile-badges" id="profile-badges"></div>
     </div>
     <div class="drive-card" id="drive-card" style="display:none;">
@@ -150,7 +152,7 @@
     </div>
     <div class="plate-section">
       <div class="plate-section-label">License Plate</div>
-      <div class="profile-plate" id="profile-plate-card">
+      <div class="profile-plate" id="profile-plate-card" onclick="scrollToOwnerPanel()" style="cursor:pointer;" title="Tap to switch your plate">
         <div class="profile-plate-inner" id="profile-plate-inner">
           <div class="profile-plate-num" id="profile-plate-num"></div>
           <div class="profile-plate-stars" id="profile-plate-stars">&#9733; &#9733; &#9733; &#9733; &#9733; &#9733;</div>
@@ -727,6 +729,19 @@ function saveAdminPass(){
   fetch(AT_LAST_DRIVE+'/'+verifiedId,{method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{AdminPass:pass}})})
     .then(function(){playerData.AdminPass=pass;document.getElementById('admin-new-pass').value='';showMsg(msg,'\u2705 Password updated.','success');setTimeout(function(){hideMsg(msg);},3000);})
     .catch(function(){showMsg(msg,'Failed.','error');});
+}
+
+function scrollToOwnerPanel(){
+  // If already unlocked, scroll to plate switcher; otherwise scroll to unlock gate
+  var target = verifiedId
+    ? document.getElementById('plate-switcher-section')
+    : document.getElementById('owner-lock-gate');
+  if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+  // If unlocked, briefly highlight the switcher
+  if(verifiedId){
+    var sec = document.getElementById('plate-switcher-section');
+    if(sec){ sec.style.transition='box-shadow .3s'; sec.style.boxShadow='0 0 0 2px var(--amber)'; setTimeout(function(){ sec.style.boxShadow=''; }, 1500); }
+  }
 }
 
 function copyGamertag(){var tag=playerData?(playerData.Gamertag||''):'';navigator.clipboard.writeText(tag).then(function(){var btn=document.getElementById('copy-btn');btn.textContent='Copied! \u2713';btn.style.background='var(--green)';setTimeout(function(){btn.textContent='Copy Gamertag';btn.style.background='';},2500);});}
