@@ -359,8 +359,18 @@ function getPlateBg(s){
 function isPhoto(s){return s==='founder'||(s&&s.indexOf('vehicle-')===0);}
 
 // ── PARSE OWNED — reads checkboxes + legacy string ─────────
+var ALL_PLATES=[
+  'founder','color-red','color-blue','color-purple','color-amber',
+  'color-green','color-yellow','vehicle-male-exotic','vehicle-female-exotic','white','black'
+];
+
 function parseOwnedFromFields(fields){
   var owned=[];
+  // GiftPlate = All Premium gives everything
+  if(fields.GiftPlate==='All Premium'){
+    ALL_PLATES.forEach(function(p){if(owned.indexOf(p)<0) owned.push(p);});
+    return owned;
+  }
   // Read checkbox fields
   Object.keys(PLATE_FIELD_MAP).forEach(function(plateId){
     if(fields[PLATE_FIELD_MAP[plateId]]===true&&owned.indexOf(plateId)<0) owned.push(plateId);
