@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9EKF7J4V7W');</script>
 <meta charset="UTF-8">
@@ -10,7 +9,7 @@
 <meta name="description" id="page-desc" content="Last Drive player profile on 56ViceLane.">
 <meta property="og:title" id="og-title" content="Player Profile — 56ViceLane">
 <meta property="og:url" content="https://56vicelane.com/player">
-<meta property="og:image" id="og-image" content="https://56vicelane.com/images/Jason_and_Lucia_01_landscape.jpg">
+<meta property="og:image" id="og-image" content="https://56vicelane.com/images/lastdrive-hero.jpg">
 <meta property="og:type" content="profile">
 <meta property="og:site_name" content="56ViceLane">
 <meta name="twitter:card" content="summary_large_image">
@@ -89,6 +88,18 @@
 .drive-browser-card{background:var(--pitch);border:1px solid var(--edge);padding:14px;margin-bottom:8px;}
 .drive-browser-tag{font-family:var(--font-display);font-size:1rem;text-transform:uppercase;color:var(--bone);margin-bottom:6px;}
 .drive-browser-meta{font-size:.82rem;color:var(--smoke);margin-bottom:8px;}
+
+/* ── PLATE SWITCHER ─────────────────────────────── */
+.plate-switcher-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin:14px 0;}
+.plate-switch-card{background:var(--pitch);border:2px solid var(--edge);overflow:hidden;cursor:pointer;transition:all .25s;position:relative;}
+.plate-switch-card:hover{border-color:var(--amber);transform:translateY(-2px);}
+.plate-switch-card.active-plate{border-color:var(--green);box-shadow:0 0 12px rgba(0,200,117,.2);}
+.plate-switch-inner{width:100%;aspect-ratio:2.5/1;background-size:cover;background-position:center;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6px;}
+.plate-switch-stars{font-size:7px;letter-spacing:4px;margin-bottom:2px;}
+.plate-switch-tag{font-family:var(--font-display);font-size:clamp(9px,3vw,13px);text-transform:uppercase;letter-spacing:.08em;color:#fff;text-shadow:0 0 10px rgba(0,0,0,.8),0 2px 4px rgba(0,0,0,.9);-webkit-text-stroke:0.5px rgba(0,0,0,.5);text-align:center;}
+.plate-switch-label{font-family:var(--font-label);font-weight:800;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--bone);padding:6px 8px;background:#111118;}
+.plate-switch-active-badge{display:none;position:absolute;top:4px;left:4px;background:var(--green);color:#000;font-family:var(--font-label);font-weight:800;font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;padding:2px 6px;}
+.plate-switch-card.active-plate .plate-switch-active-badge{display:block;}
 </style>
 </head>
 <body>
@@ -113,6 +124,7 @@
 </div>
 
 <div id="profile-loading" class="profile-loading">Loading profile...</div>
+
 <div id="profile-not-found" class="not-found" style="display:none;">
   <div class="not-found-title">Player Not Found</div>
   <p class="not-found-text">That gamertag isn't on the wall yet. Sign up for The Last Drive to get your profile.</p>
@@ -157,6 +169,8 @@
       <div class="about-label">About</div>
       <div id="about-display" class="about-empty">Nothing here yet.</div>
     </div>
+
+    <!-- OWNER LOCK -->
     <div class="owner-lock" id="owner-lock-gate">
       <div class="owner-lock-title">Is This Your Profile?</div>
       <p class="owner-lock-sub">Enter your signup email to unlock your profile settings.</p>
@@ -166,7 +180,22 @@
       </div>
       <div class="msg" id="owner-lock-msg"></div>
     </div>
+
+    <!-- OWNER PANEL -->
     <div id="owner-panel" style="display:none;">
+
+      <!-- ── SWITCH PLATE ─────────────────────────────── -->
+      <div class="owner-panel-section" id="plate-switcher-section">
+        <div class="owner-panel-label">Your Plates</div>
+        <div class="owner-panel-title">Switch Active Plate</div>
+        <p class="owner-panel-sub">Tap any plate to set it as your active plate on the Wall of Honor.</p>
+        <div class="plate-switcher-grid" id="plate-switcher-grid">
+          <div style="color:var(--smoke);font-size:.82rem;">Loading your plates...</div>
+        </div>
+        <div class="msg" id="plate-switch-msg"></div>
+      </div>
+
+      <!-- ── ABOUT ──────────────────────────────────── -->
       <div class="owner-panel-section">
         <div class="owner-panel-label">Your Profile</div>
         <div class="owner-panel-title">About You</div>
@@ -175,6 +204,8 @@
         <button class="form-submit" onclick="saveAbout()" style="margin-top:10px;">Save About</button>
         <div class="msg" id="about-msg"></div>
       </div>
+
+      <!-- ── PROFILE PIC ─────────────────────────────── -->
       <div class="owner-panel-section">
         <div class="owner-panel-label">Profile Picture</div>
         <div class="owner-panel-title">Avatar</div>
@@ -185,6 +216,8 @@
         </div>
         <div class="msg" id="pic-msg"></div>
       </div>
+
+      <!-- ── DRIVE MANAGE ───────────────────────────── -->
       <div class="owner-panel-section" id="drive-manage-section">
         <div class="owner-panel-label">Drive Settings</div>
         <div class="owner-panel-title">Manage Your Drive</div>
@@ -211,6 +244,8 @@
         </div>
         <div class="msg" id="manage-action-msg"></div>
       </div>
+
+      <!-- ── SUBMIT CONTENT ─────────────────────────── -->
       <div class="owner-panel-section">
         <div class="owner-panel-label">Submit Your Voice</div>
         <div class="owner-panel-title">Trevor Take / Letters to the Editor</div>
@@ -220,6 +255,8 @@
         <button class="form-submit" id="submission-btn" onclick="submitContent()" style="margin-top:10px;">Submit</button>
         <div class="msg" id="submission-msg"></div>
       </div>
+
+      <!-- ── ADMIN GATE ──────────────────────────────── -->
       <div class="admin-gate" id="admin-gate">
         <div class="admin-label">Admin Access</div>
         <div class="admin-title">Admin Panel</div>
@@ -230,6 +267,8 @@
         </div>
         <div class="msg" id="admin-gate-msg"></div>
       </div>
+
+      <!-- ── ADMIN PANEL ─────────────────────────────── -->
       <div class="admin-panel" id="admin-panel">
         <div class="admin-label">Admin Panel &mdash; Musashi13</div>
         <div class="admin-title" style="margin-bottom:16px;">Gift Plates</div>
@@ -283,15 +322,25 @@ var AT_LAST_DRIVE='https://api.airtable.com/v0/'+AT_BASE+'/Last%20Drive';
 var AT_SUBS='https://api.airtable.com/v0/'+AT_BASE+'/Submissions';
 var AT_H={'Authorization':'Bearer '+AT_TOKEN,'Content-Type':'application/json'};
 var playerData=null,verifiedId=null,allPlayers=[],adminTargetId=null,adminTargetPlates=[];
+
 var PLATE_STYLES=[
   {id:'founder',label:'Founder'},{id:'vehicle-male-exotic',label:'Male Exotic'},
-  {id:'vehicle-female-exotic',label:'Female Exotic'},{id:'color-red',label:'Red'},
-  {id:'color-blue',label:'Blue'},{id:'color-purple',label:'Purple'},
-  {id:'color-amber',label:'Amber'},{id:'color-green',label:'Green'},
-  {id:'color-yellow',label:'Yellow'},{id:'white',label:'White'},{id:'black',label:'Black'}
+  {id:'vehicle-female-exotic',label:'Female Exotic'},{id:'color-red',label:'Crimson Red'},
+  {id:'color-blue',label:'Vice Blue'},{id:'color-purple',label:'Royal Purple'},
+  {id:'color-amber',label:'Gold Amber'},{id:'color-green',label:'Leonida Green'},
+  {id:'color-yellow',label:'Vice Yellow'},{id:'white',label:'Classic White'},{id:'black',label:'Classic Black'}
 ];
+
+// ── PLATE FIELD MAP (checkbox fields) ─────────────────────
+var PLATE_FIELD_MAP={
+  'color-red':'plate_red','color-blue':'plate_blue','color-purple':'plate_purple',
+  'color-amber':'plate_amber','color-green':'plate_green','color-yellow':'plate_yellow',
+  'vehicle-male-exotic':'plate_male_exotic','vehicle-female-exotic':'plate_female_exotic'
+};
+
 function showMsg(el,text,type){el.textContent=text;el.className='msg show '+type;}
 function hideMsg(el){el.className='msg';}
+
 function getPlateBg(s){
   if(s==='founder')return"url('/images/plate-founder.png')";
   if(s==='vehicle-male-exotic')return"url('/images/plate-male-exotic.png')";
@@ -306,6 +355,39 @@ function getPlateBg(s){
   return'#0a0a0a';
 }
 function isPhoto(s){return s==='founder'||(s&&s.indexOf('vehicle-')===0);}
+
+// ── PARSE OWNED — reads checkboxes + legacy string ─────────
+function parseOwnedFromFields(fields){
+  var owned=[];
+  // Read checkbox fields
+  Object.keys(PLATE_FIELD_MAP).forEach(function(plateId){
+    if(fields[PLATE_FIELD_MAP[plateId]]===true&&owned.indexOf(plateId)<0) owned.push(plateId);
+  });
+  // Read legacy OwnedPlates string
+  if(fields.OwnedPlates){
+    fields.OwnedPlates.split(',').map(function(s){return s.trim();}).filter(Boolean).forEach(function(p){
+      var n=normalizeToId(p);
+      if(n&&owned.indexOf(n)<0) owned.push(n);
+      else if(!n&&owned.indexOf(p)<0) owned.push(p);
+    });
+  }
+  // Always include free plates
+  if(owned.indexOf('black')<0) owned.push('black');
+  if(owned.indexOf('white')<0) owned.push('white');
+  // Founder
+  if(fields.PlateStatus==='Free Premium'&&owned.indexOf('founder')<0) owned.unshift('founder');
+  return owned;
+}
+
+function normalizeToId(s){
+  var map={'crimson red':'color-red','vice blue':'color-blue','royal purple':'color-purple',
+    'gold amber':'color-amber','leonida green':'color-green','vice yellow':'color-yellow',
+    'male exotic':'vehicle-male-exotic','female exotic':'vehicle-female-exotic',
+    'male · exotic':'vehicle-male-exotic','female · exotic':'vehicle-female-exotic'};
+  return map[s.toLowerCase()]||null;
+}
+
+// ── LOAD PROFILE ───────────────────────────────────────────
 function loadProfile(){
   var params=new URLSearchParams(window.location.search);
   var g=params.get('g')||params.get('gamertag')||'';
@@ -318,10 +400,12 @@ function loadProfile(){
       renderProfile(playerData,g);
     }).catch(showNotFound);
 }
+
 function showNotFound(){
   document.getElementById('profile-loading').style.display='none';
   document.getElementById('profile-not-found').style.display='block';
 }
+
 function renderProfile(f,gamertag){
   var tag=(f.Gamertag||gamertag).toUpperCase();
   var ps=f.PlateStyle||(f.PlateStatus==='Free Premium'?'founder':'black');
@@ -361,24 +445,294 @@ function renderProfile(f,gamertag){
   document.getElementById('profile-loading').style.display='none';
   document.getElementById('profile-content').style.display='block';
 }
+
+// ── PLATE SWITCHER ─────────────────────────────────────────
+function buildPlateSwitcher(owned, activeStyle, gamertag){
+  var grid=document.getElementById('plate-switcher-grid');
+  grid.innerHTML='';
+  if(!owned||!owned.length){
+    grid.innerHTML='<div style="color:var(--smoke);font-size:.82rem;">No plates yet. <a href="/store" style="color:var(--amber);">Get one in the store →</a></div>';
+    return;
+  }
+  var NAMES={
+    'founder':'Founder','black':'Classic Black','white':'Classic White',
+    'color-red':'Crimson Red','color-blue':'Vice Blue','color-purple':'Royal Purple',
+    'color-amber':'Gold Amber','color-green':'Leonida Green','color-yellow':'Vice Yellow',
+    'vehicle-male-exotic':'Male Exotic','vehicle-female-exotic':'Female Exotic'
+  };
+  owned.forEach(function(style){
+    var bg=getPlateBg(style);
+    var ip=isPhoto(style);
+    var tc=style==='white'?'#0a0a0a':'#fff';
+    var isActive=style===activeStyle;
+    var card=document.createElement('div');
+    card.className='plate-switch-card'+(isActive?' active-plate':'');
+    card.dataset.style=style;
+    var bgStyle=ip?'background-image:'+bg+';background-size:cover;background-position:center;':'background:'+bg+';';
+    var starColor=ip?'rgba(255,255,255,.7)':(style==='white'?'rgba(0,0,0,.25)':'rgba(255,255,255,.35)');
+    card.innerHTML=
+      '<div class="plate-switch-active-badge">✅ Active</div>'+
+      '<div class="plate-switch-inner" style="'+bgStyle+'">'+
+        '<div class="plate-switch-stars" style="color:'+starColor+';">★ ★ ★ ★ ★ ★</div>'+
+        '<div class="plate-switch-tag" style="color:'+tc+';">'+gamertag.toUpperCase()+'</div>'+
+      '</div>'+
+      '<div class="plate-switch-label">'+(NAMES[style]||style)+'</div>';
+    card.addEventListener('click',function(){
+      switchActivePlate(style, gamertag);
+    });
+    grid.appendChild(card);
+  });
+}
+
+function switchActivePlate(style, gamertag){
+  if(!verifiedId) return;
+  var msg=document.getElementById('plate-switch-msg');
+  // Optimistic UI — update immediately
+  document.querySelectorAll('.plate-switch-card').forEach(function(c){
+    c.classList.remove('active-plate');
+  });
+  var selected=document.querySelector('.plate-switch-card[data-style="'+style+'"]');
+  if(selected) selected.classList.add('active-plate');
+  // Update the main plate display
+  var pi=document.getElementById('profile-plate-inner');
+  var bg=getPlateBg(style);
+  var ip=isPhoto(style);
+  var tc=style==='white'?'#0a0a0a':'#FFFFFF';
+  if(ip){pi.style.backgroundImage=bg;pi.style.backgroundSize='cover';pi.style.backgroundPosition='center';pi.style.background='';}
+  else{pi.style.backgroundImage='';pi.style.background=bg;}
+  var ptag=document.getElementById('profile-plate-tag');
+  var stars=document.getElementById('profile-plate-stars');
+  ptag.style.color=tc;ptag.textContent=gamertag.toUpperCase();
+  stars.style.color=ip?'rgba(255,255,255,.75)':(style==='white'?'rgba(0,0,0,.3)':'rgba(255,255,255,.4)');
+  // Update profile hero bg
+  var hero=document.getElementById('profile-hero');
+  if(ip){hero.style.backgroundImage='linear-gradient(135deg,rgba(0,0,0,.3),rgba(0,0,0,.1)),'+bg;}
+  else{hero.style.background='linear-gradient(135deg,rgba(0,0,0,.4),rgba(0,0,0,.2)),'+bg;}
+  showMsg(msg,'Saving...','info');
+  fetch(AT_LAST_DRIVE+'/'+verifiedId,{method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{PlateStyle:style}})})
+    .then(function(){
+      playerData.PlateStyle=style;
+      showMsg(msg,'✅ Plate updated on Wall of Honor!','success');
+      setTimeout(function(){hideMsg(msg);},3000);
+    })
+    .catch(function(){showMsg(msg,'Save failed — please try again.','error');});
+}
+
+// ── UNLOCK OWNER ───────────────────────────────────────────
+function unlockOwner(){
+  var email=document.getElementById('owner-email').value.trim();
+  var msg=document.getElementById('owner-lock-msg');
+  var tag=playerData?(playerData.Gamertag||''):'';
+  if(!email){showMsg(msg,'Enter your signup email.','error');return;}
+  showMsg(msg,'Checking...','info');
+  fetch(AT_LAST_DRIVE+'?filterByFormula='+encodeURIComponent('AND({Gamertag}="'+tag+'",{Email}="'+email+'")')+'&maxRecords=1',{headers:AT_H})
+    .then(function(r){return r.json();})
+    .then(function(d){
+      if(!d.records||!d.records.length){showMsg(msg,'Email does not match.','error');return;}
+      verifiedId=d.records[0].id;
+      playerData._id=verifiedId;
+      var flds=d.records[0].fields;
+      document.getElementById('owner-lock-gate').style.display='none';
+      document.getElementById('owner-panel').style.display='block';
+      if(flds.About)document.getElementById('about-input').value=flds.About;
+      if(flds.ImgurLink)document.getElementById('pic-url-input').value=flds.ImgurLink;
+      var mc=document.getElementById('manage-current'),isLR=flds.SignupType==='Drive Lead';
+      var sum=(isLR?'Drive Lead':'Participant')+(flds['Staging Time']?' \u00b7 '+flds['Staging Time']:'')+(flds.StagingLocation?' \u00b7 '+flds.StagingLocation:'');
+      mc.innerHTML=sum;mc.style.display='block';
+      if(isLR){
+        document.getElementById('opt-lead').classList.add('active');
+        if(flds['Staging Time'])document.getElementById('lead-time').value=flds['Staging Time'];
+        if(flds.StagingLocation)document.getElementById('lead-location').value=flds.StagingLocation;
+        if(flds['Drive Type'])document.getElementById('lead-type').value=flds['Drive Type'];
+      }
+      if(tag.toLowerCase()==='musashi13'){
+        document.getElementById('admin-gate').style.display='block';
+        if(!flds.AdminPass)document.getElementById('admin-gate-desc').textContent='No password set yet \u2014 create one below.';
+        playerData.AdminPass=flds.AdminPass||'';
+      }
+      // Build plate switcher
+      var owned=parseOwnedFromFields(flds);
+      var activeStyle=flds.PlateStyle||(flds.PlateStatus==='Free Premium'?'founder':'black');
+      buildPlateSwitcher(owned, activeStyle, tag);
+      hideMsg(msg);
+    }).catch(function(){showMsg(msg,'Verification error.','error');});
+}
+
+function saveProfilePic(){
+  var url=document.getElementById('pic-url-input').value.trim(),msg=document.getElementById('pic-msg');
+  if(!url||!playerData||!playerData._id)return;
+  showMsg(msg,'Saving...','success');
+  fetch(AT_LAST_DRIVE+'/'+playerData._id,{method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{ImgurLink:url}})})
+    .then(function(){
+      var a=document.getElementById('profile-avatar'),img=document.createElement('img');
+      img.src=url;img.alt='avatar';img.onerror=function(){a.textContent='?';};
+      a.innerHTML='';a.appendChild(img);
+      showMsg(msg,'\u2705 Updated!','success');
+      setTimeout(function(){hideMsg(msg);},3000);
+    }).catch(function(){showMsg(msg,'Failed.','error');});
+}
+
+function saveAbout(){
+  var text=document.getElementById('about-input').value.trim(),msg=document.getElementById('about-msg');
+  if(!verifiedId)return;
+  showMsg(msg,'Saving...','success');
+  fetch(AT_LAST_DRIVE+'/'+verifiedId,{method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{About:text}})})
+    .then(function(){
+      var d=document.getElementById('about-display');
+      if(text){d.textContent=text;d.className='about-text';}
+      else{d.textContent='Nothing here yet.';d.className='about-empty';}
+      showMsg(msg,'Saved!','success');setTimeout(function(){hideMsg(msg);},3000);
+    }).catch(function(){showMsg(msg,'Failed.','error');});
+}
+
+function submitContent(){
+  var type=document.getElementById('submission-type').value,text=document.getElementById('submission-text').value.trim();
+  var btn=document.getElementById('submission-btn'),msg=document.getElementById('submission-msg');
+  var tag=playerData?(playerData.Gamertag||'Anonymous'):'Anonymous';
+  if(!type){showMsg(msg,'Choose a column.','error');return;}
+  if(!text||text.length<30){showMsg(msg,'Write at least 30 characters.','error');return;}
+  btn.textContent='Submitting...';btn.disabled=true;
+  fetch(AT_SUBS,{method:'POST',headers:AT_H,body:JSON.stringify({records:[{fields:{Gamertag:tag,SubmissionType:type,Content:text,Status:'Pending'}}]})})
+    .then(function(){showMsg(msg,'\u2705 Submitted!','success');document.getElementById('submission-text').value='';document.getElementById('submission-type').value='';})
+    .catch(function(){showMsg(msg,'Failed. Try again.','error');})
+    .finally(function(){btn.textContent='Submit';btn.disabled=false;});
+}
+
+function showDriveBrowser(){document.getElementById('opt-lead').classList.remove('active');document.getElementById('opt-join').classList.add('active');document.getElementById('drive-browser').style.display='block';document.getElementById('lead-form').style.display='none';loadAvailableDrives();}
+function showLeadForm(){document.getElementById('opt-join').classList.remove('active');document.getElementById('opt-lead').classList.add('active');document.getElementById('lead-form').style.display='block';document.getElementById('drive-browser').style.display='none';}
+
+function loadAvailableDrives(){
+  var le=document.getElementById('drives-loading'),li=document.getElementById('drives-list');
+  le.style.display='block';li.innerHTML='';
+  fetch(AT_LAST_DRIVE+'?filterByFormula='+encodeURIComponent('AND({SignupType}="Drive Lead",{JoinStatus}="Active")')+'&maxRecords=20',{headers:AT_H})
+    .then(function(r){return r.json();})
+    .then(function(d){
+      le.style.display='none';
+      if(!d.records||!d.records.length){li.innerHTML='<p style="font-size:.88rem;color:var(--smoke);">No open drives yet.</p>';return;}
+      var mp=(playerData&&playerData.Platform)?playerData.Platform.toLowerCase():'';
+      d.records.forEach(function(rec){
+        var fl=rec.fields,lt=fl.Gamertag||'Unknown',tm=fl['Staging Time']||'TBD',lc=fl.StagingLocation||'TBD',pl=fl.Platform||'',rg=fl.Region||'';
+        var match=mp&&pl&&mp.indexOf(pl.split(' ')[0].toLowerCase())>=0;
+        var card=document.createElement('div');card.className='drive-browser-card';card.style.borderColor=match?'var(--cyan)':'';
+        var nr=document.createElement('div');nr.className='drive-browser-tag';nr.textContent=lt;
+        if(match){var mb=document.createElement('span');mb.style.cssText='font-size:.68rem;color:var(--cyan);border:1px solid var(--cyan);padding:1px 6px;margin-left:8px;font-family:var(--font-label);font-weight:800;';mb.textContent='MATCH';nr.appendChild(mb);}
+        var meta=document.createElement('div');meta.className='drive-browser-meta';meta.textContent=tm+' \u2014 '+lc+(pl?' \u2014 '+pl:'')+(rg?' '+rg:'');
+        var btn=document.createElement('button');btn.className='btn btn-primary';btn.style.cssText='font-size:.78rem;padding:9px 18px;';btn.textContent='Join This Drive';
+        btn.dataset.rid=rec.id;btn.dataset.lt=lt;btn.dataset.pl=pl;btn.dataset.rg=rg;btn.dataset.lc=lc;
+        btn.addEventListener('click',function(){joinDrive(this.dataset.rid,this.dataset.lt,this.dataset.pl,this.dataset.rg,this.dataset.lc);});
+        card.appendChild(nr);card.appendChild(meta);card.appendChild(btn);li.appendChild(card);
+      });
+    }).catch(function(){document.getElementById('drives-loading').style.display='none';document.getElementById('drives-list').innerHTML='<p style="color:var(--red);font-size:.88rem;">Could not load drives.</p>';});
+}
+
+function joinDrive(rid,lt,pl,rg,lc){
+  var msg=document.getElementById('join-msg');
+  if(!verifiedId){showMsg(msg,'Not verified.','error');return;}
+  showMsg(msg,'Joining...','info');
+  fetch(AT_LAST_DRIVE+'/'+verifiedId,{method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{SignupType:'Participant',JoinStatus:'Active',LinkedSlot:pl+'||'+rg+'||'+lc+'||'+lt}})})
+    .then(function(){msg.innerHTML='Joined <b>'+lt+'</b> drive! Add them on '+pl+' and message them you joined.';msg.className='msg show success';})
+    .catch(function(){showMsg(msg,'Join failed.','error');});
+}
+
+function saveLead(){
+  var time=document.getElementById('lead-time').value,loc=document.getElementById('lead-location').value;
+  var tp=document.getElementById('lead-type').value,ac=document.getElementById('lead-access').value;
+  var msg=document.getElementById('lead-msg');
+  if(!time||!loc||!tp){showMsg(msg,'Fill in all fields.','error');return;}
+  if(!verifiedId){showMsg(msg,'Not verified.','error');return;}
+  showMsg(msg,'Saving...','info');
+  fetch(AT_LAST_DRIVE+'/'+verifiedId,{method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{SignupType:'Drive Lead',IsOrganizer:true,JoinStatus:'Active','Staging Time':time,StagingLocation:loc,'Drive Type':tp,AccessType:ac}})})
+    .then(function(){showMsg(msg,'\u2705 Your drive is live!','success');})
+    .catch(function(){showMsg(msg,'Save failed.','error');});
+}
+
+function unlockAdmin(){
+  var pass=document.getElementById('admin-pass-input').value.trim(),msg=document.getElementById('admin-gate-msg');
+  if(!pass){showMsg(msg,'Enter a password.','error');return;}
+  var stored=playerData.AdminPass||'';
+  if(!stored){
+    fetch(AT_LAST_DRIVE+'/'+verifiedId,{method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{AdminPass:pass}})})
+      .then(function(){playerData.AdminPass=pass;document.getElementById('admin-gate').style.display='none';document.getElementById('admin-panel').style.display='block';loadAllPlayers();})
+      .catch(function(){showMsg(msg,'Failed to save.','error');});
+    return;
+  }
+  if(pass!==stored){showMsg(msg,'Incorrect password.','error');return;}
+  document.getElementById('admin-gate').style.display='none';document.getElementById('admin-panel').style.display='block';loadAllPlayers();
+}
+
+function loadAllPlayers(){
+  if(allPlayers.length)return;
+  fetch(AT_LAST_DRIVE+'?fields[]=Gamertag&fields[]=OwnedPlates&maxRecords=200',{headers:AT_H})
+    .then(function(r){return r.json();})
+    .then(function(d){
+      allPlayers=(d.records||[]).map(function(rec){return{id:rec.id,tag:rec.fields.Gamertag||'',plates:rec.fields.OwnedPlates||''};}).filter(function(p){return!!p.tag;});
+    }).catch(function(){});
+}
+
+function adminFilterPlayers(val){
+  var dd=document.getElementById('admin-player-dropdown');dd.innerHTML='';
+  if(!val){dd.style.display='none';return;}
+  var matches=allPlayers.filter(function(p){return p.tag.toLowerCase().indexOf(val.toLowerCase())>=0;}).slice(0,10);
+  if(!matches.length){dd.style.display='none';return;}
+  matches.forEach(function(p){
+    var row=document.createElement('div');
+    row.style.cssText='padding:10px 14px;cursor:pointer;font-size:.88rem;font-weight:800;text-transform:uppercase;color:var(--bone);border-bottom:1px solid var(--edge);';
+    row.textContent=p.tag;
+    row.addEventListener('mouseover',function(){this.style.background='var(--asphalt)';});
+    row.addEventListener('mouseout',function(){this.style.background='';});
+    row.addEventListener('click',function(){adminSelectPlayer(p.id,p.tag,p.plates);});
+    dd.appendChild(row);
+  });
+  dd.style.display='block';
+}
+
+function adminSelectPlayer(id,tag,plates){
+  adminTargetId=id;
+  adminTargetPlates=plates?plates.split(',').map(function(p){return p.trim();}).filter(Boolean):[];
+  document.getElementById('admin-search-tag').value=tag;
+  document.getElementById('admin-player-dropdown').style.display='none';
+  document.getElementById('admin-found-tag').textContent=tag;
+  document.getElementById('admin-found-plates').textContent=adminTargetPlates.length?'Current: '+adminTargetPlates.join(', '):'No plates yet.';
+  var grid=document.getElementById('admin-plate-checkboxes');grid.innerHTML='';
+  PLATE_STYLES.forEach(function(p){
+    var owned=adminTargetPlates.indexOf(p.id)>=0;
+    var item=document.createElement('label');item.className='plate-check-item'+(owned?' owned':'');
+    var chk=document.createElement('input');chk.type='checkbox';chk.id='chk-'+p.id;chk.value=p.id;if(owned)chk.checked=true;
+    var lbl=document.createElement('span');lbl.className='plate-check-label';lbl.textContent=p.label+(owned?' \u2713':'');
+    item.appendChild(chk);item.appendChild(lbl);grid.appendChild(item);
+  });
+  document.getElementById('admin-player-found').style.display='block';
+  document.getElementById('admin-search-msg').className='msg';
+}
+
+function adminGiftPlates(){
+  var msg=document.getElementById('admin-gift-msg');
+  if(!adminTargetId){showMsg(msg,'No player selected.','error');return;}
+  var selected=PLATE_STYLES.filter(function(p){var el=document.getElementById('chk-'+p.id);return el&&el.checked;}).map(function(p){return p.id;});
+  if(!selected.length){showMsg(msg,'Select at least one plate.','error');return;}
+  showMsg(msg,'Saving...','info');
+  // Build checkbox fields update too
+  var updateFields={OwnedPlates:selected.join(', ')};
+  selected.forEach(function(plateId){var f=PLATE_FIELD_MAP[plateId];if(f)updateFields[f]=true;});
+  fetch(AT_LAST_DRIVE+'/'+adminTargetId,{method:'PATCH',headers:AT_H,body:JSON.stringify({fields:updateFields})})
+    .then(function(){
+      document.getElementById('admin-found-plates').textContent='Current: '+selected.join(', ');
+      showMsg(msg,'\u2705 Plates saved for '+document.getElementById('admin-found-tag').textContent,'success');
+    }).catch(function(){showMsg(msg,'Save failed.','error');});
+}
+
+function saveAdminPass(){
+  var pass=document.getElementById('admin-new-pass').value.trim(),msg=document.getElementById('admin-pass-msg');
+  if(!pass){showMsg(msg,'Enter a password.','error');return;}
+  fetch(AT_LAST_DRIVE+'/'+verifiedId,{method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{AdminPass:pass}})})
+    .then(function(){playerData.AdminPass=pass;document.getElementById('admin-new-pass').value='';showMsg(msg,'\u2705 Password updated.','success');setTimeout(function(){hideMsg(msg);},3000);})
+    .catch(function(){showMsg(msg,'Failed.','error');});
+}
+
 function copyGamertag(){var tag=playerData?(playerData.Gamertag||''):'';navigator.clipboard.writeText(tag).then(function(){var btn=document.getElementById('copy-btn');btn.textContent='Copied! \u2713';btn.style.background='var(--green)';setTimeout(function(){btn.textContent='Copy Gamertag';btn.style.background='';},2500);});}
 function shareProfile(){var tag=playerData?(playerData.Gamertag||''):'';var url='https://56vicelane.com/player?g='+encodeURIComponent(tag);if(navigator.share){navigator.share({title:tag+' \u2014 The Last Drive',url:url});}else{copyProfileLink();}}
 function copyProfileLink(){var tag=playerData?(playerData.Gamertag||''):'';navigator.clipboard.writeText('https://56vicelane.com/player?g='+encodeURIComponent(tag)).then(function(){var b=document.querySelectorAll('.share-btn');b.forEach(function(x){if(x.textContent.includes('Copy')){x.textContent='Copied! \u2713';setTimeout(function(){x.textContent='\uD83D\uDD17 Copy Link';},2000);}});});}
-function saveProfilePic(){var url=document.getElementById('pic-url-input').value.trim(),msg=document.getElementById('pic-msg');if(!url||!playerData||!playerData._id)return;showMsg(msg,'Saving...','success');fetch(AT_LAST_DRIVE+'/'+playerData._id,{method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{ImgurLink:url}})}).then(function(){var a=document.getElementById('profile-avatar'),img=document.createElement('img');img.src=url;img.alt='avatar';img.onerror=function(){a.textContent='?';};a.innerHTML='';a.appendChild(img);showMsg(msg,'\u2705 Updated!','success');setTimeout(function(){hideMsg(msg);},3000);}).catch(function(){showMsg(msg,'Failed.','error');});}
-function saveAbout(){var text=document.getElementById('about-input').value.trim(),msg=document.getElementById('about-msg');if(!verifiedId)return;showMsg(msg,'Saving...','success');fetch(AT_LAST_DRIVE+'/'+verifiedId,{method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{About:text}})}).then(function(){var d=document.getElementById('about-display');if(text){d.textContent=text;d.className='about-text';}else{d.textContent='Nothing here yet.';d.className='about-empty';}showMsg(msg,'Saved!','success');setTimeout(function(){hideMsg(msg);},3000);}).catch(function(){showMsg(msg,'Failed.','error');});}
-function submitContent(){var type=document.getElementById('submission-type').value,text=document.getElementById('submission-text').value.trim(),btn=document.getElementById('submission-btn'),msg=document.getElementById('submission-msg'),tag=playerData?(playerData.Gamertag||'Anonymous'):'Anonymous';if(!type){showMsg(msg,'Choose a column.','error');return;}if(!text||text.length<30){showMsg(msg,'Write at least 30 characters.','error');return;}btn.textContent='Submitting...';btn.disabled=true;fetch(AT_SUBS,{method:'POST',headers:AT_H,body:JSON.stringify({records:[{fields:{Gamertag:tag,SubmissionType:type,Content:text,Status:'Pending'}}]})}).then(function(){showMsg(msg,'\u2705 Submitted!','success');document.getElementById('submission-text').value='';document.getElementById('submission-type').value='';}).catch(function(){showMsg(msg,'Failed. Try again.','error');}).finally(function(){btn.textContent='Submit';btn.disabled=false;});}
-function unlockOwner(){var email=document.getElementById('owner-email').value.trim(),msg=document.getElementById('owner-lock-msg'),tag=playerData?(playerData.Gamertag||''):'';if(!email){showMsg(msg,'Enter your signup email.','error');return;}showMsg(msg,'Checking...','info');fetch(AT_LAST_DRIVE+'?filterByFormula='+encodeURIComponent('AND({Gamertag}="'+tag+'",{Email}="'+email+'")')+'&maxRecords=1',{headers:AT_H}).then(function(r){return r.json();}).then(function(d){if(!d.records||!d.records.length){showMsg(msg,'Email does not match.','error');return;}verifiedId=d.records[0].id;playerData._id=verifiedId;var flds=d.records[0].fields;document.getElementById('owner-lock-gate').style.display='none';document.getElementById('owner-panel').style.display='block';if(flds.About)document.getElementById('about-input').value=flds.About;if(flds.ImgurLink)document.getElementById('pic-url-input').value=flds.ImgurLink;var mc=document.getElementById('manage-current'),isLR=flds.SignupType==='Drive Lead';var sum=(isLR?'Drive Lead':'Participant')+(flds['Staging Time']?' \u00b7 '+flds['Staging Time']:'')+(flds.StagingLocation?' \u00b7 '+flds.StagingLocation:'');mc.innerHTML=sum;mc.style.display='block';if(isLR){document.getElementById('opt-lead').classList.add('active');if(flds['Staging Time'])document.getElementById('lead-time').value=flds['Staging Time'];if(flds.StagingLocation)document.getElementById('lead-location').value=flds.StagingLocation;if(flds['Drive Type'])document.getElementById('lead-type').value=flds['Drive Type'];}if(tag.toLowerCase()==='musashi13'){document.getElementById('admin-gate').style.display='block';if(!flds.AdminPass)document.getElementById('admin-gate-desc').textContent='No password set yet \u2014 create one below.';playerData.AdminPass=flds.AdminPass||'';}hideMsg(msg);}).catch(function(){showMsg(msg,'Verification error.','error');});}
-function showDriveBrowser(){document.getElementById('opt-lead').classList.remove('active');document.getElementById('opt-join').classList.add('active');document.getElementById('drive-browser').style.display='block';document.getElementById('lead-form').style.display='none';loadAvailableDrives();}
-function showLeadForm(){document.getElementById('opt-join').classList.remove('active');document.getElementById('opt-lead').classList.add('active');document.getElementById('lead-form').style.display='block';document.getElementById('drive-browser').style.display='none';}
-function loadAvailableDrives(){var le=document.getElementById('drives-loading'),li=document.getElementById('drives-list');le.style.display='block';li.innerHTML='';fetch(AT_LAST_DRIVE+'?filterByFormula='+encodeURIComponent('AND({SignupType}="Drive Lead",{JoinStatus}="Active")')+'&maxRecords=20',{headers:AT_H}).then(function(r){return r.json();}).then(function(d){le.style.display='none';if(!d.records||!d.records.length){li.innerHTML='<p style="font-size:.88rem;color:var(--smoke);">No open drives yet.</p>';return;}var mp=(playerData&&playerData.Platform)?playerData.Platform.toLowerCase():'';d.records.forEach(function(rec){var fl=rec.fields,lt=fl.Gamertag||'Unknown',tm=fl['Staging Time']||'TBD',lc=fl.StagingLocation||'TBD',pl=fl.Platform||'',rg=fl.Region||'',match=mp&&pl&&mp.indexOf(pl.split(' ')[0].toLowerCase())>=0;var card=document.createElement('div');card.className='drive-browser-card';card.style.borderColor=match?'var(--cyan)':'';var nr=document.createElement('div');nr.className='drive-browser-tag';nr.textContent=lt;if(match){var mb=document.createElement('span');mb.style.cssText='font-size:.68rem;color:var(--cyan);border:1px solid var(--cyan);padding:1px 6px;margin-left:8px;font-family:var(--font-label);font-weight:800;';mb.textContent='MATCH';nr.appendChild(mb);}var meta=document.createElement('div');meta.className='drive-browser-meta';meta.textContent=tm+' \u2014 '+lc+(pl?' \u2014 '+pl:'')+(rg?' '+rg:'');var btn=document.createElement('button');btn.className='btn btn-primary';btn.style.cssText='font-size:.78rem;padding:9px 18px;';btn.textContent='Join This Drive';btn.dataset.rid=rec.id;btn.dataset.lt=lt;btn.dataset.pl=pl;btn.dataset.rg=rg;btn.dataset.lc=lc;btn.addEventListener('click',function(){joinDrive(this.dataset.rid,this.dataset.lt,this.dataset.pl,this.dataset.rg,this.dataset.lc);});card.appendChild(nr);card.appendChild(meta);card.appendChild(btn);li.appendChild(card);});}).catch(function(){document.getElementById('drives-loading').style.display='none';document.getElementById('drives-list').innerHTML='<p style="color:var(--red);font-size:.88rem;">Could not load drives.</p>';});}
-function joinDrive(rid,lt,pl,rg,lc){var msg=document.getElementById('join-msg');if(!verifiedId){showMsg(msg,'Not verified.','error');return;}showMsg(msg,'Joining...','info');fetch(AT_LAST_DRIVE+'/'+verifiedId,{method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{SignupType:'Participant',JoinStatus:'Active',LinkedSlot:pl+'||'+rg+'||'+lc+'||'+lt}})}).then(function(){msg.innerHTML='Joined <b>'+lt+'</b> drive! Add them on '+pl+' and message them you joined.';msg.className='msg show success';}).catch(function(){showMsg(msg,'Join failed.','error');});}
-function saveLead(){var time=document.getElementById('lead-time').value,loc=document.getElementById('lead-location').value,tp=document.getElementById('lead-type').value,ac=document.getElementById('lead-access').value,msg=document.getElementById('lead-msg');if(!time||!loc||!tp){showMsg(msg,'Fill in all fields.','error');return;}if(!verifiedId){showMsg(msg,'Not verified.','error');return;}showMsg(msg,'Saving...','info');fetch(AT_LAST_DRIVE+'/'+verifiedId,{method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{SignupType:'Drive Lead',IsOrganizer:true,JoinStatus:'Active','Staging Time':time,StagingLocation:loc,'Drive Type':tp,AccessType:ac}})}).then(function(){showMsg(msg,'\u2705 Your drive is live!','success');}).catch(function(){showMsg(msg,'Save failed.','error');});}
-function unlockAdmin(){var pass=document.getElementById('admin-pass-input').value.trim(),msg=document.getElementById('admin-gate-msg');if(!pass){showMsg(msg,'Enter a password.','error');return;}var stored=playerData.AdminPass||'';if(!stored){fetch(AT_LAST_DRIVE+'/'+verifiedId,{method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{AdminPass:pass}})}).then(function(){playerData.AdminPass=pass;document.getElementById('admin-gate').style.display='none';document.getElementById('admin-panel').style.display='block';loadAllPlayers();}).catch(function(){showMsg(msg,'Failed to save.','error');});return;}if(pass!==stored){showMsg(msg,'Incorrect password.','error');return;}document.getElementById('admin-gate').style.display='none';document.getElementById('admin-panel').style.display='block';loadAllPlayers();}
-function loadAllPlayers(){if(allPlayers.length)return;fetch(AT_LAST_DRIVE+'?fields[]=Gamertag&fields[]=OwnedPlates&maxRecords=200',{headers:AT_H}).then(function(r){return r.json();}).then(function(d){allPlayers=(d.records||[]).map(function(rec){return{id:rec.id,tag:rec.fields.Gamertag||'',plates:rec.fields.OwnedPlates||''};}).filter(function(p){return!!p.tag;});}).catch(function(){});}
-function adminFilterPlayers(val){var dd=document.getElementById('admin-player-dropdown');dd.innerHTML='';if(!val){dd.style.display='none';return;}var matches=allPlayers.filter(function(p){return p.tag.toLowerCase().indexOf(val.toLowerCase())>=0;}).slice(0,10);if(!matches.length){dd.style.display='none';return;}matches.forEach(function(p){var row=document.createElement('div');row.style.cssText='padding:10px 14px;cursor:pointer;font-size:.88rem;font-weight:800;text-transform:uppercase;color:var(--bone);border-bottom:1px solid var(--edge);';row.textContent=p.tag;row.addEventListener('mouseover',function(){this.style.background='var(--asphalt)';});row.addEventListener('mouseout',function(){this.style.background='';});row.addEventListener('click',function(){adminSelectPlayer(p.id,p.tag,p.plates);});dd.appendChild(row);});dd.style.display='block';}
-function adminSelectPlayer(id,tag,plates){adminTargetId=id;adminTargetPlates=plates?plates.split(',').map(function(p){return p.trim();}).filter(Boolean):[];document.getElementById('admin-search-tag').value=tag;document.getElementById('admin-player-dropdown').style.display='none';document.getElementById('admin-found-tag').textContent=tag;document.getElementById('admin-found-plates').textContent=adminTargetPlates.length?'Current: '+adminTargetPlates.join(', '):'No plates yet.';var grid=document.getElementById('admin-plate-checkboxes');grid.innerHTML='';PLATE_STYLES.forEach(function(p){var owned=adminTargetPlates.indexOf(p.id)>=0,item=document.createElement('label');item.className='plate-check-item'+(owned?' owned':'');var chk=document.createElement('input');chk.type='checkbox';chk.id='chk-'+p.id;chk.value=p.id;if(owned)chk.checked=true;var lbl=document.createElement('span');lbl.className='plate-check-label';lbl.textContent=p.label+(owned?' \u2713':'');item.appendChild(chk);item.appendChild(lbl);grid.appendChild(item);});document.getElementById('admin-player-found').style.display='block';document.getElementById('admin-search-msg').className='msg';}
-function adminGiftPlates(){var msg=document.getElementById('admin-gift-msg');if(!adminTargetId){showMsg(msg,'No player selected.','error');return;}var selected=PLATE_STYLES.filter(function(p){var el=document.getElementById('chk-'+p.id);return el&&el.checked;}).map(function(p){return p.id;});if(!selected.length){showMsg(msg,'Select at least one plate.','error');return;}showMsg(msg,'Saving...','info');fetch(AT_LAST_DRIVE+'/'+adminTargetId,{method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{OwnedPlates:selected.join(', ')}})}).then(function(){document.getElementById('admin-found-plates').textContent='Current: '+selected.join(', ');showMsg(msg,'\u2705 Plates saved for '+document.getElementById('admin-found-tag').textContent,'success');}).catch(function(){showMsg(msg,'Save failed.','error');});}
-function saveAdminPass(){var pass=document.getElementById('admin-new-pass').value.trim(),msg=document.getElementById('admin-pass-msg');if(!pass){showMsg(msg,'Enter a password.','error');return;}fetch(AT_LAST_DRIVE+'/'+verifiedId,{method:'PATCH',headers:AT_H,body:JSON.stringify({fields:{AdminPass:pass}})}).then(function(){playerData.AdminPass=pass;document.getElementById('admin-new-pass').value='';showMsg(msg,'\u2705 Password updated.','success');setTimeout(function(){hideMsg(msg);},3000);}).catch(function(){showMsg(msg,'Failed.','error');});}
+
 fetch('/articles.json?v='+Date.now()).then(function(r){return r.json();}).then(function(a){var t=document.getElementById('ticker-track');if(!t)return;t.innerHTML=[].concat(a,a).map(function(x){return'<span class="ticker-item" onclick="location.href=\'/articles/'+x.slug+'\'">'+( x.emoji||'⚡')+' '+x.title+'</span>';}).join('');}).catch(function(){});
 var mt=document.getElementById('menu-toggle'),nm=document.getElementById('nav-mobile');
 if(mt&&nm)mt.addEventListener('click',function(){nm.classList.toggle('open');});
