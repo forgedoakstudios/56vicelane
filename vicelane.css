@@ -279,16 +279,10 @@ img {
   margin: 8px 20px;
 }
 
-/* Show desktop nav at 768px+ */
+/* Hamburger-only nav — all screen sizes */
 @media (min-width: 768px) {
   .nav {
     padding: 14px 28px;
-  }
-  .nav-links {
-    display: flex;
-  }
-  .menu-toggle {
-    display: none;
   }
 }
 
