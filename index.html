@@ -194,6 +194,126 @@
   margin: 0 auto;
   padding: 40px 24px;
 }
+
+/* Hamburger-only nav — hide desktop links */
+.nav-links { display:none !important; }
+
+/* ── CAROUSEL ─────────────────────────────────────────── */
+.carousel-wrap {
+  position: relative;
+  background: var(--asphalt);
+  border-bottom: 1px solid var(--edge);
+  overflow: hidden;
+}
+.carousel-track {
+  display: flex;
+  transition: transform .55s cubic-bezier(.4,0,.2,1);
+  will-change: transform;
+}
+.carousel-slide {
+  min-width: 100%;
+  padding: 28px 24px 32px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-sizing: border-box;
+  max-width: var(--wide-width);
+  margin: 0 auto;
+  position: relative;
+}
+.carousel-slide-inner {
+  min-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slide-icon {
+  font-size: 2.4rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.slide-body { flex: 1; min-width: 0; }
+.slide-eyebrow {
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .25em;
+  font-size: .65rem;
+  margin-bottom: 5px;
+}
+.slide-title {
+  font-family: var(--font-display);
+  font-size: clamp(16px, 4vw, 22px);
+  text-transform: uppercase;
+  color: var(--bone);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+.slide-sub {
+  font-size: .82rem;
+  color: #C8C4BE;
+  line-height: 1.55;
+  margin-bottom: 12px;
+  max-width: 520px;
+}
+.slide-cta {
+  display: inline-block;
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: .8rem;
+  padding: 9px 20px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: opacity .15s;
+}
+.slide-cta:hover { opacity: .85; text-decoration: none; }
+.slide-cta.amber { background: var(--amber); color: #000; }
+.slide-cta.ghost { border: 1px solid var(--bone); color: var(--bone); }
+.slide-cta.cyan  { background: var(--cyan); color: #000; }
+.slide-cta.discord { background: #5865F2; color: #fff; }
+
+/* DOTS */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 0 14px;
+  background: var(--asphalt);
+  border-bottom: 1px solid var(--edge);
+}
+.carousel-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--edge);
+  border: 1px solid var(--smoke);
+  cursor: pointer;
+  transition: all .25s;
+  padding: 0;
+}
+.carousel-dot.active {
+  background: var(--amber);
+  border-color: var(--amber);
+  transform: scale(1.3);
+}
+
+/* PROGRESS BAR */
+.carousel-progress {
+  height: 2px;
+  background: var(--edge);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.carousel-progress-bar {
+  height: 100%;
+  background: var(--amber);
+  width: 0%;
+  transition: width linear;
+}
 </style>
 </head>
 <body>
@@ -265,7 +385,91 @@
       <a href="/news" class="btn btn-secondary">Latest GTA6 News</a>
     </div>
   </div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CAROUSEL
+     ═══════════════════════════════════════════════════════════ -->
+<div class="carousel-wrap">
+  <div class="carousel-track" id="carousel-track">
+
+    <!-- SLIDE 1: THE LAST DRIVE -->
+    <div class="carousel-slide-inner">
+      <div class="carousel-slide">
+        <div class="slide-icon">🏁</div>
+        <div class="slide-body">
+          <div class="slide-eyebrow" style="color:var(--amber);">Community Event · November 18, 2026</div>
+          <div class="slide-title">The Last Drive</div>
+          <div class="slide-sub">One final cruise through GTA5 before GTA6 takes over. All platforms. Free. Your spot is waiting.</div>
+          <a href="/lastdrive" class="slide-cta amber">Sign Up Free →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: LATEST NEWS — injected by JS -->
+    <div class="carousel-slide-inner" id="carousel-news-slide">
+      <div class="carousel-slide">
+        <div class="slide-icon">⚡</div>
+        <div class="slide-body">
+          <div class="slide-eyebrow" style="color:var(--cyan);">Latest News</div>
+          <div class="slide-title" id="carousel-news-title">Loading...</div>
+          <div class="slide-sub" id="carousel-news-sub"></div>
+          <a href="/news" class="slide-cta ghost" id="carousel-news-link">Read More →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: PRE-ORDERS LIVE -->
+    <div class="carousel-slide-inner">
+      <div class="carousel-slide">
+        <div class="slide-icon">🔥</div>
+        <div class="slide-body">
+          <div class="slide-eyebrow" style="color:var(--red);">Breaking — June 25, 2026</div>
+          <div class="slide-title">GTA6 Pre-Orders Are Live</div>
+          <div class="slide-sub">Pre-orders are open on PS Store, Xbox, and retailers. November 19 is locked. Get your copy secured now.</div>
+          <a href="/articles/gta6-pre-orders-june-25-cover-art-revealed" class="slide-cta amber">Full Story →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: GET YOUR PLATE -->
+    <div class="carousel-slide-inner">
+      <div class="carousel-slide">
+        <div class="slide-icon">🚗</div>
+        <div class="slide-body">
+          <div class="slide-eyebrow" style="color:var(--amber);">56ViceLane Store</div>
+          <div class="slide-title">Own Your Spot In The Lane</div>
+          <div class="slide-sub">Original license plates for The Last Drive. Claim yours before November 18. Every driver deserves a plate.</div>
+          <a href="/store" class="slide-cta amber">Get Your Plate →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: DISCORD -->
+    <div class="carousel-slide-inner">
+      <div class="carousel-slide">
+        <div class="slide-icon">💬</div>
+        <div class="slide-body">
+          <div class="slide-eyebrow" style="color:#5865F2;">Community · Discord</div>
+          <div class="slide-title">Talk To The Community</div>
+          <div class="slide-sub">GTA6 discussion, Last Drive coordination, plates, news — the community lives on Discord. Free to join.</div>
+          <a href="https://discord.gg/ewdRcjsbg5" target="_blank" rel="noopener" class="slide-cta discord">Join The Server →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="carousel-progress"><div class="carousel-progress-bar" id="carousel-progress-bar"></div></div>
 </div>
+
+<!-- DOTS -->
+<div class="carousel-dots" id="carousel-dots">
+  <button class="carousel-dot active" onclick="carouselGoTo(0)"></button>
+  <button class="carousel-dot" onclick="carouselGoTo(1)"></button>
+  <button class="carousel-dot" onclick="carouselGoTo(2)"></button>
+  <button class="carousel-dot" onclick="carouselGoTo(3)"></button>
+  <button class="carousel-dot" onclick="carouselGoTo(4)"></button>
+</div>
+
 
 <!-- ═══════════════════════════════════════════════════════════
      COUNTDOWN
@@ -623,6 +827,17 @@ fetch('/articles.json?v=' + Date.now())
     buildFilterBar(allArticles);
     renderGrid();
 
+    // Populate carousel news slide
+    if (articles.length) {
+      var latest = articles.slice().sort(function(a,b){return (b.date||'').localeCompare(a.date||'');})[0];
+      var titleEl = document.getElementById('carousel-news-title');
+      var subEl   = document.getElementById('carousel-news-sub');
+      var linkEl  = document.getElementById('carousel-news-link');
+      if (titleEl) titleEl.textContent = latest.title || '';
+      if (subEl)   subEl.textContent   = latest.excerpt || 'The latest from 56ViceLane.';
+      if (linkEl)  { linkEl.href = '/articles/' + latest.slug; linkEl.textContent = 'Read More →'; }
+    }
+
     // Build ticker
     var track = document.getElementById('ticker-track');
     if (track) {
@@ -647,6 +862,78 @@ var nm = document.getElementById('nav-mobile');
 if (mt && nm) mt.addEventListener('click', function() {
   nm.classList.toggle('open');
 });
+
+
+// ── CAROUSEL ──────────────────────────────────────────────
+(function() {
+  var TOTAL     = 5;
+  var INTERVAL  = 4500;
+  var current   = 0;
+  var timer     = null;
+  var progTimer = null;
+
+  var track   = document.getElementById('carousel-track');
+  var bar     = document.getElementById('carousel-progress-bar');
+  var dotsEl  = document.getElementById('carousel-dots');
+
+  function getDots() {
+    return dotsEl ? dotsEl.querySelectorAll('.carousel-dot') : [];
+  }
+
+  function goTo(n) {
+    current = (n + TOTAL) % TOTAL;
+    if (track) track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    var dots = getDots();
+    for (var i = 0; i < dots.length; i++) {
+      dots[i].classList.toggle('active', i === current);
+    }
+    startProgress();
+  }
+
+  function startProgress() {
+    if (bar) {
+      bar.style.transition = 'none';
+      bar.style.width = '0%';
+      // Force reflow
+      bar.offsetWidth;
+      bar.style.transition = 'width ' + INTERVAL + 'ms linear';
+      bar.style.width = '100%';
+    }
+  }
+
+  function startTimer() {
+    clearInterval(timer);
+    timer = setInterval(function() { goTo(current + 1); }, INTERVAL);
+  }
+
+  // Pause on hover/touch
+  var wrap = track ? track.closest('.carousel-wrap') : null;
+  if (wrap) {
+    wrap.addEventListener('mouseenter', function() { clearInterval(timer); });
+    wrap.addEventListener('mouseleave', function() { startTimer(); });
+    wrap.addEventListener('touchstart', function() { clearInterval(timer); }, {passive:true});
+    wrap.addEventListener('touchend',   function() { startTimer(); }, {passive:true});
+  }
+
+  // Swipe support
+  var touchX = 0;
+  if (track) {
+    track.addEventListener('touchstart', function(e) {
+      touchX = e.touches[0].clientX;
+    }, {passive:true});
+    track.addEventListener('touchend', function(e) {
+      var diff = touchX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) { goTo(diff > 0 ? current + 1 : current - 1); startTimer(); }
+    }, {passive:true});
+  }
+
+  // Expose globally for dot onclick
+  window.carouselGoTo = function(n) { goTo(n); startTimer(); };
+
+  // Init
+  goTo(0);
+  startTimer();
+})();
 
 // ── REVEAL ────────────────────────────────────────────────
 var obs = new IntersectionObserver(function(es) {
