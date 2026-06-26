@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Tools — 56ViceLane</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9EKF7J4V7W');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
+<meta name="description" content="GTA6 tools, calculators, and resources from 56ViceLane.">
+<meta property="og:title" content="Tools — 56ViceLane">
+<meta property="og:url" content="https://56vicelane.com/tools">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/vicelane.css">
+</head>
+<body>
+
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker-track">
+    <span class="ticker-item">56ViceLane — Where GTA5 Ends And GTA6 Begins</span>
+  </div>
+</div>
+
+<nav class="nav">
+  <a class="logo" href="/"><span class="logo-mark">56</span><span class="logo-text">ViceLane</span></a>
+  <div class="nav-links"></div>
+  <button class="menu-toggle" id="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="/news">News</a>
+  <a href="/lastdrive">Last Drive</a>
+  <a href="/members">Members</a>
+  <a href="/store">Store</a>
+  <a href="/gear">Gear</a>
+  <a href="/tools" class="active">Tools</a>
+  <a href="/forum">Forum</a>
+  <div class="mobile-divider"></div>
+  <a href="/about">About</a>
+  <a href="/contact">Contact</a>
+  <div class="mobile-divider"></div>
+  <a href="/privacy">Privacy</a>
+  <a href="/terms">Terms</a>
+</div>
+
+<div style="max-width:800px;margin:0 auto;padding:60px 24px 80px;text-align:center;">
+  <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.35em;font-size:.72rem;color:var(--amber);margin-bottom:16px;">56ViceLane Tools</div>
+  <h1 style="font-family:'Russo One',sans-serif;font-size:clamp(2rem,8vw,3.5rem);text-transform:uppercase;line-height:1;margin-bottom:20px;">COMING <span style="color:var(--amber);">SOON</span></h1>
+  <p style="font-size:.95rem;color:var(--smoke);max-width:420px;margin:0 auto 40px;line-height:1.7;">GTA6 countdown timers, launch day checklists, Last Drive planning tools, and more. Check back as we get closer to November 19.</p>
+  <a href="/news" style="display:inline-block;background:var(--amber);color:#000;font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:.95rem;padding:14px 32px;text-decoration:none;">Latest GTA6 News →</a>
+</div>
+
+<footer>
+  <div class="footer-brand"><span class="logo-mark">56</span>ViceLane</div>
+  <div class="footer-tag">Where GTA5 Ends And GTA6 Begins</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/news">News</a>
+    <a href="/lastdrive">Last Drive</a>
+    <a href="/store">Store</a>
+    <a href="/gear">Gear</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/privacy">Privacy</a>
+  </div>
+  <p class="footer-copy">© 2026 56ViceLane · Forged Oak Studios · Not affiliated with Rockstar Games or Take-Two Interactive</p>
+</footer>
+
+<script>
+fetch('/articles.json?v=' + Date.now())
+  .then(function(r){return r.json();})
+  .then(function(a){
+    var t = document.getElementById('ticker-track');
+    t.innerHTML = [].concat(a,a).map(function(x){
+      return '<span class="ticker-item" onclick="location.href=\'/articles/'+x.slug+'\'">'+(x.emoji||'⚡')+' '+x.title+'</span>';
+    }).join('');
+  }).catch(function(){});
+var mt=document.getElementById('menu-toggle'),nm=document.getElementById('nav-mobile');
+if(mt&&nm)mt.addEventListener('click',function(){nm.classList.toggle('open');});
+</script>
+</body>
+</html>
