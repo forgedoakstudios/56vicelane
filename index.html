@@ -186,60 +186,7 @@
 }
 .lb-title span { color: var(--cyan); }
 
-/* GTACON STRIP */
-.gtacon-strip {
-  background: var(--asphalt);
-  border-top: 1px solid var(--edge);
-  border-bottom: 1px solid var(--edge);
-  padding: 16px 24px;
-}
-.gtacon-inner {
-  max-width: var(--wide-width);
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-.gtacon-label {
-  font-family: var(--font-label);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .2em;
-  font-size: .72rem;
-  color: var(--smoke);
-}
-.gtacon-status {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.gtacon-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #FFCC00;
-  box-shadow: 0 0 8px rgba(255,204,0,.6);
-  animation: pulse 2s ease-in-out infinite;
-}
-@keyframes pulse {
-  0%,100% { opacity:1; }
-  50% { opacity:.5; }
-}
-.gtacon-con {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  color: #FFCC00;
-}
-.gtacon-name {
-  font-family: var(--font-label);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  font-size: .8rem;
-  color: var(--smoke);
-}
+
 
 /* HOME SECTIONS */
 .home-section {
@@ -270,7 +217,6 @@
   </a>
   <div class="nav-links">
     <a href="/news">News</a>
-    <a href="/gtacon">GTACON</a>
     <a href="/lastdrive">Last Drive</a>
     <a href="/members">Members</a>
     <a href="/store">Store</a>
@@ -286,7 +232,6 @@
 <!-- Mobile nav drawer -->
 <div class="nav-mobile" id="nav-mobile">
   <a href="/news">News</a>
-  <a href="/gtacon">GTACON</a>
   <a href="/lastdrive">Last Drive</a>
   <a href="/members">Members</a>
   <a href="/store">Store</a>
@@ -347,21 +292,6 @@
       </div>
     </div>
     <a href="/lastdrive" class="section-link">The Last Drive →</a>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════
-     GTACON STRIP
-     ═══════════════════════════════════════════════════════════ -->
-<div class="gtacon-strip">
-  <div class="gtacon-inner">
-    <div class="gtacon-label">🎮 GTA6 Launch Readiness</div>
-    <div class="gtacon-status">
-      <div class="gtacon-dot"></div>
-      <div class="gtacon-con" id="gtacon-con">CON 3</div>
-      <div class="gtacon-name" id="gtacon-name">Significant</div>
-    </div>
-    <a href="/gtacon" class="section-link">Full GTACON →</a>
   </div>
 </div>
 
@@ -470,7 +400,6 @@
   <div class="footer-links">
     <a href="/">Home</a>
     <a href="/news">News</a>
-    <a href="/gtacon">GTACON</a>
     <a href="/lastdrive">Last Drive</a>
     <a href="/members">Members</a>
     <a href="/store">Store</a>
@@ -563,29 +492,6 @@ function updateCountdown() {
 }
 updateCountdown();
 setInterval(updateCountdown, 1000);
-
-// ── GTACON STATUS ─────────────────────────────────────────
-(function() {
-  var COLORS = {1:'#FF1A1A',2:'#FF6600',3:'#FFCC00',4:'#88CC00',5:'#00CC66'};
-  var NAMES  = {1:'Maximum',2:'Critical',3:'Significant',4:'Elevated',5:'Cold'};
-  function applyGTACON(con) {
-    var conEl  = document.getElementById('gtacon-con');
-    var nameEl = document.getElementById('gtacon-name');
-    var dot    = document.querySelector('.gtacon-dot');
-    if (!conEl) return;
-    var color = COLORS[con] || '#FFCC00';
-    conEl.textContent  = 'CON ' + con;
-    conEl.style.color  = color;
-    if (nameEl) { nameEl.textContent = NAMES[con] || ''; }
-    if (dot) { dot.style.background = color; dot.style.boxShadow = '0 0 8px ' + color; }
-  }
-  // Default CON 3, try to fetch fresh
-  applyGTACON(3);
-  fetch('/gtacon.json?t=' + Date.now())
-    .then(function(r) { return r.json(); })
-    .then(function(d) { if (d && d.condition) applyGTACON(d.condition); })
-    .catch(function() {});
-})();
 
 // ── NEWS GRID — date fix + filter + load more ─────────────
 var allArticles = [];
