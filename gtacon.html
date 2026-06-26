@@ -544,8 +544,8 @@
     <div class="factor-card reveal">
       <div class="factor-icon">🏪</div>
       <div class="factor-title">Pre-Orders</div>
-      <div class="factor-desc">Pre-orders on PS Store, Xbox Marketplace, and Steam signal final certification is done. Not live yet.</div>
-      <span class="factor-status status-pending">Not Live Yet</span>
+      <div class="factor-desc">Pre-orders went live June 25, 2026 on PS Store, Xbox Marketplace, and major retailers. Final certification is done.</div>
+      <span class="factor-status status-confirmed">Live Since June 25</span>
     </div>
 
     <div class="factor-card reveal">
@@ -593,11 +593,21 @@
   </div>
   <div id="history-log">
     <div class="history-row">
+      <div class="history-dot" style="background:#FF6600;"></div>
+      <div class="history-content">
+        <div class="history-meta">
+          <span class="history-con" style="color:#FF6600;">CON 2 — Critical</span>
+          <span class="history-date">Current — June 26, 2026</span>
+        </div>
+        <div class="history-reason">Pre-orders went live June 25. GTA6 November 19 confirmed. Trailer 3 still pending. The campaign is fully running.</div>
+      </div>
+    </div>
+    <div class="history-row">
       <div class="history-dot" style="background:#FFCC00;"></div>
       <div class="history-content">
         <div class="history-meta">
           <span class="history-con" style="color:#FFCC00;">CON 3 — Significant</span>
-          <span class="history-date">Current</span>
+          <span class="history-date">May 2026 – June 25, 2026</span>
         </div>
         <div class="history-reason">November 2026 release window confirmed. Trailer 1 and Trailer 2 released. Trailer 3 expected within the next three weeks. Take-Two earnings on track.</div>
       </div>
@@ -660,26 +670,56 @@
   <p class="footer-copy" id="vl-copyright">© 2026 56ViceLane · Forged Oak Studios</p>
 </footer>
 
+<!-- ADMIN PANEL (hidden — 5-tap on GTACON title to open) -->
+<div id="gtacon-admin" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.92);z-index:9999;overflow-y:auto;padding:24px;">
+  <div style="max-width:420px;margin:0 auto;">
+    <div style="font-family:'Russo One',sans-serif;font-size:1.4rem;color:#FF6B1A;margin-bottom:6px;text-transform:uppercase;">GTACON Admin</div>
+    <div id="admin-status" style="font-family:'Barlow Condensed',sans-serif;font-size:.85rem;color:#7A7A8C;margin-bottom:20px;">Enter PIN to unlock</div>
+
+    <div id="admin-pin-section">
+      <input id="admin-pin" type="password" placeholder="PIN" style="width:100%;background:#16161D;border:1px solid #26262F;color:#F0EDE8;padding:12px 14px;font-size:1rem;font-family:'Inter',sans-serif;margin-bottom:10px;border-radius:4px;">
+      <button onclick="adminUnlock()" style="width:100%;background:#FF6B1A;color:#000;border:none;padding:12px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:.1em;cursor:pointer;border-radius:4px;">Unlock</button>
+    </div>
+
+    <div id="admin-controls" style="display:none;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:#7A7A8C;margin-bottom:8px;">Set Condition</div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:16px;">
+        <button onclick="adminSetCon(1)" style="background:#16161D;border:2px solid #FF1A1A;color:#FF1A1A;padding:12px 6px;font-family:'Russo One',sans-serif;font-size:1.1rem;cursor:pointer;border-radius:4px;">1</button>
+        <button onclick="adminSetCon(2)" style="background:#16161D;border:2px solid #FF6600;color:#FF6600;padding:12px 6px;font-family:'Russo One',sans-serif;font-size:1.1rem;cursor:pointer;border-radius:4px;">2</button>
+        <button onclick="adminSetCon(3)" style="background:#16161D;border:2px solid #FFCC00;color:#FFCC00;padding:12px 6px;font-family:'Russo One',sans-serif;font-size:1.1rem;cursor:pointer;border-radius:4px;">3</button>
+        <button onclick="adminSetCon(4)" style="background:#16161D;border:2px solid #88CC00;color:#88CC00;padding:12px 6px;font-family:'Russo One',sans-serif;font-size:1.1rem;cursor:pointer;border-radius:4px;">4</button>
+        <button onclick="adminSetCon(5)" style="background:#16161D;border:2px solid #00CC66;color:#00CC66;padding:12px 6px;font-family:'Russo One',sans-serif;font-size:1.1rem;cursor:pointer;border-radius:4px;">5</button>
+      </div>
+      <div id="admin-selected" style="font-family:'Barlow Condensed',sans-serif;font-size:.85rem;color:#FF6B1A;margin-bottom:12px;min-height:20px;"></div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:#7A7A8C;margin-bottom:6px;">Note (optional)</div>
+      <textarea id="admin-note" placeholder="Reason for change..." style="width:100%;background:#16161D;border:1px solid #26262F;color:#F0EDE8;padding:12px 14px;font-size:.9rem;font-family:'Inter',sans-serif;margin-bottom:12px;border-radius:4px;min-height:80px;resize:vertical;"></textarea>
+      <button onclick="adminSubmit()" style="width:100%;background:#FF6B1A;color:#000;border:none;padding:14px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:.1em;cursor:pointer;border-radius:4px;margin-bottom:10px;">Update GTACON</button>
+      <div id="admin-result" style="font-family:'Barlow Condensed',sans-serif;font-size:.85rem;min-height:22px;text-align:center;"></div>
+    </div>
+
+    <button onclick="document.getElementById('gtacon-admin').style.display='none';" style="width:100%;background:transparent;border:1px solid #26262F;color:#7A7A8C;padding:12px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;text-transform:uppercase;cursor:pointer;border-radius:4px;margin-top:14px;">Close</button>
+  </div>
+</div>
+
 <!-- SCRIPTS -->
 <script>
 var CON_DATA = {
   1: {color:'#FF1A1A', name:'Maximum',     tagline:'Launch day. GTA6 is live. The Last Drive was last night.',                                     confidence:'98%', signals:'28'},
   2: {color:'#FF6600', name:'Critical',    tagline:'Final trailers are dropping. Pre-orders are live. Launch is weeks away.',                       confidence:'91%', signals:'22'},
-  3: {color:'#FFCC00', name:'Significant', tagline:'Launch window confirmed. Trailer 3 expected within weeks. Marketing is in full swing.',confidence:'78%', signals:'16'},
+  3: {color:'#FFCC00', name:'Significant', tagline:'Launch window confirmed. Trailer 3 expected within weeks. Marketing is in full swing.',         confidence:'78%', signals:'16'},
   4: {color:'#88CC00', name:'Elevated',    tagline:'Signals are emerging. Platform rumors and Take-Two hints are building.',                         confidence:'45%', signals:'7'},
   5: {color:'#00CC66', name:'Cold',        tagline:'Nothing. Rockstar is silent. No date. No trailer. Pure speculation.',                            confidence:'20%', signals:'2'}
 };
 
-function applyCondition(con) {
+function applyCondition(con, data) {
   var d = CON_DATA[con];
   if (!d) return;
-  var box   = document.getElementById('condition-box');
-  var num   = document.getElementById('con-num');
-  var name  = document.getElementById('con-name');
-  var tl    = document.getElementById('con-tagline');
-  var conf  = document.getElementById('stat-confidence');
-  var sigs  = document.getElementById('stat-signals');
-  var pulse = document.getElementById('pulse-dot');
+  var box  = document.getElementById('condition-box');
+  var num  = document.getElementById('con-num');
+  var name = document.getElementById('con-name');
+  var tl   = document.getElementById('con-tagline');
+  var conf = document.getElementById('stat-confidence');
+  var sigs = document.getElementById('stat-signals');
 
   box.style.borderColor = d.color;
   num.style.color  = d.color;
@@ -687,10 +727,9 @@ function applyCondition(con) {
   name.style.color = d.color;
   name.innerHTML   = '<span class="pulse-dot" id="pulse-dot" style="background:' + d.color + ';"></span>' + d.name;
   if (tl)   tl.textContent   = d.tagline;
-  if (conf) conf.textContent = d.confidence;
-  if (sigs) sigs.textContent = d.signals;
+  if (conf) conf.textContent = (data && data.stat_confidence) ? data.stat_confidence : d.confidence;
+  if (sigs) sigs.textContent = (data && data.stat_signals)    ? data.stat_signals    : d.signals;
 
-  // Update scale
   for (var i = 1; i <= 5; i++) {
     var card = document.getElementById('scale-' + i);
     if (!card) continue;
@@ -704,28 +743,152 @@ function applyCondition(con) {
   }
 }
 
-// Load from gtacon.json
-fetch('/gtacon.json?t=' + Date.now())
-  .then(function(r) { return r.json(); })
-  .then(function(d) {
-    if (d && d.condition) {
-      applyCondition(d.condition);
-      var el = document.getElementById('condition-updated');
-      if (el && d.updated) {
-        var dt = new Date(d.updated);
-        el.innerHTML = '<span class="pulse-dot" style="background:var(--green);width:7px;height:7px;"></span>Updated ' +
-          dt.toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'}) +
-          ' · Auto-refreshes daily via GTACON Worker';
+function setUpdatedLabel(dateStr) {
+  var el = document.getElementById('condition-updated');
+  if (!el) return;
+  var parts = (dateStr || '').substring(0, 10).split('-');
+  var display = dateStr;
+  if (parts.length === 3) {
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    display = months[parseInt(parts[1], 10) - 1] + ' ' + parseInt(parts[2], 10) + ', ' + parts[0];
+  }
+  el.innerHTML = '<span class="pulse-dot" style="background:var(--green);width:7px;height:7px;"></span>Updated ' + display + ' · GTACON Worker';
+}
+
+// Load: try worker KV first, fall back to gtacon.json
+function loadCondition() {
+  fetch('https://gtacon-worker.forgedoakstudios.workers.dev/gtacon-status?t=' + Date.now())
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (d && d.condition) {
+        applyCondition(d.condition, d);
+        setUpdatedLabel(d.updated || d.updatedDate || '');
+      } else { loadFallback(); }
+    })
+    .catch(function() { loadFallback(); });
+}
+
+function loadFallback() {
+  fetch('/gtacon.json?t=' + Date.now())
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (d && d.condition) {
+        applyCondition(d.condition, d);
+        setUpdatedLabel(d.updated || '');
       }
-      if (d.stat_confidence) document.getElementById('stat-confidence').textContent = d.stat_confidence;
-      if (d.stat_signals)    document.getElementById('stat-signals').textContent    = d.stat_signals;
+    })
+    .catch(function() {
+      var el = document.getElementById('condition-updated');
+      if (el) el.innerHTML = '<span class="pulse-dot" style="background:var(--smoke);width:7px;height:7px;"></span>Fallback — check worker';
+    });
+}
+
+loadCondition();
+
+// ── ADMIN PANEL ─────────────────────────────────────────────
+var ADMIN_PIN  = '5656';
+var adminCon   = 0;
+var adminUnlocked = false;
+var tapCount   = 0;
+var tapTimer   = null;
+
+document.getElementById('gtacon-hero-title') && (function() {
+  var el = document.querySelector('.gtacon-hero-title');
+  if (!el) return;
+  el.addEventListener('click', function() {
+    tapCount++;
+    clearTimeout(tapTimer);
+    tapTimer = setTimeout(function() { tapCount = 0; }, 1500);
+    if (tapCount >= 5) {
+      tapCount = 0;
+      document.getElementById('gtacon-admin').style.display = 'block';
+      document.getElementById('admin-pin').value = '';
+      document.getElementById('admin-status').textContent = 'Enter PIN to unlock';
+      document.getElementById('admin-pin-section').style.display = 'block';
+      document.getElementById('admin-controls').style.display = 'none';
+      adminUnlocked = false;
+    }
+  });
+})();
+
+// Also attach via direct query since the IIFE above may not find it
+(function() {
+  var el = document.querySelector('.gtacon-hero-title');
+  if (!el) return;
+  el.style.cursor = 'default';
+  el.addEventListener('click', function() {
+    tapCount++;
+    clearTimeout(tapTimer);
+    tapTimer = setTimeout(function() { tapCount = 0; }, 1500);
+    if (tapCount >= 5) {
+      tapCount = 0;
+      document.getElementById('gtacon-admin').style.display = 'block';
+      document.getElementById('admin-pin').value = '';
+      document.getElementById('admin-status').textContent = 'Enter PIN to unlock';
+      document.getElementById('admin-pin-section').style.display = 'block';
+      document.getElementById('admin-controls').style.display = 'none';
+      adminUnlocked = false;
+    }
+  });
+})();
+
+function adminUnlock() {
+  var pin = document.getElementById('admin-pin').value;
+  if (pin === ADMIN_PIN) {
+    adminUnlocked = true;
+    document.getElementById('admin-pin-section').style.display = 'none';
+    document.getElementById('admin-controls').style.display = 'block';
+    document.getElementById('admin-status').textContent = 'Unlocked — select condition';
+  } else {
+    document.getElementById('admin-status').style.color = '#FF3B3B';
+    document.getElementById('admin-status').textContent = 'Wrong PIN';
+    setTimeout(function() {
+      document.getElementById('admin-status').style.color = '#7A7A8C';
+      document.getElementById('admin-status').textContent = 'Enter PIN to unlock';
+    }, 1500);
+  }
+}
+
+function adminSetCon(n) {
+  adminCon = n;
+  var names = {1:'Maximum',2:'Critical',3:'Significant',4:'Elevated',5:'Cold'};
+  document.getElementById('admin-selected').textContent = 'Selected: CON ' + n + ' — ' + names[n];
+}
+
+function adminSubmit() {
+  if (!adminUnlocked || !adminCon) {
+    document.getElementById('admin-result').style.color = '#FF3B3B';
+    document.getElementById('admin-result').textContent = adminCon ? 'Not unlocked' : 'Select a condition first';
+    return;
+  }
+  var note = document.getElementById('admin-note').value.trim();
+  document.getElementById('admin-result').style.color = '#7A7A8C';
+  document.getElementById('admin-result').textContent = 'Sending...';
+
+  fetch('https://gtacon-worker.forgedoakstudios.workers.dev/gtacon-update', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({condition: adminCon, note: note})
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(res) {
+    if (res.ok) {
+      document.getElementById('admin-result').style.color = '#00C875';
+      document.getElementById('admin-result').textContent = '✓ GTACON updated to CON ' + adminCon;
+      setTimeout(function() {
+        document.getElementById('gtacon-admin').style.display = 'none';
+        loadCondition();
+      }, 1200);
+    } else {
+      document.getElementById('admin-result').style.color = '#FF3B3B';
+      document.getElementById('admin-result').textContent = 'Error: ' + (res.error || 'Unknown');
     }
   })
-  .catch(function() {
-    // Default CON 3 already applied in HTML
-    var el = document.getElementById('condition-updated');
-    if (el) el.innerHTML = '<span class="pulse-dot" style="background:var(--smoke);width:7px;height:7px;"></span>Loading from GTACON Worker...';
+  .catch(function(err) {
+    document.getElementById('admin-result').style.color = '#FF3B3B';
+    document.getElementById('admin-result').textContent = 'Network error: ' + err.message;
   });
+}
 
 // ── COUNTDOWN ─────────────────────────────────────────────
 function updateCountdown() {

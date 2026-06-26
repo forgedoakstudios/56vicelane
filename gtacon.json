@@ -1,27 +1,9 @@
 {
-  "condition": 3,
-  "name": "Significant",
-  "updated": "2026-05-27",
+  "condition": 2,
+  "name": "Critical",
+  "updated": "2026-06-26",
   "updatedBy": "56ViceLane News Desk",
-  "note": "Major signals confirmed. CEO confirmed marketing starts end of June — no Trailer 3 before June 21. Window: June 25 to July 8. Platform partners moving. Pre-orders imminent when marketing fires.",
-  "signals": {
-    "ceoMarketingConfirmed": true,
-    "trailerWindowConfirmed": true,
-    "xboxInternationalCampaign": true,
-    "sonyUpgradeEmailCampaign": true,
-    "psBundleAnnounced": false,
-    "trailer3Live": false,
-    "rockstarAdsActive": false,
-    "leakerActivityHigh": true,
-    "preOrdersOpen": false
-  },
-  "trailerWindow": {
-    "earliest": "2026-06-21",
-    "mostLikely": "2026-06-25",
-    "latest": "2026-07-08",
-    "source": "Zelnick Bloomberg interview May 2026"
-  },
-  "daysToLaunch": 176,
-  "previousCondition": 3,
-  "changed": false
+  "stat_confidence": "91%",
+  "stat_signals": "22",
+  "note": "Pre-orders are live. GTA6 confirmed November 19. Trailer 3 still pending. The campaign is running."
 }
