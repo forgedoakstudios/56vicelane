@@ -204,28 +204,23 @@
   background: var(--asphalt);
   border-bottom: 1px solid var(--edge);
   overflow: hidden;
+  width: 100vw;
+  max-width: 100%;
 }
 .carousel-track {
   display: flex;
   transition: transform .55s cubic-bezier(.4,0,.2,1);
   will-change: transform;
 }
-.carousel-slide {
-  min-width: 100%;
+.carousel-slide-inner {
+  width: 100vw;
+  max-width: 100%;
+  flex-shrink: 0;
+  box-sizing: border-box;
   padding: 28px 24px 32px;
   display: flex;
   align-items: center;
   gap: 20px;
-  box-sizing: border-box;
-  max-width: var(--wide-width);
-  margin: 0 auto;
-  position: relative;
-}
-.carousel-slide-inner {
-  min-width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .slide-icon {
   font-size: 2.4rem;
@@ -385,6 +380,7 @@
       <a href="/news" class="btn btn-secondary">Latest GTA6 News</a>
     </div>
   </div>
+</div>
 
 <!-- ═══════════════════════════════════════════════════════════
      CAROUSEL
@@ -394,7 +390,6 @@
 
     <!-- SLIDE 1: THE LAST DRIVE -->
     <div class="carousel-slide-inner">
-      <div class="carousel-slide">
         <div class="slide-icon">🏁</div>
         <div class="slide-body">
           <div class="slide-eyebrow" style="color:var(--amber);">Community Event · November 18, 2026</div>
@@ -402,12 +397,10 @@
           <div class="slide-sub">One final cruise through GTA5 before GTA6 takes over. All platforms. Free. Your spot is waiting.</div>
           <a href="/lastdrive" class="slide-cta amber">Sign Up Free →</a>
         </div>
-      </div>
     </div>
 
     <!-- SLIDE 2: LATEST NEWS — injected by JS -->
     <div class="carousel-slide-inner" id="carousel-news-slide">
-      <div class="carousel-slide">
         <div class="slide-icon">⚡</div>
         <div class="slide-body">
           <div class="slide-eyebrow" style="color:var(--cyan);">Latest News</div>
@@ -415,12 +408,10 @@
           <div class="slide-sub" id="carousel-news-sub"></div>
           <a href="/news" class="slide-cta ghost" id="carousel-news-link">Read More →</a>
         </div>
-      </div>
     </div>
 
     <!-- SLIDE 3: PRE-ORDERS LIVE -->
     <div class="carousel-slide-inner">
-      <div class="carousel-slide">
         <div class="slide-icon">🔥</div>
         <div class="slide-body">
           <div class="slide-eyebrow" style="color:var(--red);">Breaking — June 25, 2026</div>
@@ -428,12 +419,10 @@
           <div class="slide-sub">Pre-orders are open on PS Store, Xbox, and retailers. November 19 is locked. Get your copy secured now.</div>
           <a href="/articles/gta6-pre-orders-june-25-cover-art-revealed" class="slide-cta amber">Full Story →</a>
         </div>
-      </div>
     </div>
 
     <!-- SLIDE 4: GET YOUR PLATE -->
     <div class="carousel-slide-inner">
-      <div class="carousel-slide">
         <div class="slide-icon">🚗</div>
         <div class="slide-body">
           <div class="slide-eyebrow" style="color:var(--amber);">56ViceLane Store</div>
@@ -441,12 +430,10 @@
           <div class="slide-sub">Original license plates for The Last Drive. Claim yours before November 18. Every driver deserves a plate.</div>
           <a href="/store" class="slide-cta amber">Get Your Plate →</a>
         </div>
-      </div>
     </div>
 
     <!-- SLIDE 5: DISCORD -->
     <div class="carousel-slide-inner">
-      <div class="carousel-slide">
         <div class="slide-icon">💬</div>
         <div class="slide-body">
           <div class="slide-eyebrow" style="color:#5865F2;">Community · Discord</div>
@@ -455,7 +442,6 @@
           <a href="https://discord.gg/ewdRcjsbg5" target="_blank" rel="noopener" class="slide-cta discord">Join The Server →</a>
         </div>
       </div>
-    </div>
 
   </div>
   <div class="carousel-progress"><div class="carousel-progress-bar" id="carousel-progress-bar"></div></div>
@@ -882,7 +868,8 @@ if (mt && nm) mt.addEventListener('click', function() {
 
   function goTo(n) {
     current = (n + TOTAL) % TOTAL;
-    if (track) track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    var slideW = track ? track.parentElement.offsetWidth : window.innerWidth;
+    if (track) track.style.transform = 'translateX(-' + (current * slideW) + 'px)';
     var dots = getDots();
     for (var i = 0; i < dots.length; i++) {
       dots[i].classList.toggle('active', i === current);
