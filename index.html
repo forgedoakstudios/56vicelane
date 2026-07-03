@@ -1,976 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9EKF7J4V7W');</script>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>56ViceLane — Where GTA5 Ends And GTA6 Begins</title>
-<meta name="description" content="The GTA5 to GTA6 fan hub. The Last Drive community farewell event. Wall of Honor. GTA6 news. November 19, 2026.">
-<link rel="canonical" href="https://56vicelane.com">
-
-<!-- OG / Social -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="56ViceLane">
-<meta property="og:title" content="56ViceLane — Where GTA5 Ends And GTA6 Begins">
-<meta property="og:description" content="The GTA5 to GTA6 fan hub. The Last Drive. Wall of Honor. November 19, 2026.">
-<meta property="og:image" content="https://56vicelane.com/images/lastdrive-hero.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:url" content="https://56vicelane.com">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="56ViceLane — Where GTA5 Ends And GTA6 Begins">
-<meta name="twitter:image" content="https://56vicelane.com/images/lastdrive-hero.jpg">
-
-<!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-
-<!-- Fonts -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>56ViceLane — GTA 6 News, Lore & Community | Vice Frequency</title>
+<meta name="description" content="56ViceLane is an independent GTA 6 fan site. Verified news, deep lore, launch tools, Vice Frequency Radio, and community events built for November 19, 2026.">
+<link rel="canonical" href="https://56vicelane.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-<!-- Shared stylesheet — single source of truth -->
-<link rel="stylesheet" href="/vicelane.css">
-
-<!-- AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
-
-<style>
-/* ── HOME-ONLY STYLES ─────────────────────────────────────── */
-
-/* HERO */
-.site-hero {
-  position: relative;
-  min-height: 88vh;
-  background: url('/images/lastdrive-hero.jpg') center/cover no-repeat;
-  display: flex;
-  align-items: flex-end;
-  overflow: hidden;
-}
-.site-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg,
-    rgba(11,11,15,.15) 0%,
-    rgba(11,11,15,.45) 50%,
-    rgba(11,11,15,.96) 100%);
-}
-.site-hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg,
-    rgba(11,11,15,.55) 0%,
-    transparent 65%);
-}
-.hero-content {
-  position: relative;
-  z-index: 2;
-  padding: 0 24px 52px;
-  max-width: var(--wide-width);
-  margin: 0 auto;
-  width: 100%;
-}
-.hero-eyebrow {
-  font-family: var(--font-label);
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: .3em;
-  font-size: .72rem;
-  color: var(--amber);
-  margin-bottom: 14px;
-}
-.hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(38px, 9vw, 84px);
-  text-transform: uppercase;
-  color: var(--bone);
-  line-height: .95;
-  margin-bottom: 18px;
-}
-.hero-title span { color: var(--amber); }
-.hero-sub {
-  font-size: clamp(14px, 2vw, 17px);
-  color: #C8C4BE;
-  max-width: 500px;
-  margin-bottom: 30px;
-  line-height: 1.65;
-}
-.hero-ctas {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-/* LAST DRIVE CTA BLOCK */
-.ld-cta {
-  background: linear-gradient(135deg, #0B0B0F, #16161D);
-  border: 1px solid var(--edge);
-  border-left: 4px solid var(--amber);
-  padding: 32px 28px;
-  position: relative;
-  overflow: hidden;
-}
-.ld-cta::after {
-  content: 'NOV 18';
-  position: absolute;
-  right: -10px;
-  bottom: -10px;
-  font-family: var(--font-display);
-  font-size: 80px;
-  color: rgba(255,107,26,.04);
-  text-transform: uppercase;
-  pointer-events: none;
-}
-.ld-cta-eyebrow {
-  font-family: var(--font-label);
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: .25em;
-  font-size: .7rem;
-  color: var(--amber);
-  margin-bottom: 8px;
-}
-.ld-cta-title {
-  font-family: var(--font-display);
-  font-size: clamp(20px, 4vw, 32px);
-  text-transform: uppercase;
-  color: var(--bone);
-  margin-bottom: 8px;
-  line-height: 1.1;
-}
-.ld-cta-sub {
-  font-size: .92rem;
-  color: #C8C4BE;
-  max-width: 500px;
-  margin-bottom: 22px;
-  line-height: 1.65;
-}
-.ld-cta-btns {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-/* GTA6 LAUNCH BANNER */
-.launch-banner {
-  background: linear-gradient(135deg, #0D0D1A, #1A0D2E);
-  border-top: 1px solid rgba(0,212,255,.15);
-  border-bottom: 1px solid rgba(0,212,255,.15);
-  padding: 20px 24px;
-  text-align: center;
-}
-.lb-inner {
-  max-width: var(--wide-width);
-  margin: 0 auto;
-}
-.lb-label {
-  font-family: var(--font-label);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .25em;
-  font-size: .7rem;
-  color: var(--cyan);
-  margin-bottom: 6px;
-}
-.lb-title {
-  font-family: var(--font-display);
-  font-size: clamp(15px, 3vw, 22px);
-  text-transform: uppercase;
-  color: var(--bone);
-}
-.lb-title span { color: var(--cyan); }
-
-
-
-/* HOME SECTIONS */
-.home-section {
-  max-width: var(--wide-width);
-  margin: 0 auto;
-  padding: 40px 24px;
-}
-
-/* Hamburger-only nav — hide desktop links */
-.nav-links { display:none !important; }
-
-/* ── CAROUSEL ─────────────────────────────────────────── */
-.carousel-wrap {
-  position: relative;
-  background: var(--asphalt);
-  border-bottom: 1px solid var(--edge);
-  overflow: hidden;
-  width: 100vw;
-  max-width: 100%;
-}
-.carousel-track {
-  display: flex;
-  transition: transform .55s cubic-bezier(.4,0,.2,1);
-  will-change: transform;
-}
-.carousel-slide-inner {
-  width: 100vw;
-  max-width: 100%;
-  flex-shrink: 0;
-  box-sizing: border-box;
-  padding: 28px 24px 32px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-.slide-icon {
-  font-size: 2.4rem;
-  flex-shrink: 0;
-  line-height: 1;
-}
-.slide-body { flex: 1; min-width: 0; }
-.slide-eyebrow {
-  font-family: var(--font-label);
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: .25em;
-  font-size: .65rem;
-  margin-bottom: 5px;
-}
-.slide-title {
-  font-family: var(--font-display);
-  font-size: clamp(16px, 4vw, 22px);
-  text-transform: uppercase;
-  color: var(--bone);
-  line-height: 1.1;
-  margin-bottom: 6px;
-}
-.slide-sub {
-  font-size: .82rem;
-  color: #C8C4BE;
-  line-height: 1.55;
-  margin-bottom: 12px;
-  max-width: 520px;
-}
-.slide-cta {
-  display: inline-block;
-  font-family: var(--font-label);
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  font-size: .8rem;
-  padding: 9px 20px;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: opacity .15s;
-}
-.slide-cta:hover { opacity: .85; text-decoration: none; }
-.slide-cta.amber { background: var(--amber); color: #000; }
-.slide-cta.ghost { border: 1px solid var(--bone); color: var(--bone); }
-.slide-cta.cyan  { background: var(--cyan); color: #000; }
-.slide-cta.discord { background: #5865F2; color: #fff; }
-
-/* DOTS */
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  padding: 10px 0 14px;
-  background: var(--asphalt);
-  border-bottom: 1px solid var(--edge);
-}
-.carousel-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--edge);
-  border: 1px solid var(--smoke);
-  cursor: pointer;
-  transition: all .25s;
-  padding: 0;
-}
-.carousel-dot.active {
-  background: var(--amber);
-  border-color: var(--amber);
-  transform: scale(1.3);
-}
-
-/* PROGRESS BAR */
-.carousel-progress {
-  height: 2px;
-  background: var(--edge);
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-.carousel-progress-bar {
-  height: 100%;
-  background: var(--amber);
-  width: 0%;
-  transition: width linear;
-}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600..900&family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/vf.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"56ViceLane","url":"https://56vicelane.com/","description":"Independent GTA 6 fan site — news, lore, tools and community."}
+</script>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════════════════
-     TICKER — identical on every page
-     ═══════════════════════════════════════════════════════════ -->
-<div class="ticker-wrap">
-  <div class="ticker-track" id="ticker-track">
-    <span class="ticker-item">56ViceLane — Where GTA5 Ends And GTA6 Begins</span>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/">56VICELANE <span class="freq">VF·56.6</span></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">MENU</button>
+    <nav class="nav-links" id="nav-links">
+      <a href="/" aria-current="page">Home</a>
+      <a href="/news.html">News</a>
+      <a href="/gta6.html">GTA 6 Hub</a>
+      <a href="/radio.html">Radio</a>
+      <a href="/leaderboard.html">Community</a>
+      <a href="/gear.html">Gear</a>
+    </nav>
+  </div>
+  <div class="horizon"></div>
+</header>
+
+<div class="ticker" aria-label="Latest headlines">
+  <div class="ticker-track">
+    <span><a href="/news.html">Pre-orders live — Standard $79.99, Ultimate $99.99</a></span>
+    <span><a href="/gta6.html">Digital preload begins November 12, 2026</a></span>
+    <span><a href="/lastdrive.html">The Last Drive — one final cruise on Nov 18</a></span>
+    <span><a href="/radio.html">Vice Frequency Radio is on the air</a></span>
+    <span><a href="/news.html">Pre-orders live — Standard $79.99, Ultimate $99.99</a></span>
+    <span><a href="/gta6.html">Digital preload begins November 12, 2026</a></span>
+    <span><a href="/lastdrive.html">The Last Drive — one final cruise on Nov 18</a></span>
+    <span><a href="/radio.html">Vice Frequency Radio is on the air</a></span>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     NAV — identical on every page
-     ═══════════════════════════════════════════════════════════ -->
-<nav class="nav">
-  <a class="logo" href="/">
-    <span class="logo-mark">56</span>
-    <span class="logo-text">ViceLane</span>
-  </a>
-  <div class="nav-links">
-    <a href="/news">News</a>
-    <a href="/lastdrive">Last Drive</a>
-    <a href="/members">Members</a>
-    <a href="/store">Store</a>
-    <a href="/gear">Gear</a>
-    <a href="/tools">Tools</a>
-    <a href="/forum">Forum</a>
-  </div>
-  <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+<main>
 
-<!-- Mobile nav drawer -->
-<div class="nav-mobile" id="nav-mobile">
-  <a href="/news">News</a>
-  <a href="/lastdrive">Last Drive</a>
-  <a href="/members">Members</a>
-  <a href="/store">Store</a>
-  <a href="/gear">Gear</a>
-  <a href="/tools">Tools</a>
-  <a href="/forum">Forum</a>
-  <div class="mobile-divider"></div>
-  <a href="/about">About</a>
-  <a href="/contact">Contact</a>
-  <div class="mobile-divider"></div>
-  <a href="/privacy">Privacy</a>
-  <a href="/terms">Terms</a>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════
-     HERO
-     ═══════════════════════════════════════════════════════════ -->
-<div class="site-hero">
-  <div class="hero-content">
-    <div class="hero-eyebrow">56ViceLane · Est. 2026</div>
-    <h1 class="hero-title">
-      Where GTA5 Ends<br>
-      <span>And GTA6</span> Begins
-    </h1>
-    <p class="hero-sub">
-      The Last Drive is November 18, 2026 — the night before GTA6 launches.
-      Join the community farewell to GTA5. Free. All platforms.
-    </p>
-    <div class="hero-ctas">
-      <a href="/lastdrive" class="btn btn-primary">🏁 Join The Last Drive</a>
-      <a href="/news" class="btn btn-secondary">Latest GTA6 News</a>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════
-     CAROUSEL
-     ═══════════════════════════════════════════════════════════ -->
-<div class="carousel-wrap">
-  <div class="carousel-track" id="carousel-track">
-
-    <!-- SLIDE 1: THE LAST DRIVE -->
-    <div class="carousel-slide-inner">
-        <div class="slide-icon">🏁</div>
-        <div class="slide-body">
-          <div class="slide-eyebrow" style="color:var(--amber);">Community Event · November 18, 2026</div>
-          <div class="slide-title">The Last Drive</div>
-          <div class="slide-sub">One final cruise through GTA5 before GTA6 takes over. All platforms. Free. Your spot is waiting.</div>
-          <a href="/lastdrive" class="slide-cta amber">Sign Up Free →</a>
-        </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-sun" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow reveal">INDEPENDENT GTA 6 FAN SITE · EST. GLASGOW, KY</p>
+    <h1 class="reveal" style="max-width:14ch;margin-top:14px">The lane to Leonida runs through here.</h1>
+    <p class="lede reveal mt-2">Verified news, deep lore, launch tools and a community that shows up. No churn, no clickbait — just the signal, tuned to November 19, 2026.</p>
+    <div class="reveal mt-3" style="display:flex;gap:14px;flex-wrap:wrap">
+      <a class="btn btn-coral" href="/gta6.html">Everything We Know</a>
+      <a class="btn btn-ghost" href="/radio.html">▸ Tune the Radio</a>
     </div>
 
-    <!-- SLIDE 2: LATEST NEWS — injected by JS -->
-    <div class="carousel-slide-inner" id="carousel-news-slide">
-        <div class="slide-icon">⚡</div>
-        <div class="slide-body">
-          <div class="slide-eyebrow" style="color:var(--cyan);">Latest News</div>
-          <div class="slide-title" id="carousel-news-title">Loading...</div>
-          <div class="slide-sub" id="carousel-news-sub"></div>
-          <a href="/news" class="slide-cta ghost" id="carousel-news-link">Read More →</a>
-        </div>
-    </div>
-
-    <!-- SLIDE 3: PRE-ORDERS LIVE -->
-    <div class="carousel-slide-inner">
-        <div class="slide-icon">🔥</div>
-        <div class="slide-body">
-          <div class="slide-eyebrow" style="color:var(--red);">Breaking — June 25, 2026</div>
-          <div class="slide-title">GTA6 Pre-Orders Are Live</div>
-          <div class="slide-sub">Pre-orders are open on PS Store, Xbox, and retailers. November 19 is locked. Get your copy secured now.</div>
-          <a href="/articles/gta6-pre-orders-june-25-cover-art-revealed" class="slide-cta amber">Full Story →</a>
-        </div>
-    </div>
-
-    <!-- SLIDE 4: GET YOUR PLATE -->
-    <div class="carousel-slide-inner">
-        <div class="slide-icon">🚗</div>
-        <div class="slide-body">
-          <div class="slide-eyebrow" style="color:var(--amber);">56ViceLane Store</div>
-          <div class="slide-title">Own Your Spot In The Lane</div>
-          <div class="slide-sub">Original license plates for The Last Drive. Claim yours before November 18. Every driver deserves a plate.</div>
-          <a href="/store" class="slide-cta amber">Get Your Plate →</a>
-        </div>
-    </div>
-
-    <!-- SLIDE 5: DISCORD -->
-    <div class="carousel-slide-inner">
-        <div class="slide-icon">💬</div>
-        <div class="slide-body">
-          <div class="slide-eyebrow" style="color:#5865F2;">Community · Discord</div>
-          <div class="slide-title">Talk To The Community</div>
-          <div class="slide-sub">GTA6 discussion, Last Drive coordination, plates, news — the community lives on Discord. Free to join.</div>
-          <a href="https://discord.gg/ewdRcjsbg5" target="_blank" rel="noopener" class="slide-cta discord">Join The Server →</a>
-        </div>
-      </div>
-
-  </div>
-  <div class="carousel-progress"><div class="carousel-progress-bar" id="carousel-progress-bar"></div></div>
-</div>
-
-<!-- DOTS -->
-<div class="carousel-dots" id="carousel-dots">
-  <button class="carousel-dot active" onclick="carouselGoTo(0)"></button>
-  <button class="carousel-dot" onclick="carouselGoTo(1)"></button>
-  <button class="carousel-dot" onclick="carouselGoTo(2)"></button>
-  <button class="carousel-dot" onclick="carouselGoTo(3)"></button>
-  <button class="carousel-dot" onclick="carouselGoTo(4)"></button>
-</div>
-
-
-<!-- ═══════════════════════════════════════════════════════════
-     COUNTDOWN
-     ═══════════════════════════════════════════════════════════ -->
-<div class="countdown-bar">
-  <div class="countdown-inner">
-    <div class="countdown-label">⏳ GTA6 Launches In</div>
-    <div class="countdown-timer" id="countdown-timer">
-      <div class="countdown-unit">
-        <span class="countdown-num" id="cd-days">--</span>
-        <span class="countdown-unit-label">Days</span>
-      </div>
-      <div class="countdown-unit">
-        <span class="countdown-num" id="cd-hours">--</span>
-        <span class="countdown-unit-label">Hours</span>
-      </div>
-      <div class="countdown-unit">
-        <span class="countdown-num" id="cd-mins">--</span>
-        <span class="countdown-unit-label">Mins</span>
-      </div>
-      <div class="countdown-unit">
-        <span class="countdown-num" id="cd-secs">--</span>
-        <span class="countdown-unit-label">Secs</span>
-      </div>
-    </div>
-    <a href="/lastdrive" class="section-link">The Last Drive →</a>
-  </div>
-</div>
-
-<!-- AdSense -->
-<div style="max-width:var(--wide-width);margin:0 auto;padding:0 24px;">
-  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════
-     LATEST NEWS
-     ═══════════════════════════════════════════════════════════ -->
-<div class="home-section">
-  <div class="section-header-row">
-    <div class="section-title">Latest — Last 14 Days</div>
-    <a href="/news" class="section-link">All Articles →</a>
-  </div>
-
-  <!-- FILTER BAR -->
-  <div id="filter-bar" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;"></div>
-
-  <div class="news-grid" id="news-grid">
-    <div style="color:var(--smoke);font-size:.9rem;">Loading...</div>
-  </div>
-
-  <div id="news-load-more" style="display:none;text-align:center;margin-top:28px;">
-    <button onclick="newsLoadMore()" style="background:var(--edge);border:1px solid var(--amber);color:var(--amber);font-family:var(--font-label);font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;padding:12px 28px;border-radius:4px;cursor:pointer;">Load More →</button>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════
-     LAST DRIVE CTA
-     ═══════════════════════════════════════════════════════════ -->
-<div style="padding:0 24px 48px;">
-  <div style="max-width:var(--wide-width);margin:0 auto;">
-    <div class="ld-cta reveal">
-      <div class="ld-cta-eyebrow">Community Event · November 18, 2026</div>
-      <div class="ld-cta-title">The Last Drive</div>
-      <p class="ld-cta-sub">
-        One final night in GTA5. Thousands of players. One last cruise before
-        GTA6 takes over forever. Free to join. Your spot is waiting on the
-        Wall of Honor.
-      </p>
-      <div class="ld-cta-btns">
-        <a href="/lastdrive" class="btn btn-primary">🏁 Sign Up Free</a>
-        <a href="/members" class="btn btn-ghost">Wall of Honor</a>
-        <a href="/store" class="btn btn-ghost">Get Your Plate</a>
+    <div class="reveal mt-3">
+      <p class="eyebrow" style="margin-bottom:12px">LAUNCH DAY — NOV 19 2026</p>
+      <div class="countdown" data-countdown="2026-11-19T00:00:00-05:00">
+        <div class="count-cell"><b data-d>—</b><small>Days</small></div>
+        <div class="count-cell"><b data-h>—</b><small>Hours</small></div>
+        <div class="count-cell"><b data-m>—</b><small>Min</small></div>
+        <div class="count-cell"><b data-s>—</b><small>Sec</small></div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- AdSense -->
-<div style="max-width:var(--wide-width);margin:0 auto;padding:0 24px;">
-  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
-</div>
+<!-- LATEST SIGNAL -->
+<section class="section">
+  <div class="wrap">
+    <p class="eyebrow reveal">BREAKING SIGNAL</p>
+    <h2 class="reveal">Latest from the lane</h2>
+    <div class="grid g3 mt-3" data-feed="6">
+      <!-- Static fallback; replaced by /articles.json when live -->
+      <article class="card reveal">
+        <div class="card-hero"><div class="art art-auto"></div></div>
+        <span class="eyebrow">News</span>
+        <h3><a href="/news.html" style="color:inherit">Pre-order wave breaks records</a></h3>
+        <p>What the opening numbers tell us about launch week — and what to lock in before preload.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card-hero"><div class="art art-auto"></div></div>
+        <span class="eyebrow">Lore</span>
+        <h3><a href="/news.html" style="color:inherit">The Vercetti thread nobody's pulling</a></h3>
+        <p>Deep Frequency traces the Heder theory through every frame we've been given so far.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card-hero"><div class="art art-auto"></div></div>
+        <span class="eyebrow">Gear</span>
+        <h3><a href="/gear.html" style="color:inherit">The launch-night setup, ranked</a></h3>
+        <p>Controllers, headsets, and the storage you'll actually need on day one.</p>
+      </article>
+    </div>
+    <div class="center mt-3 reveal"><a class="btn btn-ghost" href="/news.html">All news →</a></div>
+  </div>
+</section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     EMAIL CAPTURE
-     ═══════════════════════════════════════════════════════════ -->
-<div style="padding:0 24px 48px;">
-  <div style="max-width:700px;margin:0 auto;">
-    <div style="background:linear-gradient(135deg,#0B0B0F,#16161D);border:1px solid var(--edge);border-top:3px solid var(--cyan);padding:32px 28px;position:relative;overflow:hidden;">
-      <div style="position:absolute;right:-10px;bottom:-10px;font-family:var(--font-display);font-size:80px;color:rgba(0,212,255,.04);text-transform:uppercase;pointer-events:none;">GTA6</div>
-      <div style="font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.25em;font-size:.7rem;color:var(--cyan);margin-bottom:8px;">📡 Stay In The Lane</div>
-      <div style="font-family:var(--font-display);font-size:clamp(18px,4vw,28px);text-transform:uppercase;color:var(--bone);margin-bottom:8px;line-height:1.1;">GTA6 News. Last Drive Updates.<br>Direct To Your Inbox.</div>
-      <p style="font-size:.88rem;color:#C8C4BE;margin-bottom:22px;line-height:1.65;max-width:460px;">No spam. No fluff. Just the biggest GTA6 developments and Last Drive event updates — straight to you before anyone else.</p>
-      <div id="nl-form-wrap">
-        <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          <input type="email" id="nl-email" class="form-input" placeholder="your@email.com" style="flex:1;min-width:200px;" onkeypress="if(event.key==='Enter')nlSubmit()">
-          <button onclick="nlSubmit()" id="nl-btn" class="btn btn-cyan" style="padding:12px 24px;white-space:nowrap;">Get Updates →</button>
-        </div>
-        <p style="font-size:.72rem;color:var(--smoke-dim);margin-top:8px;">No spam. Unsubscribe anytime. We respect your inbox.</p>
-        <div class="msg" id="nl-msg" style="margin-top:10px;"></div>
+<!-- TRUST / PILLARS -->
+<section class="section" style="background:var(--ink-2)">
+  <div class="wrap">
+    <p class="eyebrow reveal">WHY 56VICELANE</p>
+    <h2 class="reveal" style="max-width:22ch">Fast. Trustworthy. Built like we're moving in.</h2>
+    <div class="grid g3 mt-3">
+      <div class="card reveal">
+        <span class="badge confirmed">Confirmed</span>
+        <h3 class="mt-1">Rated, not repeated</h3>
+        <p>Every leak gets a rating — Confirmed, Credible, or Fake — with named sources. If we can't verify it, we say so.</p>
       </div>
-      <div id="nl-success" style="display:none;text-align:center;padding:16px 0;">
-        <div style="font-size:32px;margin-bottom:10px;">✅</div>
-        <div style="font-family:var(--font-display);font-size:1.1rem;text-transform:uppercase;color:var(--cyan);margin-bottom:6px;">You're In The Lane</div>
-        <p style="font-size:.88rem;color:#C8C4BE;line-height:1.6;">GTA6 news and Last Drive updates coming your way. See you November 18.</p>
+      <div class="card reveal">
+        <span class="badge credible">Light on ads</span>
+        <h3 class="mt-1">Reader-first pages</h3>
+        <p>No autoplay, no pop-over walls, no ad maze. Pages load fast because that's the whole point.</p>
+      </div>
+      <div class="card reveal">
+        <span class="badge">Community</span>
+        <h3 class="mt-1">Events that mean something</h3>
+        <p>Clear The Lanes. The Last Drive. GTACON. Rituals for the people who've been here since San Andreas.</p>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     GTA6 LAUNCH BANNER
-     ═══════════════════════════════════════════════════════════ -->
-<div class="launch-banner">
-  <div class="lb-inner">
-    <div class="lb-label">Coming November 19, 2026</div>
-    <div class="lb-title">
-      GTA6 Launches — <span>New Plate Era Begins</span>
+<!-- RADIO PROMO -->
+<section class="section">
+  <div class="wrap grid g2" style="align-items:center">
+    <div>
+      <p class="eyebrow reveal">NEW ON THE DIAL</p>
+      <h2 class="reveal">Vice Frequency Radio</h2>
+      <p class="lede reveal mt-1">Three stations. Breaking Signal for the news, Deep Frequency for the lore, Static Cuts for everything in between. Spin the dial, catch a DJ break, stay a while.</p>
+      <div class="reveal mt-2"><a class="btn btn-cyan" href="/radio.html">Open the tuner</a></div>
+    </div>
+    <a class="card reveal" href="/radio.html" style="text-decoration:none">
+      <div class="card-hero"><div class="art" style="background:
+        radial-gradient(80% 100% at 30% 110%, rgba(59,243,223,.35), transparent 60%),
+        radial-gradient(70% 90% at 85% -10%, rgba(255,111,97,.4), transparent 55%),
+        linear-gradient(150deg,#2A1245,#120A1E)"></div></div>
+      <span class="eyebrow">ON AIR · VF 56.6</span>
+      <h3>Now playing: the road to Leonida</h3>
+      <p>Live headlines, station idents, and dusk-hour ambience.</p>
+    </a>
+  </div>
+</section>
+
+<!-- COMMUNITY EVENTS -->
+<section class="section" style="background:var(--ink-2)">
+  <div class="wrap">
+    <p class="eyebrow reveal">RIDE WITH US</p>
+    <h2 class="reveal">Community events</h2>
+    <div class="grid g3 mt-3">
+      <a class="card reveal" href="/lastdrive.html" style="text-decoration:none">
+        <span class="eyebrow">NOV 18 · 2026</span>
+        <h3>The Last Drive</h3>
+        <p>One final cruise through Los Santos before the servers belong to history. Roll out with the convoy.</p>
+        <span class="card-link">Join the drive →</span>
+      </a>
+      <a class="card reveal" href="/leaderboard.html" style="text-decoration:none">
+        <span class="eyebrow">CAMPAIGN</span>
+        <h3>#ClearTheLanes</h3>
+        <p>Asking Rockstar for grief-free GTA 5 lobbies on the final night. Earn your badge on the leaderboard.</p>
+        <span class="card-link">See the board →</span>
+      </a>
+      <a class="card reveal" href="/gtacon.html" style="text-decoration:none">
+        <span class="eyebrow">LIVE TRACKER</span>
+        <h3>GTACON</h3>
+        <p>Our launch-readiness condition tracker. When it hits CON 1, you'll want to be sitting down.</p>
+        <span class="card-link">Check condition →</span>
+      </a>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     FOOTER — identical on every page
-     ═══════════════════════════════════════════════════════════ -->
-<footer>
-  <div class="footer-brand">
-    <span class="logo-mark">56</span>ViceLane
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>Site</h4>
+        <a href="/news.html">News</a>
+        <a href="/gta6.html">GTA 6 Hub</a>
+        <a href="/archive.html">Archive</a>
+        <a href="/radio.html">Radio</a>
+      </div>
+      <div>
+        <h4>Community</h4>
+        <a href="/members.html">Members</a>
+        <a href="/leaderboard.html">Leaderboard</a>
+        <a href="/wall.html">The Wall</a>
+        <a href="/forum.html">Forum</a>
+        <a href="/lastdrive.html">The Last Drive</a>
+      </div>
+      <div>
+        <h4>Gear &amp; Shop</h4>
+        <a href="/gear.html">Launch Gear</a>
+        <a href="/shop.html">Shop</a>
+        <a href="/store.html">Plates &amp; Merch</a>
+        <a href="/weekly-bonuses.html">Weekly Bonuses</a>
+      </div>
+      <div>
+        <h4>56ViceLane</h4>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </div>
+    </div>
+    <div class="horizon mt-3"></div>
+    <p class="foot-note">© 2026 Forged Oak Studios · 56ViceLane is an independent fan site and is not affiliated with, endorsed by, or connected to Rockstar Games or Take-Two Interactive. All trademarks belong to their owners. Some links are affiliate links — as an Amazon Associate we earn from qualifying purchases.</p>
   </div>
-  <div class="footer-tag">Where GTA5 Ends And GTA6 Begins</div>
-  <div class="footer-links">
-    <a href="/">Home</a>
-    <a href="/news">News</a>
-    <a href="/lastdrive">Last Drive</a>
-    <a href="/members">Members</a>
-    <a href="/store">Store</a>
-    <a href="/gear">Gear</a>
-    <a href="/tools">Tools</a>
-    <a href="/forum">Forum</a>
-    <a href="/about">About</a>
-    <a href="/contact">Contact</a>
-    <a href="/privacy">Privacy</a>
-    <a href="/terms">Terms</a>
-    <a href="/admin" class="admin-link">Admin</a>
-  </div>
-  <p class="footer-disclosure">
-    56ViceLane is an independent fan site. Not affiliated with, endorsed by,
-    or sponsored by Rockstar Games or Take-Two Interactive. All trademarks
-    belong to their respective owners. 56ViceLane earns a small commission
-    on qualifying purchases through affiliate links at no extra cost to you.
-  </p>
-  <p class="footer-copy" id="vl-copyright">
-    © 2026 56ViceLane · Forged Oak Studios
-  </p>
 </footer>
 
-<!-- ═══════════════════════════════════════════════════════════
-     SCRIPTS
-     ═══════════════════════════════════════════════════════════ -->
-<script>
-// ── NEWSLETTER SIGNUP ─────────────────────────────────────
-function nlSubmit() {
-  var email = (document.getElementById('nl-email').value || '').trim();
-  var btn   = document.getElementById('nl-btn');
-  var msg   = document.getElementById('nl-msg');
-  if (!email || !email.includes('@')) {
-    msg.textContent = 'Please enter a valid email address.';
-    msg.className = 'msg show error';
-    return;
-  }
-  btn.textContent = 'Signing up...';
-  btn.disabled = true;
-  var today = new Date().toISOString().split('T')[0];
-  fetch('https://api.airtable.com/v0/appVViGbmcu5gbn8B/tbl7L7uD55n4crlud', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer patOsw2uZnlfA5lWe.a393301967e8bdfb07d021bb952f89c9ccc70fa218dd0bad1a8e56997b8baca7',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({records:[{fields:{
-      'Email copy': email,
-      'Source': 'Homepage',
-      'Signupdate': new Date().toISOString().split('T')[0]
-    }}]})
-  }).then(function(r) {
-    if (r.ok) {
-      document.getElementById('nl-form-wrap').style.display = 'none';
-      document.getElementById('nl-success').style.display = 'block';
-    } else {
-      r.text().then(function(t) {
-        msg.textContent = 'Error ' + r.status + ': ' + t;
-        msg.className = 'msg show error';
-      });
-      btn.textContent = 'Get Updates →';
-      btn.disabled = false;
-    }
-  }).catch(function(e) {
-    msg.textContent = 'Connection error: ' + e;
-    msg.className = 'msg show error';
-    btn.textContent = 'Get Updates →';
-    btn.disabled = false;
-  });
-}
-
-// ── COUNTDOWN ─────────────────────────────────────────────
-function updateCountdown() {
-  var launch = new Date('2026-11-19T00:00:00').getTime();
-  var now = Date.now();
-  var diff = launch - now;
-  if (diff <= 0) {
-    document.getElementById('countdown-timer').innerHTML =
-      '<span style="color:var(--amber);font-family:var(--font-display);">GTA6 IS LIVE</span>';
-    return;
-  }
-  var d = Math.floor(diff / 86400000);
-  var h = Math.floor((diff % 86400000) / 3600000);
-  var m = Math.floor((diff % 3600000) / 60000);
-  var s = Math.floor((diff % 60000) / 1000);
-  document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
-  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
-  document.getElementById('cd-mins').textContent  = String(m).padStart(2,'0');
-  document.getElementById('cd-secs').textContent  = String(s).padStart(2,'0');
-}
-updateCountdown();
-setInterval(updateCountdown, 1000);
-
-// ── NEWS GRID — date fix + filter + load more ─────────────
-var allArticles = [];
-var activeFilter = 'All';
-var visibleCount = 6;
-var PAGE_SIZE = 6;
-
-function fixDate(dateStr) {
-  if (!dateStr) return '';
-  // Parse YYYY-MM-DD without timezone shift
-  var parts = dateStr.split('-');
-  if (parts.length !== 3) return dateStr;
-  var d = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
-  return d.toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
-}
-
-function getCategories(articles) {
-  var seen = {};
-  var cats = [];
-  articles.forEach(function(a) {
-    var c = (a.category || 'GTA6 News');
-    if (!seen[c]) { seen[c] = true; cats.push(c); }
-  });
-  return cats;
-}
-
-function buildFilterBar(articles) {
-  var bar = document.getElementById('filter-bar');
-  if (!bar) return;
-  bar.innerHTML = '';
-
-  var filters = ['All', 'Newest', 'Oldest'].concat(getCategories(articles));
-  filters.forEach(function(f) {
-    var btn = document.createElement('button');
-    btn.textContent = f;
-    btn.dataset.filter = f;
-    btn.style.cssText = 'background:' + (f === activeFilter ? 'var(--amber)' : 'var(--edge)') + ';' +
-      'color:' + (f === activeFilter ? '#000' : 'var(--bone)') + ';' +
-      'border:1px solid ' + (f === activeFilter ? 'var(--amber)' : 'var(--edge)') + ';' +
-      'font-family:var(--font-label);font-weight:700;font-size:.75rem;letter-spacing:.1em;' +
-      'text-transform:uppercase;padding:7px 14px;border-radius:4px;cursor:pointer;transition:all .15s;';
-    btn.addEventListener('click', function() {
-      activeFilter = f;
-      visibleCount = PAGE_SIZE;
-      buildFilterBar(allArticles);
-      renderGrid();
-    });
-    bar.appendChild(btn);
-  });
-}
-
-function getFiltered() {
-  var list = allArticles.slice();
-  if (activeFilter === 'Newest') {
-    list.sort(function(a,b) { return (b.date||'').localeCompare(a.date||''); });
-  } else if (activeFilter === 'Oldest') {
-    list.sort(function(a,b) { return (a.date||'').localeCompare(b.date||''); });
-  } else if (activeFilter !== 'All') {
-    list = list.filter(function(a) { return (a.category || 'GTA6 News') === activeFilter; });
-  }
-  return list;
-}
-
-function renderGrid() {
-  var grid = document.getElementById('news-grid');
-  var moreBtn = document.getElementById('news-load-more');
-  if (!grid) return;
-  grid.innerHTML = '';
-
-  var filtered = getFiltered();
-  var slice = filtered.slice(0, visibleCount);
-
-  if (slice.length === 0) {
-    grid.innerHTML = '<div style="color:var(--smoke);font-size:.9rem;">No articles in this category yet.</div>';
-    if (moreBtn) moreBtn.style.display = 'none';
-    return;
-  }
-
-  slice.forEach(function(a) {
-    var card = document.createElement('a');
-    card.className = 'news-card';
-    card.href = '/articles/' + a.slug;
-
-    var img = a.image || 'Gta6.png';
-    var tag = a.category || 'GTA6 News';
-
-    var imgEl = document.createElement('div');
-    imgEl.className = 'news-card-img';
-    imgEl.style.backgroundImage = "url('/images/" + img + "')";
-
-    var body = document.createElement('div');
-    body.className = 'news-card-body';
-
-    var tagEl = document.createElement('div');
-    tagEl.className = 'news-card-tag';
-    tagEl.textContent = tag;
-
-    var titleEl = document.createElement('div');
-    titleEl.className = 'news-card-title';
-    titleEl.textContent = a.title || '';
-
-    var dateEl = document.createElement('div');
-    dateEl.className = 'news-card-date';
-    dateEl.textContent = fixDate(a.date);
-
-    body.appendChild(tagEl);
-    body.appendChild(titleEl);
-    body.appendChild(dateEl);
-    card.appendChild(imgEl);
-    card.appendChild(body);
-    grid.appendChild(card);
-  });
-
-  if (moreBtn) {
-    moreBtn.style.display = filtered.length > visibleCount ? 'block' : 'none';
-  }
-}
-
-function newsLoadMore() {
-  visibleCount += PAGE_SIZE;
-  renderGrid();
-}
-
-fetch('/articles.json?v=' + Date.now())
-  .then(function(r) { return r.json(); })
-  .then(function(articles) {
-    allArticles = articles;
-
-    buildFilterBar(allArticles);
-    renderGrid();
-
-    // Populate carousel news slide
-    if (articles.length) {
-      var latest = articles.slice().sort(function(a,b){return (b.date||'').localeCompare(a.date||'');})[0];
-      var titleEl = document.getElementById('carousel-news-title');
-      var subEl   = document.getElementById('carousel-news-sub');
-      var linkEl  = document.getElementById('carousel-news-link');
-      if (titleEl) titleEl.textContent = latest.title || '';
-      if (subEl)   subEl.textContent   = latest.excerpt || 'The latest from 56ViceLane.';
-      if (linkEl)  { linkEl.href = '/articles/' + latest.slug; linkEl.textContent = 'Read More →'; }
-    }
-
-    // Build ticker
-    var track = document.getElementById('ticker-track');
-    if (track) {
-      var items = [].concat(articles, articles).map(function(x) {
-        var span = document.createElement('span');
-        span.className = 'ticker-item';
-        span.textContent = (x.emoji || '⚡') + ' ' + x.title;
-        span.addEventListener('click', function() { location.href = '/articles/' + x.slug; });
-        return span.outerHTML;
-      }).join('');
-      track.innerHTML = items;
-    }
-  })
-  .catch(function() {
-    var grid = document.getElementById('news-grid');
-    if (grid) grid.innerHTML = '<div style="color:var(--smoke);font-size:.9rem;">Check back soon.</div>';
-  });
-
-// ── NAV TOGGLE ────────────────────────────────────────────
-var mt = document.getElementById('menu-toggle');
-var nm = document.getElementById('nav-mobile');
-if (mt && nm) mt.addEventListener('click', function() {
-  nm.classList.toggle('open');
-});
-
-
-// ── CAROUSEL ──────────────────────────────────────────────
-(function() {
-  var TOTAL     = 5;
-  var INTERVAL  = 4500;
-  var current   = 0;
-  var timer     = null;
-  var progTimer = null;
-
-  var track   = document.getElementById('carousel-track');
-  var bar     = document.getElementById('carousel-progress-bar');
-  var dotsEl  = document.getElementById('carousel-dots');
-
-  function getDots() {
-    return dotsEl ? dotsEl.querySelectorAll('.carousel-dot') : [];
-  }
-
-  function goTo(n) {
-    current = (n + TOTAL) % TOTAL;
-    var slideW = track ? track.parentElement.offsetWidth : window.innerWidth;
-    if (track) track.style.transform = 'translateX(-' + (current * slideW) + 'px)';
-    var dots = getDots();
-    for (var i = 0; i < dots.length; i++) {
-      dots[i].classList.toggle('active', i === current);
-    }
-    startProgress();
-  }
-
-  function startProgress() {
-    if (bar) {
-      bar.style.transition = 'none';
-      bar.style.width = '0%';
-      // Force reflow
-      bar.offsetWidth;
-      bar.style.transition = 'width ' + INTERVAL + 'ms linear';
-      bar.style.width = '100%';
-    }
-  }
-
-  function startTimer() {
-    clearInterval(timer);
-    timer = setInterval(function() { goTo(current + 1); }, INTERVAL);
-  }
-
-  // Pause on hover/touch
-  var wrap = track ? track.closest('.carousel-wrap') : null;
-  if (wrap) {
-    wrap.addEventListener('mouseenter', function() { clearInterval(timer); });
-    wrap.addEventListener('mouseleave', function() { startTimer(); });
-    wrap.addEventListener('touchstart', function() { clearInterval(timer); }, {passive:true});
-    wrap.addEventListener('touchend',   function() { startTimer(); }, {passive:true});
-  }
-
-  // Swipe support
-  var touchX = 0;
-  if (track) {
-    track.addEventListener('touchstart', function(e) {
-      touchX = e.touches[0].clientX;
-    }, {passive:true});
-    track.addEventListener('touchend', function(e) {
-      var diff = touchX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 40) { goTo(diff > 0 ? current + 1 : current - 1); startTimer(); }
-    }, {passive:true});
-  }
-
-  // Expose globally for dot onclick
-  window.carouselGoTo = function(n) { goTo(n); startTimer(); };
-
-  // Init
-  goTo(0);
-  startTimer();
-})();
-
-// ── REVEAL ────────────────────────────────────────────────
-var obs = new IntersectionObserver(function(es) {
-  es.forEach(function(e) {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      obs.unobserve(e.target);
-    }
-  });
-}, { threshold: .08 });
-document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
-
-// ── DEBUG MODE ────────────────────────────────────────────
-(function() {
-  var KEY = '56vl-debug';
-  var active = localStorage.getItem(KEY) === '1';
-  function applyDebug() {
-    var ind = document.getElementById('vl-debug-ind');
-    if (!ind) {
-      ind = document.createElement('div');
-      ind.id = 'vl-debug-ind';
-      ind.textContent = '🔧 DEBUG ON — tap to off';
-      ind.onclick = function() {
-        active = false;
-        localStorage.setItem(KEY, '0');
-        applyDebug();
-      };
-      document.body.appendChild(ind);
-    }
-    ind.style.display = active ? 'block' : 'none';
-  }
-  // Copyright long-press triggers debug (mobile fallback)
-  var el = document.getElementById('vl-copyright');
-  var timer = null;
-  if (el) {
-    el.style.userSelect = 'none';
-    el.style.webkitUserSelect = 'none';
-    el.addEventListener('touchstart', function(e) {
-      e.preventDefault();
-      timer = setTimeout(function() {
-        active = !active;
-        localStorage.setItem(KEY, active ? '1' : '0');
-        applyDebug();
-      }, 1500);
-    }, { passive: false });
-    el.addEventListener('touchend', function() { clearTimeout(timer); });
-    el.addEventListener('touchmove', function() { clearTimeout(timer); });
-  }
-  applyDebug();
-})();
-</script>
+<script src="/assets/vf.js"></script>
 </body>
 </html>
