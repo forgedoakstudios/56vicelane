@@ -11,7 +11,6 @@
 <meta name="description" content="The Last Drive — one final cruise through GTA5 before GTA6 launches. November 18, 2026. Free. All platforms.">
 <link rel="canonical" href="https://56vicelane.com/lastdrive">
 
-<!-- OG / Social -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="56ViceLane">
 <meta property="og:title" content="The Last Drive — GTA5 Community Farewell Event">
@@ -24,27 +23,59 @@
 <meta name="twitter:title" content="The Last Drive — 56ViceLane">
 <meta name="twitter:image" content="https://56vicelane.com/images/Jason_and_Lucia_01_landscape.jpg">
 
-<!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
-<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-<!-- Shared stylesheet -->
 <link rel="stylesheet" href="/vicelane.css">
 
-<!-- AdSense -->
+<!-- 56ViceLane V2 — Vibrant Premium palette override (see design-system-addendum.md) -->
+<!-- vicelane.css itself still needs a matching rebuild for full nav/footer/button consistency -->
+<style>
+:root{
+  --pitch: #FDFBF8;
+  --asphalt: #FFFFFF;
+  --edge: #F0E6DA;
+  --amber: #FF6B2C;
+  --cyan: #D6247A;
+  --bone: #211A16;
+  --smoke: #6B5F52;
+  --green: #00C875;
+  --red: #FF3B3B;
+  --font-display: 'Playfair Display', serif;
+  --font-label: 'Barlow Condensed', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+</style>
+
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
 
 <style>
-/* ── LAST DRIVE PAGE ONLY ─────────────────────────────────── */
-
-/* HERO */
+.ld-hero-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.ld-hero-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/lastdrive-hero.webp');
+  background-size: cover;
+  background-position: center 35%;
+}
+.ld-hero-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(253,251,248,.35) 0%, rgba(253,251,248,.85) 70%, rgba(253,251,248,1) 100%);
+}
 .ld-hero {
-  padding: 56px 24px 44px;
+  position: relative;
+  z-index: 2;
+  padding: 72px 24px 44px;
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
@@ -60,9 +91,11 @@
 }
 .ld-title {
   font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
   font-size: clamp(32px, 7vw, 68px);
-  text-transform: uppercase;
-  line-height: 1.0;
+  text-transform: none;
+  line-height: 1.05;
   margin-bottom: 16px;
 }
 .ld-title span { color: var(--amber); }
@@ -76,14 +109,12 @@
   margin-bottom: 20px;
 }
 .ld-desc {
-  color: #C8C4BE;
+  color: var(--smoke);
   font-size: .95rem;
   max-width: 560px;
   margin: 0 auto 36px;
   line-height: 1.7;
 }
-
-/* ROLE SELECTOR */
 .role-wrap {
   max-width: 760px;
   margin: 0 auto;
@@ -152,13 +183,9 @@
   margin-top: 10px;
 }
 .badge-lead  { background: rgba(255,215,0,.15); color: #FFD700; border: 1px solid rgba(255,215,0,.3); }
-.badge-join  { background: rgba(0,212,255,.1);  color: var(--cyan); border: 1px solid rgba(0,212,255,.2); }
-
-/* PATH CONTAINERS */
+.badge-join  { background: rgba(214,36,122,.1);  color: var(--cyan); border: 1px solid rgba(214,36,122,.2); }
 .path-container { display: none; max-width: 1000px; margin: 0 auto; padding: 0 24px 80px; }
 .path-container.active { display: block; }
-
-/* PLATFORM TABS */
 .platform-tabs {
   display: flex;
   flex-wrap: wrap;
@@ -189,11 +216,8 @@
   font-size: .68rem;
   padding: 2px 7px;
 }
-
 .platform-panel { display: none; }
 .platform-panel.active { display: block; }
-
-/* REGION GRID */
 .region-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
@@ -220,8 +244,6 @@
   color: var(--bone);
 }
 .region-tz { font-size: .68rem; color: var(--smoke); margin-top: 2px; }
-
-/* TIME SLOTS */
 .time-slots { display: none; margin-top: 28px; }
 .time-slots.visible { display: block; }
 .slots-grid { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
@@ -255,8 +277,6 @@
   background: rgba(255,215,0,.1);
   border: 1px solid rgba(255,215,0,.25);
 }
-
-/* SIGNUP FORM */
 .signup-section { display: none; margin-top: 28px; }
 .signup-section.visible { display: block; }
 .confirm-strip { display: none; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
@@ -294,8 +314,6 @@
   margin-bottom: 20px;
 }
 .org-badge.show { display: block; }
-
-/* SEL / OPT BUTTONS */
 .sel-btns, .opt-btns { display: flex; flex-wrap: wrap; gap: 8px; }
 .sel-btn, .opt-btn {
   background: var(--asphalt);
@@ -319,8 +337,6 @@
 }
 .opt-btn { display: flex; flex-direction: column; gap: 3px; min-width: 120px; }
 .opt-sub { font-size: .68rem; font-family: var(--font-body); text-transform: none; letter-spacing: 0; color: var(--smoke); font-weight: 400; }
-
-/* ACCESS TYPE */
 .access-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .access-card {
   background: var(--asphalt);
@@ -341,15 +357,11 @@
   margin-bottom: 4px;
 }
 .access-desc { font-size: .75rem; color: var(--smoke); line-height: 1.4; }
-
-/* FORM GRID */
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
 @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
 .form-full { grid-column: 1 / -1; }
 .hidden-field { display: none; margin-top: 8px; }
 .hidden-field.visible { display: block; }
-
-/* SUCCESS BOX */
 .success-box { display: none; text-align: center; padding: 44px 24px; border: 1px solid var(--edge); margin-top: 24px; }
 .success-box.show { display: block; }
 .success-icon { font-size: 48px; margin-bottom: 16px; }
@@ -362,8 +374,6 @@
 }
 .success-text { color: var(--smoke); font-size: .9rem; max-width: 480px; margin: 0 auto 24px; line-height: 1.7; }
 .success-actions { display: flex; flex-direction: column; gap: 10px; align-items: center; }
-
-/* JOIN PATH */
 .drive-card {
   background: var(--asphalt);
   border: 1px solid var(--edge);
@@ -404,7 +414,7 @@
   border: 1px solid var(--edge);
   color: var(--smoke);
 }
-.drive-tag.loc { color: var(--cyan); border-color: rgba(0,212,255,.2); }
+.drive-tag.loc { color: var(--cyan); border-color: rgba(214,36,122,.2); }
 .drive-tag.time { color: var(--amber); border-color: rgba(255,107,26,.2); }
 .access-badge {
   font-family: var(--font-label);
@@ -416,13 +426,10 @@
 }
 .access-open { color: var(--green); background: rgba(0,200,117,.1); border: 1px solid rgba(0,200,117,.2); }
 .access-approval { color: #FFB347; background: rgba(255,179,71,.1); border: 1px solid rgba(255,179,71,.2); }
-
 .join-form-wrap { background: var(--asphalt); border: 1px solid var(--edge); padding: 24px; margin-top: 20px; display: none; }
 .join-form-wrap.visible { display: block; }
 .selected-drive-strip { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; background: rgba(255,107,26,.05); border: 1px solid rgba(255,107,26,.2); margin-bottom: 18px; }
 .pending-note { background: rgba(255,179,71,.07); border: 1px solid rgba(255,179,71,.2); padding: 12px 16px; margin-bottom: 16px; font-size: .82rem; color: #FFB347; line-height: 1.5; }
-
-/* HOW IT WORKS */
 .how-block {
   border: 1px solid var(--edge);
   padding: 24px;
@@ -446,7 +453,7 @@
 }
 .how-item {
   font-size: .85rem;
-  color: #C8C4BE;
+  color: var(--smoke);
   padding: 6px 0 6px 16px;
   border-left: 2px solid var(--amber);
   margin-bottom: 6px;
@@ -468,8 +475,6 @@
   margin-bottom: 6px;
 }
 .golden-rule-text { font-size: .85rem; color: var(--bone); line-height: 1.6; }
-
-/* FRIEND FINDER */
 .finder-wrap { margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--edge); }
 .finder-row { display: flex; gap: 8px; margin-top: 12px; }
 .finder-result { margin-top: 14px; }
@@ -486,14 +491,12 @@
 </head>
 <body>
 
-<!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-track" id="ticker-track">
     <span class="ticker-item">56ViceLane — Where GTA5 Ends And GTA6 Begins</span>
   </div>
 </div>
 
-<!-- NAV -->
 <nav class="nav">
   <a class="logo" href="/">
     <span class="logo-mark">56</span>
@@ -528,15 +531,15 @@
   <a href="/terms">Terms</a>
 </div>
 
-<!-- HERO -->
+<div class="ld-hero-wrap">
 <div class="ld-hero">
   <div class="ld-eyebrow">The Last Drive · November 18, 2026</div>
   <h1 class="ld-title">One Final <span>Cruise</span><br>Through The City</h1>
   <div class="ld-date">November 18, 2026 · All Platforms · Free</div>
   <p class="ld-desc">GTA5 changed everything. Before GTA6 takes over, we ride together one last time. Lead a convoy or join one — every driver counts.</p>
 </div>
+</div>
 
-<!-- ROLE SELECTOR -->
 <div class="role-wrap" id="role-wrap">
   <div class="role-label">How do you want to roll?</div>
   <div class="role-cards">
@@ -555,20 +558,16 @@
   </div>
 </div>
 
-<!-- AdSense -->
 <div style="max-width:760px;margin:0 auto;padding:0 24px 16px;">
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
   <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     PATH A — LEAD A DRIVE
-     ═══════════════════════════════════════════════════════════ -->
 <div class="path-container" id="path-lead">
 
   <div class="eyebrow" style="margin-bottom:8px;">Step 1 of 4 — Select Your Platform</div>
   <h2 style="margin-bottom:8px;">What Are You Rolling On?</h2>
-  <p style="color:#C8C4BE;font-size:.9rem;margin-bottom:24px;">Each platform has its own lobby. Pick yours.</p>
+  <p style="color:var(--smoke);font-size:.9rem;margin-bottom:24px;">Each platform has its own lobby. Pick yours.</p>
 
   <div class="platform-tabs" id="ptabs-lead">
     <button class="platform-tab active" data-p="PS5">🎮 PS5 <span class="plat-cnt" id="cnt-PS5">...</span></button>
@@ -580,7 +579,6 @@
 
   <div id="lead-panels"></div>
 
-  <!-- HOW IT WORKS -->
   <div class="how-block">
     <div class="how-title">How The Last Drive Works</div>
     <div class="how-section">
@@ -606,14 +604,11 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     PATH B — JOIN A DRIVE
-     ═══════════════════════════════════════════════════════════ -->
 <div class="path-container" id="path-join">
 
   <div class="eyebrow" style="margin-bottom:8px;">Join a Drive — Step 1</div>
   <h2 style="margin-bottom:8px;">Pick Your Platform</h2>
-  <p style="color:#C8C4BE;font-size:.9rem;margin-bottom:24px;">Filter drives by platform first, then narrow by region and time.</p>
+  <p style="color:var(--smoke);font-size:.9rem;margin-bottom:24px;">Filter drives by platform first, then narrow by region and time.</p>
 
   <div class="platform-tabs" id="ptabs-join">
     <button class="platform-tab-j active" data-p="PS5">🎮 PS5</button>
@@ -657,7 +652,6 @@
     <div id="drives-list"></div>
   </div>
 
-  <!-- JOIN FORM -->
   <div class="join-form-wrap" id="join-form-wrap">
     <h3 style="margin-bottom:6px;">Lock In Your Spot</h3>
     <p style="font-size:.82rem;color:var(--smoke);margin-bottom:18px;">You're joining the drive below. Fill in your details to get on the roster.</p>
@@ -698,7 +692,6 @@
     </div>
   </div>
 
-  <!-- FRIEND FINDER -->
   <div class="finder-wrap">
     <div class="eyebrow" style="margin-bottom:4px;">Find a Friend</div>
     <h3 style="margin-bottom:8px;">Is Your Friend Already Signed Up?</h3>
@@ -711,7 +704,6 @@
 
 </div>
 
-<!-- SHARE BAR -->
 <div style="max-width:1000px;margin:0 auto;padding:0 24px;">
   <div class="share-bar">
     <span class="share-bar-label">Share</span>
@@ -722,7 +714,6 @@
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-brand"><span class="logo-mark">56</span>ViceLane</div>
   <div class="footer-tag">Where GTA5 Ends And GTA6 Begins</div>
@@ -745,9 +736,7 @@
   <p class="footer-copy" id="vl-copyright">© 2026 56ViceLane · Forged Oak Studios</p>
 </footer>
 
-<!-- SCRIPTS -->
 <script>
-// ── CONSTANTS ─────────────────────────────────────────────
 var AT_TOKEN = 'pattxJ12NQzpHMejD.2eb992f22f1a43e032d866df028dbb33958635234f6cfd30769e3e12f10d5588';
 var AT_BASE  = 'appVViGbmcu5gbn8B';
 var AT_URL   = 'https://api.airtable.com/v0/' + AT_BASE + '/Last%20Drive';
@@ -774,7 +763,6 @@ PLATFORMS.forEach(function(p) {
 
 var joinState = {platform:'PS5', region:'', drive:null, allDrives:[]};
 
-// ── ROLE SELECTION ─────────────────────────────────────────
 function selectRole(role) {
   document.getElementById('role-lead').classList.toggle('selected', role === 'lead');
   document.getElementById('role-join').classList.toggle('selected', role === 'join');
@@ -786,7 +774,6 @@ function selectRole(role) {
   }, 300);
 }
 
-// ── BUILD LEAD PANELS ──────────────────────────────────────
 var leadPanels = document.getElementById('lead-panels');
 
 PLATFORMS.forEach(function(p) {
@@ -802,7 +789,7 @@ PLATFORMS.forEach(function(p) {
     '<div class="time-slots" id="ts_' + pid + '">' +
       '<div class="eyebrow" style="margin-bottom:8px;">' + p + ' — Step 3 of 4 — Pick Your Time Slot</div>' +
       '<h3 id="st_' + pid + '" style="margin-bottom:6px;">Choose Your Slot</h3>' +
-      '<p style="font-size:.82rem;color:#C8C4BE;margin-bottom:18px;">Times shown in your region\'s local timezone.</p>' +
+      '<p style="font-size:.82rem;color:var(--smoke);margin-bottom:18px;">Times shown in your region\'s local timezone.</p>' +
       '<div class="slots-grid" id="sg_' + pid + '"></div>' +
     '</div>' +
 
@@ -893,7 +880,6 @@ PLATFORMS.forEach(function(p) {
 
   leadPanels.appendChild(panel);
 
-  // Build region cards
   var rg = panel.querySelector('#rg_' + pid);
   REGIONS.forEach(function(r) {
     var card = document.createElement('div');
@@ -910,7 +896,6 @@ PLATFORMS.forEach(function(p) {
   });
 });
 
-// ── PLATFORM TABS (lead) ───────────────────────────────────
 document.querySelectorAll('#ptabs-lead .platform-tab').forEach(function(tab) {
   tab.addEventListener('click', function() {
     var p   = this.dataset.p;
@@ -922,14 +907,12 @@ document.querySelectorAll('#ptabs-lead .platform-tab').forEach(function(tab) {
   });
 });
 
-// ── SET ACCESS ─────────────────────────────────────────────
 function setAccess(p, val, el) {
   st[p].access = val;
   el.closest('.access-grid').querySelectorAll('.access-card').forEach(function(c) { c.classList.remove('selected'); });
   el.classList.add('selected');
 }
 
-// ── BUILD SLOTS ────────────────────────────────────────────
 function buildSlots(p, pid, region) {
   var tsDiv = document.getElementById('ts_' + pid);
   var sgDiv = document.getElementById('sg_' + pid);
@@ -986,7 +969,6 @@ function showLeadForm(p, pid, region, slot, isOrg) {
   setTimeout(function() { sf.scrollIntoView({behavior:'smooth', block:'start'}); }, 100);
 }
 
-// ── SEL / OPT BUTTONS ─────────────────────────────────────
 document.addEventListener('click', function(e) {
   var btn = e.target.closest('.sel-btn, .opt-btn');
   if (!btn) return;
@@ -1009,7 +991,6 @@ document.addEventListener('click', function(e) {
   }
 });
 
-// ── LEAD SUBMIT ────────────────────────────────────────────
 document.addEventListener('click', function(e) {
   var btn = e.target.closest('.form-submit[data-p]');
   if (!btn) return;
@@ -1082,7 +1063,6 @@ document.addEventListener('click', function(e) {
   });
 });
 
-// ── JOIN PATH ──────────────────────────────────────────────
 document.querySelectorAll('.platform-tab-j').forEach(function(tab) {
   tab.addEventListener('click', function() {
     document.querySelectorAll('.platform-tab-j').forEach(function(t) { t.classList.remove('active'); });
@@ -1256,9 +1236,9 @@ function submitParticipant() {
         var successTxt = isApproval
           ? '<strong>Request sent!</strong><br><br>The drive lead has been notified. You\'ll receive an email when your spot is approved.'
           : '<strong>You\'re in!</strong><br><br>See you November 18. Your name is going on the Wall of Honor.<br><br>' +
-            '<div style="background:rgba(0,212,255,.07);border:1px solid rgba(0,212,255,.2);padding:12px;margin-top:12px;font-size:.82rem;text-align:left;">' +
+            '<div style="background:rgba(214,36,122,.07);border:1px solid rgba(214,36,122,.2);padding:12px;margin-top:12px;font-size:.82rem;text-align:left;">' +
               '<div style="font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--cyan);margin-bottom:6px;">📋 Do This Now</div>' +
-              '<div style="color:#C8C4BE;line-height:1.6;">' +
+              '<div style="color:var(--smoke);line-height:1.6;">' +
                 '1. Add <strong style="color:var(--bone);">' + (drive.Gamertag || 'your drive lead') + '</strong> to your in-game friends list right now<br>' +
                 '2. They\'ll send you a session invite on November 18<br>' +
                 '3. Enable Passive Mode before you join' +
@@ -1284,7 +1264,6 @@ function submitParticipant() {
   });
 }
 
-// ── FRIEND FINDER ──────────────────────────────────────────
 function searchFriend() {
   var q = (document.getElementById('friend-search').value || '').trim();
   var result = document.getElementById('finder-result');
@@ -1326,7 +1305,6 @@ function searchFriend() {
     });
 }
 
-// ── COUNTS ─────────────────────────────────────────────────
 function isTestRecord(r) {
   var g = (r.fields.Gamertag || '').toLowerCase().trim();
   var n = (r.fields.Name || '').toLowerCase().trim();
@@ -1366,7 +1344,6 @@ function loadCounts() {
 }
 loadCounts();
 
-// ── SIGNUP NUMBER & FOUNDER PLATE ─────────────────────────
 function getSignupNumber() {
   return new Promise(function(resolve) {
     setTimeout(function() {
@@ -1402,7 +1379,6 @@ function founderHTML(num) {
   '</div>';
 }
 
-// ── NTFY ───────────────────────────────────────────────────
 function ntfyNotify(msg) {
   fetch(NTFY_URL, {
     method: 'POST',
@@ -1411,7 +1387,6 @@ function ntfyNotify(msg) {
   }).catch(function() {});
 }
 
-// ── SHARE ──────────────────────────────────────────────────
 function vl_share() {
   if (navigator.share) {
     navigator.share({
@@ -1432,7 +1407,6 @@ function vl_copy() {
   });
 }
 
-// ── TICKER ─────────────────────────────────────────────────
 fetch('/articles.json?v=' + Date.now())
   .then(function(r) { return r.json(); })
   .then(function(a) {
@@ -1443,12 +1417,10 @@ fetch('/articles.json?v=' + Date.now())
     }).join('');
   }).catch(function() {});
 
-// ── NAV TOGGLE ─────────────────────────────────────────────
 var mt = document.getElementById('menu-toggle');
 var nm = document.getElementById('nav-mobile');
 if (mt && nm) mt.addEventListener('click', function() { nm.classList.toggle('open'); });
 
-// ── REVEAL ─────────────────────────────────────────────────
 var obs = new IntersectionObserver(function(es) {
   es.forEach(function(e) {
     if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
@@ -1456,7 +1428,6 @@ var obs = new IntersectionObserver(function(es) {
 }, {threshold: .08});
 document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
 
-// ── DEBUG MODE ─────────────────────────────────────────────
 (function() {
   var KEY = '56vl-debug';
   var active = localStorage.getItem(KEY) === '1';
