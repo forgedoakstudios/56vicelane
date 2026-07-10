@@ -11,7 +11,6 @@
 <meta name="description" content="Every player signed up for The Last Drive on November 18, 2026. Find your gamertag on the Wall of Honor.">
 <link rel="canonical" href="https://56vicelane.com/wall">
 
-<!-- OG / Social -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="56ViceLane">
 <meta property="og:title" content="Wall of Honor — The Last Drive | 56ViceLane">
@@ -21,30 +20,59 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://56vicelane.com/images/Jason_and_Lucia_01_landscape.jpg">
 
-<!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
-<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-<!-- Shared stylesheet -->
 <link rel="stylesheet" href="/vicelane.css">
 
-<!-- AdSense -->
+<!-- 56ViceLane V2 — Vibrant Premium palette override (see design-system-addendum.md) -->
+<style>
+:root{
+  --pitch: #FDFBF8;
+  --asphalt: #FFFFFF;
+  --edge: #F0E6DA;
+  --amber: #FF6B2C;
+  --cyan: #D6247A;
+  --bone: #211A16;
+  --smoke: #6B5F52;
+  --green: #00C875;
+  --red: #FF3B3B;
+  --font-display: 'Playfair Display', serif;
+  --font-label: 'Barlow Condensed', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+</style>
+
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
 
 <style>
-/* ── WALL PAGE ONLY ───────────────────────────────────────── */
-
-/* HERO */
+.wall-hero-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.wall-hero-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/wall-hero.webp');
+  background-size: cover;
+  background-position: center 40%;
+}
+.wall-hero-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20,12,8,.15) 0%, rgba(20,12,8,.30) 55%, rgba(253,251,248,.92) 90%, rgba(253,251,248,1) 100%);
+}
 .wall-hero {
-  background: linear-gradient(180deg, #0a0014 0%, #1a0535 40%, #2a0a18 70%, var(--pitch) 100%);
-  padding: 52px 24px 36px;
+  position: relative;
+  z-index: 2;
+  padding: 68px 24px 36px;
   text-align: center;
-  border-bottom: 1px solid var(--edge);
 }
 .wall-hero-eyebrow {
   font-family: var(--font-label);
@@ -52,22 +80,28 @@
   text-transform: uppercase;
   letter-spacing: .2em;
   font-size: .72rem;
-  color: var(--amber);
+  color: #FFD9B0;
+  text-shadow: 0 2px 12px rgba(0,0,0,.4);
   margin-bottom: 10px;
 }
 .wall-hero-title {
   font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
   font-size: clamp(2rem, 6vw, 3.5rem);
   line-height: 1;
+  color: #fff;
+  text-shadow: 0 4px 24px rgba(0,0,0,.4);
   margin-bottom: 8px;
 }
-.wall-hero-title span { color: var(--amber); }
+.wall-hero-title span { color: #FFB067; text-shadow: 0 4px 24px rgba(0,0,0,.4); }
 .wall-hero-sub {
   font-family: var(--font-label);
   text-transform: uppercase;
   letter-spacing: .1em;
   font-size: .88rem;
-  color: var(--smoke);
+  color: #F2DCC9;
+  text-shadow: 0 2px 10px rgba(0,0,0,.3);
   margin-bottom: 20px;
 }
 .total-pill {
@@ -84,7 +118,6 @@
 }
 .total-pill strong { color: var(--amber); font-size: 1.4rem; }
 
-/* FOUNDER STRIP */
 .founder-strip {
   max-width: 960px;
   margin: 18px auto 0;
@@ -137,7 +170,6 @@
   transition: width .5s;
 }
 
-/* FINDER */
 .finder-section {
   max-width: 960px;
   margin: 16px auto 0;
@@ -185,14 +217,12 @@
   padding: 10px 0;
 }
 
-/* CONTROLS */
 .controls {
   max-width: 960px;
   margin: 0 auto;
   padding: 20px 20px 0;
 }
 
-/* PLATFORM TABS */
 .plat-tabs {
   display: flex;
   gap: 8px;
@@ -232,7 +262,6 @@
 }
 .plat-tab.active .plat-cnt { border-color: var(--amber); color: var(--amber); }
 
-/* LETTER RANGE */
 .range-row {
   display: flex;
   gap: 8px;
@@ -256,7 +285,6 @@
 .range-btn:hover { background: var(--asphalt); color: var(--bone); }
 .range-btn.active { border-color: var(--cyan); color: var(--cyan); background: rgba(0,212,255,.05); }
 
-/* RESULTS INFO */
 .results-info {
   font-family: var(--font-label);
   font-size: .85rem;
@@ -269,7 +297,6 @@
 }
 .results-info strong { color: var(--bone); }
 
-/* WALL GRID */
 .wall-grid {
   max-width: 960px;
   margin: 0 auto;
@@ -279,7 +306,6 @@
   gap: 10px;
 }
 
-/* PLAYER CARD */
 .player-card {
   background: var(--asphalt);
   border: 1px solid var(--edge);
@@ -332,7 +358,6 @@
 .access-approval-sm { color: #FFB347; background: rgba(255,179,71,.1); border: 1px solid rgba(255,179,71,.2); }
 .rider-count-sm { font-family: var(--font-label); font-weight: 700; font-size: .65rem; text-transform: uppercase; letter-spacing: .08em; color: var(--cyan); margin-top: 4px; }
 
-/* PLATE CARD — spans 2 cols */
 .plate-card {
   grid-column: span 2;
   background: var(--asphalt);
@@ -367,7 +392,7 @@
   letter-spacing: .1em;
   text-align: center;
   word-break: break-all;
-  -webkit-text-stroke: 1px rgba(0,0,0,.5);
+  -webkit-text-stroke: 1.5px rgba(0,0,0,.85);
 }
 .plate-footer-sm {
   font-size: 6px;
@@ -398,7 +423,6 @@
   background: rgba(200,150,10,.05);
 }
 
-/* SKELETON */
 .skel {
   background: linear-gradient(90deg, var(--asphalt) 25%, var(--edge) 50%, var(--asphalt) 75%);
   background-size: 200% 100%;
@@ -418,7 +442,6 @@
 }
 .wall-empty a { color: var(--amber); }
 
-/* LAST UPDATED */
 .last-updated {
   text-align: center;
   font-family: var(--font-label);
@@ -433,51 +456,20 @@
 </head>
 <body>
 
-<!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-track" id="ticker-track">
     <span class="ticker-item">56ViceLane — Where GTA5 Ends And GTA6 Begins</span>
   </div>
 </div>
 
-<!-- NAV -->
 <nav class="nav">
   <a class="logo" href="/">
     <span class="logo-mark">56</span>
     <span class="logo-text">ViceLane</span>
   </a>
-  <div class="nav-links">
-    <a href="/news">News</a>
-    <a href="/gtacon">GTACON</a>
-    <a href="/lastdrive">Last Drive</a>
-    <a href="/members" class="active">Members</a>
-    <a href="/store">Store</a>
-    <a href="/gear">Gear</a>
-    <a href="/tools">Tools</a>
-    <a href="/forum">Forum</a>
-  </div>
-  <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
-<div class="nav-mobile" id="nav-mobile">
-  <a href="/news">News</a>
-  <a href="/gtacon">GTACON</a>
-  <a href="/lastdrive">Last Drive</a>
-  <a href="/members" class="active">Members</a>
-  <a href="/store">Store</a>
-  <a href="/gear">Gear</a>
-  <a href="/tools">Tools</a>
-  <a href="/forum">Forum</a>
-  <div class="mobile-divider"></div>
-  <a href="/about">About</a>
-  <a href="/contact">Contact</a>
-  <div class="mobile-divider"></div>
-  <a href="/privacy">Privacy</a>
-  <a href="/terms">Terms</a>
-</div>
 
-<!-- HERO -->
+<div class="wall-hero-wrap">
 <div class="wall-hero">
   <div class="wall-hero-eyebrow">The Last Drive · November 18, 2026</div>
   <h1 class="wall-hero-title">Wall of <span>Honor</span></h1>
@@ -488,8 +480,18 @@
     <span>players</span>
   </div>
 </div>
+</div>
+<div class="navband">
+  <a href="/">Home</a>
+  <a href="/news">News</a>
+  <a href="/lastdrive">Last Drive</a>
+  <a href="/wall" class="active">Wall of Honor</a>
+  <a href="/members">Members</a>
+  <a href="/store">Store</a>
+  <a href="/gear">Gear</a>
+  <a href="/forum">Forum</a>
+</div>
 
-<!-- FOUNDER BAR -->
 <div class="founder-strip">
   <div class="founder-bar">
     <div>
@@ -503,7 +505,6 @@
   </div>
 </div>
 
-<!-- FINDER -->
 <div class="finder-section">
   <div class="finder-box">
     <div class="form-label" style="margin-bottom:10px;">🔍 Find a Friend</div>
@@ -515,7 +516,6 @@
   </div>
 </div>
 
-<!-- CONTROLS -->
 <div class="controls">
   <div class="plat-tabs">
     <button class="plat-tab active" data-plat="playstation">
@@ -538,10 +538,8 @@
   </div>
 </div>
 
-<!-- RESULTS INFO -->
 <div class="results-info" id="results-info"></div>
 
-<!-- WALL GRID -->
 <div class="wall-grid" id="wall-grid">
   <div class="skel"></div>
   <div class="skel"></div>
@@ -555,7 +553,6 @@
   Loading… · <a href="/lastdrive" style="color:var(--amber);">Sign up for The Last Drive →</a>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-brand"><span class="logo-mark">56</span>ViceLane</div>
   <div class="footer-tag">Where GTA5 Ends And GTA6 Begins</div>
@@ -579,7 +576,6 @@
   <p class="footer-copy" id="vl-copyright">© 2026 56ViceLane · Forged Oak Studios</p>
 </footer>
 
-<!-- SCRIPTS -->
 <script>
 var AT_TOKEN = 'pattxJ12NQzpHMejD.2eb992f22f1a43e032d866df028dbb33958635234f6cfd30769e3e12f10d5588';
 var AT_BASE  = 'appVViGbmcu5gbn8B';
@@ -597,7 +593,6 @@ var activePlat = 'playstation';
 var activeRange = 'all';
 var participantCounts = {};
 
-// ── HELPERS ────────────────────────────────────────────────
 function isTest(r) {
   var g = (r.fields.Gamertag || '').toLowerCase().trim();
   var n = (r.fields.Name || '').toLowerCase().trim();
@@ -610,12 +605,11 @@ function esc(s) {
   });
 }
 
-// ── PLATE BACKGROUND ───────────────────────────────────────
 function getPlateBg(style) {
   switch (style) {
-    case 'founder':              return "background-image:url('/images/plate-founder.png');background-size:cover;background-position:center;";
-    case 'vehicle-male-exotic':  return "background-image:url('/images/plate-male-exotic.png');background-size:cover;background-position:center;";
-    case 'vehicle-female-exotic':return "background-image:url('/images/plate-female-exotic.png');background-size:cover;background-position:center;";
+    case 'founder':              return "background-image:linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.48)), url('/images/plate-founder.png');background-size:cover;background-position:center;";
+    case 'vehicle-male-exotic':  return "background-image:linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.48)), url('/images/plate-male-exotic.png');background-size:cover;background-position:center;";
+    case 'vehicle-female-exotic':return "background-image:linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.48)), url('/images/plate-female-exotic.png');background-size:cover;background-position:center;";
     case 'color-red':    return 'background:linear-gradient(135deg,#6B0000,#CC2200);';
     case 'color-blue':   return 'background:linear-gradient(135deg,#000C6B,#0033CC);';
     case 'color-purple': return 'background:linear-gradient(135deg,#2D0060,#6600AA);';
@@ -632,7 +626,6 @@ function isPhotoPlate(style) {
   return style === 'founder' || (style && style.indexOf('vehicle-') === 0);
 }
 
-// ── RENDER WALL ────────────────────────────────────────────
 function renderWall() {
   var grid = document.getElementById('wall-grid');
   var info = document.getElementById('results-info');
@@ -697,7 +690,7 @@ function renderWall() {
         '<div class="plate-bg" style="' + plateBg + '">' +
           (signupNum ? '<div class="plate-num-badge" style="color:rgba(255,255,255,.8);">#' + signupNum + ' of 100</div>' : '') +
           '<div class="plate-stars-sm" style="color:' + starColor + ';">★ ★ ★ ★ ★ ★</div>' +
-          '<div class="plate-tag-sm" style="color:' + textColor + ';text-shadow:0 0 16px rgba(255,107,26,.5),0 2px 6px rgba(0,0,0,.9);">' + tag + '</div>' +
+          '<div class="plate-tag-sm" style="color:' + textColor + ';text-shadow:0 2px 6px rgba(0,0,0,.95),0 4px 16px rgba(0,0,0,.8),0 0 30px rgba(0,0,0,.6);">' + tag + '</div>' +
           '<div class="plate-footer-sm" style="color:rgba(255,255,255,.55);">The Last Drive · Nov 18 2026</div>' +
         '</div>' +
         '<div style="padding:6px 10px;display:flex;flex-wrap:wrap;gap:4px;align-items:center;">' +
@@ -718,7 +711,6 @@ function renderWall() {
   }).join('');
 }
 
-// ── UPDATE FOUNDER BAR ─────────────────────────────────────
 function updateFounderBar() {
   var count = Math.min(allPlayers.length, 100);
   var remaining = Math.max(0, 100 - count);
@@ -728,7 +720,6 @@ function updateFounderBar() {
   if (fill) fill.style.width = Math.min(100, count) + '%';
 }
 
-// ── WALL SEARCH ────────────────────────────────────────────
 function wallSearch() {
   var q = (document.getElementById('finder-input').value || '').trim();
   var result = document.getElementById('finder-result');
@@ -766,7 +757,6 @@ function wallSearch() {
     });
 }
 
-// ── UPDATE COUNTS ──────────────────────────────────────────
 function updateCounts() {
   var counts = {playstation: 0, xbox: 0, pc: 0};
   allPlayers.forEach(function(r) {
@@ -779,7 +769,6 @@ function updateCounts() {
   document.getElementById('total-count').textContent = allPlayers.length;
 }
 
-// ── LOAD PARTICIPANT COUNTS ────────────────────────────────
 function loadParticipantCounts() {
   var f = encodeURIComponent("AND({SignupType}='Participant',OR({JoinStatus}='Active',{JoinStatus}='Approved'))");
   return fetch(AT_URL + '?filterByFormula=' + f + '&fields%5B%5D=LinkedSlot', {headers: AT_H})
@@ -795,7 +784,6 @@ function loadParticipantCounts() {
     .catch(function() { return {}; });
 }
 
-// ── LOAD WALL ──────────────────────────────────────────────
 function loadWall() {
   var allRec = [];
   var offset = '';
@@ -844,7 +832,6 @@ function loadWall() {
   });
 }
 
-// ── PLATFORM TABS ──────────────────────────────────────────
 document.querySelectorAll('.plat-tab').forEach(function(btn) {
   btn.addEventListener('click', function() {
     activePlat = this.dataset.plat;
@@ -854,7 +841,6 @@ document.querySelectorAll('.plat-tab').forEach(function(btn) {
   });
 });
 
-// ── RANGE BUTTONS ──────────────────────────────────────────
 document.querySelectorAll('.range-btn').forEach(function(btn) {
   btn.addEventListener('click', function() {
     activeRange = this.dataset.range;
@@ -864,7 +850,6 @@ document.querySelectorAll('.range-btn').forEach(function(btn) {
   });
 });
 
-// ── TICKER ─────────────────────────────────────────────────
 fetch('/articles.json?v=' + Date.now())
   .then(function(r) { return r.json(); })
   .then(function(a) {
@@ -875,12 +860,10 @@ fetch('/articles.json?v=' + Date.now())
     }).join('');
   }).catch(function() {});
 
-// ── NAV TOGGLE ─────────────────────────────────────────────
 var mt = document.getElementById('menu-toggle');
 var nm = document.getElementById('nav-mobile');
 if (mt && nm) mt.addEventListener('click', function() { nm.classList.toggle('open'); });
 
-// ── DEBUG MODE ─────────────────────────────────────────────
 (function() {
   var KEY = '56vl-debug';
   var active = localStorage.getItem(KEY) === '1';
@@ -910,7 +893,6 @@ if (mt && nm) mt.addEventListener('click', function() { nm.classList.toggle('ope
   applyDebug();
 })();
 
-// ── LOAD + AUTO REFRESH ────────────────────────────────────
 loadWall();
 setInterval(loadWall, 60000);
 document.addEventListener('visibilitychange', function() {
