@@ -8,38 +8,146 @@
 <link rel="canonical" href="https://56vicelane.com/news.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600..900&family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/vf.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/vicelane.css">
+
+<!-- 56ViceLane V2 — Vibrant Premium palette override (see design-system-addendum.md) -->
 <style>
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
-.filters button{
-  background:transparent;border:1px solid var(--line);color:var(--lav);border-radius:999px;
-  padding:8px 16px;font-family:var(--font-m);font-size:.72rem;letter-spacing:.12em;cursor:pointer;
-  transition:all .2s;text-transform:uppercase;
+:root{
+  --pitch: #FDFBF8;
+  --asphalt: #FFFFFF;
+  --edge: #F0E6DA;
+  --amber: #FF6B2C;
+  --cyan: #D6247A;
+  --bone: #211A16;
+  --smoke: #6B5F52;
+  --green: #00C875;
+  --red: #FF3B3B;
+  --font-display: 'Playfair Display', serif;
+  --font-label: 'Barlow Condensed', sans-serif;
+  --font-body: 'Inter', sans-serif;
 }
-.filters button:hover{color:var(--sand);border-color:var(--lav)}
-.filters button.on{background:var(--cyan);color:var(--ink);border-color:var(--cyan)}
+</style>
+
+<style>
+/* ── NEWS PAGE ONLY ───────────────────────────────────────── */
+
+/* ticker items injected by vfTicker() are <span><a>..</a></span> */
+.ticker-track span a{
+  font-family: var(--font-label);
+  font-size: .88rem;
+  font-weight: 700;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.ticker-track > span{flex-shrink:0;}
+
+/* HERO — photo treatment (image file is a placeholder, not created yet) */
+.news-hero-wrap{
+  position: relative;
+  overflow: hidden;
+}
+.news-hero-wrap::before{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/news-hero.webp');
+  background-size: cover;
+  background-position: center;
+}
+.news-hero-wrap::after{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20,12,8,.15) 0%, rgba(20,12,8,.30) 55%, rgba(253,251,248,.92) 90%, rgba(253,251,248,1) 100%);
+}
+.news-hero{
+  position: relative;
+  z-index: 2;
+  padding: 56px 24px 40px;
+  max-width: var(--wide-width);
+  margin: 0 auto;
+  text-align: center;
+}
+.news-hero-eyebrow{
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .3em;
+  font-size: .72rem;
+  color: #FFD9B0;
+  text-shadow: 0 2px 12px rgba(0,0,0,.4);
+  margin-bottom: 12px;
+}
+.news-hero-title{
+  font-family: var(--font-display);
+  font-size: clamp(32px, 7vw, 58px);
+  text-transform: uppercase;
+  line-height: 1.0;
+  color: #fff;
+  text-shadow: 0 4px 24px rgba(0,0,0,.4);
+  margin-bottom: 12px;
+}
+.news-hero .lede{
+  font-size: .95rem;
+  color: #F2DCC9;
+  text-shadow: 0 2px 10px rgba(0,0,0,.3);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* FILTER PILLS (markup + ids unchanged — filter script depends on them) */
+.filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:22px;position:relative;z-index:2;}
+.filters button{
+  background: var(--asphalt);
+  border: 1px solid var(--edge);
+  color: var(--smoke);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-family: var(--font-label);
+  font-weight: 700;
+  font-size: .78rem;
+  letter-spacing: .12em;
+  cursor: pointer;
+  transition: all .2s;
+  text-transform: uppercase;
+}
+.filters button:hover{color: var(--bone); border-color: var(--smoke);}
+.filters button.on{background: var(--cyan); color: #fff; border-color: var(--cyan);}
+
+/* CSS bridge for vf.js-rendered feed cards (.card base comes from vicelane.css) */
+.news-section{
+  max-width: var(--wide-width);
+  margin: 0 auto;
+  padding: 44px 20px 60px;
+  position: relative;
+  z-index: 2;
+}
+.grid.g3{display:grid;gap:14px;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));}
+.card .card-hero{margin:-18px -18px 14px;}
+.card .art{width:100%;aspect-ratio:2.4/1;background:var(--edge);}
+.card .eyebrow{margin-bottom:6px;}
+.card h3{margin-bottom:6px;line-height:1.3;}
+.card h3 a{color:inherit;text-decoration:none;}
+.card p{font-size:.88rem;color:var(--smoke);line-height:1.6;}
+.card .meta{font-family:var(--font-label);font-size:.78rem;color:var(--smoke);text-transform:uppercase;letter-spacing:.06em;display:flex;gap:8px;align-items:center;}
+.card .meta .dot{color:var(--edge);}
+.mt-1{margin-top:8px;}
+.hide{display:none !important;}
+
+/* reveal: vf.js toggles .reveal -> .in */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
 </style>
 </head>
 <body>
 
-<header class="site-header">
-  <div class="wrap nav">
-    <a class="brand" href="/">56VICELANE <span class="freq">VF·56.6</span></a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">MENU</button>
-    <nav class="nav-links" id="nav-links">
-      <a href="/">Home</a>
-      <a href="/news.html" aria-current="page">News</a>
-      <a href="/gta6.html">GTA 6 Hub</a>
-      <a href="/radio.html">Radio</a>
-      <a href="/leaderboard.html">Community</a>
-      <a href="/gear.html">Gear</a>
-    </nav>
-  </div>
-  <div class="horizon"></div>
-</header>
-
-<div class="ticker" aria-label="Latest headlines">
+<!-- TICKER (vfTicker fills .ticker-track from articles.json) -->
+<div class="ticker-wrap" aria-label="Latest headlines">
   <div class="ticker-track">
     <span><a href="/gta6.html">Standard $79.99 · Ultimate $99.99 — editions compared</a></span>
     <span><a href="/gta6.html">Preload opens November 12, 2026</a></span>
@@ -50,58 +158,89 @@
   </div>
 </div>
 
-<main>
-<section class="hero" style="padding-bottom:40px">
-  <div class="wrap">
-    <p class="eyebrow reveal">BREAKING SIGNAL</p>
-    <h1 class="reveal">The News Lane</h1>
-    <p class="lede reveal mt-1">Every story sourced, every leak rated. If we can't confirm it, we tell you that too.</p>
-    <div class="filters reveal" id="filters">
-      <button class="on" data-cat="all">All</button>
-      <button data-cat="news">News</button>
-      <button data-cat="leaks">Leaks</button>
-      <button data-cat="lore">Lore</button>
-      <button data-cat="hardware">Hardware</button>
-      <button data-cat="community">Community</button>
-    </div>
-  </div>
-</section>
+<!-- HEADER -->
+<nav class="nav">
+  <a class="logo" href="/"><span class="logo-mark">56</span><span class="logo-text">ViceLane</span></a>
+</nav>
 
-<section class="section" style="padding-top:44px">
-  <div class="wrap">
-    <div class="grid g3" data-feed="24" id="newsGrid">
-      <!-- Fallback cards shown until /articles.json loads -->
-      <article class="card reveal" data-cat="news">
-        <div class="card-hero"><div class="art art-auto"></div></div>
-        <span class="eyebrow">News</span>
-        <h3>Pre-order wave breaks records</h3>
-        <p>The opening numbers, what they signal for launch week, and what to lock in before preload.</p>
-        <div class="meta mt-1"><span>56ViceLane Staff</span><span class="dot">◆</span><span>2026</span></div>
-      </article>
-      <article class="card reveal" data-cat="lore">
-        <div class="card-hero"><div class="art art-auto"></div></div>
-        <span class="eyebrow">Lore</span>
-        <h3>The Vercetti thread nobody's pulling</h3>
-        <p>Deep Frequency traces the Heder theory through every frame we've been given so far.</p>
-        <div class="meta mt-1"><span>Deep Frequency</span><span class="dot">◆</span><span>2026</span></div>
-      </article>
-      <article class="card reveal" data-cat="hardware">
-        <div class="card-hero"><div class="art art-auto"></div></div>
-        <span class="eyebrow">Hardware</span>
-        <h3>The launch-night setup, ranked</h3>
-        <p>Controllers, headsets, and the storage you'll actually need on day one.</p>
-        <div class="meta mt-1"><span>Gear Desk</span><span class="dot">◆</span><span>2026</span></div>
-      </article>
-    </div>
+<!-- HERO -->
+<div class="news-hero-wrap">
+<div class="news-hero">
+  <p class="news-hero-eyebrow">Breaking Signal</p>
+  <h1 class="news-hero-title">The News Lane</h1>
+  <p class="lede">Every story sourced, every leak rated. If we can't confirm it, we tell you that too.</p>
+  <div class="filters" id="filters">
+    <button class="on" data-cat="all">All</button>
+    <button data-cat="news">News</button>
+    <button data-cat="leaks">Leaks</button>
+    <button data-cat="lore">Lore</button>
+    <button data-cat="hardware">Hardware</button>
+    <button data-cat="community">Community</button>
+  </div>
+</div>
+</div>
+<div class="navband">
+  <a href="/">Home</a>
+  <a href="/news" class="active">News</a>
+  <a href="/lastdrive">Last Drive</a>
+  <a href="/wall">Wall of Honor</a>
+  <a href="/members">Members</a>
+  <a href="/store">Store</a>
+  <a href="/gear">Gear</a>
+  <a href="/forum">Forum</a>
+</div>
+
+<main>
+<section class="news-section">
+  <div class="grid g3" data-feed="24" id="newsGrid">
+    <!-- Fallback cards shown until /articles.json loads -->
+    <article class="card reveal" data-cat="news">
+      <div class="card-hero"><div class="art art-auto"></div></div>
+      <span class="eyebrow">News</span>
+      <h3>Pre-order wave breaks records</h3>
+      <p>The opening numbers, what they signal for launch week, and what to lock in before preload.</p>
+      <div class="meta mt-1"><span>56ViceLane Staff</span><span class="dot">◆</span><span>2026</span></div>
+    </article>
+    <article class="card reveal" data-cat="lore">
+      <div class="card-hero"><div class="art art-auto"></div></div>
+      <span class="eyebrow">Lore</span>
+      <h3>The Vercetti thread nobody's pulling</h3>
+      <p>Deep Frequency traces the Heder theory through every frame we've been given so far.</p>
+      <div class="meta mt-1"><span>Deep Frequency</span><span class="dot">◆</span><span>2026</span></div>
+    </article>
+    <article class="card reveal" data-cat="hardware">
+      <div class="card-hero"><div class="art art-auto"></div></div>
+      <span class="eyebrow">Hardware</span>
+      <h3>The launch-night setup, ranked</h3>
+      <p>Controllers, headsets, and the storage you'll actually need on day one.</p>
+      <div class="meta mt-1"><span>Gear Desk</span><span class="dot">◆</span><span>2026</span></div>
+    </article>
   </div>
 </section>
 </main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="horizon"></div>
-    <p class="foot-note">© 2026 Forged Oak Studios · Independent fan site — not affiliated with Rockstar Games or Take-Two Interactive. <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/archive.html">Archive</a></p>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand"><span class="logo-mark">56</span>ViceLane</div>
+  <div class="footer-tag">Where GTA5 Ends And GTA6 Begins</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/news">News</a>
+    <a href="/lastdrive">Last Drive</a>
+    <a href="/members">Members</a>
+    <a href="/store">Store</a>
+    <a href="/gear">Gear</a>
+    <a href="/tools">Tools</a>
+    <a href="/forum">Forum</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="/archive.html">Archive</a>
+    <a href="/admin" class="admin-link">Admin</a>
   </div>
+  <p class="footer-disclosure">56ViceLane is an independent fan site. Not affiliated with Rockstar Games or Take-Two Interactive.</p>
+  <p class="footer-copy" id="vl-copyright">© 2026 56ViceLane · Forged Oak Studios</p>
 </footer>
 
 <script src="/assets/vf.js"></script>
