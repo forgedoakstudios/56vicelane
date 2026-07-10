@@ -23,8 +23,26 @@
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/vicelane.css">
+
+<!-- 56ViceLane V2 — Vibrant Premium palette override (see design-system-addendum.md) -->
+<style>
+:root{
+  --pitch: #FDFBF8;
+  --asphalt: #FFFFFF;
+  --edge: #F0E6DA;
+  --amber: #FF6B2C;
+  --cyan: #D6247A;
+  --bone: #211A16;
+  --smoke: #6B5F52;
+  --green: #00C875;
+  --red: #FF3B3B;
+  --font-display: 'Playfair Display', serif;
+  --font-label: 'Barlow Condensed', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+</style>
 
 <!-- AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
@@ -33,7 +51,27 @@
 /* ── FORUM PAGE ONLY ──────────────────────────────────────── */
 
 /* HERO */
+.forum-hero-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.forum-hero-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/forum-hero.webp');
+  background-size: cover;
+  background-position: center;
+}
+.forum-hero-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20,12,8,.15) 0%, rgba(20,12,8,.30) 55%, rgba(253,251,248,.92) 90%, rgba(253,251,248,1) 100%);
+}
 .forum-hero {
+  position: relative;
+  z-index: 2;
   padding: 56px 24px 48px;
   max-width: 860px;
   margin: 0 auto;
@@ -45,7 +83,8 @@
   text-transform: uppercase;
   letter-spacing: .3em;
   font-size: .72rem;
-  color: #5865F2;
+  color: #9AA6FF;
+  text-shadow: 0 2px 12px rgba(0,0,0,.4);
   margin-bottom: 14px;
 }
 .forum-title {
@@ -53,12 +92,15 @@
   font-size: clamp(32px, 7vw, 60px);
   text-transform: uppercase;
   line-height: 1.0;
+  color: #fff;
+  text-shadow: 0 4px 24px rgba(0,0,0,.4);
   margin-bottom: 14px;
 }
-.forum-title span { color: var(--amber); }
+.forum-title span { color: #FFB067; text-shadow: 0 4px 24px rgba(0,0,0,.4); }
 .forum-sub {
   font-size: .95rem;
-  color: #C8C4BE;
+  color: #F2DCC9;
+  text-shadow: 0 2px 10px rgba(0,0,0,.3);
   max-width: 500px;
   margin: 0 auto 36px;
   line-height: 1.7;
@@ -243,7 +285,7 @@
   padding: 8px 0;
   border-bottom: 1px solid var(--edge);
   font-size: .85rem;
-  color: #C8C4BE;
+  color: var(--smoke);
   line-height: 1.5;
 }
 .rule-item:last-child { border-bottom: none; }
@@ -322,40 +364,25 @@
 <!-- NAV -->
 <nav class="nav">
   <a class="logo" href="/"><span class="logo-mark">56</span><span class="logo-text">ViceLane</span></a>
-  <div class="nav-links">
-    <a href="/news">News</a>
-    <a href="/lastdrive">Last Drive</a>
-    <a href="/members">Members</a>
-    <a href="/store">Store</a>
-    <a href="/gear">Gear</a>
-    <a href="/tools">Tools</a>
-    <a href="/forum" class="active">Forum</a>
-  </div>
-  <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
-<div class="nav-mobile" id="nav-mobile">
-  <a href="/news">News</a>
-  <a href="/lastdrive">Last Drive</a>
-  <a href="/members">Members</a>
-  <a href="/store">Store</a>
-  <a href="/gear">Gear</a>
-  <a href="/tools">Tools</a>
-  <a href="/forum" class="active">Forum</a>
-  <div class="mobile-divider"></div>
-  <a href="/about">About</a>
-  <a href="/contact">Contact</a>
-  <div class="mobile-divider"></div>
-  <a href="/privacy">Privacy</a>
-  <a href="/terms">Terms</a>
-</div>
 
 <!-- HERO -->
+<div class="forum-hero-wrap">
 <div class="forum-hero">
   <div class="forum-eyebrow">💬 Discord Community</div>
   <h1 class="forum-title">Talk To The <span>Community</span></h1>
   <p class="forum-sub">GTA6 discussion, Last Drive coordination, plates, news, and everything in between. The community lives on Discord.</p>
+</div>
+</div>
+<div class="navband">
+  <a href="/">Home</a>
+  <a href="/news">News</a>
+  <a href="/lastdrive">Last Drive</a>
+  <a href="/wall">Wall of Honor</a>
+  <a href="/members">Members</a>
+  <a href="/store">Store</a>
+  <a href="/gear">Gear</a>
+  <a href="/forum" class="active">Forum</a>
 </div>
 
 <!-- JOIN CARD -->
