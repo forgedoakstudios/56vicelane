@@ -23,7 +23,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Barlow+Condensed:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
@@ -39,6 +39,24 @@
 
   <link rel="stylesheet" href="/vicelane.css">
 
+<!-- 56ViceLane V2 — Vibrant Premium palette override (see design-system-addendum.md) -->
+<style>
+:root{
+  --pitch: #FDFBF8;
+  --asphalt: #FFFFFF;
+  --edge: #F0E6DA;
+  --amber: #FF6B2C;
+  --cyan: #D6247A;
+  --bone: #211A16;
+  --smoke: #6B5F52;
+  --green: #00C875;
+  --red: #FF3B3B;
+  --font-display: 'Playfair Display', serif;
+  --font-label: 'Barlow Condensed', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+</style>
+
   <style>
     /* Article-specific styles */
     .article-hero {
@@ -52,7 +70,6 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.25;
     }
     .article-hero-overlay {
       position: absolute;
@@ -61,7 +78,7 @@
       flex-direction: column;
       justify-content: flex-end;
       padding: 24px 20px;
-      background: linear-gradient(to top, rgba(11,11,15,0.95) 0%, transparent 60%);
+      background: linear-gradient(to top, rgba(20,12,8,0.85) 0%, rgba(20,12,8,0.30) 55%, transparent 100%);
     }
     .article-category {
       font-family: 'Barlow Condensed', sans-serif;
@@ -73,9 +90,10 @@
       margin-bottom: 8px;
     }
     .article-hero h1 {
-      font-family: 'Russo One', sans-serif;
+      font-family: 'Playfair Display', serif;
       font-size: clamp(22px, 5vw, 34px);
-      color: var(--bone);
+      color: #fff;
+      text-shadow: 0 2px 12px rgba(0,0,0,.6);
       line-height: 1.15;
       margin: 0;
     }
@@ -99,11 +117,11 @@
       font-family: 'Inter', sans-serif;
       font-size: 16px;
       line-height: 1.75;
-      color: #D8D4CE;
+      color: var(--smoke);
       margin: 0 0 20px;
     }
     .article-body h2 {
-      font-family: 'Russo One', sans-serif;
+      font-family: 'Playfair Display', serif;
       font-size: 20px;
       color: var(--bone);
       margin: 36px 0 14px;
@@ -159,12 +177,12 @@
     .fact-box ul li {
       font-family: 'Inter', sans-serif;
       font-size: 15px;
-      color: #D8D4CE;
+      color: var(--smoke);
       line-height: 1.65;
       margin-bottom: 8px;
     }
     .bottom-line {
-      background: linear-gradient(135deg, var(--asphalt) 0%, #1a1a24 100%);
+      background: var(--asphalt);
       border: 1px solid var(--amber);
       border-radius: 10px;
       padding: 22px 20px;
@@ -217,7 +235,7 @@
       border-top: 1px solid var(--edge);
     }
     .gear-section h3 {
-      font-family: 'Russo One', sans-serif;
+      font-family: 'Playfair Display', serif;
       font-size: 16px;
       color: var(--bone);
       margin-bottom: 16px;
@@ -260,7 +278,7 @@
       letter-spacing: 0.5px;
     }
     .last-drive-cta {
-      background: linear-gradient(135deg, #1a0d00 0%, var(--asphalt) 100%);
+      background: var(--asphalt);
       border: 1px solid var(--amber);
       border-radius: 10px;
       padding: 22px 20px;
@@ -268,7 +286,7 @@
       text-align: center;
     }
     .last-drive-cta h3 {
-      font-family: 'Russo One', sans-serif;
+      font-family: 'Playfair Display', serif;
       font-size: 18px;
       color: var(--amber);
       margin: 0 0 8px;
@@ -297,7 +315,7 @@
       border-top: 1px solid var(--edge);
     }
     .related-section h3 {
-      font-family: 'Russo One', sans-serif;
+      font-family: 'Playfair Display', serif;
       font-size: 15px;
       color: var(--smoke);
       text-transform: uppercase;
@@ -344,32 +362,9 @@
 <body>
 
   <!-- HEADER -->
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="/" class="logo">
-        <span class="logo-badge">56</span>
-        <span class="logo-text">ViceLane</span>
-      </a>
-      <nav class="desktop-nav">
-        <a href="/news">News</a>
-        <a href="/tools">Tools</a>
-        <a href="/lastdrive">Last Drive</a>
-        <a href="/wall">Wall</a>
-        <a href="/plates">Plates</a>
-        
-      </nav>
-      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">&#9776;</button>
-    </div>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="/news">News</a>
-      <a href="/tools">Tools</a>
-      <a href="/lastdrive">Last Drive</a>
-      <a href="/wall">Members</a>
-      <a href="/plates">Plates</a>
-      
-      <a href="/plates#verify">🔑 Sign In</a>
-    </div>
-  </header>
+  <nav class="nav">
+    <a class="logo" href="/"><span class="logo-mark">56</span><span class="logo-text">ViceLane</span></a>
+  </nav>
 
   <!-- TICKER -->
   <div class="ticker-wrap">
@@ -386,6 +381,16 @@
       <div class="article-category">Industry · GTA 6</div>
       <h1>The Freight Train: How GTA 6 Killed Fall 2026</h1>
     </div>
+  </div>
+  <div class="navband">
+    <a href="/">Home</a>
+    <a href="/news">News</a>
+    <a href="/lastdrive">Last Drive</a>
+    <a href="/wall">Wall of Honor</a>
+    <a href="/members">Members</a>
+    <a href="/store">Store</a>
+    <a href="/gear">Gear</a>
+    <a href="/forum">Forum</a>
   </div>
 
   <!-- META -->
@@ -541,10 +546,6 @@
       <a class="related-card" href="/lastdrive">
         <div class="rc-tag">Community</div>
         <div class="rc-title">The Last Drive — Community Farewell to GTA V, November 18</div>
-      </a>
-      <a class="related-card" href="/gtacon">
-        <div class="rc-tag">GTACON</div>
-        <div class="rc-title">GTACON Launch Readiness Tracker — Current Status</div>
       </a>
     </div>
 

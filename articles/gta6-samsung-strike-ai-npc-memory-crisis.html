@@ -32,18 +32,18 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Barlow+Condensed:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --pitch:     #0B0B0F;
-      --asphalt:   #16161D;
-      --amber:     #FF6B1A;
-      --amber-dim: #cc4a00;
-      --cyan:      #00D4FF;
-      --bone:      #F0EDE8;
-      --smoke:     #7A7A8C;
-      --edge:      #26262F;
+      --pitch:     #FDFBF8;
+      --asphalt:   #FFFFFF;
+      --amber:     #FF6B2C;
+      --amber-dim: #C4922A;
+      --cyan:      #D6247A;
+      --bone:      #211A16;
+      --smoke:     #6B5F52;
+      --edge:      #F0E6DA;
       --green:     #00C875;
       --red:       #FF3B3B;
     }
@@ -75,7 +75,7 @@
       z-index: 100;
     }
     .nav-logo {
-      font-family: 'Russo One', sans-serif;
+      font-family: 'Playfair Display',serif;
       font-size: 1.3rem;
       color: var(--amber);
       text-decoration: none;
@@ -175,7 +175,7 @@
     }
 
     .article-headline {
-      font-family: 'Russo One', sans-serif;
+      font-family: 'Playfair Display',serif;
       font-size: clamp(1.8rem, 5vw, 2.8rem);
       line-height: 1.1;
       color: var(--bone);
@@ -202,7 +202,7 @@
     .article-meta span { color: var(--cyan); }
 
     h2 {
-      font-family: 'Russo One', sans-serif;
+      font-family: 'Playfair Display',serif;
       font-size: 1.35rem;
       color: var(--bone);
       margin: 44px 0 16px;
@@ -241,7 +241,7 @@
 
     /* PULL QUOTE */
     .pull-quote {
-      font-family: 'Russo One', sans-serif;
+      font-family: 'Playfair Display',serif;
       font-size: 1.25rem;
       line-height: 1.45;
       color: var(--cyan);
@@ -267,7 +267,7 @@
       text-align: center;
     }
     .stat-number {
-      font-family: 'Russo One', sans-serif;
+      font-family: 'Playfair Display',serif;
       font-size: 1.6rem;
       color: var(--amber);
       display: block;
@@ -302,7 +302,7 @@
       margin: 36px 0;
     }
     .warning-header {
-      font-family: 'Russo One', sans-serif;
+      font-family: 'Playfair Display',serif;
       font-size: 1rem;
       color: var(--amber);
       margin-bottom: 14px;
@@ -343,7 +343,7 @@
       margin-bottom: 3px;
     }
     .timeline-title {
-      font-family: 'Russo One', sans-serif;
+      font-family: 'Playfair Display',serif;
       font-size: 0.95rem;
       color: var(--bone);
       margin-bottom: 5px;
@@ -359,7 +359,7 @@
       margin: 40px 0;
       text-align: center;
     }
-    .rating-title { font-family: 'Russo One', sans-serif; font-size: 1rem; margin-bottom: 16px; }
+    .rating-title { font-family: 'Playfair Display',serif; font-size: 1rem; margin-bottom: 16px; }
     .rating-row { display: flex; justify-content: center; gap: 8px; margin-bottom: 6px; }
     .rating-icon { font-size: 1.6rem; cursor: pointer; transition: transform 0.2s; opacity: 0.45; }
     .rating-icon:hover, .rating-icon.active { opacity: 1; transform: scale(1.2); }
@@ -389,7 +389,7 @@
     /* COMMENTS */
     .comments-section { margin: 40px 0; }
     .comments-header {
-      font-family: 'Russo One', sans-serif;
+      font-family: 'Playfair Display',serif;
       font-size: 1.1rem;
       margin-bottom: 20px;
       padding-bottom: 10px;
@@ -433,7 +433,7 @@
     .btn-submit {
       background: var(--amber);
       color: #000;
-      font-family: 'Russo One', sans-serif;
+      font-family: 'Playfair Display',serif;
       font-size: 0.9rem;
       letter-spacing: 0.04em;
       padding: 12px 28px;
@@ -465,7 +465,7 @@
       padding: 32px 20px;
       text-align: center;
     }
-    .footer-logo { font-family: 'Russo One', sans-serif; font-size: 1.2rem; color: var(--amber); margin-bottom: 8px; }
+    .footer-logo { font-family: 'Playfair Display',serif; font-size: 1.2rem; color: var(--amber); margin-bottom: 8px; }
     .footer-tagline { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; color: var(--smoke); letter-spacing: 0.06em; text-transform: uppercase; }
     .footer-links { margin-top: 16px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
     .footer-links a { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; color: var(--smoke); letter-spacing: 0.04em; text-transform: uppercase; }
@@ -475,19 +475,30 @@
       .nav-links { display: none; }
     }
   </style>
+<!-- 56ViceLane V2 navband (Vibrant Premium retheme) -->
+<style>
+.navband{background:#B5637A;display:flex;justify-content:center;gap:0;flex-wrap:wrap;}
+.navband a{color:#fff;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:12.5px;padding:14px 22px;transition:background .2s;}
+.navband a:hover{background:rgba(255,255,255,.1);}
+.navband a.active{background:rgba(255,255,255,.15);}
+</style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
   <a href="/" class="nav-logo">56ViceLane</a>
-  <ul class="nav-links">
-    <li><a href="/news.html">News</a></li>
-    <li><a href="/lastdrive.html">Last Drive</a></li>
-    <li><a href="/shop.html">Gear</a></li>
-    <li><a href="/about.html">About</a></li>
-  </ul>
-</nav>
+  </nav>
+<div class="navband">
+  <a href="/">Home</a>
+  <a href="/news">News</a>
+  <a href="/lastdrive">Last Drive</a>
+  <a href="/wall">Wall of Honor</a>
+  <a href="/members">Members</a>
+  <a href="/store">Store</a>
+  <a href="/gear">Gear</a>
+  <a href="/forum">Forum</a>
+</div>
 
 <!-- TICKER -->
 <div class="ticker-wrap">
@@ -512,15 +523,15 @@
   <!-- UPDATE BANNER -->
   <div style="background:#0d1a0d;border:1px solid #00C875;border-left:4px solid #00C875;border-radius:6px;padding:18px 22px;margin-bottom:32px;">
     <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#00C875;margin-bottom:8px;">&#x1F7E2; Update — May 21, 2026</div>
-    <p style="font-size:0.95rem;color:#F0EDE8;line-height:1.65;margin:0;">
+    <p style="font-size:0.95rem;color:#211A16;line-height:1.65;margin:0;">
       <strong style="color:#00C875;">Strike avoided — but the supply damage may already be done.</strong>
       Samsung reached a tentative wage agreement with the union on Wednesday May 20, suspending the planned walkout pending a workers vote. The 18-day stoppage did not happen.
     </p>
-    <p style="font-size:0.95rem;color:#F0EDE8;line-height:1.65;margin:12px 0 0;">
-      However, Samsung had already begun <strong style="color:#FF6B1A;">wafer warm-down procedures</strong> before the deal was reached — deliberately reducing the number of wafers entering fabrication in preparation for the strike. Semiconductor fabrication is a continuous weeks-long process. Those wafers don't restart instantly. It takes <strong style="color:#FF6B1A;">2-4 weeks to ramp back to full output</strong> after a warm-down, and the memory that would have been produced during that window is simply gone — it doesn't get made up later.
+    <p style="font-size:0.95rem;color:#211A16;line-height:1.65;margin:12px 0 0;">
+      However, Samsung had already begun <strong style="color:#FF6B2C;">wafer warm-down procedures</strong> before the deal was reached — deliberately reducing the number of wafers entering fabrication in preparation for the strike. Semiconductor fabrication is a continuous weeks-long process. Those wafers don't restart instantly. It takes <strong style="color:#FF6B2C;">2-4 weeks to ramp back to full output</strong> after a warm-down, and the memory that would have been produced during that window is simply gone — it doesn't get made up later.
     </p>
-    <p style="font-size:0.95rem;color:#F0EDE8;line-height:1.65;margin:12px 0 0;">
-      The supply gap from the warm-down period hits retail <strong style="color:#FF6B1A;">late July</strong>. RAM prices were already elevated from AI demand before any of this started — 16GB DDR5 kits that should cost $80-100 are running $230+. The August-September price spike warning in this article <strong style="color:#FF6B1A;">still stands</strong>. The severity may be less than a full 18-day strike, but the pressure on memory supply heading into GTA6's November 19 launch window is real. If you are building a PC for launch day, the advice to buy before summer has not changed.
+    <p style="font-size:0.95rem;color:#211A16;line-height:1.65;margin:12px 0 0;">
+      The supply gap from the warm-down period hits retail <strong style="color:#FF6B2C;">late July</strong>. RAM prices were already elevated from AI demand before any of this started — 16GB DDR5 kits that should cost $80-100 are running $230+. The August-September price spike warning in this article <strong style="color:#FF6B2C;">still stands</strong>. The severity may be less than a full 18-day strike, but the pressure on memory supply heading into GTA6's November 19 launch window is real. If you are building a PC for launch day, the advice to buy before summer has not changed.
     </p>
   </div>
 
