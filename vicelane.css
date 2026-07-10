@@ -280,8 +280,11 @@ img {
    4B. NAV BAND — ALWAYS-VISIBLE TEXT NAV, SITE-WIDE
    Added July 9, 2026 — overrides the original hamburger-only
    rule. See design-system-addendum.md "RULE OVERRIDE" section.
+   Updated July 9, 2026 — 8 links now (added Wall of Honor).
    Markup: <div class="navband"><a class="active" href="/">Home</a>...
-   Same 7 links, same order, on every page.
+   Position: directly BELOW the hero image on every page, not above.
+   Same 8 links, same order, on every page:
+   Home / News / Last Drive / Wall of Honor / Members / Store / Gear / Forum
    ============================================================ */
 .navband {
   background: var(--navband);
