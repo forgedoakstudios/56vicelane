@@ -1316,6 +1316,86 @@ h3 {
    ============================================================ */
 
 /* ============================================================
+   28. VIDEO SLOT — reusable component (added July 2026)
+   Markup:
+   <div class="video-slot" data-video-id=""
+        style="--vs-bg:url('/images/PAGE-IMAGE.webp')">
+     <span class="video-slot-play"></span>
+     <span class="video-slot-label">Video coming soon</span>
+   </div>
+   - data-video-id empty  -> styled placeholder shows
+   - data-video-id="XXXX" -> /video-slot.js swaps in the 16:9
+     YouTube embed automatically; no other markup changes needed
+   - --vs-bg accepts a url() or any CSS gradient
+   ============================================================ */
+.video-slot {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--vs-bg, linear-gradient(135deg, #2A1245, #140C08)) center/cover no-repeat;
+  border: 1px solid var(--edge);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.video-slot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20,12,8,.35), rgba(20,12,8,.55));
+}
+
+.video-slot-play {
+  position: relative;
+  z-index: 2;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 24px rgba(255,107,44,.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-slot-play::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 16px solid #000;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  margin-left: 4px;
+}
+
+.video-slot-label {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  font-size: .72rem;
+  color: #F2DCC9;
+  text-shadow: 0 2px 8px rgba(0,0,0,.5);
+}
+
+.video-slot iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  z-index: 3;
+}
+
+.video-slot.video-slot-live::before { display: none; }
+
+/* ============================================================
    END vicelane.css v5.0
    56ViceLane · Forged Oak Studios
    ============================================================ */
