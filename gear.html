@@ -438,7 +438,7 @@
   <div class="launch-ready-banner reveal" style="margin-top:32px;">
     <div class="lrb-icon">🚀</div>
     <div class="lrb-content">
-      <div class="lrb-title">GTA6 Launch Is 159 Days Away</div>
+      <div class="lrb-title">GTA6 Launch Is <span id="days-to-launch">129</span> Days Away</div>
       <div class="lrb-desc">Every link on this page ships to your door before November 19. Order now — don't be the driver with a broken controller on launch night.</div>
     </div>
     <a href="/lastdrive" class="btn btn-primary" style="padding:12px 20px;font-size:.82rem;white-space:nowrap;">Join The Last Drive →</a>
@@ -867,6 +867,16 @@ document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
     el.addEventListener('touchmove', function() { clearTimeout(timer); });
   }
   applyDebug();
+})();
+</script>
+<script>
+/* live launch countdown — never goes stale (static 129 in the markup is
+   the no-JS fallback, correct as of July 13, 2026) */
+(function(){
+  var el = document.getElementById('days-to-launch');
+  if (!el) return;
+  var days = Math.max(0, Math.ceil((new Date('2026-11-19T00:00:00-05:00') - Date.now()) / 86400000));
+  el.textContent = days;
 })();
 </script>
 </body>
