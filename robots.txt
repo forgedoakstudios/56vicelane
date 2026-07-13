@@ -1,9 +1,11 @@
 User-agent: *
 Allow: /
 
-# Block admin or private paths (none exist but good practice)
+# Private/admin paths
 Disallow: /private/
 Disallow: /admin/
+Disallow: /admin
+Disallow: /drafts/
 
 # Sitemap location
 Sitemap: https://56vicelane.com/sitemap.xml
