@@ -25,10 +25,13 @@ jobs:
       - name: Rebuild articles.json
         run: node tools/build-articles.js
 
-      - name: Commit updated articles.json
+      - name: Rebuild sitemap.xml
+        run: node tools/build-sitemap.js
+
+      - name: Commit updated articles.json + sitemap.xml
         run: |
           git config user.name "56ViceLane Bot"
           git config user.email "bot@56vicelane.com"
-          git add articles.json
-          git diff --staged --quiet || git commit -m "Auto-update articles.json [skip ci]"
+          git add articles.json sitemap.xml
+          git diff --staged --quiet || git commit -m "Auto-update articles.json + sitemap [skip ci]"
           git push

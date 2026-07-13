@@ -106,6 +106,15 @@
     .spot-grid{grid-template-columns:1fr;}
     .foot-grid{grid-template-columns:1fr 1fr;}
   }
+
+  /* LIVE COUNTDOWN (local copy of vicelane.css countdown-bar — this page is self-contained) */
+  .countdown-bar{background:#FDFBF8; border-top:1px solid var(--edge); border-bottom:1px solid var(--edge); padding:18px 20px;}
+  .countdown-inner{max-width:1000px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px;}
+  .countdown-label{font-family:'Barlow Condensed',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:0.2em; font-size:11.5px; color:var(--ink-soft);}
+  .countdown-timer{display:flex; gap:14px;}
+  .countdown-unit{text-align:center;}
+  .countdown-num{font-family:'Playfair Display',serif; font-size:2rem; color:var(--orange); line-height:1; display:block;}
+  .countdown-unit-label{font-family:'Barlow Condensed',sans-serif; font-weight:600; text-transform:uppercase; letter-spacing:0.12em; font-size:9.5px; color:var(--ink-soft);}
 </style>
 </head>
 <body>
@@ -134,6 +143,19 @@
   <a href="/store">Store</a>
   <a href="/gear">Gear</a>
   <a href="/forum">Forum</a>
+</div>
+
+<!-- LIVE COUNTDOWN (see /countdown.js) -->
+<div class="countdown-bar">
+  <div class="countdown-inner">
+    <div class="countdown-label">GTA6 Launches · November 19, 2026</div>
+    <div class="countdown-timer" data-countdown="2026-11-19T00:00:00-05:00">
+      <div class="countdown-unit"><span class="countdown-num" data-d>—</span><span class="countdown-unit-label">Days</span></div>
+      <div class="countdown-unit"><span class="countdown-num" data-h>—</span><span class="countdown-unit-label">Hours</span></div>
+      <div class="countdown-unit"><span class="countdown-num" data-m>—</span><span class="countdown-unit-label">Min</span></div>
+      <div class="countdown-unit"><span class="countdown-num" data-s>—</span><span class="countdown-unit-label">Sec</span></div>
+    </div>
+  </div>
 </div>
 
 <div class="layout">
