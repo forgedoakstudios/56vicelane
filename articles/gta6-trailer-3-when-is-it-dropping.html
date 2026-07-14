@@ -340,5 +340,6 @@ var mt=document.getElementById('menu-toggle'),nm=document.getElementById('nav-mo
 if(mt&&nm)mt.addEventListener('click',function(){nm.classList.toggle('open');});
 (function(){var KEY='56vl-debug',active=localStorage.getItem(KEY)==='1';function applyDebug(){var ind=document.getElementById('vl-debug-ind');if(!ind){ind=document.createElement('div');ind.id='vl-debug-ind';ind.textContent='\uD83D\uDD27 DEBUG ON';ind.onclick=function(){active=false;localStorage.setItem(KEY,'0');applyDebug();};document.body.appendChild(ind);}ind.style.display=active?'block':'none';}var el=document.getElementById('vl-copyright'),timer=null;if(el){el.style.userSelect='none';el.addEventListener('touchstart',function(e){e.preventDefault();timer=setTimeout(function(){active=!active;localStorage.setItem(KEY,active?'1':'0');applyDebug();},1500);},{passive:false});el.addEventListener('touchend',function(){clearTimeout(timer);});el.addEventListener('touchmove',function(){clearTimeout(timer);});}applyDebug();})();
 </script>
+<script src="/back-to-top.js" defer></script>
 </body>
 </html>
