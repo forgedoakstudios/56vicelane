@@ -84,13 +84,14 @@
   .gallery-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:12px;}
   .gallery-tile{height:130px; border-radius:10px;}
 
-  /* MEMBER SPOTLIGHT (replaces "character files") */
+  /* MEMBER SPOTLIGHT (replaces "character files") — populated live from Airtable, see loadDriveLeadSpotlight() */
   .spot-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
-  .spot-card{border-radius:12px; overflow:hidden; position:relative; height:220px; display:flex; align-items:flex-end;}
+  .spot-card{border-radius:12px; overflow:hidden; position:relative; height:220px; display:flex; align-items:flex-end; background-size:cover; background-position:center; text-decoration:none;}
   .spot-card::after{content:''; position:absolute; inset:0; background:linear-gradient(0deg, rgba(0,0,0,0.6), transparent 55%);}
   .spot-info{position:relative; z-index:2; padding:18px; color:#fff;}
   .spot-info .role{font-family:'Barlow Condensed'; font-size:10.5px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); margin-bottom:4px;}
   .spot-info h4{font-family:'Playfair Display'; font-weight:700; font-size:19px;}
+  .spot-loading{grid-column:1/-1; color:var(--ink-soft); font-size:13px; padding:20px 0; text-align:center;}
 
   /* FOOTER */
   footer{background:var(--band); color:#fff; padding:40px 28px 22px; margin-top:40px;}
@@ -214,13 +215,8 @@
 
 <div class="section">
   <span class="label sec-label">Drive Lead Spotlight</span>
-  <div class="spot-grid">
-    <div class="spot-card photo p-member1">
-      <div class="spot-info"><div class="role">Founding Member</div><h4>Musashi13</h4></div>
-    </div>
-    <div class="spot-card photo p-member2">
-      <div class="spot-info"><div class="role">Drive Lead</div><h4>tankerunknown</h4></div>
-    </div>
+  <div class="spot-grid" id="spot-grid">
+    <div class="spot-loading">Loading drive leads...</div>
   </div>
 </div>
 
@@ -237,5 +233,87 @@
   </div>
 </footer>
 
+<script>
+/* DRIVE LEAD SPOTLIGHT — live from Airtable, rotates a random 2 real
+   Drive Leads on every page load. Falls back to a static message if
+   the fetch fails or no Drive Leads exist yet. Same Last Drive table
+   + fields + getPlateBg() convention used on wall.html/members.html. */
+var AT_TOKEN = 'pattxJ12NQzpHMejD.2eb992f22f1a43e032d866df028dbb33958635234f6cfd30769e3e12f10d5588';
+var AT_BASE  = 'appVViGbmcu5gbn8B';
+var AT_URL   = 'https://api.airtable.com/v0/' + AT_BASE + '/Last%20Drive';
+var AT_H     = { 'Authorization': 'Bearer ' + AT_TOKEN };
+
+function getPlateBg(style) {
+  switch (style) {
+    case 'founder':              return "background-image:linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.48)), url('/images/plate-founder.png');";
+    case 'vehicle-male-exotic':  return "background-image:linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.48)), url('/images/plate-male-exotic.png');";
+    case 'vehicle-female-exotic':return "background-image:linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.48)), url('/images/plate-female-exotic.png');";
+    case 'color-red':    return 'background:linear-gradient(135deg,#6B0000,#CC2200);';
+    case 'color-blue':   return 'background:linear-gradient(135deg,#000C6B,#0033CC);';
+    case 'color-purple': return 'background:linear-gradient(135deg,#2D0060,#6600AA);';
+    case 'color-amber':  return 'background:linear-gradient(135deg,#7A4A00,#C8820A);';
+    case 'color-green':  return 'background:linear-gradient(135deg,#004D00,#007A00);';
+    case 'color-yellow': return 'background:linear-gradient(135deg,#7A6A00,#C8B000);';
+    case 'white':        return 'background:#EFEDE8;';
+    case 'black':
+    default:              return 'background:linear-gradient(160deg,#1a1a1a,#0a0a0a);';
+  }
+}
+
+function shuffle(arr) {
+  for (var i = arr.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+
+function loadDriveLeadSpotlight() {
+  var grid = document.getElementById('spot-grid');
+  var allRec = [];
+  var offset = '';
+
+  function fetchPage() {
+    var url = AT_URL +
+      '?fields%5B%5D=Gamertag&fields%5B%5D=IsOrganizer&fields%5B%5D=ShowOnWall' +
+      '&fields%5B%5D=PlateStyle&fields%5B%5D=SignupNumber' +
+      (offset ? '&offset=' + offset : '');
+    return fetch(url, { headers: AT_H }).then(function (r) { return r.json(); }).then(function (d) {
+      if (d.records) allRec = allRec.concat(d.records);
+      offset = d.offset || '';
+      if (offset) return fetchPage();
+
+      var leads = allRec.filter(function (r) {
+        var f = r.fields;
+        var g = (f.Gamertag || '').toLowerCase().trim();
+        return g && g !== 'test' && g !== 'trst' && f.IsOrganizer && f.ShowOnWall;
+      });
+
+      if (!leads.length) {
+        grid.innerHTML = '<div class="spot-loading">No Drive Leads yet — <a href="/lastdrive" style="color:var(--magenta);">be the first →</a></div>';
+        return;
+      }
+
+      var picks = shuffle(leads).slice(0, 2);
+      grid.innerHTML = picks.map(function (r) {
+        var f = r.fields;
+        var tag = f.Gamertag || 'Unknown';
+        var isFounder = f.SignupNumber && f.SignupNumber <= 100;
+        var bg = getPlateBg(isFounder ? (f.PlateStyle || 'founder') : (f.PlateStyle || 'black'));
+        return '<a class="spot-card" href="/player?g=' + encodeURIComponent(tag) + '" style="' + bg + '">' +
+          '<div class="spot-info"><div class="role">' + (isFounder ? 'Founding Member' : 'Drive Lead') + '</div><h4>' + tag + '</h4></div>' +
+        '</a>';
+      }).join('');
+    });
+  }
+
+  fetchPage().catch(function () {
+    grid.innerHTML =
+      '<a class="spot-card" href="/lastdrive" style="background:linear-gradient(160deg,#D6247A,#4A1E3A);"><div class="spot-info"><div class="role">Drive Lead</div><h4>Sign Up To Lead →</h4></div></a>' +
+      '<a class="spot-card" href="/lastdrive" style="background:linear-gradient(160deg,#FF6B2C,#3A1B4A);"><div class="spot-info"><div class="role">Drive Lead</div><h4>Sign Up To Lead →</h4></div></a>';
+  });
+}
+loadDriveLeadSpotlight();
+</script>
 </body>
 </html>
