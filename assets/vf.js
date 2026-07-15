@@ -91,7 +91,7 @@ function vfFeed () {
         var cat = a.category || a.tag || 'News';
         var desc = a.description || a.summary || '';
         return '' +
-          '<article class="card reveal">' +
+          '<article class="card reveal" data-cat="' + String(cat).toLowerCase() + '">' +
             '<div class="card-hero"><div class="art art-auto"></div></div>' +
             '<span class="eyebrow">' + cat + '</span>' +
             '<h3><a href="' + url + '" style="color:inherit">' + title + '</a></h3>' +
