@@ -229,7 +229,8 @@
 .featured-member {
   background: var(--asphalt);
   border: 1px solid var(--edge);
-  padding: 16px;
+  border-radius: 8px;
+  overflow: hidden;
   cursor: pointer;
   transition: all .25s;
   text-decoration: none;
@@ -242,6 +243,22 @@
   text-decoration: none;
 }
 .featured-member.lead { border-color: var(--amber); }
+.fm-plate {
+  background-size: cover;
+  background-position: center;
+  min-height: 140px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+}
+.fm-plate::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,.55), transparent 60%);
+}
 .fm-badge {
   font-family: var(--font-label);
   font-weight: 800;
@@ -250,21 +267,27 @@
   font-size: .65rem;
   color: var(--amber);
   margin-bottom: 6px;
+  position: relative;
+  z-index: 2;
 }
 .fm-tag {
   font-family: var(--font-display);
   font-size: 1.1rem;
   text-transform: uppercase;
-  color: var(--bone);
+  color: #fff;
   margin-bottom: 4px;
   word-break: break-all;
+  position: relative;
+  z-index: 2;
 }
 .fm-meta {
   font-family: var(--font-label);
   font-size: .72rem;
-  color: var(--smoke);
+  color: rgba(255,255,255,.75);
   text-transform: uppercase;
   letter-spacing: .04em;
+  position: relative;
+  z-index: 2;
 }
 
 .section-links-grid {
@@ -547,6 +570,23 @@ var AT_BASE  = 'appVViGbmcu5gbn8B';
 var AT_URL   = 'https://api.airtable.com/v0/' + AT_BASE + '/Last%20Drive';
 var AT_H     = { 'Authorization': 'Bearer ' + AT_TOKEN };
 
+function getPlateBg(style) {
+  switch (style) {
+    case 'founder':              return "background-image:linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.48)), url('/images/plate-founder.png');";
+    case 'vehicle-male-exotic':  return "background-image:linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.48)), url('/images/plate-male-exotic.png');";
+    case 'vehicle-female-exotic':return "background-image:linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.48)), url('/images/plate-female-exotic.png');";
+    case 'color-red':    return 'background:linear-gradient(135deg,#6B0000,#CC2200);';
+    case 'color-blue':   return 'background:linear-gradient(135deg,#000C6B,#0033CC);';
+    case 'color-purple': return 'background:linear-gradient(135deg,#2D0060,#6600AA);';
+    case 'color-amber':  return 'background:linear-gradient(135deg,#7A4A00,#C8820A);';
+    case 'color-green':  return 'background:linear-gradient(135deg,#004D00,#007A00);';
+    case 'color-yellow': return 'background:linear-gradient(135deg,#7A6A00,#C8B000);';
+    case 'white':        return 'background:#EFEDE8;';
+    case 'black':
+    default:              return 'background:linear-gradient(160deg,#1a1a1a,#0a0a0a);';
+  }
+}
+
 function findProfile() {
   var q = (document.getElementById('search-tag').value || '').trim();
   var result = document.getElementById('find-result');
@@ -609,6 +649,7 @@ function loadMemberData() {
       '?fields%5B%5D=Gamertag&fields%5B%5D=Platform&fields%5B%5D=Region' +
       '&fields%5B%5D=Staging%20Time&fields%5B%5D=IsOrganizer' +
       '&fields%5B%5D=SignupType&fields%5B%5D=PlateStatus&fields%5B%5D=SignupNumber' +
+      '&fields%5B%5D=PlateStyle' +
       '&fields%5B%5D=StagingLocation&fields%5B%5D=ShowOnWall' +
       (offset ? '&offset=' + offset : '');
 
@@ -648,16 +689,21 @@ function loadMemberData() {
         featured.forEach(function(r) {
           var f   = r.fields;
           var tag = f.Gamertag || 'Unknown';
+          var isFounder = f.SignupNumber && f.SignupNumber <= 100;
+          var plateStyle = isFounder ? (f.PlateStyle || 'founder') : (f.PlateStyle || 'black');
+          var plateBg = getPlateBg(plateStyle);
           var card = document.createElement('a');
           card.className = 'featured-member lead';
           card.href = '/player?g=' + encodeURIComponent(tag);
           card.innerHTML =
-            '<div class="fm-badge">⭐ Drive Lead</div>' +
-            '<div class="fm-tag">' + tag + '</div>' +
-            '<div class="fm-meta">' +
-              (f.Platform ? f.Platform : '') +
-              (f.Region ? ' · ' + f.Region : '') +
-              (f['Staging Time'] ? '<br>' + f['Staging Time'] : '') +
+            '<div class="fm-plate" style="' + plateBg + '">' +
+              '<div class="fm-badge">⭐ Drive Lead</div>' +
+              '<div class="fm-tag">' + tag + '</div>' +
+              '<div class="fm-meta">' +
+                (f.Platform ? f.Platform : '') +
+                (f.Region ? ' · ' + f.Region : '') +
+                (f['Staging Time'] ? '<br>' + f['Staging Time'] : '') +
+              '</div>' +
             '</div>';
           grid.appendChild(card);
         });
