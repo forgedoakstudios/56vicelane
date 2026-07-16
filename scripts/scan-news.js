@@ -184,6 +184,9 @@ async function run () {
     var items = [];
     try {
       var result = await fetchUrl(url);
+      console.log('[debug] ' + query.label + ': status=' + result.statusCode +
+        ' bodyLen=' + (result.body ? result.body.length : 0) +
+        ' preview=' + JSON.stringify((result.body || '').slice(0, 200)));
       items = parseItems(result.body);
     } catch (err) {
       console.error('Fetch failed for ' + query.label + ':', err.message);
