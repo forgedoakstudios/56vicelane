@@ -1,9 +1,50 @@
 [
   {
-    "id": "test-post-1",
-    "text": "Testing the auto-poster 👀 #GTA6",
+    "id": "lastdrive-signup-1",
+    "text": "🚗 The Last Drive is happening. November 18, 2026 — one final cruise through Vice City before GTA6 takes over. Sign up free and claim your spot →",
+    "url": "https://56vicelane.com/lastdrive",
+    "image": "images/lastdrive-hero.webp",
+    "imageAlt": "The Last Drive event key art",
+    "scheduledFor": "2026-07-16T17:15:00Z",
+    "posted": false
+  },
+  {
+    "id": "discord-invite-1",
+    "text": "The 56ViceLane Discord is where the crew actually hangs out — theories, Last Drive coordination, leak discussion, and first looks before anything hits the site. Come kick it with us →",
+    "url": "https://discord.gg/ewdRcjsbg5",
+    "scheduledFor": "2026-07-16T18:22:00Z",
+    "posted": false
+  },
+  {
+    "id": "new-site-teaser-1",
+    "text": "56ViceLane is getting a full visual overhaul. Dark and moody is giving way to something brighter, sharper, more vibrant. New look drops soon — same GTA5 → GTA6 coverage you're used to →",
     "url": "https://56vicelane.com",
-    "scheduledFor": "2026-07-16T14:00:00Z",
-    "posted": true
+    "image": "images/homepage-hero.webp",
+    "imageAlt": "56ViceLane site preview",
+    "scheduledFor": "2026-07-16T19:35:00Z",
+    "posted": false
+  },
+  {
+    "id": "youtube-sub-1",
+    "text": "New videos are live on the 56ViceLane YouTube — GTA5 send-off content, GTA6 coverage, and Last Drive updates as November 18 gets closer. Subscribe so you don't miss a drop →",
+    "url": "https://youtube.com/@56ViceLane",
+    "scheduledFor": "2026-07-16T20:40:00Z",
+    "posted": false
+  },
+  {
+    "id": "tiktok-follow-1",
+    "text": "56ViceLane is on TikTok now. Quick hits, Last Drive countdown clips, and everything GTA6 in under 60 seconds. Give us a follow →",
+    "url": "https://www.tiktok.com/@56vicelane",
+    "scheduledFor": "2026-07-16T21:52:00Z",
+    "posted": false
+  },
+  {
+    "id": "article-ps5-xbox-ratio-1",
+    "text": "GTA6 is reportedly selling 8x more copies on PS5 than Xbox — and that number is wild. We break down what it means for the console war →",
+    "url": "https://56vicelane.com/articles/gta6-ps5-xbox-sales-ratio-8-to-1",
+    "image": "images/gta6-hero.png",
+    "imageAlt": "GTA6 key art",
+    "scheduledFor": "2026-07-16T23:00:00Z",
+    "posted": false
   }
 ]
