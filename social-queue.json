@@ -1,5 +1,20 @@
 [
   {
+    "id": "lastdrive-gta6-daily-countdown",
+    "type": "recurring-countdown",
+    "postAt": "17:00",
+    "textPrefix": "",
+    "textSuffix": "November 18 → 19, 2026. Don't miss it.",
+    "countdowns": [
+      { "label": "The Last Drive", "date": "2026-11-18", "emoji": "🚗" },
+      { "label": "GTA6 launches", "date": "2026-11-19", "emoji": "🎮" }
+    ],
+    "url": "https://56vicelane.com/lastdrive",
+    "image": "images/lastdrive-hero.webp",
+    "imageAlt": "The Last Drive countdown",
+    "lastPostedDate": null
+  },
+  {
     "id": "lastdrive-signup-1",
     "text": "🚗 The Last Drive is happening. November 18, 2026 — one final cruise through Vice City before GTA6 takes over. Sign up free and claim your spot →",
     "url": "https://56vicelane.com/lastdrive",
