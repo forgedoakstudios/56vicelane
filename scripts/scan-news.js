@@ -2,32 +2,46 @@ const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
-/* Free Bing News RSS search, no API key. Each query covers one of the
-   three topics you asked to track. Bing (unlike Google News RSS) gives
-   direct publisher links instead of an obfuscated redirect token, which
-   is what makes real backlinks/accreditation possible here. */
-var QUERIES = [
-  { id: 'gta6', label: 'GTA 6', q: '("GTA 6" OR "GTA VI" OR "Grand Theft Auto 6" OR "Grand Theft Auto VI")' },
-  { id: 'gta5', label: 'GTA 5 / GTA V', q: '("GTA 5" OR "GTA V" OR "Grand Theft Auto V") -"GTA VI"' },
-  { id: 'gtaonline', label: 'GTA Online', q: '("GTA Online" OR "GTA V Online")' },
+/* Free, official RSS feeds from major gaming outlets, no API key. Each
+   feed carries everything that outlet publishes; we filter locally for
+   GTA mentions. This gives real, direct, pre-accredited publisher links
+   for free — unlike scraping Google/Bing News search, whose links are
+   wrapped redirects and whose search endpoints are easy to get blocked
+   on since they aren't meant to be consumed this way. */
+var FEEDS = [
+  { name: 'IGN', url: 'https://www.ign.com/rss/articles/feed' },
+  { name: 'GameSpot', url: 'https://www.gamespot.com/feeds/mashup/' },
+  { name: 'Eurogamer', url: 'https://www.eurogamer.net/feed' },
+  { name: 'PC Gamer', url: 'https://www.pcgamer.com/rss/' },
+  { name: 'Polygon', url: 'https://www.polygon.com/rss/index.xml' },
+  { name: 'VG247', url: 'https://www.vg247.com/feed' },
+  { name: 'Rock Paper Shotgun', url: 'https://www.rockpapershotgun.com/feed' },
+  { name: 'GamesRadar', url: 'https://www.gamesradar.com/rss/' },
+  { name: 'Dexerto', url: 'https://www.dexerto.com/feed/' },
+  { name: 'Insider Gaming', url: 'https://insider-gaming.com/feed/' },
+  { name: 'The Gamer', url: 'https://www.thegamer.com/feed/' },
+];
+
+/* Checked in this order — GTA Online must come before GTA 5/V, since
+   "GTA V Online" would otherwise false-match the GTA 5 pattern first. */
+var TOPICS = [
+  { id: 'gta6', label: 'GTA 6', re: /\bgta\s?vi\b|grand theft auto vi|\bgta\s?6\b|grand theft auto 6/i },
+  { id: 'gtaonline', label: 'GTA Online', re: /gta online|gta v online/i },
+  { id: 'gta5', label: 'GTA 5 / GTA V', re: /\bgta\s?v\b|grand theft auto v\b|\bgta\s?5\b|grand theft auto 5/i },
 ];
 
 var TOP_N = 3;
 var RETENTION_DAYS = 14;
-var MAX_AGE_HOURS = 30;
-var REDIRECT_WRAPPER_HOSTS = ['news.google.com', 'bing.com', 'www.bing.com', 'msn.com', 'www.msn.com'];
+var MAX_AGE_HOURS = 48;
+
+/* A handful of feed hosts (feedburner etc.) still wrap their links —
+   only these get a network round trip to reach the real publisher URL.
+   Everything else from FEEDS above is already a direct link. */
+var REDIRECT_WRAPPER_HOSTS = ['feedproxy.google.com', 'feeds.feedburner.com'];
 
 /* Rough, transparent heuristic since there's no LLM in this pipeline —
    not editorial judgment, just keyword-based triage to surface the
    most likely-important items out of everything found each scan. */
-var TRUSTED_SOURCES = [
-  'ign', 'gamespot', 'eurogamer', 'polygon', 'pc gamer', 'kotaku', 'vg247',
-  'rockstar', 'take-two', 'reuters', 'bloomberg', 'variety', 'the verge',
-  'video games chronicle', 'push square', 'game developer', 'newzoo',
-  'gamesradar', 'rock paper shotgun', 'the gamer', 'nme', 'insider gaming',
-  'wccftech', 'dexerto', 'gameinformer', 'destructoid',
-];
-
 var HIGH_SIGNAL_WORDS = [
   'official', 'confirmed', 'confirms', 'announces', 'announcement', 'rockstar games',
   'take-two', 'release date', 'trailer', 'launch', 'pre-order', 'preorder', 'record',
@@ -66,12 +80,6 @@ function isWrapperHost (hostname) {
   return REDIRECT_WRAPPER_HOSTS.some(function (h) { return hostname === h || hostname.slice(-h.length - 1) === '.' + h; });
 }
 
-/* Bing gives direct links most of the time, so skip the network round
-   trip when the host already looks like the real publisher. When it is
-   a known aggregator/redirect host, follow it (and fall back to a
-   <link rel="canonical"> in the response body) to reach the actual
-   source. If neither works, keep the original link rather than
-   shipping a broken one. */
 async function resolveArticleLink (rawUrl) {
   var hostname = '';
   try { hostname = new URL(rawUrl).hostname; } catch (err) { /* leave blank, treat as non-wrapper below */ }
@@ -80,18 +88,8 @@ async function resolveArticleLink (rawUrl) {
   try {
     var result = await fetchUrl(rawUrl);
     var finalHost = '';
-    try { finalHost = new URL(result.finalUrl).hostname; } catch (err) { /* fall through to canonical check */ }
+    try { finalHost = new URL(result.finalUrl).hostname; } catch (err) { /* keep original on failure */ }
     if (finalHost && !isWrapperHost(finalHost)) return result.finalUrl;
-
-    console.log('[debug] resolve body preview for ' + rawUrl.slice(0, 60) + ': ' +
-      JSON.stringify((result.body || '').slice(0, 1500)));
-
-    var m = result.body && result.body.match(/<link rel="canonical" href="([^"]+)"/);
-    if (m) {
-      var canonicalHost = '';
-      try { canonicalHost = new URL(m[1]).hostname; } catch (err) { /* ignore, skip fallback */ }
-      if (canonicalHost && !isWrapperHost(canonicalHost)) return m[1];
-    }
   } catch (err) {
     console.error('Could not resolve link for ' + rawUrl + ':', err.message);
   }
@@ -113,15 +111,6 @@ function decodeXml (str) {
     .replace(/&#39;/g, "'");
 }
 
-function extractSource (block) {
-  var candidates = ['News:Source', 'source', 'Source'];
-  for (var i = 0; i < candidates.length; i++) {
-    var val = extractTag(block, candidates[i]);
-    if (val) return val;
-  }
-  return '';
-}
-
 function parseItems (xml) {
   var items = [];
   var blocks = xml.split('<item>').slice(1);
@@ -130,12 +119,25 @@ function parseItems (xml) {
     var title = extractTag(block, 'title');
     var link = extractTag(block, 'link');
     var pubDate = extractTag(block, 'pubDate');
-    var source = extractSource(block);
+    var description = extractTag(block, 'description');
     if (title && link) {
-      items.push({ title: decodeXml(title), link: link.trim(), pubDate: pubDate, source: decodeXml(source) });
+      items.push({
+        title: decodeXml(title),
+        link: link.trim(),
+        pubDate: pubDate,
+        description: decodeXml(description).replace(/<[^>]+>/g, ''),
+      });
     }
   }
   return items;
+}
+
+function matchTopic (item) {
+  var haystack = item.title + ' ' + item.description;
+  for (var i = 0; i < TOPICS.length; i++) {
+    if (TOPICS[i].re.test(haystack)) return TOPICS[i];
+  }
+  return null;
 }
 
 function isRecent (pubDate) {
@@ -146,11 +148,9 @@ function isRecent (pubDate) {
 }
 
 function scoreItem (item) {
-  var score = 0;
+  var score = 3; // baseline: every source here is already a trusted major outlet
   var titleLower = ' ' + item.title.toLowerCase() + ' ';
-  var sourceLower = (item.source || '').toLowerCase();
 
-  if (TRUSTED_SOURCES.some(function (s) { return sourceLower.indexOf(s) !== -1; })) score += 3;
   HIGH_SIGNAL_WORDS.forEach(function (w) { if (titleLower.indexOf(w) !== -1) score += 2; });
   SPECULATIVE_WORDS.forEach(function (w) { if (titleLower.indexOf(w) !== -1) score -= 1; });
   if (/\$[\d,.]+\s?(million|billion|m|b)\b/i.test(item.title)) score += 2;
@@ -180,28 +180,27 @@ async function run () {
 
   var candidates = [];
 
-  for (var i = 0; i < QUERIES.length; i++) {
-    var query = QUERIES[i];
-    var url = 'https://news.google.com/rss/search?q=' + encodeURIComponent(query.q + ' when:1d') +
-      '&hl=en-US&gl=US&ceid=US:en';
-
+  for (var i = 0; i < FEEDS.length; i++) {
+    var feed = FEEDS[i];
     var items = [];
     try {
-      var result = await fetchUrl(url);
-      console.log('[debug] ' + query.label + ': status=' + result.statusCode +
-        ' bodyLen=' + (result.body ? result.body.length : 0) +
-        ' preview=' + JSON.stringify((result.body || '').slice(0, 200)));
+      var result = await fetchUrl(feed.url);
       items = parseItems(result.body);
     } catch (err) {
-      console.error('Fetch failed for ' + query.label + ':', err.message);
+      console.error('Fetch failed for ' + feed.name + ':', err.message);
+      continue;
     }
 
     for (var j = 0; j < items.length; j++) {
       var item = items[j];
       if (!isRecent(item.pubDate)) continue;
       if (seenSet.has(item.link)) continue;
+      var topic = matchTopic(item);
+      if (!topic) continue;
+
       seenSet.add(item.link);
-      item.topic = query.label;
+      item.topic = topic.label;
+      item.source = feed.name;
       item.score = scoreItem(item);
       candidates.push(item);
     }
@@ -226,7 +225,7 @@ async function run () {
       var it = top[n];
       lines.push('### ' + (n + 1) + '. ' + it.title);
       lines.push('- **Topic:** ' + it.topic);
-      lines.push('- **Source:** ' + (it.source || 'Unknown'));
+      lines.push('- **Source:** ' + it.source);
       lines.push('- **Published:** ' + (it.pubDate || 'Unknown'));
       lines.push('- **Relevance score:** ' + it.score);
       lines.push('- **Link:** ' + it.resolvedLink);
