@@ -10,24 +10,70 @@ var QUERIES = [
   { id: 'gtaonline', label: 'GTA Online', q: '("GTA Online" OR "GTA V Online")' },
 ];
 
+var TOP_N = 3;
+var RETENTION_DAYS = 14;
+
+/* Rough, transparent heuristic since there's no LLM in this pipeline —
+   not editorial judgment, just keyword-based triage to surface the
+   most likely-important items out of everything found each scan. */
+var TRUSTED_SOURCES = [
+  'ign', 'gamespot', 'eurogamer', 'polygon', 'pc gamer', 'kotaku', 'vg247',
+  'rockstar', 'take-two', 'reuters', 'bloomberg', 'variety', 'the verge',
+  'video games chronicle', 'push square', 'game developer', 'newzoo',
+  'gamesradar', 'rock paper shotgun', 'the gamer', 'nme', 'insider gaming',
+  'wccftech', 'dexerto', 'gameinformer', 'destructoid',
+];
+
+var HIGH_SIGNAL_WORDS = [
+  'official', 'confirmed', 'confirms', 'announces', 'announcement', 'rockstar games',
+  'take-two', 'release date', 'trailer', 'launch', 'pre-order', 'preorder', 'record',
+  'exclusive', 'lawsuit', 'trial', 'sentenced', 'delay', 'delayed',
+];
+
+var SPECULATIVE_WORDS = [
+  'could', 'might', ' may ', 'predicts', 'prediction', 'analyst', 'rumor', 'rumour',
+  'reportedly', 'claims', 'speculat',
+];
+
 var scanDir = path.join(__dirname, '..', 'news-scan');
 var seenPath = path.join(scanDir, 'seen-links.json');
 var seen = fs.existsSync(seenPath) ? JSON.parse(fs.readFileSync(seenPath, 'utf8')) : [];
 var seenSet = new Set(seen);
 
-function fetchRss (url, redirectsLeft) {
+function fetchUrl (url, redirectsLeft) {
   if (redirectsLeft === undefined) redirectsLeft = 5;
   return new Promise(function (resolve, reject) {
     https.get(url, { headers: { 'User-Agent': 'Mozilla/5.0 56ViceLaneNewsScan/1.0' } }, function (res) {
       if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location && redirectsLeft > 0) {
         res.resume();
-        return resolve(fetchRss(res.headers.location, redirectsLeft - 1));
+        var nextUrl = res.headers.location;
+        if (nextUrl.indexOf('http') !== 0) nextUrl = new URL(nextUrl, url).toString();
+        resolve(fetchUrl(nextUrl, redirectsLeft - 1));
+        return;
       }
       var data = '';
       res.on('data', function (chunk) { data += chunk; });
-      res.on('end', function () { resolve(data); });
+      res.on('end', function () { resolve({ body: data, finalUrl: url, statusCode: res.statusCode }); });
     }).on('error', reject);
   });
+}
+
+/* Google News RSS links are redirect wrappers, not the publisher's real
+   URL. Follow them (and fall back to a <link rel="canonical"> in the
+   response body) to get the actual source link. If neither works, keep
+   the working Google News link rather than shipping a broken one. */
+async function resolveArticleLink (googleUrl) {
+  try {
+    var result = await fetchUrl(googleUrl);
+    if (result.finalUrl && result.finalUrl.indexOf('news.google.com') === -1) {
+      return result.finalUrl;
+    }
+    var m = result.body && result.body.match(/<link rel="canonical" href="([^"]+)"/);
+    if (m && m[1].indexOf('news.google.com') === -1) return m[1];
+  } catch (err) {
+    console.error('Could not resolve link for ' + googleUrl + ':', err.message);
+  }
+  return googleUrl;
 }
 
 function extractTag (block, tag) {
@@ -61,11 +107,40 @@ function parseItems (xml) {
   return items;
 }
 
+function scoreItem (item) {
+  var score = 0;
+  var titleLower = ' ' + item.title.toLowerCase() + ' ';
+  var sourceLower = (item.source || '').toLowerCase();
+
+  if (TRUSTED_SOURCES.some(function (s) { return sourceLower.indexOf(s) !== -1; })) score += 3;
+  HIGH_SIGNAL_WORDS.forEach(function (w) { if (titleLower.indexOf(w) !== -1) score += 2; });
+  SPECULATIVE_WORDS.forEach(function (w) { if (titleLower.indexOf(w) !== -1) score -= 1; });
+  if (/\$[\d,.]+\s?(million|billion|m|b)\b/i.test(item.title)) score += 2;
+
+  return score;
+}
+
+function cleanupOldScans () {
+  if (!fs.existsSync(scanDir)) return;
+  var files = fs.readdirSync(scanDir).filter(function (f) { return f.endsWith('.md'); });
+  var cutoff = Date.now() - RETENTION_DAYS * 24 * 60 * 60 * 1000;
+  files.forEach(function (f) {
+    var m = f.match(/^(\d{4}-\d{2}-\d{2})-(\d{2})-(\d{2})\.md$/);
+    if (!m) return;
+    var fileTime = new Date(m[1] + 'T' + m[2] + ':' + m[3] + ':00Z').getTime();
+    if (fileTime < cutoff) {
+      fs.unlinkSync(path.join(scanDir, f));
+      console.log('Deleted expired scan file (>' + RETENTION_DAYS + 'd old): ' + f);
+    }
+  });
+}
+
 async function run () {
   if (!fs.existsSync(scanDir)) fs.mkdirSync(scanDir, { recursive: true });
 
-  var groups = [];
-  var totalNew = 0;
+  cleanupOldScans();
+
+  var candidates = [];
 
   for (var i = 0; i < QUERIES.length; i++) {
     var query = QUERIES[i];
@@ -74,40 +149,50 @@ async function run () {
 
     var items = [];
     try {
-      var xml = await fetchRss(url);
-      items = parseItems(xml);
+      var result = await fetchUrl(url);
+      items = parseItems(result.body);
     } catch (err) {
       console.error('Fetch failed for ' + query.label + ':', err.message);
     }
 
-    var fresh = [];
     for (var j = 0; j < items.length; j++) {
       var item = items[j];
       if (seenSet.has(item.link)) continue;
       seenSet.add(item.link);
-      fresh.push(item);
-    }
-    if (fresh.length > 0) {
-      groups.push({ label: query.label, items: fresh });
-      totalNew += fresh.length;
+      item.topic = query.label;
+      item.score = scoreItem(item);
+      candidates.push(item);
     }
   }
 
-  var now = new Date();
-  if (totalNew > 0) {
-    var lines = ['# GTA News Scan — ' + now.toISOString().slice(0, 16).replace('T', ' ') + ' UTC', ''];
-    for (var g = 0; g < groups.length; g++) {
-      lines.push('## ' + groups[g].label, '');
-      for (var k = 0; k < groups[g].items.length; k++) {
-        var it = groups[g].items[k];
-        lines.push('- [' + it.title + '](' + it.link + ')' +
-          (it.source ? ' — ' + it.source : '') + (it.pubDate ? ' — ' + it.pubDate : ''));
-      }
+  candidates.sort(function (a, b) { return b.score - a.score; });
+  var top = candidates.slice(0, TOP_N);
+
+  if (top.length > 0) {
+    for (var k = 0; k < top.length; k++) {
+      top[k].resolvedLink = await resolveArticleLink(top[k].link);
+    }
+
+    var now = new Date();
+    var lines = [
+      '# GTA News Scan — ' + now.toISOString().slice(0, 16).replace('T', ' ') + ' UTC',
+      '',
+      'Top ' + top.length + ' by relevance score, out of ' + candidates.length + ' new item(s) seen this scan.',
+      '',
+    ];
+    for (var n = 0; n < top.length; n++) {
+      var it = top[n];
+      lines.push('### ' + (n + 1) + '. ' + it.title);
+      lines.push('- **Topic:** ' + it.topic);
+      lines.push('- **Source:** ' + (it.source || 'Unknown'));
+      lines.push('- **Published:** ' + (it.pubDate || 'Unknown'));
+      lines.push('- **Relevance score:** ' + it.score);
+      lines.push('- **Link:** ' + it.resolvedLink);
       lines.push('');
     }
     var stamp = now.toISOString().slice(0, 16).replace(/[:T]/g, '-');
     fs.writeFileSync(path.join(scanDir, stamp + '.md'), lines.join('\n') + '\n');
-    console.log('Wrote ' + totalNew + ' new item(s) to news-scan/' + stamp + '.md');
+    console.log('Wrote top ' + top.length + ' of ' + candidates.length + ' new item(s) to news-scan/' + stamp + '.md');
   } else {
     console.log('No new items found this scan.');
   }
