@@ -2,8 +2,10 @@ const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
-/* Free Google News RSS search, no API key. Each query covers one of the
-   three topics you asked to track. */
+/* Free Bing News RSS search, no API key. Each query covers one of the
+   three topics you asked to track. Bing (unlike Google News RSS) gives
+   direct publisher links instead of an obfuscated redirect token, which
+   is what makes real backlinks/accreditation possible here. */
 var QUERIES = [
   { id: 'gta6', label: 'GTA 6', q: '("GTA 6" OR "GTA VI" OR "Grand Theft Auto 6" OR "Grand Theft Auto VI")' },
   { id: 'gta5', label: 'GTA 5 / GTA V', q: '("GTA 5" OR "GTA V" OR "Grand Theft Auto V") -"GTA VI"' },
@@ -12,6 +14,8 @@ var QUERIES = [
 
 var TOP_N = 3;
 var RETENTION_DAYS = 14;
+var MAX_AGE_HOURS = 30;
+var REDIRECT_WRAPPER_HOSTS = ['news.google.com', 'bing.com', 'www.bing.com', 'msn.com', 'www.msn.com'];
 
 /* Rough, transparent heuristic since there's no LLM in this pipeline —
    not editorial judgment, just keyword-based triage to surface the
@@ -58,22 +62,37 @@ function fetchUrl (url, redirectsLeft) {
   });
 }
 
-/* Google News RSS links are redirect wrappers, not the publisher's real
-   URL. Follow them (and fall back to a <link rel="canonical"> in the
-   response body) to get the actual source link. If neither works, keep
-   the working Google News link rather than shipping a broken one. */
-async function resolveArticleLink (googleUrl) {
+function isWrapperHost (hostname) {
+  return REDIRECT_WRAPPER_HOSTS.some(function (h) { return hostname === h || hostname.slice(-h.length - 1) === '.' + h; });
+}
+
+/* Bing gives direct links most of the time, so skip the network round
+   trip when the host already looks like the real publisher. When it is
+   a known aggregator/redirect host, follow it (and fall back to a
+   <link rel="canonical"> in the response body) to reach the actual
+   source. If neither works, keep the original link rather than
+   shipping a broken one. */
+async function resolveArticleLink (rawUrl) {
+  var hostname = '';
+  try { hostname = new URL(rawUrl).hostname; } catch (err) { /* leave blank, treat as non-wrapper below */ }
+  if (!hostname || !isWrapperHost(hostname)) return rawUrl;
+
   try {
-    var result = await fetchUrl(googleUrl);
-    if (result.finalUrl && result.finalUrl.indexOf('news.google.com') === -1) {
-      return result.finalUrl;
-    }
+    var result = await fetchUrl(rawUrl);
+    var finalHost = '';
+    try { finalHost = new URL(result.finalUrl).hostname; } catch (err) { /* fall through to canonical check */ }
+    if (finalHost && !isWrapperHost(finalHost)) return result.finalUrl;
+
     var m = result.body && result.body.match(/<link rel="canonical" href="([^"]+)"/);
-    if (m && m[1].indexOf('news.google.com') === -1) return m[1];
+    if (m) {
+      var canonicalHost = '';
+      try { canonicalHost = new URL(m[1]).hostname; } catch (err) { /* ignore, skip fallback */ }
+      if (canonicalHost && !isWrapperHost(canonicalHost)) return m[1];
+    }
   } catch (err) {
-    console.error('Could not resolve link for ' + googleUrl + ':', err.message);
+    console.error('Could not resolve link for ' + rawUrl + ':', err.message);
   }
-  return googleUrl;
+  return rawUrl;
 }
 
 function extractTag (block, tag) {
@@ -91,6 +110,15 @@ function decodeXml (str) {
     .replace(/&#39;/g, "'");
 }
 
+function extractSource (block) {
+  var candidates = ['News:Source', 'source', 'Source'];
+  for (var i = 0; i < candidates.length; i++) {
+    var val = extractTag(block, candidates[i]);
+    if (val) return val;
+  }
+  return '';
+}
+
 function parseItems (xml) {
   var items = [];
   var blocks = xml.split('<item>').slice(1);
@@ -99,12 +127,19 @@ function parseItems (xml) {
     var title = extractTag(block, 'title');
     var link = extractTag(block, 'link');
     var pubDate = extractTag(block, 'pubDate');
-    var source = extractTag(block, 'source');
+    var source = extractSource(block);
     if (title && link) {
       items.push({ title: decodeXml(title), link: link.trim(), pubDate: pubDate, source: decodeXml(source) });
     }
   }
   return items;
+}
+
+function isRecent (pubDate) {
+  if (!pubDate) return true;
+  var parsed = Date.parse(pubDate);
+  if (isNaN(parsed)) return true;
+  return (Date.now() - parsed) <= MAX_AGE_HOURS * 60 * 60 * 1000;
 }
 
 function scoreItem (item) {
@@ -144,8 +179,7 @@ async function run () {
 
   for (var i = 0; i < QUERIES.length; i++) {
     var query = QUERIES[i];
-    var url = 'https://news.google.com/rss/search?q=' + encodeURIComponent(query.q + ' when:1d') +
-      '&hl=en-US&gl=US&ceid=US:en';
+    var url = 'https://www.bing.com/news/search?q=' + encodeURIComponent(query.q) + '&format=RSS';
 
     var items = [];
     try {
@@ -157,6 +191,7 @@ async function run () {
 
     for (var j = 0; j < items.length; j++) {
       var item = items[j];
+      if (!isRecent(item.pubDate)) continue;
       if (seenSet.has(item.link)) continue;
       seenSet.add(item.link);
       item.topic = query.label;
