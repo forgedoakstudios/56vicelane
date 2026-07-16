@@ -1,0 +1,28 @@
+name: GTA News Scan
+
+on:
+  schedule:
+    - cron: '0 13 * * *'
+    - cron: '0 19 * * *'
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node scripts/scan-news.js
+      - name: Commit scan results
+        run: |
+          git config user.name "56ViceLane Bot"
+          git config user.email "bot@56vicelane.com"
+          git add news-scan/
+          git diff --staged --quiet || git commit -m "News scan: $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push
