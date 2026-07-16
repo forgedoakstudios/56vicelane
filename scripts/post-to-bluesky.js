@@ -79,10 +79,15 @@ async function run () {
     }
 
     if (post.posted) continue;
-    var due = new Date(post.scheduledFor);
-    if (due > now) continue;
 
-    var text = post.text;
+    /* Breaking items skip the scheduledFor gate entirely — they post the
+       moment this script runs, instead of waiting for their queued time. */
+    if (!post.breaking) {
+      var due = new Date(post.scheduledFor);
+      if (due > now) continue;
+    }
+
+    var text = post.breaking ? '🚨 BREAKING: ' + post.text : post.text;
     if (post.url) text += ' ' + post.url;
 
     try {
