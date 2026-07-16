@@ -83,6 +83,9 @@ async function resolveArticleLink (rawUrl) {
     try { finalHost = new URL(result.finalUrl).hostname; } catch (err) { /* fall through to canonical check */ }
     if (finalHost && !isWrapperHost(finalHost)) return result.finalUrl;
 
+    console.log('[debug] resolve body preview for ' + rawUrl.slice(0, 60) + ': ' +
+      JSON.stringify((result.body || '').slice(0, 1500)));
+
     var m = result.body && result.body.match(/<link rel="canonical" href="([^"]+)"/);
     if (m) {
       var canonicalHost = '';
@@ -179,7 +182,8 @@ async function run () {
 
   for (var i = 0; i < QUERIES.length; i++) {
     var query = QUERIES[i];
-    var url = 'https://www.bing.com/news/search?q=' + encodeURIComponent(query.q) + '&format=RSS';
+    var url = 'https://news.google.com/rss/search?q=' + encodeURIComponent(query.q + ' when:1d') +
+      '&hl=en-US&gl=US&ceid=US:en';
 
     var items = [];
     try {
