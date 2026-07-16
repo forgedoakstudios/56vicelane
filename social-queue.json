@@ -61,5 +61,23 @@
     "imageAlt": "GTA6 key art",
     "scheduledFor": "2026-07-16T23:00:00Z",
     "posted": false
+  },
+  {
+    "id": "article-preorders-record-1",
+    "text": "GTA6's pre-order campaign is already the strongest ever recorded — and analysts see up to $5 billion in launch week revenue. We break down what's confirmed vs. projected →",
+    "url": "https://56vicelane.com/articles/gta6-preorders-record-5-billion-launch-week",
+    "image": "images/gta6-hero.png",
+    "imageAlt": "GTA6 pre-order sales record",
+    "scheduledFor": "2026-07-17T00:10:00Z",
+    "posted": false
+  },
+  {
+    "id": "article-kurtaj-retrial-1",
+    "text": "The hacker behind the infamous 2022 GTA6 leak has been released from a secure hospital — his retrial is set for November 2026, the same month the game launches. Full story →",
+    "url": "https://56vicelane.com/articles/gta6-leak-hacker-kurtaj-retrial-november",
+    "image": "images/gta6-hero.png",
+    "imageAlt": "GTA6 leak case legal update",
+    "scheduledFor": "2026-07-17T01:25:00Z",
+    "posted": false
   }
 ]
