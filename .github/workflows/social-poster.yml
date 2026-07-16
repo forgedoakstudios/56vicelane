@@ -1,0 +1,27 @@
+name: Social Queue Poster
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install @atproto/api
+      - run: node scripts/post-to-bluesky.js
+        env:
+          BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+      - name: Commit updated queue
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add social-queue.json
+          git diff --staged --quiet || git commit -m "Mark posted items in social queue"
+          git push
