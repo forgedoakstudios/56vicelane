@@ -27,41 +27,49 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Barlow+Condensed:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
---pitch:#0B0B0F;--asphalt:#16161D;--amber:#FF6B1A;--amber-dim:#cc4a00;
---cyan:#00D4FF;--bone:#F0EDE8;--smoke:#7A7A8C;--edge:#26262F;
+--pitch:#FDFBF8;--asphalt:#FFFFFF;--amber:#FF6B2C;--amber-dim:#C4922A;
+--cyan:#D6247A;--bone:#211A16;--smoke:#6B5F52;--edge:#F0E6DA;
 --green:#00C875;--red:#FF3B3B;
 }
 body{background:var(--pitch);color:var(--bone);font-family:'Inter',sans-serif;font-size:1rem;line-height:1.7;}
 a{color:var(--amber);text-decoration:none;}
 a:hover{color:var(--cyan);}
+
+/* NAV */
 nav{background:var(--asphalt);border-bottom:2px solid var(--amber);padding:0 20px;position:sticky;top:0;z-index:200;}
 .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
-.nav-logo-box{background:var(--amber);color:#000;font-family:'Russo One',sans-serif;font-size:1.1rem;padding:4px 8px;border-radius:4px;}
-.nav-logo-text{font-family:'Russo One',sans-serif;font-size:1.1rem;color:var(--bone);letter-spacing:1px;}
+.nav-logo-box{background:var(--amber);color:#000;font-family:'Playfair Display',serif;font-size:1.1rem;padding:4px 8px;border-radius:4px;}
+.nav-logo-text{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--bone);letter-spacing:1px;}
 .nav-links{display:flex;gap:24px;list-style:none;}
 .nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;color:var(--smoke);letter-spacing:1px;text-transform:uppercase;transition:color 0.2s;}
 .nav-links a:hover,.nav-links a.active{color:var(--amber);}
+
+/* TICKER */
 .ticker-wrap{background:var(--amber);overflow:hidden;padding:6px 0;}
 .ticker-track{display:flex;gap:60px;white-space:nowrap;animation:ticker 20s linear infinite;}
 .ticker-item{font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;font-weight:700;color:#000;text-transform:uppercase;cursor:pointer;flex-shrink:0;}
 @keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ARTICLE */
 .article-wrap{max-width:780px;margin:0 auto;padding:40px 20px 80px;}
 .article-category{font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:12px;}
-.article-title{font-family:'Russo One',sans-serif;font-size:2rem;line-height:1.2;color:var(--bone);margin-bottom:16px;}
+.article-title{font-family:'Playfair Display',serif;font-size:2rem;line-height:1.2;color:var(--bone);margin-bottom:16px;}
 .article-meta{font-size:0.85rem;color:var(--smoke);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
 .article-meta span{display:flex;align-items:center;gap:4px;}
 .article-hero{width:100%;border-radius:8px;margin-bottom:32px;display:block;}
-.article-body h2{font-family:'Russo One',sans-serif;font-size:1.3rem;color:var(--amber);margin:36px 0 14px;}
+.article-body h2{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--amber);margin:36px 0 14px;}
 .article-body h3{font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;font-weight:700;color:var(--cyan);margin:24px 0 10px;text-transform:uppercase;letter-spacing:1px;}
 .article-body p{margin-bottom:18px;color:var(--bone);line-height:1.75;}
 .article-body ul,.article-body ol{margin:0 0 18px 24px;}
 .article-body li{margin-bottom:8px;color:var(--bone);}
 .article-body strong{color:var(--bone);font-weight:600;}
+
+/* CALLOUT BOXES */
 .callout{background:var(--edge);border-left:4px solid var(--amber);border-radius:6px;padding:20px 24px;margin:28px 0;}
 .callout.cyan{border-color:var(--cyan);}
 .callout.green{border-color:var(--green);}
@@ -71,8 +79,10 @@ nav{background:var(--asphalt);border-bottom:2px solid var(--amber);padding:0 20p
 .callout.green .callout-label{color:var(--green);}
 .callout.red .callout-label{color:var(--red);}
 .callout p{margin:0;font-size:0.95rem;}
+
+/* FACT BOX */
 .fact-box{background:var(--asphalt);border:1px solid var(--edge);border-radius:8px;padding:24px;margin:28px 0;}
-.fact-box-title{font-family:'Russo One',sans-serif;font-size:1rem;color:var(--amber);margin-bottom:16px;}
+.fact-box-title{font-family:'Playfair Display',serif;font-size:1rem;color:var(--amber);margin-bottom:16px;}
 .fact-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--edge);}
 .fact-row:last-child{border-bottom:none;}
 .fact-label{font-size:0.9rem;color:var(--smoke);}
@@ -80,6 +90,8 @@ nav{background:var(--asphalt);border-bottom:2px solid var(--amber);padding:0 20p
 .fact-value.confirmed{color:var(--green);}
 .fact-value.unconfirmed{color:var(--amber);}
 .fact-value.fake{color:var(--red);}
+
+/* SHARE BAR */
 .share-bar{display:flex;gap:10px;flex-wrap:wrap;margin:32px 0;}
 .share-bar a{display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:6px;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s;}
 .share-bar a:hover{opacity:0.85;}
@@ -87,57 +99,79 @@ nav{background:var(--asphalt);border-bottom:2px solid var(--amber);padding:0 20p
 .share-twitter{background:#000;color:#fff;}
 .share-reddit{background:#FF4500;color:#fff;}
 .share-copy{background:var(--edge);color:var(--bone);border:1px solid var(--smoke);}
+
+/* GEAR SECTION */
 .gear-section{background:var(--asphalt);border:1px solid var(--edge);border-radius:8px;padding:28px;margin:40px 0;}
-.gear-section h3{font-family:'Russo One',sans-serif;font-size:1.1rem;color:var(--amber);margin-bottom:6px;}
+.gear-section h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--amber);margin-bottom:6px;}
 .gear-section p{font-size:0.9rem;color:var(--smoke);margin-bottom:20px;}
 .gear-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .gear-item{background:var(--edge);border-radius:6px;padding:14px;display:flex;flex-direction:column;gap:8px;}
 .gear-item-name{font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;font-weight:700;color:var(--bone);}
 .gear-item-link{display:inline-block;background:var(--amber);color:#000;font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;font-weight:700;padding:6px 12px;border-radius:4px;text-transform:uppercase;letter-spacing:1px;text-align:center;}
 .gear-item-link:hover{background:var(--amber-dim);color:#000;}
-.lastdrive-cta{background:linear-gradient(135deg,#1a0a00,var(--edge));border:2px solid var(--amber);border-radius:8px;padding:28px;margin:40px 0;text-align:center;}
-.lastdrive-cta h3{font-family:'Russo One',sans-serif;font-size:1.2rem;color:var(--amber);margin-bottom:8px;}
+
+/* LAST DRIVE CTA */
+.lastdrive-cta{background:var(--asphalt);border:2px solid var(--amber);border-radius:8px;padding:28px;margin:40px 0;text-align:center;}
+.lastdrive-cta h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--amber);margin-bottom:8px;}
 .lastdrive-cta p{font-size:0.95rem;color:var(--smoke);margin-bottom:20px;}
-.lastdrive-cta a{display:inline-block;background:var(--amber);color:#000;font-family:'Russo One',sans-serif;font-size:1rem;padding:12px 28px;border-radius:6px;text-decoration:none;letter-spacing:1px;}
+.lastdrive-cta a{display:inline-block;background:var(--amber);color:#000;font-family:'Playfair Display',serif;font-size:1rem;padding:12px 28px;border-radius:6px;text-decoration:none;letter-spacing:1px;}
 .lastdrive-cta a:hover{background:var(--amber-dim);}
+
+/* AD UNIT */
 .ad-unit{margin:32px 0;text-align:center;}
+
+/* FOOTER */
 footer{background:var(--asphalt);border-top:1px solid var(--edge);padding:40px 20px;}
 .footer-inner{max-width:1100px;margin:0 auto;text-align:center;}
 .footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:16px;}
 .footer-links a{font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;color:var(--smoke);text-transform:uppercase;letter-spacing:1px;}
 .footer-links a:hover{color:var(--amber);}
 .footer-disclaimer{font-size:0.8rem;color:var(--smoke);line-height:1.6;max-width:600px;margin:0 auto;}
+
 @media(max-width:600px){
 .article-title{font-size:1.5rem;}
 .gear-grid{grid-template-columns:1fr;}
 .nav-links{display:none;}
 }
 </style>
+<!-- 56ViceLane V2 navband (Vibrant Premium retheme) -->
+<style>
+.navband{background:#B5637A;display:flex;justify-content:center;gap:0;flex-wrap:wrap;}
+.navband a{color:#fff;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:12.5px;padding:14px 22px;transition:background .2s;}
+.navband a:hover{background:rgba(255,255,255,.1);}
+.navband a.active{background:rgba(255,255,255,.15);}
+</style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
 <div class="nav-inner">
 <a href="/" class="nav-logo">
 <span class="nav-logo-box">56</span>
 <span class="nav-logo-text">VICELANE</span>
 </a>
-<ul class="nav-links">
-<li><a href="/news">News</a></li>
-<li><a href="/gtacon">GTACON</a></li>
-<li><a href="/lastdrive">Last Drive</a></li>
-<li><a href="/wall">Wall of Honor</a></li>
-<li><a href="/shop">Gear</a></li>
-</ul>
 </div>
 </nav>
+<div class="navband">
+  <a href="/">Home</a>
+  <a href="/news" class="active">News</a>
+  <a href="/lastdrive">Last Drive</a>
+  <a href="/wall">Wall of Honor</a>
+  <a href="/members">Members</a>
+  <a href="/store">Store</a>
+  <a href="/gear">Gear</a>
+  <a href="/forum">Forum</a>
+</div>
 
+<!-- TICKER -->
 <div class="ticker-wrap">
 <div class="ticker-track" id="ticker-track">
 <span class="ticker-item">Loading latest GTA6 news...</span>
 </div>
 </div>
 
+<!-- ARTICLE -->
 <div class="article-wrap">
 
 <div class="article-category">⚖️ Industry News</div>
@@ -150,6 +184,7 @@ footer{background:var(--asphalt);border-top:1px solid var(--edge);padding:40px 2
 
 <img src="/images/gta6-hero.png" id="article-hero" alt="GTA6 leak case legal update" class="article-hero">
 
+<!-- SHARE BAR TOP -->
 <div class="share-bar">
 <a href="https://www.facebook.com/sharer/sharer.php?u=https://56vicelane.com/articles/gta6-leak-hacker-kurtaj-retrial-november" target="_blank" class="share-facebook">📘 Facebook</a>
 <a href="https://twitter.com/intent/tweet?url=https://56vicelane.com/articles/gta6-leak-hacker-kurtaj-retrial-november&text=The%20hacker%20who%20leaked%20GTA6%20is%20out%20of%20the%20hospital%20%E2%80%94%20his%20retrial%20lands%20the%20same%20month%20as%20the%20game" target="_blank" class="share-twitter">𝕏 Twitter</a>
@@ -157,6 +192,7 @@ footer{background:var(--asphalt);border-top:1px solid var(--edge);padding:40px 2
 <a href="#" onclick="navigator.clipboard.writeText(window.location.href);alert('Link copied!');return false;" class="share-copy">🔗 Copy Link</a>
 </div>
 
+<!-- AD UNIT 1 -->
 <div class="ad-unit">
 <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
 <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
@@ -240,6 +276,7 @@ footer{background:var(--asphalt);border-top:1px solid var(--edge);padding:40px 2
 
 </div><!-- end article-body -->
 
+<!-- SHARE BAR BOTTOM -->
 <div class="share-bar">
 <a href="https://www.facebook.com/sharer/sharer.php?u=https://56vicelane.com/articles/gta6-leak-hacker-kurtaj-retrial-november" target="_blank" class="share-facebook">📘 Facebook</a>
 <a href="https://twitter.com/intent/tweet?url=https://56vicelane.com/articles/gta6-leak-hacker-kurtaj-retrial-november&text=The%20hacker%20who%20leaked%20GTA6%20is%20out%20of%20the%20hospital%20%E2%80%94%20his%20retrial%20lands%20the%20same%20month%20as%20the%20game" target="_blank" class="share-twitter">𝕏 Twitter</a>
@@ -247,6 +284,7 @@ footer{background:var(--asphalt);border-top:1px solid var(--edge);padding:40px 2
 <a href="#" onclick="navigator.clipboard.writeText(window.location.href);alert('Link copied!');return false;" class="share-copy">🔗 Copy Link</a>
 </div>
 
+<!-- LAST DRIVE CTA -->
 <div class="lastdrive-cta">
 <h3>🏁 The Last Drive — November 18, 2026</h3>
 <p>The night before GTA6 launches — join thousands of players for one final cruise through GTA5. Free. All platforms. No killing. No chaos. Just the road.</p>
@@ -257,6 +295,7 @@ footer{background:var(--asphalt);border-top:1px solid var(--edge);padding:40px 2
 
 </div><!-- end article-wrap -->
 
+<!-- FOOTER -->
 <footer>
 <div class="footer-inner">
 <div class="footer-links">
@@ -264,7 +303,6 @@ footer{background:var(--asphalt);border-top:1px solid var(--edge);padding:40px 2
 <a href="/news">News</a>
 <a href="/lastdrive">Last Drive</a>
 <a href="/wall">Wall of Honor</a>
-<a href="/gtacon">GTACON</a>
 <a href="/shop">Gear</a>
 <a href="/privacy">Privacy</a>
 <a href="/contact">Contact</a>
@@ -305,5 +343,6 @@ break;
 .catch(function(){});
 </script>
 
+<script src="/back-to-top.js" defer></script>
 </body>
 </html>
