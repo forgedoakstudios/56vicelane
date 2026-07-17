@@ -95,6 +95,18 @@ jobs:
 
           echo "Moved $FILEPATH → $DEST_DIR/$FILENAME"
 
+      - name: Setup Node.js
+        if: steps.draft.outputs.found == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Queue a Bluesky post for the published article
+        if: steps.draft.outputs.found == 'true'
+        run: |
+          FILENAME="${{ steps.draft.outputs.filename }}"
+          node scripts/queue-article-post.js "articles/$FILENAME"
+
       - name: Commit and push
         if: steps.draft.outputs.found == 'true'
         run: |
@@ -103,6 +115,8 @@ jobs:
 
           git config user.name "Vice Frequency Bot"
           git config user.email "bot@56vicelane.com"
+
+          git add social-queue.json
 
           PUBLISH_TIME=$(date -u +"%Y-%m-%d %H:%M UTC")
           git commit -m "publish: $FILENAME [$SLOT slot] — $PUBLISH_TIME"
