@@ -15,6 +15,18 @@ try {
 // Keep permanent articles (like GTACON tracker, Last Drive event page)
 const permanent = existing.filter(a => a.permanent === true);
 
+// Meta/OG content is raw HTML attribute text — decode entities so a title
+// that needed &quot; to hold a literal quote mark doesn't show up on-site
+// as literal "&quot;" text.
+function decodeEntities(str) {
+  return String(str)
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>');
+}
+
 // Dates already in articles.json, by slug — trusted over file mtime so a
 // CI rebuild never re-stamps existing articles (in a fresh checkout every
 // file's mtime is the checkout time, which used to overwrite every date
@@ -89,15 +101,15 @@ const files = fs.readdirSync(ARTICLES_DIR)
     const category = getMeta('category') || getOG('section') || 'GTA6 News';
 
     // Get excerpt
-    const excerpt = getMeta('description') || getOG('description') || '';
+    const excerpt = decodeEntities(getMeta('description') || getOG('description') || '');
 
     // Get emoji from meta or default
     const emoji = getMeta('emoji') || '🎮';
 
     // Get headline (subtitle)
-    const headline = getMeta('headline') || h1 || '';
+    const headline = decodeEntities(getMeta('headline') || h1 || '');
 
-    const title = getMeta('title') || getOG('title') || pageTitle;
+    const title = decodeEntities(getMeta('title') || getOG('title') || pageTitle);
 
     return {
       emoji,
