@@ -20,7 +20,7 @@
     "url": "https://56vicelane.com/lastdrive",
     "image": "images/lastdrive-hero.webp",
     "imageAlt": "The Last Drive countdown",
-    "lastPostedDate": null
+    "lastPostedDate": "2026-07-17"
   },
   {
     "id": "lastdrive-signup-1",
@@ -29,7 +29,7 @@
     "image": "images/lastdrive-hero.webp",
     "imageAlt": "The Last Drive event key art",
     "scheduledFor": "2026-07-16T17:15:00Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "discord-invite-1",
@@ -45,7 +45,7 @@
     "image": "images/homepage-hero.webp",
     "imageAlt": "56ViceLane site preview",
     "scheduledFor": "2026-07-16T19:35:00Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "youtube-sub-1",
