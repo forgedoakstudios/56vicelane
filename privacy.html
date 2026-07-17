@@ -12,28 +12,41 @@
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/vicelane.css">
+
+<!-- 56ViceLane V2 — Vibrant Premium palette override (see design-system-addendum.md) -->
+<style>
+:root{
+  --pitch: #FDFBF8;
+  --asphalt: #FFFFFF;
+  --edge: #F0E6DA;
+  --amber: #FF6B2C;
+  --cyan: #D6247A;
+  --bone: #211A16;
+  --smoke: #6B5F52;
+  --green: #00C875;
+  --red: #FF3B3B;
+  --font-display: 'Playfair Display', serif;
+  --font-label: 'Barlow Condensed', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+</style>
 </head>
 <body>
 <div class="ticker-wrap"><div class="ticker-track" id="ticker-track"><span class="ticker-item">56ViceLane — Where GTA5 Ends And GTA6 Begins</span></div></div>
 <nav class="nav">
   <a class="logo" href="/"><span class="logo-mark">56</span><span class="logo-text">ViceLane</span></a>
-  <div class="nav-links">
-    <a href="/news">News</a><a href="/gtacon">GTACON</a><a href="/lastdrive">Last Drive</a>
-    <a href="/members">Members</a><a href="/store">Store</a><a href="/gear">Gear</a>
-    <a href="/tools">Tools</a><a href="/forum">Forum</a>
-  </div>
-  <button class="menu-toggle" id="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
 </nav>
-<div class="nav-mobile" id="nav-mobile">
-  <a href="/news">News</a><a href="/gtacon">GTACON</a><a href="/lastdrive">Last Drive</a>
-  <a href="/members">Members</a><a href="/store">Store</a><a href="/gear">Gear</a>
-  <a href="/tools">Tools</a><a href="/forum">Forum</a>
-  <div class="mobile-divider"></div>
-  <a href="/about">About</a><a href="/contact">Contact</a>
-  <div class="mobile-divider"></div>
-  <a href="/privacy">Privacy</a><a href="/terms">Terms</a>
+<div class="navband">
+  <a href="/">Home</a>
+  <a href="/news">News</a>
+  <a href="/lastdrive">Last Drive</a>
+  <a href="/wall">Wall of Honor</a>
+  <a href="/members">Members</a>
+  <a href="/store">Store</a>
+  <a href="/gear">Gear</a>
+  <a href="/forum">Forum</a>
 </div>
 
 <div class="legal-wrap">
@@ -110,7 +123,7 @@
   <div class="footer-brand"><span class="logo-mark">56</span>ViceLane</div>
   <div class="footer-tag">Where GTA5 Ends And GTA6 Begins</div>
   <div class="footer-links">
-    <a href="/">Home</a><a href="/news">News</a><a href="/gtacon">GTACON</a>
+    <a href="/">Home</a><a href="/news">News</a>
     <a href="/lastdrive">Last Drive</a><a href="/members">Members</a>
     <a href="/store">Store</a><a href="/gear">Gear</a><a href="/tools">Tools</a>
     <a href="/forum">Forum</a><a href="/about">About</a><a href="/contact">Contact</a>
@@ -126,5 +139,6 @@ var mt=document.getElementById('menu-toggle'),nm=document.getElementById('nav-mo
 if(mt&&nm)mt.addEventListener('click',function(){nm.classList.toggle('open');});
 (function(){var KEY='56vl-debug',active=localStorage.getItem(KEY)==='1';function applyDebug(){var ind=document.getElementById('vl-debug-ind');if(!ind){ind=document.createElement('div');ind.id='vl-debug-ind';ind.textContent='\uD83D\uDD27 DEBUG ON';ind.onclick=function(){active=false;localStorage.setItem(KEY,'0');applyDebug();};document.body.appendChild(ind);}ind.style.display=active?'block':'none';}var el=document.getElementById('vl-copyright'),timer=null;if(el){el.style.userSelect='none';el.addEventListener('touchstart',function(e){e.preventDefault();timer=setTimeout(function(){active=!active;localStorage.setItem(KEY,active?'1':'0');applyDebug();},1500);},{passive:false});el.addEventListener('touchend',function(){clearTimeout(timer);});el.addEventListener('touchmove',function(){clearTimeout(timer);});}applyDebug();})();
 </script>
+<script src="/back-to-top.js" defer></script>
 </body>
 </html>

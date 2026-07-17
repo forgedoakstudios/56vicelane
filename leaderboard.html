@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leaderboard &amp; Badges — 56ViceLane Community</title>
+<meta name="description" content="The 56ViceLane community leaderboard: Last Drive convoy members, Clear The Lanes supporters, and the badges that prove you were here before launch.">
+<link rel="canonical" href="https://56vicelane.com/leaderboard.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600..900&family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/vf.css">
+<style>
+.lb{width:100%;border-collapse:collapse}
+.lb td,.lb th{padding:14px 12px;border-bottom:1px solid var(--line);text-align:left}
+.lb th{font-family:var(--font-m);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}
+.lb tr{transition:background .2s}
+.lb tbody tr:hover{background:rgba(183,155,232,.06)}
+.rank{font-family:var(--font-d);font-size:1.3rem;color:var(--peach);width:56px}
+.pips{display:flex;gap:6px}
+.pip{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:.72rem;
+  border:1px solid var(--line);background:var(--ink-2)}
+.badge-card{text-align:center}
+.badge-icon{
+  width:74px;height:74px;margin:0 auto 14px;border-radius:50%;display:grid;place-items:center;font-size:1.7rem;
+  background:radial-gradient(circle at 32% 28%, rgba(247,237,226,.18), transparent 60%), var(--panel);
+  border:1px solid var(--line);transition:transform .3s,box-shadow .3s;
+}
+.badge-card:hover .badge-icon{transform:rotate(-8deg) scale(1.08);box-shadow:0 0 34px -8px var(--cyan)}
+</style>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/">56VICELANE <span class="freq">VF·56.6</span></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">MENU</button>
+    <nav class="nav-links" id="nav-links">
+      <a href="/">Home</a>
+      <a href="/news.html">News</a>
+      <a href="/gta6.html">GTA 6 Hub</a>
+      <a href="/radio.html">Radio</a>
+      <a href="/leaderboard.html" aria-current="page">Community</a>
+      <a href="/gear.html">Gear</a>
+    </nav>
+  </div>
+  <div class="horizon"></div>
+</header>
+
+<main>
+<section class="hero" style="padding-bottom:44px">
+  <div class="wrap">
+    <p class="eyebrow reveal">COMMUNITY STANDINGS</p>
+    <h1 class="reveal">The Leaderboard</h1>
+    <p class="lede reveal mt-1">Badges for the people who showed up — Last Drive convoy members, Clear The Lanes supporters, and the day-one crew. When accounts go live, your profile carries these forever.</p>
+    <div class="reveal mt-2" style="display:flex;gap:12px;flex-wrap:wrap">
+      <a class="btn btn-coral" href="/lastdrive.html">Join The Last Drive</a>
+      <a class="btn btn-ghost" href="/members.html">Members</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:50px">
+  <div class="wrap">
+    <p class="eyebrow reveal">EARNABLE</p>
+    <h2 class="reveal">Badges</h2>
+    <div class="grid g4 mt-3">
+      <div class="card badge-card reveal"><div class="badge-icon">🏁</div><h3>Last Driver</h3><p>Rolled with the convoy on November 18, 2026.</p></div>
+      <div class="card badge-card reveal"><div class="badge-icon">🛣️</div><h3>Lane Clearer</h3><p>Signed and shared the #ClearTheLanes campaign.</p></div>
+      <div class="card badge-card reveal"><div class="badge-icon">📻</div><h3>Frequency Head</h3><p>Tuned every station on Vice Frequency Radio.</p></div>
+      <div class="card badge-card reveal"><div class="badge-icon">🌅</div><h3>Day One</h3><p>Was here before the sun came up on Leonida.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink-2)">
+  <div class="wrap">
+    <p class="eyebrow reveal">CONVOY ROSTER</p>
+    <h2 class="reveal">Standings</h2>
+    <p class="lede reveal mt-1" style="font-size:.95rem">Wired to member accounts at launch of the members area — the roster below shows how it'll look.</p>
+    <div class="card reveal mt-3" style="overflow-x:auto">
+      <table class="lb" id="lbTable">
+        <thead><tr><th>#</th><th>Driver</th><th>Badges</th><th>Points</th></tr></thead>
+        <tbody>
+          <tr><td class="rank">01</td><td><b>Your gamertag here</b></td><td><div class="pips"><span class="pip">🏁</span><span class="pip">🛣️</span><span class="pip">📻</span></div></td><td class="mono">—</td></tr>
+          <tr><td class="rank">02</td><td>Open seat</td><td><div class="pips"><span class="pip">🛣️</span></div></td><td class="mono">—</td></tr>
+          <tr><td class="rank">03</td><td>Open seat</td><td><div class="pips"><span class="pip">🌅</span></div></td><td class="mono">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="horizon"></div>
+    <p class="foot-note">© 2026 Forged Oak Studios · Independent fan site — not affiliated with Rockstar Games or Take-Two Interactive. <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p>
+  </div>
+</footer>
+
+<script src="/assets/vf.js"></script>
+<script src="/back-to-top.js" defer></script>
+</body>
+</html>

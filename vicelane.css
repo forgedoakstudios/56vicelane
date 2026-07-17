@@ -4,6 +4,17 @@
    Forged Oak Studios · forgedoakstudios@gmail.com
    Last updated: June 11, 2026
 
+   RETHEME NOTE — July 9, 2026:
+   Palette flipped from dark (navy/amber/cyan) to light
+   (cream/orange/magenta) per the "Vibrant Premium" direction.
+   See design-system-addendum.md for full rationale.
+   All selectors, mechanics (sticky positioning, ticker timing,
+   hamburger-nav logic) are UNCHANGED — only color/font values
+   were touched. Two contrast bugs were fixed as part of this
+   pass: .cat-tag and .btn-cyan previously used black text on
+   what is now a dark magenta background — both switched to
+   white text to keep WCAG-reasonable contrast.
+
    RULES:
    - This file is the ONLY place for shared styles
    - Every page links this — nothing duplicated inline
@@ -12,41 +23,32 @@
    - Change here once → whole site updates
    ============================================================ */
 
-/* ============================================================
-   1. CSS VARIABLES
-   ============================================================ */
 :root {
-  /* Colors */
-  --pitch:      #0B0B0F;
-  --asphalt:    #16161D;
-  --edge:       #26262F;
-  --amber:      #FF6B1A;
-  --amber-dim:  #cc4a00;
-  --cyan:       #00D4FF;
-  --bone:       #F0EDE8;
-  --smoke:      #9A9AAC;
-  --smoke-dim:  #7A7A8C;
+  --pitch:      #FDFBF8;
+  --asphalt:    #FFFFFF;
+  --edge:       #F0E6DA;
+  --amber:      #FF6B2C;
+  --amber-dim:  #C4922A;
+  --cyan:       #D6247A;
+  --bone:       #211A16;
+  --smoke:      #6B5F52;
+  --smoke-dim:  #A79C8C;
   --green:      #00C875;
   --red:        #FF3B3B;
   --gold:       #FFD700;
+  --navband:    #B5637A;
 
-  /* Typography */
-  --font-display: 'Russo One', sans-serif;
+  --font-display: 'Playfair Display', serif;
   --font-label:   'Barlow Condensed', sans-serif;
   --font-body:    'Inter', sans-serif;
 
-  /* Layout */
   --read-width:  760px;
   --wide-width:  1000px;
   --line:        1.75;
 
-  /* Ticker — LOCKED 20s — never change */
   --ticker-speed: 20s;
 }
 
-/* ============================================================
-   2. RESET & BASE
-   ============================================================ */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -67,12 +69,11 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   background-image:
-    radial-gradient(900px 500px at 80% -10%, rgba(255,107,26,.08), transparent 60%),
-    radial-gradient(700px 400px at -10% 5%, rgba(0,212,255,.06), transparent 55%);
+    radial-gradient(900px 500px at 80% -10%, rgba(255,107,44,.08), transparent 60%),
+    radial-gradient(700px 400px at -10% 5%, rgba(214,36,122,.06), transparent 55%);
   background-attachment: fixed;
 }
 
-/* Grain texture overlay */
 body::before {
   content: '';
   position: fixed;
@@ -99,9 +100,6 @@ img {
   display: block;
 }
 
-/* ============================================================
-   3. TICKER — LOCKED 20s — DO NOT CHANGE SPEED
-   ============================================================ */
 .ticker-wrap {
   background: var(--amber);
   overflow: hidden;
@@ -136,16 +134,13 @@ img {
   to   { transform: translateX(-50%); }
 }
 
-/* ============================================================
-   4. NAVIGATION
-   ============================================================ */
 .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 13px 20px;
   border-bottom: 1px solid var(--edge);
-  background: rgba(11,11,15,.92);
+  background: rgba(253,251,248,.92);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   position: sticky;
@@ -154,7 +149,6 @@ img {
   gap: 12px;
 }
 
-/* Logo */
 .logo {
   display: flex;
   align-items: center;
@@ -171,7 +165,7 @@ img {
   padding: 3px 9px;
   border-radius: 5px;
   line-height: 1.2;
-  box-shadow: 0 0 16px rgba(255,107,26,.45);
+  box-shadow: 0 0 16px rgba(255,107,44,.45);
 }
 
 .logo-text {
@@ -183,7 +177,6 @@ img {
   color: var(--bone);
 }
 
-/* Desktop nav links */
 .nav-links {
   display: none;
   align-items: center;
@@ -214,7 +207,6 @@ img {
   border-bottom-color: var(--amber);
 }
 
-/* Hamburger */
 .menu-toggle {
   display: flex;
   flex-direction: column;
@@ -235,7 +227,6 @@ img {
   transition: all .3s;
 }
 
-/* Mobile nav drawer */
 .nav-mobile {
   display: none;
   position: fixed;
@@ -247,7 +238,7 @@ img {
   z-index: 189;
   flex-direction: column;
   padding: 8px 0 16px;
-  box-shadow: 0 8px 24px rgba(0,0,0,.6);
+  box-shadow: 0 8px 24px rgba(33,26,22,.12);
 }
 
 .nav-mobile.open {
@@ -270,7 +261,7 @@ img {
 .nav-mobile a:hover,
 .nav-mobile a.active {
   color: var(--amber);
-  background: rgba(255,107,26,.05);
+  background: rgba(255,107,44,.05);
 }
 
 .mobile-divider {
@@ -279,7 +270,6 @@ img {
   margin: 8px 20px;
 }
 
-/* Hamburger-only nav — all screen sizes */
 @media (min-width: 768px) {
   .nav {
     padding: 14px 28px;
@@ -287,8 +277,44 @@ img {
 }
 
 /* ============================================================
-   5. FOOTER
+   4B. NAV BAND — ALWAYS-VISIBLE TEXT NAV, SITE-WIDE
+   Added July 9, 2026 — overrides the original hamburger-only
+   rule. See design-system-addendum.md "RULE OVERRIDE" section.
+   Updated July 9, 2026 — 8 links now (added Wall of Honor).
+   Markup: <div class="navband"><a class="active" href="/">Home</a>...
+   Position: directly BELOW the hero image on every page, not above.
+   Same 8 links, same order, on every page:
+   Home / News / Last Drive / Wall of Honor / Members / Store / Gear / Forum
    ============================================================ */
+.navband {
+  background: var(--navband);
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.navband a {
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--font-label);
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 12.5px;
+  padding: 14px 22px;
+  transition: background .2s;
+}
+
+.navband a:hover {
+  background: rgba(255,255,255,.1);
+  text-decoration: none;
+}
+
+.navband a.active {
+  background: rgba(255,255,255,.15);
+}
+
 footer {
   border-top: 1px solid var(--edge);
   padding: 36px 20px 28px;
@@ -348,10 +374,9 @@ footer {
   color: var(--amber);
 }
 
-/* Admin link — small, barely visible, you know where it is */
 .footer-links .admin-link {
   font-size: .65rem;
-  color: #2a2a3a;
+  color: #E4DCCE;
   letter-spacing: .08em;
 }
 
@@ -361,7 +386,7 @@ footer {
 
 .footer-copy {
   font-size: .72rem;
-  color: #3a3a4a;
+  color: var(--smoke-dim);
   line-height: 1.6;
 }
 
@@ -373,9 +398,6 @@ footer {
   line-height: 1.6;
 }
 
-/* ============================================================
-   6. PAGE LAYOUT WRAPPERS
-   ============================================================ */
 .wrap {
   max-width: var(--read-width);
   margin: 0 auto;
@@ -392,9 +414,6 @@ footer {
   z-index: 2;
 }
 
-/* ============================================================
-   7. TYPOGRAPHY
-   ============================================================ */
 h1 {
   font-family: var(--font-display);
   font-size: clamp(1.8rem, 6vw, 3rem);
@@ -439,9 +458,6 @@ h3 {
   flex-shrink: 0;
 }
 
-/* ============================================================
-   8. BUTTONS
-   ============================================================ */
 .btn {
   display: inline-block;
   font-family: var(--font-display);
@@ -462,7 +478,7 @@ h3 {
 }
 
 .btn-primary:hover {
-  box-shadow: 0 0 24px rgba(255,107,26,.45);
+  box-shadow: 0 0 24px rgba(255,107,44,.45);
   text-decoration: none;
   color: #000;
 }
@@ -493,13 +509,13 @@ h3 {
 
 .btn-cyan {
   background: var(--cyan);
-  color: #000;
+  color: #fff;
 }
 
 .btn-cyan:hover {
-  box-shadow: 0 0 24px rgba(0,212,255,.4);
+  box-shadow: 0 0 24px rgba(214,36,122,.4);
   text-decoration: none;
-  color: #000;
+  color: #fff;
 }
 
 .btn-gold {
@@ -513,9 +529,6 @@ h3 {
   color: #000;
 }
 
-/* ============================================================
-   9. CARDS
-   ============================================================ */
 .card {
   background: var(--asphalt);
   border: 1px solid var(--edge);
@@ -534,11 +547,6 @@ h3 {
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 
-/* ============================================================
-   10. ARTICLE COMPONENTS
-   ============================================================ */
-
-/* Category tag */
 .cat-tag {
   display: inline-block;
   font-family: var(--font-label);
@@ -546,7 +554,7 @@ h3 {
   text-transform: uppercase;
   letter-spacing: .08em;
   font-size: .75rem;
-  color: #000;
+  color: #fff;
   background: var(--cyan);
   padding: 3px 10px;
   margin-bottom: 12px;
@@ -558,7 +566,6 @@ h3 {
 .cat-tag.community { background: var(--amber); color: #000; }
 .cat-tag.event { background: var(--amber); color: #000; }
 
-/* Source legend */
 .legend {
   background: var(--asphalt);
   border: 1px solid var(--edge);
@@ -576,12 +583,10 @@ h3 {
 .legend .lg-l { color: var(--cyan); }
 .legend .lg-x { color: var(--red); }
 
-/* Source markers */
 .cf { color: var(--green); font-weight: 700; }
 .lk { color: var(--cyan); font-weight: 700; }
 .cr { color: var(--red); font-weight: 700; }
 
-/* Article body */
 .body p {
   margin-bottom: 20px;
   font-size: 1.05rem;
@@ -617,7 +622,7 @@ h3 {
 }
 
 .bottom-line {
-  background: linear-gradient(135deg, rgba(255,107,26,.07), rgba(0,212,255,.04));
+  background: linear-gradient(135deg, rgba(255,107,44,.07), rgba(214,36,122,.04));
   border: 1px solid var(--edge);
   border-left: 4px solid var(--amber);
   padding: 18px 20px;
@@ -625,7 +630,6 @@ h3 {
   color: var(--smoke);
 }
 
-/* Byline */
 .byline {
   display: flex;
   flex-wrap: wrap;
@@ -646,9 +650,6 @@ h3 {
   font-weight: 700;
 }
 
-/* ============================================================
-   11. AD SLOTS
-   ============================================================ */
 .ad-slot {
   margin: 28px 0;
   text-align: center;
@@ -664,9 +665,6 @@ h3 {
   margin-bottom: 6px;
 }
 
-/* ============================================================
-   12. SHARE BAR
-   ============================================================ */
 .share-bar {
   display: flex;
   flex-wrap: wrap;
@@ -713,9 +711,6 @@ h3 {
 .share-btn.share-whatsapp{ background: #25D366; color: #fff; border-color: #25D366; }
 .share-btn.share-copy    { background: var(--edge); color: var(--bone); }
 
-/* ============================================================
-   13. RATINGS & COMMENTS
-   ============================================================ */
 .rate-box,
 .comments-box {
   background: var(--asphalt);
@@ -747,9 +742,6 @@ h3 {
 .stars span:hover { color: var(--amber); transform: scale(1.2); }
 .stars span.on { color: var(--amber); }
 
-/* ============================================================
-   14. FORM ELEMENTS
-   ============================================================ */
 .form-field {
   display: flex;
   flex-direction: column;
@@ -786,7 +778,7 @@ h3 {
 .form-select:focus,
 .form-textarea:focus {
   border-color: var(--amber);
-  box-shadow: 0 0 0 3px rgba(255,107,26,.08);
+  box-shadow: 0 0 0 3px rgba(255,107,44,.08);
 }
 
 .form-input::placeholder,
@@ -804,7 +796,6 @@ h3 {
   background: var(--asphalt);
 }
 
-/* Submit button */
 .form-submit {
   width: 100%;
   background: var(--amber);
@@ -821,7 +812,7 @@ h3 {
 }
 
 .form-submit:hover {
-  box-shadow: 0 0 28px rgba(255,107,26,.4);
+  box-shadow: 0 0 28px rgba(255,107,44,.4);
 }
 
 .form-submit:disabled {
@@ -829,7 +820,6 @@ h3 {
   cursor: not-allowed;
 }
 
-/* Toggle switch */
 .toggle-row {
   display: flex;
   justify-content: space-between;
@@ -890,9 +880,6 @@ h3 {
   background: var(--pitch);
 }
 
-/* ============================================================
-   15. SECTION DIVIDER / HEADERS
-   ============================================================ */
 .section-header-row {
   display: flex;
   align-items: baseline;
@@ -928,12 +915,9 @@ h3 {
   height: 1px;
   background: linear-gradient(90deg, var(--amber), transparent);
   margin: 36px 0;
-  box-shadow: 0 0 8px rgba(255,107,26,.2);
+  box-shadow: 0 0 8px rgba(255,107,44,.2);
 }
 
-/* ============================================================
-   16. COUNTDOWN TIMER
-   ============================================================ */
 .countdown-bar {
   background: var(--asphalt);
   border-top: 1px solid var(--edge);
@@ -986,9 +970,6 @@ h3 {
   color: var(--smoke);
 }
 
-/* ============================================================
-   17. NEWS CARD GRID
-   ============================================================ */
 .news-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -1049,9 +1030,6 @@ h3 {
   color: var(--smoke);
 }
 
-/* ============================================================
-   18. PLATE DISPLAY COMPONENT
-   ============================================================ */
 .plate-display {
   width: 100%;
   aspect-ratio: 2.5 / 1;
@@ -1077,7 +1055,7 @@ h3 {
   text-transform: uppercase;
   letter-spacing: .1em;
   color: #fff;
-  text-shadow: 0 0 16px rgba(255,107,26,.5), 0 2px 6px rgba(0,0,0,.9);
+  text-shadow: 0 0 16px rgba(255,107,44,.5), 0 2px 6px rgba(0,0,0,.9);
   -webkit-text-stroke: 1px rgba(0,0,0,.5);
   text-align: center;
 }
@@ -1089,9 +1067,6 @@ h3 {
   margin-top: 4px;
 }
 
-/* ============================================================
-   19. BADGE COMPONENTS
-   ============================================================ */
 .badge {
   font-family: var(--font-label);
   font-weight: 700;
@@ -1102,16 +1077,13 @@ h3 {
   display: inline-block;
 }
 
-.badge-amber  { color: var(--amber); background: rgba(255,107,26,.1); border: 1px solid rgba(255,107,26,.2); }
-.badge-cyan   { color: var(--cyan);  background: rgba(0,212,255,.1);  border: 1px solid rgba(0,212,255,.2); }
+.badge-amber  { color: var(--amber); background: rgba(255,107,44,.1); border: 1px solid rgba(255,107,44,.2); }
+.badge-cyan   { color: var(--cyan);  background: rgba(214,36,122,.1);  border: 1px solid rgba(214,36,122,.2); }
 .badge-green  { color: var(--green); background: rgba(0,200,117,.1);  border: 1px solid rgba(0,200,117,.2); }
 .badge-gold   { color: var(--gold);  background: rgba(255,215,0,.08); border: 1px solid rgba(255,215,0,.25); }
 .badge-smoke  { color: var(--smoke); background: var(--asphalt);      border: 1px solid var(--edge); }
 .badge-red    { color: var(--red);   background: rgba(255,59,59,.1);  border: 1px solid rgba(255,59,59,.2); }
 
-/* ============================================================
-   20. SUCCESS / ERROR MESSAGES
-   ============================================================ */
 .msg {
   padding: 12px 16px;
   font-size: .9rem;
@@ -1123,11 +1095,8 @@ h3 {
 .msg.show { display: block; }
 .msg.success { color: var(--green); background: rgba(0,200,117,.08); border: 1px solid rgba(0,200,117,.2); }
 .msg.error   { color: var(--red);   background: rgba(255,59,59,.08);  border: 1px solid rgba(255,59,59,.2); }
-.msg.info    { color: var(--cyan);  background: rgba(0,212,255,.08);  border: 1px solid rgba(0,212,255,.2); }
+.msg.info    { color: var(--cyan);  background: rgba(214,36,122,.08);  border: 1px solid rgba(214,36,122,.2); }
 
-/* ============================================================
-   21. SCROLL REVEAL
-   ============================================================ */
 .reveal {
   opacity: 0;
   transform: translateY(18px);
@@ -1139,9 +1108,6 @@ h3 {
   transform: translateY(0);
 }
 
-/* ============================================================
-   22. LEGAL PAGES
-   ============================================================ */
 .legal-wrap {
   max-width: var(--read-width);
   margin: 0 auto;
@@ -1190,9 +1156,6 @@ h3 {
   font-size: .98rem;
 }
 
-/* ============================================================
-   23. STORE BLOCK SYSTEM
-   ============================================================ */
 .store-block {
   padding: 52px 20px;
   border-bottom: 1px solid var(--edge);
@@ -1201,7 +1164,7 @@ h3 {
 }
 
 .store-block:nth-child(even) {
-  background: rgba(22,22,29,.5);
+  background: rgba(240,230,218,.45);
 }
 
 .store-block-inner {
@@ -1242,12 +1205,9 @@ h3 {
   height: 3px;
   background: var(--amber);
   margin: 16px 0 32px;
-  box-shadow: 0 0 8px rgba(255,107,26,.4);
+  box-shadow: 0 0 8px rgba(255,107,44,.4);
 }
 
-/* ============================================================
-   24. ANCHOR NAV (store / long pages)
-   ============================================================ */
 .anchor-nav {
   display: flex;
   justify-content: center;
@@ -1255,7 +1215,7 @@ h3 {
   border-top: 1px solid var(--edge);
   border-bottom: 1px solid var(--edge);
   padding: 13px 20px;
-  background: rgba(11,11,15,.6);
+  background: rgba(253,251,248,.85);
   position: sticky;
   top: 70px;
   z-index: 80;
@@ -1282,9 +1242,6 @@ h3 {
   color: var(--amber);
 }
 
-/* ============================================================
-   25. DEBUG MODE
-   ============================================================ */
 #vl-debug-ind {
   position: fixed;
   bottom: 14px;
@@ -1298,14 +1255,11 @@ h3 {
   padding: 6px 14px;
   border-radius: 20px;
   cursor: pointer;
-  box-shadow: 0 0 16px rgba(255,107,26,.7);
+  box-shadow: 0 0 16px rgba(255,107,44,.7);
   display: none;
   user-select: none;
 }
 
-/* ============================================================
-   26. UTILITY CLASSES
-   ============================================================ */
 .text-amber  { color: var(--amber); }
 .text-cyan   { color: var(--cyan); }
 .text-green  { color: var(--green); }
@@ -1360,6 +1314,86 @@ h3 {
    </script>
 
    ============================================================ */
+
+/* ============================================================
+   28. VIDEO SLOT — reusable component (added July 2026)
+   Markup:
+   <div class="video-slot" data-video-id=""
+        style="--vs-bg:url('/images/PAGE-IMAGE.webp')">
+     <span class="video-slot-play"></span>
+     <span class="video-slot-label">Video coming soon</span>
+   </div>
+   - data-video-id empty  -> styled placeholder shows
+   - data-video-id="XXXX" -> /video-slot.js swaps in the 16:9
+     YouTube embed automatically; no other markup changes needed
+   - --vs-bg accepts a url() or any CSS gradient
+   ============================================================ */
+.video-slot {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--vs-bg, linear-gradient(135deg, #2A1245, #140C08)) center/cover no-repeat;
+  border: 1px solid var(--edge);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.video-slot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20,12,8,.35), rgba(20,12,8,.55));
+}
+
+.video-slot-play {
+  position: relative;
+  z-index: 2;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 24px rgba(255,107,44,.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-slot-play::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 16px solid #000;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  margin-left: 4px;
+}
+
+.video-slot-label {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  font-size: .72rem;
+  color: #F2DCC9;
+  text-shadow: 0 2px 8px rgba(0,0,0,.5);
+}
+
+.video-slot iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  z-index: 3;
+}
+
+.video-slot.video-slot-live::before { display: none; }
 
 /* ============================================================
    END vicelane.css v5.0

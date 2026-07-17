@@ -1,182 +1,387 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <!-- Core Pages -->
   <url>
     <loc>https://56vicelane.com/</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://56vicelane.com/news</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://56vicelane.com/lastdrive</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://56vicelane.com/wall</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://56vicelane.com/shop</loc>
-    <lastmod>2026-05-19</lastmod>
+    <loc>https://56vicelane.com/members</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/store</loc>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://56vicelane.com/about</loc>
-    <lastmod>2026-05-19</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://56vicelane.com/gear</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/forum</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://56vicelane.com/contact</loc>
-    <lastmod>2026-05-19</lastmod>
+    <loc>https://56vicelane.com/gta6.html</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/tools</loc>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://56vicelane.com/archive</loc>
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://56vicelane.com/tools/weekly-bonuses</loc>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://56vicelane.com/privacy</loc>
-    <lastmod>2026-05-19</lastmod>
+    <loc>https://56vicelane.com/about</loc>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.4</priority>
   </url>
-
-  <!-- Articles — June 8 2026 -->
   <url>
-    <loc>https://56vicelane.com/articles/clear-the-lanes-petition-last-drive.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://56vicelane.com/contact</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/archive</loc>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://56vicelane.com/articles/gta6-trailer-3-when-is-it-dropping.html</loc>
+    <loc>https://56vicelane.com/privacy</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/terms</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-everything-confirmed</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-november-19-confirmed</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-ps5-xbox-sales-ratio-8-to-1</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/extrapolation-frame-generation-gta6-performance</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-all-characters-revealed-rockstar-official</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/rockstar-north-gta6-banner-edinburgh</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-trailer-3-june-25-youtube-hint</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-cover-art-mystery-woman-gabriela-chiquin-1</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-cover-art-mystery-woman-gabriela-chiquin-2</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-cover-art-mystery-woman-gabriela-chiquin</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-trailer-3-what-we-need-to-see</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-cover-art-every-frame-breakdown</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-pre-orders-june-25-cover-art-revealed</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-take-two-ceo-ambushed-confirms-release-date</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/rockstar-tribunal-blacklisting-claims-trial-september-2026</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta-construction-timeline-theory</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-style-game-built-with-ai-agents</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta-v-added-to-gta-plus-2026</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-trailer-3-when-is-it-dropping</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-sales-record-40-million-copies</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/clear-the-lanes-petition-last-drive</loc>
     <lastmod>2026-06-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://56vicelane.com/articles/gta6-rumors-starting-to-sound-real.html</loc>
+    <loc>https://56vicelane.com/articles/gta6-file-size-leaked-storage-requirements</loc>
     <lastmod>2026-06-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://56vicelane.com/articles/gta6-file-size-leaked-storage-requirements.html</loc>
+    <loc>https://56vicelane.com/articles/gta6-rumors-starting-to-sound-real</loc>
     <lastmod>2026-06-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
-
-  <!-- Articles — June 3 2026 -->
   <url>
-    <loc>https://56vicelane.com/articles/ned-luke-swatter-sentenced.html</loc>
+    <loc>https://56vicelane.com/articles/gta6-freight-train-kills-fall-2026</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/ned-luke-swatter-sentenced</loc>
     <lastmod>2026-06-03</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
-
-  <!-- Articles — June 2 2026 -->
   <url>
-    <loc>https://56vicelane.com/articles/amd-rx-9070-gre-gta6-performance.html</loc>
+    <loc>https://56vicelane.com/articles/zelnick-explains-gta6-13-year-wait</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://56vicelane.com/articles/extrapolation-frame-generation-gta6.html</loc>
-    <lastmod>2026-06-02</lastmod>
+    <loc>https://56vicelane.com/articles/gta6-leonida-map-confirmed-regions</loc>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
-  <!-- Articles — May 2026 -->
   <url>
-    <loc>https://56vicelane.com/articles/gta6-samsung-strike-ai-npc-memory-crisis.html</loc>
+    <loc>https://56vicelane.com/articles/prompt-injection-attack-ai-coding-gta6-pc-builders</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/fable-delayed-february-2027-because-of-gta6</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta5-ragemp-shutdown-gta6-fivem-takeover</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-ps-plus-always-online-gta5-merge-speculation</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-xbox-title-id-found-preorder-infrastructure</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-trailer-3-window-confirmed-56vicelane-called-it</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-xbox-wishlist-campaign-international</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-trailer-3-marketing-timeline-prediction</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-earnings-stock-slide-what-it-means</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-earnings-call-preview-may21</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-take-two-earnings-call-may-2026</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-pc-build-guide-2026</loc>
     <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://56vicelane.com/articles/gta6-pc-build-guide-2026.html</loc>
-    <lastmod>2026-05-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://56vicelane.com/articles/gta6-preorders-secretly-went-live-italy.html</loc>
+    <loc>https://56vicelane.com/articles/gta6-preorders-secretly-went-live-italy</loc>
     <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://56vicelane.com/articles/gta6-preorder-chaos-debunked.html</loc>
-    <lastmod>2026-05-18</lastmod>
+    <loc>https://56vicelane.com/articles/gta6-samsung-strike-ai-npc-memory-crisis</loc>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://56vicelane.com/articles/gta6-price-115-dutch-leak.html</loc>
-    <lastmod>2026-05-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://56vicelane.com/articles/gta6-six-editions-leak.html</loc>
-    <lastmod>2026-05-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://56vicelane.com/articles/gta6-no-review-copies.html</loc>
-    <lastmod>2026-05-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://56vicelane.com/articles/gta6-gta5-switch2-virtuos.html</loc>
+    <loc>https://56vicelane.com/articles/gta6-gta5-switch2-virtuos</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://56vicelane.com/articles/gta6-november-19-confirmed.html</loc>
-    <lastmod>2026-05-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://56vicelane.com/articles/gta6-everything-confirmed.html</loc>
-    <lastmod>2026-05-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://56vicelane.com/articles/gta6-price-what-to-expect.html</loc>
+    <loc>https://56vicelane.com/articles/gta6-no-review-copies</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://56vicelane.com/articles/gta6-preorder-stock-surge.html</loc>
+    <loc>https://56vicelane.com/articles/gta6-preorder-chaos-debunked</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-price-115-dutch-leak</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-six-editions-leak</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-preorder-stock-surge</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-price-what-to-expect</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

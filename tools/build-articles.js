@@ -15,6 +15,25 @@ try {
 // Keep permanent articles (like GTACON tracker, Last Drive event page)
 const permanent = existing.filter(a => a.permanent === true);
 
+// Dates already in articles.json, by slug — trusted over file mtime so a
+// CI rebuild never re-stamps existing articles (in a fresh checkout every
+// file's mtime is the checkout time, which used to overwrite every date
+// with the run date on every workflow run)
+const existingDates = new Map(
+  existing.filter(a => a.slug && a.date).map(a => [a.slug, a.date])
+);
+
+// Parse a visible byline date like "June 4, 2026" to ISO
+const MONTHS = {
+  January: 1, February: 2, March: 3, April: 4, May: 5, June: 6,
+  July: 7, August: 8, September: 9, October: 10, November: 11, December: 12
+};
+function parseLongDate(s) {
+  const m = /^([A-Z][a-z]+) (\d{1,2}), (\d{4})$/.exec(String(s).trim());
+  if (!m || !MONTHS[m[1]]) return '';
+  return m[3] + '-' + String(MONTHS[m[1]]).padStart(2, '0') + '-' + String(m[2]).padStart(2, '0');
+}
+
 // Read all HTML files from /articles folder
 const files = fs.readdirSync(ARTICLES_DIR)
   .filter(f => f.endsWith('.html'))
@@ -23,18 +42,21 @@ const files = fs.readdirSync(ARTICLES_DIR)
     const content = fs.readFileSync(filePath, 'utf8');
     const stat = fs.statSync(filePath);
 
-    // Pull metadata from HTML meta tags
+    // Pull metadata from HTML meta tags. The content capture stops at
+    // whichever quote character opened it (via backreference) rather than
+    // at "either quote", so an apostrophe inside double-quoted content
+    // (e.g. content="Here's the story") doesn't truncate the match.
     const getMeta = (name) => {
-      const match = content.match(new RegExp(`<meta\\s+name=["']${name}["']\\s+content=["']([^"']+)["']`, 'i'))
-        || content.match(new RegExp(`<meta\\s+content=["']([^"']+)["']\\s+name=["']${name}["']`, 'i'));
-      return match ? match[1] : '';
+      const match = content.match(new RegExp(`<meta\\s+name=["']${name}["']\\s+content=(["'])([\\s\\S]*?)\\1`, 'i'))
+        || content.match(new RegExp(`<meta\\s+content=(["'])([\\s\\S]*?)\\1\\s+name=["']${name}["']`, 'i'));
+      return match ? match[2] : '';
     };
 
     // Pull OG tags as fallback
     const getOG = (prop) => {
-      const match = content.match(new RegExp(`<meta\\s+property=["']og:${prop}["']\\s+content=["']([^"']+)["']`, 'i'))
-        || content.match(new RegExp(`<meta\\s+content=["']([^"']+)["']\\s+property=["']og:${prop}["']`, 'i'));
-      return match ? match[1] : '';
+      const match = content.match(new RegExp(`<meta\\s+property=["']og:${prop}["']\\s+content=(["'])([\\s\\S]*?)\\1`, 'i'))
+        || content.match(new RegExp(`<meta\\s+content=(["'])([\\s\\S]*?)\\1\\s+property=["']og:${prop}["']`, 'i'));
+      return match ? match[2] : '';
     };
 
     // Pull title from <title> tag
@@ -48,10 +70,15 @@ const files = fs.readdirSync(ARTICLES_DIR)
     // Get slug from filename
     const slug = f.replace('.html', '');
 
-    // Get date from meta or file modified date
+    // Get date: meta tag > visible byline > date already in articles.json
+    // > file modified time (last resort only — meaningless in CI checkouts)
     const metaDate = getMeta('date') || getMeta('article:published_time');
+    const bylineMatch = content.match(/📅\s*([A-Z][a-z]+ \d{1,2}, \d{4})/)
+      || content.match(/class="(?:article-)?meta"[^>]*>[\s\S]{0,200}?([A-Z][a-z]+ \d{1,2}, \d{4})/)
+      || content.match(/class="byline"[^>]*>[\s\S]{0,300}?([A-Z][a-z]+ \d{1,2}, \d{4})/);
+    const bylineDate = bylineMatch ? parseLongDate(bylineMatch[1]) : '';
     const fileDate = stat.mtime.toISOString().split('T')[0];
-    const date = metaDate || fileDate;
+    const date = metaDate || bylineDate || existingDates.get(slug) || fileDate;
 
     // Get image from OG or meta
     const image = getOG('image') || getMeta('image') || 'gta6-hero.png';
@@ -76,6 +103,7 @@ const files = fs.readdirSync(ARTICLES_DIR)
       emoji,
       title,
       slug,
+      url: '/articles/' + slug,
       headline,
       category,
       date,
@@ -88,6 +116,9 @@ const files = fs.readdirSync(ARTICLES_DIR)
   .filter(a => a.title && a.title.length > 0)
   // Sort newest first
   .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+// Permanent entries pass through untouched except a missing url
+permanent.forEach(p => { if (!p.url && p.slug) p.url = '/articles/' + p.slug; });
 
 // Merge: permanent entries first, then auto-built articles
 // Avoid duplicates by slug

@@ -13,6 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GTA V's Michael Actor Was Swatted — His Attacker Just Got 4 Years | 56ViceLane</title>
 <meta name="description" content="Ned Luke, the actor behind Michael De Santa in GTA V, was swatted in 2024. The perpetrator just received a 4-year federal prison sentence.">
+<meta name="category" content="News">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="56ViceLane">
 <meta property="og:title" content="GTA V's Michael Actor Was Swatted — His Attacker Just Got 4 Years">
@@ -31,8 +32,27 @@
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Barlow+Condensed:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/vicelane.css">
+
+<!-- 56ViceLane V2 — Vibrant Premium palette override (see design-system-addendum.md) -->
+<style>
+:root{
+  --pitch: #FDFBF8;
+  --asphalt: #FFFFFF;
+  --edge: #F0E6DA;
+  --amber: #FF6B2C;
+  --cyan: #D6247A;
+  --bone: #211A16;
+  --smoke: #6B5F52;
+  --green: #00C875;
+  --red: #FF3B3B;
+  --font-display: 'Playfair Display', serif;
+  --font-label: 'Barlow Condensed', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+</style>
+
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
 <style>
@@ -90,7 +110,7 @@
 }
 
 .article-hero h1 {
-  font-family: 'Russo One', sans-serif;
+  font-family: 'Playfair Display',serif;
   font-size: clamp(24px, 5vw, 48px);
   line-height: 1.05;
   text-transform: uppercase;
@@ -146,7 +166,7 @@
 .article-body p a:hover { text-decoration: underline; }
 
 .article-body h2 {
-  font-family: 'Russo One', sans-serif;
+  font-family: 'Playfair Display',serif;
   font-size: clamp(18px, 3.5vw, 26px);
   text-transform: uppercase;
   color: var(--bone);
@@ -252,7 +272,7 @@
   margin-bottom: 6px;
 }
 .sentence-val {
-  font-family: 'Russo One', sans-serif;
+  font-family: 'Playfair Display',serif;
   font-size: 15px;
   color: var(--bone);
   text-transform: uppercase;
@@ -298,7 +318,7 @@
   background: linear-gradient(135deg, #0a0010, #0d000d);
 }
 .article-cta h3 {
-  font-family: 'Russo One', sans-serif;
+  font-family: 'Playfair Display',serif;
   font-size: 18px;
   text-transform: uppercase;
   margin-bottom: 8px;
@@ -313,7 +333,7 @@
   display: inline-block;
   background: var(--amber);
   color: var(--pitch);
-  font-family: 'Russo One', sans-serif;
+  font-family: 'Playfair Display',serif;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   font-size: 13px;
@@ -346,39 +366,16 @@
 <!-- NAV -->
 <nav class="nav">
   <a class="logo" href="/"><span class="logo-mark">56</span><span class="logo-text">ViceLane</span></a>
-  <div class="nav-links">
-    <a href="/news">News</a>
-    <a href="/tools">Tools</a>
-    <a href="/lastdrive">Last Drive</a>
-    <a href="/shop">Gear</a>
-    <div class="nav-dropdown">
-      <button class="nav-dropdown-btn">More</button>
-      <div class="nav-dropdown-menu">
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
-        <div class="menu-divider"></div>
-        <a href="/editors-vice">Editor's Vice</a>
-        <div class="menu-divider"></div>
-        <a href="/privacy">Privacy</a>
-        <a href="/terms">Terms</a>
-      </div>
-    </div>
-  </div>
-  <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-<div class="nav-mobile" id="nav-mobile">
+    </nav>
+<div class="navband">
+  <a href="/">Home</a>
   <a href="/news">News</a>
-  <a href="/tools">Tools</a>
   <a href="/lastdrive">Last Drive</a>
-  <a href="/shop">Gear</a>
-  <div class="mobile-divider"></div>
-  <a href="/about">About</a>
-  <a href="/contact">Contact</a>
-  <div class="mobile-divider"></div>
-  <a href="/privacy">Privacy</a>
-  <a href="/terms">Terms</a>
+  <a href="/wall">Wall of Honor</a>
+  <a href="/members">Members</a>
+  <a href="/store">Store</a>
+  <a href="/gear">Gear</a>
+  <a href="/forum">Forum</a>
 </div>
 
 <!-- ARTICLE HERO -->
@@ -551,7 +548,7 @@ if(mt&&nm)mt.addEventListener('click',()=>nm.classList.toggle('open'));
     if(!ind){
       ind=document.createElement('div');
       ind.id='vl-debug-ind';
-      ind.style.cssText='position:fixed;bottom:14px;right:14px;z-index:9999;background:#FF6B1A;color:#000;font-family:monospace;font-weight:800;font-size:12px;padding:6px 14px;border-radius:20px;cursor:pointer;box-shadow:0 0 16px rgba(255,107,26,.7);display:none;user-select:none;';
+      ind.style.cssText='position:fixed;bottom:14px;right:14px;z-index:9999;background:#FF6B2C;color:#000;font-family:monospace;font-weight:800;font-size:12px;padding:6px 14px;border-radius:20px;cursor:pointer;box-shadow:0 0 16px rgba(255,107,26,.7);display:none;user-select:none;';
       ind.textContent='🔧 DEBUG ON — tap to off';
       ind.onclick=function(){active=false;localStorage.setItem(KEY,'0');applyDebug();};
       document.body.appendChild(ind);
@@ -574,5 +571,6 @@ if(mt&&nm)mt.addEventListener('click',()=>nm.classList.toggle('open'));
   } else {applyDebug();setup();}
 })();
 </script>
+<script src="/back-to-top.js" defer></script>
 </body>
 </html>

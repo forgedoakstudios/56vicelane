@@ -23,10 +23,28 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- Shared clean style -->
 <link rel="stylesheet" href="/vicelane.css">
+
+<!-- 56ViceLane V2 — Vibrant Premium palette override (see design-system-addendum.md) -->
+<style>
+:root{
+  --pitch: #FDFBF8;
+  --asphalt: #FFFFFF;
+  --edge: #F0E6DA;
+  --amber: #FF6B2C;
+  --cyan: #D6247A;
+  --bone: #211A16;
+  --smoke: #6B5F52;
+  --green: #00C875;
+  --red: #FF3B3B;
+  --font-display: 'Playfair Display', serif;
+  --font-label: 'Barlow Condensed', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+</style>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
 <script>
@@ -41,7 +59,7 @@
 /* page-specific — chrome/colors/fonts come from vicelane.css */
 .tool-hero{max-width:900px;margin:0 auto;padding:26px 18px 6px;}
 .tool-hero .cat-tag{background:var(--green);}
-.tool-hero h1{font-family:'Russo One',sans-serif;font-size:clamp(1.7rem,5vw,2.4rem);line-height:1.12;margin-bottom:10px;text-shadow:0 0 30px rgba(255,107,26,.25);}
+.tool-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,5vw,2.4rem);line-height:1.12;margin-bottom:10px;text-shadow:0 0 30px rgba(255,107,26,.25);}
 .tool-hero p{color:var(--smoke);font-size:1.02rem;max-width:640px;}
 .updated{display:inline-flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.06em;font-size:.85rem;color:var(--smoke);margin-top:12px;}
 .updated .dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);}
@@ -52,7 +70,7 @@
 /* headline "grind this week" callout */
 .topgrind{background:linear-gradient(135deg,rgba(255,107,26,.12),rgba(0,212,255,.06));border:1px solid var(--edge);border-left:4px solid var(--amber);border-radius:12px;padding:18px 20px;margin:18px 0 26px;}
 .topgrind .lbl{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:.78rem;color:var(--amber);font-weight:700;margin-bottom:6px;}
-.topgrind .pick{font-family:'Russo One',sans-serif;font-size:1.3rem;margin-bottom:6px;}
+.topgrind .pick{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:6px;}
 .topgrind .why{color:var(--smoke);font-size:.98rem;}
 
 .sec-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.85rem;color:var(--smoke);margin:30px 0 14px;padding-bottom:6px;border-bottom:1px solid var(--edge);display:flex;align-items:center;gap:8px;}
@@ -60,14 +78,14 @@
 .bonus-grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));}
 .bonus-card{background:var(--asphalt);border:1px solid var(--edge);border-radius:10px;padding:15px 16px;transition:border-color .2s,transform .2s;}
 .bonus-card:hover{border-color:var(--amber);transform:translateY(-2px);}
-.bonus-card .multi{font-family:'Russo One',sans-serif;font-size:1.15rem;color:var(--amber);}
+.bonus-card .multi{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--amber);}
 .bonus-card .multi.cyan{color:var(--cyan);}
 .bonus-card .act{font-weight:600;margin:4px 0 2px;font-size:1.02rem;}
 .bonus-card .note{color:var(--smoke);font-size:.9rem;}
 
 .disc-row,.price-row{display:flex;justify-content:space-between;align-items:center;background:var(--asphalt);border:1px solid var(--edge);border-radius:8px;padding:11px 14px;margin-bottom:8px;}
 .disc-row .name{font-weight:600;}
-.disc-row .pct{font-family:'Russo One',sans-serif;color:var(--green);font-size:1rem;}
+.disc-row .pct{font-family:'Playfair Display',serif;color:var(--green);font-size:1rem;}
 
 .affiliate-strip{background:var(--asphalt);border:1px dashed var(--edge);border-radius:10px;padding:14px 16px;margin:24px 0;font-size:.95rem;color:var(--smoke);}
 .affiliate-strip a{color:var(--cyan);font-weight:600;}
@@ -78,7 +96,7 @@
 .tool-links a small{display:block;color:var(--smoke);font-weight:400;text-transform:none;letter-spacing:0;font-family:'Inter',sans-serif;font-size:.85rem;margin-top:3px;}
 
 .gta6-banner{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,rgba(0,212,255,.10),rgba(255,107,26,.06));border:1px solid var(--edge);border-left:4px solid var(--cyan);border-radius:12px;padding:13px 16px;margin:0 0 22px;}
-.g6-tag{font-family:'Russo One',sans-serif;font-size:.9rem;color:#000;background:var(--cyan);padding:4px 10px;border-radius:6px;flex-shrink:0;box-shadow:0 0 14px rgba(0,212,255,.4);}
+.g6-tag{font-family:'Playfair Display',serif;font-size:.9rem;color:#000;background:var(--cyan);padding:4px 10px;border-radius:6px;flex-shrink:0;box-shadow:0 0 14px rgba(0,212,255,.4);}
 .g6-text{font-size:.95rem;color:var(--smoke);line-height:1.5;}
 .g6-text b{color:var(--bone);}
 </style>
@@ -89,44 +107,18 @@
 <div class="ticker-wrap"><div class="ticker-track" id="ticker-track"><span class="ticker-item">Loading…</span></div></div>
 
 <!-- HEADER -->
-<!-- HEADER -->
 <nav class="nav">
   <a class="logo" href="/"><span class="logo-mark">56</span><span class="logo-text">ViceLane</span></a>
-  <div class="nav-links">
-    <a href="/news">News</a>
-    <a href="/tools">Tools</a>
-    <a href="/lastdrive">Last Drive</a>
-    <a href="/shop">Gear</a>
-    <div class="nav-dropdown">
-      <button class="nav-dropdown-btn">More</button>
-      <div class="nav-dropdown-menu">
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
-        <div class="menu-divider"></div>
-        <a href="/editors-vice">Editor's Vice</a>
-        <div class="menu-divider"></div>
-        <a href="/privacy">Privacy</a>
-        <a href="/terms">Terms</a>
-      </div>
-    </div>
-  </div>
-  <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
-<!-- MOBILE NAV -->
-<div class="nav-mobile" id="nav-mobile">
+<div class="navband">
+  <a href="/">Home</a>
   <a href="/news">News</a>
-  <a href="/tools">Tools</a>
   <a href="/lastdrive">Last Drive</a>
-  <a href="/shop">Gear</a>
-  <div class="mobile-divider"></div>
-  <a href="/about">About</a>
-  <a href="/contact">Contact</a>
-  <a href="/editors-vice">Editor's Vice</a>
-  <div class="mobile-divider"></div>
-  <a href="/privacy">Privacy</a>
-  <a href="/terms">Terms</a>
+  <a href="/wall">Wall of Honor</a>
+  <a href="/members">Members</a>
+  <a href="/store">Store</a>
+  <a href="/gear">Gear</a>
+  <a href="/forum">Forum</a>
 </div>
 
 <div class="tool-hero">
@@ -183,15 +175,6 @@
     <div class="ad-label">Advertisement</div>
     <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
-
-  <!-- CROSS-LINK TO OTHER TOOLS -->
-  <div class="sec-label reveal">🧰 More Money Tools</div>
-  <div class="tool-links reveal">
-    <a href="/tools/method-comparison">Method Comparison<small>Rank every method by $/hr for your playstyle</small></a>
-    <a href="/tools/cayo-loot">Cayo Loot Optimizer<small>Best secondary loot combo per run</small></a>
-    <a href="/tools/business-roi">Business ROI<small>Payback time on any business + upgrades</small></a>
-    <a href="/tools/what-to-buy">What Should I Buy<small>Best purchases for your budget</small></a>
   </div>
 
   <p style="color:var(--smoke);font-size:.85rem;margin-top:26px;text-align:center;font-family:'Barlow Condensed',sans-serif;letter-spacing:.03em;">
@@ -279,7 +262,7 @@ if(mt&&nm)mt.addEventListener('click',()=>nm.classList.toggle('open'));
     if(!ind){
       ind=document.createElement('div');
       ind.id='vl-debug-ind';
-      ind.style.cssText='position:fixed;bottom:14px;right:14px;z-index:9999;background:#FF6B1A;color:#000;font-family:monospace;font-weight:800;font-size:12px;padding:6px 14px;border-radius:20px;cursor:pointer;box-shadow:0 0 16px rgba(255,107,26,.7);display:none;';
+      ind.style.cssText='position:fixed;bottom:14px;right:14px;z-index:9999;background:#FF6B2C;color:#000;font-family:monospace;font-weight:800;font-size:12px;padding:6px 14px;border-radius:20px;cursor:pointer;box-shadow:0 0 16px rgba(255,107,26,.7);display:none;';
       ind.textContent='🔧 DEBUG ON — tap to off';
       ind.onclick=function(){active=false;localStorage.setItem(KEY,'0');applyDebug();};
       document.body.appendChild(ind);
@@ -310,5 +293,6 @@ if(mt&&nm)mt.addEventListener('click',()=>nm.classList.toggle('open'));
   }
 })();
 </script>
+<script src="/back-to-top.js" defer></script>
 </body>
 </html>
