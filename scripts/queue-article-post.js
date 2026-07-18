@@ -41,10 +41,14 @@ function buildQueueEntry (filePath) {
 
   const url = SITE_URL + '/articles/' + slug;
 
+  // Don't append url here — post-to-bluesky.js's posting loop already
+  // appends post.url onto the text for every one-off queue entry. Doing
+  // it here too silently doubled the link and blew past Bluesky's
+  // 300-grapheme cap without ever showing up in a local length check,
+  // since the stored text (with url appended once) looked fine on its own.
   let text = description || title;
   const maxTextLen = 260 - (url.length + 1);
   if (text.length > maxTextLen) text = text.slice(0, maxTextLen - 1).trim() + '…';
-  text += ' ' + url;
 
   return {
     id: 'auto-publish-' + slug,
