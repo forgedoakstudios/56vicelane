@@ -7,11 +7,43 @@ const queue = JSON.parse(fs.readFileSync(queuePath, 'utf8'));
 
 var MIME_TYPES = { '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp' };
 
+/* Bluesky rejects any blob over 2,000,000 bytes outright. Stay under that
+   with margin so we don't even attempt an upload that's guaranteed to fail. */
+var MAX_IMAGE_BYTES = 1900000;
+
 async function uploadImageEmbed (agent, imagePath, alt) {
-  var imageBytes = fs.readFileSync(path.join(__dirname, '..', imagePath));
+  var fullPath = path.join(__dirname, '..', imagePath);
+  var imageBytes = fs.readFileSync(fullPath);
+  if (imageBytes.length > MAX_IMAGE_BYTES) {
+    throw new Error(imagePath + ' is ' + imageBytes.length + ' bytes, over the ' + MAX_IMAGE_BYTES + ' byte cap');
+  }
   var mimeType = MIME_TYPES[path.extname(imagePath).toLowerCase()] || 'image/jpeg';
   var uploaded = await agent.uploadBlob(imageBytes, { encoding: mimeType });
   return { $type: 'app.bsky.embed.images', images: [{ image: uploaded.data.blob, alt: alt || '' }] };
+}
+
+/* Posts text with an optional image. If the image is oversized, missing,
+   or the upload/post fails for any reason, falls back to a text-only post
+   rather than leaving the whole item stuck unposted forever. Returns true
+   if a post went out (with or without the image), false only if both the
+   image attempt and the plain-text retry failed. */
+async function postWithFallback (agent, id, text, imagePath, imageAlt) {
+  if (imagePath) {
+    try {
+      var embed = await uploadImageEmbed(agent, imagePath, imageAlt);
+      await agent.post({ text: text, createdAt: new Date().toISOString(), embed: embed });
+      return true;
+    } catch (err) {
+      console.error('Image attempt failed for ' + id + ', retrying without image:', err.message || err);
+    }
+  }
+  try {
+    await agent.post({ text: text, createdAt: new Date().toISOString() });
+    return true;
+  } catch (err) {
+    console.error('Failed to post ' + id + ':', err);
+    return false;
+  }
 }
 
 function daysUntil (dateStr, now) {
@@ -65,15 +97,11 @@ async function run () {
         (post.textSuffix ? ' ' + post.textSuffix : '');
       if (post.url) recurringText += ' ' + post.url;
 
-      try {
-        var recurringRecord = { text: recurringText, createdAt: new Date().toISOString() };
-        if (post.image) recurringRecord.embed = await uploadImageEmbed(agent, post.image, post.imageAlt);
-        await agent.post(recurringRecord);
+      var recurringOk = await postWithFallback(agent, post.id, recurringText, post.image, post.imageAlt);
+      if (recurringOk) {
         console.log('Posted: ' + post.id + ' (' + todayStr + ')');
         post.lastPostedDate = todayStr;
         updated = true;
-      } catch (err) {
-        console.error('Failed to post ' + post.id + ':', err);
       }
       continue;
     }
@@ -90,16 +118,11 @@ async function run () {
     var text = post.breaking ? '🚨 BREAKING: ' + post.text : post.text;
     if (post.url) text += ' ' + post.url;
 
-    try {
-      var postRecord = { text: text, createdAt: new Date().toISOString() };
-      if (post.image) postRecord.embed = await uploadImageEmbed(agent, post.image, post.imageAlt);
-
-      await agent.post(postRecord);
+    var ok = await postWithFallback(agent, post.id, text, post.image, post.imageAlt);
+    if (ok) {
       console.log('Posted: ' + post.id);
       post.posted = true;
       updated = true;
-    } catch (err) {
-      console.error('Failed to post ' + post.id + ':', err);
     }
   }
 
