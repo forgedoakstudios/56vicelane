@@ -68,7 +68,7 @@
     "image": "images/gta6-hero.png",
     "imageAlt": "GTA6 key art",
     "scheduledFor": "2026-07-16T23:00:00Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "article-preorders-record-1",
@@ -77,7 +77,7 @@
     "image": "images/gta6-hero.png",
     "imageAlt": "GTA6 pre-order sales record",
     "scheduledFor": "2026-07-17T00:10:00Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "article-kurtaj-retrial-1",
@@ -86,7 +86,7 @@
     "image": "images/gta6-hero.png",
     "imageAlt": "GTA6 leak case legal update",
     "scheduledFor": "2026-07-17T01:25:00Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-gta6-preorder-claims-fact-check-newzoo-absurd",
