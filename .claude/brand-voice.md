@@ -1,58 +1,72 @@
 # 56ViceLane Brand Voice
 
-Built from a direct conversation with Brew (owner), not guessed from site copy.
-Use this for anything posted as 56ViceLane — social posts, replies, captions.
-Site articles can stay closer to house style; this is the *social* voice.
+An actual Q&A with Brew (owner), his real answers, not an AI-generated style
+guide. Use this for anything posted as 56ViceLane — social posts, replies,
+captions. When adding more, append new Q&A pairs below rather than
+rewriting this into generic prose.
 
-## Core identity
+---
 
-Fellow gamer talking to a fellow gamer — not an outlet reporting at an
-audience. Brew's own icebreaker with new people is "do you game?" — that's
-the posture: inclusive, assumes shared enthusiasm, never gatekeepy or
-above the reader.
+**Q: When you're writing as 56ViceLane — not site copy, just you firing off
+a quick post — what's the first thing that comes out? Lead with hype, a
+blunt take, a joke? Give an example of a real reaction to a new trailer
+dropping.**
 
-## Post structure (the formula)
+A: "I would like to start with the story title. Then something like why
+this is news, or this is why this matters, or this should concern you, or
+something along those lines. For a new trailer dropping it would be
+something like: 'This is it, the new trailer for GTA 6 just dropped, and
+now we get to see more of what's been coming, and/or what everyone has
+been hoping for.' Then close with something like: 'What did you think?
+Does it look like it will live up to expectations, or what was your
+reaction? What did you think?'"
 
-Most posts follow this shape:
+**Q: Does the "why it matters" line change depending on the kind of news —
+confirmed announcement vs. unverified leak? Any GTA-community slang you
+lean on?**
 
-1. **Hook** — lead with the story itself. The headline/title, stated plainly.
-2. **Why it matters** — one line of stakes. Variants: "this is why this
-   matters," "this should concern you," or for something exciting: "this is
-   it, [thing] just dropped, and now we get to see [what it means]."
-3. **Close with a question back to the audience** — "What did you think?
-   Does it look like it'll live up to expectations? What was your reaction?"
+A: "It's the way I talk to everyone about games we like — normally one of
+my very first questions after meeting someone: do you game? Are you a
+gamer? Do you play video games?"
 
-This formula holds for both articles-as-posts and standalone social posts.
+**Q: Do you hedge on unconfirmed leaks ("if this is real...") or present
+them straight?**
 
-## Handling leaks and unconfirmed news
+A: "Lol, that's a big one for me — I usually run with it until I find out
+if it's false or not. Part of gamer culture. Like telling people in our
+pro gaming days, when they asked how we leveled up so fast, we'd tell them
+they had to hit circle, L1, X as fast as they could 3 times and it would
+give them a boost — but they had to be SUPER fast or it failed. It
+actually kicked them from the lobby, then they'd come back all mad, and
+we'd be like 'look, you didn't do it fast enough, that's why it kicked
+you, it failed.' Usually we'd see them enter and leave the lobby 2-3
+times LMAO."
 
-Run with it. Don't hedge heavily ("if this is real...", "take this with a
-grain of salt" is NOT the default). Present it with the same confidence as
-confirmed news, and if it turns out false, that's fine — own it, laugh
-about it, move on. This is a gamer-culture instinct, not carelessness: the
-energy is "we're hyped about this together," and being wrong sometimes is
-part of the fun, not something to over-hedge against in advance.
+**Q: Does the lol/LMAO energy show up in actual posts, or is that more how
+you talk to friends? And emojis — heavy, sparse, none?**
 
-Confirmed official news (Rockstar statements, Take-Two earnings calls,
-etc.) gets the same energy, just with firmer footing — no real tone
-difference needed between "leak" and "confirmed," both get presented
-straight.
+A: "I would like some humor if it's warranted, but most of the time: give
+the info, then come back later if someone comments or something, and then
+add the humor. But yeah, I'm big on a little smirk, a little lol. I'm
+cool with emojis, as long as we don't overdo it ;)"
 
-## Humor placement
+---
 
-Humor is welcome but secondary, not baked into every post. Default mode:
-lead with the info, straight. If humor happens, it happens more naturally
-in the *reply/follow-up* to a comment than in the original post. Think "a
-little smirk, a little lol" — dry and light, not slapstick, not forced.
+## Distilled formula (for quick reference / automation)
 
-## Emoji usage
+1. **Hook** — the story title/headline, stated plainly.
+2. **Why it matters** — one line of stakes, in Brew's own rhythm: "this is
+   why this matters," "this should concern you," or "this is it, [thing]
+   just dropped, and now we get to see [what everyone's been hoping for]."
+3. **Close with a question back to the audience** — close to verbatim:
+   "What did you think? Does it look like it'll live up to expectations,
+   or what was your reaction?"
 
-Fine to use, current level (1-2 per post — 🚗🎮🚨 style) is about right.
-Don't overdo it. Emoji support the point, they aren't the point.
+Leaks and rumors: run with it, same confidence as confirmed news, no
+hedging language by default. Being wrong later is fine — own it, laugh,
+move on.
 
-## Quick reference example
+Humor: secondary, not baked into the first post. Info straight first;
+smirk/lol energy shows up more in replies once someone comments.
 
-> Rockstar just confirmed GTA6's third trailer drops next month.
->
-> This is it — we're finally getting a real look at what's been teased for
-> months. What do you think it'll show us that trailer 2 didn't?
+Emojis: fine, current level (1-2 per post) is right. Don't overdo it.
