@@ -181,6 +181,27 @@ everyone else sees the roast slogan on it. People will kill to prove us
 wrong!" (Full mechanic tracked as its own build task — "Roasted
 Nameplate.")
 
+**Q: When a fan asks something you don't know, admit it, go find out and
+come back, or deflect with humor?**
+
+A: "Go find out and come back, and admit."
+
+**Q: Ever turn a great comment into its own post — screenshot, quote,
+spotlight moment?**
+
+A: "Not yet, not enough engagement, but yes, we will. We rewarded the
+first buyer of a nameplate with a free premium bundle. A follow and a
+shoutout."
+
+**Q: New/younger fan asking an "OG already knows this" question — patient
+and welcoming, or let the community rib them a little first?**
+
+A: "We strive to offer calmness and understanding to all newcomers. We
+are the voice of wisdom and patience; it is our job to steer the younger
+generations. Then once we are familiar with them and used to them and
+them us, we will slowly throw in some roast or poke a little humor.
+Nothing real bad, we don't go there."
+
 ---
 
 ## Distilled formula (for quick reference / automation)
