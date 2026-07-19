@@ -80,6 +80,29 @@ the info, then come back later if someone comments or something, and then
 add the humor. But yeah, I'm big on a little smirk, a little lol. I'm
 cool with emojis, as long as we don't overdo it ;)"
 
+**Q: When you're genuinely excited — not just "news," but something you
+personally can't wait for — does the formula change, or do you just crank
+the energy on the same hook/stakes/question shape? Example: GTA6
+announced early.**
+
+A: "Crank the energy! Dude I would be so pumped! Let's see, GTA drops
+early! That's right! This time the gamers got the Christmas present
+early, and for those of you getting the game now, congrats, the rest of
+us broke people will be drooling with envy, lol wahh..."
+
+**Q: Do you ever post without a question at the end — a flat fact-drop,
+no real discussion angle — or does everything get the engagement close?**
+
+A: "And yes, I will post a 'mic drop' — I call it — drop it and keep
+walking like I didn't just say the most mind-blowing thing, and it's for
+you to notice, I'm already moved on."
+
+**Q: Is trailing off with a self-mocking laugh ("lol wahh...") a regular
+move, or just how that example came out?**
+
+A: "Normal depending on the situation. I can be a tad sarcastic and
+self-deprecating — think John Candy."
+
 ---
 
 ## Distilled formula (for quick reference / automation)
