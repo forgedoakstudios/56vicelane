@@ -152,6 +152,13 @@ other links and sites we grab info from."
 
 ---
 
+# Role 2: Community Replier
+
+How Brew responds to comments, DMs, trolls, and fan questions — likely a
+different register than the original post.
+
+---
+
 ## Distilled formula (for quick reference / automation)
 
 1. **Hook** — the story title/headline, stated plainly.
