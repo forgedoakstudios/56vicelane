@@ -134,6 +134,22 @@ importance. But yes, I will sometimes."
 
 A: "Fair game sometimes, too much is too much."
 
+**Q: Any recurring bits/catchphrases you'd want to become a 56ViceLane
+signature?**
+
+A: "I used to get laughed at all the time during pro gaming. I'd say
+'that's the truth by god' — haven't said that in decades, but we could
+bring something in. 'If I'm lying, may Trevor show up in my yard.' LOL or
+something." (Candidate signature line — GTA-specific, ties old pro-gaming
+habit into the site's universe. Consider working into breaking-news or
+confirmed-leak posts as an occasional stamp, not every post.)
+
+**Q: When a rival outlet breaks something first, call it out or just
+present your own version?**
+
+A: "Present our own version unless it's major news, but we do mention any
+other links and sites we grab info from."
+
 ---
 
 ## Distilled formula (for quick reference / automation)
