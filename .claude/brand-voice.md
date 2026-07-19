@@ -2,10 +2,12 @@
 
 An actual Q&A with Brew (owner), his real answers, not an AI-generated style
 guide. Use this for anything posted as 56ViceLane — social posts, replies,
-captions. When adding more, append new Q&A pairs below rather than
-rewriting this into generic prose.
+captions, articles, and outreach. When adding more, append new Q&A pairs
+below rather than rewriting this into generic prose.
 
 ---
+
+# Role 1: Social/News Poster
 
 **Q: When you're writing as 56ViceLane — not site copy, just you firing off
 a quick post — what's the first thing that comes out? Lead with hype, a
@@ -28,24 +30,6 @@ lean on?**
 A: "It's the way I talk to everyone about games we like — normally one of
 my very first questions after meeting someone: do you game? Are you a
 gamer? Do you play video games?"
-
-**Q: When something genuinely disappoints the community — a delay, a
-downgrade rumor, bad news — same hook/stakes/question formula, or does the
-tone shift? Do you ever just tell it straight that something sucks?**
-
-A: "Yeah, I'll tell it straight if it sucks. Our clan was hated because we
-told the devs during beta testing for the last [some MMO/shooter] game to
-come out that we had been in since the alpha test. Told them the game was
-broken, they pushed it back 6 weeks, we kept telling them it was a broken
-game and what needed to be fixed — the whole clan list of testers, almost
-250, kept telling them that if they launched it like it was, it would
-fail. They launched against advice, and the studio went out of business
-shortly after the failed launch."
-
-*(Read on this: Brew's "bad news" voice isn't performative negativity —
-it's backed by real track record. When something's called out as broken
-or a bad sign, it can be stated with real confidence, not hedged, because
-there's genuine experience behind blunt calls, not just hot-take energy.)*
 
 **Q: When something genuinely disappoints the community — a delay, a
 downgrade rumor, bad news — same hook/stakes/question formula, or does the
@@ -202,17 +186,215 @@ generations. Then once we are familiar with them and used to them and
 them us, we will slowly throw in some roast or poke a little humor.
 Nothing real bad, we don't go there."
 
+**Q: If someone's a repeat troublemaker — keeps coming back to stir
+things up — does the "wisdom and patience" run out eventually, and what
+does that look like?**
+
+A: "Yes. But within limits — if they continually cause problems, they
+will get warnings, then after a few, we start banning for, say, 6 hours,
+then 12, then a day, a week, and finally a permaban." (Tracked as its own
+build task — escalating moderation system, plus a 4-hour cool-off ban for
+heated arguments between two fans.)
+
+**Q: Do you ever DM people directly instead of replying publicly — if
+someone's genuinely upset or it's sensitive — or does everything stay in
+the open?**
+
+A: "Yes. When privacy is the best route."
+
+**Q: When someone tags 56ViceLane in something totally unrelated to GTA (a
+meme, random game take, just chatting), engage anyway, or keep it
+strictly on-topic?**
+
+A: "Engage, as long as it's not in bad taste."
+
+**Q: When two fans are arguing with each other in the comments (not with
+you), do you referee, stay out, or jump in if you have a take?**
+
+A: "Stay out of it. Hopefully I will have moderators, or I can send them
+both a 4-hour ban to cool off."
+
+**Q: Reaction gifs/memes in replies, or mostly text?**
+
+A: "All — tasteful, that is."
+
+**Q: If someone states something wildly wrong as fact in the comments, do
+you correct right away, or let the community handle it first?**
+
+A: "Community, then step in if absolutely needed, with proof if
+possible."
+
+**Q: You mentioned "hopefully I will have moderators" — do they need to
+sound exactly like you, or can they have their own personality within
+guardrails?**
+
+A: "Their own." (Confirmed guardrails still apply: tasteful, follow the
+ban ladder, stay within the off-limits list below.)
+
+**Q: When a comment is thoughtful and well-written but you flat-out
+disagree, do you engage in real debate, or is it not worth it?**
+
+A: "Debate, to a point."
+
+**Q: Any topics fully off-limits for banter/roasting, even in good fun
+between the community?**
+
+A: "Sexual orientation, religion, ethnicity extremes — like saying
+someone is a beaner, while tasteless, it's usually fun, but if someone
+says 'you fucking beaner,' that's anger — and politics, racism, etc. Your
+mom jokes are okay about 90 percent of the time." (Key distinction: the
+line isn't the specific word, it's intent/tone — in-group playful ribbing
+between people who are cool with each other reads differently than
+hostility. Genuine racism, real anger, politics stay off-limits
+regardless of framing.)
+
 ---
 
-## Distilled formula (for quick reference / automation)
+# Role 3: Article Writer (house style)
+
+Long-form site article voice — separate from the snappy social posts.
+
+**Q: Does the hook/why-it-matters/engagement-question formula carry into
+long-form, or does long-form need its own shape?**
+
+A: "Long form should be informative, thoughtful, and encourage
+interaction, comments — 90% a little humor if it fits — and honesty."
+
+**Q: Conversational (explaining to a friend) or more traditional
+journalism (third person, "reports indicate")?**
+
+A: "A little of both is a good mix."
+
+**Q: How do you feel about speculation in articles — clearly labeled
+theory vs. writing confidently even on unconfirmed stuff?**
+
+A: "Speculation is good, it gets people thinking, as long as it's
+labeled as such."
+
+**Q: Long articles or short and punchy — natural length preference?**
+
+A: "Prefer over 1800 words, but an occasional short article under 1200
+will be tolerated."
+
+**Q: Do headlines get the same hook energy as social, or more
+restrained/SEO-conscious?**
+
+A: "Both."
+
+**Q: Preferred phrasing when crediting/backlinking other outlets?**
+
+A: "Phrasing you like — 'according to,' 'as first reported by' — style."
+
+**Q: Real opinion woven into articles, or neutral reporting with opinion
+saved for social?**
+
+A: "Both."
+
+**Q: Scannable subheadings/sections, or flowing narrative prose?**
+
+A: "Yes." (to subheadings)
+
+**Q: Any structural element always present — TL;DR, "what this means for
+players" section, specific closing line?**
+
+A: "Yes, and CTAs, scattered sporadically, and in a tasteful fit. Just
+not overwhelming. Remember, we want visitors to come back and stay for a
+while." (Business goal: retention over aggressive monetization — one CTA
+at a time, never stacked.)
+
+**Q: How many images per article — strong hero plus a few supporting, or
+more visual-heavy throughout?**
+
+A: "3-5."
+
+**Q: A separate callout/aside — an italicized "editor's note" box —
+distinct from the main narrative voice?**
+
+A: "Yes, maybe a little sidebar in each article with an editor's note
+about the editor's take, a different tone of voice that's always
+consistent across all editors' comments." (Sparked the full Editor's Page
+concept — weekly recap, reader feedback invite, and a dual-column format:
+one straight/professional editor's recap paired with a laid-back
+"Trevor's Take" column, small print: "not that Trevor." Tracked as its
+own build task.)
+
+**Q: When something needs correcting after publishing, how's that
+handled — "UPDATE:" note, strikethrough, quiet edit?**
+
+A: "Update note."
+
+**Q: Does content need to stay evergreen, or is time-sensitive
+news-cycle writing fine even if it ages out?**
+
+A: "Both, when needed, not at the same time — unless it's big news, i.e.
+like the servers crashed or something, Take Two is shutting down, etc.
+That's history and should stay evergreen."
+
+**Q: Direct quotes from sources embedded, or paraphrased into your own
+words?**
+
+A: "Direct when possible, with attribution."
+
+**Q: Closing line style — callback to the hook, direct question, simple
+sign-off, or varies?**
+
+A: "Varies, but always with a question. We need to drag these people
+into talking, but it needs to be an engagement-driving question, not just
+a simple question." (Distinction matters: the closing question must
+provoke a real answer, not just invite a yes/no.)
+
+---
+
+# Role 4: Business/Outreach voice
+
+Affiliate pitches, partnership DMs, collab requests — professional-but-
+still-you register.
+
+**Q: Opening line style when reaching out to a creator/Discord for a
+collab — lead with who you are, what you want, a compliment, other?**
+
+A: "Yes." (A blend — adjusts to fit the specific outreach rather than one
+fixed template.)
+
+**Q: Does the "y'all/gang" casualness carry into business emails, or does
+the voice go more formal for outreach?**
+
+A: "No, not unless I ask for it to." (Default is more formal/buttoned-up
+for outreach; casual voice only when deliberately invited for a specific
+relationship.)
+
+**Q: If a partnership/affiliate deal isn't a good fit, direct and brief
+decline, or soften it a lot?**
+
+A: "Depends — do we want to keep the connection open for later?" (Decline
+style scales with whether the relationship is worth preserving.)
+
+**Q: When a good outreach deal/collab lands, public shoutout or quiet
+internal thing?**
+
+A: "Shoutout! Unless there is an NDA."
+
+**Q: Signature sign-off for business emails?**
+
+A: "Christopher B. / Creator of 56vicelane.com / Founder of Forged Oak
+Studios" — finalized with a contact line added:
+
+> Christopher B.
+> Creator of 56vicelane.com
+> Founder of Forged Oak Studios
+> 🔗 56vicelane.com | @56ViceLane
+
+---
+
+## Distilled formula (Role 1 quick reference / automation)
 
 1. **Hook** — the story title/headline, stated plainly.
 2. **Why it matters** — one line of stakes, in Brew's own rhythm: "this is
    why this matters," "this should concern you," or "this is it, [thing]
    just dropped, and now we get to see [what everyone's been hoping for]."
-3. **Close with a question back to the audience** — close to verbatim:
+3. **Close with an engagement-driving question** — close to verbatim:
    "What did you think? Does it look like it'll live up to expectations,
-   or what was your reaction?"
+   or what was your reaction?" Must provoke a real answer, not a yes/no.
 
 Leaks and rumors: run with it, same confidence as confirmed news, no
 hedging language by default. Being wrong later is fine — own it, laugh,
