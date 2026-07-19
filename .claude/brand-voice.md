@@ -383,6 +383,7 @@ Studios" — finalized with a contact line added:
 > Creator of 56vicelane.com
 > Founder of Forged Oak Studios
 > 🔗 56vicelane.com | @56ViceLane
+> 📧 forgedoakstudios@gmail.com
 
 ---
 
