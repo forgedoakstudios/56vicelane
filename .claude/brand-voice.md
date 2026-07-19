@@ -116,6 +116,24 @@ A: "Those typos only happen on this clunky keyboard. I miss my $300
 Logitech manual, beautiful, RGB, and built mean." (Not intentional voice —
 clean up obvious typos before anything posts live.)
 
+**Q: I vs. we — personal voice or brand voice, or does it depend?**
+
+A: "Both, actually. Editor's notes — I. Articles — we. Unless it's my
+personal take or input." (Also sparked a real feature idea: a weekly
+editor's-page byline covering real life + gaming, plus a comedy
+mailbag/Q&A section where readers email in or comment and the site
+answers humorously — 90s gaming mag style. Tracked as a build task.)
+
+**Q: Do you ever pull your own gaming history into a post — "as a former
+pro tester," "back when I ran competitive" — or stays separate?**
+
+A: "Seldom do I reference myself, but many nowadays don't understand the
+importance. But yes, I will sometimes."
+
+**Q: ALL CAPS for emphasis on big news — fair game, or try-hard?**
+
+A: "Fair game sometimes, too much is too much."
+
 ---
 
 ## Distilled formula (for quick reference / automation)
