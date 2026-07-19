@@ -107,6 +107,14 @@ jobs:
           FILENAME="${{ steps.draft.outputs.filename }}"
           node scripts/queue-article-post.js "articles/$FILENAME"
 
+      - name: Notify social blast (X + Instagram via Blotato)
+        if: steps.draft.outputs.found == 'true'
+        env:
+          N8N_ARTICLE_WEBHOOK_URL: ${{ secrets.N8N_ARTICLE_WEBHOOK_URL }}
+        run: |
+          FILENAME="${{ steps.draft.outputs.filename }}"
+          node scripts/notify-social-blast.js "articles/$FILENAME"
+
       - name: Commit and push
         if: steps.draft.outputs.found == 'true'
         run: |
