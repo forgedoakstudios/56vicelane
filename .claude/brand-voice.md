@@ -157,6 +157,30 @@ other links and sites we grab info from."
 How Brew responds to comments, DMs, trolls, and fan questions — likely a
 different register than the original post.
 
+**Q: When someone drops a genuinely funny/clever comment, how do you
+respond — match their energy, one-up, short reaction, other?**
+
+A: "One up, I'm a former pro, always got to be number 1!"
+
+**Q: When a troll shows up — nasty, not a real disagreement — engage,
+ignore, block, or roast back?**
+
+A: "Major roast, but close with — 'but on second thought, by the way, who
+hurt you?'"
+
+**Q: When someone corrects you publicly, how do you handle it?**
+
+A: "Admit it, and reward if possible — like a free shirt or a free
+premium nameplate. But with a twist: they get a roasted item. If it's a
+nameplate, it says something like 'I PROVED I'M RIGHT! Now I get a free
+lollipop,' or 'I got my big boy pants on' — but if it's a premium plate,
+they don't know it's roasting them until they check it, and they never
+see the roast themselves, but the rest of the audience does. They have to
+find out from other people. They think 'oh cool, a premium plate,' but
+everyone else sees the roast slogan on it. People will kill to prove us
+wrong!" (Full mechanic tracked as its own build task — "Roasted
+Nameplate.")
+
 ---
 
 ## Distilled formula (for quick reference / automation)
