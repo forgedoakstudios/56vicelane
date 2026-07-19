@@ -10,6 +10,7 @@ services:
       - N8N_SECURE_COOKIE=true
       - GENERIC_TIMEZONE=America/New_York
       - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
+      - N8N_MCP_ACCESS_ENABLED=true
     volumes:
       - n8n_data:/home/node/.n8n
     expose:
