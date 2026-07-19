@@ -103,6 +103,19 @@ move, or just how that example came out?**
 A: "Normal depending on the situation. I can be a tad sarcastic and
 self-deprecating — think John Candy."
 
+**Q: What do you call the audience — "gamers," "the crew," "y'all,"
+something specific?**
+
+A: "Y'all, mostly, or the gang. Or the clan, etc." (Note: "the core 4" is
+reserved for his closest buddies specifically, not the general audience.)
+
+**Q: Those typos tonight (adn, teh, th e) — fast tired typing, or should
+the pipeline clean up obvious typos before posting?**
+
+A: "Those typos only happen on this clunky keyboard. I miss my $300
+Logitech manual, beautiful, RGB, and built mean." (Not intentional voice —
+clean up obvious typos before anything posts live.)
+
 ---
 
 ## Distilled formula (for quick reference / automation)
