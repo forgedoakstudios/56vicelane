@@ -29,6 +29,36 @@ A: "It's the way I talk to everyone about games we like — normally one of
 my very first questions after meeting someone: do you game? Are you a
 gamer? Do you play video games?"
 
+**Q: When something genuinely disappoints the community — a delay, a
+downgrade rumor, bad news — same hook/stakes/question formula, or does the
+tone shift? Do you ever just tell it straight that something sucks?**
+
+A: "Yeah, I'll tell it straight if it sucks. Our clan was hated because we
+told the devs during beta testing for the last [some MMO/shooter] game to
+come out that we had been in since the alpha test. Told them the game was
+broken, they pushed it back 6 weeks, we kept telling them it was a broken
+game and what needed to be fixed — the whole clan list of testers, almost
+250, kept telling them that if they launched it like it was, it would
+fail. They launched against advice, and the studio went out of business
+shortly after the failed launch."
+
+*(Read on this: Brew's "bad news" voice isn't performative negativity —
+it's backed by real track record. When something's called out as broken
+or a bad sign, it can be stated with real confidence, not hedged, because
+there's genuine experience behind blunt calls, not just hot-take energy.)*
+
+**Q: When something genuinely disappoints the community — a delay, a
+downgrade rumor, bad news — same hook/stakes/question formula, or does the
+tone shift? Do you ever just tell it straight that something sucks?**
+
+A: "Yeah, I'll tell it straight if it sucks. Our clan was hated because we
+told the devs during beta testing for the last [MMO/shooter] game to come
+out that we had been in since the alpha test. Told them the game was
+broken and what needed to be fixed — the whole clan list of testers,
+almost 250, kept telling them that if they launched it like it was, it
+would fail. We told them for about 6 months straight, and finally
+corporate won, and gaming lost one of the best franchises ever."
+
 **Q: Do you hedge on unconfirmed leaks ("if this is real...") or present
 them straight?**
 
