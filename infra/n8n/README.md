@@ -1,31 +1,36 @@
-# n8n hosting — Oracle Cloud Always Free
+# n8n hosting — Google Cloud Always Free
 
-Self-hosted n8n behind Caddy (automatic HTTPS), sized to also leave room for
-running the video clipper (SamurAIGPT) on the same free VM later.
+Self-hosted n8n behind Caddy (automatic HTTPS), running on GCP's perpetual
+free `e2-micro` instance.
+
+(Originally scoped for Oracle Cloud's free Ampere tier, which would have
+also had room to run the video clipper on the same box — but Oracle's free
+Ampere capacity is notoriously oversubscribed and unavailable in most
+regions/tenancies for days at a time. Moved to GCP instead. GCP's free
+`e2-micro` only has 1GB RAM, enough for n8n alone — hosting for the video
+clipper is a separate decision for later.)
 
 ## Steps only you can do (account/DNS/browser)
 
-1. Create an Oracle Cloud account at cloud.oracle.com (free; card required for
-   identity verification, but Always Free resources never charge).
-2. Create a compute instance:
-   - Shape: `VM.Standard.A1.Flex` (Ampere, Always Free eligible)
-   - Size: start with 2 OCPU / 12GB RAM — leaves the other 2 OCPU / 12GB of
-     your Always Free allowance available for a second instance (e.g. the
-     video clipper) later, or resize this one up to 4/24 if you'd rather run
-     everything on one box.
-   - Image: Ubuntu 22.04
-   - Attach a public IPv4 address.
-3. Open ports in the instance's Virtual Cloud Network security list (or a
-   Network Security Group attached to the instance): ingress TCP 80 and 443
-   from 0.0.0.0/0. Oracle blocks these by default.
-4. Oracle's Ubuntu image also ships with its own iptables rules blocking
-   inbound traffic. SSH in and run:
-   ```
-   sudo iptables -I INPUT 6 -m state --state NEW -p tcp --dport 80 -j ACCEPT
-   sudo iptables -I INPUT 6 -m state --state NEW -p tcp --dport 443 -j ACCEPT
-   sudo netfilter-persistent save
-   ```
-5. DNS: add an A record `n8n.56vicelane.com` → the instance's public IP,
+1. Create a Google Cloud account at cloud.google.com (free; card required
+   for verification, but the Always Free resources below never charge on
+   their own — just don't attach anything outside the free allotment).
+2. Create a new project (or use an existing one), then enable the
+   "Compute Engine API" for it (console prompts you to enable it the first
+   time you visit Compute Engine).
+3. Create a VM instance:
+   - Machine type: `e2-micro` (2 shared vCPU, 1GB memory) — Always Free
+     eligible ONLY in these regions: `us-west1`, `us-central1`, or
+     `us-east1`. Pick one of those three or you lose free eligibility.
+   - Boot disk: Ubuntu 22.04 LTS, up to 30GB **standard persistent disk**
+     (not SSD — SSD persistent disk isn't covered by Always Free).
+   - Under "Firewall", check both "Allow HTTP traffic" and "Allow HTTPS
+     traffic" — this is the whole firewall step, no separate security list
+     or iptables wrangling like Oracle required.
+4. (Recommended) Reserve a static external IP for the instance under
+   VPC Network → IP addresses, so DNS doesn't break if the VM ever
+   restarts. Free while attached to a running instance.
+5. DNS: add an A record `n8n.56vicelane.com` → the instance's external IP,
    wherever 56vicelane.com's DNS is managed (Cloudflare, given the existing
    `_worker.js` in this repo).
 
