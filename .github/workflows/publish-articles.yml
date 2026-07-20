@@ -101,6 +101,14 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Generate article images (Gemini via n8n)
+        if: steps.draft.outputs.found == 'true'
+        env:
+          N8N_IMAGE_WEBHOOK_URL: ${{ secrets.N8N_IMAGE_WEBHOOK_URL }}
+        run: |
+          FILENAME="${{ steps.draft.outputs.filename }}"
+          node scripts/generate-article-images.js "articles/$FILENAME"
+
       - name: Queue a Bluesky post for the published article
         if: steps.draft.outputs.found == 'true'
         run: |
@@ -124,7 +132,7 @@ jobs:
           git config user.name "Vice Frequency Bot"
           git config user.email "bot@56vicelane.com"
 
-          git add social-queue.json
+          git add social-queue.json "articles/$FILENAME" images/
 
           PUBLISH_TIME=$(date -u +"%Y-%m-%d %H:%M UTC")
           git commit -m "publish: $FILENAME [$SLOT slot] — $PUBLISH_TIME"
