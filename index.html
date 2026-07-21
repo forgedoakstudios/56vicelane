@@ -171,11 +171,11 @@
     </div>
 
     <span class="label sec-label">Latest News</span>
-    <div class="news-grid">
+    <div class="news-grid" id="home-news-grid">
       <div class="news-thumb photo p-crew"></div>
       <div class="news-thumb photo p-plate"></div>
     </div>
-    <div class="news-title">Founding 56 Presale Is Live — 9 Slots Remain</div>
+    <a class="news-title" id="home-news-title" href="/news" style="display:block;color:inherit;text-decoration:none;">Loading latest news...</a>
 
     <span class="label sec-label">Last Drive Preview</span>
     <div class="video-block photo img-street">
@@ -186,10 +186,8 @@
 
   <div class="side-col">
     <span class="label sec-label">Top Stories</span>
-    <ul class="stories-list">
-      <li>Rockstar Confirms Trailer 3 Window<span>Headline · Jun 10</span></li>
-      <li>The Wall Just Hit 40 Drivers<span>Community · Jun 12</span></li>
-      <li>PC Build Guide For GTA6 Launch<span>Guide · Jun 14</span></li>
+    <ul class="stories-list" id="home-stories-list">
+      <li>Loading top stories...</li>
     </ul>
 
     <span class="label sec-label">Fan Creations</span>
@@ -259,6 +257,47 @@ function getPlateBg(style) {
     default:              return 'background:linear-gradient(160deg,#1a1a1a,#0a0a0a);';
   }
 }
+
+/* HOMEPAGE NEWS — real articles from articles.json. Replaces old static
+   mockup copy (including a fictional "Founding 56 Presale" line that was
+   never real) with the actual latest content. */
+function loadHomeNews() {
+  fetch('/articles.json?v=' + Date.now())
+    .then(function (r) { return r.json(); })
+    .then(function (articles) {
+      if (!articles || !articles.length) return;
+      var newsTitle = document.getElementById('home-news-title');
+      var newsGrid  = document.getElementById('home-news-grid');
+      var storiesEl = document.getElementById('home-stories-list');
+
+      var latest = articles[0];
+      if (newsTitle) {
+        newsTitle.textContent = latest.title || latest.headline;
+        newsTitle.href = '/articles/' + latest.slug;
+      }
+      if (newsGrid) {
+        var thumbs = articles.slice(0, 2);
+        newsGrid.innerHTML = thumbs.map(function (a) {
+          var bg = a.image ? "background-image:url('/images/" + a.image + "');background-size:cover;background-position:center;" : '';
+          return '<a class="news-thumb photo" href="/articles/' + a.slug + '" style="' + bg + '"></a>';
+        }).join('');
+      }
+      if (storiesEl) {
+        var picks = articles.slice(1, 4);
+        storiesEl.innerHTML = picks.map(function (a) {
+          return '<li><a href="/articles/' + a.slug + '" style="color:inherit;text-decoration:none;">' + (a.title || a.headline) +
+            '<span>' + (a.category || 'News') + ' · ' + (a.date || '') + '</span></a></li>';
+        }).join('');
+      }
+    })
+    .catch(function () {
+      var newsTitle = document.getElementById('home-news-title');
+      if (newsTitle) { newsTitle.textContent = 'Read the latest GTA6 news →'; newsTitle.href = '/news'; }
+      var storiesEl = document.getElementById('home-stories-list');
+      if (storiesEl) storiesEl.innerHTML = '<li><a href="/news" style="color:inherit;">See all news →</a></li>';
+    });
+}
+loadHomeNews();
 
 function shuffle(arr) {
   for (var i = arr.length - 1; i > 0; i--) {
