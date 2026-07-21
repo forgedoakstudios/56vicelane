@@ -64,7 +64,7 @@
 
   .sec-label{color:var(--magenta); font-size:12px; margin-bottom:12px; display:block;}
   .news-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:8px;}
-  .news-thumb{height:90px; border-radius:8px;}
+  .news-thumb{height:90px; border-radius:8px; display:block; background:linear-gradient(135deg,var(--gold),var(--orange) 55%,var(--magenta)); background-size:cover; background-position:center;}
   .news-title{font-family:'Playfair Display'; font-weight:700; font-size:16px; margin-top:12px; margin-bottom:20px;}
 
   .video-block{height:150px; border-radius:10px; position:relative; display:flex; align-items:center; justify-content:center; margin-top:8px;}
@@ -75,6 +75,22 @@
   .stories-list{list-style:none; margin-bottom:28px;}
   .stories-list li{padding:10px 0; border-bottom:1px solid var(--edge); font-family:'Inter'; font-size:12.5px; font-weight:600; line-height:1.4;}
   .stories-list li span{display:block; font-family:'Barlow Condensed'; font-size:10.5px; color:var(--ink-soft); font-weight:500; margin-top:3px;}
+
+  /* VICE CITY CRIME BLOTTER — satire/parody, deliberately styled apart
+     from real news so it never gets mistaken for it, but light/warm to
+     match the rest of the page instead of clashing. See crime-blotter.js
+     and blotter-banner.js */
+  .blotter-block{background:#FFF7EC; border:2px solid var(--magenta); border-radius:12px; overflow:hidden; margin-bottom:24px;}
+  .blotter-banner{width:100%; height:100px; object-fit:cover; display:block; background:linear-gradient(135deg,var(--gold),var(--magenta));}
+  .blotter-inner{padding:14px 18px 16px;}
+  .blotter-label{display:flex; align-items:center; justify-content:space-between; margin-bottom:4px;}
+  .blotter-label .sec-label{margin-bottom:0; color:var(--magenta);}
+  .blotter-tag{font-family:'Barlow Condensed'; font-size:9.5px; letter-spacing:0.5px; color:var(--ink-soft); text-transform:uppercase;}
+  .blotter-list{list-style:none;}
+  .blotter-list li{padding:9px 0; border-bottom:1px dashed var(--edge);}
+  .blotter-list li:last-child{border-bottom:none;}
+  .blotter-headline{display:block; font-family:'Playfair Display'; font-style:italic; font-weight:700; font-size:12.5px; line-height:1.4; color:var(--ink);}
+  .blotter-source{display:block; font-family:'Barlow Condensed'; font-size:10px; color:var(--ink-soft); margin-top:4px; text-transform:uppercase; letter-spacing:0.5px;}
 
   .fan-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:24px;}
   .fan-thumb{height:90px; border-radius:8px;}
@@ -171,11 +187,11 @@
     </div>
 
     <span class="label sec-label">Latest News</span>
-    <div class="news-grid">
+    <div class="news-grid" id="home-news-grid">
       <div class="news-thumb photo p-crew"></div>
       <div class="news-thumb photo p-plate"></div>
     </div>
-    <div class="news-title">Founding 56 Presale Is Live — 9 Slots Remain</div>
+    <a class="news-title" id="home-news-title" href="/news" style="display:block;color:inherit;text-decoration:none;">Loading latest news...</a>
 
     <span class="label sec-label">Last Drive Preview</span>
     <div class="video-block photo img-street">
@@ -186,11 +202,23 @@
 
   <div class="side-col">
     <span class="label sec-label">Top Stories</span>
-    <ul class="stories-list">
-      <li>Rockstar Confirms Trailer 3 Window<span>Headline · Jun 10</span></li>
-      <li>The Wall Just Hit 40 Drivers<span>Community · Jun 12</span></li>
-      <li>PC Build Guide For GTA6 Launch<span>Guide · Jun 14</span></li>
+    <ul class="stories-list" id="home-stories-list">
+      <li>Loading top stories...</li>
     </ul>
+
+    <div class="blotter-block">
+      <img class="blotter-banner" id="blotter-banner-img" alt="Vice City Crime Blotter">
+      <div class="blotter-inner">
+        <div class="blotter-label">
+          <span class="sec-label">🌴 Vice City Crime Blotter</span>
+          <span class="blotter-tag">Satire · Not Real News</span>
+        </div>
+        <ul class="blotter-list" id="crime-blotter-list">
+          <li><span class="blotter-headline">Loading...</span></li>
+        </ul>
+        <a href="/editor" style="display:block;margin-top:10px;font-family:'Barlow Condensed'; font-size:10.5px; letter-spacing:0.5px; color:var(--ink-soft); text-transform:uppercase;">Nobody on staff can explain this feed — read the Editor's note →</a>
+      </div>
+    </div>
 
     <span class="label sec-label">Fan Creations</span>
     <div class="fan-grid">
@@ -260,6 +288,47 @@ function getPlateBg(style) {
   }
 }
 
+/* HOMEPAGE NEWS — real articles from articles.json. Replaces old static
+   mockup copy (including a fictional "Founding 56 Presale" line that was
+   never real) with the actual latest content. */
+function loadHomeNews() {
+  fetch('/articles.json?v=' + Date.now())
+    .then(function (r) { return r.json(); })
+    .then(function (articles) {
+      if (!articles || !articles.length) return;
+      var newsTitle = document.getElementById('home-news-title');
+      var newsGrid  = document.getElementById('home-news-grid');
+      var storiesEl = document.getElementById('home-stories-list');
+
+      var latest = articles[0];
+      if (newsTitle) {
+        newsTitle.textContent = latest.title || latest.headline;
+        newsTitle.href = '/articles/' + latest.slug;
+      }
+      if (newsGrid) {
+        var thumbs = articles.slice(0, 2);
+        newsGrid.innerHTML = thumbs.map(function (a) {
+          var bg = a.image ? "background-image:url('/images/" + a.image + "');background-size:cover;background-position:center;" : '';
+          return '<a class="news-thumb photo" href="/articles/' + a.slug + '" style="' + bg + '"></a>';
+        }).join('');
+      }
+      if (storiesEl) {
+        var picks = articles.slice(1, 4);
+        storiesEl.innerHTML = picks.map(function (a) {
+          return '<li><a href="/articles/' + a.slug + '" style="color:inherit;text-decoration:none;">' + (a.title || a.headline) +
+            '<span>' + (a.category || 'News') + ' · ' + (a.date || '') + '</span></a></li>';
+        }).join('');
+      }
+    })
+    .catch(function () {
+      var newsTitle = document.getElementById('home-news-title');
+      if (newsTitle) { newsTitle.textContent = 'Read the latest GTA6 news →'; newsTitle.href = '/news'; }
+      var storiesEl = document.getElementById('home-stories-list');
+      if (storiesEl) storiesEl.innerHTML = '<li><a href="/news" style="color:inherit;">See all news →</a></li>';
+    });
+}
+loadHomeNews();
+
 function shuffle(arr) {
   for (var i = arr.length - 1; i > 0; i--) {
     var j = Math.floor(Math.random() * (i + 1));
@@ -316,6 +385,8 @@ function loadDriveLeadSpotlight() {
 loadDriveLeadSpotlight();
 </script>
 <script src="/countdown.js" defer></script>
+<script src="/crime-blotter.js" defer></script>
+<script src="/blotter-banner.js" defer></script>
 <script src="/back-to-top.js" defer></script>
 </body>
 </html>

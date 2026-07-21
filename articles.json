@@ -21,6 +21,18 @@
   },
   {
     "emoji": "🎮",
+    "title": "How Long Did It Really Take to Make GTA6?",
+    "slug": "how-long-did-it-really-take-to-make-gta6",
+    "url": "/articles/how-long-did-it-really-take-to-make-gta6",
+    "headline": "How Long Did It Really Take to Make GTA6?",
+    "category": "Industry News",
+    "date": "2026-07-21",
+    "excerpt": "From the last GTA5 update to a November 2026 launch, the official GTA6 timeline is public record. But fans have been swapping a much older rumor for years — that Rockstar was already talking about it before GTA5 even shipped.",
+    "image": "gta6-timeline-hero.png",
+    "permanent": false
+  },
+  {
+    "emoji": "🎮",
     "title": "Even Assassin's Creed Is Bracing for GTA6 — Dev Begs Fans \\",
     "slug": "assassins-creed-begs-fans-play-us-when-gta6-launches",
     "url": "/articles/assassins-creed-begs-fans-play-us-when-gta6-launches",
@@ -41,6 +53,18 @@
     "date": "2026-07-20",
     "excerpt": "The Jailbreak mod turns getting arrested in GTA5 into an actual game within a game — sentence timers, guard AI, lockdowns. Thousands of downloads later, one word keeps showing up in the comments: GTA6.",
     "image": "gta6-hero.png",
+    "permanent": false
+  },
+  {
+    "emoji": "🎮",
+    "title": "Seven New Nameplate Bundles Just Dropped — Classic, Muscle, Exotic, and More",
+    "slug": "seven-nameplate-bundles-drop",
+    "url": "/articles/seven-nameplate-bundles-drop",
+    "headline": "Seven New Nameplate Bundles Just Dropped",
+    "category": "Store",
+    "date": "2026-07-20",
+    "excerpt": "Classic Cars, Trucks, Low Riders, Sports Cars, Muscle Cars, Exotic Cars, and Monster Trucks — seven new premium nameplate bundles are live in the store, each with ten original plate designs.",
+    "image": "NameplateBundlesHero.png",
     "permanent": false
   },
   {
@@ -88,7 +112,7 @@
     "category": "News",
     "date": "2026-07-17",
     "excerpt": "A cherry picker outside Rockstar North's Edinburgh studio is taking down the Red Dead mural and putting up GTA6. The studio that built the game just decorated their own building with it.",
-    "image": "rockstar-north-gta6-banner.jpg",
+    "image": "RockstarNews.png",
     "permanent": false
   },
   {
@@ -400,7 +424,7 @@
     "category": "News",
     "date": "2026-06-02",
     "excerpt": "Take-Two CEO Strauss Zelnick finally explained the 13-year gap between GTA5 and GTA6. Here's what he said and what it means for the November 19 launch.",
-    "image": "zelnick-gta6-13-year-wait.jpg",
+    "image": "RockstarNews2.png",
     "permanent": false
   },
   {
@@ -448,7 +472,7 @@
     "category": "Community",
     "date": "2026-05-28",
     "excerpt": "Take-Two just killed RAGE:MP with a cease-and-desist. This isn't really about GTA 5. It's about controlling the entire modding ecosystem before GTA 6 launches.",
-    "image": "Jason_and_Lucia_01_landscape.jpg",
+    "image": "GtaVOnlineNews1.png",
     "permanent": false
   },
   {
@@ -460,7 +484,7 @@
     "category": "News",
     "date": "2026-05-28",
     "excerpt": "Does GTA 6 require PlayStation Plus? Will it be always online? Is it an online-only game? Here's everything we actually know — and one question nobody is asking yet.",
-    "image": "Jason_and_Lucia_01_landscape.jpg",
+    "image": "Gta6OnlineNews.png",
     "permanent": false
   },
   {
@@ -484,7 +508,7 @@
     "category": "News",
     "date": "2026-05-27",
     "excerpt": "56ViceLane predicted the July 5-15 window for GTA 6 Trailer 3 last week. Zelnick just confirmed it in a Bloomberg interview. Here's the full breakdown.",
-    "image": "Jason_and_Lucia_01_landscape.jpg",
+    "image": "Gta6NewsHero.png",
     "permanent": false
   },
   {
@@ -496,7 +520,7 @@
     "category": "News",
     "date": "2026-05-26",
     "excerpt": "Sony is emailing millions of PS4 owners. Xbox just went international across six countries. Both platforms moving simultaneously means one thing — GTA 6 pre-orders are days away.",
-    "image": "Jason_and_Lucia_01_landscape.jpg",
+    "image": "GtaVHero.png",
     "permanent": false
   },
   {

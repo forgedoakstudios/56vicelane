@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Editor's Desk | 56ViceLane</title>
+<meta name="description" content="Notes from 56ViceLane's editor — on the record, mostly serious, occasionally derailed by something that showed up on the homepage that nobody on staff can explain.">
+<meta property="og:title" content="The Editor's Desk | 56ViceLane">
+<meta property="og:description" content="Notes from 56ViceLane's editor — on the record, mostly serious, occasionally derailed by something that showed up on the homepage that nobody on staff can explain.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://56vicelane.com/editor">
+<meta property="og:site_name" content="56ViceLane">
+<link rel="canonical" href="https://56vicelane.com/editor">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9EKF7J4V7W');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Barlow+Condensed:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+--pitch:#FDFBF8;--asphalt:#FFFFFF;--amber:#FF6B2C;--amber-dim:#C4922A;
+--cyan:#D6247A;--bone:#211A16;--smoke:#6B5F52;--edge:#F0E6DA;
+}
+body{background:var(--pitch);color:var(--bone);font-family:'Inter',sans-serif;font-size:1rem;line-height:1.7;}
+a{color:var(--amber);text-decoration:none;}
+a:hover{color:var(--cyan);}
+nav{background:var(--asphalt);border-bottom:2px solid var(--amber);padding:0 20px;position:sticky;top:0;z-index:200;}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo-box{background:var(--amber);color:#000;font-family:'Playfair Display',serif;font-size:1.1rem;padding:4px 8px;border-radius:4px;}
+.nav-logo-text{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--bone);letter-spacing:1px;}
+.navband{background:#B5637A;display:flex;justify-content:center;gap:0;flex-wrap:wrap;}
+.navband a{color:#fff;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:12.5px;padding:14px 22px;transition:background .2s;}
+.navband a:hover{background:rgba(255,255,255,.1);}
+.navband a.active{background:rgba(255,255,255,.15);}
+.ticker-wrap{background:var(--amber);overflow:hidden;padding:6px 0;}
+.ticker-track{display:flex;gap:60px;white-space:nowrap;animation:ticker 20s linear infinite;}
+.ticker-item{font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;font-weight:700;color:#000;text-transform:uppercase;cursor:pointer;flex-shrink:0;}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.desk-wrap{max-width:720px;margin:0 auto;padding:44px 20px 80px;}
+.desk-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:10px;}
+.desk-title{font-family:'Playfair Display',serif;font-size:2.1rem;line-height:1.15;margin-bottom:10px;}
+.desk-sub{color:var(--smoke);font-size:1.05rem;line-height:1.75;margin-bottom:40px;max-width:560px;}
+.note{position:relative;background:var(--asphalt);border:1px solid var(--edge);border-left:4px solid var(--amber);border-radius:8px;padding:30px 30px 28px;margin:44px 0 28px;}
+.note-byline{display:flex;flex-direction:column;justify-content:center;min-height:66px;padding-left:126px;margin-bottom:18px;}
+.note-avatar-wrap{position:absolute;top:-30px;left:30px;width:112px;height:112px;border-radius:50%;overflow:hidden;border:4px solid var(--pitch);box-shadow:0 6px 16px rgba(33,26,22,.22);background:linear-gradient(135deg,var(--amber),var(--cyan));}
+.note-avatar-img{width:100%;height:100%;object-fit:cover;display:block;}
+.note-who{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.05rem;color:var(--bone);text-transform:uppercase;letter-spacing:0.5px;}
+.note-role{font-size:0.85rem;color:var(--cyan);font-weight:600;margin-top:2px;}
+.note-when{font-size:0.85rem;color:var(--ink-soft,var(--smoke));margin-top:2px;}
+.note p{margin-bottom:16px;color:var(--bone);font-size:1.05rem;}
+.note p:last-child{margin-bottom:0;}
+.note .sign{font-style:italic;color:var(--smoke);}
+.note-contact{margin-top:20px;padding-top:16px;border-top:1px dashed var(--edge);font-size:0.92rem;}
+.note-contact a{font-weight:600;}
+footer{background:var(--asphalt);border-top:1px solid var(--edge);padding:40px 20px;}
+.footer-inner{max-width:1100px;margin:0 auto;text-align:center;}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:16px;}
+.footer-links a{font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;color:var(--smoke);text-transform:uppercase;letter-spacing:1px;}
+.footer-links a:hover{color:var(--amber);}
+.footer-disclaimer{font-size:0.8rem;color:var(--smoke);line-height:1.6;max-width:600px;margin:0 auto;}
+@media(max-width:600px){.desk-title{font-size:1.5rem;}}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<a href="/" class="nav-logo">
+<span class="nav-logo-box">56</span>
+<span class="nav-logo-text">VICELANE</span>
+</a>
+</div>
+</nav>
+<div class="navband">
+  <a href="/">Home</a>
+  <a href="/news">News</a>
+  <a href="/lastdrive">Last Drive</a>
+  <a href="/wall">Wall of Honor</a>
+  <a href="/members">Members</a>
+  <a href="/store">Store</a>
+  <a href="/gear">Gear</a>
+  <a href="/forum">Forum</a>
+</div>
+
+<div class="ticker-wrap">
+<div class="ticker-track" id="ticker-track">
+<span class="ticker-item">Loading latest GTA6 news...</span>
+</div>
+</div>
+
+<div class="desk-wrap">
+<div class="desk-eyebrow">🗞️ From The Desk Of</div>
+<h1 class="desk-title">The Editor</h1>
+<p class="desk-sub">Occasional notes from whoever's actually running this place. Mostly about GTA6. Sometimes about things we can't fully explain.</p>
+
+<div class="note">
+<div class="note-avatar-wrap"><img class="note-avatar-img" src="/images/editor-portrait.png" alt="Danny Marchetti, Editor-in-Chief" onerror="this.style.visibility='hidden'"></div>
+<div class="note-byline">
+<div class="note-who">Danny Marchetti</div>
+<div class="note-role">Editor-in-Chief · July 21, 2026</div>
+</div>
+<p>Alright, we need to address something before I get back to actual reporting.</p>
+<p>Some kind of&nbsp;<em>"news feed"</em>&nbsp;showed up on our own homepage sometime in the last day or so. Nobody on staff will take credit for it. I asked IT to trace where it's coming from and got a very long pause followed by "working on it." Half of what's in it doesn't sound like anything a real person would write — alligators wrestling grown men over beer, lights over the marsh that are apparently "just the casino sign," a guy describing a dog at a crime scene as "possibly armed." I don't know what any of that means and at this point I'm afraid to ask.</p>
+<p>We've filed it with the FIB, for whatever that's worth. Their exact words were "we'll look into it, eventually, maybe," which is either extremely reassuring or the opposite of that, I genuinely can't tell anymore.</p>
+<p>So — we might be in the market for a new IT department head. Until then, the feed's still running on the homepage, so I guess enjoy it. We didn't put it there. We can't fully get rid of it. Make of that what you will.</p>
+<p>Real GTA6 coverage resumes below, I promise.</p>
+<p class="sign">— Danny</p>
+<div class="note-contact">Got a tip, a submission, or you're just as confused about that feed as we are? Write the editor: <a href="mailto:forgedoakstudios+editor@gmail.com">forgedoakstudios+editor@gmail.com</a></div>
+</div>
+
+</div>
+
+<footer>
+<div class="footer-inner">
+<div class="footer-links">
+<a href="/">Home</a><a href="/news">News</a><a href="/lastdrive">Last Drive</a>
+<a href="/wall">Wall of Honor</a><a href="/store">Store</a><a href="/gear">Gear</a>
+<a href="/forum">Forum</a><a href="/contact">Contact</a>
+</div>
+<p class="footer-disclaimer">56ViceLane is an independent fan site. Not affiliated with Rockstar Games or Take-Two Interactive. All trademarks belong to their respective owners.<br><br>© 2026 56ViceLane · Forged Oak Studios</p>
+</div>
+</footer>
+
+<script>
+fetch('/articles.json?v='+Date.now())
+.then(function(r){return r.json();})
+.then(function(articles){
+var track=document.getElementById('ticker-track');
+if(!track) return;
+var items=articles.map(function(a){
+var span=document.createElement('span');
+span.className='ticker-item';
+span.textContent=(a.emoji||'⚡')+' '+a.title;
+span.onclick=function(){window.location.href='/articles/'+a.slug;};
+return span;
+});
+var doubled=items.concat(items.map(function(el){return el.cloneNode(true);}));
+track.innerHTML='';
+doubled.forEach(function(el){track.appendChild(el);});
+})
+.catch(function(){});
+</script>
+<script src="/back-to-top.js" defer></script>
+</body>
+</html>

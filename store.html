@@ -103,6 +103,16 @@
 .bundle-btn:hover{box-shadow:0 0 20px rgba(255,107,26,.4);}
 .bundle-btn.gold-btn{background:var(--gold);font-size:1rem;padding:16px;}
 .bundle-btn.gold-btn:hover{box-shadow:0 0 24px rgba(255,215,0,.4);}
+
+/* NAMEPLATE BUNDLES — hero carousel + metal shimmer */
+.bundle-hero-carousel{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;background:#0a0a0a;}
+.bundle-hero-carousel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.1s ease;}
+.bundle-hero-carousel img.active{opacity:1;}
+.plate-shimmer{position:relative;overflow:hidden;}
+.plate-shimmer::after{content:'';position:absolute;top:0;left:-150%;width:55%;height:100%;background:linear-gradient(115deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.28) 45%,rgba(255,255,255,.48) 50%,rgba(255,255,255,.28) 55%,rgba(255,255,255,0) 100%);transform:skewX(-20deg);animation:plateShimmer 4.6s ease-in-out infinite;pointer-events:none;}
+.plate-shimmer-gold::after{background:linear-gradient(115deg,rgba(255,215,0,0) 0%,rgba(255,215,0,.4) 45%,rgba(255,247,200,.7) 50%,rgba(255,215,0,.4) 55%,rgba(255,215,0,0) 100%);animation-duration:3.4s;}
+@keyframes plateShimmer{0%{left:-150%;}55%{left:150%;}100%{left:150%;}}
+.np-bundle-checklist{font-size:.78rem;color:#C8C4BE;margin:0 0 12px;line-height:1.5;}
 .featured-block{background:linear-gradient(135deg,#0D0D1A,#1A0D2E,#0D1A1A);border-top:4px solid var(--gold);border-bottom:1px solid var(--edge);padding:52px 24px;position:relative;overflow:hidden;}
 .featured-block::after{content:'ALL ACCESS';position:absolute;bottom:-10px;right:-10px;font-family:var(--font-display);font-size:80px;color:rgba(255,215,0,.04);text-transform:uppercase;transform:rotate(-8deg);pointer-events:none;}
 .featured-inner{max-width:var(--wide-width);margin:0 auto;}
@@ -405,25 +415,172 @@
         </div>
         <div id="paypal-button-color-bundle"></div>
       </div>
+      <div class="bundles-label" style="grid-column:1/-1;margin-top:8px;">🎨 Nameplate Bundles — 10 Original Designs Each</div>
+
       <div class="bundle-card">
-        <div class="bundle-save-badge">🔥 Save $1.96</div>
+        <div class="bundle-save-badge">⚡ Save $9.91</div>
+        <div class="bundle-hero-carousel plate-shimmer">
+          <img src="/images/nameplates/Classic Cars/ClassicCars_01.png" alt="Classic Cars nameplate" class="active" loading="lazy">
+          <img src="/images/nameplates/Classic Cars/ClassicCars_04.png" alt="Classic Cars nameplate" loading="lazy">
+          <img src="/images/nameplates/Classic Cars/ClassicCars_07.png" alt="Classic Cars nameplate" loading="lazy">
+          <img src="/images/nameplates/Classic Cars/ClassicCars_10.png" alt="Classic Cars nameplate" loading="lazy">
+        </div>
         <div class="bundle-body">
-          <div class="bundle-name">Vehicle Bundle</div>
-          <div class="bundle-desc">All 4 vehicle plates — Male Exotic, Female Exotic + Bike and Muscle when they drop. Auto-unlocks future vehicle drops.</div>
-          <div class="bundle-swatches">
-            <div class="swatch" style="background:linear-gradient(135deg,#1a0535,#3a0a6a);"></div>
-            <div class="swatch" style="background:linear-gradient(135deg,#0a1228,#1a0535);"></div>
-            <div class="swatch-lbl">Bike</div>
-            <div class="swatch-lbl">Muscle</div>
-          </div>
+          <div class="bundle-name">🚗 Classic Cars Bundle</div>
+          <div class="bundle-desc">Chrome, whitewalls, golden-age Vice City energy — 10 original nameplate designs.</div>
           <div class="bundle-price-row">
-            <div class="bundle-price">$9.99</div>
-            <div class="bundle-was">$11.96</div>
-            <div class="bundle-save-tag">Save $1.96</div>
+            <div class="bundle-price">$19.99</div>
+            <div class="bundle-was">$29.90</div>
+            <div class="bundle-save-tag">Save $9.91</div>
           </div>
         </div>
-        <div id="paypal-button-vehicle-bundle"></div>
+        <div id="paypal-button-np-classiccars"></div>
       </div>
+
+      <div class="bundle-card">
+        <div class="bundle-save-badge">⚡ Save $9.91</div>
+        <div class="bundle-hero-carousel plate-shimmer">
+          <img src="/images/nameplates/Trucks/Trucks_01.png" alt="Trucks nameplate" class="active" loading="lazy">
+          <img src="/images/nameplates/Trucks/Trucks_04.png" alt="Trucks nameplate" loading="lazy">
+          <img src="/images/nameplates/Trucks/Trucks_07.png" alt="Trucks nameplate" loading="lazy">
+          <img src="/images/nameplates/Trucks/Trucks_10.png" alt="Trucks nameplate" loading="lazy">
+        </div>
+        <div class="bundle-body">
+          <div class="bundle-name">🚛 Trucks Bundle</div>
+          <div class="bundle-desc">Lifted, chrome-heavy, dust-kicking rigs — 10 original nameplate designs.</div>
+          <div class="bundle-price-row">
+            <div class="bundle-price">$19.99</div>
+            <div class="bundle-was">$29.90</div>
+            <div class="bundle-save-tag">Save $9.91</div>
+          </div>
+        </div>
+        <div id="paypal-button-np-trucks"></div>
+      </div>
+
+      <div class="bundle-card">
+        <div class="bundle-save-badge">⚡ Save $9.91</div>
+        <div class="bundle-hero-carousel plate-shimmer">
+          <img src="/images/nameplates/Low Riders/LowRiders_01.png" alt="Low Riders nameplate" class="active" loading="lazy">
+          <img src="/images/nameplates/Low Riders/LowRiders_04.png" alt="Low Riders nameplate" loading="lazy">
+          <img src="/images/nameplates/Low Riders/LowRiders_07.png" alt="Low Riders nameplate" loading="lazy">
+          <img src="/images/nameplates/Low Riders/LowRiders_10.png" alt="Low Riders nameplate" loading="lazy">
+        </div>
+        <div class="bundle-body">
+          <div class="bundle-name">💜 Low Riders Bundle</div>
+          <div class="bundle-desc">Hydraulics, candy paint, chrome spokes — 10 original nameplate designs.</div>
+          <div class="bundle-price-row">
+            <div class="bundle-price">$19.99</div>
+            <div class="bundle-was">$29.90</div>
+            <div class="bundle-save-tag">Save $9.91</div>
+          </div>
+        </div>
+        <div id="paypal-button-np-lowriders"></div>
+      </div>
+
+      <div class="bundle-card">
+        <div class="bundle-save-badge">⚡ Save $9.91</div>
+        <div class="bundle-hero-carousel plate-shimmer">
+          <img src="/images/nameplates/Sports Cars/SportsCars_01.png" alt="Sports Cars nameplate" class="active" loading="lazy">
+          <img src="/images/nameplates/Sports Cars/SportsCars_04.png" alt="Sports Cars nameplate" loading="lazy">
+          <img src="/images/nameplates/Sports Cars/SportsCars_07.png" alt="Sports Cars nameplate" loading="lazy">
+          <img src="/images/nameplates/Sports Cars/SportsCars_10.png" alt="Sports Cars nameplate" loading="lazy">
+        </div>
+        <div class="bundle-body">
+          <div class="bundle-name">🏎️ Sports Cars Bundle</div>
+          <div class="bundle-desc">Corner-carving, sunset-chasing speed — 10 original nameplate designs.</div>
+          <div class="bundle-price-row">
+            <div class="bundle-price">$19.99</div>
+            <div class="bundle-was">$29.90</div>
+            <div class="bundle-save-tag">Save $9.91</div>
+          </div>
+        </div>
+        <div id="paypal-button-np-sportscars"></div>
+      </div>
+
+      <div class="bundle-card">
+        <div class="bundle-save-badge">⚡ Save $9.91</div>
+        <div class="bundle-hero-carousel plate-shimmer">
+          <img src="/images/nameplates/Muscle Cars/MuscleCars_01.png" alt="Muscle Cars nameplate" class="active" loading="lazy">
+          <img src="/images/nameplates/Muscle Cars/MuscleCars_04.png" alt="Muscle Cars nameplate" loading="lazy">
+          <img src="/images/nameplates/Muscle Cars/MuscleCars_07.png" alt="Muscle Cars nameplate" loading="lazy">
+          <img src="/images/nameplates/Muscle Cars/MuscleCars_10.png" alt="Muscle Cars nameplate" loading="lazy">
+        </div>
+        <div class="bundle-body">
+          <div class="bundle-name">🔥 Muscle Cars Bundle</div>
+          <div class="bundle-desc">American V8 attitude, hood scoops, tire smoke — 10 original nameplate designs.</div>
+          <div class="bundle-price-row">
+            <div class="bundle-price">$19.99</div>
+            <div class="bundle-was">$29.90</div>
+            <div class="bundle-save-tag">Save $9.91</div>
+          </div>
+        </div>
+        <div id="paypal-button-np-musclecars"></div>
+      </div>
+
+      <div class="bundle-card">
+        <div class="bundle-save-badge">⚡ Save $9.91</div>
+        <div class="bundle-hero-carousel plate-shimmer">
+          <img src="/images/nameplates/Exotic Cars/ExoticCars_01.png" alt="Exotic Cars nameplate" class="active" loading="lazy">
+          <img src="/images/nameplates/Exotic Cars/ExoticCars_04.png" alt="Exotic Cars nameplate" loading="lazy">
+          <img src="/images/nameplates/Exotic Cars/ExoticCars_07.png" alt="Exotic Cars nameplate" loading="lazy">
+          <img src="/images/nameplates/Exotic Cars/ExoticCars_10.png" alt="Exotic Cars nameplate" loading="lazy">
+        </div>
+        <div class="bundle-body">
+          <div class="bundle-name">💎 Exotic Cars Bundle</div>
+          <div class="bundle-desc">Scissor doors, neon reflections, penthouse parking — 10 original nameplate designs.</div>
+          <div class="bundle-price-row">
+            <div class="bundle-price">$19.99</div>
+            <div class="bundle-was">$29.90</div>
+            <div class="bundle-save-tag">Save $9.91</div>
+          </div>
+        </div>
+        <div id="paypal-button-np-exoticcars"></div>
+      </div>
+
+      <div class="bundle-card">
+        <div class="bundle-save-badge">⚡ Save $9.91</div>
+        <div class="bundle-hero-carousel plate-shimmer">
+          <img src="/images/nameplates/Monster Trucks/MonsterTrucks_01.png" alt="Monster Trucks nameplate" class="active" loading="lazy">
+          <img src="/images/nameplates/Monster Trucks/MonsterTrucks_04.png" alt="Monster Trucks nameplate" loading="lazy">
+          <img src="/images/nameplates/Monster Trucks/MonsterTrucks_07.png" alt="Monster Trucks nameplate" loading="lazy">
+          <img src="/images/nameplates/Monster Trucks/MonsterTrucks_10.png" alt="Monster Trucks nameplate" loading="lazy">
+        </div>
+        <div class="bundle-body">
+          <div class="bundle-name">💥 Monster Trucks Bundle</div>
+          <div class="bundle-desc">Oversized tires, flame decals, dirt-arena chaos — 10 original nameplate designs.</div>
+          <div class="bundle-price-row">
+            <div class="bundle-price">$19.99</div>
+            <div class="bundle-was">$29.90</div>
+            <div class="bundle-save-tag">Save $9.91</div>
+          </div>
+        </div>
+        <div id="paypal-button-np-monstertrucks"></div>
+      </div>
+
+      <div class="bundle-card ultimate">
+        <div class="bundle-save-badge" style="font-size:.72rem;">👑 Best Deal</div>
+        <div class="bundle-hero-carousel plate-shimmer plate-shimmer-gold">
+          <img src="/images/nameplates/Classic Cars/ClassicCars_02.png" alt="Nameplate collection" class="active" loading="lazy">
+          <img src="/images/nameplates/Trucks/Trucks_02.png" alt="Nameplate collection" loading="lazy">
+          <img src="/images/nameplates/Low Riders/LowRiders_02.png" alt="Nameplate collection" loading="lazy">
+          <img src="/images/nameplates/Sports Cars/SportsCars_02.png" alt="Nameplate collection" loading="lazy">
+          <img src="/images/nameplates/Muscle Cars/MuscleCars_02.png" alt="Nameplate collection" loading="lazy">
+          <img src="/images/nameplates/Exotic Cars/ExoticCars_02.png" alt="Nameplate collection" loading="lazy">
+          <img src="/images/nameplates/Monster Trucks/MonsterTrucks_02.png" alt="Nameplate collection" loading="lazy">
+        </div>
+        <div class="bundle-body">
+          <div class="bundle-name" style="color:var(--gold);font-size:1.3rem;">All Nameplate Bundles</div>
+          <div class="bundle-desc">All 7 themed bundles today, plus every new nameplate theme we add before GTA6 launches — automatically. This collection is growing toward 500 designs across 50 themes; lock in today's price before it's worth more.</div>
+          <div class="np-bundle-checklist">✓ All 7 current bundles (70 designs)&nbsp;&nbsp;✓ Every future nameplate bundle until Nov 19&nbsp;&nbsp;✓ Auto-unlocks, no repurchase needed</div>
+          <div class="bundle-price-row">
+            <div class="bundle-price" style="color:var(--gold);font-size:2.2rem;">$29.99</div>
+            <div class="bundle-was">$139.93</div>
+            <div class="bundle-save-tag">Save $109.94</div>
+          </div>
+        </div>
+        <div id="paypal-button-np-all"></div>
+      </div>
+
       <div class="bundle-card" style="border-color:var(--cyan);background:linear-gradient(135deg,#0D1A1A,#0D0D2E);">
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan),#00FFD4,var(--amber));"></div>
         <div class="bundle-save-badge" style="color:#00D4FF;background:rgba(0,212,255,.1);border-color:rgba(0,212,255,.3);">🔥 Best Deal</div>
@@ -504,7 +661,7 @@
     <div class="founder-eyebrow">⭐ Exclusive · First 100 Signups Only</div>
     <div class="founder-title">Founder <span>Plate</span></div>
     <p class="founder-sub">The first 100 players to sign up for The Last Drive get this plate free. It will never be available again after the 100th spot is claimed.</p>
-    <div class="founder-plate-preview">
+    <div class="founder-plate-preview plate-shimmer plate-shimmer-gold">
       <div class="plate-inner" style="background-image:url('/images/plate-founder.png');background-size:cover;background-position:center;">
         <div class="plate-stars" style="color:var(--gold);text-shadow:0 0 8px rgba(255,215,0,.6);">★ ★ ★ ★ ★ ★</div>
         <div class="plate-tag" id="preview-founder" style="color:var(--gold);text-shadow:0 0 16px rgba(255,215,0,.5),0 2px 6px rgba(0,0,0,.9);">FOUNDER</div>
@@ -602,12 +759,6 @@ var BUNDLES = {
     desc: '56ViceLane Color Bundle — All Color Plates',
     bundleField: 'bundle_color'
   },
-  'vehicle-bundle': {
-    plates: ['vehicle-male-exotic','vehicle-female-exotic'],
-    name: 'Vehicle Bundle', price: 9.99,
-    desc: '56ViceLane Vehicle Bundle — All Vehicle Plates',
-    bundleField: 'bundle_vehicle'
-  },
   'all-premium': {
     plates: ALL_PLATES,
     name: 'All Premium · Current', price: 19.99,
@@ -633,8 +784,50 @@ var BUNDLES = {
   }
 };
 
+// ── NAMEPLATE BUNDLES (Classic Cars, Trucks, etc.) ─────────
+// Ownership tracked entirely via the OwnedPlates string field — no dedicated
+// Airtable checkboxes needed. "np-all-access" is a sentinel: owning it means
+// "every nameplate bundle, current and future" and is expanded at read time
+// in buildOwnedFromRecord() so newly-added themes auto-unlock for past buyers.
+var NAMEPLATE_CATEGORIES = [
+  {key:'classiccars',   label:'Classic Cars',   folder:'Classic Cars',   prefix:'ClassicCars',   emoji:'🚗'},
+  {key:'trucks',         label:'Trucks',         folder:'Trucks',         prefix:'Trucks',         emoji:'🚛'},
+  {key:'lowriders',      label:'Low Riders',     folder:'Low Riders',     prefix:'LowRiders',      emoji:'💜'},
+  {key:'sportscars',     label:'Sports Cars',    folder:'Sports Cars',    prefix:'SportsCars',     emoji:'🏎️'},
+  {key:'musclecars',     label:'Muscle Cars',    folder:'Muscle Cars',    prefix:'MuscleCars',     emoji:'🔥'},
+  {key:'exoticcars',     label:'Exotic Cars',    folder:'Exotic Cars',    prefix:'ExoticCars',     emoji:'💎'},
+  {key:'monstertrucks',  label:'Monster Trucks', folder:'Monster Trucks', prefix:'MonsterTrucks',  emoji:'💥'}
+];
+function npPad(n) { return n < 10 ? '0' + n : '' + n; }
+function npPlateId(catKey, n) { return 'np-' + catKey + '-' + npPad(n); }
+var NP_PLATES = {};
+NAMEPLATE_CATEGORIES.forEach(function(cat) {
+  for (var i = 1; i <= 10; i++) {
+    NP_PLATES[npPlateId(cat.key, i)] = "url('/images/nameplates/" + cat.folder + "/" + cat.prefix + '_' + npPad(i) + ".png')";
+  }
+});
+var ALL_NAMEPLATES = Object.keys(NP_PLATES);
+NAMEPLATE_CATEGORIES.forEach(function(cat) {
+  var plates = [];
+  for (var i = 1; i <= 10; i++) plates.push(npPlateId(cat.key, i));
+  BUNDLES['np-' + cat.key] = {
+    plates: plates,
+    name: cat.label + ' Bundle', price: 19.99,
+    desc: '56ViceLane ' + cat.label + ' Bundle — 10 Premium Nameplates',
+    bundleField: null
+  };
+});
+BUNDLES['np-all'] = {
+  plates: ['np-all-access'],
+  name: 'All Nameplate Bundles', price: 29.99,
+  desc: '56ViceLane All Nameplate Bundles — Every Premium Nameplate, Current and Future',
+  bundleField: null
+};
+
 // ── PLATE BACKGROUNDS ──────────────────────────────────────
 function getPlateBg(s) {
+  if (NP_PLATES[s])                  return NP_PLATES[s];
+  if (s === 'np-all-access')         return NP_PLATES['np-classiccars-01'];
   if (s === 'founder')               return "url('/images/plate-founder.png')";
   if (s === 'vehicle-male-exotic')   return "url('/images/plate-male-exotic.png')";
   if (s === 'vehicle-female-exotic') return "url('/images/plate-female-exotic.png')";
@@ -647,7 +840,7 @@ function getPlateBg(s) {
   if (s === 'white')        return '#EFEDE8';
   return '#0a0a0a';
 }
-function isPhoto(s) { return s === 'founder' || (s && s.indexOf('vehicle-') === 0); }
+function isPhoto(s) { return s === 'founder' || (s && s.indexOf('vehicle-') === 0) || (s && s.indexOf('np-') === 0); }
 
 // ── MSG ────────────────────────────────────────────────────
 function showMsg(el, text, type) { el.textContent = text; el.className = 'msg show ' + type; }
@@ -686,6 +879,12 @@ function buildOwnedFromRecord(fields) {
   // Gift = All Premium
   if (fields.GiftPlate === 'All Premium') {
     ALL_PLATES.forEach(function(p) { if (owned.indexOf(p) < 0) owned.push(p); });
+  }
+
+  // np-all-access sentinel = every nameplate bundle, current AND future —
+  // expanded at read time so newly-added themes auto-unlock for past buyers
+  if (owned.indexOf('np-all-access') >= 0) {
+    ALL_NAMEPLATES.forEach(function(p) { if (owned.indexOf(p) < 0) owned.push(p); });
   }
 
   return owned;
@@ -795,8 +994,14 @@ var PLATE_NAMES = {
   'founder':'⭐ Founder — City Sunset','black':'◼ Classic Black','white':'◻ Classic White',
   'color-red':'🔴 Crimson Red','color-blue':'🔵 Vice Blue','color-purple':'🟣 Royal Purple',
   'color-amber':'🟡 Gold Amber','color-green':'🟢 Leonida Green','color-yellow':'🟨 Vice Yellow',
-  'vehicle-male-exotic':'🏎️ Male · Exotic','vehicle-female-exotic':'🏎️ Female · Exotic'
+  'vehicle-male-exotic':'🏎️ Male · Exotic','vehicle-female-exotic':'🏎️ Female · Exotic',
+  'np-all-access':'👑 All Nameplate Access'
 };
+NAMEPLATE_CATEGORIES.forEach(function(cat) {
+  for (var i = 1; i <= 10; i++) {
+    PLATE_NAMES[npPlateId(cat.key, i)] = cat.emoji + ' ' + cat.label + ' #' + i;
+  }
+});
 
 function buildOwnedDropdown(owned, activeStyle, gamertag) {
   var wrap = document.getElementById('owned-plates-wrap');
@@ -1096,6 +1301,18 @@ fetch('/articles.json?v=' + Date.now())
       return '<span class="ticker-item" onclick="location.href=\'/articles/' + x.slug + '\'">' + (x.emoji || '⚡') + ' ' + x.title + '</span>';
     }).join('');
   }).catch(function() {});
+
+// ── BUNDLE HERO CAROUSELS ──────────────────────────────────
+document.querySelectorAll('.bundle-hero-carousel').forEach(function(car) {
+  var imgs = car.querySelectorAll('img');
+  if (imgs.length < 2) return;
+  var i = 0;
+  setInterval(function() {
+    imgs[i].classList.remove('active');
+    i = (i + 1) % imgs.length;
+    imgs[i].classList.add('active');
+  }, 2800);
+});
 
 // ── NAV TOGGLE ─────────────────────────────────────────────
 var mt = document.getElementById('menu-toggle');
