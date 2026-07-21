@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Friday Frequency | 56ViceLane</title>
+<meta name="description" content="Every Friday: the Editor recaps the week in GTA6 like a professional. Trevor responds like a man who has never once been professional. Read both. Trust neither entirely.">
+<meta property="og:title" content="The Friday Frequency | 56ViceLane">
+<meta property="og:description" content="Every Friday: the Editor recaps the week in GTA6 like a professional. Trevor responds like a man who has never once been professional.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://56vicelane.com/weekly">
+<meta property="og:site_name" content="56ViceLane">
+<link rel="canonical" href="https://56vicelane.com/weekly">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9EKF7J4V7W');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Barlow+Condensed:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+--pitch:#FDFBF8;--asphalt:#FFFFFF;--amber:#FF6B2C;--amber-dim:#C4922A;
+--cyan:#D6247A;--bone:#211A16;--smoke:#6B5F52;--edge:#F0E6DA;
+}
+body{background:var(--pitch);color:var(--bone);font-family:'Inter',sans-serif;font-size:1rem;line-height:1.7;}
+a{color:var(--amber);text-decoration:none;}
+a:hover{color:var(--cyan);}
+nav{background:var(--asphalt);border-bottom:2px solid var(--amber);padding:0 20px;position:sticky;top:0;z-index:200;}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo-box{background:var(--amber);color:#000;font-family:'Playfair Display',serif;font-size:1.1rem;padding:4px 8px;border-radius:4px;}
+.nav-logo-text{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--bone);letter-spacing:1px;}
+.navband{background:#B5637A;display:flex;justify-content:center;gap:0;flex-wrap:wrap;}
+.navband a{color:#fff;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:12.5px;padding:14px 22px;transition:background .2s;}
+.navband a:hover{background:rgba(255,255,255,.1);}
+.navband a.active{background:rgba(255,255,255,.15);}
+.ticker-wrap{background:var(--amber);overflow:hidden;padding:6px 0;}
+.ticker-track{display:flex;gap:60px;white-space:nowrap;animation:ticker 20s linear infinite;}
+.ticker-item{font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;font-weight:700;color:#000;text-transform:uppercase;cursor:pointer;flex-shrink:0;}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.wk-wrap{max-width:760px;margin:0 auto;padding:44px 20px 80px;}
+.wk-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:10px;}
+.wk-title{font-family:'Playfair Display',serif;font-size:2.3rem;line-height:1.12;margin-bottom:10px;}
+.wk-sub{color:var(--smoke);font-size:1.05rem;line-height:1.75;margin-bottom:14px;max-width:600px;}
+.wk-issue{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;font-size:0.82rem;color:var(--cyan);margin-bottom:36px;}
+.fq-card{display:flex;align-items:center;gap:20px;background:var(--asphalt);border:1px solid var(--edge);border-left:4px solid var(--amber);border-radius:10px;padding:20px 22px;margin-bottom:20px;text-decoration:none;transition:box-shadow .2s,transform .2s;}
+.fq-card:hover{box-shadow:0 8px 22px rgba(33,26,22,.12);transform:translateY(-2px);}
+.fq-card.trev{border-left-color:var(--cyan);}
+.fq-card-img{width:84px;height:84px;border-radius:50%;object-fit:cover;flex-shrink:0;background:linear-gradient(135deg,var(--amber),var(--cyan));}
+.fq-card-name{font-family:'Playfair Display',serif;font-weight:700;font-size:1.25rem;color:var(--bone);margin-bottom:4px;}
+.fq-card-sub{font-size:0.92rem;color:var(--smoke);line-height:1.6;}
+.note{position:relative;background:var(--asphalt);border:1px solid var(--edge);border-radius:8px;padding:30px 30px 28px;margin:44px 0 28px;}
+.note.editor{border-left:4px solid var(--amber);}
+.note.trevor{border-left:4px solid var(--cyan);}
+.note-byline{display:flex;flex-direction:column;justify-content:center;min-height:66px;padding-left:126px;margin-bottom:18px;}
+.note-avatar-wrap{position:absolute;top:-30px;left:30px;width:112px;height:112px;border-radius:50%;overflow:hidden;border:4px solid var(--pitch);box-shadow:0 6px 16px rgba(33,26,22,.22);}
+.note.editor .note-avatar-wrap{background:linear-gradient(135deg,var(--amber),var(--cyan));}
+.note.trevor .note-avatar-wrap{background:linear-gradient(135deg,var(--cyan),var(--amber));}
+.note-avatar-img{width:100%;height:100%;object-fit:cover;display:block;}
+.note-who{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.05rem;color:var(--bone);text-transform:uppercase;letter-spacing:0.5px;}
+.note-role{font-size:0.85rem;color:var(--cyan);font-weight:600;margin-top:2px;}
+.note p{margin-bottom:16px;color:var(--bone);font-size:1.05rem;}
+.note p:last-child{margin-bottom:0;}
+.note .sign{font-style:italic;color:var(--smoke);}
+.note .squirrel{color:var(--cyan);font-weight:700;font-style:italic;}
+.disclaimer-box{background:var(--edge);border-radius:6px;padding:12px 16px;font-size:0.82rem;color:var(--smoke);margin-bottom:24px;}
+footer{background:var(--asphalt);border-top:1px solid var(--edge);padding:40px 20px;}
+.footer-inner{max-width:1100px;margin:0 auto;text-align:center;}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:16px;}
+.footer-links a{font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;color:var(--smoke);text-transform:uppercase;letter-spacing:1px;}
+.footer-links a:hover{color:var(--amber);}
+.footer-disclaimer{font-size:0.8rem;color:var(--smoke);line-height:1.6;max-width:600px;margin:0 auto;}
+@media(max-width:600px){.wk-title{font-size:1.6rem;}}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<a href="/" class="nav-logo">
+<span class="nav-logo-box">56</span>
+<span class="nav-logo-text">VICELANE</span>
+</a>
+</div>
+</nav>
+<div class="navband">
+  <a href="/">Home</a>
+  <a href="/news">News</a>
+  <a href="/lastdrive">Last Drive</a>
+  <a href="/wall">Wall of Honor</a>
+  <a href="/members">Members</a>
+  <a href="/store">Store</a>
+  <a href="/gear">Gear</a>
+  <a href="/forum">Forum</a>
+</div>
+
+<div class="ticker-wrap">
+<div class="ticker-track" id="ticker-track">
+<span class="ticker-item">Loading latest GTA6 news...</span>
+</div>
+</div>
+
+<div class="wk-wrap">
+<div class="wk-eyebrow">📻 Every Friday · New Edition</div>
+<h1 class="wk-title">The Friday Frequency</h1>
+<p class="wk-sub">Every Friday, the Editor recaps the week in GTA6 like the seasoned professional he is. Then Trevor says his piece — on his own page, where the damage is contained. Pick your poison.</p>
+<div class="wk-issue" id="wk-issue">New editions every Friday</div>
+
+<a class="fq-card" href="/editor">
+<img class="fq-card-img" src="/images/editor-portrait.png" alt="Danny Marchetti" onerror="this.style.visibility='hidden'">
+<div class="fq-card-body">
+<div class="fq-card-name">The Editor's Desk</div>
+<div class="fq-card-sub">Danny Marchetti recaps the real week in GTA6 — level-headed, trustworthy, allegedly professional. Read the desk →</div>
+</div>
+</a>
+
+<a class="fq-card trev" href="/trevor">
+<img class="fq-card-img" src="/images/trevor-portrait.png" alt="Trevor" onerror="this.style.visibility='hidden'">
+<div class="fq-card-body">
+<div class="fq-card-name">Trevor's Takes</div>
+<div class="fq-card-sub">The same week, no filter, several tangents, and at least one thing he probably shouldn't have said out loud. Read Trevor →</div>
+</div>
+</a>
+
+</div>
+
+<footer>
+<div class="footer-inner">
+<div class="footer-links">
+<a href="/">Home</a><a href="/news">News</a><a href="/lastdrive">Last Drive</a>
+<a href="/wall">Wall of Honor</a><a href="/store">Store</a><a href="/editor">The Editor</a>
+<a href="/trevor">Trevor</a><a href="/contact">Contact</a>
+</div>
+<p class="footer-disclaimer">56ViceLane is an independent fan site. Not affiliated with Rockstar Games or Take-Two Interactive. All trademarks belong to their respective owners.<br><br>© 2026 56ViceLane · Forged Oak Studios</p>
+</div>
+</footer>
+
+<script>
+fetch('/articles.json?v='+Date.now())
+.then(function(r){return r.json();})
+.then(function(articles){
+var track=document.getElementById('ticker-track');
+if(!track) return;
+var items=articles.map(function(a){
+var span=document.createElement('span');
+span.className='ticker-item';
+span.textContent=(a.emoji||'⚡')+' '+a.title;
+span.onclick=function(){window.location.href='/articles/'+a.slug;};
+return span;
+});
+var doubled=items.concat(items.map(function(el){return el.cloneNode(true);}));
+track.innerHTML='';
+doubled.forEach(function(el){track.appendChild(el);});
+})
+.catch(function(){});
+</script>
+<script src="/lastdrive-banner.js" defer></script>
+<script src="/back-to-top.js" defer></script>
+</body>
+</html>
