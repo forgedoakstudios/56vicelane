@@ -9,6 +9,7 @@ using the `Blotato` Header Auth credential in n8n (header: `blotato-api-key`).
 | Instagram | 59705     | @56vicelane          |
 | TikTok    | 47040     | @56vicelane          |
 | X/Twitter | 20503     | @56ViceLane          |
+| Facebook  | 42247     | 56vicelane Page (shows as "Christopher Brewster" in Blotato's account list — that's the authorizing identity, not necessarily the post target; confirmed by test post) |
 
 Used as `post.accountId` when calling `POST /v2/posts`, e.g.:
 
