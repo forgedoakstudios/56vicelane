@@ -112,6 +112,14 @@ footer{background:var(--asphalt);border-top:1px solid var(--edge);padding:40px 2
 <div class="note-contact">Got a hot take of your own, or just want to yell about GTA6 at someone who'll yell back? Email: <a href="mailto:trevorstakes@56vicelane.com">trevorstakes@56vicelane.com</a></div>
 </div>
 
+<div class="note trevor" id="trevor-week-note" style="display:none;">
+<div class="note-byline" style="padding-left:0;min-height:0;">
+<div class="note-who">🔥 This Week, Unfiltered</div>
+<div class="note-role" id="trevor-week-meta">The Friday Frequency</div>
+</div>
+<div id="trevor-this-week"></div>
+</div>
+
 <p style="font-size:0.92rem;color:var(--smoke);">Danny's side of the story is over at <a href="/editor">The Editor's Desk</a>, if you want the version with fewer capital letters.</p>
 
 </div>
@@ -145,6 +153,22 @@ track.innerHTML='';
 doubled.forEach(function(el){track.appendChild(el);});
 })
 .catch(function(){});
+</script>
+<script>
+/* Pull Trevor's latest Friday Frequency rant onto his own page (his half of
+   the weekly column, generated Fridays by n8n). Hidden until there's one. */
+(function () {
+  var FEED = 'https://n8n.56vicelane.com/webhook/7053d4f9-c685-4d5b-af2a-f2afdc211cb1/weekly-latest';
+  fetch(FEED).then(function (r) { return r.json(); }).then(function (d) {
+    if (!d || !d.trevorHtml) return;
+    var body = document.getElementById('trevor-this-week');
+    var note = document.getElementById('trevor-week-note');
+    var meta = document.getElementById('trevor-week-meta');
+    if (body) body.innerHTML = d.trevorHtml;
+    if (meta) meta.textContent = 'The Friday Frequency · Issue ' + ('000' + (d.issueNumber || 1)).slice(-3) + ' · ' + (d.dateStr || '');
+    if (note) note.style.display = 'block';
+  }).catch(function () {});
+})();
 </script>
 <script src="/back-to-top.js" defer></script>
 </body>

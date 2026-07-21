@@ -44,6 +44,12 @@ nav{background:var(--asphalt);border-bottom:2px solid var(--amber);padding:0 20p
 .wk-title{font-family:'Playfair Display',serif;font-size:2.3rem;line-height:1.12;margin-bottom:10px;}
 .wk-sub{color:var(--smoke);font-size:1.05rem;line-height:1.75;margin-bottom:14px;max-width:600px;}
 .wk-issue{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;font-size:0.82rem;color:var(--cyan);margin-bottom:36px;}
+.fq-card{display:flex;align-items:center;gap:20px;background:var(--asphalt);border:1px solid var(--edge);border-left:4px solid var(--amber);border-radius:10px;padding:20px 22px;margin-bottom:20px;text-decoration:none;transition:box-shadow .2s,transform .2s;}
+.fq-card:hover{box-shadow:0 8px 22px rgba(33,26,22,.12);transform:translateY(-2px);}
+.fq-card.trev{border-left-color:var(--cyan);}
+.fq-card-img{width:84px;height:84px;border-radius:50%;object-fit:cover;flex-shrink:0;background:linear-gradient(135deg,var(--amber),var(--cyan));}
+.fq-card-name{font-family:'Playfair Display',serif;font-weight:700;font-size:1.25rem;color:var(--bone);margin-bottom:4px;}
+.fq-card-sub{font-size:0.92rem;color:var(--smoke);line-height:1.6;}
 .note{position:relative;background:var(--asphalt);border:1px solid var(--edge);border-radius:8px;padding:30px 30px 28px;margin:44px 0 28px;}
 .note.editor{border-left:4px solid var(--amber);}
 .note.trevor{border-left:4px solid var(--cyan);}
@@ -98,42 +104,24 @@ footer{background:var(--asphalt);border-top:1px solid var(--edge);padding:40px 2
 <div class="wk-wrap">
 <div class="wk-eyebrow">📻 Every Friday · New Edition</div>
 <h1 class="wk-title">The Friday Frequency</h1>
-<p class="wk-sub">Every Friday, the Editor recaps the week in GTA6 like the seasoned professional he is. Then Trevor gets ahold of the same keyboard. We are legally obligated to publish both.</p>
-<div class="wk-issue" id="wk-issue">Issue No. 001 · July 24, 2026 · 118 days to launch</div>
+<p class="wk-sub">Every Friday, the Editor recaps the week in GTA6 like the seasoned professional he is. Then Trevor says his piece — on his own page, where the damage is contained. Pick your poison.</p>
+<div class="wk-issue" id="wk-issue">New editions every Friday</div>
 
-<div class="disclaimer-box">🎭 The Editor's recap is a straight take on real GTA6 news. Trevor's half is satire/parody — an unhinged staff voice, not an official position. Neither is affiliated with Rockstar Games or Take-Two Interactive.</div>
+<a class="fq-card" href="/editor">
+<img class="fq-card-img" src="/images/editor-portrait.png" alt="Danny Marchetti" onerror="this.style.visibility='hidden'">
+<div class="fq-card-body">
+<div class="fq-card-name">The Editor's Desk</div>
+<div class="fq-card-sub">Danny Marchetti recaps the real week in GTA6 — level-headed, trustworthy, allegedly professional. Read the desk →</div>
+</div>
+</a>
 
-<div class="note editor">
-<div class="note-avatar-wrap"><img id="editor-portrait" class="note-avatar-img" src="/images/editor-portrait.png" alt="Danny Marchetti" onerror="this.style.visibility='hidden'"></div>
-<div class="note-byline">
-<div class="note-who">Danny Marchetti</div>
-<div class="note-role">Editor-in-Chief · The Recap</div>
+<a class="fq-card trev" href="/trevor">
+<img class="fq-card-img" src="/images/trevor-portrait.png" alt="Trevor" onerror="this.style.visibility='hidden'">
+<div class="fq-card-body">
+<div class="fq-card-name">Trevor's Takes</div>
+<div class="fq-card-sub">The same week, no filter, several tangents, and at least one thing he probably shouldn't have said out loud. Read Trevor →</div>
 </div>
-<div id="editor-body">
-<p>Good week, all things considered. We ran a full breakdown on <a href="/articles/how-long-did-it-really-take-to-make-gta6">how long GTA6 actually took to make</a> — thirteen years between mainline entries, if you count from GTA5's launch — and the response in the comments was exactly the kind of thoughtful debate this community does best.</p>
-<p>Elsewhere: an Assassin's Creed developer was quoted essentially <a href="/articles/assassins-creed-begs-fans-play-us-when-gta6-launches">begging fans not to disappear</a> the week GTA6 drops, which tells you everything about the gravity this launch has across the whole industry. We also opened the store's new nameplate bundles, and the response there has been genuinely encouraging.</p>
-<p>My goal every week is simple: keep this site the most trustworthy, level-headed corner of the GTA6 fan world. No hype we can't back up. No rumors dressed as facts. Just the community, the countdown, and honest cover—</p>
-<p>Trevor is standing in my doorway. He has the keyboard. I'm told I have to let him have the second half. Under protest.</p>
-<p class="sign">— Danny</p>
-</div>
-</div>
-
-<div class="note trevor">
-<div class="note-avatar-wrap"><img class="note-avatar-img" src="/images/trevor-portrait.png" alt="Trevor" onerror="this.style.visibility='hidden'"></div>
-<div class="note-byline">
-<div class="note-who">Trevor</div>
-<div class="note-role">Staff Voice, Unofficially · The Rest Of It</div>
-</div>
-<div id="trevor-body">
-<p>THIRTEEN YEARS. Danny says thirteen years like it's a fun fact. Buddy, I've done deep stretches shorter than that and come out the other side a changed— anyway. Doesn't matter. Point is the waiting is the hard part and everybody feels it.</p>
-<p>You want the real news from this week? The Crime Blotter on the homepage is more accurate than anything the FIB will confirm on the record, and I'd know, I— <span class="squirrel">— was that a boat? Somebody's moving a boat down the interstate again. Focus. Okay. Focus.</span></p>
-<p>Where was I. Right. Everybody's freaking out about a release date like it's the only thing that's ever mattered, and honestly? Fair. But while you're waiting, go grab a nameplate, sign up for the Last Drive, yell at me in my inbox. Do something with your hands. Trust me, sitting still for a decade waiting for one specific day to arrive does things to a man. Hypothetically. I read that somewhere.</p>
-<p>Danny's gonna edit this down and pretend he didn't. He won't. He's tired. Look at the little picture of him, he's already more tired than last week. That's the countdown doing that. Nov 19 can't come fast enough for either of us and only one of us will admit it.</p>
-<p class="sign">— T</p>
-</div>
-</div>
-
-<p style="font-size:0.92rem;color:var(--smoke);margin-top:8px;">More from the desk: <a href="/editor">The Editor's Desk</a> · <a href="/trevor">Trevor's Takes</a></p>
+</a>
 
 </div>
 
@@ -167,28 +155,6 @@ doubled.forEach(function(el){track.appendChild(el);});
 })
 .catch(function(){});
 </script>
-<script>
-/* Pull the latest Friday Frequency edition (generated Fridays 5:05pm ET by
-   n8n into the WeeklyFrequency data table). Falls back to the static first
-   edition already in the page if the feed is empty or unreachable. */
-(function () {
-  var FEED = 'https://n8n.56vicelane.com/webhook/7053d4f9-c685-4d5b-af2a-f2afdc211cb1/weekly-latest';
-  fetch(FEED).then(function (r) { return r.json(); }).then(function (d) {
-    if (!d || !d.editorHtml || !d.trevorHtml) return; // keep static fallback
-    var ed = document.getElementById('editor-body');
-    var tv = document.getElementById('trevor-body');
-    var iss = document.getElementById('wk-issue');
-    if (ed) ed.innerHTML = d.editorHtml + '<p class="sign">— Danny</p>';
-    if (tv) tv.innerHTML = d.trevorHtml + '<p class="sign">— T</p>';
-    if (iss && d.issueNumber) {
-      var n = ('000' + d.issueNumber).slice(-3);
-      iss.textContent = 'Issue No. ' + n + ' · ' + (d.dateStr || '') +
-        (d.daysToLaunch != null ? ' · ' + d.daysToLaunch + ' days to launch' : '');
-    }
-  }).catch(function () {});
-})();
-</script>
-<script src="/editor-portrait.js" defer></script>
 <script src="/back-to-top.js" defer></script>
 </body>
 </html>

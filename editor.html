@@ -100,18 +100,26 @@ footer{background:var(--asphalt);border-top:1px solid var(--edge);padding:40px 2
 <div class="note-avatar-wrap"><img id="editor-portrait" class="note-avatar-img" src="/images/editor-portrait.png" alt="Danny Marchetti, Editor-in-Chief" onerror="this.style.visibility='hidden'"></div>
 <div class="note-byline">
 <div class="note-who">Danny Marchetti</div>
-<div class="note-role">Editor-in-Chief · July 21, 2026</div>
+<div class="note-role">Editor-in-Chief · Day One</div>
 </div>
-<p>Alright, we need to address something before I get back to actual reporting.</p>
-<p>Some kind of&nbsp;<em>"news feed"</em>&nbsp;showed up on our own homepage sometime in the last day or so. Nobody on staff will take credit for it. I asked IT to trace where it's coming from and got a very long pause followed by "working on it." Half of what's in it doesn't sound like anything a real person would write — alligators wrestling grown men over beer, lights over the marsh that are apparently "just the casino sign," a guy describing a dog at a crime scene as "possibly armed." I don't know what any of that means and at this point I'm afraid to ask.</p>
-<p>We've filed it with the FIB, for whatever that's worth. Their exact words were "we'll look into it, eventually, maybe," which is either extremely reassuring or the opposite of that, I genuinely can't tell anymore.</p>
-<p>So — we might be in the market for a new IT department head. Until then, the feed's still running on the homepage, so I guess enjoy it. We didn't put it there. We can't fully get rid of it. Make of that what you will.</p>
-<p>Real GTA6 coverage resumes below, I promise.</p>
+<p>So. I should introduce myself, since I'm apparently in charge now.</p>
+<p>My name's Danny Marchetti, and as of this week I'm the Editor-in-Chief of 56ViceLane. Not because I applied. Because the last guy&nbsp;<em>left</em>. Abruptly. The official line is "stepped down to pursue other opportunities." The unofficial line, which I'm told is closer to the truth, is that he cracked under the pressure of steering this place through the biggest launch countdown in gaming history.</p>
+<p>Last anyone saw of him, he was at the airport boarding a flight with a young woman who was — and I'm choosing my words carefully here — <em>definitely not his wife</em>. Didn't look like a round trip. Left his badge on the desk and a coffee still warm in the mug.</p>
+<p>So here I am. Filling a job I didn't ask for and didn't interview for, mostly because I was the only one still in the building when they needed a name on the masthead. I'll take it, though. The office comes with a private bathroom and a secretary. (I'm told. I have not yet located either. I remain hopeful.)</p>
+<p>Here's my promise: real GTA6 coverage, no hype we can't back up, no rumors dressed as facts. That part I can control. What I apparently cannot control is the "news feed" on our homepage that nobody on staff will admit to building, or a man named Trevor who has opinions about everything and clearance for none of it. Those are problems for another day. Probably tomorrow.</p>
 <p class="sign">— Danny</p>
-<div class="note-contact">Got a tip, a submission, or you're just as confused about that feed as we are? Write the editor: <a href="mailto:editor@56vicelane.com">editor@56vicelane.com</a></div>
+<div class="note-contact">Got a tip, a submission, or a lead on where my secretary is? Write the editor: <a href="mailto:editor@56vicelane.com">editor@56vicelane.com</a></div>
 </div>
 
-<p style="font-size:0.92rem;color:var(--smoke);">If you want the version of this site written by someone with zero impulse control, that's <a href="/trevor">Trevor's Takes</a>.</p>
+<div class="note" id="editor-week-note" style="display:none;">
+<div class="note-byline" style="padding-left:0;min-height:0;">
+<div class="note-who">📻 This Week From The Desk</div>
+<div class="note-role" id="editor-week-meta">The Friday Frequency</div>
+</div>
+<div id="editor-this-week"></div>
+</div>
+
+<p style="font-size:0.92rem;color:var(--smoke);">The unhinged half of this operation lives over at <a href="/trevor">Trevor's Takes</a>.</p>
 
 </div>
 
@@ -144,6 +152,22 @@ track.innerHTML='';
 doubled.forEach(function(el){track.appendChild(el);});
 })
 .catch(function(){});
+</script>
+<script>
+/* Pull Danny's latest Friday Frequency note onto his own desk (his half of
+   the weekly column, generated Fridays by n8n). Hidden until there's one. */
+(function () {
+  var FEED = 'https://n8n.56vicelane.com/webhook/7053d4f9-c685-4d5b-af2a-f2afdc211cb1/weekly-latest';
+  fetch(FEED).then(function (r) { return r.json(); }).then(function (d) {
+    if (!d || !d.editorHtml) return;
+    var body = document.getElementById('editor-this-week');
+    var note = document.getElementById('editor-week-note');
+    var meta = document.getElementById('editor-week-meta');
+    if (body) body.innerHTML = d.editorHtml;
+    if (meta) meta.textContent = 'The Friday Frequency · Issue ' + ('000' + (d.issueNumber || 1)).slice(-3) + ' · ' + (d.dateStr || '');
+    if (note) note.style.display = 'block';
+  }).catch(function () {});
+})();
 </script>
 <script src="/editor-portrait.js" defer></script>
 <script src="/back-to-top.js" defer></script>
