@@ -76,6 +76,18 @@
   .stories-list li{padding:10px 0; border-bottom:1px solid var(--edge); font-family:'Inter'; font-size:12.5px; font-weight:600; line-height:1.4;}
   .stories-list li span{display:block; font-family:'Barlow Condensed'; font-size:10.5px; color:var(--ink-soft); font-weight:500; margin-top:3px;}
 
+  /* VICE CITY CRIME BLOTTER — satire/parody, deliberately styled apart
+     from real news so it never gets mistaken for it. See crime-blotter.js */
+  .blotter-block{background:#16121A; border-radius:12px; padding:16px 18px; margin-bottom:24px;}
+  .blotter-label{display:flex; align-items:center; justify-content:space-between; margin-bottom:4px;}
+  .blotter-label .sec-label{margin-bottom:0; color:#FFD98A;}
+  .blotter-tag{font-family:'Barlow Condensed'; font-size:9.5px; letter-spacing:0.5px; color:#8A8290; text-transform:uppercase;}
+  .blotter-list{list-style:none;}
+  .blotter-list li{padding:9px 0; border-bottom:1px solid rgba(255,255,255,0.08);}
+  .blotter-list li:last-child{border-bottom:none;}
+  .blotter-headline{display:block; font-family:'Playfair Display'; font-style:italic; font-weight:700; font-size:12.5px; line-height:1.4; color:#F2DCC9;}
+  .blotter-source{display:block; font-family:'Barlow Condensed'; font-size:10px; color:#8A8290; margin-top:4px; text-transform:uppercase; letter-spacing:0.5px;}
+
   .fan-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:24px;}
   .fan-thumb{height:90px; border-radius:8px;}
 
@@ -189,6 +201,16 @@
     <ul class="stories-list" id="home-stories-list">
       <li>Loading top stories...</li>
     </ul>
+
+    <div class="blotter-block">
+      <div class="blotter-label">
+        <span class="sec-label">🌴 Vice City Crime Blotter</span>
+        <span class="blotter-tag">Satire · Not Real News</span>
+      </div>
+      <ul class="blotter-list" id="crime-blotter-list">
+        <li><span class="blotter-headline">Loading...</span></li>
+      </ul>
+    </div>
 
     <span class="label sec-label">Fan Creations</span>
     <div class="fan-grid">
@@ -355,6 +377,7 @@ function loadDriveLeadSpotlight() {
 loadDriveLeadSpotlight();
 </script>
 <script src="/countdown.js" defer></script>
+<script src="/crime-blotter.js" defer></script>
 <script src="/back-to-top.js" defer></script>
 </body>
 </html>
