@@ -2,7 +2,8 @@
    than the headline rotation since it's a visual element, not text. */
 (function () {
   var BANNERS = [
-    '/images/crime-blotter-banner-caution.png',
+    '/images/crime-blotter-banner-tape.png',
+    '/images/crime-blotter-banner-newsvan.png',
     '/images/crime-blotter-banner-patriotic.png',
     '/images/crime-blotter-banner-tabloid.png'
   ];
