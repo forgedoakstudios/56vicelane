@@ -42,15 +42,19 @@ nav{background:var(--asphalt);border-bottom:2px solid var(--amber);padding:0 20p
 .desk-wrap{max-width:720px;margin:0 auto;padding:44px 20px 80px;}
 .desk-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:10px;}
 .desk-title{font-family:'Playfair Display',serif;font-size:2.1rem;line-height:1.15;margin-bottom:10px;}
-.desk-sub{color:var(--smoke);font-size:0.95rem;line-height:1.7;margin-bottom:40px;max-width:560px;}
-.note{background:var(--asphalt);border:1px solid var(--edge);border-left:4px solid var(--amber);border-radius:8px;padding:26px 28px;margin-bottom:28px;}
-.note-byline{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
-.note-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--amber),var(--cyan));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;color:#fff;font-size:0.95rem;flex-shrink:0;}
-.note-who{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.95rem;color:var(--bone);text-transform:uppercase;letter-spacing:0.5px;}
-.note-when{font-size:0.78rem;color:var(--smoke);}
-.note p{margin-bottom:14px;color:var(--bone);}
+.desk-sub{color:var(--smoke);font-size:1.05rem;line-height:1.75;margin-bottom:40px;max-width:560px;}
+.note{position:relative;background:var(--asphalt);border:1px solid var(--edge);border-left:4px solid var(--amber);border-radius:8px;padding:30px 30px 28px;margin:44px 0 28px;}
+.note-byline{display:flex;flex-direction:column;justify-content:center;min-height:66px;padding-left:126px;margin-bottom:18px;}
+.note-avatar-wrap{position:absolute;top:-30px;left:30px;width:112px;height:112px;border-radius:50%;overflow:hidden;border:4px solid var(--pitch);box-shadow:0 6px 16px rgba(33,26,22,.22);background:linear-gradient(135deg,var(--amber),var(--cyan));}
+.note-avatar-img{width:100%;height:100%;object-fit:cover;display:block;}
+.note-who{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.05rem;color:var(--bone);text-transform:uppercase;letter-spacing:0.5px;}
+.note-role{font-size:0.85rem;color:var(--cyan);font-weight:600;margin-top:2px;}
+.note-when{font-size:0.85rem;color:var(--ink-soft,var(--smoke));margin-top:2px;}
+.note p{margin-bottom:16px;color:var(--bone);font-size:1.05rem;}
 .note p:last-child{margin-bottom:0;}
 .note .sign{font-style:italic;color:var(--smoke);}
+.note-contact{margin-top:20px;padding-top:16px;border-top:1px dashed var(--edge);font-size:0.92rem;}
+.note-contact a{font-weight:600;}
 footer{background:var(--asphalt);border-top:1px solid var(--edge);padding:40px 20px;}
 .footer-inner{max-width:1100px;margin:0 auto;text-align:center;}
 .footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:16px;}
@@ -93,19 +97,18 @@ footer{background:var(--asphalt);border-top:1px solid var(--edge);padding:40px 2
 <p class="desk-sub">Occasional notes from whoever's actually running this place. Mostly about GTA6. Sometimes about things we can't fully explain.</p>
 
 <div class="note">
+<div class="note-avatar-wrap"><img class="note-avatar-img" src="/images/editor-portrait.png" alt="Danny Marchetti, Editor-in-Chief" onerror="this.style.visibility='hidden'"></div>
 <div class="note-byline">
-<div class="note-avatar">Ed.</div>
-<div>
-<div class="note-who">The Editor</div>
-<div class="note-when">July 21, 2026</div>
-</div>
+<div class="note-who">Danny Marchetti</div>
+<div class="note-role">Editor-in-Chief · July 21, 2026</div>
 </div>
 <p>Alright, we need to address something before I get back to actual reporting.</p>
 <p>Some kind of&nbsp;<em>"news feed"</em>&nbsp;showed up on our own homepage sometime in the last day or so. Nobody on staff will take credit for it. I asked IT to trace where it's coming from and got a very long pause followed by "working on it." Half of what's in it doesn't sound like anything a real person would write — alligators wrestling grown men over beer, lights over the marsh that are apparently "just the casino sign," a guy describing a dog at a crime scene as "possibly armed." I don't know what any of that means and at this point I'm afraid to ask.</p>
 <p>We've filed it with the FIB, for whatever that's worth. Their exact words were "we'll look into it, eventually, maybe," which is either extremely reassuring or the opposite of that, I genuinely can't tell anymore.</p>
 <p>So — we might be in the market for a new IT department head. Until then, the feed's still running on the homepage, so I guess enjoy it. We didn't put it there. We can't fully get rid of it. Make of that what you will.</p>
 <p>Real GTA6 coverage resumes below, I promise.</p>
-<p class="sign">— The Editor</p>
+<p class="sign">— Danny</p>
+<div class="note-contact">Got a tip, a submission, or you're just as confused about that feed as we are? Write the editor: <a href="mailto:forgedoakstudios+editor@gmail.com">forgedoakstudios+editor@gmail.com</a></div>
 </div>
 
 </div>
