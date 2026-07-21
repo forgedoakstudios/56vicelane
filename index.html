@@ -300,24 +300,38 @@ function loadHomeNews() {
       var newsGrid  = document.getElementById('home-news-grid');
       var storiesEl = document.getElementById('home-stories-list');
 
-      var latest = articles[0];
-      if (newsTitle) {
+      // Sort by actual date, newest first — pinned/permanent articles carry
+      // old dates and were surfacing (imageless) as "latest" before this.
+      var byDate = articles.slice().sort(function (a, b) {
+        return (b.date || '').localeCompare(a.date || '');
+      });
+      // Latest News prefers real articles that actually have a hero image,
+      // so the thumbnails are never empty gradient blocks.
+      var withImg = byDate.filter(function (a) { return a.image; });
+      var latestPool = withImg.length ? withImg : byDate;
+
+      var latest = latestPool[0];
+      if (newsTitle && latest) {
         newsTitle.textContent = latest.title || latest.headline;
         newsTitle.href = '/articles/' + latest.slug;
       }
       if (newsGrid) {
-        var thumbs = articles.slice(0, 2);
+        var thumbs = latestPool.slice(0, 2);
         newsGrid.innerHTML = thumbs.map(function (a) {
           var bg = a.image ? "background-image:url('/images/" + a.image + "');background-size:cover;background-position:center;" : '';
           return '<a class="news-thumb photo" href="/articles/' + a.slug + '" style="' + bg + '"></a>';
         }).join('');
       }
       if (storiesEl) {
-        var picks = articles.slice(1, 4);
-        storiesEl.innerHTML = picks.map(function (a) {
-          return '<li><a href="/articles/' + a.slug + '" style="color:inherit;text-decoration:none;">' + (a.title || a.headline) +
-            '<span>' + (a.category || 'News') + ' · ' + (a.date || '') + '</span></a></li>';
-        }).join('');
+        // Top Stories = most-visited articles when we have real view counts
+        // (see loadTopStories below); until then, fall back to next-newest.
+        if (!window.__topStoriesLoaded) {
+          var picks = latestPool.slice(1, 4);
+          storiesEl.innerHTML = picks.map(function (a) {
+            return '<li><a href="/articles/' + a.slug + '" style="color:inherit;text-decoration:none;">' + (a.title || a.headline) +
+              '<span>' + (a.category || 'News') + ' · ' + (a.date || '') + '</span></a></li>';
+          }).join('');
+        }
       }
     })
     .catch(function () {

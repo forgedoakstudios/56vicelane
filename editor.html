@@ -97,7 +97,7 @@ footer{background:var(--asphalt);border-top:1px solid var(--edge);padding:40px 2
 <p class="desk-sub">Occasional notes from whoever's actually running this place. Mostly about GTA6. Sometimes about things we can't fully explain.</p>
 
 <div class="note">
-<div class="note-avatar-wrap"><img class="note-avatar-img" src="/images/editor-portrait.png" alt="Danny Marchetti, Editor-in-Chief" onerror="this.style.visibility='hidden'"></div>
+<div class="note-avatar-wrap"><img id="editor-portrait" class="note-avatar-img" src="/images/editor-portrait.png" alt="Danny Marchetti, Editor-in-Chief" onerror="this.style.visibility='hidden'"></div>
 <div class="note-byline">
 <div class="note-who">Danny Marchetti</div>
 <div class="note-role">Editor-in-Chief · July 21, 2026</div>
@@ -145,6 +145,7 @@ doubled.forEach(function(el){track.appendChild(el);});
 })
 .catch(function(){});
 </script>
+<script src="/editor-portrait.js" defer></script>
 <script src="/back-to-top.js" defer></script>
 </body>
 </html>
