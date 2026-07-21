@@ -63,8 +63,16 @@ so 40+ separate generations still read as one designed system:
 [SUBJECT], premium editorial digital art, cinematic lighting, rich color
 grade in gold/orange/pink/magenta sunset palette, shallow depth of field,
 high production value like a luxury brand campaign, 4K detail, subtle film
-grain, no text or logos in the image, [ASPECT RATIO]
+grain, [ASPECT RATIO]
 ```
+
+**Rule update (July 21, 2026):** text and logos ARE allowed in images going
+forward, as long as they're made-up (fictional signage, invented business
+names, made-up mastheads/plate text, etc.) — not real brands, real people,
+or Rockstar/Take-Two IP. Drop "no text or logos in the image" from the
+formula above when a made-up name/logo actually serves the shot (a storefront
+sign, a fictional newspaper masthead, a plate's own lettering); keep leaving
+it out of the prompt when the shot doesn't call for any text at all.
 
 ### Image count per page
 - Standard pages (about, contact, gear, forum, tools, etc.): **3–5 images**
