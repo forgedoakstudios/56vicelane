@@ -8,7 +8,7 @@
 <meta name="category" content="Lore">
 <meta property="og:title" content="The Mystery Woman on the GTA6 Cover Art — Fans Think They Found Her">
 <meta property="og:description" content="Curly dark hair. Green crop top. Gold jewelry. Rockstar hasn't said a word. But fans found a Venezuelan DJ who posted a matching photo a year before the cover art dropped. The timestamp doesn't lie.">
-<meta property="og:image" content="https://56vicelane.com/images/gta6-hero.png">
+<meta property="og:image" content="https://56vicelane.com/images/gta6-cover-girl-thumbnail.png.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://56vicelane.com/articles/gta6-cover-art-mystery-woman-gabriela-chiquin">
@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Mystery Woman on the GTA6 Cover Art — Fans Think They Found Her">
 <meta name="twitter:description" content="Curly dark hair. Green crop top. Gold jewelry. A Venezuelan DJ. A photo posted a year before the cover. The timestamp doesn't lie.">
-<meta name="twitter:image" content="https://56vicelane.com/images/gta6-hero.png">
+<meta name="twitter:image" content="https://56vicelane.com/images/gta6-cover-girl-thumbnail.png.jpg">
 <link rel="canonical" href="https://56vicelane.com/articles/gta6-cover-art-mystery-woman-gabriela-chiquin">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
@@ -148,7 +148,7 @@ footer{background:var(--asphalt);border-top:1px solid var(--edge);padding:40px 2
 <span>⏱️ 8 min read</span>
 </div>
 
-<img src="/images/gta6-hero.png" alt="GTA6 cover art mystery woman green crop top" class="article-hero">
+<img src="/images/gta6-cover-girl-thumbnail.png.jpg" id="article-hero" alt="GTA6 cover art mystery woman identity revealed - GTA 6 Cover Girl" class="article-hero">
 
 <div class="share-bar">
 <a href="https://www.facebook.com/sharer/sharer.php?u=https://56vicelane.com/articles/gta6-cover-art-mystery-woman-gabriela-chiquin" target="_blank" class="share-facebook">📘 Facebook</a>
@@ -300,7 +300,7 @@ fetch('/articles.json?v='+Date.now())
 .then(function(r){return r.json();})
 .then(function(articles){
 var track=document.getElementById('ticker-track');
-if(!track)return;
+if(track){
 var items=articles.map(function(a){
 var span=document.createElement('span');
 span.className='ticker-item';
@@ -311,6 +311,18 @@ return span;
 var doubled=items.concat(items.map(function(el){return el.cloneNode(true);}));
 track.innerHTML='';
 doubled.forEach(function(el){track.appendChild(el);});
+}
+var parts=window.location.pathname.replace(/\/+$/,'').split('/');
+var slug=parts[parts.length-1];
+var hero=document.getElementById('article-hero');
+if(hero&&slug){
+for(var i=0;i<articles.length;i++){
+if(articles[i].slug===slug&&articles[i].image){
+hero.src='/images/'+articles[i].image;
+break;
+}
+}
+}
 })
 .catch(function(){});
 </script>
