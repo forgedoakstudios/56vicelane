@@ -6,9 +6,11 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
-    // Only intercept article pages
+    // Intercept article pages (hero.js + Article Read tracking) and
+    // blotter pages (Blotter Read tracking only — no hero.js needed)
     const isArticle = url.pathname.startsWith('/articles/');
-    if (!isArticle) return env.ASSETS.fetch(request);
+    const isBlotter = url.pathname.startsWith('/blotter/');
+    if (!isArticle && !isBlotter) return env.ASSETS.fetch(request);
 
     const response = await env.ASSETS.fetch(request);
     const contentType = response.headers.get('content-type') || '';
@@ -16,13 +18,14 @@ export default {
 
     const html = await response.text();
 
-    // Inject hero.js + track.js before </body> if not already present
-    let modified = html.includes('/hero.js')
-      ? html
-      : html.replace('</body>', '<script src="/hero.js"></script>\n</body>');
-    modified = modified.includes('/track.js')
-      ? modified
-      : modified.replace('</body>', '<script src="/track.js" data-track-action="Article Read"></script>\n</body>');
+    let modified = html;
+    if (isArticle && !modified.includes('/hero.js')) {
+      modified = modified.replace('</body>', '<script src="/hero.js"></script>\n</body>');
+    }
+    if (!modified.includes('/track.js')) {
+      const trackAction = isBlotter ? 'Blotter Read' : 'Article Read';
+      modified = modified.replace('</body>', '<script src="/track.js" data-track-action="' + trackAction + '"></script>\n</body>');
+    }
 
     return new Response(modified, {
       status: response.status,

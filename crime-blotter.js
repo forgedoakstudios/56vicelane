@@ -13,27 +13,27 @@
     { h: "Local Man Punches Woman In Face, Later Claims ‘I Thought She Was An Escaped Gorilla From The Zoo’", s: "@BlaineCoBlotter" },
     { h: "Head Of Local Drug Operation Found Hanging From Flagpole In His Underwear; Coroner Rules It ‘Self-Inflicted, Probably’", s: "@LSCrimeDesk" },
     { h: "Witness Claims Gang Shootout Was Started By A Passerby ‘Just Walking His Dog’; Police Describe Dog As ‘Unusually Large’ And ‘Possibly Armed’", s: "@LSPDScanner" },
-    { h: "Man Steals Boat, Drives It Six Miles Down The Interstate Before Realizing His Mistake", s: "@TrafficWatchLS" },
+    { h: "Man Steals Boat, Drives It Six Miles Down The Interstate Before Realizing His Mistake", s: "@TrafficWatchLS", slug: "boat-interstate-mistake" },
     { h: "Local Zoo Reports Missing Gorilla For Third Time This Year; Residents Urged Not To Punch Any Suspicious Women", s: "@WildlifeWatch" },
     { h: "Bank Robbery Suspects Described As ‘Very Coordinated’ By Witnesses, One Of Whom Says They High-Fived Mid-Heist", s: "@LSCrimeDesk" },
     { h: "Man Arrested For Riding Jet Ski Through Downtown Fountain, Insists He Was ‘Just Testing The Waters’", s: "@BlaineCoBlotter" },
     { h: "Trucking Company Reports Third Vehicle Stolen This Month, All By A Man Described As ‘Oddly Polite’", s: "@LSPDScanner" },
     { h: "Convenience Store Clerk Says Robber ‘Apologized Twice’ Before Fleeing With The Register", s: "@LSCrimeDesk" },
     { h: "Mysterious Explosion Levels Warehouse; Fire Marshal Calls Cause ‘Under Investigation,’ Neighbor Says ‘It Was Definitely On Purpose’", s: "@BreakingLS" },
-    { h: "Golf Course Evacuated After Man In Alligator Costume Reportedly ‘Just Wanted To Play A Round’", s: "@LSOddities" },
+    { h: "Golf Course Evacuated After Man In Alligator Costume Reportedly ‘Just Wanted To Play A Round’", s: "@LSOddities", slug: "alligator-costume-golf-course" },
     { h: "Police Seek Suspect Who Fled A Robbery On A Riding Lawnmower, Described As ‘Surprisingly Fast’", s: "@LSCrimeDesk" },
     { h: "Man Cited For Public Nudity After Losing A Bet He ‘Definitely Would’ Win Again", s: "@BlaineCoBlotter" },
     { h: "Fireworks Warehouse Fire Ruled Accidental Despite Neighbor's Insistence He ‘Heard Someone Yell Cannonball First’", s: "@BreakingLS" },
     { h: "Local Casino Reports ‘Minor Disturbance’ Involving A Forklift; Security Footage Somehow Unavailable", s: "@LSCrimeDesk" },
     { h: "Ice Cream Truck Impounded After Third Report Of ‘Suspiciously Fast’ Getaway Driving", s: "@TrafficWatchLS" },
-    { h: "Man Rescued From Billboard After Climbing Up To ‘Fix The Spelling’, Which Was Not Actually Wrong", s: "@LSOddities" },
-    { h: "Downtown High-Rise Reports Break-In; Only Item Missing Is A Single Golden Toilet", s: "@LSCrimeDesk" },
+    { h: "Man Rescued From Billboard After Climbing Up To ‘Fix The Spelling’, Which Was Not Actually Wrong", s: "@LSOddities", slug: "billboard-spelling-fix" },
+    { h: "Downtown High-Rise Reports Break-In; Only Item Missing Is A Single Golden Toilet", s: "@LSCrimeDesk", slug: "golden-toilet-heist" },
     { h: "Local Man Cited For Racing A Freight Train, Says He ‘Had It The Whole Time’", s: "@TrafficWatchLS" },
-    { h: "Petting Zoo Llama Goes Missing Same Night As Nearby Bank Alarm; Officials Insist ‘No Connection’", s: "@LSOddities" },
+    { h: "Petting Zoo Llama Goes Missing Same Night As Nearby Bank Alarm; Officials Insist ‘No Connection’", s: "@LSOddities", slug: "llama-bank-alarm-mystery" },
     { h: "Three Men In Matching Tracksuits Detained Near Marina, Released After Insisting They Were ‘Just Jogging’", s: "@LSPDScanner" },
     { h: "Downtown Parking Garage Collapse Blamed On ‘Structural Issues,’ Witness Insists He Saw A Tank", s: "@BreakingLS" },
     { h: "Local Diner Robbed Twice In One Week By What Manager Describes As ‘Two Completely Different Guys, Somehow Identical’", s: "@LSCrimeDesk" },
-    { h: "Man Arrested For Attempting To Sell A Fighter Jet On A Local Classifieds Site", s: "@LSOddities" },
+    { h: "Man Arrested For Attempting To Sell A Fighter Jet On A Local Classifieds Site", s: "@LSOddities", slug: "fighter-jet-classifieds" },
     { h: "Storage Facility Fire Investigators Baffled By ‘Unusually Large Number’ Of Empty Weapon Crates", s: "@BreakingLS" },
 
     // ── Vice City / Leonida teaser satire — never names the actual protagonists ──
@@ -62,7 +62,7 @@
     { h: "Mysterious Lights Over The Bay Draw Crowd; Local Astronomer Says ‘That's Just The Casino Sign’", s: "@LeonidaTabloid" },
     { h: "Woman Calls 911 On A Raccoon She Says Was ‘Definitely Casing The Joint’", s: "@SwampGossip" },
     { h: "Local Man Insists He Saw A Chupacabra, Description Matches A Very Wet Dog", s: "@LeonidaTabloid" },
-    { h: "Beachgoers Flee After ‘Massive Creature’ Surfaces, Turns Out To Be A Very Large Manatee Named Gerald", s: "@SwampGossip" },
+    { h: "Beachgoers Flee After ‘Massive Creature’ Surfaces, Turns Out To Be A Very Large Manatee Named Gerald", s: "@SwampGossip", slug: "manatee-named-gerald" },
     { h: "Man Arrested For Riding An Ostrich Down Main Street, Says The Ostrich ‘Started It’", s: "@LeonidaTabloid" },
     { h: "Local Report Of ‘Alien Abduction’ Turns Out To Be Man Who Fell Asleep On A Party Boat", s: "@SwampGossip" },
     { h: "Sinkhole Swallows Parked Car Downtown; Owner Says ‘Honestly, Kind Of Saw This Coming’", s: "@LeonidaTabloid" },
@@ -78,7 +78,7 @@
     { h: "Man Says He Saw A ‘Glowing Figure’ In The Marsh; Turns Out To Be A Guy In A Reflective Vest Looking For His Keys", s: "@LeonidaTabloid" },
     { h: "Retiree's Backyard ‘Meteor Strike’ Identified As A Dropped Coconut", s: "@SwampGossip" },
     { h: "Local Bar Reports Regular Customer Is ‘Definitely Not Human, But Also Definitely Pays His Tab’", s: "@LeonidaTabloid" },
-    { h: "Golf Course Alligator Named ‘Big Steve’ Now Has His Own Fan Club And A Reserved Parking Spot", s: "@SwampGossip" }
+    { h: "Golf Course Alligator Named ‘Big Steve’ Now Has His Own Fan Club And A Reserved Parking Spot", s: "@SwampGossip", slug: "big-steve-golf-alligator" }
   ];
 
   var BUCKET_MS = 2 * 60 * 1000; // fresh set every 2 minutes
@@ -106,7 +106,10 @@
     var bucket = Math.floor(Date.now() / BUCKET_MS);
     var picks = seededShuffle(HEADLINES, bucket).slice(0, PICK_COUNT);
     list.innerHTML = picks.map(function (item, i) {
-      return '<li><span class="blotter-headline">' + item.h + '</span>' +
+      var headline = item.slug
+        ? '<a class="blotter-headline blotter-link" href="/blotter/' + item.slug + '.html">' + item.h + '</a>'
+        : '<span class="blotter-headline">' + item.h + '</span>';
+      return '<li>' + headline +
         '<span class="blotter-source">' + item.s + ' · ' + fakeAge(i) + '</span></li>';
     }).join('');
   }
