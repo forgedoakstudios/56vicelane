@@ -111,6 +111,11 @@
 .plate-shimmer{position:relative;overflow:hidden;}
 .plate-shimmer::after{content:'';position:absolute;top:0;left:-150%;width:55%;height:100%;background:linear-gradient(115deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.28) 45%,rgba(255,255,255,.48) 50%,rgba(255,255,255,.28) 55%,rgba(255,255,255,0) 100%);transform:skewX(-20deg);animation:plateShimmer 4.6s ease-in-out infinite;pointer-events:none;}
 .plate-shimmer-gold::after{background:linear-gradient(115deg,rgba(255,215,0,0) 0%,rgba(255,215,0,.4) 45%,rgba(255,247,200,.7) 50%,rgba(255,215,0,.4) 55%,rgba(255,215,0,0) 100%);animation-duration:3.4s;}
+.pick5-grid{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 10px;}
+.pick5-chip{padding:8px 14px;border:1.5px solid #00D4FF;border-radius:20px;font-size:.82rem;cursor:pointer;transition:all .2s;user-select:none;color:#00D4FF;}
+.pick5-chip.selected{background:#00D4FF;color:#000;font-weight:700;}
+.pick5-chip.disabled{opacity:.35;cursor:not-allowed;}
+.pick5-counter{font-size:.82rem;color:var(--smoke,#8a8378);margin-bottom:10px;font-weight:600;}
 @keyframes plateShimmer{0%{left:-150%;}55%{left:150%;}100%{left:150%;}}
 .np-bundle-checklist{font-size:.78rem;color:#C8C4BE;margin:0 0 12px;line-height:1.5;}
 .featured-block{background:linear-gradient(135deg,#0D0D1A,#1A0D2E,#0D1A1A);border-top:4px solid var(--gold);border-bottom:1px solid var(--edge);padding:52px 24px;position:relative;overflow:hidden;}
@@ -395,6 +400,7 @@
     <div class="bundle-grid">
       <div class="bundle-card">
         <div class="bundle-save-badge">⚡ Save $2.92</div>
+
         <div class="bundle-body">
           <div class="bundle-name">Color Bundle</div>
           <div class="bundle-desc">All 8 color plates — Crimson Red, Vice Blue, Royal Purple, Gold Amber, Leonida Green, Vice Yellow + 2 more as they drop. Switch anytime.</div>
@@ -415,7 +421,7 @@
         </div>
         <div id="paypal-button-color-bundle"></div>
       </div>
-      <div class="bundles-label" style="grid-column:1/-1;margin-top:8px;">🎨 Nameplate Bundles — 10 Original Designs Each</div>
+      <div class="bundles-label" id="nameplate-bundles" style="grid-column:1/-1;margin-top:8px;">🎨 Nameplate Bundles — 10 Original Designs Each</div>
 
       <div class="bundle-card">
         <div class="bundle-save-badge">⚡ Save $9.91</div>
@@ -557,6 +563,34 @@
         <div id="paypal-button-np-monstertrucks"></div>
       </div>
 
+      <a href="#nameplate-bundles" class="bundle-card" style="text-decoration:none;color:inherit;display:block;" onclick="document.getElementById('nameplate-bundles').scrollIntoView({behavior:'smooth',block:'start'});return false;">
+        <div class="bundle-save-badge">🚗 Start Here</div>
+        <div class="bundle-body">
+          <div class="bundle-name">Single Theme Bundle</div>
+          <div class="bundle-desc">Pick any ONE of the 7 themes above — 10 premium nameplates, one style. The lowest-priced way into the collection.</div>
+          <div class="bundle-price-row">
+            <div class="bundle-price">$19.99</div>
+            <div class="bundle-save-tag">Pick your theme ↑</div>
+          </div>
+        </div>
+      </a>
+
+      <div class="bundle-card" style="border-color:var(--cyan);background:linear-gradient(135deg,#0D1A1A,#0D0D2E);">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan),#00FFD4,var(--amber));"></div>
+        <div class="bundle-save-badge" style="color:#00D4FF;background:rgba(0,212,255,.1);border-color:rgba(0,212,255,.3);">🎯 Mix &amp; Match</div>
+        <div class="bundle-body">
+          <div class="bundle-name" style="color:#00D4FF;">Pick 5 Bundle</div>
+          <div class="bundle-desc">Choose any 5 of the 7 themes — 50 premium nameplates, your combination. Better per-plate value than buying singles.</div>
+          <div class="pick5-grid" id="pick5-grid"></div>
+          <div class="pick5-counter" id="pick5-counter">0 / 5 selected</div>
+          <div class="bundle-price-row">
+            <div class="bundle-price" style="color:#00D4FF;">$29.99</div>
+            <div class="bundle-save-tag">50 plates</div>
+          </div>
+        </div>
+        <div id="paypal-button-pick5"></div>
+      </div>
+
       <div class="bundle-card ultimate">
         <div class="bundle-save-badge" style="font-size:.72rem;">👑 Best Deal</div>
         <div class="bundle-hero-carousel plate-shimmer plate-shimmer-gold">
@@ -573,47 +607,52 @@
           <div class="bundle-desc">All 7 themed bundles today, plus every new nameplate theme we add before GTA6 launches — automatically. This collection is growing toward 500 designs across 50 themes; lock in today's price before it's worth more.</div>
           <div class="np-bundle-checklist">✓ All 7 current bundles (70 designs)&nbsp;&nbsp;✓ Every future nameplate bundle until Nov 19&nbsp;&nbsp;✓ Auto-unlocks, no repurchase needed</div>
           <div class="bundle-price-row">
-            <div class="bundle-price" style="color:var(--gold);font-size:2.2rem;">$29.99</div>
+            <div class="bundle-price" style="color:var(--gold);font-size:2.2rem;">$39.99</div>
             <div class="bundle-was">$139.93</div>
-            <div class="bundle-save-tag">Save $109.94</div>
+            <div class="bundle-save-tag">Save $99.94</div>
           </div>
         </div>
         <div id="paypal-button-np-all"></div>
       </div>
+    </div>
 
-      <div class="bundle-card" style="border-color:var(--cyan);background:linear-gradient(135deg,#0D1A1A,#0D0D2E);">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan),#00FFD4,var(--amber));"></div>
-        <div class="bundle-save-badge" style="color:#00D4FF;background:rgba(0,212,255,.1);border-color:rgba(0,212,255,.3);">🔥 Best Deal</div>
-        <div class="bundle-body">
-          <div class="bundle-name" style="color:#00D4FF;">All Premium · Current</div>
-          <div class="bundle-desc">Every plate in the collection right now. No future drops — everything that exists today, yours forever.</div>
-          <div class="bundle-price-row">
-            <div class="bundle-price" style="color:#00D4FF;">$19.99</div>
-            <div class="bundle-save-tag">Current gen only</div>
-          </div>
+    <!-- SINGLE NAMEPLATE PURCHASE -->
+    <div class="bundles-label" style="margin-top:32px;">🎯 Buy One Nameplate</div>
+    <div class="bundle-card" style="max-width:420px;">
+      <div class="bundle-body">
+        <div class="bundle-name">Single Nameplate</div>
+        <div class="bundle-desc">Just want one? Pick the exact design, no bundle required.</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin:14px 0;">
+          <select id="single-plate-cat" class="verify-input" onchange="renderSinglePlateOptions()"></select>
+          <select id="single-plate-design" class="verify-input" onchange="updateSinglePlatePreview()" disabled><option value="">Choose a design...</option></select>
         </div>
-        <div id="paypal-button-all-premium"></div>
+        <div id="single-plate-preview" style="margin-bottom:12px;"></div>
+        <div class="bundle-price-row">
+          <div class="bundle-price">$2.99</div>
+        </div>
       </div>
-      <div class="bundle-card ultimate">
-        <div class="bundle-save-badge" style="font-size:.72rem;">👑 Ultimate</div>
-        <div class="bundle-body">
-          <div class="bundle-name" style="color:var(--gold);font-size:1.3rem;">Ultimate Bundle</div>
-          <div class="bundle-desc">Every plate ever created on 56ViceLane — past, present, and future — until GTA6 launches November 19, 2026. The moment a new plate drops, it's automatically yours. When The Last Drive ends, your collection is sealed forever.</div>
-          <div class="bundle-checklist">
-            <div class="bundle-check">Every plate ever made</div>
-            <div class="bundle-check">Every future drop until Nov 19</div>
-            <div class="bundle-check">Auto-unlocks every new plate</div>
-            <div class="bundle-check">👑 Premium badge on wall</div>
-            <div class="bundle-check">Exclusive All Access plate</div>
-            <div class="bundle-check">Window closes at launch forever</div>
-          </div>
-          <div class="bundle-price-row">
-            <div class="bundle-price" style="color:var(--gold);font-size:2.2rem;">$29.99</div>
-            <div class="bundle-save-tag">Best Value</div>
-            <div class="bundle-window">Window Closes Nov 19</div>
-          </div>
+      <div id="paypal-button-single-plate"></div>
+    </div>
+
+    <!-- REDEEM A PRIZE CODE -->
+    <div class="bundles-label" style="margin-top:32px;">🎁 Redeem a Prize Code</div>
+    <div class="bundle-card" style="max-width:420px;border-color:var(--gold);">
+      <div class="bundle-body">
+        <div class="bundle-name" style="color:var(--gold);">Weekly Prize Redemption</div>
+        <div class="bundle-desc">Won a free premium nameplate? Enter your code and pick any design in the collection.</div>
+        <div style="display:flex;gap:10px;margin:14px 0;">
+          <input type="text" id="redeem-code" class="verify-input" placeholder="VL-XXXX-XXXX" style="flex:1;">
+          <button class="verify-btn" style="width:auto;padding:13px 20px;" onclick="checkRedeemCode()">Check</button>
         </div>
-        <div id="paypal-button-ultimate"></div>
+        <div id="redeem-status" style="font-size:.85rem;color:var(--smoke);margin-bottom:10px;"></div>
+        <div id="redeem-plate-picker" style="display:none;">
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:12px;">
+            <select id="redeem-plate-cat" class="verify-input" onchange="renderRedeemPlateOptions()"></select>
+            <select id="redeem-plate-design" class="verify-input" onchange="updateRedeemPreview()" disabled><option value="">Choose a design...</option></select>
+          </div>
+          <div id="redeem-preview" style="margin-bottom:12px;"></div>
+          <button class="verify-btn" onclick="grantRedeemedPlate()">Claim This Plate</button>
+        </div>
       </div>
     </div>
   </div>
@@ -819,7 +858,7 @@ NAMEPLATE_CATEGORIES.forEach(function(cat) {
 });
 BUNDLES['np-all'] = {
   plates: ['np-all-access'],
-  name: 'All Nameplate Bundles', price: 29.99,
+  name: 'All Nameplate Bundles', price: 39.99,
   desc: '56ViceLane All Nameplate Bundles — Every Premium Nameplate, Current and Future',
   bundleField: null
 };
@@ -930,6 +969,7 @@ function verifyPlayer() {
       }
       playerRecord = d.records[0];
       var fields = playerRecord.fields;
+      try { localStorage.setItem('56vl-gamertag', fields.Gamertag || gamertag); } catch (e) {}
       var owned = buildOwnedFromRecord(fields);
       var activeStyle = fields.PlateStyle || (fields.PlateStatus === 'Free Premium' ? 'founder' : 'black');
 
@@ -946,6 +986,7 @@ function verifyPlayer() {
       showMsg(msg, '✅ Found you, ' + (fields.Gamertag || gamertag) + '! Scroll down to shop.', 'success');
       try { renderAllBundleButtons(); } catch(e) {}
       try { loadFounderCount(); } catch(e) {}
+      try { checkForPendingPrize(fields.Gamertag || gamertag); } catch(e) {}
       setTimeout(function() {
         document.getElementById('plates').scrollIntoView({behavior:'smooth', block:'start'});
       }, 500);
@@ -1198,6 +1239,316 @@ function applyBundle(key) {
   }).catch(function() { showSuccess(firstNew, true); });
 }
 
+// ── PICK 5 BUNDLE ──────────────────────────────────────────
+var PICK5_PRICE = 29.99;
+var pick5Selected = [];
+
+function renderPick5Chips() {
+  var grid = document.getElementById('pick5-grid');
+  if (!grid) return;
+  grid.innerHTML = NAMEPLATE_CATEGORIES.map(function(cat) {
+    return '<div class="pick5-chip" data-cat="' + cat.key + '" onclick="togglePick5(\'' + cat.key + '\')">' + cat.emoji + ' ' + cat.label + '</div>';
+  }).join('');
+  updatePick5UI();
+}
+
+function togglePick5(key) {
+  var i = pick5Selected.indexOf(key);
+  if (i >= 0) {
+    pick5Selected.splice(i, 1);
+  } else {
+    if (pick5Selected.length >= 5) return;
+    pick5Selected.push(key);
+  }
+  updatePick5UI();
+}
+
+function updatePick5UI() {
+  var atCap = pick5Selected.length >= 5;
+  document.querySelectorAll('.pick5-chip').forEach(function(chip) {
+    var key = chip.getAttribute('data-cat');
+    var isSelected = pick5Selected.indexOf(key) >= 0;
+    chip.classList.toggle('selected', isSelected);
+    chip.classList.toggle('disabled', atCap && !isSelected);
+  });
+  var counter = document.getElementById('pick5-counter');
+  if (counter) counter.textContent = pick5Selected.length + ' / 5 selected';
+  var btnHost = document.getElementById('paypal-button-pick5');
+  if (!btnHost) return;
+  btnHost.innerHTML = '';
+  if (pick5Selected.length === 5) renderPick5Button();
+}
+
+function renderPick5Button() {
+  if (!window.paypal) return;
+  var chosen = pick5Selected.slice();
+  paypal.Buttons({
+    style: {color:'blue', shape:'rect', label:'pay', height:44},
+    createOrder: function(data, actions) {
+      return actions.order.create({purchase_units:[{
+        amount: {value: PICK5_PRICE.toFixed(2)},
+        description: '56ViceLane Pick 5 Bundle — ' + chosen.join(', ')
+      }]});
+    },
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function() { applyPick5Bundle(chosen); });
+    },
+    onError: function() {
+      var el = document.getElementById('paypal-button-pick5');
+      if (el) el.innerHTML = '<div class="msg show error" style="margin:8px 0;">Payment error — please try again.</div>';
+    }
+  }).render('#paypal-button-pick5');
+}
+
+function applyPick5Bundle(chosenKeys) {
+  if (!playerRecord) return;
+  var plates = [];
+  chosenKeys.forEach(function(key) {
+    for (var i = 1; i <= 10; i++) plates.push(npPlateId(key, i));
+  });
+  var fields = playerRecord.fields;
+  var owned  = buildOwnedFromRecord(fields);
+  plates.forEach(function(p) { if (owned.indexOf(p) < 0) owned.push(p); });
+  var ownedStr = owned.join(',');
+  var firstNew = plates[0];
+
+  fetch(AT_URL + '/' + playerRecord.id, {
+    method: 'PATCH', headers: AT_H,
+    body: JSON.stringify({fields: {PlateStyle: firstNew, PlateStatus: 'Pick 5 Bundle', OwnedPlates: ownedStr}})
+  }).then(function() {
+    playerRecord.fields.PlateStyle  = firstNew;
+    playerRecord.fields.PlateStatus = 'Pick 5 Bundle';
+    playerRecord.fields.OwnedPlates = ownedStr;
+    buildOwnedDropdown(owned, firstNew, fields.Gamertag || '');
+    markOwnedPlates(owned);
+    pick5Selected = [];
+    updatePick5UI();
+    showSuccess(firstNew, false, 'Pick 5 Bundle (50 plates)', false);
+  }).catch(function() { showSuccess(firstNew, true); });
+}
+
+// ── SINGLE NAMEPLATE PURCHASE ──────────────────────────────
+var SINGLE_PLATE_PRICE = 2.99;
+var singlePlateSelection = null;
+
+function initSinglePlatePicker() {
+  var catSelect = document.getElementById('single-plate-cat');
+  if (!catSelect) return;
+  catSelect.innerHTML = '<option value="">Choose a theme...</option>' +
+    NAMEPLATE_CATEGORIES.map(function(c) { return '<option value="' + c.key + '">' + c.emoji + ' ' + c.label + '</option>'; }).join('');
+}
+
+function renderSinglePlateOptions() {
+  var catKey = document.getElementById('single-plate-cat').value;
+  var designSelect = document.getElementById('single-plate-design');
+  if (!catKey) {
+    designSelect.disabled = true;
+    designSelect.innerHTML = '<option value="">Choose a design...</option>';
+    updateSinglePlatePreview();
+    return;
+  }
+  var opts = ['<option value="">Choose a design...</option>'];
+  for (var i = 1; i <= 10; i++) opts.push('<option value="' + i + '">Design ' + i + '</option>');
+  designSelect.innerHTML = opts.join('');
+  designSelect.disabled = false;
+  updateSinglePlatePreview();
+}
+
+function plateImageUrl(plateId) {
+  var bg = NP_PLATES[plateId] || '';
+  var m = /^url\('(.+)'\)$/.exec(bg);
+  return m ? m[1] : '';
+}
+
+function updateSinglePlatePreview() {
+  var catKey = document.getElementById('single-plate-cat').value;
+  var n = document.getElementById('single-plate-design').value;
+  var preview = document.getElementById('single-plate-preview');
+  var btnHost = document.getElementById('paypal-button-single-plate');
+  if (!catKey || !n) {
+    if (preview) preview.innerHTML = '';
+    if (btnHost) btnHost.innerHTML = '';
+    singlePlateSelection = null;
+    return;
+  }
+  var plateId = npPlateId(catKey, parseInt(n, 10));
+  singlePlateSelection = plateId;
+  if (preview) preview.innerHTML = '<img src="' + plateImageUrl(plateId) + '" style="width:100%;max-width:200px;border-radius:6px;display:block;" loading="lazy">';
+  if (btnHost) { btnHost.innerHTML = ''; renderSinglePlateButton(); }
+}
+
+function renderSinglePlateButton() {
+  if (!window.paypal || !singlePlateSelection) return;
+  var plateId = singlePlateSelection;
+  paypal.Buttons({
+    style: {color:'orange', shape:'rect', label:'pay', height:44},
+    createOrder: function(data, actions) {
+      return actions.order.create({purchase_units:[{
+        amount: {value: SINGLE_PLATE_PRICE.toFixed(2)},
+        description: '56ViceLane Single Nameplate — ' + plateId
+      }]});
+    },
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function() { applySinglePlate(plateId); });
+    },
+    onError: function() {
+      var el = document.getElementById('paypal-button-single-plate');
+      if (el) el.innerHTML = '<div class="msg show error" style="margin:8px 0;">Payment error — please try again.</div>';
+    }
+  }).render('#paypal-button-single-plate');
+}
+
+function applySinglePlate(plateId) {
+  if (!playerRecord) return;
+  var fields = playerRecord.fields;
+  var owned  = buildOwnedFromRecord(fields);
+  if (owned.indexOf(plateId) < 0) owned.push(plateId);
+  var ownedStr = owned.join(',');
+
+  fetch(AT_URL + '/' + playerRecord.id, {
+    method: 'PATCH', headers: AT_H,
+    body: JSON.stringify({fields: {PlateStyle: plateId, PlateStatus: 'Single Nameplate', OwnedPlates: ownedStr}})
+  }).then(function() {
+    playerRecord.fields.PlateStyle  = plateId;
+    playerRecord.fields.PlateStatus = 'Single Nameplate';
+    playerRecord.fields.OwnedPlates = ownedStr;
+    buildOwnedDropdown(owned, plateId, fields.Gamertag || '');
+    markOwnedPlates(owned);
+    showSuccess(plateId, false, 'Single Nameplate', false);
+  }).catch(function() { showSuccess(plateId, true); });
+}
+
+// ── REDEEM A WEEKLY PRIZE CODE ─────────────────────────────
+var AT_REDEMPTIONS_URL = 'https://api.airtable.com/v0/' + AT_BASE + '/Redemptions';
+var redeemRecord = null;
+var redeemPlateSelection = null;
+
+function checkRedeemCode() {
+  var code = document.getElementById('redeem-code').value.trim();
+  var status = document.getElementById('redeem-status');
+  var picker = document.getElementById('redeem-plate-picker');
+  if (!code) { status.textContent = 'Enter a code.'; return; }
+  status.textContent = 'Checking...';
+  picker.style.display = 'none';
+  var filter = encodeURIComponent('AND({Code}="' + code + '",{Status}="Issued")');
+  fetch(AT_REDEMPTIONS_URL + '?filterByFormula=' + filter + '&maxRecords=1', {headers: AT_H})
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (!d.records || !d.records.length) {
+        status.textContent = 'Code not found, already used, or expired.';
+        return;
+      }
+      var rec = d.records[0];
+      // A code issued to a specific gamertag can only be redeemed by that
+      // verified gamertag — prevents anyone who merely sees/guesses a code
+      // (e.g. shared publicly) from claiming someone else's prize. Codes
+      // with no Gamertag set (manual/unassigned) skip this check.
+      var codeOwner = (rec.fields.Gamertag || '').toLowerCase().trim();
+      var currentPlayer = (playerRecord && playerRecord.fields.Gamertag || '').toLowerCase().trim();
+      if (codeOwner && codeOwner !== currentPlayer) {
+        status.textContent = 'This code belongs to a different gamertag. Verify with the winning account to redeem it.';
+        return;
+      }
+      redeemRecord = rec;
+      status.textContent = '✅ Code valid! Pick your free nameplate below.';
+      initRedeemPlatePicker();
+      picker.style.display = 'block';
+    })
+    .catch(function() { status.textContent = 'Something went wrong — try again.'; });
+}
+
+// Auto-surface a winner's prize the moment they verify — no email needed.
+function checkForPendingPrize(gamertag) {
+  if (!gamertag) return;
+  var filter = encodeURIComponent('AND(LOWER({Gamertag})="' + gamertag.toLowerCase() + '",{Status}="Issued")');
+  fetch(AT_REDEMPTIONS_URL + '?filterByFormula=' + filter + '&maxRecords=1', {headers: AT_H})
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (!d.records || !d.records.length) return;
+      redeemRecord = d.records[0];
+      var reason = redeemRecord.fields.Reason || 'site engagement';
+      var codeInput = document.getElementById('redeem-code');
+      var status = document.getElementById('redeem-status');
+      var picker = document.getElementById('redeem-plate-picker');
+      if (codeInput) codeInput.value = redeemRecord.fields.Code || '';
+      if (status) status.innerHTML = '🎉 <strong>You won a free premium nameplate</strong> (' + reason + ')! Pick your design below.';
+      initRedeemPlatePicker();
+      if (picker) {
+        picker.style.display = 'block';
+        picker.scrollIntoView({behavior:'smooth', block:'center'});
+      }
+    })
+    .catch(function() {});
+}
+
+function initRedeemPlatePicker() {
+  var catSelect = document.getElementById('redeem-plate-cat');
+  if (!catSelect) return;
+  catSelect.innerHTML = '<option value="">Choose a theme...</option>' +
+    NAMEPLATE_CATEGORIES.map(function(c) { return '<option value="' + c.key + '">' + c.emoji + ' ' + c.label + '</option>'; }).join('');
+  document.getElementById('redeem-plate-design').disabled = true;
+  document.getElementById('redeem-preview').innerHTML = '';
+  redeemPlateSelection = null;
+}
+
+function renderRedeemPlateOptions() {
+  var catKey = document.getElementById('redeem-plate-cat').value;
+  var designSelect = document.getElementById('redeem-plate-design');
+  if (!catKey) {
+    designSelect.disabled = true;
+    designSelect.innerHTML = '<option value="">Choose a design...</option>';
+    updateRedeemPreview();
+    return;
+  }
+  var opts = ['<option value="">Choose a design...</option>'];
+  for (var i = 1; i <= 10; i++) opts.push('<option value="' + i + '">Design ' + i + '</option>');
+  designSelect.innerHTML = opts.join('');
+  designSelect.disabled = false;
+  updateRedeemPreview();
+}
+
+function updateRedeemPreview() {
+  var catKey = document.getElementById('redeem-plate-cat').value;
+  var n = document.getElementById('redeem-plate-design').value;
+  var preview = document.getElementById('redeem-preview');
+  if (!catKey || !n) { preview.innerHTML = ''; redeemPlateSelection = null; return; }
+  var plateId = npPlateId(catKey, parseInt(n, 10));
+  redeemPlateSelection = plateId;
+  preview.innerHTML = '<img src="' + plateImageUrl(plateId) + '" style="width:100%;max-width:200px;border-radius:6px;display:block;" loading="lazy">';
+}
+
+function grantRedeemedPlate() {
+  if (!redeemRecord || !playerRecord || !redeemPlateSelection) return;
+  var plateId = redeemPlateSelection;
+  var fields  = playerRecord.fields;
+  var owned   = buildOwnedFromRecord(fields);
+  if (owned.indexOf(plateId) < 0) owned.push(plateId);
+  var ownedStr = owned.join(',');
+
+  Promise.all([
+    fetch(AT_URL + '/' + playerRecord.id, {
+      method: 'PATCH', headers: AT_H,
+      body: JSON.stringify({fields: {PlateStyle: plateId, PlateStatus: 'Prize Redemption', OwnedPlates: ownedStr}})
+    }),
+    fetch(AT_REDEMPTIONS_URL + '/' + redeemRecord.id, {
+      method: 'PATCH', headers: AT_H,
+      body: JSON.stringify({fields: {
+        Status: 'Redeemed', PlateGranted: plateId,
+        RedeemedAt: new Date().toISOString(), Gamertag: fields.Gamertag || ''
+      }})
+    })
+  ]).then(function() {
+    playerRecord.fields.PlateStyle  = plateId;
+    playerRecord.fields.PlateStatus = 'Prize Redemption';
+    playerRecord.fields.OwnedPlates = ownedStr;
+    buildOwnedDropdown(owned, plateId, fields.Gamertag || '');
+    markOwnedPlates(owned);
+    redeemRecord = null;
+    redeemPlateSelection = null;
+    showSuccess(plateId, false, 'Prize Nameplate', false);
+  }).catch(function() { showSuccess(plateId, true); });
+}
+
 // ── BUNDLE PAYPAL BUTTONS ──────────────────────────────────
 function renderAllBundleButtons() {
   Object.keys(BUNDLES).forEach(function(key) {
@@ -1301,6 +1652,10 @@ fetch('/articles.json?v=' + Date.now())
       return '<span class="ticker-item" onclick="location.href=\'/articles/' + x.slug + '\'">' + (x.emoji || '⚡') + ' ' + x.title + '</span>';
     }).join('');
   }).catch(function() {});
+
+// ── PICK 5 CHIPS INIT ───────────────────────────────────────
+try { renderPick5Chips(); } catch(e) {}
+try { initSinglePlatePicker(); } catch(e) {}
 
 // ── BUNDLE HERO CAROUSELS ──────────────────────────────────
 document.querySelectorAll('.bundle-hero-carousel').forEach(function(car) {

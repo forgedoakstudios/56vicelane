@@ -79,14 +79,14 @@
   <div class="wrap">
     <p class="eyebrow reveal">CONVOY ROSTER</p>
     <h2 class="reveal">Standings</h2>
-    <p class="lede reveal mt-1" style="font-size:.95rem">Wired to member accounts at launch of the members area — the roster below shows how it'll look.</p>
+    <p class="lede reveal mt-1" style="font-size:.95rem">Resets every week — new faces climb every Friday.</p>
     <div class="card reveal mt-3" style="overflow-x:auto">
       <table class="lb" id="lbTable">
-        <thead><tr><th>#</th><th>Driver</th><th>Badges</th><th>Points</th></tr></thead>
+        <thead><tr><th>#</th><th>Driver</th><th>Points</th></tr></thead>
         <tbody>
-          <tr><td class="rank">01</td><td><b>Your gamertag here</b></td><td><div class="pips"><span class="pip">🏁</span><span class="pip">🛣️</span><span class="pip">📻</span></div></td><td class="mono">—</td></tr>
-          <tr><td class="rank">02</td><td>Open seat</td><td><div class="pips"><span class="pip">🛣️</span></div></td><td class="mono">—</td></tr>
-          <tr><td class="rank">03</td><td>Open seat</td><td><div class="pips"><span class="pip">🌅</span></div></td><td class="mono">—</td></tr>
+          <tr><td class="rank">01</td><td>Open seat</td><td class="mono">—</td></tr>
+          <tr><td class="rank">02</td><td>Open seat</td><td class="mono">—</td></tr>
+          <tr><td class="rank">03</td><td>Open seat</td><td class="mono">—</td></tr>
         </tbody>
       </table>
     </div>
@@ -103,5 +103,35 @@
 
 <script src="/assets/vf.js"></script>
 <script src="/back-to-top.js" defer></script>
+<script>
+/* Live weekly standings — resets automatically each ISO week (Last Drive.
+   WeekPoints rolls over the moment track.js records the first point of a
+   new week, no separate reset job needed). Deliberately shows only rank,
+   gamertag, and a number — never what the number means. */
+(function () {
+  var AT_TOKEN = 'pattxJ12NQzpHMejD.2eb992f22f1a43e032d866df028dbb33958635234f6cfd30769e3e12f10d5588';
+  var AT_BASE  = 'appVViGbmcu5gbn8B';
+  var AT_URL   = 'https://api.airtable.com/v0/' + AT_BASE + '/Last%20Drive';
+  var AT_H     = { 'Authorization': 'Bearer ' + AT_TOKEN };
+
+  var params = 'maxRecords=10' +
+    '&sort%5B0%5D%5Bfield%5D=WeekPoints&sort%5B0%5D%5Bdirection%5D=desc' +
+    '&filterByFormula=' + encodeURIComponent('{WeekPoints} > 0');
+
+  fetch(AT_URL + '?' + params, { headers: AT_H })
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      var tbody = document.querySelector('#lbTable tbody');
+      if (!tbody) return;
+      var records = (d.records || []).filter(function (r) { return r.fields.Gamertag; });
+      if (!records.length) return; // leave the static "Open seat" rows in place
+      tbody.innerHTML = records.map(function (r, i) {
+        var rank = String(i + 1).padStart(2, '0');
+        return '<tr><td class="rank">' + rank + '</td><td><b>' + r.fields.Gamertag + '</b></td><td class="mono">' + (r.fields.WeekPoints || 0) + '</td></tr>';
+      }).join('');
+    })
+    .catch(function () { /* leave static placeholder rows in place */ });
+})();
+</script>
 </body>
 </html>

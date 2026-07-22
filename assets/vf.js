@@ -74,6 +74,23 @@ function vfCountdown () {
   setInterval(tickDown, 1000);
 }
 
+/* ---------- category default art (Chris's Drive uploads) ---------- */
+/* Used only when an article has no specific hero image of its own. */
+var VF_CATEGORY_ART = {
+  online: ['GtaVOnlineNews1.png', 'GtaVOnlineNews2.png', 'GtaVOnlineNews4.png'],
+  gta6: ['Gta6NewsHero.png', 'Gta6NewsNeon.png', 'Gta6OnlineNews.png'],
+  industry: ['RockstarNews.png', 'RockstarNews2.png', 'RockstarNews3.png'],
+  gta: ['GtaV.png', 'GtaVNews.png']
+};
+function vfCategoryArt (category, index) {
+  var c = String(category || '').toLowerCase();
+  var bucket = VF_CATEGORY_ART.gta;
+  if (c.indexOf('online') !== -1) bucket = VF_CATEGORY_ART.online;
+  else if (c.indexOf('6') !== -1) bucket = VF_CATEGORY_ART.gta6;
+  else if (c.indexOf('industry') !== -1 || c.indexOf('rockstar') !== -1) bucket = VF_CATEGORY_ART.industry;
+  return '/images/' + bucket[index % bucket.length];
+}
+
 /* ---------- latest articles feed (homepage / news) ---------- */
 function vfFeed () {
   var host = document.querySelector('[data-feed]');
@@ -84,15 +101,16 @@ function vfFeed () {
     .then(function (data) {
       var list = Array.isArray(data) ? data : (data.articles || []);
       if (!list.length) return;
-      host.innerHTML = list.slice(0, limit).map(function (a) {
+      host.innerHTML = list.slice(0, limit).map(function (a, i) {
         var title = a.title || a.headline || 'Untitled';
         var url = a.url || a.link || '#';
         var date = a.date || a.datePublished || '';
         var cat = a.category || a.tag || 'News';
         var desc = a.description || a.summary || '';
+        var img = a.image ? '/images/' + a.image : vfCategoryArt(cat, i);
         return '' +
           '<article class="card reveal" data-cat="' + String(cat).toLowerCase() + '">' +
-            '<div class="card-hero"><div class="art art-auto"></div></div>' +
+            '<div class="card-hero"><img src="' + img + '" alt="' + title.replace(/"/g, '&quot;') + '" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.closest(\'.card-hero\').innerHTML=\'<div class=&quot;art art-auto&quot;></div>\';vfAutoArt();"></div>' +
             '<span class="eyebrow">' + cat + '</span>' +
             '<h3><a href="' + url + '" style="color:inherit">' + title + '</a></h3>' +
             '<p>' + desc + '</p>' +
