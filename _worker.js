@@ -16,10 +16,13 @@ export default {
 
     const html = await response.text();
 
-    // Inject hero.js before </body> if not already present
-    const modified = html.includes('/hero.js')
+    // Inject hero.js + track.js before </body> if not already present
+    let modified = html.includes('/hero.js')
       ? html
       : html.replace('</body>', '<script src="/hero.js"></script>\n</body>');
+    modified = modified.includes('/track.js')
+      ? modified
+      : modified.replace('</body>', '<script src="/track.js" data-track-action="Article Read"></script>\n</body>');
 
     return new Response(modified, {
       status: response.status,

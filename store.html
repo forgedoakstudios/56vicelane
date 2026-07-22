@@ -615,6 +615,46 @@
         <div id="paypal-button-np-all"></div>
       </div>
     </div>
+
+    <!-- SINGLE NAMEPLATE PURCHASE -->
+    <div class="bundles-label" style="margin-top:32px;">🎯 Buy One Nameplate</div>
+    <div class="bundle-card" style="max-width:420px;">
+      <div class="bundle-body">
+        <div class="bundle-name">Single Nameplate</div>
+        <div class="bundle-desc">Just want one? Pick the exact design, no bundle required.</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin:14px 0;">
+          <select id="single-plate-cat" class="verify-input" onchange="renderSinglePlateOptions()"></select>
+          <select id="single-plate-design" class="verify-input" onchange="updateSinglePlatePreview()" disabled><option value="">Choose a design...</option></select>
+        </div>
+        <div id="single-plate-preview" style="margin-bottom:12px;"></div>
+        <div class="bundle-price-row">
+          <div class="bundle-price">$3.99</div>
+        </div>
+      </div>
+      <div id="paypal-button-single-plate"></div>
+    </div>
+
+    <!-- REDEEM A PRIZE CODE -->
+    <div class="bundles-label" style="margin-top:32px;">🎁 Redeem a Prize Code</div>
+    <div class="bundle-card" style="max-width:420px;border-color:var(--gold);">
+      <div class="bundle-body">
+        <div class="bundle-name" style="color:var(--gold);">Weekly Prize Redemption</div>
+        <div class="bundle-desc">Won a free premium nameplate? Enter your code and pick any design in the collection.</div>
+        <div style="display:flex;gap:10px;margin:14px 0;">
+          <input type="text" id="redeem-code" class="verify-input" placeholder="VL-XXXX-XXXX" style="flex:1;">
+          <button class="verify-btn" style="width:auto;padding:13px 20px;" onclick="checkRedeemCode()">Check</button>
+        </div>
+        <div id="redeem-status" style="font-size:.85rem;color:var(--smoke);margin-bottom:10px;"></div>
+        <div id="redeem-plate-picker" style="display:none;">
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:12px;">
+            <select id="redeem-plate-cat" class="verify-input" onchange="renderRedeemPlateOptions()"></select>
+            <select id="redeem-plate-design" class="verify-input" onchange="updateRedeemPreview()" disabled><option value="">Choose a design...</option></select>
+          </div>
+          <div id="redeem-preview" style="margin-bottom:12px;"></div>
+          <button class="verify-btn" onclick="grantRedeemedPlate()">Claim This Plate</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -929,6 +969,7 @@ function verifyPlayer() {
       }
       playerRecord = d.records[0];
       var fields = playerRecord.fields;
+      try { localStorage.setItem('56vl-gamertag', fields.Gamertag || gamertag); } catch (e) {}
       var owned = buildOwnedFromRecord(fields);
       var activeStyle = fields.PlateStyle || (fields.PlateStatus === 'Free Premium' ? 'founder' : 'black');
 
@@ -1285,6 +1326,193 @@ function applyPick5Bundle(chosenKeys) {
   }).catch(function() { showSuccess(firstNew, true); });
 }
 
+// ── SINGLE NAMEPLATE PURCHASE ──────────────────────────────
+var SINGLE_PLATE_PRICE = 3.99;
+var singlePlateSelection = null;
+
+function initSinglePlatePicker() {
+  var catSelect = document.getElementById('single-plate-cat');
+  if (!catSelect) return;
+  catSelect.innerHTML = '<option value="">Choose a theme...</option>' +
+    NAMEPLATE_CATEGORIES.map(function(c) { return '<option value="' + c.key + '">' + c.emoji + ' ' + c.label + '</option>'; }).join('');
+}
+
+function renderSinglePlateOptions() {
+  var catKey = document.getElementById('single-plate-cat').value;
+  var designSelect = document.getElementById('single-plate-design');
+  if (!catKey) {
+    designSelect.disabled = true;
+    designSelect.innerHTML = '<option value="">Choose a design...</option>';
+    updateSinglePlatePreview();
+    return;
+  }
+  var opts = ['<option value="">Choose a design...</option>'];
+  for (var i = 1; i <= 10; i++) opts.push('<option value="' + i + '">Design ' + i + '</option>');
+  designSelect.innerHTML = opts.join('');
+  designSelect.disabled = false;
+  updateSinglePlatePreview();
+}
+
+function plateImageUrl(plateId) {
+  var bg = NP_PLATES[plateId] || '';
+  var m = /^url\('(.+)'\)$/.exec(bg);
+  return m ? m[1] : '';
+}
+
+function updateSinglePlatePreview() {
+  var catKey = document.getElementById('single-plate-cat').value;
+  var n = document.getElementById('single-plate-design').value;
+  var preview = document.getElementById('single-plate-preview');
+  var btnHost = document.getElementById('paypal-button-single-plate');
+  if (!catKey || !n) {
+    if (preview) preview.innerHTML = '';
+    if (btnHost) btnHost.innerHTML = '';
+    singlePlateSelection = null;
+    return;
+  }
+  var plateId = npPlateId(catKey, parseInt(n, 10));
+  singlePlateSelection = plateId;
+  if (preview) preview.innerHTML = '<img src="' + plateImageUrl(plateId) + '" style="width:100%;max-width:200px;border-radius:6px;display:block;" loading="lazy">';
+  if (btnHost) { btnHost.innerHTML = ''; renderSinglePlateButton(); }
+}
+
+function renderSinglePlateButton() {
+  if (!window.paypal || !singlePlateSelection) return;
+  var plateId = singlePlateSelection;
+  paypal.Buttons({
+    style: {color:'orange', shape:'rect', label:'pay', height:44},
+    createOrder: function(data, actions) {
+      return actions.order.create({purchase_units:[{
+        amount: {value: SINGLE_PLATE_PRICE.toFixed(2)},
+        description: '56ViceLane Single Nameplate — ' + plateId
+      }]});
+    },
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function() { applySinglePlate(plateId); });
+    },
+    onError: function() {
+      var el = document.getElementById('paypal-button-single-plate');
+      if (el) el.innerHTML = '<div class="msg show error" style="margin:8px 0;">Payment error — please try again.</div>';
+    }
+  }).render('#paypal-button-single-plate');
+}
+
+function applySinglePlate(plateId) {
+  if (!playerRecord) return;
+  var fields = playerRecord.fields;
+  var owned  = buildOwnedFromRecord(fields);
+  if (owned.indexOf(plateId) < 0) owned.push(plateId);
+  var ownedStr = owned.join(',');
+
+  fetch(AT_URL + '/' + playerRecord.id, {
+    method: 'PATCH', headers: AT_H,
+    body: JSON.stringify({fields: {PlateStyle: plateId, PlateStatus: 'Single Nameplate', OwnedPlates: ownedStr}})
+  }).then(function() {
+    playerRecord.fields.PlateStyle  = plateId;
+    playerRecord.fields.PlateStatus = 'Single Nameplate';
+    playerRecord.fields.OwnedPlates = ownedStr;
+    buildOwnedDropdown(owned, plateId, fields.Gamertag || '');
+    markOwnedPlates(owned);
+    showSuccess(plateId, false, 'Single Nameplate', false);
+  }).catch(function() { showSuccess(plateId, true); });
+}
+
+// ── REDEEM A WEEKLY PRIZE CODE ─────────────────────────────
+var AT_REDEMPTIONS_URL = 'https://api.airtable.com/v0/' + AT_BASE + '/Redemptions';
+var redeemRecord = null;
+var redeemPlateSelection = null;
+
+function checkRedeemCode() {
+  var code = document.getElementById('redeem-code').value.trim();
+  var status = document.getElementById('redeem-status');
+  var picker = document.getElementById('redeem-plate-picker');
+  if (!code) { status.textContent = 'Enter a code.'; return; }
+  status.textContent = 'Checking...';
+  picker.style.display = 'none';
+  var filter = encodeURIComponent('AND({Code}="' + code + '",{Status}="Issued")');
+  fetch(AT_REDEMPTIONS_URL + '?filterByFormula=' + filter + '&maxRecords=1', {headers: AT_H})
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (!d.records || !d.records.length) {
+        status.textContent = 'Code not found, already used, or expired.';
+        return;
+      }
+      redeemRecord = d.records[0];
+      status.textContent = '✅ Code valid! Pick your free nameplate below.';
+      initRedeemPlatePicker();
+      picker.style.display = 'block';
+    })
+    .catch(function() { status.textContent = 'Something went wrong — try again.'; });
+}
+
+function initRedeemPlatePicker() {
+  var catSelect = document.getElementById('redeem-plate-cat');
+  if (!catSelect) return;
+  catSelect.innerHTML = '<option value="">Choose a theme...</option>' +
+    NAMEPLATE_CATEGORIES.map(function(c) { return '<option value="' + c.key + '">' + c.emoji + ' ' + c.label + '</option>'; }).join('');
+  document.getElementById('redeem-plate-design').disabled = true;
+  document.getElementById('redeem-preview').innerHTML = '';
+  redeemPlateSelection = null;
+}
+
+function renderRedeemPlateOptions() {
+  var catKey = document.getElementById('redeem-plate-cat').value;
+  var designSelect = document.getElementById('redeem-plate-design');
+  if (!catKey) {
+    designSelect.disabled = true;
+    designSelect.innerHTML = '<option value="">Choose a design...</option>';
+    updateRedeemPreview();
+    return;
+  }
+  var opts = ['<option value="">Choose a design...</option>'];
+  for (var i = 1; i <= 10; i++) opts.push('<option value="' + i + '">Design ' + i + '</option>');
+  designSelect.innerHTML = opts.join('');
+  designSelect.disabled = false;
+  updateRedeemPreview();
+}
+
+function updateRedeemPreview() {
+  var catKey = document.getElementById('redeem-plate-cat').value;
+  var n = document.getElementById('redeem-plate-design').value;
+  var preview = document.getElementById('redeem-preview');
+  if (!catKey || !n) { preview.innerHTML = ''; redeemPlateSelection = null; return; }
+  var plateId = npPlateId(catKey, parseInt(n, 10));
+  redeemPlateSelection = plateId;
+  preview.innerHTML = '<img src="' + plateImageUrl(plateId) + '" style="width:100%;max-width:200px;border-radius:6px;display:block;" loading="lazy">';
+}
+
+function grantRedeemedPlate() {
+  if (!redeemRecord || !playerRecord || !redeemPlateSelection) return;
+  var plateId = redeemPlateSelection;
+  var fields  = playerRecord.fields;
+  var owned   = buildOwnedFromRecord(fields);
+  if (owned.indexOf(plateId) < 0) owned.push(plateId);
+  var ownedStr = owned.join(',');
+
+  Promise.all([
+    fetch(AT_URL + '/' + playerRecord.id, {
+      method: 'PATCH', headers: AT_H,
+      body: JSON.stringify({fields: {PlateStyle: plateId, PlateStatus: 'Prize Redemption', OwnedPlates: ownedStr}})
+    }),
+    fetch(AT_REDEMPTIONS_URL + '/' + redeemRecord.id, {
+      method: 'PATCH', headers: AT_H,
+      body: JSON.stringify({fields: {
+        Status: 'Redeemed', PlateGranted: plateId,
+        RedeemedAt: new Date().toISOString(), Gamertag: fields.Gamertag || ''
+      }})
+    })
+  ]).then(function() {
+    playerRecord.fields.PlateStyle  = plateId;
+    playerRecord.fields.PlateStatus = 'Prize Redemption';
+    playerRecord.fields.OwnedPlates = ownedStr;
+    buildOwnedDropdown(owned, plateId, fields.Gamertag || '');
+    markOwnedPlates(owned);
+    redeemRecord = null;
+    redeemPlateSelection = null;
+    showSuccess(plateId, false, 'Prize Nameplate', false);
+  }).catch(function() { showSuccess(plateId, true); });
+}
+
 // ── BUNDLE PAYPAL BUTTONS ──────────────────────────────────
 function renderAllBundleButtons() {
   Object.keys(BUNDLES).forEach(function(key) {
@@ -1391,6 +1619,7 @@ fetch('/articles.json?v=' + Date.now())
 
 // ── PICK 5 CHIPS INIT ───────────────────────────────────────
 try { renderPick5Chips(); } catch(e) {}
+try { initSinglePlatePicker(); } catch(e) {}
 
 // ── BUNDLE HERO CAROUSELS ──────────────────────────────────
 document.querySelectorAll('.bundle-hero-carousel').forEach(function(car) {
