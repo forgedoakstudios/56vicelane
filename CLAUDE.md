@@ -15,6 +15,25 @@ on GitHub. Content distribution runs through n8n (automation) and Blotato
   Anything meant for those two needs a separate manual/native upload — flag
   it, don't assume it went out.
 
+## Shipping to production (`main`)
+`main` is what 56vicelane.com actually deploys from — anything not on
+`main` is not live, no matter how finished it looks in a branch.
+- Build and verify on a branch first (test it actually renders/works —
+  don't just claim done from reading code).
+- Do not merge or push to `main` until Chris has seen the result and
+  approved it in a session. "Full control over the repo/build" (above)
+  covers building, committing, and iterating on branches — it is not
+  standing approval to put changes live. Ask, or wait for an explicit
+  go-ahead, before the `main` push specifically.
+- Exception: this rule is about shipping *changes*. Routine automated
+  commits that already have standing approval elsewhere in this brief
+  (the article-publish bot, news-scan bot, social-queue logging, nightly
+  audit once built) keep running on their own — this is about
+  Claude-authored feature/fix work landing on `main`.
+- When something IS approved and pushed to `main`, say so plainly and
+  don't leave it sitting on a branch "waiting" without flagging that
+  it's waiting.
+
 ## Posting: auto-schedule is the standing mode
 Human-in-the-loop approval is being built but currently errors out, so
 auto-scheduling (across Blotato-connected platforms + Discord) is the
