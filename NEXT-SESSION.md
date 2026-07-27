@@ -38,6 +38,17 @@ the real client code, not confirmed with you directly.
 **Also logged this session:** radio background-music licensing question
 (see "4b" below) — you're checking sources yourself, no action needed from me.
 
+**Follow-up session (2026-07-28):** the 5-task tracker was already done, so
+this pass verified everything was still intact (all 10 webhooks still
+active) and added one more useful piece: a ready-to-run, one-time Aug 1
+export workflow (`JYgaHxAS3ErBAGX5`, inactive by design — run it by hand
+from the n8n editor once the quota resets, not before) so the real
+Airtable→Data Table data copy doesn't need to be built from scratch that
+day. Also found and documented an older, unrelated, inactive n8n workflow
+("Track Engagement — Ingest") that predates this whole migration and
+explains a comment already in track.js — harmless, flagged for a future
+cleanup, not touched.
+
 ---
 
 ## -1. Airtable Free-plan API quota hit (2026-07-27) — accepted downtime until Aug 1
