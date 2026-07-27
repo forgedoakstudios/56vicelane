@@ -123,6 +123,81 @@ function vfFeed () {
     .catch(function () { /* leave any static cards in place */ });
 }
 
+/* ---------- month-grouped news feed (news.html) ----------
+   Cutoff matches the site's evergreen rule: anything within the last
+   ~2 months stays on the News hub, grouped by month (current month
+   first). Older articles move to archive.html EXCEPT ones flagged
+   `permanent: true` in articles.json (big/historical news that should
+   stay visible on News regardless of age), which show in both places. */
+var VF_NEWS_CUTOFF_DAYS = 60;
+
+function vfMonthLabel (yyyymm) {
+  var parts = yyyymm.split('-');
+  var names = ['January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'];
+  return names[parseInt(parts[1], 10) - 1] + ' ' + parts[0];
+}
+
+function vfArticleCardHTML (a, i) {
+  var title = a.title || a.headline || 'Untitled';
+  var url = a.url || a.link || '#';
+  var date = a.date || a.datePublished || '';
+  var cat = a.category || a.tag || 'News';
+  var desc = a.description || a.excerpt || a.summary || '';
+  var img = a.image ? '/images/' + a.image : vfCategoryArt(cat, i);
+  return '' +
+    '<article class="card reveal" data-cat="' + String(cat).toLowerCase() + '">' +
+      '<div class="card-hero"><img src="' + img + '" alt="' + title.replace(/"/g, '&quot;') + '" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.closest(\'.card-hero\').innerHTML=\'<div class=&quot;art art-auto&quot;></div>\';vfAutoArt();"></div>' +
+      '<span class="eyebrow">' + cat + '</span>' +
+      '<h3><a href="' + url + '" style="color:inherit">' + title + '</a></h3>' +
+      '<p>' + desc + '</p>' +
+      '<div class="meta mt-1"><span>' + date + '</span></div>' +
+    '</article>';
+}
+
+function vfNewsFeed () {
+  var host = document.querySelector('[data-monthly-feed]');
+  if (!host) return;
+  fetch('/articles.json')
+    .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+    .then(function (data) {
+      var list = Array.isArray(data) ? data : (data.articles || []);
+      if (!list.length) return;
+
+      var now = Date.now();
+      var cutoffMs = VF_NEWS_CUTOFF_DAYS * 86400000;
+      var current = list.filter(function (a) {
+        if (a.permanent) return true;
+        var t = new Date(a.date).getTime();
+        return !isNaN(t) && (now - t) <= cutoffMs;
+      });
+
+      var byMonth = {};
+      current.forEach(function (a) {
+        var key = (a.date || '').slice(0, 7) || 'unknown';
+        (byMonth[key] = byMonth[key] || []).push(a);
+      });
+      var months = Object.keys(byMonth).sort().reverse();
+
+      host.innerHTML = months.map(function (key) {
+        var articles = byMonth[key].slice().sort(function (a, b) {
+          return (b.date || '').localeCompare(a.date || '');
+        });
+        return '' +
+          '<div class="month-section">' +
+            '<h2 class="month-heading">' + vfMonthLabel(key) + '</h2>' +
+            '<div class="grid g3">' +
+              articles.map(function (a, i) { return vfArticleCardHTML(a, i); }).join('') +
+            '</div>' +
+          '</div>';
+      }).join('');
+
+      vfReveal();
+      vfAutoArt();
+    })
+    .catch(function () { /* leave any static cards in place */ });
+}
+
 /* ---------- generated card art (no external images needed) ---------- */
 function vfAutoArt () {
   var hues = [
@@ -145,5 +220,6 @@ window.addEventListener('DOMContentLoaded', function () {
   vfTicker();
   vfCountdown();
   vfFeed();
+  vfNewsFeed();
   vfAutoArt();
 });

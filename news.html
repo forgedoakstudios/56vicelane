@@ -128,6 +128,20 @@
   position: relative;
   z-index: 2;
 }
+
+/* month-grouped feed (vfNewsFeed in vf.js) */
+.month-section{margin-bottom:36px;}
+.month-section:last-child{margin-bottom:0;}
+.month-heading{
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  color: var(--bone);
+  margin-bottom:16px;
+  padding-bottom:8px;
+  border-bottom:1px solid var(--edge);
+  letter-spacing:.02em;
+}
 .grid.g3{display:grid;gap:14px;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));}
 .card .card-hero{margin:-18px -18px 14px;}
 .card .art{width:100%;aspect-ratio:2.4/1;background:var(--edge);}
@@ -219,29 +233,31 @@
 </section>
 
 <section class="news-section">
-  <div class="grid g3" data-feed="1500" id="newsGrid">
+  <div data-monthly-feed id="newsGrid">
     <!-- Fallback cards shown until /articles.json loads -->
-    <article class="card reveal" data-cat="news">
-      <div class="card-hero"><div class="art art-auto"></div></div>
-      <span class="eyebrow">News</span>
-      <h3>Pre-order wave breaks records</h3>
-      <p>The opening numbers, what they signal for launch week, and what to lock in before preload.</p>
-      <div class="meta mt-1"><span>56ViceLane Staff</span><span class="dot">◆</span><span>2026</span></div>
-    </article>
-    <article class="card reveal" data-cat="lore">
-      <div class="card-hero"><div class="art art-auto"></div></div>
-      <span class="eyebrow">Lore</span>
-      <h3>The Vercetti thread nobody's pulling</h3>
-      <p>Deep Frequency traces the Heder theory through every frame we've been given so far.</p>
-      <div class="meta mt-1"><span>Deep Frequency</span><span class="dot">◆</span><span>2026</span></div>
-    </article>
-    <article class="card reveal" data-cat="hardware">
-      <div class="card-hero"><div class="art art-auto"></div></div>
-      <span class="eyebrow">Hardware</span>
-      <h3>The launch-night setup, ranked</h3>
-      <p>Controllers, headsets, and the storage you'll actually need on day one.</p>
-      <div class="meta mt-1"><span>Gear Desk</span><span class="dot">◆</span><span>2026</span></div>
-    </article>
+    <div class="grid g3">
+      <article class="card reveal" data-cat="news">
+        <div class="card-hero"><div class="art art-auto"></div></div>
+        <span class="eyebrow">News</span>
+        <h3>Pre-order wave breaks records</h3>
+        <p>The opening numbers, what they signal for launch week, and what to lock in before preload.</p>
+        <div class="meta mt-1"><span>56ViceLane Staff</span><span class="dot">◆</span><span>2026</span></div>
+      </article>
+      <article class="card reveal" data-cat="lore">
+        <div class="card-hero"><div class="art art-auto"></div></div>
+        <span class="eyebrow">Lore</span>
+        <h3>The Vercetti thread nobody's pulling</h3>
+        <p>Deep Frequency traces the Heder theory through every frame we've been given so far.</p>
+        <div class="meta mt-1"><span>Deep Frequency</span><span class="dot">◆</span><span>2026</span></div>
+      </article>
+      <article class="card reveal" data-cat="hardware">
+        <div class="card-hero"><div class="art art-auto"></div></div>
+        <span class="eyebrow">Hardware</span>
+        <h3>The launch-night setup, ranked</h3>
+        <p>Controllers, headsets, and the storage you'll actually need on day one.</p>
+        <div class="meta mt-1"><span>Gear Desk</span><span class="dot">◆</span><span>2026</span></div>
+      </article>
+    </div>
   </div>
 </section>
 </main>
