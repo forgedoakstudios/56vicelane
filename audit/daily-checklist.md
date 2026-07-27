@@ -9,20 +9,18 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
 
 ---
 
-## 🚨 Needs you today — urgent
+## 🚨 Urgent, but not until closer to Aug 1
 
 - [ ] **Rotate the Airtable Personal Access Token.** Found hardcoded in
       plain public HTML across 30 files (articles, members.html, store.html,
-      track.js, more). Anyone can view-source it. Go to your Airtable
-      account → Developer Hub → Personal Access Tokens, revoke
-      `pattxJ12NQzpHMejD...`, issue a new one. Tell me once it's rotated —
-      some call sites already have an n8n webhook replacement ready, others
-      (article ratings/comments) don't yet and will need one built first.
-      **Confirmed 2026-07-27: the n8n migration does NOT cover this** —
-      that migration is 4 tables (LastDrive/Members, PointsLedger,
-      PageStats, Redemptions); ratings/comments were never in scope, and
-      the migration itself isn't live yet regardless. Rotating is
-      independent of that plan and still needed now.
+      track.js, more). Anyone can view-source it — normally urgent, but
+      **Chris's call (2026-07-27): the token is dead until the Airtable
+      quota resets Aug 1 anyway (429 on every call), so it's inert right
+      now regardless of who has it.** Deprioritized until closer to Aug 1
+      — revisit and rotate before the reset, not today. n8n migration does
+      NOT cover this (4 tables migrated — LastDrive/Members, PointsLedger,
+      PageStats, Redemptions — ratings/comments were never in scope), so
+      this still needs a manual rotation + code patch when we come back to it.
 
 ## Needs a decision from you
 
