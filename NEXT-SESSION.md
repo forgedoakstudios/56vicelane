@@ -22,6 +22,25 @@ Top 3 + Trevor's Pick, was going to fire Fri 7/31 into the dead quota).
 fire on its own since it's unpublished, and its normal Friday slot already
 passed for this cycle.
 
+**Done (2026-07-27, later same session):** store.html purchases and profile
+verification are now actively paused, not just silently failing. Added a
+`STORE_MAINTENANCE` flag (top of store.html's script block) that
+short-circuits before any PayPal button renders (featured plate, bundles,
+Pick 5, single-plate picker) and before the "Find My Profile" Airtable
+lookup — visible banner + inline message explain the pause instead of a
+confusing "Connection error." **This blocks a real risk**: without it,
+PayPal would still capture payment even though the Airtable write that
+grants the nameplate can't succeed. Verified via direct function invocation
+in a headless browser — all 4 purchase paths short-circuit cleanly, zero
+JS errors. **To restore after Aug 1 reset: set `STORE_MAINTENANCE = false`**
+in store.html (search for the var declaration, has a comment marking it).
+
+members.html's `findProfile()` (read-only profile search) and lastdrive.html's
+signup forms are also hitting the same blocked quota — lastdrive.html
+already shows an honest "Error — Try Again" on failure (not a false
+success), so left alone. members.html shows a generic "Search error" —
+cosmetic, not gated, since no money/data-loss risk there.
+
 **Root cause, not yet fixed:** `track.js` is injected into every page by
 `_worker.js` and fires an Airtable GET+PATCH/POST to `PageStats` on every
 single pageview, anonymous or not — this is almost certainly what burned a
