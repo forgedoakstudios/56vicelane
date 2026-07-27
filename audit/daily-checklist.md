@@ -24,19 +24,15 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
 
 ## Needs a decision from you
 
-- [ ] Push today's approved fixes to `main`? (ticker speed/styling, blotter
-      font, sitewide 18px font-size, news/archive month-nav sidebar) — built,
-      tested, sitting on `claude/friendly-feynman-3scinq`, waiting on your OK.
-- [ ] Retrofit hero images into the 20 legacy articles that were generated
-      before the hero-image template existed (no image slot at all right
-      now, e.g. `gta6-everything-confirmed.html`) — want me to do this pass?
-- [ ] Trevor/Danny per-platform social accounts — do handles already exist
-      (need credentials) or do new accounts need creating first?
 - [ ] Last Drive homepage preview — need a real video source (YouTube link
       or mp4) to replace the static placeholder image.
 - [ ] Affiliate link images — still an open question from your own list.
 - [ ] AdSense rejected 3x — send the actual rejection email/reason text if
       you want this diagnosed precisely instead of guessed at.
+
+## Cancelled (2026-07-27)
+
+- [x] ~~Trevor/Danny per-platform social accounts~~ — Chris: ignore, cancel this.
 
 ## Done today (2026-07-27)
 
@@ -54,6 +50,16 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
 - [x] Documented the main-push approval rule in `CLAUDE.md` (build → you
       approve → then it ships to `main`).
 - [x] Found the Airtable token security issue (see urgent, above).
+- [x] Found and fixed the *real* ticker speed bug on archive/about/contact/
+      shop.html — declared duration was already 40s everywhere, but those
+      4 pages crammed all 66 articles into the scroll uncapped (vs. 10
+      everywhere else), so same time = ~6x more content = ~6x faster.
+      Capped at 10, matched everyone else's exact scroll technique.
+- [x] Retrofitted hero images into all 20 legacy articles that had no
+      hero slot at all (pre-dated the hero-image template).
+- [x] All of today's approved work pushed to `main` and live: month-nav
+      sidebar, ticker unification + real-speed fix, blotter font, 18px
+      body text sitewide, hero image retrofit.
 
 ## Carried over from this week (not yet done)
 
