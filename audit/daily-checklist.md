@@ -18,11 +18,16 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
       `pattxJ12NQzpHMejD...`, issue a new one. Tell me once it's rotated —
       some call sites already have an n8n webhook replacement ready, others
       (article ratings/comments) don't yet and will need one built first.
+      **Confirmed 2026-07-27: the n8n migration does NOT cover this** —
+      that migration is 4 tables (LastDrive/Members, PointsLedger,
+      PageStats, Redemptions); ratings/comments were never in scope, and
+      the migration itself isn't live yet regardless. Rotating is
+      independent of that plan and still needed now.
 
 ## Needs a decision from you
 
 - [ ] Push today's approved fixes to `main`? (ticker speed/styling, blotter
-      font, sitewide 20px font-size, news/archive month-nav sidebar) — built,
+      font, sitewide 18px font-size, news/archive month-nav sidebar) — built,
       tested, sitting on `claude/friendly-feynman-3scinq`, waiting on your OK.
 - [ ] Retrofit hero images into the 20 legacy articles that were generated
       before the hero-image template existed (no image slot at all right
@@ -45,8 +50,9 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
       won't drift again.
 - [x] Fixed blotter article titles — was a decorative serif font that read
       as "script," swapped to bold Barlow Condensed across all 8.
-- [x] Forced one exact body font-size (20px) across every content page —
-      no more page-to-page reading-size inconsistency.
+- [x] Forced one exact body font-size across every content page — no more
+      page-to-page reading-size inconsistency. Bumped to 20px, then Chris
+      called it back down same-day (20 looked zoomed in) — settled at 18px.
 - [x] Documented the main-push approval rule in `CLAUDE.md` (build → you
       approve → then it ships to `main`).
 - [x] Found the Airtable token security issue (see urgent, above).
