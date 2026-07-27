@@ -34,6 +34,40 @@ on GitHub. Content distribution runs through n8n (automation) and Blotato
   don't leave it sitting on a branch "waiting" without flagging that
   it's waiting.
 
+## Sitewide design consistency rules (hard rules, 2026-07-27)
+Both of these drifted badly once already (5+ different ticker speeds,
+4+ different body text sizes, all from pages copy-pasting their own
+CSS instead of sharing one source). Don't let it happen again:
+- **Body/reading text is exactly 20px on every content page.** New
+  pages must either link `vicelane.css` (which sets this on `html`/
+  `body`) or, if the page is self-contained, hardcode `font-size:20px`
+  directly on `body` — never a `rem` value with no explicit root size,
+  never a different literal px value "just for this page." Exception:
+  genuinely non-reading specialty UI pages (radio player, leaderboard)
+  can use their own compact micro-typography — that's not "reading
+  text" and isn't covered by this rule.
+- **Ticker is exactly 40s, `.88rem`/weight 700/black text, everywhere.**
+  Every new page's ticker must use `var(--ticker-speed)` from
+  `vicelane.css` or copy the exact `.ticker-wrap`/`.ticker-track`/
+  `.ticker-item` block verbatim — never hardcode a duration or a
+  separate font/color for it. Both article templates (`ARTICLE-
+  TEMPLATE.html`, `article-template-5.html`) already do this correctly
+  — copy from them, not from an arbitrary published article.
+
+## Daily checklist
+`audit/daily-checklist.md` is a living, once-a-day-refreshed list of
+what's outstanding and what needs a decision — urgent items first,
+then decisions needed from Chris, then recently-done, then the general
+backlog. A scheduled Routine (`56ViceLane Daily Checklist`, fires
+~8am CT / 13:00 UTC) regenerates it each day from `THIS-WEEK.md` +
+`NEXT-SESSION.md` + recent `main` history, commits it straight to
+`main` (report file, not feature code — same standing exception as
+the article-publish/news-scan bots), and sends Chris a fresh
+downloadable copy. Either of us can check items off by hand
+(`- [ ]` → `- [x]`) — the daily regen never un-checks something that's
+already checked, it only carries forward what's still open and adds
+what's new.
+
 ## Posting: auto-schedule is the standing mode
 Human-in-the-loop approval is being built but currently errors out, so
 auto-scheduling (across Blotato-connected platforms + Discord) is the
