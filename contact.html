@@ -32,10 +32,9 @@
 body{background:var(--pitch);color:var(--bone);font-family:"Inter",sans-serif;font-size:18px;line-height:1.7;overflow-x:hidden;}
 body::before{content:"";position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:0.04;pointer-events:none;z-index:100;mix-blend-mode:overlay;}
 .ticker{background:var(--amber);color:#000;font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:.88rem;padding:7px 0;overflow:hidden;white-space:nowrap;position:relative;z-index:10;}
-.ticker-track{display:inline-block;animation:ticker-scroll 40s linear infinite;padding-left:100%;}
-.ticker-track span{margin:0 28px;}
+.ticker-track{display:flex;gap:60px;white-space:nowrap;animation:ticker-scroll 40s linear infinite;}
 .ticker-track a{color:#000;text-decoration:none;font-weight:700;}
-@keyframes ticker-scroll{from{transform:translateX(0);}to{transform:translateX(-100%);}}
+@keyframes ticker-scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 nav{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;border-bottom:1px solid var(--edge);position:relative;z-index:5;flex-wrap:wrap;gap:12px;}
 .brand{font-family:"Playfair Display",serif;font-size:20px;color:var(--bone);text-decoration:none;}
 .brand .num{color:var(--amber);text-shadow:0 0 8px var(--amber),0 0 20px var(--amber-dim);}
@@ -96,9 +95,10 @@ footer{padding:40px 24px;border-top:1px solid var(--edge);text-align:center;}
     .then(function(articles){
       var track = document.getElementById('ticker-track');
       if(!track) return;
-      track.innerHTML = articles.map(function(a){
+      var html = articles.slice(0, 10).map(function(a){
         return '<span>' + a.emoji + ' <a href="' + a.url + '">' + a.title + '</a></span>';
       }).join('');
+      track.innerHTML = html + html;
     })
     .catch(function(){
       // fallback if JSON fails
