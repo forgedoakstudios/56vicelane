@@ -27,6 +27,14 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
 - [ ] Last Drive homepage preview — need a real video source (YouTube link
       or mp4) to replace the static placeholder image.
 - [ ] Affiliate link images — still an open question from your own list.
+- [ ] **7 new articles ready on branch `claude/friendly-feynman-3scinq`,
+      waiting on your go-ahead to push to `main`.** Covers the Jul 23-27
+      news-scan backlog: region-lock/expiration two-part series, GTA6
+      Trailer 3 (Aug 6) prediction, Rockstar union story, an AI-slop
+      Editor's Desk + Trevor's Take pair, and a fan-projects roundup
+      (Switch port + multiverse mod). See
+      `audit/2026-07-27-content-sprint-social-log.md` for the full
+      breakdown of what's written and what's queued per platform.
 
 ## Shelved — revisit late August 2026
 
@@ -87,6 +95,17 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
       networks (Impact, ShareASale/Awin) as a multi-category option.
       Delivered as an artifact; revisit alongside the AdSense
       resubmission in late August.
+- [x] Wrote 7 articles from the missed news-scan backlog (see "Needs a
+      decision," above) — on branch, not yet live.
+- [x] Extended the `Article → Social Blast` n8n workflow, which
+      previously only posted to X + Instagram — it now also posts to
+      Facebook and Discord (using the same Facebook page ID and Discord
+      webhook the Friday Frequency column already uses). Test-validated
+      (execution #2548). Applies automatically to any future article
+      published through the `drafts/tech`/`drafts/other` pipeline.
+- [x] Queued Bluesky posts for all 7 new articles in `social-queue.json`,
+      scheduled to match each article's intended date — inert until the
+      branch is merged (scheduled GitHub Actions only run against `main`).
 
 ## Carried over from this week (not yet done)
 
