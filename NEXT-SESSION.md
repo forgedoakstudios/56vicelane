@@ -21,18 +21,16 @@ external processes not fully on that clock — flagged below.
   article body text. Also applied to the blotter template + regenerated all
   8 existing blotter articles.
 - [x] Social buttons on the home page now point to real profiles (IG, TikTok,
-  YouTube, Facebook, Bluesky, Discord). X/Twitter still a placeholder — no
-  link was given for it.
+  YouTube, Facebook, Bluesky, Discord, X). X confirmed 7/27:
+  https://x.com/56ViceLane — wired into both footer widgets + the topbar
+  mini-widget (which also had IG/X/YT still on `#` placeholders, fixed same
+  pass).
 - [x] `CLAUDE.md` created at repo root — the standing Operating Brief, read
   automatically every session from here on.
 
-**Flagged, not yet actioned — real discrepancy found:**
-- [ ] **Discord link mismatch.** Chris's list gives `discord.gg/Ewe5T9eFs`.
-  The site currently hardcodes `discord.gg/ewdRcjsbg5` in ~7 places across
-  forum.html (join buttons, channel cards). These are DIFFERENT invite
-  codes. Have not overwritten the existing one sitewide without confirming
-  which is actually current — this is the single highest-traffic CTA on the
-  site, worth getting right rather than guessing.
+**Resolved (2026-07-27):** Discord invite mismatch — Chris confirmed either
+code works (`discord.gg/Ewe5T9eFs` or `discord.gg/ewdRcjsbg5`), so no site
+change needed. forum.html's `discord.gg/ewdRcjsbg5` stays as-is.
 
 **Needs a decision before it can be built:**
 - [ ] Trevor (@trevorsTakes) and Danny (@DannyM.editor) getting their own
