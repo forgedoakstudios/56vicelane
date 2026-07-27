@@ -27,8 +27,18 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
 - [ ] Last Drive homepage preview — need a real video source (YouTube link
       or mp4) to replace the static placeholder image.
 - [ ] Affiliate link images — still an open question from your own list.
-- [ ] AdSense rejected 3x — send the actual rejection email/reason text if
-      you want this diagnosed precisely instead of guessed at.
+- [ ] **AdSense "low value content" rejection — got the real reason
+      2026-07-27.** Fixed the concrete indexing bugs (see Done). The
+      content-quality side is a judgment call, not something to fix
+      blind: (1) heavy topical overlap — 7 separate preorder articles,
+      6 separate trailer-3 articles, 3 separate earnings-call articles
+      largely rehashing the same facts, close to what AdSense's thin/
+      duplicate-content policy describes; (2) gear.html has 19 Amazon
+      affiliate links with only a handful of short intro paragraphs and
+      no per-product original writeup — a close match to "thin affiliate
+      pages" in the policy text you pasted. Want me to consolidate/
+      merge the overlapping article clusters, and/or write real
+      per-product copy for gear.html, before you resubmit for review?
 
 ## Cancelled (2026-07-27)
 
@@ -60,6 +70,14 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
 - [x] All of today's approved work pushed to `main` and live: month-nav
       sidebar, ticker unification + real-speed fix, blotter font, 18px
       body text sitewide, hero image retrofit.
+- [x] Indexing audit (triggered by the AdSense rejection): removed
+      accidental noindex tags from 5 live articles that were being
+      hidden from Google despite being in the sitemap; added missing
+      canonical tags to 20 articles; added editor.html/trevor.html/
+      weekly.html to the sitemap (they existed but were never in it);
+      removed an orphaned duplicate weekly-bonuses.html at the repo
+      root. robots.txt and the 66-article sitemap↔disk match were both
+      already clean.
 
 ## Carried over from this week (not yet done)
 
