@@ -21,6 +21,15 @@ Not turned into standalone articles: the Resident Evil/Sony disc-backlash
 story (folded into Part 2 as supporting context rather than its own weak
 piece — thin GTA6 connection on its own).
 
+**Update (same day, after initial draft):** a new news-scan story landed —
+IGN's report that physical GTA6 copies in Japan will expire 170 days after
+launch. Folded directly into Part 2 (new section, updated bullet list,
+updated bottom line, updated meta/OG/Twitter descriptions, updated
+articles.json excerpt and the queued Bluesky text). This is a stronger,
+more concrete fact than the original unnamed-country digital-code
+expiration story Part 2 was built around, and it sharpens the tie to the
+Sony/Resident Evil disc-backlash angle considerably.
+
 ## What's queued per platform
 
 **X, Instagram, Facebook (via Blotato) + Discord** — the `Article → Social
@@ -29,13 +38,16 @@ the `drafts/tech` or `drafts/other` → Scheduled Article Publisher pipeline
 (that's what calls `notify-social-blast.js`). These 7 articles were
 committed directly to `articles/` instead, to keep manual control over the
 two-part series pairing and same-day Editor/Trevor companion pieces — so
-the webhook needs a manual fire per article once each goes live on `main`.
+these 7 need the webhook fired directly, once each is live on `main`.
+That's not a blocker on anyone else — direct Discord posting access is
+already wired in (same webhook Friday Frequency already uses), so once
+`main` is approved I can fire it myself per article, no separate manual
+step required from Chris.
 **Also fixed a real gap while in there:** the workflow only covered X +
 Instagram before today. It now also posts to Facebook and Discord —
 extended and test-validated (execution #2548) using the same Facebook
 page ID and Discord webhook the Friday Frequency column already uses.
-Future articles that go through `drafts/` will get all four automatically;
-these 7 need one manual webhook call each after `main` approval.
+Future articles that go through `drafts/` will get all four automatically.
 
 **Bluesky** — queued directly in `social-queue.json` with `scheduledFor`
 matching each article's calendar date (7am CT / 13:00 UTC, matching the
