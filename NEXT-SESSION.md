@@ -5,6 +5,41 @@ Working branch: `claude/56vicelane-gta6-dev-37dq4z`. Production deploys from `ma
 
 ---
 
+## Overnight report card (2026-07-27 → 2026-07-28)
+
+**Airtable → n8n Data Table migration: build phase complete.** Full detail
+in `audit/airtable-to-n8n-migration.md`. Short version:
+
+- ✅ 10 n8n webhook workflows built, tested, published — covers all 15 real
+  Airtable call sites (12 originally scoped + 3 found while actually
+  reading the files: `loadMemberData()`, `isFirstSignup()`, `searchFriend()`).
+- ✅ 3 real bugs caught and fixed before they could ship: wrong `linkedSlot`
+  field order, missing founder-plate logic (was granting "Standard" to
+  everyone instead of "Free Premium" for the first 100), hardcoded
+  `joinStatus` that silently broke the Approval-Required drive flow.
+- ✅ track.js, members.html, lastdrive.html rewired — but **OFF by default**
+  behind `USE_N8N_BACKEND = false` in each file. Nothing changed for real
+  visitors; this is purely available to flip once you review it.
+- ⏸️ **store.html NOT touched.** It has 7 different places that write a
+  member's plate (not one uniform pattern), it's real payment code, and it's
+  already fully blocked by `STORE_MAINTENANCE` anyway — no urgency, and I
+  didn't want to guess at payment field-mapping unattended overnight. The
+  3 backend workflows it needs (Grant Plate, Check Pending Prize, Redeem
+  Code) are built and tested; only the client wiring is left. Needs a
+  session with PayPal sandbox access.
+- 📝 Full cutover plan is written (Aug 1 data export → verify → wire
+  store.html → your explicit approval → flip the flags → smoke test →
+  rollback is a one-line flag revert). Nothing goes live without you saying so.
+
+**Decision needed from you, no rush:** whether the `linkedSlot`/plate/
+join-status fixes above match your actual intent — they're my best read of
+the real client code, not confirmed with you directly.
+
+**Also logged this session:** radio background-music licensing question
+(see "4b" below) — you're checking sources yourself, no action needed from me.
+
+---
+
 ## -1. Airtable Free-plan API quota hit (2026-07-27) — accepted downtime until Aug 1
 
 Confirmed live via direct API test: `429 API billing plan limit exceeded` on
