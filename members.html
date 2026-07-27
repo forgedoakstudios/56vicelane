@@ -570,6 +570,12 @@ var AT_BASE  = 'appVViGbmcu5gbn8B';
 var AT_URL   = 'https://api.airtable.com/v0/' + AT_BASE + '/Last%20Drive';
 var AT_H     = { 'Authorization': 'Bearer ' + AT_TOKEN };
 
+/* n8n migration (2026-07-27) — OFF by default, see track.js header for why.
+   Webhooks are live-tested but not reviewed/approved for cutover yet. */
+var USE_N8N_BACKEND = false;
+var N8N_FIND_PROFILE_URL = 'https://n8n.56vicelane.com/webhook/4c14d773-79ce-49ba-9030-e0cb44d85ee5/find-profile';
+var N8N_LIST_MEMBERS_URL = 'https://n8n.56vicelane.com/webhook/b167e93d-cffa-4b56-b159-c3d7da5cfa3b/list-members';
+
 function getPlateBg(style) {
   switch (style) {
     case 'founder':              return "background-image:linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.48)), url('/images/plate-founder.png');";
@@ -587,13 +593,38 @@ function getPlateBg(style) {
   }
 }
 
-function findProfile() {
-  var q = (document.getElementById('search-tag').value || '').trim();
+function renderFindResult(q, found, f2) {
   var result = document.getElementById('find-result');
-  if (!q) return;
+  if (!found) {
+    result.innerHTML =
+      '<div class="find-not-found">' +
+        '"' + q + '" isn\'t in the system yet.<br>' +
+        '<a href="/lastdrive" style="color:var(--amber);">Sign up for The Last Drive →</a>' +
+      '</div>';
+    return;
+  }
 
-  result.innerHTML = '<div style="color:var(--smoke);font-size:.88rem;margin-top:10px;">Searching...</div>';
+  var tag = f2.Gamertag || q;
+  var isLead  = (f2.SignupType || 'Drive Lead') === 'Drive Lead';
+  var isPlate = (f2.PlateStatus || '') === 'Free Premium';
 
+  result.innerHTML =
+    '<div class="find-found">' +
+      '<div class="find-found-tag">' + tag + '</div>' +
+      '<div class="find-found-meta">' +
+        (f2.Platform ? '<div class="find-tag-item">' + f2.Platform + '</div>' : '') +
+        (f2.Region ? '<div class="find-tag-item">' + f2.Region + '</div>' : '') +
+        (f2.StagingLocation ? '<div class="find-tag-item">📍 ' + f2.StagingLocation + '</div>' : '') +
+        (f2['Staging Time'] ? '<div class="find-tag-item">🕐 ' + f2['Staging Time'] + '</div>' : '') +
+        '<div class="find-tag-item green">✅ ' + (isLead ? '⭐ Drive Lead' : '🚗 Participant') + '</div>' +
+        (isPlate ? '<div class="find-tag-item gold">🏆 Founder #' + (f2.SignupNumber || '?') + '</div>' : '') +
+      '</div>' +
+      '<a href="/player?g=' + encodeURIComponent(tag) + '" class="btn btn-primary" style="width:100%;text-align:center;display:block;">View My Profile →</a>' +
+    '</div>';
+}
+
+function findProfileAirtable(q) {
+  var result = document.getElementById('find-result');
   var f = encodeURIComponent('{Gamertag}="' + q + '"');
   fetch(AT_URL + '?filterByFormula=' + f +
     '&fields%5B%5D=Gamertag&fields%5B%5D=Platform&fields%5B%5D=Region' +
@@ -606,41 +637,84 @@ function findProfile() {
         var g = (r.fields.Gamertag || '').toLowerCase();
         return g !== 'test' && g !== 'trst';
       });
-
-      if (!recs.length) {
-        result.innerHTML =
-          '<div class="find-not-found">' +
-            '"' + q + '" isn\'t in the system yet.<br>' +
-            '<a href="/lastdrive" style="color:var(--amber);">Sign up for The Last Drive →</a>' +
-          '</div>';
-        return;
-      }
-
-      var f2  = recs[0].fields;
-      var tag = f2.Gamertag || q;
-      var isLead  = (f2.SignupType || 'Drive Lead') === 'Drive Lead';
-      var isPlate = (f2.PlateStatus || '') === 'Free Premium';
-
-      result.innerHTML =
-        '<div class="find-found">' +
-          '<div class="find-found-tag">' + tag + '</div>' +
-          '<div class="find-found-meta">' +
-            (f2.Platform ? '<div class="find-tag-item">' + f2.Platform + '</div>' : '') +
-            (f2.Region ? '<div class="find-tag-item">' + f2.Region + '</div>' : '') +
-            (f2.StagingLocation ? '<div class="find-tag-item">📍 ' + f2.StagingLocation + '</div>' : '') +
-            (f2['Staging Time'] ? '<div class="find-tag-item">🕐 ' + f2['Staging Time'] + '</div>' : '') +
-            '<div class="find-tag-item green">✅ ' + (isLead ? '⭐ Drive Lead' : '🚗 Participant') + '</div>' +
-            (isPlate ? '<div class="find-tag-item gold">🏆 Founder #' + (f2.SignupNumber || '?') + '</div>' : '') +
-          '</div>' +
-          '<a href="/player?g=' + encodeURIComponent(tag) + '" class="btn btn-primary" style="width:100%;text-align:center;display:block;">View My Profile →</a>' +
-        '</div>';
+      if (!recs.length) { renderFindResult(q, false); return; }
+      renderFindResult(q, true, recs[0].fields);
     })
     .catch(function() {
       result.innerHTML = '<div class="find-not-found">Search error — please try again.</div>';
     });
 }
 
-function loadMemberData() {
+function findProfileN8n(q) {
+  var result = document.getElementById('find-result');
+  fetch(N8N_FIND_PROFILE_URL + '?gamertag=' + encodeURIComponent(q))
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (!d.found) { renderFindResult(q, false); return; }
+      var p = d.profile;
+      renderFindResult(q, true, {
+        Gamertag: p.gamertag, Platform: p.platform, Region: p.region,
+        StagingLocation: p.stagingLocation, 'Staging Time': p.stagingTime,
+        SignupType: p.signupType, PlateStatus: p.plateStatus, SignupNumber: p.signupNumber
+      });
+    })
+    .catch(function() {
+      result.innerHTML = '<div class="find-not-found">Search error — please try again.</div>';
+    });
+}
+
+function findProfile() {
+  var q = (document.getElementById('search-tag').value || '').trim();
+  var result = document.getElementById('find-result');
+  if (!q) return;
+  result.innerHTML = '<div style="color:var(--smoke);font-size:.88rem;margin-top:10px;">Searching...</div>';
+  if (USE_N8N_BACKEND) findProfileN8n(q);
+  else findProfileAirtable(q);
+}
+
+function renderMemberWall(real) {
+  var total  = real.length;
+  var leads  = real.filter(function(r) { return r.IsOrganizer; }).length;
+  var plates = real.filter(function(r) { return r.PlateStatus === 'Free Premium'; }).length;
+
+  document.getElementById('stat-total').textContent  = total;
+  document.getElementById('stat-leads').textContent  = leads;
+  document.getElementById('stat-plates').textContent = plates;
+
+  var featured = real
+    .filter(function(r) { return r.IsOrganizer && r.ShowOnWall; })
+    .slice(0, 8);
+
+  var grid = document.getElementById('featured-grid');
+  if (!featured.length) {
+    grid.innerHTML = '<div style="color:var(--smoke);font-size:.88rem;">No drive leads yet. <a href="/lastdrive" style="color:var(--amber);">Be the first →</a></div>';
+    return;
+  }
+
+  grid.innerHTML = '';
+  featured.forEach(function(f) {
+    var tag = f.Gamertag || 'Unknown';
+    var isFounder = f.SignupNumber && f.SignupNumber <= 100;
+    var plateStyle = isFounder ? (f.PlateStyle || 'founder') : (f.PlateStyle || 'black');
+    var plateBg = getPlateBg(plateStyle);
+    var card = document.createElement('a');
+    card.className = 'featured-member lead';
+    card.href = '/player?g=' + encodeURIComponent(tag);
+    card.innerHTML =
+      '<div class="fm-plate" style="' + plateBg + '">' +
+        '<div class="fm-badge">⭐ Drive Lead</div>' +
+        '<div class="fm-tag">' + tag + '</div>' +
+        '<div class="fm-meta">' +
+          (f.Platform ? f.Platform : '') +
+          (f.Region ? ' · ' + f.Region : '') +
+          (f['Staging Time'] ? '<br>' + f['Staging Time'] : '') +
+        '</div>' +
+      '</div>';
+    grid.appendChild(card);
+  });
+}
+
+function loadMemberDataAirtable() {
   var allRec = [];
   var offset = '';
 
@@ -660,53 +734,13 @@ function loadMemberData() {
         offset = d.offset || '';
         if (offset) return fetchPage();
 
-        var real = allRec.filter(function(r) {
-          var g = (r.fields.Gamertag || '').toLowerCase().trim();
-          return g && g !== 'test' && g !== 'trst';
-        });
-
-        var total  = real.length;
-        var leads  = real.filter(function(r) { return r.fields.IsOrganizer; }).length;
-        var plates = real.filter(function(r) { return r.fields.PlateStatus === 'Free Premium'; }).length;
-
-        document.getElementById('stat-total').textContent  = total;
-        document.getElementById('stat-leads').textContent  = leads;
-        document.getElementById('stat-plates').textContent = plates;
-
-        var featured = real
+        var real = allRec
           .filter(function(r) {
-            return r.fields.IsOrganizer && r.fields.ShowOnWall;
+            var g = (r.fields.Gamertag || '').toLowerCase().trim();
+            return g && g !== 'test' && g !== 'trst';
           })
-          .slice(0, 8);
-
-        var grid = document.getElementById('featured-grid');
-        if (!featured.length) {
-          grid.innerHTML = '<div style="color:var(--smoke);font-size:.88rem;">No drive leads yet. <a href="/lastdrive" style="color:var(--amber);">Be the first →</a></div>';
-          return;
-        }
-
-        grid.innerHTML = '';
-        featured.forEach(function(r) {
-          var f   = r.fields;
-          var tag = f.Gamertag || 'Unknown';
-          var isFounder = f.SignupNumber && f.SignupNumber <= 100;
-          var plateStyle = isFounder ? (f.PlateStyle || 'founder') : (f.PlateStyle || 'black');
-          var plateBg = getPlateBg(plateStyle);
-          var card = document.createElement('a');
-          card.className = 'featured-member lead';
-          card.href = '/player?g=' + encodeURIComponent(tag);
-          card.innerHTML =
-            '<div class="fm-plate" style="' + plateBg + '">' +
-              '<div class="fm-badge">⭐ Drive Lead</div>' +
-              '<div class="fm-tag">' + tag + '</div>' +
-              '<div class="fm-meta">' +
-                (f.Platform ? f.Platform : '') +
-                (f.Region ? ' · ' + f.Region : '') +
-                (f['Staging Time'] ? '<br>' + f['Staging Time'] : '') +
-              '</div>' +
-            '</div>';
-          grid.appendChild(card);
-        });
+          .map(function(r) { return r.fields; });
+        renderMemberWall(real);
       });
   }
 
@@ -715,6 +749,38 @@ function loadMemberData() {
     document.getElementById('stat-leads').textContent  = '—';
     document.getElementById('stat-plates').textContent = '—';
   });
+}
+
+function loadMemberDataN8n() {
+  fetch(N8N_LIST_MEMBERS_URL)
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      var real = (d.members || [])
+        .filter(function(m) {
+          var g = (m.gamertag || '').toLowerCase().trim();
+          return g && g !== 'test' && g !== 'trst';
+        })
+        .map(function(m) {
+          return {
+            Gamertag: m.gamertag, Platform: m.platform, Region: m.region,
+            'Staging Time': m.stagingTime, StagingLocation: m.stagingLocation,
+            IsOrganizer: m.isOrganizer, SignupType: m.signupType,
+            PlateStatus: m.plateStatus, PlateStyle: m.plateStyle,
+            SignupNumber: m.signupNumber, ShowOnWall: m.showOnWall
+          };
+        });
+      renderMemberWall(real);
+    })
+    .catch(function() {
+      document.getElementById('stat-total').textContent  = '—';
+      document.getElementById('stat-leads').textContent  = '—';
+      document.getElementById('stat-plates').textContent = '—';
+    });
+}
+
+function loadMemberData() {
+  if (USE_N8N_BACKEND) loadMemberDataN8n();
+  else loadMemberDataAirtable();
 }
 
 loadMemberData();

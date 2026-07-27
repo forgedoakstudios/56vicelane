@@ -218,6 +218,28 @@ All-Nameplate tier ($29.99). Add:
 
 ---
 
+## 4b. Radio background music licensing — needs Chris to check tomorrow
+
+For Vice Frequency Radio's background/bed music, YouTube Audio Library's
+**standard license does not permit standalone use** — even tracks marked
+"Attribution not required" are still restricted to "must be embedded in a
+video you upload," not a standalone audio player. A "blank-screen video,
+upload unlisted, extract the audio" workaround does not clear this — it's
+exactly the workaround the license's "no standalone distribution" clause is
+written to block.
+
+**What actually works:** filter the Audio Library specifically for the
+**"Creative Commons"** tag (a separate axis from attribution) — those tracks
+use a real CC license (e.g. CC BY) that does permit standalone distribution
+with attribution. If that filter turns up thin, Uppbeat/Artlist/Soundstripe
+free tiers are licensed for exactly this (background music served from your
+own site, not just "in a video").
+
+**Status:** Chris is checking this himself tomorrow across a few sites —
+no site changes needed until a source is picked.
+
+---
+
 ## 5. Live automation already in place (don't rebuild — extend)
 
 - **Friday Frequency** (n8n `7ncXecFDVLUrgfgh` generate+post, `R4b97NCMXFu1eCuU` serve

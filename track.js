@@ -20,14 +20,29 @@
    actions, but it is not a hard security boundary — the token is visible
    in page source, so a determined attacker could still pace requests
    around the cooldown. Acceptable tradeoff for what's at stake (a free
-   nameplate), not appropriate for anything higher-value. */
+   nameplate), not appropriate for anything higher-value.
+
+   ── n8n migration (2026-07-27) ──────────────────────────────────────────
+   USE_N8N_BACKEND below is OFF by default on purpose. The n8n Data Table
+   webhooks exist and are live-tested (see audit/airtable-to-n8n-migration.md)
+   but real member data hasn't been migrated off Airtable yet, and Chris
+   hasn't reviewed/approved cutover. Flipping this to true switches BOTH
+   functions below to the n8n path — do not flip until that review happens.
+   The n8n path also folds the old two-request cooldown check into a single
+   atomic server-side check-and-write (was a separate GET before the write;
+   now the Track Action webhook does both in one call). */
 (function () {
+  var USE_N8N_BACKEND = false;
+
   var AT_TOKEN = 'pattxJ12NQzpHMejD.2eb992f22f1a43e032d866df028dbb33958635234f6cfd30769e3e12f10d5588';
   var AT_BASE  = 'appVViGbmcu5gbn8B';
   var AT_H     = { 'Authorization': 'Bearer ' + AT_TOKEN, 'Content-Type': 'application/json' };
   var LAST_DRIVE_URL    = 'https://api.airtable.com/v0/' + AT_BASE + '/Last%20Drive';
   var POINTS_LEDGER_URL = 'https://api.airtable.com/v0/' + AT_BASE + '/PointsLedger';
   var PAGE_STATS_URL    = 'https://api.airtable.com/v0/' + AT_BASE + '/PageStats';
+
+  var N8N_TRACK_PAGEVIEW_URL = 'https://n8n.56vicelane.com/webhook/cefe674c-ff97-420e-83e6-5cace07977cc/track-pageview';
+  var N8N_TRACK_ACTION_URL   = 'https://n8n.56vicelane.com/webhook/72563ac9-1235-450f-bd52-5369d3812cb9/track-action';
 
   var RATES = {
     'Article Read':       1,
@@ -53,8 +68,7 @@
   }
 
   /* ── anonymous pageview -> PageStats — always runs, no identity needed ── */
-  function trackPageview(slug) {
-    if (!slug) return;
+  function trackPageviewAirtable(slug) {
     var filter = encodeURIComponent('{Slug}="' + slug + '"');
     fetch(PAGE_STATS_URL + '?filterByFormula=' + filter + '&maxRecords=1', { headers: AT_H })
       .then(function (r) { return r.json(); })
@@ -81,12 +95,22 @@
       .catch(function () {});
   }
 
-  /* ── scored member action -> PointsLedger + Last Drive rollup ── */
-  function trackAction(action, ref) {
-    var gamertag = currentGamertag();
-    var points = RATES[action];
-    if (!gamertag || !points) return;
+  function trackPageviewN8n(slug) {
+    fetch(N8N_TRACK_PAGEVIEW_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug: slug })
+    }).catch(function () {});
+  }
 
+  function trackPageview(slug) {
+    if (!slug) return;
+    if (USE_N8N_BACKEND) trackPageviewN8n(slug);
+    else trackPageviewAirtable(slug);
+  }
+
+  /* ── scored member action -> PointsLedger + Last Drive rollup ── */
+  function trackActionAirtable(gamertag, action, points, ref) {
     var filter = encodeURIComponent('LOWER({Gamertag})="' + gamertag.toLowerCase() + '"');
     fetch(LAST_DRIVE_URL + '?filterByFormula=' + filter + '&maxRecords=1', { headers: AT_H })
       .then(function (r) { return r.json(); })
@@ -123,6 +147,27 @@
         }).catch(function () {});
       })
       .catch(function () {});
+  }
+
+  function trackActionN8n(gamertag, action, points, ref) {
+    /* Cooldown check happens server-side inside this one call now —
+       the webhook reads LastPointAt, checks it, and does the ledger
+       insert + LastDrive rollup atomically. Response is {awarded:false,
+       reason:"cooldown"} if blocked, ignored here either way since points
+       are never shown client-side. */
+    fetch(N8N_TRACK_ACTION_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ gamertag: gamertag, action: action, points: points, ref: ref || '' })
+    }).catch(function () {});
+  }
+
+  function trackAction(action, ref) {
+    var gamertag = currentGamertag();
+    var points = RATES[action];
+    if (!gamertag || !points) return;
+    if (USE_N8N_BACKEND) trackActionN8n(gamertag, action, points, ref);
+    else trackActionAirtable(gamertag, action, points, ref);
   }
 
   var thisScript = document.currentScript;

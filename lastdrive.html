@@ -743,6 +743,14 @@ var AT_URL   = 'https://api.airtable.com/v0/' + AT_BASE + '/Last%20Drive';
 var AT_H     = { 'Authorization': 'Bearer ' + AT_TOKEN, 'Content-Type': 'application/json' };
 var NTFY_URL = 'https://ntfy.sh/56vicelane-brew';
 
+/* n8n migration (2026-07-27) — OFF by default, see track.js header for why.
+   Webhooks are live-tested but not reviewed/approved for cutover yet. */
+var USE_N8N_BACKEND = false;
+var N8N_FIND_PROFILE_URL   = 'https://n8n.56vicelane.com/webhook/4c14d773-79ce-49ba-9030-e0cb44d85ee5/find-profile';
+var N8N_LIST_MEMBERS_URL   = 'https://n8n.56vicelane.com/webhook/b167e93d-cffa-4b56-b159-c3d7da5cfa3b/list-members';
+var N8N_ROW_COUNT_URL      = 'https://n8n.56vicelane.com/webhook/29212558-4585-4420-9bc3-044074133252/lastdrive-count';
+var N8N_SIGNUP_URL         = 'https://n8n.56vicelane.com/webhook/3b87bbd8-711b-4014-b35f-a4354fa53a20/lastdrive-signup';
+
 var PLATFORMS = ['PS5','PS4','Xbox Series X/S','Xbox One','PC'];
 var REGIONS = [
   {name:'NA East',     tz:'EST', flag:'🇺🇸'},
@@ -947,12 +955,40 @@ function buildSlots(p, pid, region) {
   });
 }
 
-function isFirstSignup(platform, region, slot) {
+/* Short-lived cache so the 4 parallel isFirstSignup() calls fired per
+   region click (one per time slot) share a single List Members fetch
+   instead of 4 separate round trips. */
+var _membersCachePromise = null;
+var _membersCacheAt = 0;
+function fetchMembersN8n() {
+  var now = Date.now();
+  if (_membersCachePromise && (now - _membersCacheAt) < 3000) return _membersCachePromise;
+  _membersCacheAt = now;
+  _membersCachePromise = fetch(N8N_LIST_MEMBERS_URL)
+    .then(function(r) { return r.json(); })
+    .then(function(d) { return d.members || []; })
+    .catch(function() { return []; });
+  return _membersCachePromise;
+}
+
+function isFirstSignupAirtable(platform, region, slot) {
   var f = encodeURIComponent('AND({Platform}="' + platform + '",{Region}="' + region + '",{Staging Time}="' + slot + '")');
   return fetch(AT_URL + '?filterByFormula=' + f + '&maxRecords=1&fields%5B%5D=Name', {headers: AT_H})
     .then(function(r) { return r.json(); })
     .then(function(d) { return !d.records || d.records.length === 0; })
     .catch(function() { return false; });
+}
+
+function isFirstSignupN8n(platform, region, slot) {
+  return fetchMembersN8n().then(function(members) {
+    return !members.some(function(m) {
+      return m.platform === platform && m.region === region && m.stagingTime === slot;
+    });
+  }).catch(function() { return false; });
+}
+
+function isFirstSignup(platform, region, slot) {
+  return USE_N8N_BACKEND ? isFirstSignupN8n(platform, region, slot) : isFirstSignupAirtable(platform, region, slot);
 }
 
 function showLeadForm(p, pid, region, slot, isOrg) {
@@ -1016,6 +1052,49 @@ document.addEventListener('click', function(e) {
   btn.textContent = 'Locking In...';
   btn.disabled = true;
 
+  function onLeadSuccess(signupNum) {
+    document.getElementById('sf_' + pid).style.display = 'none';
+    var okBox = document.getElementById('ok_' + pid);
+    okBox.classList.add('show');
+    if (signupNum && signupNum <= 100) {
+      var txt = document.getElementById('ok_text_' + pid);
+      if (txt) txt.innerHTML += founderHTML(signupNum);
+    }
+    okBox.scrollIntoView({behavior:'smooth'});
+    loadCounts();
+    ntfyNotify('🏁 New Drive Lead: ' + gamertag + ' (' + p + ' · ' + s.region + ' · ' + s.slot + ')');
+  }
+  function onLeadError() {
+    btn.textContent = 'Error — Try Again';
+    btn.disabled = false;
+    btn.style.background = 'var(--red)';
+  }
+  function onLeadNetworkError(err) {
+    btn.textContent = 'Network Error — Try Again';
+    btn.disabled = false;
+    btn.style.background = 'var(--red)';
+    console.error('[LD Lead Error]', err);
+  }
+
+  if (USE_N8N_BACKEND) {
+    fetch(N8N_SIGNUP_URL, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        name: name, gamertag: gamertag, email: email,
+        platform: p, region: s.region, stagingTime: s.slot,
+        chat: s.chat, chatOther: chatOther, crewName: crew,
+        stagingLocation: s.staging, driveType: s.drive,
+        passiveMode: passive, isOrganizer: s.isOrg,
+        showOnWall: showWall, petitionOptIn: petition,
+        signupType: 'Drive Lead'
+      })
+    }).then(function(res) { return res.json().then(function(d) { return {ok: res.ok, d: d}; }); })
+      .then(function(r) { if (r.ok && r.d.success) onLeadSuccess(r.d.signupNumber); else onLeadError(); })
+      .catch(onLeadNetworkError);
+    return;
+  }
+
   getSignupNumber().then(function(signupNum) {
     var plateStatus = (!signupNum || signupNum <= 100) ? 'Free Premium' : 'Standard';
     var linkedSlot  = p + '||' + s.region + '||' + s.staging + '||' + s.slot;
@@ -1038,29 +1117,10 @@ document.addEventListener('click', function(e) {
         'PlateStatus': plateStatus
       }}]})
     }).then(function(res) {
-      if (res.ok) {
-        document.getElementById('sf_' + pid).style.display = 'none';
-        var okBox = document.getElementById('ok_' + pid);
-        okBox.classList.add('show');
-        if (signupNum && signupNum <= 100) {
-          var txt = document.getElementById('ok_text_' + pid);
-          if (txt) txt.innerHTML += founderHTML(signupNum);
-        }
-        okBox.scrollIntoView({behavior:'smooth'});
-        loadCounts();
-        ntfyNotify('🏁 New Drive Lead: ' + gamertag + ' (' + p + ' · ' + s.region + ' · ' + s.slot + ')');
-      } else {
-        btn.textContent = 'Error — Try Again';
-        btn.disabled = false;
-        btn.style.background = 'var(--red)';
-      }
+      if (res.ok) onLeadSuccess(signupNum);
+      else onLeadError();
     });
-  }).catch(function(err) {
-    btn.textContent = 'Network Error — Try Again';
-    btn.disabled = false;
-    btn.style.background = 'var(--red)';
-    console.error('[LD Lead Error]', err);
-  });
+  }).catch(onLeadNetworkError);
 });
 
 document.querySelectorAll('.platform-tab-j').forEach(function(tab) {
@@ -1213,6 +1273,56 @@ function submitParticipant() {
   btn.textContent = isApproval ? 'Sending Request...' : 'Joining...';
   btn.disabled = true;
 
+  function onJoinSuccess(signupNum) {
+    var successTxt = isApproval
+      ? '<strong>Request sent!</strong><br><br>The drive lead has been notified. You\'ll receive an email when your spot is approved.'
+      : '<strong>You\'re in!</strong><br><br>See you November 18. Your name is going on the Wall of Honor.<br><br>' +
+        '<div style="background:rgba(214,36,122,.07);border:1px solid rgba(214,36,122,.2);padding:12px;margin-top:12px;font-size:.82rem;text-align:left;">' +
+          '<div style="font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--cyan);margin-bottom:6px;">📋 Do This Now</div>' +
+          '<div style="color:var(--smoke);line-height:1.6;">' +
+            '1. Add <strong style="color:var(--bone);">' + (drive.Gamertag || 'your drive lead') + '</strong> to your in-game friends list right now<br>' +
+            '2. They\'ll send you a session invite on November 18<br>' +
+            '3. Enable Passive Mode before you join' +
+          '</div>' +
+        '</div>';
+    if (signupNum && signupNum <= 100) successTxt += founderHTML(signupNum);
+    document.getElementById('join-success-text').innerHTML = successTxt;
+    document.getElementById('join-success').classList.add('show');
+    document.getElementById('join-form-wrap').querySelector('.form-grid').style.display = 'none';
+    document.getElementById('join-form-wrap').querySelector('.form-submit').style.display = 'none';
+    document.getElementById('join-success').scrollIntoView({behavior:'smooth'});
+    ntfyNotify('🚗 New Participant: ' + gamertag + ' joined ' + (drive.Gamertag || '?') + '\'s drive');
+  }
+  function onJoinError() {
+    btn.textContent = 'Error — Try Again';
+    btn.disabled = false;
+    btn.style.background = 'var(--red)';
+  }
+  function onJoinNetworkError() {
+    btn.textContent = 'Network Error — Try Again';
+    btn.disabled = false;
+    btn.style.background = 'var(--red)';
+  }
+
+  if (USE_N8N_BACKEND) {
+    fetch(N8N_SIGNUP_URL, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        gamertag: gamertag, email: email,
+        platform: drive.Platform || joinState.platform,
+        region: drive.Region || joinState.region,
+        stagingTime: drive['Staging Time'] || '',
+        stagingLocation: drive.StagingLocation || '',
+        showOnWall: showWall, petitionOptIn: petition,
+        signupType: 'Participant', joinStatus: joinStatus
+      })
+    }).then(function(res) { return res.json().then(function(d) { return {ok: res.ok, d: d}; }); })
+      .then(function(r) { if (r.ok && r.d.success) onJoinSuccess(r.d.signupNumber); else onJoinError(); })
+      .catch(onJoinNetworkError);
+    return;
+  }
+
   getSignupNumber().then(function(signupNum) {
     var plateStatus = (!signupNum || signupNum <= 100) ? 'Free Premium' : 'Standard';
     return fetch(AT_URL, {
@@ -1232,44 +1342,38 @@ function submitParticipant() {
         'PlateStatus': plateStatus
       }}]})
     }).then(function(res) {
-      if (res.ok) {
-        var successTxt = isApproval
-          ? '<strong>Request sent!</strong><br><br>The drive lead has been notified. You\'ll receive an email when your spot is approved.'
-          : '<strong>You\'re in!</strong><br><br>See you November 18. Your name is going on the Wall of Honor.<br><br>' +
-            '<div style="background:rgba(214,36,122,.07);border:1px solid rgba(214,36,122,.2);padding:12px;margin-top:12px;font-size:.82rem;text-align:left;">' +
-              '<div style="font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--cyan);margin-bottom:6px;">📋 Do This Now</div>' +
-              '<div style="color:var(--smoke);line-height:1.6;">' +
-                '1. Add <strong style="color:var(--bone);">' + (drive.Gamertag || 'your drive lead') + '</strong> to your in-game friends list right now<br>' +
-                '2. They\'ll send you a session invite on November 18<br>' +
-                '3. Enable Passive Mode before you join' +
-              '</div>' +
-            '</div>';
-        if (signupNum && signupNum <= 100) successTxt += founderHTML(signupNum);
-        document.getElementById('join-success-text').innerHTML = successTxt;
-        document.getElementById('join-success').classList.add('show');
-        document.getElementById('join-form-wrap').querySelector('.form-grid').style.display = 'none';
-        document.getElementById('join-form-wrap').querySelector('.form-submit').style.display = 'none';
-        document.getElementById('join-success').scrollIntoView({behavior:'smooth'});
-        ntfyNotify('🚗 New Participant: ' + gamertag + ' joined ' + (drive.Gamertag || '?') + '\'s drive');
-      } else {
-        btn.textContent = 'Error — Try Again';
-        btn.disabled = false;
-        btn.style.background = 'var(--red)';
-      }
+      if (res.ok) onJoinSuccess(signupNum);
+      else onJoinError();
     });
-  }).catch(function() {
-    btn.textContent = 'Network Error — Try Again';
-    btn.disabled = false;
-    btn.style.background = 'var(--red)';
-  });
+  }).catch(onJoinNetworkError);
 }
 
-function searchFriend() {
-  var q = (document.getElementById('friend-search').value || '').trim();
+function renderFriendResult(q, rec) {
   var result = document.getElementById('finder-result');
-  if (!q) return;
-  result.innerHTML = '<div style="color:var(--smoke);font-size:.88rem;">Searching...</div>';
+  if (!rec) {
+    result.innerHTML =
+      '<div style="background:var(--asphalt);border:1px solid var(--edge);padding:16px 20px;">' +
+        '<div style="font-family:var(--font-display);font-size:1rem;text-transform:uppercase;color:var(--smoke);margin-bottom:6px;">Not Found</div>' +
+        '<div style="font-size:.85rem;color:var(--smoke);">"' + q + '" hasn\'t signed up yet. Send them the link!</div>' +
+      '</div>';
+    return;
+  }
+  var isLead = (rec.SignupType || 'Drive Lead') === 'Drive Lead';
+  result.innerHTML =
+    '<div class="found-card">' +
+      '<div class="found-gamertag">' + (rec.Gamertag || '') + '</div>' +
+      '<div class="found-meta">' +
+        '<div class="drive-tag">' + (rec.Platform || '?') + '</div>' +
+        '<div class="drive-tag">' + (rec.Region || '?') + '</div>' +
+        (rec.StagingLocation ? '<div class="drive-tag loc">📍 ' + rec.StagingLocation + '</div>' : '') +
+        (rec['Staging Time']  ? '<div class="drive-tag time">🕐 ' + rec['Staging Time'] + '</div>' : '') +
+        '<div class="drive-tag" style="color:var(--green);border-color:rgba(0,200,117,.2);">✅ ' + (isLead ? '⭐ Drive Lead' : '🚗 Participant') + '</div>' +
+      '</div>' +
+    '</div>';
+}
 
+function searchFriendAirtable(q) {
+  var result = document.getElementById('finder-result');
   var f = encodeURIComponent('{Gamertag}="' + q + '"');
   fetch(AT_URL + '?filterByFormula=' + f + '&fields%5B%5D=Gamertag&fields%5B%5D=Platform&fields%5B%5D=Region&fields%5B%5D=Staging%20Time&fields%5B%5D=StagingLocation&fields%5B%5D=SignupType&fields%5B%5D=ShowOnWall', {headers: AT_H})
     .then(function(r) { return r.json(); })
@@ -1278,31 +1382,38 @@ function searchFriend() {
         var g = (rec.fields.Gamertag || '').toLowerCase();
         return g !== 'test' && g !== 'trst';
       });
-      if (!records.length) {
-        result.innerHTML =
-          '<div style="background:var(--asphalt);border:1px solid var(--edge);padding:16px 20px;">' +
-            '<div style="font-family:var(--font-display);font-size:1rem;text-transform:uppercase;color:var(--smoke);margin-bottom:6px;">Not Found</div>' +
-            '<div style="font-size:.85rem;color:var(--smoke);">"' + q + '" hasn\'t signed up yet. Send them the link!</div>' +
-          '</div>';
-        return;
-      }
-      var rec = records[0].fields;
-      var isLead = (rec.SignupType || 'Drive Lead') === 'Drive Lead';
-      result.innerHTML =
-        '<div class="found-card">' +
-          '<div class="found-gamertag">' + (rec.Gamertag || '') + '</div>' +
-          '<div class="found-meta">' +
-            '<div class="drive-tag">' + (rec.Platform || '?') + '</div>' +
-            '<div class="drive-tag">' + (rec.Region || '?') + '</div>' +
-            (rec.StagingLocation ? '<div class="drive-tag loc">📍 ' + rec.StagingLocation + '</div>' : '') +
-            (rec['Staging Time']  ? '<div class="drive-tag time">🕐 ' + rec['Staging Time'] + '</div>' : '') +
-            '<div class="drive-tag" style="color:var(--green);border-color:rgba(0,200,117,.2);">✅ ' + (isLead ? '⭐ Drive Lead' : '🚗 Participant') + '</div>' +
-          '</div>' +
-        '</div>';
+      renderFriendResult(q, records.length ? records[0].fields : null);
     })
     .catch(function() {
       result.innerHTML = '<div style="color:var(--smoke);font-size:.88rem;">Search error — try again.</div>';
     });
+}
+
+function searchFriendN8n(q) {
+  var result = document.getElementById('finder-result');
+  fetch(N8N_FIND_PROFILE_URL + '?gamertag=' + encodeURIComponent(q))
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (!d.found) { renderFriendResult(q, null); return; }
+      var p = d.profile;
+      renderFriendResult(q, {
+        Gamertag: p.gamertag, Platform: p.platform, Region: p.region,
+        StagingLocation: p.stagingLocation, 'Staging Time': p.stagingTime,
+        SignupType: p.signupType
+      });
+    })
+    .catch(function() {
+      result.innerHTML = '<div style="color:var(--smoke);font-size:.88rem;">Search error — try again.</div>';
+    });
+}
+
+function searchFriend() {
+  var q = (document.getElementById('friend-search').value || '').trim();
+  var result = document.getElementById('finder-result');
+  if (!q) return;
+  result.innerHTML = '<div style="color:var(--smoke);font-size:.88rem;">Searching...</div>';
+  if (USE_N8N_BACKEND) searchFriendN8n(q);
+  else searchFriendAirtable(q);
 }
 
 function isTestRecord(r) {
@@ -1311,7 +1422,19 @@ function isTestRecord(r) {
   return g === 'test' || n === 'test' || g === 'trst' || n === 'trst';
 }
 
-function loadCounts() {
+function renderCounts(platforms) {
+  var counts = {'PS5':0,'PS4':0,'Xbox Series X/S':0,'Xbox One':0,'PC':0,'Xbox':0};
+  platforms.forEach(function(p) {
+    if (counts[p] !== undefined) counts[p]++;
+  });
+  counts['Xbox Series X/S'] += counts['Xbox'];
+  Object.entries(CNT_IDS).forEach(function(entry) {
+    var el = document.getElementById(entry[1]);
+    if (el) el.textContent = counts[entry[0]] || 0;
+  });
+}
+
+function loadCountsAirtable() {
   var allRec = [];
   var offset = '';
   function fetchPage() {
@@ -1323,16 +1446,7 @@ function loadCounts() {
         offset = d.offset || '';
         if (offset) return fetchPage();
         var real = allRec.filter(function(r) { return !isTestRecord(r); });
-        var counts = {'PS5':0,'PS4':0,'Xbox Series X/S':0,'Xbox One':0,'PC':0,'Xbox':0};
-        real.forEach(function(r) {
-          var p = r.fields.Platform;
-          if (counts[p] !== undefined) counts[p]++;
-        });
-        counts['Xbox Series X/S'] += counts['Xbox'];
-        Object.entries(CNT_IDS).forEach(function(entry) {
-          var el = document.getElementById(entry[1]);
-          if (el) el.textContent = counts[entry[0]] || 0;
-        });
+        renderCounts(real.map(function(r) { return r.fields.Platform; }));
       });
   }
   fetchPage().catch(function() {
@@ -1342,9 +1456,29 @@ function loadCounts() {
     });
   });
 }
+
+function loadCountsN8n() {
+  fetchMembersN8n().then(function(members) {
+    var real = members.filter(function(m) {
+      var g = (m.gamertag || '').toLowerCase().trim();
+      return g && g !== 'test' && g !== 'trst';
+    });
+    renderCounts(real.map(function(m) { return m.platform; }));
+  }).catch(function() {
+    Object.values(CNT_IDS).forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.textContent = '0';
+    });
+  });
+}
+
+function loadCounts() {
+  if (USE_N8N_BACKEND) loadCountsN8n();
+  else loadCountsAirtable();
+}
 loadCounts();
 
-function getSignupNumber() {
+function getSignupNumberAirtable() {
   return new Promise(function(resolve) {
     setTimeout(function() {
       var allRec = [];
@@ -1368,6 +1502,17 @@ function getSignupNumber() {
       fetchPage();
     }, 400);
   });
+}
+
+function getSignupNumberN8n() {
+  return fetch(N8N_ROW_COUNT_URL)
+    .then(function(r) { return r.json(); })
+    .then(function(d) { return d.nextSignupNumber || null; })
+    .catch(function() { return null; });
+}
+
+function getSignupNumber() {
+  return USE_N8N_BACKEND ? getSignupNumberN8n() : getSignupNumberAirtable();
 }
 
 function founderHTML(num) {
