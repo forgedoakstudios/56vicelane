@@ -83,6 +83,29 @@ go-live:**
   client-supplied `plateId`, look up a `plateId` column on the Redemptions
   row instead — that column doesn't exist yet, would need adding).
 
+## Pre-existing workflow found: "Track Engagement — Ingest" (superseded)
+
+While verifying the current state (2026-07-28), found an inactive workflow
+`k6J5ND9PWrZfAD9A` created 2026-07-21 — **before** this migration and
+before the Airtable quota crisis. It's a webhook that validates/scores
+engagement events and writes to PageStats/PointsLedger/LastDrive, but via
+n8n's native **Airtable** node (not Data Tables) — meaning it still calls
+Airtable's real API under the hood and would hit the exact same quota
+problem this migration exists to solve. This is almost certainly what
+track.js's original comment meant by "the dedicated server-side n8n path
+exists but isn't in use right now, per Chris's call" — Chris apparently
+had this built earlier and chose not to switch to it, keeping the direct
+client-side Airtable calls instead.
+
+It's inactive and not called by anything, so it's harmless as-is. It's
+now superseded by this migration's Data-Table-backed workflows (PageStats
+- Track Pageview, PointsLedger - Track Action) and can be deleted in a
+cleanup pass once the new backend is live — not urgent, flagging for
+awareness so there aren't two different "engagement tracking" webhooks
+floating around. (Its Airtable credential, `O7t9flm8SZd3Ba0v` "Airtable
+Personal Access Token account", was reused for the one-time Aug 1 export
+workflow above rather than creating a duplicate credential.)
+
 ## Scope decision: store.html's purchase/plate-granting code NOT rewired
 
 store.html has **7 distinct places** that PATCH a member's plate fields —
@@ -125,12 +148,18 @@ editing the flag in each file and does not require Chris to know n8n
 internals.
 
 **Before flipping anything:**
-1. **Aug 1 — Airtable quota resets.** Export real data: pull all rows from
-   Airtable's `Last Drive`, `PointsLedger`, `PageStats`, `Redemptions`
-   tables (the API works again at that point) and insert them into the
-   matching n8n Data Tables via `mcp__n8n__add_data_table_rows` — a
-   straight 1:1 field copy using the column mapping in the Schema section
-   above (camelCase renames only, no value transformation needed).
+1. **Aug 1 — Airtable quota resets.** Run the workflow **"ONE-TIME: Aug 1
+   Airtable to Data Table Migration"** (`JYgaHxAS3ErBAGX5` in the same n8n
+   project) — built and validated 2026-07-28, left **inactive** on purpose
+   since it's meant to be manually executed once from the n8n editor, not
+   auto-triggered. It reads every row from the 4 real Airtable tables
+   (using the same Airtable credential the old "Track Engagement — Ingest"
+   workflow used — see note below) and inserts them into the matching
+   Data Table with the camelCase mapping from the Schema section above.
+   **Running it twice duplicates every row — there's no dedupe.** The
+   workflow has a sticky note with this same warning. If a re-run is ever
+   needed, clear the Data Table first (Data table node, table resource,
+   "clear" operation).
 2. **Verify counts match** — row count per table, plus spot-check a
    handful of real gamertags via the Find Profile/List Members webhooks
    against the Airtable UI directly, before trusting the import.
