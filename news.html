@@ -129,6 +129,23 @@
   z-index: 2;
 }
 
+/* left-rail month archive nav (vfMonthNav in vf.js) */
+.news-layout{display:grid;grid-template-columns:1fr;gap:28px;}
+.month-nav{border:1px solid var(--edge);background:var(--asphalt);padding:18px;}
+.month-nav h4{font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;color:var(--bone);margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--edge);}
+.month-nav h4 .hl{color:var(--amber);}
+.month-nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;}
+.month-nav li a{display:block;padding:5px 12px;color:var(--smoke);text-decoration:none;font-family:var(--font-label);font-weight:700;text-transform:uppercase;font-size:.76rem;letter-spacing:.04em;background:var(--pitch);border:1px solid var(--edge);border-radius:999px;transition:all .2s;}
+.month-nav li a:hover{color:#fff;background:var(--cyan);border-color:var(--cyan);}
+.month-nav-archive-link{display:block;margin-top:12px;padding-top:12px;border-top:1px solid var(--edge);font-family:var(--font-label);font-weight:700;text-transform:uppercase;font-size:.76rem;letter-spacing:.06em;color:var(--amber);text-decoration:none;}
+@media(min-width:900px){
+  .news-layout{grid-template-columns:200px 1fr;align-items:start;}
+  .month-nav{position:sticky;top:20px;}
+  .month-nav ul{flex-direction:column;}
+  .month-nav li a{border-radius:0;border:none;border-bottom:1px solid var(--edge);padding:8px 2px;background:none;}
+  .month-nav li a:hover{color:var(--amber);background:none;}
+}
+
 /* month-grouped feed (vfNewsFeed in vf.js) */
 .month-section{margin-bottom:36px;}
 .month-section:last-child{margin-bottom:0;}
@@ -233,30 +250,39 @@
 </section>
 
 <section class="news-section">
-  <div data-monthly-feed id="newsGrid">
-    <!-- Fallback cards shown until /articles.json loads -->
-    <div class="grid g3">
-      <article class="card reveal" data-cat="news">
-        <div class="card-hero"><div class="art art-auto"></div></div>
-        <span class="eyebrow">News</span>
-        <h3>Pre-order wave breaks records</h3>
-        <p>The opening numbers, what they signal for launch week, and what to lock in before preload.</p>
-        <div class="meta mt-1"><span>56ViceLane Staff</span><span class="dot">◆</span><span>2026</span></div>
-      </article>
-      <article class="card reveal" data-cat="lore">
-        <div class="card-hero"><div class="art art-auto"></div></div>
-        <span class="eyebrow">Lore</span>
-        <h3>The Vercetti thread nobody's pulling</h3>
-        <p>Deep Frequency traces the Heder theory through every frame we've been given so far.</p>
-        <div class="meta mt-1"><span>Deep Frequency</span><span class="dot">◆</span><span>2026</span></div>
-      </article>
-      <article class="card reveal" data-cat="hardware">
-        <div class="card-hero"><div class="art art-auto"></div></div>
-        <span class="eyebrow">Hardware</span>
-        <h3>The launch-night setup, ranked</h3>
-        <p>Controllers, headsets, and the storage you'll actually need on day one.</p>
-        <div class="meta mt-1"><span>Gear Desk</span><span class="dot">◆</span><span>2026</span></div>
-      </article>
+  <div class="news-layout">
+    <aside class="month-nav">
+      <h4><span class="hl">Archive</span> by Month</h4>
+      <ul id="monthNavList">
+        <li><a href="/archive.html">Loading&hellip;</a></li>
+      </ul>
+      <a class="month-nav-archive-link" href="/archive.html">Full Archive &rarr;</a>
+    </aside>
+    <div data-monthly-feed id="newsGrid">
+      <!-- Fallback cards shown until /articles.json loads -->
+      <div class="grid g3">
+        <article class="card reveal" data-cat="news">
+          <div class="card-hero"><div class="art art-auto"></div></div>
+          <span class="eyebrow">News</span>
+          <h3>Pre-order wave breaks records</h3>
+          <p>The opening numbers, what they signal for launch week, and what to lock in before preload.</p>
+          <div class="meta mt-1"><span>56ViceLane Staff</span><span class="dot">◆</span><span>2026</span></div>
+        </article>
+        <article class="card reveal" data-cat="lore">
+          <div class="card-hero"><div class="art art-auto"></div></div>
+          <span class="eyebrow">Lore</span>
+          <h3>The Vercetti thread nobody's pulling</h3>
+          <p>Deep Frequency traces the Heder theory through every frame we've been given so far.</p>
+          <div class="meta mt-1"><span>Deep Frequency</span><span class="dot">◆</span><span>2026</span></div>
+        </article>
+        <article class="card reveal" data-cat="hardware">
+          <div class="card-hero"><div class="art art-auto"></div></div>
+          <span class="eyebrow">Hardware</span>
+          <h3>The launch-night setup, ranked</h3>
+          <p>Controllers, headsets, and the storage you'll actually need on day one.</p>
+          <div class="meta mt-1"><span>Gear Desk</span><span class="dot">◆</span><span>2026</span></div>
+        </article>
+      </div>
     </div>
   </div>
 </section>
