@@ -38,11 +38,13 @@ on GitHub. Content distribution runs through n8n (automation) and Blotato
 Both of these drifted badly once already (5+ different ticker speeds,
 4+ different body text sizes, all from pages copy-pasting their own
 CSS instead of sharing one source). Don't let it happen again:
-- **Body/reading text is exactly 20px on every content page.** New
-  pages must either link `vicelane.css` (which sets this on `html`/
-  `body`) or, if the page is self-contained, hardcode `font-size:20px`
-  directly on `body` — never a `rem` value with no explicit root size,
-  never a different literal px value "just for this page." Exception:
+- **Body/reading text is exactly 18px on every content page.** (Was
+  bumped to 20px on 2026-07-27, then Chris called it back down the
+  same day — 20 looked zoomed in. Settled on 18px.) New pages must
+  either link `vicelane.css` (which sets this on `html`/`body`) or, if
+  the page is self-contained, hardcode `font-size:18px` directly on
+  `body` — never a `rem` value with no explicit root size, never a
+  different literal px value "just for this page." Exception:
   genuinely non-reading specialty UI pages (radio player, leaderboard)
   can use their own compact micro-typography — that's not "reading
   text" and isn't covered by this rule.
