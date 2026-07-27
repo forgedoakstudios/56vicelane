@@ -5,6 +5,34 @@ Working branch: `claude/56vicelane-gta6-dev-37dq4z`. Production deploys from `ma
 
 ---
 
+## -1. Airtable Free-plan API quota hit (2026-07-27) — accepted downtime until Aug 1
+
+Confirmed live via direct API test: `429 API billing plan limit exceeded` on
+base `appVViGbmcu5gbn8B` ("56ViceLane Last Drive"). Chris's call: leave it
+broken, don't upgrade, resumes automatically Aug 1.
+
+**What's broken until Aug 1:** store.html nameplate purchases (PayPal still
+charges, Airtable write fails, buyer gets nothing), members.html gamertag
+verification, all track.js pageview/points writes (fail silently, no visible
+error to visitors).
+
+**Done:** paused n8n workflow `xaFrOTpwgP4o4Nut` (Weekly Winner Selection —
+Top 3 + Trevor's Pick, was going to fire Fri 7/31 into the dead quota).
+**Needs manual re-enable + a manual run once Aug 1 quota resets** — it won't
+fire on its own since it's unpublished, and its normal Friday slot already
+passed for this cycle.
+
+**Root cause, not yet fixed:** `track.js` is injected into every page by
+`_worker.js` and fires an Airtable GET+PATCH/POST to `PageStats` on every
+single pageview, anonymous or not — this is almost certainly what burned a
+550-visitor site through the Free tier's monthly cap by day 27. Queued fix:
+strip or heavily throttle the anonymous PageStats round-trip in track.js so
+this doesn't reproduce in August regardless of plan tier. Not done this
+session — deliberately deferred since it doesn't help until Aug 1 either way
+and this session's priority was internal linking.
+
+---
+
 ## 0. ACTIVE — July 2026 Improvements Punch List (Chris's list, 7/26)
 
 Target: "by Tuesday" (7/29) for the mechanical items. AdSense/new handles are
