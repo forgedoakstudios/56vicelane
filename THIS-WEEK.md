@@ -68,17 +68,28 @@ a Supermetrics login), tell me and I'll check it off.
       rather than a blind rewrite. Backend workflows for it are built and
       tested; only the client wiring is outstanding.
 
+## Done overnight (second pass, 2026-07-28)
+
+- [x] **News section is now month-grouped, Archive is fully dynamic.**
+      news.html pulls from articles.json grouped by month (current month
+      first), capped at the last 60 days — permanent/historical articles
+      stay visible regardless of age. archive.html no longer has 3
+      hand-written fake entries; it now pulls everything older than that
+      same 60-day window from articles.json for real, grouped by month.
+      Verified by actually rendering both pages and reconciling all 66
+      real articles against them — zero gaps, zero unintended dupes.
+      Category filter pills on News still work unchanged.
+- [x] ~~Wire Google Drive category-hero-images~~ — turned out this was
+      **already done** in an earlier session (commit `ca07344`, all 11
+      images already committed to `/images` and already wired into
+      `vfCategoryArt()` in vf.js). Backlog note was stale; corrected here.
+
 ## Queued, not started
 
-- [ ] Wire the Google Drive category-hero-images into articles that don't
-      have a specific hero (images confirmed accessible tonight — this is
-      now unblocked, just needs the build)
 - [ ] Canva → Blotato image pipeline: confirmed technically feasible
       tonight (Blotato posts via public `mediaUrls`, same pattern already
       used for the bundle-announcement posts) — first real test still
       pending
-- [ ] News section: month-grouped rendering from articles.json,
-      archive.html made dynamic instead of static
 - [ ] Store: audit bundle thumbnail grids for missing click handlers
 - [ ] Article image audit — wrong/mismatched og:images across ~66 articles
 - [ ] Article publishing cadence change (2 evergreen/wk, 3 two-part news
