@@ -125,48 +125,96 @@ footer{padding:40px 24px;border-top:1px solid var(--edge);text-align:center;}
   <h1>News <span class="hl">Archive</span></h1>
   <p class="archive-sub">All articles older than 15 days. Current news is on the <a href="/news.html" style="color:var(--cyan)">News Hub</a>.</p>
 
-  <!-- MAY 2026 -->
-  <div class="month-group">
-    <div class="month-label"><span class="hl">May</span> 2026</div>
-
-    <a href="/articles/gta6-price-what-to-expect.html" class="archive-card">
-      <div class="archive-card-meta">
-        <span class="archive-badge rumor">Analysis</span>
-        <span class="archive-date">May 10, 2026</span>
-      </div>
-      <div class="archive-title">GTA6 Price: $70, $80, or $100? What We Actually Know</div>
-      <div class="archive-excerpt">Every public signal on GTA6 pricing broken down — before the Dutch retailer leak changed the conversation.</div>
-    </a>
-
-    <a href="/articles/gta6-everything-confirmed.html" class="archive-card">
-      <div class="archive-card-meta">
-        <span class="archive-badge confirmed">Confirmed</span>
-        <span class="archive-date">May 5, 2026</span>
-      </div>
-      <div class="archive-title">GTA6: Everything Officially Confirmed So Far</div>
-      <div class="archive-excerpt">No speculation. Just the facts confirmed by Rockstar and Take-Two. Updated as new official information drops.</div>
-    </a>
-
-    <a href="/articles/gta6-november-19-confirmed.html" class="archive-card">
-      <div class="archive-card-meta">
-        <span class="archive-badge confirmed">Confirmed</span>
-        <span class="archive-date">April 28, 2026</span>
-      </div>
-      <div class="archive-title">GTA6 Release Date Locked: November 19 2026 Is Official</div>
-      <div class="archive-excerpt">Rockstar confirmed GTA VI launches November 19 2026 on PS5 and Xbox Series X/S direct from their Newswire.</div>
-    </a>
-
+  <div id="archiveGroups">
+    <div style="color:var(--smoke);font-size:13px;">Loading archive…</div>
   </div>
 
   <!-- ARCHIVE NOTE -->
   <div style="border:1px dashed var(--edge);padding:20px;text-align:center;margin-top:16px;">
     <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;font-size:11px;color:var(--smoke);">
-      Articles move here automatically after 15 days on the news hub.
-      New stories are always at <a href="/news.html" style="color:var(--amber)">56vicelane.com/news</a>
+      Articles move here automatically after about 2 months on the news hub
+      (permanent/historical stories stay on both). New stories are always at
+      <a href="/news.html" style="color:var(--amber)">56vicelane.com/news</a>
     </div>
   </div>
 
 </div>
+
+<script>
+(function () {
+  var ARCHIVE_CUTOFF_DAYS = 60;
+  var MONTH_NAMES = ['January','February','March','April','May','June',
+    'July','August','September','October','November','December'];
+
+  function fmtDate (iso) {
+    var d = new Date(iso + 'T00:00:00');
+    if (isNaN(d.getTime())) return iso;
+    return MONTH_NAMES[d.getMonth()].slice(0, 3) + ' ' + d.getDate() + ', ' + d.getFullYear();
+  }
+
+  function escapeHtml (s) {
+    return String(s || '').replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  fetch('/articles.json?v=' + Date.now())
+    .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+    .then(function (data) {
+      var list = Array.isArray(data) ? data : (data.articles || []);
+      var now = Date.now();
+      var cutoffMs = ARCHIVE_CUTOFF_DAYS * 86400000;
+      var old = list.filter(function (a) {
+        var t = new Date(a.date + 'T00:00:00').getTime();
+        return !isNaN(t) && (now - t) > cutoffMs;
+      });
+
+      var host = document.getElementById('archiveGroups');
+      if (!old.length) {
+        host.innerHTML = '<div style="color:var(--smoke);font-size:13px;">Nothing in the archive yet — everything published so far is still current on the <a href="/news.html" style="color:var(--amber)">News Hub</a>.</div>';
+        return;
+      }
+
+      var byMonth = {};
+      old.forEach(function (a) {
+        var key = (a.date || '').slice(0, 7) || 'unknown';
+        (byMonth[key] = byMonth[key] || []).push(a);
+      });
+      var months = Object.keys(byMonth).sort().reverse();
+
+      host.innerHTML = months.map(function (key) {
+        var parts = key.split('-');
+        var monthName = MONTH_NAMES[parseInt(parts[1], 10) - 1] || key;
+        var year = parts[0];
+        var articles = byMonth[key].slice().sort(function (a, b) {
+          return (b.date || '').localeCompare(a.date || '');
+        });
+        var cards = articles.map(function (a) {
+          var badgeClass = String(a.category || '').toLowerCase() === 'leaks' ? 'rumor' : '';
+          var title = a.title || a.headline || 'Untitled';
+          return '' +
+            '<a href="' + (a.url || '#') + '" class="archive-card">' +
+              '<div class="archive-card-meta">' +
+                '<span class="archive-badge ' + badgeClass + '">' + escapeHtml(a.category || 'News') + '</span>' +
+                '<span class="archive-date">' + fmtDate(a.date) + '</span>' +
+              '</div>' +
+              '<div class="archive-title">' + escapeHtml(title) + '</div>' +
+              '<div class="archive-excerpt">' + escapeHtml(a.excerpt || '') + '</div>' +
+            '</a>';
+        }).join('');
+        return '' +
+          '<div class="month-group">' +
+            '<div class="month-label"><span class="hl">' + monthName + '</span> ' + year + '</div>' +
+            cards +
+          '</div>';
+      }).join('');
+    })
+    .catch(function () {
+      var host = document.getElementById('archiveGroups');
+      if (host) host.innerHTML = '<div style="color:var(--smoke);font-size:13px;">Archive failed to load — try refreshing.</div>';
+    });
+})();
+</script>
 
 <footer>
   <div class="footer-brand"><span class="num">56</span>ViceLane</div>
