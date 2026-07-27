@@ -184,7 +184,7 @@ function vfNewsFeed () {
           return (b.date || '').localeCompare(a.date || '');
         });
         return '' +
-          '<div class="month-section">' +
+          '<div class="month-section" id="m-' + key + '">' +
             '<h2 class="month-heading">' + vfMonthLabel(key) + '</h2>' +
             '<div class="grid g3">' +
               articles.map(function (a, i) { return vfArticleCardHTML(a, i); }).join('') +
@@ -196,6 +196,47 @@ function vfNewsFeed () {
       vfAutoArt();
     })
     .catch(function () { /* leave any static cards in place */ });
+}
+
+/* ---------- month archive sidebar (news.html + archive.html) ----------
+   Shared left-rail nav: one entry per month that has articles, newest
+   first. Months still on the News hub (current-cutoff or permanent)
+   link to an in-page anchor; months that have aged into the Archive
+   link to archive.html's matching anchor. Same cutoff rule as
+   vfNewsFeed / archive.html's inline script (60 days, permanent flag
+   always counts as current). */
+function vfMonthNav () {
+  var host = document.getElementById('monthNavList');
+  if (!host) return;
+  fetch('/articles.json')
+    .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+    .then(function (data) {
+      var list = Array.isArray(data) ? data : (data.articles || []);
+      if (!list.length) return;
+
+      var now = Date.now();
+      var cutoffMs = VF_NEWS_CUTOFF_DAYS * 86400000;
+      function isCurrent (a) {
+        if (a.permanent) return true;
+        var t = new Date(a.date).getTime();
+        return !isNaN(t) && (now - t) <= cutoffMs;
+      }
+
+      var byMonth = {};
+      list.forEach(function (a) {
+        var key = (a.date || '').slice(0, 7);
+        if (!key) return;
+        (byMonth[key] = byMonth[key] || []).push(a);
+      });
+      var months = Object.keys(byMonth).sort().reverse();
+
+      host.innerHTML = months.map(function (key) {
+        var hasCurrent = byMonth[key].some(isCurrent);
+        var href = hasCurrent ? '/news.html#m-' + key : '/archive.html#m-' + key;
+        return '<li><a href="' + href + '">' + vfMonthLabel(key) + '</a></li>';
+      }).join('');
+    })
+    .catch(function () { /* leave sidebar empty rather than broken */ });
 }
 
 /* ---------- generated card art (no external images needed) ---------- */
@@ -221,5 +262,6 @@ window.addEventListener('DOMContentLoaded', function () {
   vfCountdown();
   vfFeed();
   vfNewsFeed();
+  vfMonthNav();
   vfAutoArt();
 });

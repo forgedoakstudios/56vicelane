@@ -65,6 +65,20 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:18px 2
 .back-to-news{display:inline-flex;align-items:center;gap:8px;font-family:"Barlow Condensed",sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;font-size:12px;color:var(--smoke);text-decoration:none;margin-bottom:32px;transition:color 0.3s;}
 .back-to-news:hover{color:var(--amber);}
 .back-to-news::before{content:"\2190";}
+.archive-layout{display:grid;grid-template-columns:1fr;gap:28px;}
+.month-nav{border:1px solid var(--edge);background:var(--asphalt);padding:18px;align-self:start;}
+.month-nav h4{font-family:"Barlow Condensed",sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;font-size:12px;color:var(--bone);margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--edge);}
+.month-nav h4 .hl{color:var(--amber);}
+.month-nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;}
+.month-nav li a{display:block;padding:5px 12px;color:var(--smoke);text-decoration:none;font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:11px;letter-spacing:0.04em;background:var(--pitch);border:1px solid var(--edge);border-radius:999px;transition:all .2s;}
+.month-nav li a:hover{color:#fff;background:var(--cyan);border-color:var(--cyan);}
+@media(min-width:900px){
+  .archive-layout{grid-template-columns:200px 1fr;}
+  .month-nav{position:sticky;top:20px;}
+  .month-nav ul{flex-direction:column;}
+  .month-nav li a{border-radius:0;border:none;border-bottom:1px solid var(--edge);padding:8px 2px;background:none;}
+  .month-nav li a:hover{color:var(--amber);background:none;}
+}
 footer{padding:40px 24px;border-top:1px solid var(--edge);text-align:center;}
 .footer-brand{font-family:"Playfair Display",serif;font-size:22px;margin-bottom:6px;}
 .footer-brand .num{color:var(--amber);text-shadow:0 0 8px var(--amber);}
@@ -125,16 +139,26 @@ footer{padding:40px 24px;border-top:1px solid var(--edge);text-align:center;}
   <h1>News <span class="hl">Archive</span></h1>
   <p class="archive-sub">All articles older than 15 days. Current news is on the <a href="/news.html" style="color:var(--cyan)">News Hub</a>.</p>
 
-  <div id="archiveGroups">
-    <div style="color:var(--smoke);font-size:13px;">Loading archive…</div>
-  </div>
+  <div class="archive-layout">
+    <aside class="month-nav">
+      <h4><span class="hl">Archive</span> by Month</h4>
+      <ul id="monthNavList">
+        <li><a href="#">Loading&hellip;</a></li>
+      </ul>
+    </aside>
+    <div>
+      <div id="archiveGroups">
+        <div style="color:var(--smoke);font-size:13px;">Loading archive…</div>
+      </div>
 
-  <!-- ARCHIVE NOTE -->
-  <div style="border:1px dashed var(--edge);padding:20px;text-align:center;margin-top:16px;">
-    <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;font-size:11px;color:var(--smoke);">
-      Articles move here automatically after about 2 months on the news hub
-      (permanent/historical stories stay on both). New stories are always at
-      <a href="/news.html" style="color:var(--amber)">56vicelane.com/news</a>
+      <!-- ARCHIVE NOTE -->
+      <div style="border:1px dashed var(--edge);padding:20px;text-align:center;margin-top:16px;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;font-size:11px;color:var(--smoke);">
+          Articles move here automatically after about 2 months on the news hub
+          (permanent/historical stories stay on both). New stories are always at
+          <a href="/news.html" style="color:var(--amber)">56vicelane.com/news</a>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -158,12 +182,40 @@ footer{padding:40px 24px;border-top:1px solid var(--edge);text-align:center;}
     });
   }
 
+  function populateMonthNav (list, now, cutoffMs) {
+    var nav = document.getElementById('monthNavList');
+    if (!nav) return;
+    var byMonth = {};
+    list.forEach(function (a) {
+      var key = (a.date || '').slice(0, 7);
+      if (!key) return;
+      (byMonth[key] = byMonth[key] || []).push(a);
+    });
+    var months = Object.keys(byMonth).sort().reverse();
+    if (!months.length) { nav.innerHTML = ''; return; }
+    nav.innerHTML = months.map(function (key) {
+      // This page only renders a #m-key anchor for months with an
+      // article older than the cutoff (see the "old" filter below) —
+      // route there when one exists; otherwise the month is entirely
+      // current and only lives on the News hub.
+      var hasOld = byMonth[key].some(function (a) {
+        var t = new Date(a.date + 'T00:00:00').getTime();
+        return !isNaN(t) && (now - t) > cutoffMs;
+      });
+      var parts = key.split('-');
+      var monthName = MONTH_NAMES[parseInt(parts[1], 10) - 1] || key;
+      var href = hasOld ? '#m-' + key : '/news.html#m-' + key;
+      return '<li><a href="' + href + '">' + monthName + ' ' + parts[0] + '</a></li>';
+    }).join('');
+  }
+
   fetch('/articles.json?v=' + Date.now())
     .then(function (r) { if (!r.ok) throw 0; return r.json(); })
     .then(function (data) {
       var list = Array.isArray(data) ? data : (data.articles || []);
       var now = Date.now();
       var cutoffMs = ARCHIVE_CUTOFF_DAYS * 86400000;
+      populateMonthNav(list, now, cutoffMs);
       var old = list.filter(function (a) {
         var t = new Date(a.date + 'T00:00:00').getTime();
         return !isNaN(t) && (now - t) > cutoffMs;
@@ -203,7 +255,7 @@ footer{padding:40px 24px;border-top:1px solid var(--edge);text-align:center;}
             '</a>';
         }).join('');
         return '' +
-          '<div class="month-group">' +
+          '<div class="month-group" id="m-' + key + '">' +
             '<div class="month-label"><span class="hl">' + monthName + '</span> ' + year + '</div>' +
             cards +
           '</div>';
