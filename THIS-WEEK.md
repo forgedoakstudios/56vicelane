@@ -37,17 +37,20 @@ a Supermetrics login), tell me and I'll check it off.
       platform is actually authenticated yet** (Facebook, Instagram, TikTok,
       X, YouTube all show `NOT_AUTHENTICATED`) — got a login link for
       Facebook Insights as proof; the rest need the same treatment
-
-## In progress (overnight, unattended)
-
-- [ ] n8n webhook workflows replacing each direct-Airtable call site
-      (verify player, signup, purchase/plate-grant, points tracking,
-      redemption codes, founder count)
-- [ ] Client-side JS (store.html, members.html, lastdrive.html, track.js)
-      rewired to call n8n webhooks instead of Airtable — build/test only,
-      not switched live
-- [ ] Written cutover + real-data-migration plan for Aug 1 (needs your
-      review before anything goes live)
+- [x] **n8n migration build phase — done overnight.** 10 webhook workflows
+      built/tested/published (verify player, find profile, list members,
+      grant plate, check/redeem prize, row count, signup, pageview
+      tracking, points tracking). 3 real bugs caught and fixed before they
+      could ship (wrong linkedSlot field order, missing founder-plate
+      logic, hardcoded joinStatus breaking the Approval-Required flow).
+      track.js/members.html/lastdrive.html rewired behind an off-by-default
+      flag — nothing changed for real visitors yet. store.html's payment
+      code deliberately left alone (see below). Full detail:
+      `audit/airtable-to-n8n-migration.md`.
+- [x] One-time Aug 1 data-export workflow built and ready (inactive,
+      manual-run-only) — copies real Airtable data into the new tables
+      with one click once the quota resets, so nothing needs to be built
+      from scratch that day.
 
 ## Needs you (tonight or whenever)
 
@@ -55,6 +58,15 @@ a Supermetrics login), tell me and I'll check it off.
       — I can generate the links for Facebook, Instagram, TikTok, X,
       YouTube on request, but the actual login has to be you
 - [ ] Set up Cloudinary — tomorrow, as agreed
+- [ ] Review the n8n migration's 3 field fixes (linkedSlot order,
+      founder-plate logic, joinStatus/approval flow) — my best read of the
+      real client code, not confirmed with you directly. Detail in
+      `audit/airtable-to-n8n-migration.md`.
+- [ ] store.html's purchase/plate-grant code was deliberately NOT rewired
+      to n8n — 7 different payment-adjacent call sites, already blocked by
+      STORE_MAINTENANCE anyway, needs a session with PayPal sandbox access
+      rather than a blind rewrite. Backend workflows for it are built and
+      tested; only the client wiring is outstanding.
 
 ## Queued, not started
 
@@ -79,6 +91,9 @@ a Supermetrics login), tell me and I'll check it off.
 
 ## Blocked until Aug 1 (Airtable quota reset)
 
-- [ ] Real member/points/redemption data export from Airtable → n8n Data Tables
+- [ ] Real member/points/redemption data export — workflow's built and
+      ready (`JYgaHxAS3ErBAGX5`, "ONE-TIME: Aug 1 Airtable to Data Table
+      Migration"), just needs a manual click in the n8n editor on/after
+      Aug 1, then a row-count sanity check against Airtable
 - [ ] Flip `STORE_MAINTENANCE` off in store.html once reviewed
 - [ ] Re-enable + manually run Weekly Winner Selection (n8n workflow `xaFrOTpwgP4o4Nut`)
