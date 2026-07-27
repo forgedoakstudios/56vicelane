@@ -464,7 +464,7 @@ body{background:var(--pitch);color:var(--bone);font-family:'Inter',sans-serif;}
 </head>
 <body>
 
-<!-- ===== TICKER (identical on every page, 20s from vicelane.css) ===== -->
+<!-- ===== TICKER (identical on every page, 40s from vicelane.css's --ticker-speed &mdash; never hardcode a duration here) ===== -->
 <div class="ticker-wrap"><div class="ticker-track" id="ticker-track"><span class="ticker-item">Loading…</span></div></div>
 
 <!-- ===== HEADER (identical on every page) ===== -->
@@ -818,7 +818,7 @@ function shareTwitter(){window.open('https://twitter.com/intent/tweet?text='+enc
 function shareWhatsApp(){window.open('https://wa.me/?text='+encodeURIComponent(ARTICLE_TITLE+' '+ARTICLE_URL),'_blank');}
 function shareFacebook(){window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(ARTICLE_URL),'_blank');}
 function copyLink(id){navigator.clipboard.writeText(ARTICLE_URL).then(()=>{const b=document.getElementById(id);b.textContent='Copied!';setTimeout(()=>b.textContent='Copy Link',2000);});}
-/* ticker — dynamic, speed set in vicelane.css (20s) */
+/* ticker — dynamic, speed set in vicelane.css (40s, via --ticker-speed) */
 fetch('/articles.json?v='+Date.now()).then(r=>r.json()).then(a=>{const t=document.getElementById('ticker-track');t.innerHTML=[...a,...a].map(x=>`<span class="ticker-item" onclick="location.href='${x.url}'">${x.emoji} ${x.title}</span>`).join('');}).catch(()=>{document.getElementById('ticker-track').innerHTML='<span class="ticker-item">Where GTA5 Ends And GTA6 Begins</span>';});
 /* ratings (visual; live site also posts to Airtable ArticleRatings via proxy worker) */
 const SLUG='[SLUG]';

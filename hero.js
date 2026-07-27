@@ -65,7 +65,7 @@
 
 })();
 
-// ── TICKER SPEED FIX — 30s cycle on all pages ─────────────────
+// ── TICKER SPEED FIX — 40s cycle on all pages (site-wide standard) ──
 // Patches any JS-driven ticker that used the wrong speed formula
 (function(){
   const track = document.getElementById('tickerTrack') || document.getElementById('ticker-track');
@@ -73,14 +73,14 @@
   // If CSS animation is handling it, nothing to do
   const style = getComputedStyle(track);
   if (style.animationName && style.animationName !== 'none') return;
-  // JS-driven ticker — re-run with correct 30s speed after content loads
+  // JS-driven ticker — re-run with correct 40s speed after content loads
   let pos = 0;
   let raf = null;
   function startTicker() {
     if (raf) cancelAnimationFrame(raf);
     const totalWidth = track.scrollWidth / 2;
     if (totalWidth <= 0) return;
-    const speed = totalWidth / 30;
+    const speed = totalWidth / 40;
     function animate() {
       pos -= speed / 60;
       if (Math.abs(pos) >= totalWidth) pos = 0;
