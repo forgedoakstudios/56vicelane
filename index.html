@@ -36,8 +36,8 @@
   .brand{display:flex; align-items:baseline; gap:12px;}
   .brand .name{font-family:'Playfair Display'; font-weight:700; font-style:italic; font-size:19px; color:var(--magenta); letter-spacing:0.5px;}
   .brand .sub{font-family:'Barlow Condensed'; font-size:11.5px; color:var(--ink-soft); letter-spacing:0.5px;}
-  .socials{display:flex; gap:10px;}
-  .socials a{width:30px; height:30px; border-radius:50%; background:linear-gradient(135deg,var(--gold),var(--pink)); display:flex; align-items:center; justify-content:center; color:#fff; font-size:12px; font-weight:700; text-decoration:none;}
+  .socials{display:flex; gap:8px; flex-wrap:wrap;}
+  .socials a{width:30px; height:30px; border-radius:50%; background:linear-gradient(135deg,var(--gold),var(--pink)); display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:700; text-decoration:none;}
 
   /* HERO */
   .hero{position:relative; height:280px; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden;}
@@ -179,12 +179,12 @@
 
 <div class="layout">
   <div class="main-col">
-    <div class="welcome-photo photo img-welcome">
+    <a class="welcome-photo photo img-welcome" href="/articles/welcome-back-to-the-lane" style="text-decoration:none;color:inherit;cursor:pointer;">
       <div class="welcome-text">
         <h1>Welcome Back To <em>The Lane</em></h1>
         <p>The community's home until GTA6 launches November 19, 2026.</p>
       </div>
-    </div>
+    </a>
 
     <span class="label sec-label">Latest News</span>
     <div class="news-grid" id="home-news-grid">
@@ -233,7 +233,15 @@
     </div>
 
     <span class="label sec-label">Follow Along</span>
-    <div class="socials"><a href="#">IG</a><a href="#">X</a><a href="#">YT</a></div>
+    <div class="socials">
+      <a href="https://www.instagram.com/56vicelane/?hl=en" target="_blank" rel="noopener" title="Instagram">IG</a>
+      <a href="#" title="X (link pending)">X</a>
+      <a href="https://www.tiktok.com/@56vicelane" target="_blank" rel="noopener" title="TikTok">TT</a>
+      <a href="https://www.youtube.com/@56vicelane" target="_blank" rel="noopener" title="YouTube">YT</a>
+      <a href="https://www.facebook.com/profile.php?id=61592220568182" target="_blank" rel="noopener" title="Facebook">FB</a>
+      <a href="https://bsky.app/profile/56vicelane.bsky.social" target="_blank" rel="noopener" title="Bluesky">BS</a>
+      <a href="https://discord.gg/Ewe5T9eFs" target="_blank" rel="noopener" title="Discord">DC</a>
+    </div>
   </div>
 </div>
 
@@ -259,7 +267,15 @@
     <div class="foot-col"><h5>Home</h5><a href="#">News</a><a href="#">Last Drive</a><a href="#">Members</a></div>
     <div class="foot-col"><h5>Store</h5><a href="#">Plates</a><a href="#">Bundles</a><a href="#">Apparel</a></div>
     <div class="foot-col"><h5>Community</h5><a href="#">Discord</a><a href="#">Forum</a><a href="#">Contact</a></div>
-    <div class="socials"><a href="#">IG</a><a href="#">X</a><a href="#">YT</a></div>
+    <div class="socials">
+      <a href="https://www.instagram.com/56vicelane/?hl=en" target="_blank" rel="noopener" title="Instagram">IG</a>
+      <a href="#" title="X (link pending)">X</a>
+      <a href="https://www.tiktok.com/@56vicelane" target="_blank" rel="noopener" title="TikTok">TT</a>
+      <a href="https://www.youtube.com/@56vicelane" target="_blank" rel="noopener" title="YouTube">YT</a>
+      <a href="https://www.facebook.com/profile.php?id=61592220568182" target="_blank" rel="noopener" title="Facebook">FB</a>
+      <a href="https://bsky.app/profile/56vicelane.bsky.social" target="_blank" rel="noopener" title="Bluesky">BS</a>
+      <a href="https://discord.gg/Ewe5T9eFs" target="_blank" rel="noopener" title="Discord">DC</a>
+    </div>
   </div>
   <div class="foot-bottom">
     <span>56ViceLane is an independent fan site. Not affiliated with Rockstar Games or Take-Two Interactive.</span>
@@ -324,7 +340,7 @@ function loadHomeNews() {
       if (newsGrid) {
         var thumbs = latestPool.slice(0, 2);
         newsGrid.innerHTML = thumbs.map(function (a) {
-          var bg = a.image ? "background-image:url('/images/" + a.image + "');background-size:cover;background-position:center;" : '';
+          var bg = a.image ? "background-image:url('/images/" + a.image + "');background-size:cover;background-position:center top;" : '';
           return '<a class="news-thumb photo" href="/articles/' + a.slug + '" style="' + bg + '"></a>';
         }).join('');
       }

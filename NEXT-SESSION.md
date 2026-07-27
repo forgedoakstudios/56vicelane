@@ -5,6 +5,83 @@ Working branch: `claude/56vicelane-gta6-dev-37dq4z`. Production deploys from `ma
 
 ---
 
+## 0. ACTIVE — July 2026 Improvements Punch List (Chris's list, 7/26)
+
+Target: "by Tuesday" (7/29) for the mechanical items. AdSense/new handles are
+external processes not fully on that clock — flagged below.
+
+**Done (2026-07-27):**
+- [x] Home page "Welcome Back To The Lane" photo is now clickable → links to
+  new article `/articles/welcome-back-to-the-lane` (written same session).
+- [x] Trevor's photo crop fixed (was showing chin/torso only) — added
+  `object-position: top` to the homepage news-card thumb logic, the
+  news.html card, and trevor.html's avatar.
+- [x] Font size bumped site-wide: `html{font-size:18px}` in vicelane.css
+  (was unset/16px default) — scales every rem-based element, including all
+  article body text. Also applied to the blotter template + regenerated all
+  8 existing blotter articles.
+- [x] Social buttons on the home page now point to real profiles (IG, TikTok,
+  YouTube, Facebook, Bluesky, Discord). X/Twitter still a placeholder — no
+  link was given for it.
+- [x] `CLAUDE.md` created at repo root — the standing Operating Brief, read
+  automatically every session from here on.
+
+**Flagged, not yet actioned — real discrepancy found:**
+- [ ] **Discord link mismatch.** Chris's list gives `discord.gg/Ewe5T9eFs`.
+  The site currently hardcodes `discord.gg/ewdRcjsbg5` in ~7 places across
+  forum.html (join buttons, channel cards). These are DIFFERENT invite
+  codes. Have not overwritten the existing one sitewide without confirming
+  which is actually current — this is the single highest-traffic CTA on the
+  site, worth getting right rather than guessing.
+
+**Needs a decision before it can be built:**
+- [ ] Trevor (@trevorsTakes) and Danny (@DannyM.editor) getting their own
+  per-platform social accounts — Chris's own list says "ask for
+  clarification," so: do these handles already exist somewhere (need
+  credentials), or do new accounts need to be created first? Can't wire
+  Blotato/posting to accounts that don't exist yet.
+- [ ] Last Drive preview video for the home page — the video-block markup
+  already exists (play button + duration overlay), it's just a static image
+  behind it, not a real video. Need a source: YouTube link to embed, or an
+  mp4 to upload.
+- [ ] Affiliate link images — Chris's own list asks "how to get them?" open
+  question, not yet resolved.
+- [ ] AdSense — rejected 3x. Can research generic common rejection reasons,
+  but the actual rejection email/reason text from Google would let this get
+  fixed correctly instead of guessed at.
+- [ ] Nightly site-audit workflow (see priority #1 below) needs a GitHub PAT
+  added as an n8n credential before it can commit reports to `/audit`.
+
+**Queued — real builds, not started yet:**
+- [ ] News section: group by month (current month first, working backward),
+  auto-archive anything older than 2 months. Found: `archive.html` already
+  has the month-grouped visual design AND copy claiming "articles move here
+  automatically after 15 days" — but it's actually static, hand-written
+  HTML with hardcoded May 2026 entries. Nothing dynamic exists yet. Real
+  build: news.html needs month-grouped rendering from articles.json, and
+  archive.html needs to actually pull/bucket dynamically instead of being
+  static.
+- [ ] Store: not all nameplate/tag thumbnails are clickable — audit
+  store.html's bundle thumbnail grids for missing click handlers.
+- [ ] Wrong images on some articles (e.g. a GTA6 article showing a GTA5
+  image) — needs a pass across all ~66 published articles' `og:image`s vs.
+  actual content.
+- [ ] Article publishing cadence change: 2 evergreen/week, 3 two-part news
+  series/week, 3 Trevor satire/week (+1 extra "Trevor rants about moving to
+  Vice City" piece), 2 Editor posts/week (start + end of week).
+- [ ] More social post volume across the board — "we must be seen."
+- [ ] Media Gallery + empty real estate below Last Drive Preview on home
+  page — currently underused space, no plan yet.
+- [ ] More affiliate products/companies + a GTA6 Guide template.
+- [ ] Forum Discord section shows a generic image instead of an actual
+  Discord/community image.
+- [ ] Blotato "Check & Publish Pending Videos" — paused since the empty
+  `video_id` bug report. Chris said he'd paste the actual prompt/context —
+  not received yet in this session. `Generate Daily Video` paused alongside
+  it 2026-07-26 to stop burning credits on jobs nobody can publish.
+
+---
+
 ## 1. Engagement Points + Secret Leaderboard + Weekly Nameplate Prizes  ⭐ (headline feature)
 
 A gamified, mostly-hidden engagement system. Members already have profiles in

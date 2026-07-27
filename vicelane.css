@@ -58,13 +58,14 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  font-size: 18px; /* base bump for readability (older-reader pass, July 2026) — scales every rem-sized element site-wide */
 }
 
 body {
   background: var(--pitch);
   color: var(--bone);
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 18px;
   line-height: var(--line);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
