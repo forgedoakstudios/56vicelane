@@ -232,6 +232,13 @@
   <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
 </div>
 
+<!-- MAINTENANCE NOTICE -->
+<div style="max-width:var(--wide-width);margin:16px auto 0;padding:0 24px;">
+  <div style="background:rgba(255,107,44,.12);border:1px solid var(--amber);border-radius:8px;padding:14px 18px;text-align:center;color:var(--bone);font-size:.9rem;">
+    🛠️ <strong>Store paused until August 1.</strong> We're working through a backend issue — profile lookup and purchases are temporarily unavailable. Nothing will be charged in the meantime. Check back Aug 1!
+  </div>
+</div>
+
 <!-- VERIFY -->
 <div class="verify-section" id="verify">
   <div class="verify-box">
@@ -768,6 +775,14 @@ var AT_BASE  = 'appVViGbmcu5gbn8B';
 var AT_URL   = 'https://api.airtable.com/v0/' + AT_BASE + '/Last%20Drive';
 var AT_H     = {'Authorization':'Bearer ' + AT_TOKEN, 'Content-Type':'application/json'};
 
+// Airtable's free-plan API quota is exhausted for the month (hit 2026-07-27,
+// resets 2026-08-01). Profile lookup and every purchase path write to that
+// same base, so both are paused here rather than left to fail silently or
+// take payment for something that can't be fulfilled. Remove this block
+// once the quota resets or the site moves off Airtable.
+var STORE_MAINTENANCE = true;
+var STORE_MAINTENANCE_MSG = "Store & profile lookup are paused until August 1 while we sort out a backend issue — no purchases will go through until then. Check back Aug 1!";
+
 var playerRecord  = null;
 var selectedPlate = null;
 
@@ -952,6 +967,7 @@ function verifyPlayer() {
   var email    = document.getElementById('v-email').value.trim();
   var btn      = document.getElementById('verify-btn');
   var msg      = document.getElementById('verify-msg');
+  if (STORE_MAINTENANCE) { showMsg(msg, STORE_MAINTENANCE_MSG, 'error'); return; }
   if (!gamertag || !email) { showMsg(msg, 'Please enter your gamertag and email.', 'error'); return; }
   btn.textContent = 'Checking...';
   btn.disabled = true;
@@ -1152,6 +1168,11 @@ function selectPlate(style, price, name) {
 }
 
 function renderSinglePayPal(price, name, style) {
+  if (STORE_MAINTENANCE) {
+    var host = document.getElementById('paypal-button-container');
+    if (host) host.innerHTML = '<div class="msg show error">' + STORE_MAINTENANCE_MSG + '</div>';
+    return;
+  }
   paypal.Buttons({
     style: {color:'gold', shape:'rect', label:'pay', height:48},
     createOrder: function(data, actions) {
@@ -1281,6 +1302,11 @@ function updatePick5UI() {
 
 function renderPick5Button() {
   if (!window.paypal) return;
+  if (STORE_MAINTENANCE) {
+    var host5 = document.getElementById('paypal-button-pick5');
+    if (host5) host5.innerHTML = '<div class="msg show error">' + STORE_MAINTENANCE_MSG + '</div>';
+    return;
+  }
   var chosen = pick5Selected.slice();
   paypal.Buttons({
     style: {color:'blue', shape:'rect', label:'pay', height:44},
@@ -1379,6 +1405,11 @@ function updateSinglePlatePreview() {
 
 function renderSinglePlateButton() {
   if (!window.paypal || !singlePlateSelection) return;
+  if (STORE_MAINTENANCE) {
+    var hostSp = document.getElementById('paypal-button-single-plate');
+    if (hostSp) hostSp.innerHTML = '<div class="msg show error">' + STORE_MAINTENANCE_MSG + '</div>';
+    return;
+  }
   var plateId = singlePlateSelection;
   paypal.Buttons({
     style: {color:'orange', shape:'rect', label:'pay', height:44},
@@ -1567,6 +1598,11 @@ function renderAllBundleButtons() {
 }
 
 function renderBundleButton(key, b, cid) {
+  if (STORE_MAINTENANCE) {
+    var hostB = document.getElementById(cid);
+    if (hostB) hostB.innerHTML = '<div class="msg show error" style="margin:8px 20px 16px;">' + STORE_MAINTENANCE_MSG + '</div>';
+    return;
+  }
   var isUlt = key === 'ultimate' || key === 'featured';
   paypal.Buttons({
     style: {color: isUlt ? 'gold' : 'orange', shape:'rect', label:'pay', height: isUlt ? 52 : 44},
