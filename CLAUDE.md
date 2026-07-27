@@ -1,0 +1,96 @@
+# 56ViceLane — Operating Brief for Claude Code
+
+## Mission
+56vicelane.com is a GTA6 fan site (~70 articles, 2 months old, ~550 visitors
+so far). Goal: 1M visitors by GTA6's launch, November 19, 2026. Site repo is
+on GitHub. Content distribution runs through n8n (automation) and Blotato
+(social auto-posting), with direct wired access to Discord.
+
+## Control & access
+- Full control over the site repo, its files, and its build — including a
+  dedicated `/audit` folder for reports.
+- Live control over n8n — can create, edit, and trigger workflows directly.
+- Direct wired access to Discord — can post, not just monitor.
+- Blotato posts to every connected platform EXCEPT YouTube and TikTok.
+  Anything meant for those two needs a separate manual/native upload — flag
+  it, don't assume it went out.
+
+## Posting: auto-schedule is the standing mode
+Human-in-the-loop approval is being built but currently errors out, so
+auto-scheduling (across Blotato-connected platforms + Discord) is the
+default going forward — not a temporary exception that reverts once HITL
+is fixed.
+- Log every scheduled post (platform, content, timestamp, source article
+  if applicable) to `/audit` so there's always a paper trail to review.
+- If HITL comes back online and the intent changes to "approve before
+  scheduling" again, that needs to be said explicitly in a session — don't
+  assume it from context alone.
+- YouTube/TikTok are the exception: never assume Blotato covered them.
+  Flag them as needing manual/native upload every time.
+
+## Standing automation: nightly site audit
+Set this up as an n8n workflow if it doesn't already exist — Claude Code
+sessions aren't persistent, so the midnight trigger has to live in n8n,
+not in a chat session.
+- **Trigger:** n8n cron, every night at midnight.
+- **Job:** broken internal/external links across /articles, missing or
+  duplicate meta descriptions/OG tags, sitemap.xml coverage vs. published
+  articles, missing image alt text — via headless Claude Code (`claude -p`)
+  or a script n8n runs directly.
+- **Output:** commit a dated report to `/audit/YYYY-MM-DD-audit.md` in the
+  repo — permanent record, not an ephemeral log.
+- **Delivery:** on the next chat session start, check for the latest
+  unread report and open with a short report-card summary (what broke,
+  what's clean, what needs a decision) before anything else that session.
+- **Status (2026-07-27): not yet built.** No GitHub credential exists in
+  n8n, so it cannot commit files to the repo yet — needs a PAT with
+  contents:write on this repo added as an n8n credential before the
+  commit step can go live. See `/audit/README.md` for the current state.
+
+## What's already proven (don't relitigate — build on it)
+- TikTok and YouTube's best-performing content is reactive: "what just
+  dropped / when's it dropping / what does it mean" trailer & news content.
+- Facebook is new (~3 days old) and already outperforming IG/X/Bluesky
+  combined — feed it the same content type daily while early reach holds.
+- IG, X, and Bluesky have real posting volume and near-zero traction.
+  Don't recommend "post more there" without new evidence it's working.
+
+## Standing priorities, in order
+1. Nightly site audit (automated, see above).
+2. Internal linking — surface articles that should link to each other but
+   don't.
+3. Content pipeline support — for every new article, draft the short-form
+   hook: caption + first line, sized for the target platform, PLUS:
+   - a clear CTA (matched to intent — read the guide, join Discord, sign
+     up for Last Drive, etc., not the same CTA every time by default)
+   - the direct article link, formatted correctly for the platform
+     (some platforms want it in-caption, some want "link in bio/comments"
+     — don't assume one pattern fits all of them)
+   Auto-schedule these per the posting mode above; still log them.
+4. n8n workflow maintenance — build/fix/extend workflows directly.
+5. Growth ideas — only after 1–4 are current, and anchored to what's
+   actually converting, not general "post more" advice.
+
+## Working style
+- Be honest about what you checked vs. assumed, and about the difference
+  between "I did this" and "this needs to happen in a dashboard I can't
+  reach."
+- When running a recurring check (e.g. via /loop), keep each pass scoped
+  to one item from the priority list — don't try to do everything every
+  cycle.
+
+## Real social links (confirmed by Chris, July 2026)
+- Instagram: https://www.instagram.com/56vicelane/?hl=en
+- TikTok: https://www.tiktok.com/@56vicelane
+- YouTube: https://www.youtube.com/@56vicelane
+- Facebook: https://www.facebook.com/profile.php?id=61592220568182
+- Bluesky: @56vicelane.bsky.social
+- Discord: https://discord.gg/Ewe5T9eFs — NOTE: differs from the invite
+  code (`ewdRcjsbg5`) hardcoded across forum.html. Not yet reconciled —
+  confirm which is current before treating either as canonical.
+- X/Twitter: no confirmed link yet — Blotato posts to X (account_id 20503)
+  but the actual public handle/URL hasn't been given. Still a placeholder
+  on-site.
+
+See `/NEXT-SESSION.md` for the live, itemized backlog (the July 26 "two
+huge lists" improvements list and its running status).
