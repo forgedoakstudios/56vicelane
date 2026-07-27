@@ -132,5 +132,68 @@
     "imageAlt": "This GTA5 Prison Mod Is the Best Argument Yet for What GTA6 Needs",
     "scheduledFor": "2026-07-20T19:26:04.799Z",
     "posted": true
+  },
+  {
+    "id": "auto-publish-gta6-trailer-3-august-6-prediction",
+    "text": "An insider prediction tied to a recent investor call points to August 6 for GTA6's Trailer 3. Here's the reasoning — and how much to trust it →",
+    "url": "https://56vicelane.com/articles/gta6-trailer-3-august-6-prediction",
+    "image": "images/gta6-trailer-3-thumbnail.png",
+    "imageAlt": "GTA6 Trailer 3 Could Drop August 6, Insider Predicts",
+    "scheduledFor": "2026-07-28T13:00:00Z",
+    "posted": false
+  },
+  {
+    "id": "auto-publish-gta6-region-lock-codes-part1",
+    "text": "GTA6's PS5 codes are region-locked in most countries — Xbox codes aren't. Here's exactly who's affected →",
+    "url": "https://56vicelane.com/articles/gta6-region-lock-codes-part1",
+    "image": "images/gta6-hero.png",
+    "imageAlt": "GTA6 PS5 Codes Are Region-Locked — Here's Exactly Who's Affected",
+    "scheduledFor": "2026-07-29T13:00:00Z",
+    "posted": false
+  },
+  {
+    "id": "auto-publish-rockstar-union-step-in-right-direction",
+    "text": "The Rockstar workers union says its first meeting with management was \"a step in the right direction.\" Full timeline →",
+    "url": "https://56vicelane.com/articles/rockstar-union-step-in-right-direction",
+    "image": "images/gta6-hero.png",
+    "imageAlt": "Rockstar Union: First Meeting Was A Step In The Right Direction",
+    "scheduledFor": "2026-07-30T13:00:00Z",
+    "posted": false
+  },
+  {
+    "id": "auto-publish-ai-gta6-slop-editors-desk",
+    "text": "AI-generated fake GTA6 trailers are getting millions of views while real fans wait. The Editor breaks down why it's working, and how to spot it →",
+    "url": "https://56vicelane.com/articles/ai-gta6-slop-editors-desk",
+    "image": "images/editor-portrait.png",
+    "imageAlt": "The AI GTA6 Slop Problem — And Why It's Working",
+    "scheduledFor": "2026-07-31T13:00:00Z",
+    "posted": false
+  },
+  {
+    "id": "auto-publish-trevors-take-ai-slop",
+    "text": "Fake AI trailers are out-performing real GTA6 coverage. Trevor has thoughts, none of them useful, all delivered with total confidence →",
+    "url": "https://56vicelane.com/articles/trevors-take-ai-slop",
+    "image": "images/trevor-portrait.png",
+    "imageAlt": "Trevor's Take: The Fake Trailers Are Getting More Views Than My Life",
+    "scheduledFor": "2026-07-31T17:00:00Z",
+    "posted": false
+  },
+  {
+    "id": "auto-publish-gta6-region-lock-codes-part2",
+    "text": "Part 2: GTA6's region locks and expiring codes aren't isolated — they're landing in the middle of gaming's biggest ownership debate in years →",
+    "url": "https://56vicelane.com/articles/gta6-region-lock-codes-part2",
+    "image": "images/gta6-hero.png",
+    "imageAlt": "What GTA6's Region Locks and Expiring Codes Actually Mean For Buyers",
+    "scheduledFor": "2026-08-01T13:00:00Z",
+    "posted": false
+  },
+  {
+    "id": "auto-publish-gta-fan-projects-switch-port-multiverse",
+    "text": "Fans are porting GTA5 to Switch and building inter-game portals while waiting for GTA6. Proof of how devoted this community really is →",
+    "url": "https://56vicelane.com/articles/gta-fan-projects-switch-port-multiverse",
+    "image": "images/gta5-hero.png",
+    "imageAlt": "While We Wait: Fans Are Porting GTA5 To Switch And Building Inter-Game Portals",
+    "scheduledFor": "2026-08-02T13:00:00Z",
+    "posted": false
   }
 ]
