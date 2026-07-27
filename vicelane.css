@@ -18,7 +18,13 @@
    RULES:
    - This file is the ONLY place for shared styles
    - Every page links this — nothing duplicated inline
-   - Ticker speed is LOCKED at 20s — never change
+   - Ticker speed is LOCKED at 40s (full ticker cycle, every page) —
+     never change without Chris's explicit sign-off. Every new page's
+     ticker MUST use var(--ticker-speed) from this file, or copy the
+     exact `.ticker-wrap`/`.ticker-track`/`.ticker-item` block below —
+     never hardcode a duration. Hardcoded per-page copies are exactly
+     how this drifted to 5+ different speeds across the site once
+     already (2026-07-27).
    - Nav and footer HTML is identical on every page
    - Change here once → whole site updates
    ============================================================ */
@@ -46,7 +52,7 @@
   --wide-width:  1000px;
   --line:        1.75;
 
-  --ticker-speed: 20s;
+  --ticker-speed: 40s;
 }
 
 *, *::before, *::after {
@@ -58,14 +64,14 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
-  font-size: 18px; /* base bump for readability (older-reader pass, July 2026) — scales every rem-sized element site-wide */
+  font-size: 20px; /* base bump for readability (older-reader pass, July 2026; +2px again 2026-07-27 per Chris) — scales every rem-sized element site-wide */
 }
 
 body {
   background: var(--pitch);
   color: var(--bone);
   font-family: var(--font-body);
-  font-size: 18px;
+  font-size: 20px;
   line-height: var(--line);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
