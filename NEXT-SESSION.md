@@ -108,6 +108,22 @@ change needed. forum.html's `discord.gg/ewdRcjsbg5` stays as-is.
 
 ---
 
+## 1b. Internal linking — DONE (2026-07-27)
+
+All 66 articles now have a "Related Articles" card block (2 topically-related
+articles + 1 site CTA — Last Drive/Store/Forum/Wall/Trevor, rotated by
+relevance). 6 articles already had one; 60 got it added this session,
+clustered into 13 topic groups (price/editions, trailer 3, pre-orders, cover
+art/lore, earnings, hardware, legal, characters, GTA5 legacy, opinion,
+industry, store/meta, launch timeline). Verified post-build: no duplicate
+blocks, no broken hrefs, head/footer structure intact across all 66.
+
+Note for future article generation: new articles should get this block from
+the start (2 related + 1 CTA, matching an existing topic cluster above) —
+don't let it drift back to zero again.
+
+---
+
 ## 1. Engagement Points + Secret Leaderboard + Weekly Nameplate Prizes  ⭐ (headline feature)
 
 A gamified, mostly-hidden engagement system. Members already have profiles in
