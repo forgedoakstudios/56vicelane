@@ -77,6 +77,15 @@ footer{padding:40px 24px;border-top:1px solid var(--edge);text-align:center;}
 .footer-links a{font-family:"Barlow Condensed",sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;font-size:11px;color:var(--smoke);text-decoration:none;transition:color 0.3s;}
 .footer-links a:hover{color:var(--amber);}
 .footer-copy{font-size:11px;color:var(--smoke);}
+.team-grid{display:grid;grid-template-columns:1fr;gap:14px;margin:28px 0;}
+@media(min-width:600px){.team-grid{grid-template-columns:repeat(2,1fr);}}
+.team-card{border:1px solid var(--edge);background:var(--asphalt);padding:18px 20px;position:relative;}
+.team-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--cyan);box-shadow:0 0 6px var(--cyan);}
+.team-name{font-family:"Playfair Display",serif;font-size:17px;color:var(--bone);margin-bottom:2px;}
+.team-role{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;font-size:10.5px;color:var(--cyan);margin-bottom:8px;}
+.team-desc{font-size:13.5px;color:var(--smoke);line-height:1.6;margin:0;}
+.disclosure-box{border-left:2px solid var(--amber);background:var(--asphalt);padding:16px 18px;margin:24px 0;}
+.disclosure-box p{font-size:13.5px;margin-bottom:0;}
 </style>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
@@ -172,6 +181,63 @@ footer{padding:40px 24px;border-top:1px solid var(--edge);text-align:center;}
     The ideas behind 56ViceLane have been building for thirteen years.
     Just a community that deserved a proper sendoff and the conviction to build it.
   </p>
+
+  <div class="divider"></div>
+
+  <h2>The Newsroom</h2>
+  <p>
+    Coverage on 56ViceLane is organized under a set of bylines, each one
+    a consistent voice for a beat &#8212; not a separate hire. Here&#8217;s who
+    writes what:
+  </p>
+
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-name">Danny Marchetti</div>
+      <div class="team-role">Editor-in-Chief</div>
+      <p class="team-desc">Big-picture site voice. Weekly Friday Frequency notes from the Editor&#8217;s Desk.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-name">Trevor</div>
+      <div class="team-role">Satirist</div>
+      <p class="team-desc">Trevor&#8217;s Takes &#8212; the unqualified-opinions counterweight to everyone else taking this too seriously.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-name">Marcus Webb</div>
+      <div class="team-role">Business &amp; Industry</div>
+      <p class="team-desc">Earnings calls, marketing timelines, labor stories &#8212; the money and machinery behind the game.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-name">Reg Calloway</div>
+      <div class="team-role">Platforms &amp; Storefronts</div>
+      <p class="team-desc">Console and PC specifics, pre-orders, region locks &#8212; the practical stuff before launch day.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-name">Priya Nakamura</div>
+      <div class="team-role">Hardware &amp; Tech</div>
+      <p class="team-desc">Gear, performance, and technical explainers &#8212; what actually runs the game well.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-name">Ezra Voss</div>
+      <div class="team-role">Lore &amp; History</div>
+      <p class="team-desc">Timeline, characters, easter eggs &#8212; the deep-cut connective tissue across the series.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-name">Camille Duarte</div>
+      <div class="team-role">Art &amp; Culture</div>
+      <p class="team-desc">Cover art, character design, fashion &#8212; how the game looks and what it&#8217;s saying.</p>
+    </div>
+  </div>
+
+  <div class="disclosure-box">
+    <p>
+      <strong>A note on bylines:</strong> 56ViceLane is written and run by
+      Christopher Brewster. The names above are editorial personas &#8212;
+      consistent voices used to organize coverage by beat, the way a
+      one-person outlet still runs sections. They&#8217;re a writing
+      convention, not a claim of a newsroom staff.
+    </p>
+  </div>
 
   <div class="divider"></div>
 
