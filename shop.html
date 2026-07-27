@@ -40,10 +40,9 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 /* TICKER */
 .ticker{background:var(--amber);color:#000;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:.88rem;padding:7px 0;overflow:hidden;white-space:nowrap;position:relative;z-index:10;}
-.ticker-track{display:inline-block;animation:ticker-scroll 40s linear infinite;padding-left:100%;}
-.ticker-track span{margin:0 28px;}
+.ticker-track{display:flex;gap:60px;white-space:nowrap;animation:ticker-scroll 40s linear infinite;}
 .ticker-track span::after{content:'◆';margin-left:28px;font-size:8px;opacity:0.6;}
-@keyframes ticker-scroll{from{transform:translateX(0);}to{transform:translateX(-100%);}}
+@keyframes ticker-scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
 /* NAV */
 nav{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;border-bottom:1px solid var(--edge);position:relative;z-index:50;flex-wrap:wrap;gap:12px;}
@@ -201,9 +200,10 @@ footer{padding:40px 24px;border-top:1px solid var(--edge);text-align:center;}
     .then(function(articles){
       var track = document.getElementById('ticker-track');
       if(!track) return;
-      track.innerHTML = articles.map(function(a){
+      var html = articles.slice(0, 10).map(function(a){
         return '<span>' + a.emoji + ' <a href="' + a.url + '">' + a.title + '</a></span>';
       }).join('');
+      track.innerHTML = html + html;
     })
     .catch(function(){
       // fallback if JSON fails
