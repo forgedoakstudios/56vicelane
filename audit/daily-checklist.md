@@ -27,18 +27,21 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
 - [ ] Last Drive homepage preview — need a real video source (YouTube link
       or mp4) to replace the static placeholder image.
 - [ ] Affiliate link images — still an open question from your own list.
-- [ ] **AdSense "low value content" rejection — got the real reason
-      2026-07-27.** Fixed the concrete indexing bugs (see Done). The
-      content-quality side is a judgment call, not something to fix
-      blind: (1) heavy topical overlap — 7 separate preorder articles,
-      6 separate trailer-3 articles, 3 separate earnings-call articles
-      largely rehashing the same facts, close to what AdSense's thin/
-      duplicate-content policy describes; (2) gear.html has 19 Amazon
-      affiliate links with only a handful of short intro paragraphs and
-      no per-product original writeup — a close match to "thin affiliate
-      pages" in the policy text you pasted. Want me to consolidate/
-      merge the overlapping article clusters, and/or write real
-      per-product copy for gear.html, before you resubmit for review?
+
+## Shelved — revisit late August 2026
+
+- [ ] **AdSense resubmission.** Chris's call (2026-07-27): the site needs
+      more age/traffic history before AdSense will approve it regardless
+      of content edits, so hold off and resubmit once it's older — ideally
+      before the Nov 19 launch. On closer inspection neither of my first
+      two theories (article-cluster duplication, thin gear.html copy)
+      actually held up: the article clusters are legitimate developing-
+      story coverage that already cross-links internally, and gear.html
+      already has real per-product original copy (my initial "thin
+      content" read was based on a bad heuristic — counting `<p>` tags,
+      which missed the actual `gear-desc`/`gear-why` copy). The indexing
+      fixes from today (noindex tags, canonical tags, sitemap gaps) are
+      still worth having whenever resubmission happens.
 
 ## Cancelled (2026-07-27)
 
@@ -78,6 +81,12 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
       removed an orphaned duplicate weekly-bonuses.html at the repo
       root. robots.txt and the 66-article sitemap↔disk match were both
       already clean.
+- [x] Built a scored affiliate-program shortlist (ease of acceptance /
+      fit / type match, 1-10 each) covering gaming hardware, snacks &
+      energy drinks, and home electronics/mini-fridges, plus broad
+      networks (Impact, ShareASale/Awin) as a multi-category option.
+      Delivered as an artifact; revisit alongside the AdSense
+      resubmission in late August.
 
 ## Carried over from this week (not yet done)
 
@@ -95,7 +104,10 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
       series/wk, 3 Trevor satire/wk, 2 Editor posts/wk).
 - [ ] Media Gallery for the empty space below Last Drive Preview on home
       page.
-- [ ] More affiliate products/companies + GTA6 Guide template.
+- [ ] Affiliate program sign-ups — shortlist delivered 2026-07-27 (scored,
+      see artifact); actually applying to any of them is Chris's action,
+      not something I can do. Revisit with AdSense in late August.
+- [ ] GTA6 Guide template.
 - [ ] Forum Discord section — replace generic image with real one.
 - [ ] Nightly site-audit n8n workflow — blocked on a GitHub PAT credential
       in n8n (contents:write on this repo).
