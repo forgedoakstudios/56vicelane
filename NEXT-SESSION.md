@@ -168,7 +168,11 @@ change needed. forum.html's `discord.gg/ewdRcjsbg5` stays as-is.
   series/week, 3 Trevor satire/week (+1 extra "Trevor rants about moving to
   Vice City" piece), 2 Editor posts/week (start + end of week). Documented
   as a standing rule in CLAUDE.md — apply it to next week's calendar.
-- [ ] More social post volume across the board — "we must be seen."
+- [x] More social post volume across the board — "we must be seen." Done
+  2026-07-28: new `Evergreen Recycle Poster` n8n workflow, 2 extra posts/day
+  (1pm + 6pm CT) mixing article recycling, store/product promos, and
+  guaranteed-regular engagement prompts. See
+  `audit/2026-07-28-evergreen-recycle-poster.md`.
 - [ ] Media Gallery + empty real estate below Last Drive Preview on home
   page — currently underused space, no plan yet.
 - [ ] More affiliate products/companies + a GTA6 Guide template.
