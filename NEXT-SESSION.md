@@ -66,9 +66,13 @@ external processes not fully on that clock — flagged below.
   clicking any nameplate bundle card (or the All Nameplate Bundles card)
   now opens a lightbox with every design in that bundle, watermarked
   unless the verified customer already owns that specific design.
-- [ ] Wrong images on some articles (e.g. a GTA6 article showing a GTA5
+- [x] Wrong images on some articles (e.g. a GTA6 article showing a GTA5
   image) — needs a pass across all ~66 published articles' `og:image`s vs.
-  actual content.
+  actual content. Done: audited all 73, fixed 2 real mismatches
+  (gta6-xbox-wishlist-campaign-international was using GTA5-branded
+  GtaVHero.png; the-last-drive-farewell-for-ps4-players was using a
+  generic hero instead of lastdrive-hero.jpg) plus added 4 missing
+  twitter:image tags. No broken image paths found anywhere.
 - [x] Article publishing cadence change: 2 evergreen/week, 3 two-part news
   series/week, 3 Trevor satire/week (+1 extra "Trevor rants about moving to
   Vice City" piece), 2 Editor posts/week (start + end of week). Documented

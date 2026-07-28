@@ -126,7 +126,9 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
 - [x] Store: audit bundle thumbnail grids for missing click handlers —
       built per-bundle image gallery (watermarked previews, unlocks
       per-owned-design) instead of dead click areas.
-- [ ] Article image audit — wrong/mismatched og:images across ~66 articles.
+- [x] Article image audit — wrong/mismatched og:images across ~66 articles.
+      Checked all 73, fixed 2 real mismatches + 4 missing twitter:image
+      tags. Nothing else found broken.
 - [x] Article publishing cadence change (2 evergreen/wk, 3 two-part news
       series/wk + 1 extra Vice City rant, 3 Trevor satire/wk, 2 Editor
       posts/wk) — documented as a standing rule in CLAUDE.md.
