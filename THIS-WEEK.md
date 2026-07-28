@@ -90,7 +90,9 @@ a Supermetrics login), tell me and I'll check it off.
       tonight (Blotato posts via public `mediaUrls`, same pattern already
       used for the bundle-announcement posts) — first real test still
       pending
-- [ ] Store: audit bundle thumbnail grids for missing click handlers
+- [x] Store: audit bundle thumbnail grids for missing click handlers —
+      built per-bundle image gallery (all designs, watermarked previews,
+      unlocks per-owned-design) instead of dead click areas
 - [ ] Article image audit — wrong/mismatched og:images across ~66 articles
 - [ ] Article publishing cadence change (2 evergreen/wk, 3 two-part news
       series/wk, 3 Trevor satire/wk, 2 Editor posts/wk)
