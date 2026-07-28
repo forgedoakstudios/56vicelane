@@ -79,8 +79,10 @@ footer{padding:40px 24px;border-top:1px solid var(--edge);text-align:center;}
 .footer-copy{font-size:11px;color:var(--smoke);}
 .team-grid{display:grid;grid-template-columns:1fr;gap:14px;margin:28px 0;}
 @media(min-width:600px){.team-grid{grid-template-columns:repeat(2,1fr);}}
-.team-card{border:1px solid var(--edge);background:var(--asphalt);padding:18px 20px;position:relative;}
-.team-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--cyan);box-shadow:0 0 6px var(--cyan);}
+.team-card{border:1px solid var(--edge);background:var(--asphalt);position:relative;overflow:hidden;}
+.team-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--cyan);box-shadow:0 0 6px var(--cyan);z-index:2;}
+.team-img{width:100%;height:170px;object-fit:cover;display:block;}
+.team-card-body{padding:16px 20px 18px;}
 .team-name{font-family:"Playfair Display",serif;font-size:17px;color:var(--bone);margin-bottom:2px;}
 .team-role{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;font-size:10.5px;color:var(--cyan);margin-bottom:8px;}
 .team-desc{font-size:13.5px;color:var(--smoke);line-height:1.6;margin:0;}
@@ -193,47 +195,71 @@ footer{padding:40px 24px;border-top:1px solid var(--edge);text-align:center;}
 
   <div class="team-grid">
     <div class="team-card">
+      <img src="/images/editor-portrait.png" alt="Danny Marchetti" class="team-img" onerror="this.style.display='none'">
+      <div class="team-card-body">
       <div class="team-name">Danny Marchetti</div>
       <div class="team-role">Editor-in-Chief</div>
       <p class="team-desc">Big-picture site voice. Weekly Friday Frequency notes from the Editor&#8217;s Desk.</p>
+      </div>
     </div>
     <div class="team-card">
+      <img src="/images/trevor-portrait.png" alt="Trevor" class="team-img" onerror="this.style.display='none'">
+      <div class="team-card-body">
       <div class="team-name">Trevor</div>
       <div class="team-role">Satirist</div>
       <p class="team-desc">Trevor&#8217;s Takes &#8212; the unqualified-opinions counterweight to everyone else taking this too seriously.</p>
+      </div>
     </div>
     <div class="team-card">
+      <img src="/images/marcus-webb-portrait.png" alt="Marcus Webb" class="team-img" onerror="this.style.display='none'">
+      <div class="team-card-body">
       <div class="team-name">Marcus Webb</div>
       <div class="team-role">Business &amp; Industry</div>
       <p class="team-desc">Earnings calls, marketing timelines, labor stories. Treats a Take-Two investor call like a beach day &#8212; laid-back, but he never misses the number that matters.</p>
+      </div>
     </div>
     <div class="team-card">
+      <img src="/images/reg-calloway-portrait.png" alt="Reg Calloway" class="team-img" onerror="this.style.display='none'">
+      <div class="team-card-body">
       <div class="team-name">Reg Calloway</div>
       <div class="team-role">Platforms &amp; Storefronts</div>
       <p class="team-desc">Console and PC specifics, pre-orders, region locks. Been arguing about platforms since the Atari days and has the calloused opinions to prove it.</p>
+      </div>
     </div>
     <div class="team-card">
+      <img src="/images/julian-ashworth-portrait.png" alt="Julian Ashworth" class="team-img" onerror="this.style.display='none'">
+      <div class="team-card-body">
       <div class="team-name">Julian Ashworth</div>
       <div class="team-role">Hardware &amp; Tech</div>
       <p class="team-desc">Gear, performance, and technical explainers. Talks frame times the way a sommelier talks tannins &#8212; precise, unhurried, always right.</p>
+      </div>
     </div>
     <div class="team-card">
+      <img src="/images/ezra-voss-portrait.png" alt="Ezra Voss" class="team-img" onerror="this.style.display='none'">
+      <div class="team-card-body">
       <div class="team-name">Ezra Voss</div>
       <div class="team-role">Lore &amp; History</div>
       <p class="team-desc">Timeline, characters, easter eggs. Reads every trailer frame-by-frame like a debrief. Won&#8217;t say how he knows what he knows.</p>
+      </div>
     </div>
     <div class="team-card">
+      <img src="/images/camille-duarte-portrait.png" alt="Camille Duarte" class="team-img" onerror="this.style.display='none'">
+      <div class="team-card-body">
       <div class="team-name">Camille Duarte</div>
       <div class="team-role">Art &amp; Culture</div>
       <p class="team-desc">Cover art, character design, fashion. Sees a color palette before she sees a headline &#8212; and has strong, correct opinions about both.</p>
+      </div>
     </div>
   </div>
 
   <div class="team-grid" style="margin-top:0;">
     <div class="team-card" style="grid-column:1 / -1;">
+      <img src="/images/the-kid-portrait.png" alt="The Kid" class="team-img" onerror="this.style.display='none'">
+      <div class="team-card-body">
       <div class="team-name">"The Kid"</div>
       <div class="team-role">Office Runner (Not A Byline)</div>
       <p class="team-desc">Fetches food, restocks the fridge, and &#8212; according to Trevor, who has zero proof &#8212; is responsible for the chair that keeps getting lowered, the mouse sensitivity that keeps changing, and the gas-station snacks that keep vanishing from a specific desk. Never caught. Never will be.</p>
+      </div>
     </div>
   </div>
 
