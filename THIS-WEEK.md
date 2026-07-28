@@ -94,8 +94,9 @@ a Supermetrics login), tell me and I'll check it off.
       built per-bundle image gallery (all designs, watermarked previews,
       unlocks per-owned-design) instead of dead click areas
 - [ ] Article image audit — wrong/mismatched og:images across ~66 articles
-- [ ] Article publishing cadence change (2 evergreen/wk, 3 two-part news
-      series/wk, 3 Trevor satire/wk, 2 Editor posts/wk)
+- [x] Article publishing cadence change (2 evergreen/wk, 3 two-part news
+      series/wk, 3 Trevor satire/wk + 1 extra Vice City rant, 2 Editor
+      posts/wk) — documented as a standing rule in CLAUDE.md
 - [ ] Media Gallery for the empty space below Last Drive Preview on home page
 - [ ] More affiliate products/companies + GTA6 Guide template
 - [ ] Forum Discord section — replace generic image with real Discord/community image

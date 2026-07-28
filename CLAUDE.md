@@ -126,6 +126,20 @@ not in a chat session.
 5. Growth ideas — only after 1–4 are current, and anchored to what's
    actually converting, not general "post more" advice.
 
+## Article publishing cadence (standing rule, 2026-07-28)
+Replaces whatever mix felt right in a given week — use this weekly
+target when building each week's content calendar going forward:
+- **2 evergreen pieces/week** — reference/guide content that doesn't
+  date (see brand-voice.md's evergreen guidance).
+- **3 two-part news series/week** — a developing story split across two
+  linked articles (the region-lock/expiration pair and the Trailer 3
+  pair are the template to follow).
+- **3 Trevor's Take satire pieces/week**, plus **1 extra standing
+  "Trevor rants about moving to Vice City" piece** — that extra one is a
+  recurring bit, not a one-off.
+- **2 Editor's Desk posts/week** — one at the start of the week, one at
+  the end, bookending the week's news.
+
 ## Working style
 - Be honest about what you checked vs. assumed, and about the difference
   between "I did this" and "this needs to happen in a dashboard I can't
