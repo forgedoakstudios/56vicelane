@@ -57,9 +57,18 @@ jobs:
             exit 0
           fi
 
-          # Get oldest .html file by creation/commit date
-          OLDEST=$(git log --diff-filter=A --name-only --pretty=format: -- "$DRAFT_DIR/*.html" | \
-                   grep "^$DRAFT_DIR/" | tail -1)
+          # Get oldest .html file by creation/commit date, among files that
+          # actually still exist (git log history includes files that were
+          # added here long ago and have since been published/moved away —
+          # without this check we'd try to `git mv` a file that's gone).
+          OLDEST=""
+          for f in $(git log --diff-filter=A --name-only --pretty=format: -- "$DRAFT_DIR/*.html" | \
+                     grep "^$DRAFT_DIR/" | tac); do
+            if [ -f "$f" ]; then
+              OLDEST="$f"
+              break
+            fi
+          done
 
           # Fallback: just grab first alphabetically if git log comes up empty
           if [ -z "$OLDEST" ]; then
