@@ -27,14 +27,6 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
 - [ ] Last Drive homepage preview — need a real video source (YouTube link
       or mp4) to replace the static placeholder image.
 - [ ] Affiliate link images — still an open question from your own list.
-- [ ] **7 new articles ready on branch `claude/friendly-feynman-3scinq`,
-      waiting on your go-ahead to push to `main`.** Covers the Jul 23-27
-      news-scan backlog: region-lock/expiration two-part series, GTA6
-      Trailer 3 (Aug 6) prediction, Rockstar union story, an AI-slop
-      Editor's Desk + Trevor's Take pair, and a fan-projects roundup
-      (Switch port + multiverse mod). See
-      `audit/2026-07-27-content-sprint-social-log.md` for the full
-      breakdown of what's written and what's queued per platform.
 - [ ] **Weekly Winner Selection — rewired off Airtable, ready to enable.**
       It used to call the Airtable API directly (blocked by quota); now
       reads weekPoints straight from the n8n LastDrive Data Table (the
@@ -118,6 +110,10 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
 
 ## Carried over from this week (not yet done)
 
+- [x] 7 new articles from the Jul 23-27 news-scan backlog — confirmed
+      already live on `main` (commit `25f6552` + two follow-up correction
+      commits). This checklist had gone stale claiming it was still
+      waiting on a go-ahead; corrected 2026-07-28.
 - [ ] Review the n8n migration's 3 field fixes (linkedSlot order,
       founder-plate logic, joinStatus/approval flow) — my best read of the
       real code, not confirmed with you.
