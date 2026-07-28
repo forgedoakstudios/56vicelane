@@ -62,7 +62,52 @@ it ran successfully (by its own definition of success) every day through
   `Check & Publish Pending Videos` will pick up and post each one within
   ~2 minutes of Blotato finishing the render.
 
-## Status: fixed and live
+## Update: the real reason it was paused, and a third bug
 
-Both workflows active as of 2026-07-28. Nothing further needed unless a
-new failure shows up in n8n execution history.
+Chris checked X after the test post above went out and clarified the
+actual story — correcting the assumption in this doc's first draft:
+
+**It was never a copyright/rights issue.** It was paused because the
+2026-07-20 test video's script referenced GTA6 information as "unconfirmed
+rumor" that Rockstar has since confirmed (Trailer 2, earnings calls Chris
+listened to live) — stale framing, not stolen footage. Chris deleted the
+re-posted video again once confirmed. Flagging this correction so nobody
+downstream trusts this doc's original diagnosis of "creator footage
+rights issue" — that was never true.
+
+That stale-framing problem traced to a real design flaw, not just bad
+luck: `Generate Daily Video`'s "Build Video Prompt" node picked from a
+**hardcoded array of 6 fixed topics** written once at build time (one
+literally titled "Biggest GTA6 leaks and rumors so far, clearly labeled as
+unconfirmed"). A static list like that goes stale the moment any of those
+topics gets confirmed — which several have been since 7/20 — with no way
+for the workflow to know.
+
+**Fix:** `Generate Daily Video` now has a new first step, "Get Recent
+Articles" (`GET https://56vicelane.com/articles.json`), feeding
+`Build Video Prompt`, which picks randomly from the 5 most recently
+published non-evergreen articles instead of the static list. The
+generated prompt now explicitly instructs the AI: only state facts from
+that article's real excerpt, and don't label anything a rumor/leak/
+unconfirmed unless the excerpt itself does. Added an `articleUrl` column
+to the `pending_videos` data table so the real article link now gets
+included in the posted tweet text too (`topic + articleUrl + "#GTA6"` in
+`Check & Publish Pending Videos`' "Publish Video" node) — a small traffic
+win that fell out of the same fix.
+
+Verified the new sourcing logic works (execution 2555, Blotato-call node
+temporarily disabled so no credit was spent): correctly pulled a real,
+current article (`gta6-region-lock-codes-part2`) instead of a stale
+topic.
+
+**Also caught in this pass:** my first attempt at fixing the `video_id`/
+`status` mapping bug (see above) never actually took effect — a tooling
+mistake left a stray duplicate parameter block on the node that shadowed
+the real fix. Caught and corrected before either workflow went live again.
+
+## Status: fixed, NOT yet reactivated
+
+Both workflows (`Generate Daily Video`, `Check & Publish Pending Videos`)
+are back to **inactive** pending Chris's review of the new article-sourcing
+behavior — this is a real change to what gets posted, not just a bug fix,
+so it gets the same go-ahead gate as the original reactivation did.
