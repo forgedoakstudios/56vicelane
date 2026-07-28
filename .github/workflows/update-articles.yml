@@ -33,5 +33,21 @@ jobs:
           git config user.name "56ViceLane Bot"
           git config user.email "bot@56vicelane.com"
           git add articles.json sitemap.xml
-          git diff --staged --quiet || git commit -m "Auto-update articles.json + sitemap [skip ci]"
-          git push
+          git diff --staged --quiet && exit 0
+
+          git commit -m "Auto-update articles.json + sitemap [skip ci]"
+
+          for i in 1 2 3 4 5; do
+            if git push; then
+              exit 0
+            fi
+            echo "Push rejected (attempt $i/5) — rebasing onto latest and retrying..."
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            node tools/build-articles.js
+            node tools/build-sitemap.js
+            git add articles.json sitemap.xml
+            git diff --staged --quiet || git commit --amend --no-edit
+            sleep 2
+          done
+          echo "::error::Failed to push after 5 attempts"
+          exit 1
