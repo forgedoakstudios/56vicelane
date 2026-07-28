@@ -130,3 +130,49 @@ This does **not** resolve the underlying footage-sourcing risk — it's a
 process control (nothing ships without a human looking at it first), not
 a fix to whatever let a real creator's video get pulled into a render.
 That question is still open.
+
+## Update: notification + multi-platform publish (2026-07-28, later same day)
+
+Chris: run it anyway (he's paying for it and doesn't want to lose more
+time), he'll check in more often himself, and hold every video for his
+approval before it posts. Also asked to add TikTok and Facebook as
+publish targets alongside Twitter.
+
+**Rebuilt the pipeline into three pieces:**
+1. `Generate Daily Video` — reactivated (active).
+2. `Check & Publish Pending Videos` renamed in effect to **notify-only**:
+   stripped out the actual posting nodes entirely. When Blotato reports a
+   render `done`, it now sets `status=ready_for_review` and stores the
+   `mediaUrl` on the row — nothing gets posted from this workflow anymore.
+   Filter also updated to skip rows already `ready_for_review` /
+   `pending_approval` / `posted` so it doesn't re-process the same row
+   every 2 minutes.
+3. **New workflow `Publish Approved Video`** (id `5WPb5qNtfTM39QnP`,
+   manual-trigger only, never scheduled) — when run, posts every
+   `ready_for_review`/`pending_approval` row to **Twitter, Facebook
+   (pageId `1235822692950396`, same as the article social-blast workflow),
+   and TikTok** (accountId `47040`) via Blotato, then marks the row
+   `posted`. This is the only place actual publishing happens now, and it
+   only runs when explicitly triggered per Chris's approval.
+
+**TikTok target fields** (confirmed via Blotato's API docs, not guessed):
+`targetType`, `privacyLevel` (set `PUBLIC_TO_EVERYONE`), `disabledComments`/
+`disabledDuet`/`disabledStitch` (all `false` — engagement allowed),
+`isBrandedContent: false`, `isYourBrand: false`, `isAiGenerated: true` (this
+is genuinely AI-generated video, so disclosure is accurate, and TikTok
+requires it). Chris hasn't confirmed these defaults — flagged, open to
+change.
+
+**Notification:** created a Claude Code Remote Routine ("56ViceLane —
+Video Ready For Approval Check", `trig_013RqchgCp1VQtbZijz5xnyV`, hourly,
+bound to this persistent session) that checks for `ready_for_review` rows
+and sends Chris a push notification the moment one appears, then flips it
+to `pending_approval` so it doesn't re-ping. No working email/Discord
+alert channel exists for this yet (no SMTP credential in n8n per
+NEXT-SESSION.md; the site's Discord webhook is public-community-facing,
+wrong audience for an internal approval ping) — the push notification is
+the only channel currently wired for this.
+
+Still unresolved: the underlying footage-sourcing risk from earlier in
+this document. This session's process (generate → notify → approve →
+multi-platform publish) is a control, not a fix.
