@@ -127,8 +127,9 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
       built per-bundle image gallery (watermarked previews, unlocks
       per-owned-design) instead of dead click areas.
 - [ ] Article image audit — wrong/mismatched og:images across ~66 articles.
-- [ ] Article publishing cadence change (2 evergreen/wk, 3 two-part news
-      series/wk, 3 Trevor satire/wk, 2 Editor posts/wk).
+- [x] Article publishing cadence change (2 evergreen/wk, 3 two-part news
+      series/wk + 1 extra Vice City rant, 3 Trevor satire/wk, 2 Editor
+      posts/wk) — documented as a standing rule in CLAUDE.md.
 - [ ] Media Gallery for the empty space below Last Drive Preview on home
       page.
 - [ ] Affiliate program sign-ups — shortlist delivered 2026-07-27 (scored,

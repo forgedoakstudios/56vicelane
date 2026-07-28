@@ -69,9 +69,10 @@ external processes not fully on that clock — flagged below.
 - [ ] Wrong images on some articles (e.g. a GTA6 article showing a GTA5
   image) — needs a pass across all ~66 published articles' `og:image`s vs.
   actual content.
-- [ ] Article publishing cadence change: 2 evergreen/week, 3 two-part news
+- [x] Article publishing cadence change: 2 evergreen/week, 3 two-part news
   series/week, 3 Trevor satire/week (+1 extra "Trevor rants about moving to
-  Vice City" piece), 2 Editor posts/week (start + end of week).
+  Vice City" piece), 2 Editor posts/week (start + end of week). Documented
+  as a standing rule in CLAUDE.md — apply it to next week's calendar.
 - [ ] More social post volume across the board — "we must be seen."
 - [ ] Media Gallery + empty real estate below Last Drive Preview on home
   page — currently underused space, no plan yet.
