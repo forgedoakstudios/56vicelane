@@ -114,10 +114,18 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
       real code, not confirmed with you.
 - [ ] store.html purchase/plate-grant code still not rewired to n8n — needs
       a session with PayPal sandbox access, not a blind rewrite.
-- [ ] Click through Supermetrics login links to authenticate real platforms
-      (Facebook, Instagram, TikTok, X, YouTube).
-- [ ] Set up Cloudinary.
-- [ ] Store: audit bundle thumbnail grids for missing click handlers.
+- [ ] Supermetrics: on hold indefinitely per Chris — paid tool, nothing
+      connected yet, native free dashboards cover current traffic level.
+      Revisit if manual cross-platform checking becomes the bottleneck.
+- [x] Set up Cloudinary — connected and verified (upload/transform
+      tested). Used once already to compress the 6 persona portraits;
+      note the sandbox's own network policy blocks pulling optimized
+      bytes back down directly, so local Pillow did the actual
+      resize/recompress for those. Live CDN delivery through Cloudinary
+      remains untested from this environment.
+- [x] Store: audit bundle thumbnail grids for missing click handlers —
+      built per-bundle image gallery (watermarked previews, unlocks
+      per-owned-design) instead of dead click areas.
 - [ ] Article image audit — wrong/mismatched og:images across ~66 articles.
 - [ ] Article publishing cadence change (2 evergreen/wk, 3 two-part news
       series/wk, 3 Trevor satire/wk, 2 Editor posts/wk).

@@ -61,8 +61,11 @@ external processes not fully on that clock — flagged below.
   build: news.html needs month-grouped rendering from articles.json, and
   archive.html needs to actually pull/bucket dynamically instead of being
   static.
-- [ ] Store: not all nameplate/tag thumbnails are clickable — audit
-  store.html's bundle thumbnail grids for missing click handlers.
+- [x] Store: not all nameplate/tag thumbnails are clickable — audit
+  store.html's bundle thumbnail grids for missing click handlers. Fixed:
+  clicking any nameplate bundle card (or the All Nameplate Bundles card)
+  now opens a lightbox with every design in that bundle, watermarked
+  unless the verified customer already owns that specific design.
 - [ ] Wrong images on some articles (e.g. a GTA6 article showing a GTA5
   image) — needs a pass across all ~66 published articles' `og:image`s vs.
   actual content.
