@@ -35,6 +35,15 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
       (Switch port + multiverse mod). See
       `audit/2026-07-27-content-sprint-social-log.md` for the full
       breakdown of what's written and what's queued per platform.
+- [ ] **Weekly Winner Selection — rewired off Airtable, ready to enable.**
+      It used to call the Airtable API directly (blocked by quota); now
+      reads weekPoints straight from the n8n LastDrive Data Table (the
+      rollup PointsLedger - Track Action already keeps live) and writes
+      codes to the n8n Redemptions Data Table — no Airtable dependency
+      left. Test-run against pinned sample data confirmed the Top-3 +
+      Trevor's-Pick logic (execution #2549): correctly ranked 4 test
+      members by weekPoints and excluded a 0-point one. Still left
+      inactive — turning it on and running it for real is your call.
 
 ## Shelved — revisit late August 2026
 
@@ -147,4 +156,3 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
 - [ ] Real member/points/redemption data export (workflow's built, needs a
       manual click in the n8n editor on/after Aug 1).
 - [ ] Flip `STORE_MAINTENANCE` off in store.html once reviewed.
-- [ ] Re-enable + manually run Weekly Winner Selection.
