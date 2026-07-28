@@ -105,9 +105,28 @@ topic.
 mistake left a stray duplicate parameter block on the node that shadowed
 the real fix. Caught and corrected before either workflow went live again.
 
-## Status: fixed, NOT yet reactivated
+## Status: generation back on, auto-publish held for approval
 
-Both workflows (`Generate Daily Video`, `Check & Publish Pending Videos`)
-are back to **inactive** pending Chris's review of the new article-sourcing
-behavior — this is a real change to what gets posted, not just a bug fix,
-so it gets the same go-ahead gate as the original reactivation did.
+Chris's call (2026-07-28, after the above): run `Generate Daily Video`
+again — he'll be checking Blotato more often himself until the real-
+creator-footage question is actually resolved — but **hold everything
+video-wise for his approval before it posts.**
+
+- `Generate Daily Video` — **active**. Generates daily from current
+  articles (per the fix above) and stores each job in `pending_videos`.
+  Nothing gets posted at this stage.
+- `Check & Publish Pending Videos` (the actual auto-post-to-Twitter step)
+  — **left inactive on purpose.** This is the approval gate: videos sit
+  rendered-but-unpublished until Chris reviews and either publishes them
+  himself in Blotato's dashboard, or asks for a specific one to be
+  published, at which point `Check & Publish Pending Videos` can be run
+  manually for that single video rather than reactivated wholesale.
+- Open question asked back to Chris: whether he wants a lightweight
+  notification (e.g. daily digest) when a new video finishes rendering,
+  since there's currently no push alert — only his own periodic checking
+  of Blotato's dashboard, or the `pending_videos` data table.
+
+This does **not** resolve the underlying footage-sourcing risk — it's a
+process control (nothing ships without a human looking at it first), not
+a fix to whatever let a real creator's video get pulled into a render.
+That question is still open.
