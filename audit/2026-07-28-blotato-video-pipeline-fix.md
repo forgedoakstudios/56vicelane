@@ -176,3 +176,39 @@ the only channel currently wired for this.
 Still unresolved: the underlying footage-sourcing risk from earlier in
 this document. This session's process (generate → notify → approve →
 multi-platform publish) is a control, not a fix.
+
+## Update: paused entirely (2026-07-28, later same day)
+
+The one video actually generated today (`video_id 0829ffd2`, topic
+"Rockstar Union: First Meeting Was 'A Step In The Right Direction'") had a
+third, separate problem on top of the rights scare and the mapping bugs:
+voiceover script and burned-in captions were accurate, but the on-screen
+**scene graphics** rendered literal lorem-ipsum placeholder text instead
+of real content. Likely cause: the `ai-story-video` template has a
+scene-graphic text input that isn't covered by prompt-based auto-fill (per
+Blotato's own docs, some inputs need explicit values — prompt only covers
+"most" inputs, not all) — but the exact field name isn't discoverable
+through their API or help docs from here, so guessing at it would mean
+spending more render credits on trial and error. Rejected (`status:
+"rejected"` in `pending_videos`, row `id 11`), not published.
+
+Given three separate failures in one day (rights-content scare, two
+mapping bugs, now placeholder scene graphics), Chris's call: pause the
+whole video pipeline rather than keep fighting it. **All three pieces
+deactivated:**
+- `Generate Daily Video` (`WFrG4efuK86qNaek`) — inactive.
+- `Check & Notify Pending Videos` (`JVqj5usq6e72azZy`) — inactive.
+- CCR hourly approval-check Routine (`trig_013RqchgCp1VQtbZijz5xnyV`) —
+  disabled.
+
+`Publish Approved Video` (`5WPb5qNtfTM39QnP`, manual-trigger-only,
+multi-platform) is untouched and still usable if a specific video is ever
+approved by hand later.
+
+**Next step, not this session:** evaluate OpenArt (specifically its MCP
+server / API, and the Director feature) as a possible replacement for
+Blotato's video generation — see the OpenArt research earlier in this
+session's chat log for the viability writeup. Blotato itself would remain
+in use for text/image posting (`Article → Social Blast`, `Friday
+Frequency`) — this pause is specifically about AI video generation, not
+all Blotato usage.
