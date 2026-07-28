@@ -93,7 +93,11 @@ a Supermetrics login), tell me and I'll check it off.
 - [x] Store: audit bundle thumbnail grids for missing click handlers —
       built per-bundle image gallery (all designs, watermarked previews,
       unlocks per-owned-design) instead of dead click areas
-- [ ] Article image audit — wrong/mismatched og:images across ~66 articles
+- [x] Article image audit — wrong/mismatched og:images across ~66 articles.
+      Checked all 73: fixed 2 real content mismatches (Xbox wishlist
+      article using GTA5-branded art; Last Drive article using a generic
+      hero instead of the purpose-built lastdrive-hero) plus 4 missing
+      twitter:image tags. Everything else checked out clean.
 - [x] Article publishing cadence change (2 evergreen/wk, 3 two-part news
       series/wk, 3 Trevor satire/wk + 1 extra Vice City rant, 2 Editor
       posts/wk) — documented as a standing rule in CLAUDE.md
