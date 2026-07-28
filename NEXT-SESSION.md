@@ -174,10 +174,16 @@ change needed. forum.html's `discord.gg/ewdRcjsbg5` stays as-is.
 - [ ] More affiliate products/companies + a GTA6 Guide template.
 - [ ] Forum Discord section shows a generic image instead of an actual
   Discord/community image.
-- [ ] Blotato "Check & Publish Pending Videos" — paused since the empty
-  `video_id` bug report. Chris said he'd paste the actual prompt/context —
-  not received yet in this session. `Generate Daily Video` paused alongside
-  it 2026-07-26 to stop burning credits on jobs nobody can publish.
+- [x] Blotato video pipeline — fixed 2026-07-28, see
+  `audit/2026-07-28-blotato-video-pipeline-fix.md`. Root cause was two
+  nested-response mapping bugs (Blotato wraps its responses in an `item`
+  key that neither workflow was unwrapping) — one caused every
+  auto-generated video since 7/21 to store a null `video_id`, the other
+  meant even a correctly-fetched video could never reach the actual
+  publish step. Correction: `Generate Daily Video` was never actually
+  paused (despite this file's earlier note) — it kept firing daily and
+  burning render credits on jobs that could never publish. Both workflows
+  are fixed and active now; verified end-to-end with a real test post.
 
 ---
 
