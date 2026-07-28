@@ -57,6 +57,12 @@ CSS instead of sharing one source). Don't let it happen again:
   — copy from them, not from an arbitrary published article.
 
 ## Daily checklist
+**Read `audit/daily-checklist.md` at the start of every session, before
+anything else** — this applies even to a session with no memory of prior
+chats. Open with a short summary of what's urgent/outstanding from it
+before moving on to whatever the session was actually asked to do. This
+is a standing instruction, not optional context to skip past.
+
 `audit/daily-checklist.md` is a living, once-a-day-refreshed list of
 what's outstanding and what needs a decision — urgent items first,
 then decisions needed from Chris, then recently-done, then the general
@@ -69,6 +75,12 @@ downloadable copy. Either of us can check items off by hand
 (`- [ ]` → `- [x]`) — the daily regen never un-checks something that's
 already checked, it only carries forward what's still open and adds
 what's new.
+
+Before regenerating, the Routine archives the current day's snapshot to
+`audit/daily-checklist-history/<Generated date, YYYY-MM-DD>.md` — a
+permanent file per day, never overwritten. That history folder is the
+full record if you need to check what a specific past day's checklist
+actually said.
 
 ## Posting: auto-schedule is the standing mode
 Human-in-the-loop approval is being built but currently errors out, so
