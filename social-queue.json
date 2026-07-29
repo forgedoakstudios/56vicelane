@@ -20,7 +20,7 @@
     "url": "https://56vicelane.com/lastdrive",
     "image": "images/lastdrive-hero.webp",
     "imageAlt": "The Last Drive countdown",
-    "lastPostedDate": "2026-07-26"
+    "lastPostedDate": "2026-07-28"
   },
   {
     "id": "lastdrive-signup-1",
@@ -140,7 +140,7 @@
     "image": "images/gta6-trailer-3-thumbnail.png",
     "imageAlt": "GTA6 Trailer 3 Could Drop August 6, Insider Predicts",
     "scheduledFor": "2026-07-28T13:00:00Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-gta6-region-lock-codes-part1",
