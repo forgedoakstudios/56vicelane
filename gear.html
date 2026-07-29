@@ -205,7 +205,12 @@
   height: 100%;
   object-fit: contain;
   padding: 12px;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .8s ease;
 }
+.gear-img img.active { opacity: 1; }
 .gear-platform-badge {
   position: absolute;
   top: 8px;
@@ -487,8 +492,10 @@
       </div>
 
       <div class="gear-card reveal">
-        <div class="gear-img">
-          🟢
+        <div class="gear-img" data-rotate>
+          <img class="active" src="/images/gear/xbox-controller-1.jpg" alt="Xbox Wireless Controller">
+          <img src="/images/gear/xbox-controller-2.jpg" alt="Xbox Wireless Controller">
+          <img src="/images/gear/xbox-controller-3.jpg" alt="Xbox Wireless Controller">
           <div class="gear-platform-badge">Xbox</div>
         </div>
         <div class="gear-body">
@@ -877,6 +884,21 @@ document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
   if (!el) return;
   var days = Math.max(0, Math.ceil((new Date('2026-11-19T00:00:00-05:00') - Date.now()) / 86400000));
   el.textContent = days;
+})();
+</script>
+<script>
+/* rotate through each product's photos in its gear-img slot */
+(function(){
+  document.querySelectorAll('.gear-img[data-rotate]').forEach(function(box){
+    var imgs = box.querySelectorAll('img');
+    if (imgs.length < 2) return;
+    var i = 0;
+    setInterval(function(){
+      imgs[i].classList.remove('active');
+      i = (i + 1) % imgs.length;
+      imgs[i].classList.add('active');
+    }, 3200 + Math.random() * 600); /* slight stagger so cards don't all flip in sync */
+  });
 })();
 </script>
 <script src="/back-to-top.js" defer></script>
