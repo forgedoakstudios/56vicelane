@@ -20,7 +20,7 @@
     "url": "https://56vicelane.com/lastdrive",
     "image": "images/lastdrive-hero.webp",
     "imageAlt": "The Last Drive countdown",
-    "lastPostedDate": "2026-07-28"
+    "lastPostedDate": "2026-07-29"
   },
   {
     "id": "lastdrive-signup-1",
@@ -149,7 +149,7 @@
     "image": "images/gta6-hero.png",
     "imageAlt": "GTA6 PS5 Codes Are Region-Locked — Here's Exactly Who's Affected",
     "scheduledFor": "2026-07-29T13:00:00Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-rockstar-union-step-in-right-direction",
