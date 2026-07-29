@@ -38,7 +38,25 @@ platform-specific text with no broken/empty URL).
   Chris wants more variety later.
 - No "don't repeat the same pick within N days" tracking yet — pure random
   selection within each type's pool. Low risk at current pool sizes (9
-  store items, 5 engagement prompts, ~65+ eligible articles) but worth
-  revisiting if repeats become noticeable.
+  store items, ~65+ eligible articles) but worth revisiting if repeats
+  become noticeable.
 - Reuses the same Blotato credential and Discord webhook already in use
   elsewhere — no new credentials needed.
+
+## Update: engagement prompt pool expanded 5 → 30 (2026-07-28, later same day)
+
+Chris: "Can you go ahead and schedule a month's worth of engagement posts?"
+At 2 posts/day and a 3-way rotation, engagement posts land roughly every
+other firing — a 30-day month burns through a 5-item pool 3+ times over,
+which would get noticeable fast. Expanded the `prompts` array inside
+`Determine Content` from 5 to 30 unique, on-brand GTA6 engagement
+questions (pre-order debates, favorite map guesses, character takes,
+launch-night plans, etc.) — enough variety that a full month of twice-daily
+posting won't visibly repeat.
+
+Verified safely before letting it go live: temporarily disabled `Post to
+Blotato` and `Post to Discord`, ran a manual test execution (id `2595`),
+and confirmed `Determine Content` correctly pulled from the new pool
+(`{"type":"engagement","title":"Be honest — pre-ordering, or waiting for
+reviews?", ...}`). Both posting nodes have since been **re-enabled** — the
+workflow is fully live again, nothing was left disabled.
