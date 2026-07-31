@@ -20,7 +20,7 @@
     "url": "https://56vicelane.com/lastdrive",
     "image": "images/lastdrive-hero.webp",
     "imageAlt": "The Last Drive countdown",
-    "lastPostedDate": "2026-07-30"
+    "lastPostedDate": "2026-07-31"
   },
   {
     "id": "lastdrive-signup-1",
@@ -176,7 +176,7 @@
     "image": "images/trevor-portrait.png",
     "imageAlt": "Trevor's Take: The Fake Trailers Are Getting More Views Than My Life",
     "scheduledFor": "2026-07-31T17:00:00Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-gta6-region-lock-codes-part2",
