@@ -314,3 +314,46 @@ no site changes needed until a source is picked.
 - **Blotato accounts**: YouTube 40397, Instagram 59705, TikTok 47040, X 20503,
   Facebook acct 42247 (target pageId `1235822692950396`). Credential id `wD818CRlLww46fFr`.
 - **Scheduled**: production merge dev→main set for Fri 2026-07-24 ~4:00pm CT.
+
+## 6. Daily login streak / loyalty program (idea, 2026-07-31 — not built)
+
+Chris's idea, explicitly floated as "just ideas" — not approved for build
+yet, logged so it doesn't get lost. Deliberately held until after the Aug 1
+Airtable→n8n cutover: this needs real per-user persistent state (streak
+count, currency balance, redemption history), and building that today would
+either land on the still-dead Airtable path or bolt a brand-new n8n Data
+Table + workflow onto a migration that's already mid-transition. Revisit
+once the historical import has run and `USE_N8N_BACKEND` is live for real.
+
+**Mechanic:**
+- Log in + click a daily check-in box to bank that day's count. Miss a day
+  → streak resets to zero.
+- On-site currency awarded daily, escalating while the streak holds:
+  day 1 = $0.01, day 2 = $0.02, day 3 = $0.03, day 4 = $0.06, day 5 = $0.12,
+  day 6 = $0.24, day 7 = $0.48, then resets. (Chris's numbers — needs a
+  final gut-check on whether doubling from day 3 onward feels right, or
+  whether the day-3→4 jump from $0.03 to $0.06 should instead continue the
+  +$0.01/day pattern before doubling kicks in. Not resolved, just noted.)
+  Store credit accumulates across resets, doesn't zero out — only the
+  *streak count* resets on a missed day, not banked currency already earned.
+- **7-day streak reward:** a free nameplate made specifically for this
+  loyalty program (not sold in the regular store).
+- **30-day streak reward:** a nameplate pack of the player's choice (i.e.
+  one of the existing 7 themed bundles, or the Pick 5 / All-Bundles tier —
+  needs a decision on scope once this gets built).
+- **"The Hard Way" nameplate** (the 7-day reward specifically): SWAT
+  vehicle + chopper design, chopper rotor blades animated in a continuous
+  spin — same idea as Call of Duty's animated calling cards. This is a
+  self-contained CSS/SVG asset, no backend dependency — could be
+  prototyped as a visual preview anytime, independent of the streak
+  mechanic itself, if Chris wants to see it before the backend is built.
+
+**Open questions for whenever this gets built for real:**
+- Timezone boundary for "a day" (server UTC day vs. the visitor's local
+  day) — affects both the streak-reset fairness and the currency-doubling
+  schedule.
+- Anti-gaming: does checking in from multiple accounts/devices need any
+  guard, or is this low-stakes enough (a few cents/day) not to bother?
+- Where the $0.01–$0.48 store credit actually lives — likely a new column
+  on the n8n LastDrive table (mirroring how `points`/`weekPoints` already
+  work) rather than a whole separate currency system.
