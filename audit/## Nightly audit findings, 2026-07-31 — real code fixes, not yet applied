@@ -1,0 +1,42 @@
+## Nightly audit findings, 2026-07-31 — real code fixes, not yet applied
+
+Full detail in `audit/2026-07-31-audit.md` (first report this routine has
+actually produced — 2 prior nights misfired silently per the daily
+checklist). Four items, none applied this run since the nightly audit is
+report-only:
+
+- **Broken self-share links (real 404, highest priority of these four).**
+  `articles/gta6-trailer-3-window-confirmed-56vicelane-called-it.html`'s
+  Twitter/Reddit/WhatsApp share buttons link to
+  `/articles/gta6-trailer-3-window-confirmed.html` — wrong slug (missing
+  the `-56vicelane-called-it` suffix), no such article has ever existed.
+  Fix: correct the 4 share URLs in that one file.
+- **Canonical URL / `og:url` split 20-vs-53 across the 73 articles.** 20
+  articles use `/articles/slug.html`, the other 53 (plus `sitemap.xml` and
+  `articles.json`, no exceptions) use extensionless `/articles/slug`. The
+  20 outliers contradict their own sitemap entry — duplicate-content signal
+  to search engines. Recommend standardizing all 73 on the extensionless
+  form, but confirm with Chris before batch-editing 20 files' `<head>`.
+- **12 articles use a relative (non-absolute) `og:image`/`twitter:image`
+  URL** — `/images/Jason_and_Lucia_01_landscape.jpg` instead of
+  `https://56vicelane.com/images/Jason_and_Lucia_01_landscape.jpg`, which 9
+  other articles use for the identical image. Relative OG image URLs are a
+  known cause of missing link-preview images on Facebook/Discord/Slack.
+  Fix: make all 12 absolute, matching the other 9. List of the 12 files is
+  in the audit report.
+- **`og:title` is literally "Trevor"** on both `trevors-take-ai-slop.html`
+  and `trevors-take-gta6-expectations.html` — the one duplicate/generic
+  `og:title` found. Low-impact, easy to bundle with the fix above.
+
+**Also flagged, not a code fix:** this session's network egress policy
+returned 403 on every external host it tried, including 56vicelane.com
+itself — so the nightly audit couldn't do live HTTP checks (confirming
+actual redirect/404 behavior on the canonical-URL split above) or spot-check
+the 11 real external citation links found in article bodies (gamesradar.com
+×2, variety.com, theverge.com, pcgamer.com, dexerto.com,
+rockstargames.com/VI, screenrant.com, beebom.com, kotaku.com,
+arstechnica.com — full source-article mapping in the audit report). Worth
+checking whether that's specific to this session or the routine needs a
+different network grant going forward.
+
+---
