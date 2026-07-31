@@ -15,11 +15,17 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
       plain public HTML across 30 files. Dead until the Aug 1 quota reset —
       that's now 2 days away, worth actually doing this before traffic to
       those endpoints starts working again.
-- [ ] **Nightly site audit still hasn't produced a report, 2 nights running.**
-      Built as a Claude Code Remote Routine (midnight CT), fired manually
-      once already — still zero `/audit/YYYY-MM-DD-audit.md` files in the
-      repo. This has gone from "worth a look" to an actual reliability
-      problem worth investigating properly rather than re-firing and hoping.
+- [x] **Nightly site audit — root cause found.** It DID run and produce
+      real findings on 2026-07-31, but wrote them to a garbled filename
+      (`audit/## Nightly audit findings, 2026-07-31 — real code fixes,
+      not yet applied`) instead of the `audit/YYYY-MM-DD-audit.md` path
+      it referenced in its own text — looks like it wrote its intended
+      heading as the filename by mistake. That explains the "zero report
+      files" symptom on the prior 2 nights too. Cleaned up: findings
+      re-verified against the real files (one of its 4 claims didn't
+      actually check out — see `audit/2026-07-31-audit.md`), 3 real fixes
+      applied and pushed, garbled file removed. The Routine's own
+      file-writing logic still needs a look so this doesn't recur.
 
 ## Needs a decision from you
 
@@ -80,6 +86,13 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
 
 ## Done recently
 
+- [x] **2026-07-31 nightly audit findings fixed and pushed to `main`:**
+      fixed 8 broken self-share links (wrong slug) on the Trailer-3-window
+      article; standardized `canonical`/`og:url` to the extensionless
+      form on the 20 articles that still had `.html`; made 12 articles'
+      relative `og:image`/`twitter:image` absolute. A claimed 4th finding
+      (duplicate "Trevor" `og:title`) didn't check out on inspection —
+      left untouched. Full detail in `audit/2026-07-31-audit.md`.
 - [x] **Affiliate product images — done.** All 26 real product photos
       (DualSense, DualSense Edge, Xbox Wireless Controller, Xbox Elite
       Series 2, Sony Pulse 3D, Arctis Nova Pro, Xbox Wireless Headset,
@@ -95,8 +108,8 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
       for their review status.
 - [x] Nightly site audit — built as a Claude Code Remote Routine (not an
       n8n workflow, sidesteps the missing n8n GitHub credential). Fires
-      midnight CT. **Not actually producing reports yet** — see "Urgent,"
-      above.
+      midnight CT. Root-cause of its "no reports" symptom found and fixed
+      2026-07-31 — see the entry above.
 - [x] Evergreen Recycle Poster's engagement-prompt pool expanded 5 → 30 so
       a full month of twice-daily rotation won't visibly repeat.
 - [x] Consolidated and merged all of 7/28's work to `main` (Blotato pause,
