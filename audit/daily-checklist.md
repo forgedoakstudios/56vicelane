@@ -38,13 +38,20 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
 
 ## Needs a decision from you
 
-- [ ] **Flip `USE_N8N_BACKEND` live — ready, waiting on explicit go-ahead.**
-      The historical import is verified correct (see Urgent, above), so
-      the data-loss risk that blocked this earlier is gone. Two things
-      still separate from that: (1) the flag flip itself in
-      `track.js`/`members.html`/`lastdrive.html`, and (2) merging that
-      branch code to `main` at all — it's never been merged, flag value
-      aside. Neither should happen without saying so explicitly.
+- [x] **`USE_N8N_BACKEND` flipped live, 2026-08-02.** Confirmed on
+      `main` via independent fresh clone: `track.js`, `members.html`,
+      `lastdrive.html` all now write real signups/points/lookups to the
+      migrated n8n Data Tables instead of Airtable. Verified before
+      flipping: client correctly calls the n8n webhooks (confirmed exact
+      request URLs), and the server side confirmed correct via direct
+      workflow execution (List Members webhook returns real migrated
+      data matching Airtable exactly). Couldn't observe the live
+      browser↔n8n round-trip from this sandbox (its own network egress
+      policy blocks external hosts) — not a functional issue, a
+      testing-environment limitation. Rollback is a one-line flag
+      revert in each file if anything looks wrong.
+      `store.html` is NOT included — its n8n wiring was never built
+      (separate item, needs PayPal sandbox access).
 - [ ] **Blotato AI video generation — still paused, needs a direction.**
       Unchanged: three separate failures in one day (rights-content scare,
       two nested-response mapping bugs, then lorem-ipsum placeholder text
