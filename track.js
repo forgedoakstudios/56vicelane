@@ -32,7 +32,7 @@
    atomic server-side check-and-write (was a separate GET before the write;
    now the Track Action webhook does both in one call). */
 (function () {
-  var USE_N8N_BACKEND = false;
+  var USE_N8N_BACKEND = true;
 
   var AT_TOKEN = 'pattxJ12NQzpHMejD.2eb992f22f1a43e032d866df028dbb33958635234f6cfd30769e3e12f10d5588';
   var AT_BASE  = 'appVViGbmcu5gbn8B';
