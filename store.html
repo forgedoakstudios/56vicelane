@@ -800,13 +800,15 @@ var AT_BASE  = 'appVViGbmcu5gbn8B';
 var AT_URL   = 'https://api.airtable.com/v0/' + AT_BASE + '/Last%20Drive';
 var AT_H     = {'Authorization':'Bearer ' + AT_TOKEN, 'Content-Type':'application/json'};
 
-// Airtable's free-plan API quota is exhausted for the month (hit 2026-07-27,
-// resets 2026-08-01). Profile lookup and every purchase path write to that
-// same base, so both are paused here rather than left to fail silently or
-// take payment for something that can't be fulfilled. Remove this block
-// once the quota resets or the site moves off Airtable.
-var STORE_MAINTENANCE = true;
-var STORE_MAINTENANCE_MSG = "Store & profile lookup are paused until August 1 while we sort out a backend issue — no purchases will go through until then. Check back Aug 1!";
+// Was paused 2026-07-27 while Airtable's free-plan API quota was exhausted
+// (profile lookup and every purchase path write to that base, so both were
+// gated here rather than left to fail silently or take payment for
+// something that couldn't be fulfilled). Quota reset 2026-08-01 and this
+// was re-enabled 2026-08-02. Kept as a manual kill switch for any future
+// backend incident — flip STORE_MAINTENANCE_MSG's wording to match
+// whatever the actual issue is if it's ever turned back on.
+var STORE_MAINTENANCE = false;
+var STORE_MAINTENANCE_MSG = "Store & profile lookup are temporarily paused while we sort out a backend issue — check back shortly.";
 
 var playerRecord  = null;
 var selectedPlate = null;
