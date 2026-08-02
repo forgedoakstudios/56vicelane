@@ -1,6 +1,6 @@
 # 56ViceLane — Daily Checklist
 
-**Generated:** 2026-07-30 (Central Time)
+**Generated:** 2026-08-02 (Central Time)
 **How this works:** one list, updated daily. Check things off yourself by
 editing this file (change `- [ ]` to `- [x]`), or tell me and I'll check
 them off. Each day I regenerate this — anything still unchecked carries
@@ -12,46 +12,12 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
 ## 🚨 Urgent
 
 - [ ] **Rotate the Airtable Personal Access Token.** Found hardcoded in
-      plain public HTML across 30 files. The Aug 1 quota reset has now
-      happened (confirmed live) — this token is live/reachable again,
-      worth doing now.
-- [x] **Aug 1 historical import — done and verified, 2026-08-02.** Ran
-      the one-time Airtable → n8n migration. Caught a real bug on the
-      first attempt: the field-mapping code read `item.json.X` instead of
-      `item.json.fields.X`, so every inserted row came out blank despite
-      reporting success. Fixed, cleared the 105 corrupted rows, re-ran
-      clean. Verified row counts match Airtable exactly (LastDrive 41/41,
-      PageStats 64/64, PointsLedger 0/0, Redemptions 0/0) plus a
-      field-by-field spot check on a real record. Full writeup:
-      `audit/2026-08-02-airtable-import-complete.md`.
-- [x] **Nightly site audit — root cause found.** It DID run and produce
-      real findings on 2026-07-31, but wrote them to a garbled filename
-      (`audit/## Nightly audit findings, 2026-07-31 — real code fixes,
-      not yet applied`) instead of the `audit/YYYY-MM-DD-audit.md` path
-      it referenced in its own text — looks like it wrote its intended
-      heading as the filename by mistake. That explains the "zero report
-      files" symptom on the prior 2 nights too. Cleaned up: findings
-      re-verified against the real files (one of its 4 claims didn't
-      actually check out — see `audit/2026-07-31-audit.md`), 3 real fixes
-      applied and pushed, garbled file removed. The Routine's own
-      file-writing logic still needs a look so this doesn't recur.
+      plain public HTML across 30 files. The Aug 1 quota reset has landed —
+      this token is live/reachable again right now, which makes this more
+      urgent than when it was dead, not less. Still not rotated.
 
 ## Needs a decision from you
 
-- [x] **`USE_N8N_BACKEND` flipped live, 2026-08-02.** Confirmed on
-      `main` via independent fresh clone: `track.js`, `members.html`,
-      `lastdrive.html` all now write real signups/points/lookups to the
-      migrated n8n Data Tables instead of Airtable. Verified before
-      flipping: client correctly calls the n8n webhooks (confirmed exact
-      request URLs), and the server side confirmed correct via direct
-      workflow execution (List Members webhook returns real migrated
-      data matching Airtable exactly). Couldn't observe the live
-      browser↔n8n round-trip from this sandbox (its own network egress
-      policy blocks external hosts) — not a functional issue, a
-      testing-environment limitation. Rollback is a one-line flag
-      revert in each file if anything looks wrong.
-      `store.html` is NOT included — its n8n wiring was never built
-      (separate item, needs PayPal sandbox access).
 - [ ] **Blotato AI video generation — still paused, needs a direction.**
       Unchanged: three separate failures in one day (rights-content scare,
       two nested-response mapping bugs, then lorem-ipsum placeholder text
@@ -65,20 +31,22 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
       email once the old one actually closes. Once the new tag exists, it's
       a same-session fix: swap `tag=56vicelane-20` across all files that use
       it.
-- [ ] **Dell monitor swap — drafted, needs your merge approval.** Swapped
-      the "Top Pick" monitor card from the LG 27" to the Dell S2725QS (4x
-      higher sales volume), wired to your direct `amzn.to/4x8an7V` link.
-      Sitting on `claude/dell-monitor-swap`, not merged to `main`.
-- [ ] **Razer Blade laptop article — drafted, needs your review before it
-      goes live.** `drafts/tech/gta6-best-gaming-laptops-launch-day.html`,
-      framed around the eventual 2027 PC release (not the Nov 19
-      console-only launch). Sitting on a branch, not merged.
-- [ ] **Two new buyer's-guide articles — drafted, need review before
+- [ ] **Dell monitor swap — still drafted, needs your merge approval.**
+      Swapped the "Top Pick" monitor card from the LG 27" to the Dell
+      S2725QS (4x higher sales volume), wired to your direct
+      `amzn.to/4x8an7V` link. Sitting on `claude/dell-monitor-swap`, not
+      merged to `main`.
+- [ ] **Razer Blade laptop article — still drafted, needs your review
+      before it goes live.**
+      `drafts/tech/gta6-best-gaming-laptops-launch-day.html`, framed around
+      the eventual 2027 PC release (not the Nov 19 console-only launch).
+      Sitting on a branch, not merged.
+- [ ] **Two buyer's-guide articles — still drafted, need review before
       publishing.** `drafts/tech/gta6-best-controllers-buyers-guide.html`
       and `drafts/tech/gta6-best-gaming-headsets-buyers-guide.html` —
-      thorough per-product breakdowns with a quick-jump sidebar, comparison
-      tables, and a rating chart for each. Real product photos wired in.
-      Not yet added to `articles.json` or linked from the site.
+      per-product breakdowns, quick-jump sidebar, comparison tables, rating
+      chart, real product photos wired in. Not yet added to `articles.json`
+      or linked from the site.
 - [ ] **More affiliate programs — partially worked, still open items.**
       G FUEL approved (Awin, publisher ID 3009641), Logitech G accepted,
       Secretlab done. Turtle Beach and the Impact network still not applied
@@ -88,12 +56,26 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
       this as the test case.
 - [ ] Weekly Winner Selection — rewired off Airtable, tested clean, left
       inactive. Enabling it is your call.
-- [ ] `gear.html` search-links only partially fixed — the headsets/HyperX
-      Cloud Alpha/Dell monitor now use real direct product links, but the
-      remaining controller cards (DualSense, DualSense Edge, Xbox Wireless,
-      Xbox Elite Series 2) still point to generic Amazon search results, not
-      a specific product page. Real photos are wired in for all of them
-      either way.
+- [ ] `gear.html` search-links only partially fixed — headsets, HyperX
+      Cloud Alpha, and the Dell monitor now use real direct product links;
+      the remaining controller cards (DualSense, DualSense Edge, Xbox
+      Wireless, Xbox Elite Series 2) still point to generic Amazon search
+      results, not a specific product page. Real photos are wired in for
+      all of them either way.
+- [ ] External citation links in article bodies (11 found) and live
+      redirect/404 behavior haven't been checked yet — the 7/31 audit hit a
+      403 on all outbound network calls (including 56vicelane.com itself),
+      so this was skipped. Worth a dedicated pass if live-link health
+      matters right now.
+- [ ] **New idea logged, not built: daily login streak / loyalty program.**
+      Chris floated this 7/31 as "just an idea," not approved for a build
+      yet — deliberately held until the Airtable→n8n cutover finished (it
+      now has, see below). Escalating daily currency for consecutive
+      logins, 7-day streak reward = a program-exclusive nameplate ("The
+      Hard Way" — animated chopper-rotor SWAT design), 30-day reward = pick
+      of an existing bundle. Full mechanic + open questions in
+      `NEXT-SESSION.md` section 6. Say the word if you want this scoped for
+      a real build.
 
 ## Shelved — revisit late August 2026
 
@@ -109,51 +91,53 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
 
 ## Done recently
 
-- [x] **2026-07-31 nightly audit findings fixed and pushed to `main`:**
-      fixed 8 broken self-share links (wrong slug) on the Trailer-3-window
-      article; standardized `canonical`/`og:url` to the extensionless
-      form on the 20 articles that still had `.html`; made 12 articles'
-      relative `og:image`/`twitter:image` absolute. A claimed 4th finding
-      (duplicate "Trevor" `og:title`) didn't check out on inspection —
-      left untouched. Full detail in `audit/2026-07-31-audit.md`.
+- [x] **Airtable quota reset confirmed + one-time historical import
+      complete, 2026-08-02.** Aug 1 reset landed as expected. Ran the
+      one-time Airtable → n8n Data Table migration; caught a real bug on
+      the first attempt (field-mapping code read `item.json.X` instead of
+      `item.json.fields.X`, so every inserted row came out blank despite
+      reporting success) — fixed, cleared the 105 corrupted rows, re-ran
+      clean. Verified row counts match Airtable exactly (LastDrive 41/41,
+      PageStats 64/64, PointsLedger 0/0, Redemptions 0/0) plus a
+      field-by-field spot check. `audit/2026-08-02-airtable-import-complete.md`.
+- [x] **`USE_N8N_BACKEND` flipped live, 2026-08-02.** `track.js`,
+      `members.html`, `lastdrive.html` now write real signups/points/
+      lookups to the migrated n8n Data Tables instead of Airtable.
+      Verified client webhook calls and server-side responses match
+      Airtable exactly before flipping. `store.html` NOT included — its
+      n8n wiring was never built (needs PayPal sandbox access, separate
+      item). Rollback is a one-line flag revert per file if needed.
+- [x] **Nightly audit Routine's root cause found and fixed, 2026-07-31.**
+      It had been running and producing real findings all along — but
+      writing its report to a garbled filename (its own heading text) as
+      instead of `audit/YYYY-MM-DD-audit.md`, which is why 2 prior nights
+      looked like silent failures. Findings re-verified directly against
+      the files (one of 4 claims didn't hold up, left untouched), 3 real
+      fixes applied and pushed: 8 broken self-share links (wrong slug) on
+      the Trailer-3-window article, canonical/og:url standardized to the
+      extensionless form on 20 articles, 12 articles' relative og:image/
+      twitter:image made absolute. `audit/2026-07-31-audit.md`.
+- [x] **Last Drive Push — 30-day posting campaign, live.** 2x/day (10am +
+      8pm CT), 20 rotating captions linking to `/lastdrive`, across
+      X/Instagram/Facebook/Discord. Self-terminates after 2026-08-29.
+      `audit/2026-07-30-last-drive-push-campaign.md`.
 - [x] **Affiliate product images — done.** All 26 real product photos
-      (DualSense, DualSense Edge, Xbox Wireless Controller, Xbox Elite
-      Series 2, Sony Pulse 3D, Arctis Nova Pro, Xbox Wireless Headset,
-      HyperX Cloud Alpha) pulled from Chris's Google Drive folder and wired
-      into `gear.html`'s 8 cards as rotating carousels (cycles through each
-      product's shots automatically). Verified rendering in a browser,
-      merged to `main`.
+      wired into `gear.html`'s 8 cards as rotating carousels. Verified
+      rendering in a browser, merged to `main`.
 - [x] Swapped HyperX Cloud II for HyperX Cloud Alpha (4k vs <400 sales/mo
       for the outgoing pick) — wired to the direct `amzn.to` link.
-- [x] Built the two thorough buyer's-guide drafts (controllers, headsets)
-      with quick-jump sidebar nav, per-product breakdowns, comparison
-      tables, and CSS-only rating charts — see "Needs a decision," above,
-      for their review status.
-- [x] Nightly site audit — built as a Claude Code Remote Routine (not an
-      n8n workflow, sidesteps the missing n8n GitHub credential). Fires
-      midnight CT. Root-cause of its "no reports" symptom found and fixed
-      2026-07-31 — see the entry above.
+- [x] Built the two thorough buyer's-guide drafts (controllers, headsets) —
+      see "Needs a decision," above, for their review status.
 - [x] Evergreen Recycle Poster's engagement-prompt pool expanded 5 → 30 so
       a full month of twice-daily rotation won't visibly repeat.
-- [x] Consolidated and merged all of 7/28's work to `main` (Blotato pause,
-      Evergreen Recycle Poster, GitHub Actions fixes, affiliate log, the
-      laptop draft) after Chris's review and go-ahead.
-- [x] Diagnosed and fixed two real bugs in the Blotato video pipeline
-      (null `video_id` mapping, `Is Done?` condition never matching), then
-      found a deeper rights problem and a third bug (placeholder scene
-      text) — net result: pipeline paused, not shipped.
+- [x] Diagnosed and fixed two real bugs in the Blotato video pipeline, then
+      found a deeper rights problem and a third bug — net result: pipeline
+      paused, not shipped.
 - [x] Built an approval-gate + multi-platform publish flow (Twitter,
-      Facebook, TikTok) for whenever video generation resumes — sitting
-      ready, unused while the pipeline's paused.
-- [x] Fixed two real GitHub Actions bugs and merged to `main`:
-      `Scheduled Article Publisher` and `Auto-Update articles.json`.
+      Facebook, TikTok) for whenever video generation resumes.
 - [x] Added `Evergreen Recycle Poster` (n8n, active) — 2 extra posts/day
       mixing recycled articles, store/product promos, and engagement
-      prompts across X/Instagram/Facebook/Discord.
-- [x] Confirmed the Amazon Associates 180-day / 3-qualifying-sale rule and
-      the Product Advertising API's requirements (now deprecated in favor
-      of Amazon's Creators API).
-- [x] Researched OpenArt as a possible AI video alternative.
+      prompts.
 
 ## Carried over from this week (not yet done)
 
@@ -162,14 +146,10 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
       real code, not confirmed with you.
 - [ ] store.html purchase/plate-grant code still not rewired to n8n — needs
       a session with PayPal sandbox access.
+- [ ] Flip `STORE_MAINTENANCE` off in store.html once reviewed (Airtable's
+      back, but store.html's own n8n wiring isn't built yet — see above).
 - [ ] Supermetrics: on hold indefinitely per Chris.
 - [ ] Media Gallery for the empty space below Last Drive Preview on home
       page.
 - [ ] GTA6 Guide template.
 - [ ] Forum Discord section — replace generic image with real one.
-
-## Blocked until Aug 1 (Airtable quota reset)
-
-- [ ] Real member/points/redemption data export (workflow's built, needs a
-      manual click in the n8n editor on/after Aug 1).
-- [ ] Flip `STORE_MAINTENANCE` off in store.html once reviewed.
