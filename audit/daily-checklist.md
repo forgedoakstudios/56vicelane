@@ -67,9 +67,10 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
       403 on all outbound network calls (including 56vicelane.com itself),
       so this was skipped. Worth a dedicated pass if live-link health
       matters right now.
-- [ ] **store.html's own n8n wiring still not built.** Purchase/plate-grant
-      code still reads/writes Airtable directly — needs a session with
-      PayPal sandbox access. Practical gap right now: any member who
+- [ ] **store.html's own n8n wiring still not built — walking through it
+      with Chris later today (2026-08-02).** Purchase/plate-grant code
+      still reads/writes Airtable directly — needs a session with PayPal
+      sandbox access. Practical gap in the meantime: any member who
       signed up via `lastdrive.html` *after* today's `USE_N8N_BACKEND`
       flip (2026-08-02) exists only in the n8n LastDrive Data Table, not
       Airtable — store.html's profile lookup won't find them until this
