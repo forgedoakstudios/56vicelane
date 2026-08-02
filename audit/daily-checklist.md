@@ -67,6 +67,13 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
       403 on all outbound network calls (including 56vicelane.com itself),
       so this was skipped. Worth a dedicated pass if live-link health
       matters right now.
+- [ ] **store.html's own n8n wiring still not built.** Purchase/plate-grant
+      code still reads/writes Airtable directly — needs a session with
+      PayPal sandbox access. Practical gap right now: any member who
+      signed up via `lastdrive.html` *after* today's `USE_N8N_BACKEND`
+      flip (2026-08-02) exists only in the n8n LastDrive Data Table, not
+      Airtable — store.html's profile lookup won't find them until this
+      is done. Narrow window so far, but real.
 - [ ] **New idea logged, not built: daily login streak / loyalty program.**
       Chris floated this 7/31 as "just an idea," not approved for a build
       yet — deliberately held until the Airtable→n8n cutover finished (it
@@ -91,6 +98,16 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
 
 ## Done recently
 
+- [x] **`STORE_MAINTENANCE` flipped off, 2026-08-02.** Airtable's quota
+      reset landed Aug 1 but the store's paused-until-Aug-1 message and
+      kill switch never got flipped back — a real member reported it live
+      on mobile, purchases were blocked. Turned `STORE_MAINTENANCE` back
+      off in `store.html` (existing Airtable-direct code, unchanged
+      otherwise) so purchases and profile lookups work again. Verified
+      live on `main` via independent fresh clone. Kept the flag in place
+      as a manual kill switch for any future backend incident. See caveat
+      below re: store.html's own n8n migration still being separate,
+      unbuilt work.
 - [x] **Airtable quota reset confirmed + one-time historical import
       complete, 2026-08-02.** Aug 1 reset landed as expected. Ran the
       one-time Airtable → n8n Data Table migration; caught a real bug on
@@ -144,10 +161,6 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
 - [ ] Review the n8n migration's 3 field fixes (linkedSlot order,
       founder-plate logic, joinStatus/approval flow) — my best read of the
       real code, not confirmed with you.
-- [ ] store.html purchase/plate-grant code still not rewired to n8n — needs
-      a session with PayPal sandbox access.
-- [ ] Flip `STORE_MAINTENANCE` off in store.html once reviewed (Airtable's
-      back, but store.html's own n8n wiring isn't built yet — see above).
 - [ ] Supermetrics: on hold indefinitely per Chris.
 - [ ] Media Gallery for the empty space below Last Drive Preview on home
       page.
