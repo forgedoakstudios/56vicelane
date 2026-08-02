@@ -9,12 +9,21 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
 
 ---
 
-## 🚨 Urgent — Aug 1 is 2 days out
+## 🚨 Urgent
 
 - [ ] **Rotate the Airtable Personal Access Token.** Found hardcoded in
-      plain public HTML across 30 files. Dead until the Aug 1 quota reset —
-      that's now 2 days away, worth actually doing this before traffic to
-      those endpoints starts working again.
+      plain public HTML across 30 files. The Aug 1 quota reset has now
+      happened (confirmed live) — this token is live/reachable again,
+      worth doing now.
+- [x] **Aug 1 historical import — done and verified, 2026-08-02.** Ran
+      the one-time Airtable → n8n migration. Caught a real bug on the
+      first attempt: the field-mapping code read `item.json.X` instead of
+      `item.json.fields.X`, so every inserted row came out blank despite
+      reporting success. Fixed, cleared the 105 corrupted rows, re-ran
+      clean. Verified row counts match Airtable exactly (LastDrive 41/41,
+      PageStats 64/64, PointsLedger 0/0, Redemptions 0/0) plus a
+      field-by-field spot check on a real record. Full writeup:
+      `audit/2026-08-02-airtable-import-complete.md`.
 - [x] **Nightly site audit — root cause found.** It DID run and produce
       real findings on 2026-07-31, but wrote them to a garbled filename
       (`audit/## Nightly audit findings, 2026-07-31 — real code fixes,
@@ -29,6 +38,13 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
 
 ## Needs a decision from you
 
+- [ ] **Flip `USE_N8N_BACKEND` live — ready, waiting on explicit go-ahead.**
+      The historical import is verified correct (see Urgent, above), so
+      the data-loss risk that blocked this earlier is gone. Two things
+      still separate from that: (1) the flag flip itself in
+      `track.js`/`members.html`/`lastdrive.html`, and (2) merging that
+      branch code to `main` at all — it's never been merged, flag value
+      aside. Neither should happen without saying so explicitly.
 - [ ] **Blotato AI video generation — still paused, needs a direction.**
       Unchanged: three separate failures in one day (rights-content scare,
       two nested-response mapping bugs, then lorem-ipsum placeholder text
