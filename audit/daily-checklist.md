@@ -11,10 +11,11 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
 
 ## 🚨 Urgent
 
-- [ ] **Rotate the Airtable Personal Access Token.** Found hardcoded in
-      plain public HTML across 30 files. The Aug 1 quota reset has landed —
-      this token is live/reachable again right now, which makes this more
-      urgent than when it was dead, not less. Still not rotated.
+- [ ] **Revoke the OLD Airtable Personal Access Token.** The token itself
+      is rotated (see below) — new one is live in all 31 files on `main`.
+      Last step: revoke the old token in Airtable's token settings
+      (airtable.com/create/tokens) so the previously-exposed one actually
+      stops working. Chris to do this on his own timeline.
 
 ## Needs a decision from you
 
@@ -95,6 +96,13 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
 
 ## Done recently
 
+- [x] **Airtable Personal Access Token rotated, 2026-08-03.** Chris
+      generated a new token scoped to the Last Drive base
+      (`data.records:read`/`write`). Swapped it in across all 31 files
+      that had the old one hardcoded — literal string swap, no logic
+      changed. Verified live on `main` via fresh clone: new token present
+      everywhere, zero traces of the old one left. Old token still needs
+      revoking in Airtable's dashboard — see Urgent, above.
 - [x] **Missing Facebook share button fixed on 23 articles, 2026-08-03.**
       Found while investigating a report that an article's share button
       posted to a Facebook group with no article attached — 23 of 73
