@@ -27,11 +27,10 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
       placeholder-text bug to Blotato support and wait for a fix, or move to
       OpenArt (viability writeup done, needs the $29/mo Advanced plan, not
       set up yet). See `audit/2026-07-28-blotato-video-pipeline-fix.md`.
-- [ ] **Amazon Associates — plan set, waiting on execution.** Unchanged:
-      let the current account lapse, then apply fresh under the studio
-      email once the old one actually closes. Once the new tag exists, it's
-      a same-session fix: swap `tag=56vicelane-20` across all files that use
-      it.
+- [ ] **Amazon Associates — old account expired 2026-08-02, new one signed
+      up under Forgedoakstudios email.** Waiting on the new tracking tag to
+      come through — once Chris has it, it's a same-session fix: swap
+      `tag=56vicelane-20` across every file that uses it.
 - [ ] **Dell monitor swap — still drafted, needs your merge approval.**
       Swapped the "Top Pick" monitor card from the LG 27" to the Dell
       S2725QS (4x higher sales volume), wired to your direct
