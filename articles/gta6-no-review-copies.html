@@ -238,19 +238,19 @@ footer{background:var(--asphalt);border-top:1px solid var(--edge);padding:24px 1
 <div class="ratings-label">Rate This Article</div>
 <div class="rating-note">Good read</div>
 <div class="star-row" id="stars">
-<button class="star-btn" onclick="rate(1,true)">&#11088;</button>
-<button class="star-btn" onclick="rate(2,true)">&#11088;</button>
-<button class="star-btn" onclick="rate(3,true)">&#11088;</button>
-<button class="star-btn" onclick="rate(4,true)">&#11088;</button>
-<button class="star-btn" onclick="rate(5,true)">&#11088;</button>
+<button class="star-btn" onclick="vlRate(1,true)">&#11088;</button>
+<button class="star-btn" onclick="vlRate(2,true)">&#11088;</button>
+<button class="star-btn" onclick="vlRate(3,true)">&#11088;</button>
+<button class="star-btn" onclick="vlRate(4,true)">&#11088;</button>
+<button class="star-btn" onclick="vlRate(5,true)">&#11088;</button>
 </div>
 <div class="rating-note" style="margin-top:10px">Terrible</div>
 <div class="cop-row" id="cops">
-<button class="cop-btn" onclick="rate(1,false)">&#128660;</button>
-<button class="cop-btn" onclick="rate(2,false)">&#128660;</button>
-<button class="cop-btn" onclick="rate(3,false)">&#128660;</button>
-<button class="cop-btn" onclick="rate(4,false)">&#128660;</button>
-<button class="cop-btn" onclick="rate(5,false)">&#128660;</button>
+<button class="cop-btn" onclick="vlRate(1,false)">&#128660;</button>
+<button class="cop-btn" onclick="vlRate(2,false)">&#128660;</button>
+<button class="cop-btn" onclick="vlRate(3,false)">&#128660;</button>
+<button class="cop-btn" onclick="vlRate(4,false)">&#128660;</button>
+<button class="cop-btn" onclick="vlRate(5,false)">&#128660;</button>
 </div>
 <div class="rating-result" id="rating-result"></div>
 </div>
@@ -262,21 +262,21 @@ footer{background:var(--asphalt);border-top:1px solid var(--edge);padding:24px 1
 <textarea id="ctext" placeholder="Should Rockstar skip review copies? Does it matter to you?" maxlength="500" oninput="document.getElementById('ccount').textContent=this.value.length"></textarea>
 <div class="char-count"><span id="ccount">0</span>/500</div>
 <div class="emoji-row">
-<button class="emoji-btn" onclick="selEmoji(this,'&#127918;')">&#127918;</button>
-<button class="emoji-btn" onclick="selEmoji(this,'&#128293;')">&#128293;</button>
-<button class="emoji-btn" onclick="selEmoji(this,'&#128064;')">&#128064;</button>
-<button class="emoji-btn" onclick="selEmoji(this,'&#129315;')">&#129315;</button>
-<button class="emoji-btn" onclick="selEmoji(this,'&#128128;')">&#128128;</button>
-<button class="emoji-btn" onclick="selEmoji(this,'&#128165;')">&#128165;</button>
-<button class="emoji-btn" onclick="selEmoji(this,'&#9989;')">&#9989;</button>
-<button class="emoji-btn" onclick="selEmoji(this,'&#128665;')">&#128665;</button>
-<button class="emoji-btn" onclick="selEmoji(this,'&#128079;')">&#128079;</button>
-<button class="emoji-btn" onclick="selEmoji(this,'&#129300;')">&#129300;</button>
+<button class="emoji-btn" onclick="vlSelEmoji(this,'&#127918;')">&#127918;</button>
+<button class="emoji-btn" onclick="vlSelEmoji(this,'&#128293;')">&#128293;</button>
+<button class="emoji-btn" onclick="vlSelEmoji(this,'&#128064;')">&#128064;</button>
+<button class="emoji-btn" onclick="vlSelEmoji(this,'&#129315;')">&#129315;</button>
+<button class="emoji-btn" onclick="vlSelEmoji(this,'&#128128;')">&#128128;</button>
+<button class="emoji-btn" onclick="vlSelEmoji(this,'&#128165;')">&#128165;</button>
+<button class="emoji-btn" onclick="vlSelEmoji(this,'&#9989;')">&#9989;</button>
+<button class="emoji-btn" onclick="vlSelEmoji(this,'&#128665;')">&#128665;</button>
+<button class="emoji-btn" onclick="vlSelEmoji(this,'&#128079;')">&#128079;</button>
+<button class="emoji-btn" onclick="vlSelEmoji(this,'&#129300;')">&#129300;</button>
 </div>
-<input type="text" id="cgif" placeholder="GIF URL (optional)" oninput="prevGif()">
+<input type="text" id="cgif" placeholder="GIF URL (optional)" oninput="vlPrevGif()">
 <img id="gifprev" style="max-width:200px;border-radius:6px;margin-bottom:10px;display:none;" src="" alt="gif">
 <div class="rules">Community rules: 18+ language OK. No threats or slurs.</div>
-<button class="submit-btn" onclick="postComment()">Post Comment</button>
+<button class="submit-btn" onclick="vlPostComment()">Post Comment</button>
 <div class="comment-status" id="cstatus"></div>
 </div>
 <div id="clist"></div>
@@ -295,8 +295,6 @@ footer{background:var(--asphalt);border-top:1px solid var(--edge);padding:24px 1
 
 <script>
 var SLUG='gta6-no-review-copies';
-var AT='patCIXzXQ5pGrbr7K.885a7ff83de3cf47755fe6f78222a990c47c4cc6f401986e8d8d8242374cbb61';
-var BASE='appVViGbmcu5gbn8B';
 var selE='';
 fetch('/articles.json?v='+Date.now()).then(function(r){return r.json();}).then(function(a){
 var t=document.getElementById('ticker-track');
@@ -304,45 +302,10 @@ t.innerHTML=[...a,...a].map(function(x){return '<span class="ticker-item" onclic
 }).catch(function(){document.getElementById('ticker-track').innerHTML='<span class="ticker-item">56ViceLane &mdash; Where GTA5 Ends And GTA6 Begins</span>';});
 function nativeShare(){if(navigator.share)navigator.share({title:document.title,url:window.location.href});}
 function copyLink(b){navigator.clipboard.writeText(window.location.href);b.textContent='Copied!';setTimeout(function(){b.textContent='Copy Link';},2000);}
-function rate(n,pos){
-if(localStorage.getItem('rated_'+SLUG)){document.getElementById('rating-result').textContent='Already voted!';return;}
-var btns=pos?document.querySelectorAll('#stars .star-btn'):document.querySelectorAll('#cops .cop-btn');
-btns.forEach(function(b,i){b.classList.toggle('active',i<n);});
-fetch('https://api.airtable.com/v0/'+BASE+'/ArticleRatings',{method:'POST',headers:{'Authorization':'Bearer '+AT,'Content-Type':'application/json'},body:JSON.stringify({fields:{ArticleSlug:SLUG,Rating:n,IsPositive:pos,Timestamp:new Date().toISOString()}})});
-localStorage.setItem('rated_'+SLUG,'1');
-document.getElementById('rating-result').textContent=pos?n+' star'+(n>1?'s':'')+' recorded':''+n+' cop car'+(n>1?'s':'')+' recorded';
-}
-function selEmoji(b,e){document.querySelectorAll('.emoji-btn').forEach(function(x){x.classList.remove('selected');});b.classList.add('selected');selE=e;}
-function prevGif(){var u=document.getElementById('cgif').value;var p=document.getElementById('gifprev');if(u){p.src=u;p.style.display='block';}else{p.style.display='none';}}
-function postComment(){
-var n=document.getElementById('cname').value.trim();
-var c=document.getElementById('ctext').value.trim();
-var g=document.getElementById('cgif').value.trim();
-var s=document.getElementById('cstatus');
-if(!n||!c){s.style.color='var(--red)';s.textContent='Name and comment required.';return;}
-s.style.color='var(--smoke)';s.textContent='Posting...';
-fetch('https://api.airtable.com/v0/'+BASE+'/ArticleComments',{method:'POST',headers:{'Authorization':'Bearer '+AT,'Content-Type':'application/json'},body:JSON.stringify({fields:{Name:n,Comment:c,GifUrl:g||'',Emoji:selE,ArticleSlug:SLUG,Timestamp:new Date().toISOString()}})}).then(function(){
-s.style.color='var(--green)';s.textContent='Comment posted!';
-document.getElementById('cname').value='';document.getElementById('ctext').value='';document.getElementById('cgif').value='';document.getElementById('ccount').textContent='0';
-selE='';document.querySelectorAll('.emoji-btn').forEach(function(x){x.classList.remove('selected');});
-document.getElementById('gifprev').style.display='none';
-setTimeout(loadComments,1000);
-}).catch(function(){s.style.color='var(--red)';s.textContent='Error. Try again.';});
-}
-function loadComments(){
-fetch('https://api.airtable.com/v0/'+BASE+'/ArticleComments?filterByFormula={ArticleSlug}="'+SLUG+'"&sort[0][field]=Timestamp&sort[0][direction]=desc',{headers:{'Authorization':'Bearer '+AT}}).then(function(r){return r.json();}).then(function(d){
-var l=document.getElementById('clist');
-if(!d.records||d.records.length===0){l.innerHTML='<p style="color:var(--mist);font-family:Barlow Condensed,sans-serif;font-size:0.9rem;">No comments yet. Be first.</p>';return;}
-l.innerHTML=d.records.map(function(r){
-var f=r.fields;var t=f.Timestamp?new Date(f.Timestamp).toLocaleDateString():'';
-return '<div class="comment-card"><div class="comment-header"><span class="comment-name">'+(f.Emoji||'')+' '+(f.Name||'Anonymous')+'</span><span class="comment-time">'+t+'</span></div><div class="comment-text">'+(f.Comment||'')+'</div>'+(f.GifUrl?'<img src="'+f.GifUrl+'" style="max-width:180px;border-radius:6px;margin-top:8px;" alt="gif">':'')+'</div>';
-}).join('');
-}).catch(function(){});
-}
-loadComments();
 var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}});},{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
 </script>
+<script src="/ratings-comments.js"></script>
 <script src="/back-to-top.js" defer></script>
   <script src="/share-bar.js"></script>
 </body>
