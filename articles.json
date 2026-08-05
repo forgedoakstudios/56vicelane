@@ -1,5 +1,29 @@
 [
   {
+    "emoji": "🗞️",
+    "title": "From The Editor's Desk: Week Of August 5",
+    "slug": "editors-desk-week-of-august-5",
+    "url": "/articles/editors-desk-week-of-august-5",
+    "headline": "From The Editor's Desk: Week Of August 5",
+    "category": "Community",
+    "date": "2026-08-05",
+    "excerpt": "A busy week behind us — a store bug fixed, a security token rotated, a broken share button found and fixed sitewide — and a bigger one ahead, with Trailer 3 watch on and an earnings call landing Friday.",
+    "image": "editor-portrait.png",
+    "permanent": false
+  },
+  {
+    "emoji": "🏁",
+    "title": "How The Last Drive Actually Works: A Beginner's Guide",
+    "slug": "last-drive-beginners-guide",
+    "url": "/articles/last-drive-beginners-guide",
+    "headline": "",
+    "category": "Community",
+    "date": "2026-08-05",
+    "excerpt": "Never joined a community drive before? Here's exactly how The Last Drive works — picking a platform, a region, a time slot, and whether to lead or join — before November 18.",
+    "image": "lastdrive-hero.jpg",
+    "permanent": true
+  },
+  {
     "emoji": "🎮",
     "title": "What Is An Earnings Call, And Why Should GTA6 Fans Care?",
     "slug": "gta6-earnings-calls-explained-why-they-matter",
