@@ -577,10 +577,17 @@
 </footer>
 
 <script>
-var AT_TOKEN = 'patCIXzXQ5pGrbr7K.885a7ff83de3cf47755fe6f78222a990c47c4cc6f401986e8d8d8242374cbb61';
-var AT_BASE  = 'appVViGbmcu5gbn8B';
-var AT_URL   = 'https://api.airtable.com/v0/' + AT_BASE + '/Last%20Drive';
-var AT_H     = { 'Authorization': 'Bearer ' + AT_TOKEN };
+var SIGNUPS_PUBLIC_URL = 'https://n8n.56vicelane.com/webhook/7eb886c7-d45d-4ec3-b51b-cbbbbd8b5a88/list-signups-public';
+
+function toFieldsRecord(s) {
+  return { fields: {
+    Gamertag: s.gamertag || '', Name: s.name || '', Platform: s.platform || '',
+    'Staging Time': s.stagingTime || '', Region: s.region || '', IsOrganizer: !!s.isOrganizer,
+    StagingLocation: s.stagingLocation || '', PlateStatus: s.plateStatus || '',
+    SignupNumber: s.signupNumber, AccessType: s.accessType || '', SignupType: s.signupType || '',
+    LinkedSlot: s.linkedSlot || '', PlateStyle: s.plateStyle || ''
+  } };
+}
 
 var PLAT_GROUP = {
   'PS5':'playstation','PS4':'playstation',
@@ -727,11 +734,13 @@ function wallSearch() {
   result.className = 'finder-result show';
   result.innerHTML = '<div class="finder-not-found">Searching...</div>';
 
-  var f = encodeURIComponent('{Gamertag}="' + q + '"');
-  fetch(AT_URL + '?filterByFormula=' + f + '&fields%5B%5D=Gamertag&fields%5B%5D=Platform&fields%5B%5D=Region&fields%5B%5D=Staging%20Time&fields%5B%5D=StagingLocation&fields%5B%5D=SignupType&fields%5B%5D=PlateStatus&fields%5B%5D=SignupNumber', {headers: AT_H})
+  fetch(SIGNUPS_PUBLIC_URL)
     .then(function(r) { return r.json(); })
     .then(function(d) {
-      var recs = (d.records || []).filter(function(r) { return !isTest(r); });
+      var recs = ((d && d.signups) || [])
+        .filter(function(s) { return s.gamertag === q; })
+        .map(toFieldsRecord)
+        .filter(function(r) { return !isTest(r); });
       if (!recs.length) {
         result.innerHTML = '<div class="finder-not-found">"' + esc(q) + '" isn\'t on the wall yet. <a href="/lastdrive" style="color:var(--amber);">Sign them up →</a></div>';
         return;
@@ -770,13 +779,14 @@ function updateCounts() {
 }
 
 function loadParticipantCounts() {
-  var f = encodeURIComponent("AND({SignupType}='Participant',OR({JoinStatus}='Active',{JoinStatus}='Approved'))");
-  return fetch(AT_URL + '?filterByFormula=' + f + '&fields%5B%5D=LinkedSlot', {headers: AT_H})
+  return fetch(SIGNUPS_PUBLIC_URL)
     .then(function(r) { return r.json(); })
     .then(function(d) {
       var counts = {};
-      (d.records || []).forEach(function(rec) {
-        var slot = rec.fields.LinkedSlot || '';
+      ((d && d.signups) || []).forEach(function(s) {
+        if (s.signupType !== 'Participant') return;
+        if (s.joinStatus !== 'Active' && s.joinStatus !== 'Approved') return;
+        var slot = s.linkedSlot || '';
         if (slot) counts[slot] = (counts[slot] || 0) + 1;
       });
       return counts;
@@ -785,24 +795,13 @@ function loadParticipantCounts() {
 }
 
 function loadWall() {
-  var allRec = [];
-  var offset = '';
-
   function fetchPage() {
-    var url = AT_URL +
-      '?filterByFormula=' + encodeURIComponent('{ShowOnWall}=TRUE()') +
-      '&fields%5B%5D=Gamertag&fields%5B%5D=Name&fields%5B%5D=Platform' +
-      '&fields%5B%5D=Staging%20Time&fields%5B%5D=Region&fields%5B%5D=IsOrganizer' +
-      '&fields%5B%5D=StagingLocation&fields%5B%5D=PlateStatus&fields%5B%5D=SignupNumber' +
-      '&fields%5B%5D=AccessType&fields%5B%5D=SignupType&fields%5B%5D=LinkedSlot&fields%5B%5D=PlateStyle' +
-      (offset ? '&offset=' + offset : '');
-
-    return fetch(url, {headers: AT_H})
+    return fetch(SIGNUPS_PUBLIC_URL)
       .then(function(r) { return r.json(); })
       .then(function(d) {
-        if (d.records) allRec = allRec.concat(d.records);
-        offset = d.offset || '';
-        if (offset) return fetchPage();
+        var allRec = ((d && d.signups) || [])
+          .filter(function(s) { return s.showOnWall; })
+          .map(toFieldsRecord);
 
         allPlayers = allRec.filter(function(r) { return !isTest(r); });
         allPlayers.sort(function(a, b) {

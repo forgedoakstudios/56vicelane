@@ -664,10 +664,15 @@
 </footer>
 
 <script>
+/* Login itself is now verified server-side via n8n (see adminLogin() below) --
+   the password never leaves n8n. AT_TOKEN below still covers the rest of this
+   dashboard (stats/signups/plate-gifting/contacts), which are a separate,
+   not-yet-migrated follow-up. */
+var ADMIN_VERIFY_URL = 'https://n8n.56vicelane.com/webhook/20fe486a-9a99-4f50-9833-8ffdaa989535/admin-verify-password';
 var AT_TOKEN = 'patCIXzXQ5pGrbr7K.885a7ff83de3cf47755fe6f78222a990c47c4cc6f401986e8d8d8242374cbb61';
 var AT_BASE  = 'appVViGbmcu5gbn8B';
 var AT_LD    = 'https://api.airtable.com/v0/' + AT_BASE + '/Last%20Drive';
-var AT_CT    = 'https://api.airtable.com/v0/' + AT_BASE + '/ContactMessages';
+var AT_CT    = 'https://api.airtable.com/v0/' + AT_BASE + '/Contact';
 var AT_H     = {'Authorization':'Bearer ' + AT_TOKEN, 'Content-Type':'application/json'};
 var GTACON_URL = 'https://gtacon-worker.forgedoakstudios.workers.dev/gtacon-update';
 
@@ -728,22 +733,14 @@ function adminLogin() {
   msg.textContent = 'Verifying...';
   msg.className = 'msg show info';
 
-  var f = encodeURIComponent('AND({Gamertag}="Musashi13")');
-  fetch(AT_LD + '?filterByFormula=' + f + '&maxRecords=1&fields%5B%5D=AdminPass', {headers: AT_H})
+  fetch(ADMIN_VERIFY_URL, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({gamertag: 'Musashi13', password: pass})
+  })
     .then(function(r) { return r.json(); })
     .then(function(d) {
-      if (!d.records || !d.records.length) {
-        msg.textContent = 'Profile not found.';
-        msg.className = 'msg show error';
-        return;
-      }
-      var stored = d.records[0].fields.AdminPass || '';
-      if (!stored) {
-        msg.textContent = 'No password set. Set one via your player profile first.';
-        msg.className = 'msg show error';
-        return;
-      }
-      if (pass !== stored) {
+      if (!d.success) {
         msg.textContent = 'Incorrect password.';
         msg.className = 'msg show error';
         return;
@@ -1000,7 +997,7 @@ function pushGTACON() {
 function loadContacts() {
   var list = document.getElementById('contacts-list');
   list.innerHTML = '<div style="color:var(--smoke);font-size:.85rem;">Loading...</div>';
-  fetch(AT_CT + '?sort%5B0%5D%5Bfield%5D=Status&maxRecords=50', {headers: AT_H})
+  fetch(AT_CT + '?sort%5B0%5D%5Bfield%5D=Timestamp&sort%5B0%5D%5Bdirection%5D=desc&maxRecords=50', {headers: AT_H})
     .then(function(r) { return r.json(); })
     .then(function(d) {
       if (!d.records || !d.records.length) {

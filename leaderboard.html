@@ -109,25 +109,21 @@
    new week, no separate reset job needed). Deliberately shows only rank,
    gamertag, and a number — never what the number means. */
 (function () {
-  var AT_TOKEN = 'patCIXzXQ5pGrbr7K.885a7ff83de3cf47755fe6f78222a990c47c4cc6f401986e8d8d8242374cbb61';
-  var AT_BASE  = 'appVViGbmcu5gbn8B';
-  var AT_URL   = 'https://api.airtable.com/v0/' + AT_BASE + '/Last%20Drive';
-  var AT_H     = { 'Authorization': 'Bearer ' + AT_TOKEN };
+  var SIGNUPS_PUBLIC_URL = 'https://n8n.56vicelane.com/webhook/7eb886c7-d45d-4ec3-b51b-cbbbbd8b5a88/list-signups-public';
 
-  var params = 'maxRecords=10' +
-    '&sort%5B0%5D%5Bfield%5D=WeekPoints&sort%5B0%5D%5Bdirection%5D=desc' +
-    '&filterByFormula=' + encodeURIComponent('{WeekPoints} > 0');
-
-  fetch(AT_URL + '?' + params, { headers: AT_H })
+  fetch(SIGNUPS_PUBLIC_URL)
     .then(function (r) { return r.json(); })
     .then(function (d) {
       var tbody = document.querySelector('#lbTable tbody');
       if (!tbody) return;
-      var records = (d.records || []).filter(function (r) { return r.fields.Gamertag; });
+      var records = ((d && d.signups) || [])
+        .filter(function (s) { return s.gamertag && s.weekPoints > 0; })
+        .sort(function (a, b) { return b.weekPoints - a.weekPoints; })
+        .slice(0, 10);
       if (!records.length) return; // leave the static "Open seat" rows in place
-      tbody.innerHTML = records.map(function (r, i) {
+      tbody.innerHTML = records.map(function (s, i) {
         var rank = String(i + 1).padStart(2, '0');
-        return '<tr><td class="rank">' + rank + '</td><td><b>' + r.fields.Gamertag + '</b></td><td class="mono">' + (r.fields.WeekPoints || 0) + '</td></tr>';
+        return '<tr><td class="rank">' + rank + '</td><td><b>' + s.gamertag + '</b></td><td class="mono">' + (s.weekPoints || 0) + '</td></tr>';
       }).join('');
     })
     .catch(function () { /* leave static placeholder rows in place */ });
