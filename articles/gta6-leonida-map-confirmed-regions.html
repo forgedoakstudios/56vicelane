@@ -190,15 +190,7 @@
   <a href="/forum">Forum</a>
 </div>
 
-<div class="share-bar">
-  <span class="share-label">Share</span>
-  <button class="share-btn share-native" onclick="nativeShare()">📤 Share</button>
-  <button class="share-btn share-reddit" onclick="shareReddit()">Reddit</button>
-  <button class="share-btn share-twitter" onclick="shareTwitter()">✕ Post</button>
-  <button class="share-btn share-whatsapp" onclick="shareWhatsApp()">WhatsApp</button>
-  <button class="share-btn share-facebook" onclick="shareFacebook()">Facebook</button>
-  <button class="share-btn share-copy" id="copy-btn-top" onclick="copyLink('copy-btn-top')">Copy Link</button>
-</div>
+<div class="vl-share-bar-mount"></div>
 
 <div class="article-hero">
   <div class="tag-row">
@@ -375,15 +367,7 @@
     <div class="comments-list" id="comments-list"></div>
   </div>
 
-  <div class="share-bar" style="margin-top:2rem;border-radius:8px;">
-    <span class="share-label">Share</span>
-    <button class="share-btn share-native" onclick="nativeShare()">📤 Share</button>
-    <button class="share-btn share-reddit" onclick="shareReddit()">Reddit</button>
-    <button class="share-btn share-twitter" onclick="shareTwitter()">✕ Post</button>
-    <button class="share-btn share-whatsapp" onclick="shareWhatsApp()">WhatsApp</button>
-    <button class="share-btn share-facebook" onclick="shareFacebook()">Facebook</button>
-    <button class="share-btn share-copy" id="copy-btn-bot" onclick="copyLink('copy-btn-bot')">Copy Link</button>
-  </div>
+  <div class="vl-share-bar-mount"></div>
 
 </div>
 
@@ -581,5 +565,6 @@
   });
 </script>
 <script src="/back-to-top.js" defer></script>
+  <script src="/share-bar.js"></script>
 </body>
 </html>

@@ -150,14 +150,7 @@
   <img src="/images/Gta6trailer3.png" alt="GTA6 Trailer 3 — dropping soon" class="article-hero-img">
 
   <!-- SHARE BAR TOP -->
-  <div class="share-bar" style="margin-bottom:24px;">
-    <span class="share-bar-label">Share</span>
-    <a class="share-btn share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://56vicelane.com/articles/gta6-trailer-3-when-is-it-dropping" target="_blank" rel="noopener">Facebook</a>
-    <button class="share-btn share-native" onclick="if(navigator.share){navigator.share({title:document.title,url:window.location.href});}">📱 Share</button>
-    <a class="share-btn share-reddit" href="https://www.reddit.com/submit?url=https://56vicelane.com/articles/gta6-trailer-3-when-is-it-dropping&title=GTA6+Trailer+3+%E2%80%94+When+Is+It+Dropping%3F" target="_blank" rel="noopener">Reddit</a>
-    <a class="share-btn share-twitter" href="https://twitter.com/intent/tweet?url=https://56vicelane.com/articles/gta6-trailer-3-when-is-it-dropping&text=GTA6+Trailer+3+dropping+within+weeks+%E2%80%94+here%27s+everything+we+know+%2356ViceLane" target="_blank" rel="noopener">Post on X</a>
-    <button class="share-btn share-copy" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='Copied ✓';setTimeout(()=>this.textContent='Copy Link',2000);">Copy Link</button>
-  </div>
+  <div class="vl-share-bar-mount"></div>
 
   <!-- AD TOP -->
   <div class="ad-unit">
@@ -286,14 +279,7 @@
   </div><!-- end article-body -->
 
   <!-- SHARE BAR BOTTOM -->
-  <div class="share-bar" style="margin:28px 0;">
-    <span class="share-bar-label">Share</span>
-    <a class="share-btn share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://56vicelane.com/articles/gta6-trailer-3-when-is-it-dropping" target="_blank" rel="noopener">Facebook</a>
-    <button class="share-btn share-native" onclick="if(navigator.share){navigator.share({title:document.title,url:window.location.href});}">📱 Share</button>
-    <a class="share-btn share-reddit" href="https://www.reddit.com/submit?url=https://56vicelane.com/articles/gta6-trailer-3-when-is-it-dropping&title=GTA6+Trailer+3+%E2%80%94+When+Is+It+Dropping%3F" target="_blank" rel="noopener">Reddit</a>
-    <a class="share-btn share-twitter" href="https://twitter.com/intent/tweet?url=https://56vicelane.com/articles/gta6-trailer-3-when-is-it-dropping&text=GTA6+Trailer+3+dropping+within+weeks+%2356ViceLane" target="_blank" rel="noopener">Post on X</a>
-    <button class="share-btn share-copy" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='Copied ✓';setTimeout(()=>this.textContent='Copy Link',2000);">Copy Link</button>
-  </div>
+  <div class="vl-share-bar-mount"></div>
 
   <!-- GEAR -->
   <div class="gear-box">
@@ -371,5 +357,6 @@ if(mt&&nm)mt.addEventListener('click',function(){nm.classList.toggle('open');});
 (function(){var KEY='56vl-debug',active=localStorage.getItem(KEY)==='1';function applyDebug(){var ind=document.getElementById('vl-debug-ind');if(!ind){ind=document.createElement('div');ind.id='vl-debug-ind';ind.textContent='\uD83D\uDD27 DEBUG ON';ind.onclick=function(){active=false;localStorage.setItem(KEY,'0');applyDebug();};document.body.appendChild(ind);}ind.style.display=active?'block':'none';}var el=document.getElementById('vl-copyright'),timer=null;if(el){el.style.userSelect='none';el.addEventListener('touchstart',function(e){e.preventDefault();timer=setTimeout(function(){active=!active;localStorage.setItem(KEY,active?'1':'0');applyDebug();},1500);},{passive:false});el.addEventListener('touchend',function(){clearTimeout(timer);});el.addEventListener('touchmove',function(){clearTimeout(timer);});}applyDebug();})();
 </script>
 <script src="/back-to-top.js" defer></script>
+  <script src="/share-bar.js"></script>
 </body>
 </html>

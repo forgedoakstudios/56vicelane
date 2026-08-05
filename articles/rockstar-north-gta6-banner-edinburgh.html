@@ -221,14 +221,7 @@
 
   <img src="/images/RockstarNews.png" id="article-hero" alt="Rockstar North Just Replaced Red Dead With A GTA6 Banner — It's Really Happening" class="article-hero">
 
-  <div class="share-bar">
-    <button class="share-btn share-native" onclick="nativeShare()">Share</button>
-    <button class="share-btn share-reddit" onclick="shareReddit()">Reddit</button>
-    <button class="share-btn share-twitter" onclick="shareTwitter()">X</button>
-    <button class="share-btn share-whatsapp" onclick="shareWhatsApp()">WhatsApp</button>
-    <button class="share-btn share-facebook" onclick="shareFacebook()">Facebook</button>
-    <button class="share-btn share-copy" id="copyTop" onclick="copyLink('copyTop')">Copy Link</button>
-  </div>
+  <div class="vl-share-bar-mount"></div>
 
   <div class="legend reveal">
     <span><b>How we source:</b></span>
@@ -278,14 +271,7 @@
 
   </article>
 
-  <div class="share-bar">
-    <button class="share-btn share-native" onclick="nativeShare()">Share</button>
-    <button class="share-btn share-reddit" onclick="shareReddit()">Reddit</button>
-    <button class="share-btn share-twitter" onclick="shareTwitter()">X</button>
-    <button class="share-btn share-whatsapp" onclick="shareWhatsApp()">WhatsApp</button>
-    <button class="share-btn share-facebook" onclick="shareFacebook()">Facebook</button>
-    <button class="share-btn share-copy" id="copyBot" onclick="copyLink('copyBot')">Copy Link</button>
-  </div>
+  <div class="vl-share-bar-mount"></div>
 
   <div class="rate-box">
     <h3>Was this useful?</h3>
@@ -351,5 +337,6 @@ const nm=document.getElementById('nav-mobile');
 if(mt&&nm)mt.addEventListener('click',()=>nm.classList.toggle('open'));
 </script>
 <script src="/back-to-top.js" defer></script>
+  <script src="/share-bar.js"></script>
 </body>
 </html>
