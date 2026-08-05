@@ -357,3 +357,19 @@ once the historical import has run and `USE_N8N_BACKEND` is live for real.
 - Where the $0.01–$0.48 store credit actually lives — likely a new column
   on the n8n LastDrive table (mirroring how `points`/`weekPoints` already
   work) rather than a whole separate currency system.
+
+## 7. Editor's Desk / Trevor's Take archive pages (fixed, 2026-08-05)
+
+`/editor` and `/trevor` used to only show a static origin-story note (plus
+the latest single Friday Frequency snippet) -- no list of the actual
+Editor's Desk / Trevor's Take articles, which only lived mixed into the
+general News feed. Fixed by adding a `"column": "editor"` or
+`"column": "trevor"` field to the relevant entries in `articles.json`,
+and a client-side archive section on each page that filters by that
+field and renders every matching piece, newest first.
+
+**Standing convention going forward:** every new Editor's Desk article
+needs `"column": "editor"` added to its `articles.json` entry, every new
+Trevor's Take needs `"column": "trevor"` -- otherwise it'll publish fine
+and show in the general News feed, but won't show up on the character's
+own archive page.

@@ -41,7 +41,8 @@
     "date": "2026-08-05",
     "excerpt": "A busy week behind us — a store bug fixed, a security token rotated, a broken share button found and fixed sitewide — and a bigger one ahead, with Trailer 3 watch on and an earnings call landing Friday.",
     "image": "editor-portrait.png",
-    "permanent": false
+    "permanent": false,
+    "column": "editor"
   },
   {
     "emoji": "🎮",
@@ -113,7 +114,8 @@
     "date": "2026-07-31",
     "excerpt": "AI-generated fake GTA6 trailers and gameplay clips are getting millions of views while fans wait for a real one. The Editor breaks down why it's spreading, how to spot it, and what we're doing about it.",
     "image": "editor-portrait.png",
-    "permanent": false
+    "permanent": false,
+    "column": "editor"
   },
   {
     "emoji": "🗣️",
@@ -125,7 +127,8 @@
     "date": "2026-07-31",
     "excerpt": "AI is generating fake GTA6 trailers that get millions of views. Trevor has thoughts, none of them useful, all of them delivered with total confidence.",
     "image": "trevor-portrait.png",
-    "permanent": false
+    "permanent": false,
+    "column": "trevor"
   },
   {
     "emoji": "✊",
@@ -197,7 +200,8 @@
     "date": "2026-07-24",
     "excerpt": "Thirteen years of expectations, two very serious articles about it this week, and one unqualified guy with strong opinions. Here's Trevor's actual take on whether GTA6 can live up to the hype.",
     "image": "trevor-portrait.png",
-    "permanent": false
+    "permanent": false,
+    "column": "trevor"
   },
   {
     "emoji": "🎭",

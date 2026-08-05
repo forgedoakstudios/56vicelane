@@ -55,6 +55,12 @@ nav{background:var(--asphalt);border-bottom:2px solid var(--amber);padding:0 20p
 .note .sign{font-style:italic;color:var(--smoke);}
 .note-contact{margin-top:20px;padding-top:16px;border-top:1px dashed var(--edge);font-size:0.92rem;}
 .note-contact a{font-weight:600;}
+.desk-archive-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--bone);margin:48px 0 18px;padding-bottom:10px;border-bottom:1px solid var(--edge);}
+.desk-archive-grid{display:flex;flex-direction:column;gap:12px;}
+.desk-archive-card{display:block;background:var(--asphalt);border:1px solid var(--edge);border-radius:8px;padding:16px 18px;text-decoration:none;}
+.desk-archive-card:hover{border-color:var(--amber);}
+.desk-archive-date{font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--amber);margin-bottom:4px;}
+.desk-archive-title-sm{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--bone);}
 footer{background:var(--asphalt);border-top:1px solid var(--edge);padding:40px 20px;}
 .footer-inner{max-width:1100px;margin:0 auto;text-align:center;}
 .footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:16px;}
@@ -121,6 +127,9 @@ footer{background:var(--asphalt);border-top:1px solid var(--edge);padding:40px 2
 
 <p style="font-size:0.92rem;color:var(--smoke);">The unhinged half of this operation lives over at <a href="/trevor">Trevor's Takes</a>.</p>
 
+<div class="desk-archive-title">All Dispatches From The Desk</div>
+<div class="desk-archive-grid" id="editor-archive-grid"><p style="color:var(--smoke);font-size:0.9rem;">Loading...</p></div>
+
 </div>
 
 <footer>
@@ -167,6 +176,43 @@ doubled.forEach(function(el){track.appendChild(el);});
     if (meta) meta.textContent = 'The Friday Frequency · Issue ' + ('000' + (d.issueNumber || 1)).slice(-3) + ' · ' + (d.dateStr || '');
     if (note) note.style.display = 'block';
   }).catch(function () {});
+})();
+</script>
+<script>
+/* Full archive of every Editor's Desk piece, filtered by the "column"
+   field in articles.json -- separate from the general News feed these
+   also appear in. Same field convention used on /trevor. */
+(function () {
+  function escapeHtml(s) {
+    return String(s || '').replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function fmtDate(d) {
+    var t = new Date((d || '') + 'T00:00:00');
+    if (isNaN(t.getTime())) return d || '';
+    return t.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+  fetch('/articles.json?v=' + Date.now())
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      var list = Array.isArray(data) ? data : (data.articles || []);
+      var pieces = list.filter(function (a) { return a.column === 'editor'; })
+        .sort(function (a, b) { return (b.date || '').localeCompare(a.date || ''); });
+      var host = document.getElementById('editor-archive-grid');
+      if (!host) return;
+      if (!pieces.length) {
+        host.innerHTML = '<p style="color:var(--smoke);font-size:0.9rem;">Nothing archived yet.</p>';
+        return;
+      }
+      host.innerHTML = pieces.map(function (a) {
+        return '<a href="' + (a.url || '#') + '" class="desk-archive-card">' +
+          '<div class="desk-archive-date">' + fmtDate(a.date) + '</div>' +
+          '<div class="desk-archive-title-sm">' + escapeHtml(a.title || a.headline || 'Untitled') + '</div>' +
+          '</a>';
+      }).join('');
+    })
+    .catch(function () {});
 })();
 </script>
 <script src="/editor-portrait.js" defer></script>
