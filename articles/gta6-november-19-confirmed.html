@@ -492,8 +492,6 @@
 </footer>
 
 <script>
-  const AIRTABLE_TOKEN = 'patCIXzXQ5pGrbr7K.885a7ff83de3cf47755fe6f78222a990c47c4cc6f401986e8d8d8242374cbb61';
-  const AIRTABLE_BASE  = 'appVViGbmcu5gbn8B';
   const ARTICLE_SLUG   = 'gta6-november-19-confirmed';
 
   fetch('/articles.json?v=' + Date.now())
@@ -522,75 +520,8 @@
     setTimeout(function(){ event.target.textContent = 'Copy Link'; }, 2000);
   }
 
-  document.querySelectorAll('.rating-icon').forEach(function(icon) {
-    icon.addEventListener('click', function() {
-      if (localStorage.getItem('rated-' + ARTICLE_SLUG)) {
-        document.getElementById('rating-result').textContent = 'Already voted. Thanks!';
-        return;
-      }
-      var val = parseInt(icon.dataset.val);
-      var type = icon.dataset.type;
-      var isPositive = type === 'good';
-      document.querySelectorAll('[data-type="' + type + '"]').forEach(function(ic, i) {
-        if (i < val) ic.classList.add('active');
-      });
-      fetch('https://api.airtable.com/v0/' + AIRTABLE_BASE + '/ArticleRatings', {
-        method: 'POST',
-        headers: { 'Authorization': 'Bearer ' + AIRTABLE_TOKEN, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ fields: { ArticleSlug: ARTICLE_SLUG, Rating: val, IsPositive: isPositive, Timestamp: new Date().toISOString() } })
-      }).catch(function(){});
-      localStorage.setItem('rated-' + ARTICLE_SLUG, '1');
-      document.getElementById('rating-result').textContent = isPositive
-        ? val + ' star' + (val > 1 ? 's' : '') + ' — Appreciate it.'
-        : val + ' cop car' + (val > 1 ? 's' : '') + ' — Tell us why below.';
-    });
-  });
-
-  document.getElementById('comment-text').addEventListener('input', function() {
-    document.getElementById('char-count').textContent = this.value.length;
-  });
-
-  function submitComment() {
-    var name   = document.getElementById('comment-name').value.trim();
-    var text   = document.getElementById('comment-text').value.trim();
-    var emoji  = document.getElementById('comment-emoji').value;
-    var gifUrl = document.getElementById('comment-gif').value.trim();
-    var msgEl  = document.getElementById('submit-msg');
-    if (!name || !text) { msgEl.textContent = 'Name and comment required.'; msgEl.style.color = '#FF3B3B'; return; }
-    msgEl.textContent = 'Posting...'; msgEl.style.color = 'var(--smoke)';
-    fetch('https://api.airtable.com/v0/' + AIRTABLE_BASE + '/ArticleComments', {
-      method: 'POST',
-      headers: { 'Authorization': 'Bearer ' + AIRTABLE_TOKEN, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ fields: { Name: name, Comment: text, Emoji: emoji, GifUrl: gifUrl, ArticleSlug: ARTICLE_SLUG, Timestamp: new Date().toISOString() } })
-    }).then(function() {
-      msgEl.textContent = 'Posted!'; msgEl.style.color = 'var(--green)';
-      document.getElementById('comment-name').value = '';
-      document.getElementById('comment-text').value = '';
-      document.getElementById('comment-gif').value  = '';
-      document.getElementById('char-count').textContent = '0';
-      setTimeout(loadComments, 800);
-    }).catch(function() { msgEl.textContent = 'Error. Try again.'; msgEl.style.color = '#FF3B3B'; });
-  }
-
-  function loadComments() {
-    fetch('https://api.airtable.com/v0/' + AIRTABLE_BASE + '/ArticleComments?filterByFormula={ArticleSlug}="' + ARTICLE_SLUG + '"&sort[0][field]=Timestamp&sort[0][direction]=desc',
-      { headers: { 'Authorization': 'Bearer ' + AIRTABLE_TOKEN } }
-    ).then(function(r){return r.json();}).then(function(data){
-      var list = document.getElementById('comments-list');
-      if (!data.records || data.records.length === 0) {
-        list.innerHTML = '<p style="color:var(--smoke);font-size:0.9rem;">No comments yet. Be the first.</p>';
-        return;
-      }
-      list.innerHTML = data.records.map(function(r) {
-        var f = r.fields;
-        var d = f.Timestamp ? new Date(f.Timestamp).toLocaleDateString() : '';
-        return '<div class="comment-card"><div class="comment-card-header"><span class="comment-name">' + (f.Emoji||'') + ' ' + (f.Name||'Anonymous') + '</span><span class="comment-time">' + d + '</span></div><div class="comment-text">' + (f.Comment||'') + '</div>' + (f.GifUrl ? '<div class="comment-gif"><img src="' + f.GifUrl + '" loading="lazy" /></div>' : '') + '</div>';
-      }).join('');
-    }).catch(function(){});
-  }
-
-  loadComments();
-</script>
+  </script>
+<script src="/ratings-comments-b1.js"></script>
 <script src="/back-to-top.js" defer></script>
   <script src="/share-bar.js"></script>
 </body>

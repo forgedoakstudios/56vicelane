@@ -415,8 +415,6 @@
 
 <script>
   const ARTICLE_SLUG = 'fable-delayed-february-2027-because-of-gta6';
-  const AIRTABLE_TOKEN = 'patCIXzXQ5pGrbr7K.885a7ff83de3cf47755fe6f78222a990c47c4cc6f401986e8d8d8242374cbb61';
-  const AIRTABLE_BASE  = 'appVViGbmcu5gbn8B';
   const ARTICLE_TITLE  = 'Microsoft Just Blinked — Fable Delayed To February 2027 Because Of GTA 6';
   const ARTICLE_URL    = window.location.href;
 
@@ -458,121 +456,12 @@
     });
   }
 
-  let hasVoted = localStorage.getItem('rated_' + ARTICLE_SLUG);
-  function submitRating(val, isPositive) {
-    if (hasVoted) return;
-    hasVoted = true;
-    localStorage.setItem('rated_' + ARTICLE_SLUG, '1');
-    const rowId = isPositive ? 'stars-row' : 'cops-row';
-    document.getElementById(rowId).querySelectorAll('.rating-icon').forEach((ic, i) => {
-      if (i < val) { ic.classList.add('active'); if (val === 5) ic.classList.add(isPositive ? 'spin' : 'flash'); }
-    });
-    fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE}/ArticleRatings`, {
-      method: 'POST',
-      headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ fields: { ArticleSlug: ARTICLE_SLUG, Rating: val, IsPositive: isPositive, Timestamp: new Date().toISOString() } })
-    }).catch(() => {});
-    loadAvgRating();
-  }
-  function loadAvgRating() {
-    fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE}/ArticleRatings?filterByFormula={ArticleSlug}="${ARTICLE_SLUG}"`,
-      { headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}` } })
-    .then(r => r.json()).then(d => {
-      if (!d.records || !d.records.length) return;
-      const avg = (d.records.reduce((s, r) => s + (r.fields.Rating || 0), 0) / d.records.length).toFixed(1);
-      document.getElementById('avg-display').textContent = `${avg}/5 from ${d.records.length} vote${d.records.length !== 1 ? 's' : ''}`;
-      document.getElementById('ratings-result').classList.add('visible');
-    }).catch(() => {});
-  }
-  document.querySelectorAll('.rating-icon').forEach(ic => {
-    ic.addEventListener('click', () => submitRating(parseInt(ic.dataset.val), ic.dataset.type === 'positive'));
-  });
-
-  const GTA_EMOJIS = ['🎮','🔥','💰','🚗','🏎️','🚔','⭐','💥','🗺️','🌴','🌆','🎵','🤙','💸','📱','🎯','🏁','🚀','💎','👑','🔫','🏍️','🌙','☀️','🎪','✈️','🏆','💫'];
-  let selectedEmoji = '';
-  function renderEmojis(list) {
-    const row = document.getElementById('emoji-row');
-    const search = document.getElementById('emoji-search');
-    row.innerHTML = '';
-    row.appendChild(search);
-    list.forEach(em => {
-      const btn = document.createElement('button');
-      btn.className = 'emoji-btn' + (em === selectedEmoji ? ' selected' : '');
-      btn.textContent = em;
-      btn.onclick = () => {
-        selectedEmoji = em === selectedEmoji ? '' : em;
-        document.getElementById('emoji-selected').textContent = selectedEmoji;
-        renderEmojis(list);
-      };
-      row.appendChild(btn);
-    });
-  }
-  document.getElementById('emoji-search').addEventListener('input', function() { renderEmojis(GTA_EMOJIS); });
-  document.getElementById('comment-text').addEventListener('input', function() { document.getElementById('char-count').textContent = this.value.length; });
-  document.getElementById('gif-url').addEventListener('input', function() {
-    const p = document.getElementById('gif-preview');
-    if (this.value.trim()) { p.src = this.value.trim(); p.style.display = 'block'; }
-    else { p.style.display = 'none'; }
-  });
-
-  async function submitComment() {
-    const name = document.getElementById('comment-name').value.trim();
-    const text = document.getElementById('comment-text').value.trim();
-    if (!name || !text) return;
-    const btn = document.querySelector('.comment-submit');
-    btn.textContent = 'Posting...'; btn.disabled = true;
-    try {
-      await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE}/ArticleComments`, {
-        method: 'POST',
-        headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ fields: { Name: name, Comment: text, GifUrl: document.getElementById('gif-url').value.trim() || '', Emoji: selectedEmoji, ArticleSlug: ARTICLE_SLUG, Timestamp: new Date().toISOString() } })
-      });
-      document.getElementById('comment-name').value = '';
-      document.getElementById('comment-text').value = '';
-      document.getElementById('gif-url').value = '';
-      document.getElementById('gif-preview').style.display = 'none';
-      document.getElementById('char-count').textContent = '0';
-      selectedEmoji = '';
-      document.getElementById('emoji-selected').textContent = '';
-      document.getElementById('comment-success').style.display = 'block';
-      setTimeout(() => document.getElementById('comment-success').style.display = 'none', 3000);
-      loadComments();
-    } catch(e) {}
-    btn.textContent = 'Post Comment'; btn.disabled = false;
-  }
-
-  async function loadComments() {
-    try {
-      const r = await fetch(
-        `https://api.airtable.com/v0/${AIRTABLE_BASE}/ArticleComments?filterByFormula={ArticleSlug}="${ARTICLE_SLUG}"&sort[0][field]=Timestamp&sort[0][direction]=desc&maxRecords=50`,
-        { headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}` } }
-      );
-      const d = await r.json();
-      const list = document.getElementById('comments-list');
-      if (!d.records || !d.records.length) {
-        list.innerHTML = '<p style="color:var(--smoke);font-family:\'Barlow Condensed\',sans-serif;font-size:0.9rem;">No comments yet. Be the first.</p>';
-        return;
-      }
-      list.innerHTML = d.records.map(rec => {
-        const f = rec.fields;
-        const ts = f.Timestamp ? new Date(f.Timestamp).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) : '';
-        return `<div class="comment-card"><div class="comment-meta"><span class="comment-name">${f.Name||'Anonymous'}${f.Emoji?' '+f.Emoji:''}</span><span class="comment-time">${ts}</span></div><div class="comment-text">${(f.Comment||'').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>${f.GifUrl?`<img class="comment-gif" src="${f.GifUrl}" alt="gif" loading="lazy">`:''}
-        </div>`;
-      }).join('');
-    } catch(e) {}
-  }
-
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  window.addEventListener('load', function() {
-    renderEmojis(GTA_EMOJIS);
-    loadComments();
-    loadAvgRating();
-  });
-</script>
+  </script>
+<script src="/ratings-comments-b2.js"></script>
 <script src="/back-to-top.js" defer></script>
   <script src="/share-bar.js"></script>
 </body>
