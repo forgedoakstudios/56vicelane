@@ -795,10 +795,20 @@
 </footer>
 
 <script>
-var AT_TOKEN = 'patCIXzXQ5pGrbr7K.885a7ff83de3cf47755fe6f78222a990c47c4cc6f401986e8d8d8242374cbb61';
-var AT_BASE  = 'appVViGbmcu5gbn8B';
-var AT_URL   = 'https://api.airtable.com/v0/' + AT_BASE + '/Last%20Drive';
-var AT_H     = {'Authorization':'Bearer ' + AT_TOKEN, 'Content-Type':'application/json'};
+var VERIFY_URL = 'https://n8n.56vicelane.com/webhook/5e722e07-d817-4e10-b90a-d685b49ddbe7/player-verify-owner';
+var UPDATE_URL = 'https://n8n.56vicelane.com/webhook/85ac986b-191e-4e9b-a276-4effd144a52a/player-update';
+var SIGNUPS_PUBLIC_URL = 'https://n8n.56vicelane.com/webhook/7eb886c7-d45d-4ec3-b51b-cbbbbd8b5a88/list-signups-public';
+var CHECK_PRIZE_URL = 'https://n8n.56vicelane.com/webhook/b872ae2a-84bb-4f2b-aae9-36d140041c77/check-prize';
+var CHECK_CODE_URL = 'https://n8n.56vicelane.com/webhook/28e8d4e3-fc6d-486e-8e5e-36f775e0181d/check-redeem-code';
+var REDEEM_CODE_URL = 'https://n8n.56vicelane.com/webhook/3107b1c1-0c58-4055-93f7-e04496a743b5/redeem-code';
+var verifiedEmail = null;
+
+function patchPlayer(patch) {
+  return fetch(UPDATE_URL, {
+    method: 'POST', headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({gamertag: playerRecord.fields.Gamertag, email: verifiedEmail, patch: patch})
+  }).then(function(r) { return r.json(); });
+}
 
 // Was paused 2026-07-27 while Airtable's free-plan API quota was exhausted
 // (profile lookup and every purchase path write to that base, so both were
@@ -1033,19 +1043,28 @@ function verifyPlayer() {
   if (!gamertag || !email) { showMsg(msg, 'Please enter your gamertag and email.', 'error'); return; }
   btn.textContent = 'Checking...';
   btn.disabled = true;
-  var f = encodeURIComponent('AND({Gamertag}="' + gamertag + '",{Email}="' + email + '")');
-  fetch(AT_URL + '?filterByFormula=' + f + '&maxRecords=1', {headers: AT_H})
+  fetch(VERIFY_URL, {
+    method: 'POST', headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({gamertag: gamertag, email: email})
+  })
     .then(function(r) {
       if (!r.ok) throw new Error('network');
       return r.json();
     })
     .then(function(d) {
       btn.textContent = 'Find My Profile'; btn.disabled = false;
-      if (!d.records || !d.records.length) {
+      if (!d.found) {
         showMsg(msg, 'No signup found for "' + gamertag + '" with that email.', 'error');
         return;
       }
-      playerRecord = d.records[0];
+      verifiedEmail = email;
+      playerRecord = { fields: {
+        Gamertag: d.gamertag, PlateStyle: d.plateStyle, PlateStatus: d.plateStatus,
+        OwnedPlates: d.ownedPlates, GiftPlate: d.giftPlate,
+        plate_red: d.plate_red, plate_blue: d.plate_blue, plate_purple: d.plate_purple,
+        plate_amber: d.plate_amber, plate_green: d.plate_green, plate_yellow: d.plate_yellow,
+        plate_male_exotic: d.plate_male_exotic, plate_female_exotic: d.plate_female_exotic
+      } };
       var fields = playerRecord.fields;
       try { localStorage.setItem('56vl-gamertag', fields.Gamertag || gamertag); } catch (e) {}
       var owned = buildOwnedFromRecord(fields);
@@ -1156,10 +1175,7 @@ function setActivePlate() {
   if (!style || !playerRecord) return;
   var btn = document.querySelector('.owned-select-row .btn');
   if (btn) { btn.textContent = 'Saving...'; btn.disabled = true; }
-  fetch(AT_URL + '/' + playerRecord.id, {
-    method: 'PATCH', headers: AT_H,
-    body: JSON.stringify({fields:{'PlateStyle': style}})
-  }).then(function() {
+  patchPlayer({plateStyle: style}).then(function() {
     playerRecord.fields.PlateStyle = style;
     showCurrentPlate(playerRecord.fields.Gamertag || '', style);
     var opts = document.querySelectorAll('#owned-select option');
@@ -1188,10 +1204,7 @@ function selectPlate(style, price, name) {
   var owned = buildOwnedFromRecord(playerRecord.fields);
   if (owned.indexOf(style) >= 0) {
     // Just set as active
-    fetch(AT_URL + '/' + playerRecord.id, {
-      method: 'PATCH', headers: AT_H,
-      body: JSON.stringify({fields:{'PlateStyle': style}})
-    }).then(function() {
+    patchPlayer({plateStyle: style}).then(function() {
       playerRecord.fields.PlateStyle = style;
       showCurrentPlate(playerRecord.fields.Gamertag || '', style);
       alert('Plate set as active on your Wall of Honor!');
@@ -1262,15 +1275,12 @@ function applyPlate(style) {
   var ownedStr = owned.join(',');
   var plateField = PLATE_FIELD_MAP[style];
   var updateFields = {
-    'PlateStyle':  style,
-    'PlateStatus': 'Purchased Premium',
-    'OwnedPlates': ownedStr
+    plateStyle:  style,
+    plateStatus: 'Purchased Premium',
+    ownedPlates: ownedStr
   };
   if (plateField) updateFields[plateField] = true;
-  fetch(AT_URL + '/' + playerRecord.id, {
-    method: 'PATCH', headers: AT_H,
-    body: JSON.stringify({fields: updateFields})
-  }).then(function() {
+  patchPlayer(updateFields).then(function() {
     playerRecord.fields.PlateStyle  = style;
     playerRecord.fields.PlateStatus = 'Purchased Premium';
     playerRecord.fields.OwnedPlates = ownedStr;
@@ -1294,9 +1304,9 @@ function applyBundle(key) {
 
   // Build update — set all plate checkboxes + bundle checkbox
   var updateFields = {
-    'PlateStyle':  firstNew,
-    'PlateStatus': newStatus,
-    'OwnedPlates': ownedStr
+    plateStyle:  firstNew,
+    plateStatus: newStatus,
+    ownedPlates: ownedStr
   };
   b.plates.forEach(function(p) {
     var f = PLATE_FIELD_MAP[p];
@@ -1304,10 +1314,7 @@ function applyBundle(key) {
   });
   if (b.bundleField) updateFields[b.bundleField] = true;
 
-  fetch(AT_URL + '/' + playerRecord.id, {
-    method: 'PATCH', headers: AT_H,
-    body: JSON.stringify({fields: updateFields})
-  }).then(function() {
+  patchPlayer(updateFields).then(function() {
     playerRecord.fields.PlateStyle  = firstNew;
     playerRecord.fields.PlateStatus = newStatus;
     playerRecord.fields.OwnedPlates = ownedStr;
@@ -1400,10 +1407,7 @@ function applyPick5Bundle(chosenKeys) {
   var ownedStr = owned.join(',');
   var firstNew = plates[0];
 
-  fetch(AT_URL + '/' + playerRecord.id, {
-    method: 'PATCH', headers: AT_H,
-    body: JSON.stringify({fields: {PlateStyle: firstNew, PlateStatus: 'Pick 5 Bundle', OwnedPlates: ownedStr}})
-  }).then(function() {
+  patchPlayer({plateStyle: firstNew, plateStatus: 'Pick 5 Bundle', ownedPlates: ownedStr}).then(function() {
     playerRecord.fields.PlateStyle  = firstNew;
     playerRecord.fields.PlateStatus = 'Pick 5 Bundle';
     playerRecord.fields.OwnedPlates = ownedStr;
@@ -1498,10 +1502,7 @@ function applySinglePlate(plateId) {
   if (owned.indexOf(plateId) < 0) owned.push(plateId);
   var ownedStr = owned.join(',');
 
-  fetch(AT_URL + '/' + playerRecord.id, {
-    method: 'PATCH', headers: AT_H,
-    body: JSON.stringify({fields: {PlateStyle: plateId, PlateStatus: 'Single Nameplate', OwnedPlates: ownedStr}})
-  }).then(function() {
+  patchPlayer({plateStyle: plateId, plateStatus: 'Single Nameplate', ownedPlates: ownedStr}).then(function() {
     playerRecord.fields.PlateStyle  = plateId;
     playerRecord.fields.PlateStatus = 'Single Nameplate';
     playerRecord.fields.OwnedPlates = ownedStr;
@@ -1512,8 +1513,7 @@ function applySinglePlate(plateId) {
 }
 
 // ── REDEEM A WEEKLY PRIZE CODE ─────────────────────────────
-var AT_REDEMPTIONS_URL = 'https://api.airtable.com/v0/' + AT_BASE + '/Redemptions';
-var redeemRecord = null;
+var redeemCode = null;
 var redeemPlateSelection = null;
 
 function checkRedeemCode() {
@@ -1523,26 +1523,18 @@ function checkRedeemCode() {
   if (!code) { status.textContent = 'Enter a code.'; return; }
   status.textContent = 'Checking...';
   picker.style.display = 'none';
-  var filter = encodeURIComponent('AND({Code}="' + code + '",{Status}="Issued")');
-  fetch(AT_REDEMPTIONS_URL + '?filterByFormula=' + filter + '&maxRecords=1', {headers: AT_H})
+  var currentPlayer = (playerRecord && playerRecord.fields.Gamertag) || '';
+  fetch(CHECK_CODE_URL, {
+    method: 'POST', headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({code: code, gamertag: currentPlayer})
+  })
     .then(function(r) { return r.json(); })
     .then(function(d) {
-      if (!d.records || !d.records.length) {
-        status.textContent = 'Code not found, already used, or expired.';
+      if (!d.valid) {
+        status.textContent = d.message || 'Code not found, already used, or expired.';
         return;
       }
-      var rec = d.records[0];
-      // A code issued to a specific gamertag can only be redeemed by that
-      // verified gamertag — prevents anyone who merely sees/guesses a code
-      // (e.g. shared publicly) from claiming someone else's prize. Codes
-      // with no Gamertag set (manual/unassigned) skip this check.
-      var codeOwner = (rec.fields.Gamertag || '').toLowerCase().trim();
-      var currentPlayer = (playerRecord && playerRecord.fields.Gamertag || '').toLowerCase().trim();
-      if (codeOwner && codeOwner !== currentPlayer) {
-        status.textContent = 'This code belongs to a different gamertag. Verify with the winning account to redeem it.';
-        return;
-      }
-      redeemRecord = rec;
+      redeemCode = d.code;
       status.textContent = '✅ Code valid! Pick your free nameplate below.';
       initRedeemPlatePicker();
       picker.style.display = 'block';
@@ -1553,17 +1545,16 @@ function checkRedeemCode() {
 // Auto-surface a winner's prize the moment they verify — no email needed.
 function checkForPendingPrize(gamertag) {
   if (!gamertag) return;
-  var filter = encodeURIComponent('AND(LOWER({Gamertag})="' + gamertag.toLowerCase() + '",{Status}="Issued")');
-  fetch(AT_REDEMPTIONS_URL + '?filterByFormula=' + filter + '&maxRecords=1', {headers: AT_H})
+  fetch(CHECK_PRIZE_URL + '?gamertag=' + encodeURIComponent(gamertag))
     .then(function(r) { return r.json(); })
     .then(function(d) {
-      if (!d.records || !d.records.length) return;
-      redeemRecord = d.records[0];
-      var reason = redeemRecord.fields.Reason || 'site engagement';
+      if (!d.pending || !d.prize) return;
+      redeemCode = d.prize.code;
+      var reason = d.prize.reason || 'site engagement';
       var codeInput = document.getElementById('redeem-code');
       var status = document.getElementById('redeem-status');
       var picker = document.getElementById('redeem-plate-picker');
-      if (codeInput) codeInput.value = redeemRecord.fields.Code || '';
+      if (codeInput) codeInput.value = d.prize.code || '';
       if (status) status.innerHTML = '🎉 <strong>You won a free premium nameplate</strong> (' + reason + ')! Pick your design below.';
       initRedeemPlatePicker();
       if (picker) {
@@ -1611,32 +1602,25 @@ function updateRedeemPreview() {
 }
 
 function grantRedeemedPlate() {
-  if (!redeemRecord || !playerRecord || !redeemPlateSelection) return;
+  if (!redeemCode || !playerRecord || !redeemPlateSelection) return;
   var plateId = redeemPlateSelection;
   var fields  = playerRecord.fields;
   var owned   = buildOwnedFromRecord(fields);
   if (owned.indexOf(plateId) < 0) owned.push(plateId);
   var ownedStr = owned.join(',');
 
-  Promise.all([
-    fetch(AT_URL + '/' + playerRecord.id, {
-      method: 'PATCH', headers: AT_H,
-      body: JSON.stringify({fields: {PlateStyle: plateId, PlateStatus: 'Prize Redemption', OwnedPlates: ownedStr}})
-    }),
-    fetch(AT_REDEMPTIONS_URL + '/' + redeemRecord.id, {
-      method: 'PATCH', headers: AT_H,
-      body: JSON.stringify({fields: {
-        Status: 'Redeemed', PlateGranted: plateId,
-        RedeemedAt: new Date().toISOString(), Gamertag: fields.Gamertag || ''
-      }})
-    })
-  ]).then(function() {
+  fetch(REDEEM_CODE_URL, {
+    method: 'POST', headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({code: redeemCode, gamertag: fields.Gamertag || '', plateId: plateId})
+  }).then(function(r) { return r.json(); })
+  .then(function(d) {
+    if (!d.success) { showSuccess(plateId, true); return; }
     playerRecord.fields.PlateStyle  = plateId;
     playerRecord.fields.PlateStatus = 'Prize Redemption';
     playerRecord.fields.OwnedPlates = ownedStr;
     buildOwnedDropdown(owned, plateId, fields.Gamertag || '');
     markOwnedPlates(owned);
-    redeemRecord = null;
+    redeemCode = null;
     redeemPlateSelection = null;
     showSuccess(plateId, false, 'Prize Nameplate', false);
   }).catch(function() { showSuccess(plateId, true); });
@@ -1718,12 +1702,12 @@ function goToProfile(){
 
 // ── FOUNDER COUNT ──────────────────────────────────────────
 function loadFounderCount() {
-  fetch(AT_URL + '?fields%5B%5D=Gamertag&fields%5B%5D=PlateStatus', {headers: AT_H})
+  fetch(SIGNUPS_PUBLIC_URL)
     .then(function(r) { return r.json(); })
     .then(function(d) {
-      var founders = (d.records || []).filter(function(rec) {
-        var g = (rec.fields.Gamertag || '').toLowerCase();
-        return g && g !== 'test' && g !== 'trst' && rec.fields.PlateStatus === 'Free Premium';
+      var founders = ((d && d.signups) || []).filter(function(s) {
+        var g = (s.gamertag || '').toLowerCase();
+        return g && g !== 'test' && g !== 'trst' && s.plateStatus === 'Free Premium';
       }).length;
       var claimed = Math.min(founders, 100);
       var el   = document.getElementById('plates-claimed');
