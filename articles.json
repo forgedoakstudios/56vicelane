@@ -1,17 +1,5 @@
 [
   {
-    "emoji": "🗞️",
-    "title": "From The Editor's Desk: Week Of August 5",
-    "slug": "editors-desk-week-of-august-5",
-    "url": "/articles/editors-desk-week-of-august-5",
-    "headline": "From The Editor's Desk: Week Of August 5",
-    "category": "Community",
-    "date": "2026-08-05",
-    "excerpt": "A busy week behind us — a store bug fixed, a security token rotated, a broken share button found and fixed sitewide — and a bigger one ahead, with Trailer 3 watch on and an earnings call landing Friday.",
-    "image": "editor-portrait.png",
-    "permanent": false
-  },
-  {
     "emoji": "🏁",
     "title": "How The Last Drive Actually Works: A Beginner's Guide",
     "slug": "last-drive-beginners-guide",
@@ -22,42 +10,6 @@
     "excerpt": "Never joined a community drive before? Here's exactly how The Last Drive works — picking a platform, a region, a time slot, and whether to lead or join — before November 18.",
     "image": "lastdrive-hero.jpg",
     "permanent": true
-  },
-  {
-    "emoji": "🎮",
-    "title": "What Is An Earnings Call, And Why Should GTA6 Fans Care?",
-    "slug": "gta6-earnings-calls-explained-why-they-matter",
-    "url": "/articles/gta6-earnings-calls-explained-why-they-matter",
-    "headline": "",
-    "category": "News",
-    "date": "2026-08-03",
-    "excerpt": "Take-Two's next earnings call is days away — one of only two left before November 19. Here's the plain-English explainer on what actually happens on these calls, and why they matter more than a trailer or a leak ever could.",
-    "image": "gta6-hero.png",
-    "permanent": false
-  },
-  {
-    "emoji": "🎮",
-    "title": "Danganronpa's Creator Delayed His Own Game Because Of GTA6",
-    "slug": "danganronpa-creator-delayed-game-for-gta6",
-    "url": "/articles/danganronpa-creator-delayed-game-for-gta6",
-    "headline": "",
-    "category": "News",
-    "date": "2026-08-04",
-    "excerpt": "Kazutaka Kodaka just admitted the quiet part out loud: Danganronpa 2×2 slipped to 2027 partly because its own creator wants time to play GTA6. Not the first studio to say it, but the most honest.",
-    "image": "gta6-hero.png",
-    "permanent": false
-  },
-  {
-    "emoji": "🎮",
-    "title": "Another GTA6 Map Tease Just Turned Up Inside GTA5",
-    "slug": "gta6-map-painting-found-again-gta5",
-    "url": "/articles/gta6-map-painting-found-again-gta5",
-    "headline": "",
-    "category": "Leaks",
-    "date": "2026-08-04",
-    "excerpt": "A painting found in GTA Online — flipped upside down — looks a lot like the fan-built GTA6 map. Not the first time this has happened, and it's landing right as one insider says August is the month for real footage.",
-    "image": "gta6-hero.png",
-    "permanent": false
   },
   {
     "slug": "gta6-everything-confirmed",
@@ -78,6 +30,54 @@
     "excerpt": "November 19, 2026 is officially locked. Rockstar and Take-Two have confirmed the GTA6 launch date. Here is everything you need to know about what comes next.",
     "permanent": true,
     "url": "/articles/gta6-november-19-confirmed"
+  },
+  {
+    "emoji": "🗞️",
+    "title": "From The Editor's Desk: Week Of August 5",
+    "slug": "editors-desk-week-of-august-5",
+    "url": "/articles/editors-desk-week-of-august-5",
+    "headline": "From The Editor's Desk: Week Of August 5",
+    "category": "Community",
+    "date": "2026-08-05",
+    "excerpt": "A busy week behind us — a store bug fixed, a security token rotated, a broken share button found and fixed sitewide — and a bigger one ahead, with Trailer 3 watch on and an earnings call landing Friday.",
+    "image": "editor-portrait.png",
+    "permanent": false
+  },
+  {
+    "emoji": "🎮",
+    "title": "Danganronpa's Creator Delayed His Own Game Because Of GTA6",
+    "slug": "danganronpa-creator-delayed-game-for-gta6",
+    "url": "/articles/danganronpa-creator-delayed-game-for-gta6",
+    "headline": "Danganronpa's Creator Delayed His Own Game Because Of GTA6",
+    "category": "News",
+    "date": "2026-08-04",
+    "excerpt": "Kazutaka Kodaka just admitted the quiet part out loud: Danganronpa 2×2 slipped to 2027 partly because its own creator wants time to play GTA6. It's not the first studio to say it, but it might be the most honest.",
+    "image": "Jason_and_Lucia_01_landscape.jpg",
+    "permanent": false
+  },
+  {
+    "emoji": "🎮",
+    "title": "Another GTA6 Map Tease Just Turned Up Inside GTA5",
+    "slug": "gta6-map-painting-found-again-gta5",
+    "url": "/articles/gta6-map-painting-found-again-gta5",
+    "headline": "Another GTA6 Map Tease Just Turned Up Inside GTA5",
+    "category": "Leaks",
+    "date": "2026-08-04",
+    "excerpt": "A painting found in GTA Online — flipped upside down — looks a lot like the fan-built GTA6 map. It's not the first time this has happened, and it's landing right as one insider says August is the month for real footage.",
+    "image": "Jason_and_Lucia_01_landscape.jpg",
+    "permanent": false
+  },
+  {
+    "emoji": "🎮",
+    "title": "What Is An Earnings Call, And Why Should GTA6 Fans Care?",
+    "slug": "gta6-earnings-calls-explained-why-they-matter",
+    "url": "/articles/gta6-earnings-calls-explained-why-they-matter",
+    "headline": "What Is An Earnings Call, And Why Should GTA6 Fans Care?",
+    "category": "News",
+    "date": "2026-08-03",
+    "excerpt": "Take-Two's next earnings call is days away — one of the last two before November 19. Here's what actually happens on these calls, and why gamers who couldn't care less about stock prices should still pay attention.",
+    "image": "Jason_and_Lucia_01_landscape.jpg",
+    "permanent": false
   },
   {
     "emoji": "🛠️",
