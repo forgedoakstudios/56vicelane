@@ -801,12 +801,22 @@ var SIGNUPS_PUBLIC_URL = 'https://n8n.56vicelane.com/webhook/7eb886c7-d45d-4ec3-
 var CHECK_PRIZE_URL = 'https://n8n.56vicelane.com/webhook/b872ae2a-84bb-4f2b-aae9-36d140041c77/check-prize';
 var CHECK_CODE_URL = 'https://n8n.56vicelane.com/webhook/28e8d4e3-fc6d-486e-8e5e-36f775e0181d/check-redeem-code';
 var REDEEM_CODE_URL = 'https://n8n.56vicelane.com/webhook/3107b1c1-0c58-4055-93f7-e04496a743b5/redeem-code';
+var VERIFY_PURCHASE_URL = 'https://n8n.56vicelane.com/webhook/e10fc22f-43ee-4ae1-b7b0-337c4e95a7e4/verify-purchase';
 var verifiedEmail = null;
 
 function patchPlayer(patch) {
   return fetch(UPDATE_URL, {
     method: 'POST', headers: {'Content-Type':'application/json'},
     body: JSON.stringify({gamertag: playerRecord.fields.Gamertag, email: verifiedEmail, patch: patch})
+  }).then(function(r) { return r.json(); });
+}
+
+// Server re-verifies the PayPal order (status + amount paid) before granting
+// anything -- the browser's word that "payment succeeded" is not trusted.
+function verifyPurchase(sku, orderId, patch) {
+  return fetch(VERIFY_PURCHASE_URL, {
+    method: 'POST', headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({gamertag: playerRecord.fields.Gamertag, email: verifiedEmail, orderId: orderId, sku: sku, patch: patch})
   }).then(function(r) { return r.json(); });
 }
 
@@ -1257,7 +1267,7 @@ function renderSinglePayPal(price, name, style) {
       }]});
     },
     onApprove: function(data, actions) {
-      return actions.order.capture().then(function() { applyPlate(style); });
+      return actions.order.capture().then(function() { applyPlate(style, data.orderID); });
     },
     onError: function() {
       document.getElementById('paypal-button-container').innerHTML =
@@ -1267,7 +1277,7 @@ function renderSinglePayPal(price, name, style) {
 }
 
 // ── APPLY PLATE (single purchase) ─────────────────────────
-function applyPlate(style) {
+function applyPlate(style, orderId) {
   if (!playerRecord) return;
   var fields  = playerRecord.fields;
   var owned   = buildOwnedFromRecord(fields);
@@ -1280,7 +1290,8 @@ function applyPlate(style) {
     ownedPlates: ownedStr
   };
   if (plateField) updateFields[plateField] = true;
-  patchPlayer(updateFields).then(function() {
+  verifyPurchase('plate-' + style, orderId, updateFields).then(function(d) {
+    if (!d.success) { showSuccess(style, true); return; }
     playerRecord.fields.PlateStyle  = style;
     playerRecord.fields.PlateStatus = 'Purchased Premium';
     playerRecord.fields.OwnedPlates = ownedStr;
@@ -1292,7 +1303,7 @@ function applyPlate(style) {
 }
 
 // ── APPLY BUNDLE ───────────────────────────────────────────
-function applyBundle(key) {
+function applyBundle(key, orderId) {
   if (!playerRecord) return;
   var b      = BUNDLES[key];
   var fields = playerRecord.fields;
@@ -1314,7 +1325,8 @@ function applyBundle(key) {
   });
   if (b.bundleField) updateFields[b.bundleField] = true;
 
-  patchPlayer(updateFields).then(function() {
+  verifyPurchase(key, orderId, updateFields).then(function(d) {
+    if (!d.success) { showSuccess(firstNew, true); return; }
     playerRecord.fields.PlateStyle  = firstNew;
     playerRecord.fields.PlateStatus = newStatus;
     playerRecord.fields.OwnedPlates = ownedStr;
@@ -1386,7 +1398,7 @@ function renderPick5Button() {
       }]});
     },
     onApprove: function(data, actions) {
-      return actions.order.capture().then(function() { applyPick5Bundle(chosen); });
+      return actions.order.capture().then(function() { applyPick5Bundle(chosen, data.orderID); });
     },
     onError: function() {
       var el = document.getElementById('paypal-button-pick5');
@@ -1395,7 +1407,7 @@ function renderPick5Button() {
   }).render('#paypal-button-pick5');
 }
 
-function applyPick5Bundle(chosenKeys) {
+function applyPick5Bundle(chosenKeys, orderId) {
   if (!playerRecord) return;
   var plates = [];
   chosenKeys.forEach(function(key) {
@@ -1407,7 +1419,8 @@ function applyPick5Bundle(chosenKeys) {
   var ownedStr = owned.join(',');
   var firstNew = plates[0];
 
-  patchPlayer({plateStyle: firstNew, plateStatus: 'Pick 5 Bundle', ownedPlates: ownedStr}).then(function() {
+  verifyPurchase('pick5', orderId, {plateStyle: firstNew, plateStatus: 'Pick 5 Bundle', ownedPlates: ownedStr}).then(function(d) {
+    if (!d.success) { showSuccess(firstNew, true); return; }
     playerRecord.fields.PlateStyle  = firstNew;
     playerRecord.fields.PlateStatus = 'Pick 5 Bundle';
     playerRecord.fields.OwnedPlates = ownedStr;
@@ -1486,7 +1499,7 @@ function renderSinglePlateButton() {
       }]});
     },
     onApprove: function(data, actions) {
-      return actions.order.capture().then(function() { applySinglePlate(plateId); });
+      return actions.order.capture().then(function() { applySinglePlate(plateId, data.orderID); });
     },
     onError: function() {
       var el = document.getElementById('paypal-button-single-plate');
@@ -1495,14 +1508,15 @@ function renderSinglePlateButton() {
   }).render('#paypal-button-single-plate');
 }
 
-function applySinglePlate(plateId) {
+function applySinglePlate(plateId, orderId) {
   if (!playerRecord) return;
   var fields = playerRecord.fields;
   var owned  = buildOwnedFromRecord(fields);
   if (owned.indexOf(plateId) < 0) owned.push(plateId);
   var ownedStr = owned.join(',');
 
-  patchPlayer({plateStyle: plateId, plateStatus: 'Single Nameplate', ownedPlates: ownedStr}).then(function() {
+  verifyPurchase('nameplate-single', orderId, {plateStyle: plateId, plateStatus: 'Single Nameplate', ownedPlates: ownedStr}).then(function(d) {
+    if (!d.success) { showSuccess(plateId, true); return; }
     playerRecord.fields.PlateStyle  = plateId;
     playerRecord.fields.PlateStatus = 'Single Nameplate';
     playerRecord.fields.OwnedPlates = ownedStr;
@@ -1659,7 +1673,7 @@ function renderBundleButton(key, b, cid) {
       }]});
     },
     onApprove: function(data, actions) {
-      return actions.order.capture().then(function() { applyBundle(key); });
+      return actions.order.capture().then(function() { applyBundle(key, data.orderID); });
     },
     onError: function() {
       var el = document.getElementById(cid);
