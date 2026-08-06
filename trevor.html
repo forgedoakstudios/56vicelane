@@ -167,7 +167,7 @@ doubled.forEach(function(el){track.appendChild(el);});
 /* Pull Trevor's latest Friday Frequency rant onto his own page (his half of
    the weekly column, generated Fridays by n8n). Hidden until there's one. */
 (function () {
-  var FEED = 'https://n8n.56vicelane.com/webhook/7053d4f9-c685-4d5b-af2a-f2afdc211cb1/weekly-latest';
+  var FEED = 'https://n8n.56vicelane.com/webhook/weekly-latest';
   fetch(FEED).then(function (r) { return r.json(); }).then(function (d) {
     if (!d || !d.trevorHtml) return;
     var body = document.getElementById('trevor-this-week');

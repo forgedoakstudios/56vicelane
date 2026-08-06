@@ -9,10 +9,10 @@
    button.comment-submit onclick="submitComment()", #comment-success,
    #comments-list. */
 (function () {
-  var SUBMIT_RATING_URL = 'https://n8n.56vicelane.com/webhook/ac8cd0d5-98bc-445a-bed7-39f8e36bfcfd/submit-rating';
-  var LIST_RATINGS_URL = 'https://n8n.56vicelane.com/webhook/f3865b9c-ce4f-4d0b-8789-b6bb82c5e3c9/list-ratings';
-  var SUBMIT_COMMENT_URL = 'https://n8n.56vicelane.com/webhook/350a735d-a7bc-4f9c-99ff-06bd58d7aa47/submit-comment';
-  var LIST_COMMENTS_URL = 'https://n8n.56vicelane.com/webhook/d6392f9c-21bd-4f98-8751-a3d3b9a1e8fb/list-comments';
+  var SUBMIT_RATING_URL = 'https://n8n.56vicelane.com/webhook/submit-rating';
+  var LIST_RATINGS_URL = 'https://n8n.56vicelane.com/webhook/list-ratings';
+  var SUBMIT_COMMENT_URL = 'https://n8n.56vicelane.com/webhook/submit-comment';
+  var LIST_COMMENTS_URL = 'https://n8n.56vicelane.com/webhook/list-comments';
 
   function slug() {
     return window.location.pathname.replace(/\.html$/, '').replace(/\/+$/, '').split('/').pop();
