@@ -71,9 +71,10 @@
   .news-thumb{height:90px; border-radius:8px; display:block; background:linear-gradient(135deg,var(--gold),var(--orange) 55%,var(--magenta)); background-size:cover; background-position:center;}
   .news-title{font-family:'Playfair Display'; font-weight:700; font-size:16px; margin-top:12px; margin-bottom:20px;}
 
-  .video-block{height:150px; border-radius:10px; position:relative; display:flex; align-items:center; justify-content:center; margin-top:8px;}
+  .video-block{height:150px; border-radius:10px; position:relative; display:flex; align-items:center; justify-content:center; margin-top:8px; overflow:hidden; cursor:pointer;}
   .video-block .play{width:52px; height:52px; border-radius:50%; background:linear-gradient(135deg,var(--orange),var(--pink)); display:flex; align-items:center; justify-content:center; color:#fff; font-size:18px;}
   .video-block .dur{position:absolute; bottom:10px; left:12px; background:rgba(0,0,0,0.6); color:#fff; font-family:'Barlow Condensed'; font-size:11px; padding:3px 8px; border-radius:4px;}
+  .video-block iframe{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
 
   /* SIDEBAR */
   .stories-list{list-style:none; margin-bottom:28px;}
@@ -202,9 +203,9 @@
     <a class="news-title" id="home-news-title" href="/news" style="display:block;color:inherit;text-decoration:none;">Loading latest news...</a>
 
     <span class="label sec-label">Last Drive Preview</span>
-    <div class="video-block photo img-street">
+    <div class="video-block photo img-street" id="lastdrive-preview-block" onclick="playLastDrivePreview()">
       <div class="play">▶</div>
-      <div class="dur">1:45</div>
+      <div class="dur">0:50</div>
     </div>
   </div>
 
@@ -298,6 +299,14 @@ function toggleHeroMute(btn) {
   var muted = frame.src.indexOf('mute=1') !== -1;
   frame.src = frame.src.replace(muted ? 'mute=1' : 'mute=0', muted ? 'mute=0' : 'mute=1');
   btn.textContent = muted ? '🔊 Sound On' : '🔇 Sound Off';
+}
+
+function playLastDrivePreview() {
+  var block = document.getElementById('lastdrive-preview-block');
+  if (!block) return;
+  block.onclick = null;
+  block.style.cursor = 'default';
+  block.innerHTML = '<iframe src="https://www.youtube.com/embed/Ni80PfNIWrM?autoplay=1&modestbranding=1&rel=0&playsinline=1" title="The Last Drive — GTA5\'s Final Cruise Before GTA6" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
 }
 
 /* DRIVE LEAD SPOTLIGHT — live from Airtable, rotates a random 2 real
