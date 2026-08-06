@@ -58,10 +58,12 @@ var seenPath = path.join(scanDir, 'seen-links.json');
 var seen = fs.existsSync(seenPath) ? JSON.parse(fs.readFileSync(seenPath, 'utf8')) : [];
 var seenSet = new Set(seen);
 
+var FETCH_TIMEOUT_MS = 20000;
+
 function fetchUrl (url, redirectsLeft) {
   if (redirectsLeft === undefined) redirectsLeft = 5;
   return new Promise(function (resolve, reject) {
-    https.get(url, { headers: { 'User-Agent': 'Mozilla/5.0 56ViceLaneNewsScan/1.0' } }, function (res) {
+    var req = https.get(url, { headers: { 'User-Agent': 'Mozilla/5.0 56ViceLaneNewsScan/1.0' } }, function (res) {
       if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location && redirectsLeft > 0) {
         res.resume();
         var nextUrl = res.headers.location;
@@ -72,7 +74,15 @@ function fetchUrl (url, redirectsLeft) {
       var data = '';
       res.on('data', function (chunk) { data += chunk; });
       res.on('end', function () { resolve({ body: data, finalUrl: url, statusCode: res.statusCode }); });
-    }).on('error', reject);
+    });
+    req.on('error', reject);
+    /* No individual feed is allowed to hang the whole scan -- a single slow
+       or unresponsive outlet (e.g. under a traffic spike from breaking news)
+       used to block every feed after it indefinitely, since a stalled
+       connection with no error event just sits open forever otherwise. */
+    req.setTimeout(FETCH_TIMEOUT_MS, function () {
+      req.destroy(new Error('Timed out after ' + FETCH_TIMEOUT_MS + 'ms: ' + url));
+    });
   });
 }
 
