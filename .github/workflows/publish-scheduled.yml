@@ -1,0 +1,132 @@
+name: Scheduled Article Publisher (One-Off, Aug 2026)
+
+# Publishes two pre-written, pre-reviewed articles sitting in scheduled/ on
+# their intended dates: gta6-what-happens-after-launch.html on Aug 7, and
+# gta6-spider-man-entertainment-crown-comparison.html on Aug 8. Deliberately
+# separate from the generic drafts/tech + drafts/other FIFO publisher
+# (publish-articles.yml) since that queue can't target a specific file on a
+# specific date -- these two need exact-day placement, not "next in line".
+#
+# Single-use: the year guard below makes this a safe no-op in any year other
+# than 2026, so it doesn't need to be deleted after Aug 8 -- it just becomes
+# permanently inert once both files have moved out of scheduled/.
+
+on:
+  schedule:
+    - cron: '0 15 7 8 *' # Aug 7, 15:00 UTC (10am CT) -- What Happens After GTA 6
+    - cron: '0 15 8 8 *' # Aug 8, 15:00 UTC (10am CT) -- Spider-Man comparison
+  workflow_dispatch:
+    inputs:
+      file:
+        description: 'Filename in scheduled/ to publish (leave blank to auto-detect by day-of-month)'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Guard against future-year cron reruns
+        id: year
+        run: |
+          YEAR=$(date -u +%Y)
+          if [ "$YEAR" != "2026" ]; then
+            echo "Not 2026 -- this workflow is single-use for the two Aug 2026 articles. Skipping."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Determine which file to publish
+        if: steps.year.outputs.skip != 'true'
+        id: pick
+        run: |
+          FILE="${{ github.event.inputs.file }}"
+          if [ -z "$FILE" ]; then
+            DAY=$(date -u +%d)
+            if [ "$DAY" = "07" ]; then
+              FILE="gta6-what-happens-after-launch.html"
+            elif [ "$DAY" = "08" ]; then
+              FILE="gta6-spider-man-entertainment-crown-comparison.html"
+            else
+              echo "No scheduled file for day $DAY -- nothing to publish today."
+              echo "found=false" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          fi
+
+          if [ ! -f "scheduled/$FILE" ]; then
+            echo "scheduled/$FILE not found (already published, or wrong filename) -- nothing to do."
+            echo "found=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "found=true" >> "$GITHUB_OUTPUT"
+          echo "file=$FILE" >> "$GITHUB_OUTPUT"
+
+      - name: Check n8n webhook secret is configured
+        if: steps.pick.outputs.found == 'true'
+        env:
+          N8N_ARTICLE_WEBHOOK_URL: ${{ secrets.N8N_ARTICLE_WEBHOOK_URL }}
+        run: |
+          if [ -z "$N8N_ARTICLE_WEBHOOK_URL" ]; then
+            echo "::warning::N8N_ARTICLE_WEBHOOK_URL secret is not set -- the article will still publish, but the social blast step will skip silently. Add the secret in repo Settings > Secrets to fix."
+          else
+            echo "N8N_ARTICLE_WEBHOOK_URL is configured."
+          fi
+
+      - name: Move into articles/
+        if: steps.pick.outputs.found == 'true'
+        run: git mv "scheduled/${{ steps.pick.outputs.file }}" "articles/${{ steps.pick.outputs.file }}"
+
+      - uses: actions/setup-node@v4
+        if: steps.pick.outputs.found == 'true'
+        with:
+          node-version: '20'
+
+      - name: Rebuild articles.json + sitemap.xml
+        if: steps.pick.outputs.found == 'true'
+        run: |
+          node tools/build-articles.js
+          node tools/build-sitemap.js
+
+      - name: Queue Bluesky post
+        if: steps.pick.outputs.found == 'true'
+        run: node scripts/queue-article-post.js "articles/${{ steps.pick.outputs.file }}"
+
+      - name: Notify social blast (X, Instagram, Facebook, Discord via n8n)
+        if: steps.pick.outputs.found == 'true'
+        env:
+          N8N_ARTICLE_WEBHOOK_URL: ${{ secrets.N8N_ARTICLE_WEBHOOK_URL }}
+        run: node scripts/notify-social-blast.js "articles/${{ steps.pick.outputs.file }}"
+
+      - name: Commit and push
+        if: steps.pick.outputs.found == 'true'
+        run: |
+          git config user.name "56ViceLane Bot"
+          git config user.email "bot@56vicelane.com"
+          git add -A
+          git commit -m "publish (scheduled): ${{ steps.pick.outputs.file }} — $(date -u +'%Y-%m-%d %H:%M UTC')"
+
+          for i in 1 2 3 4 5; do
+            if git push; then
+              echo "✅ Published ${{ steps.pick.outputs.file }}"
+              exit 0
+            fi
+            echo "Push rejected (attempt $i/5) — pulling and retrying..."
+            git pull --rebase origin main
+            node tools/build-articles.js
+            node tools/build-sitemap.js
+            git add -A
+            git diff --staged --quiet || git commit --amend --no-edit
+            sleep 2
+          done
+          echo "::error::Failed to push after 5 attempts"
+          exit 1
