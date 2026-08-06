@@ -17,6 +17,7 @@
 (function () {
   var CHECKIN_URL = 'https://n8n.56vicelane.com/webhook/player-check-in';
   var RECOVER_URL = 'https://n8n.56vicelane.com/webhook/player-recover-streak';
+  var SUBSCRIBE_URL = 'https://n8n.56vicelane.com/webhook/subscribe-email';
   var RECOVERY_VIDEO_ID = 'Ni80PfNIWrM'; // TODO: swap to the vertical Shorts cut once uploaded
   var WATCH_SECONDS = 15;
   var DELAY_MS = 5000;
@@ -39,6 +40,14 @@
     '.vl-recovery-btn{width:100%;padding:10px;border-radius:6px;border:none;font-family:"Barlow Condensed",sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:.82rem;cursor:pointer;background:linear-gradient(135deg,#FF6B2C,#FF2D78);color:#fff;}' +
     '.vl-recovery-btn:disabled{background:#3A332C;color:#8A8078;cursor:default;}' +
     '.vl-recovery-status{font-size:.78rem;color:#8A8078;margin-top:6px;text-align:center;}' +
+    '.vl-email-form{display:flex;gap:6px;margin-top:10px;}' +
+    '.vl-email-input{flex:1;min-width:0;background:#0F0C09;border:1px solid rgba(255,183,77,.35);border-radius:6px;padding:9px 10px;color:#F0E6DA;font-family:"Barlow Condensed",sans-serif;font-size:.85rem;}' +
+    '.vl-email-input::placeholder{color:#6b6259;}' +
+    '.vl-email-input:focus{outline:none;border-color:#FFB74D;}' +
+    '.vl-email-submit{flex-shrink:0;padding:9px 14px;border-radius:6px;border:none;font-family:"Barlow Condensed",sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:.78rem;cursor:pointer;background:linear-gradient(135deg,#FF6B2C,#FF2D78);color:#fff;}' +
+    '.vl-email-submit:disabled{background:#3A332C;color:#8A8078;cursor:default;}' +
+    '.vl-email-status{font-size:.78rem;color:#8A8078;margin-top:6px;}' +
+    '.vl-email-status.vl-ok{color:#00C875;}' +
     '@media(max-width:480px){.vl-loyalty-card{left:12px;right:12px;max-width:none;bottom:12px;}}';
 
   function injectCss() {
@@ -140,11 +149,53 @@
     try { if (localStorage.getItem(DISMISS_KEY)) return; } catch (e) {}
     var card = showCard(
       '<div class="vl-loyalty-title">🎁 Loyalty Rewards Are Now Live</div>' +
-      '<div class="vl-loyalty-body">Earn free nameplates by checking in daily — more prizes coming soon. ' +
-      '<a href="/player">Sign up to start earning &rarr;</a></div>'
+      '<div class="vl-loyalty-body">Earn free nameplates by checking in daily — more prizes coming soon. Drop your email, we\'ll let you know the moment new rewards go live.</div>' +
+      '<form class="vl-email-form" id="vl-email-form">' +
+        '<input type="email" class="vl-email-input" id="vl-email-input" placeholder="you@email.com" required>' +
+        '<button type="submit" class="vl-email-submit">Join</button>' +
+      '</form>' +
+      '<div class="vl-email-status" id="vl-email-status"></div>' +
+      '<div class="vl-loyalty-body" style="margin-top:8px;font-size:.78rem;"><a href="/lastdrive">Already going to The Last Drive? Sign up here &rarr;</a></div>'
     );
     card.querySelector('.vl-loyalty-close').addEventListener('click', function () {
       try { localStorage.setItem(DISMISS_KEY, '1'); } catch (e) {}
+    });
+
+    var form = card.querySelector('#vl-email-form');
+    var input = card.querySelector('#vl-email-input');
+    var status = card.querySelector('#vl-email-status');
+    var submitBtn = form.querySelector('.vl-email-submit');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = input.value.trim();
+      if (!email) return;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Joining…';
+      status.className = 'vl-email-status';
+      status.textContent = '';
+      fetch(SUBSCRIBE_URL, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, source: 'loyalty-banner', gamertag: gamertag() })
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (d.success) {
+            form.style.display = 'none';
+            status.className = 'vl-email-status vl-ok';
+            status.textContent = d.alreadySubscribed ? "You're already on the list." : "You're in! We'll email you when new rewards drop.";
+            try { localStorage.setItem(DISMISS_KEY, '1'); } catch (e) {}
+          } else {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Join';
+            status.textContent = 'That email didn\'t look right — try again.';
+          }
+        })
+        .catch(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Join';
+          status.textContent = 'Something went wrong — try again.';
+        });
     });
   }
 
