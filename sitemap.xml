@@ -7,12 +7,6 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://56vicelane.com/articles/gta6-netflix-extended-look-august-27</loc>
-    <lastmod>2026-08-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://56vicelane.com/news</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>daily</changefreq>
@@ -135,6 +129,12 @@
   <url>
     <loc>https://56vicelane.com/articles/gta6-november-19-confirmed</loc>
     <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-netflix-extended-look-august-27</loc>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
