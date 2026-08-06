@@ -288,10 +288,12 @@ img {
    Added July 9, 2026 — overrides the original hamburger-only
    rule. See design-system-addendum.md "RULE OVERRIDE" section.
    Updated July 9, 2026 — 8 links now (added Wall of Honor).
+   Updated August 6, 2026 — 9 links now (added Leaderboard, which
+   previously existed but wasn't linked from this nav at all).
    Markup: <div class="navband"><a class="active" href="/">Home</a>...
    Position: directly BELOW the hero image on every page, not above.
-   Same 8 links, same order, on every page:
-   Home / News / Last Drive / Wall of Honor / Members / Store / Gear / Forum
+   Same 9 links, same order, on every page:
+   Home / News / Last Drive / Wall of Honor / Leaderboard / Members / Store / Gear / Forum
    ============================================================ */
 .navband {
   background: var(--navband);

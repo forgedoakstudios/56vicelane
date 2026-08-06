@@ -1,107 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9EKF7J4V7W');</script>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Leaderboard &amp; Badges — 56ViceLane Community</title>
-<meta name="description" content="The 56ViceLane community leaderboard: Last Drive convoy members, Clear The Lanes supporters, and the badges that prove you were here before launch.">
-<link rel="canonical" href="https://56vicelane.com/leaderboard.html">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Leaderboard — 56ViceLane</title>
+<meta name="description" content="The 56ViceLane weekly leaderboard and earnable badges — check in daily, climb the standings, and prove you were here before launch.">
+<link rel="canonical" href="https://56vicelane.com/leaderboard">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="56ViceLane">
+<meta property="og:title" content="Leaderboard — 56ViceLane">
+<meta property="og:description" content="Weekly standings and earnable badges for the 56ViceLane community.">
+<meta property="og:image" content="https://56vicelane.com/images/gta6-hero.png">
+<meta property="og:url" content="https://56vicelane.com/leaderboard">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://56vicelane.com/images/gta6-hero.png">
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600..900&family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/vf.css">
-<style>
-.lb{width:100%;border-collapse:collapse}
-.lb td,.lb th{padding:14px 12px;border-bottom:1px solid var(--line);text-align:left}
-.lb th{font-family:var(--font-m);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}
-.lb tr{transition:background .2s}
-.lb tbody tr:hover{background:rgba(183,155,232,.06)}
-.rank{font-family:var(--font-d);font-size:1.3rem;color:var(--peach);width:56px}
-.pips{display:flex;gap:6px}
-.pip{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:.72rem;
-  border:1px solid var(--line);background:var(--ink-2)}
-.badge-card{text-align:center}
-.badge-icon{
-  width:74px;height:74px;margin:0 auto 14px;border-radius:50%;display:grid;place-items:center;font-size:1.7rem;
-  background:radial-gradient(circle at 32% 28%, rgba(247,237,226,.18), transparent 60%), var(--panel);
-  border:1px solid var(--line);transition:transform .3s,box-shadow .3s;
-}
-.badge-card:hover .badge-icon{transform:rotate(-8deg) scale(1.08);box-shadow:0 0 34px -8px var(--cyan)}
-</style>
-<!-- Google AdSense -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/vicelane.css">
+
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
+
+<style>
+.lb-hero { text-align: center; padding-top: 44px; }
+.lb-hero .eyebrow { justify-content: center; }
+.lb-hero p.lede { max-width: 560px; margin: 12px auto 0; color: var(--smoke); }
+.lb-hero .lb-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 22px; }
+
+.lb-section { margin-top: 52px; }
+.lb-section-alt { background: var(--asphalt); border-top: 1px solid var(--edge); border-bottom: 1px solid var(--edge); padding: 44px 0; margin-top: 52px; }
+
+.badge-card { text-align: center; }
+.badge-icon {
+  width: 68px; height: 68px; margin: 0 auto 12px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+  background: linear-gradient(135deg, rgba(255,107,44,.12), rgba(214,36,122,.08));
+  border: 1px solid var(--edge);
+}
+.badge-card h3 { margin-bottom: 6px; }
+.badge-card p { font-size: .85rem; color: var(--smoke); line-height: 1.5; }
+
+.lb-table-wrap { background: var(--asphalt); border: 1px solid var(--edge); overflow-x: auto; }
+.lb-table { width: 100%; border-collapse: collapse; }
+.lb-table th, .lb-table td { padding: 14px 16px; border-bottom: 1px solid var(--edge); text-align: left; }
+.lb-table th { font-family: var(--font-label); font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--smoke); }
+.lb-table tbody tr:last-child td { border-bottom: none; }
+.lb-table tbody tr:hover { background: rgba(255,107,44,.03); }
+.lb-rank { font-family: var(--font-display); font-size: 1.2rem; color: var(--amber); width: 56px; }
+.lb-points { font-family: var(--font-label); font-weight: 700; color: var(--bone); }
+.lb-note { font-size: .85rem; color: var(--smoke); margin-top: 10px; }
+</style>
 </head>
 <body>
 
-<header class="site-header">
-  <div class="wrap nav">
-    <a class="brand" href="/">56VICELANE <span class="freq">VF·56.6</span></a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">MENU</button>
-    <nav class="nav-links" id="nav-links">
-      <a href="/">Home</a>
-      <a href="/news.html">News</a>
-      <a href="/gta6.html">GTA 6 Hub</a>
-      <a href="/radio.html">Radio</a>
-      <a href="/leaderboard.html" aria-current="page">Leaderboard</a>
-      <a href="/gear.html">Gear</a>
-    </nav>
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker-track">
+    <span class="ticker-item">56ViceLane — Where GTA5 Ends And GTA6 Begins</span>
   </div>
-  <div class="horizon"></div>
-</header>
+</div>
 
-<main>
-<section class="hero" style="padding-bottom:44px">
-  <div class="wrap">
-    <p class="eyebrow reveal">COMMUNITY STANDINGS</p>
-    <h1 class="reveal">The Leaderboard</h1>
-    <p class="lede reveal mt-1">Badges for the people who showed up — Last Drive convoy members, Clear The Lanes supporters, and the day-one crew. When accounts go live, your profile carries these forever.</p>
-    <div class="reveal mt-2" style="display:flex;gap:12px;flex-wrap:wrap">
-      <a class="btn btn-coral" href="/lastdrive.html">Join The Last Drive</a>
-      <a class="btn btn-ghost" href="/members.html">Members</a>
+<nav class="nav">
+  <a class="logo" href="/">
+    <span class="logo-mark">56</span>
+    <span class="logo-text">ViceLane</span>
+  </a>
+</nav>
+
+<div class="navband">
+  <a href="/">Home</a>
+  <a href="/news">News</a>
+  <a href="/lastdrive">Last Drive</a>
+  <a href="/wall">Wall of Honor</a>
+  <a href="/leaderboard" class="active">Leaderboard</a>
+  <a href="/members">Members</a>
+  <a href="/store">Store</a>
+  <a href="/gear">Gear</a>
+  <a href="/forum">Forum</a>
+</div>
+
+<div class="wrap-wide lb-hero">
+  <div class="eyebrow">Community Standings</div>
+  <h1>The Leaderboard</h1>
+  <p class="lede">Check in daily to climb the weekly standings — badges for the people who showed up: Last Drive convoy members, Clear The Lanes supporters, and the day-one crew.</p>
+  <div class="lb-cta">
+    <a class="btn btn-primary" href="/lastdrive">Join The Last Drive</a>
+    <a class="btn btn-ghost" href="/members">Members</a>
+  </div>
+</div>
+
+<div class="wrap-wide lb-section">
+  <div class="eyebrow">Earnable</div>
+  <h2>Badges</h2>
+  <div class="card-grid" style="margin-top:18px;">
+    <div class="card badge-card">
+      <div class="badge-icon">🏁</div>
+      <h3>Last Driver</h3>
+      <p>Rolled with the convoy on November 18, 2026.</p>
+    </div>
+    <div class="card badge-card">
+      <div class="badge-icon">🛣️</div>
+      <h3>Lane Clearer</h3>
+      <p>Signed and shared the #ClearTheLanes campaign.</p>
+    </div>
+    <div class="card badge-card">
+      <div class="badge-icon">📻</div>
+      <h3>Frequency Head</h3>
+      <p>Tuned every station on Vice Frequency Radio.</p>
+    </div>
+    <div class="card badge-card">
+      <div class="badge-icon">🌅</div>
+      <h3>Day One</h3>
+      <p>Was here before the sun came up on Leonida.</p>
     </div>
   </div>
-</section>
+</div>
 
-<section class="section" style="padding-top:50px">
-  <div class="wrap">
-    <p class="eyebrow reveal">EARNABLE</p>
-    <h2 class="reveal">Badges</h2>
-    <div class="grid g4 mt-3">
-      <div class="card badge-card reveal"><div class="badge-icon">🏁</div><h3>Last Driver</h3><p>Rolled with the convoy on November 18, 2026.</p></div>
-      <div class="card badge-card reveal"><div class="badge-icon">🛣️</div><h3>Lane Clearer</h3><p>Signed and shared the #ClearTheLanes campaign.</p></div>
-      <div class="card badge-card reveal"><div class="badge-icon">📻</div><h3>Frequency Head</h3><p>Tuned every station on Vice Frequency Radio.</p></div>
-      <div class="card badge-card reveal"><div class="badge-icon">🌅</div><h3>Day One</h3><p>Was here before the sun came up on Leonida.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="section" style="background:var(--ink-2)">
-  <div class="wrap">
-    <p class="eyebrow reveal">CONVOY ROSTER</p>
-    <h2 class="reveal">Standings</h2>
-    <p class="lede reveal mt-1" style="font-size:.95rem">Resets every week — new faces climb every Friday.</p>
-    <div class="card reveal mt-3" style="overflow-x:auto">
-      <table class="lb" id="lbTable">
+<div class="lb-section-alt">
+  <div class="wrap-wide">
+    <div class="eyebrow">Convoy Roster</div>
+    <h2>Standings</h2>
+    <p class="lb-note">Resets every week — new faces climb every Friday.</p>
+    <div class="lb-table-wrap" style="margin-top:18px;">
+      <table class="lb-table" id="lbTable">
         <thead><tr><th>#</th><th>Driver</th><th>Points</th></tr></thead>
         <tbody>
-          <tr><td class="rank">01</td><td>Open seat</td><td class="mono">—</td></tr>
-          <tr><td class="rank">02</td><td>Open seat</td><td class="mono">—</td></tr>
-          <tr><td class="rank">03</td><td>Open seat</td><td class="mono">—</td></tr>
+          <tr><td class="lb-rank">01</td><td>Open seat</td><td class="lb-points">—</td></tr>
+          <tr><td class="lb-rank">02</td><td>Open seat</td><td class="lb-points">—</td></tr>
+          <tr><td class="lb-rank">03</td><td>Open seat</td><td class="lb-points">—</td></tr>
         </tbody>
       </table>
     </div>
   </div>
-</section>
-</main>
+</div>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="horizon"></div>
-    <p class="foot-note">© 2026 Forged Oak Studios · Independent fan site — not affiliated with Rockstar Games or Take-Two Interactive. <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p>
+<footer>
+  <div class="footer-brand"><span class="logo-mark">56</span>ViceLane</div>
+  <div class="footer-tag">Where GTA5 Ends And GTA6 Begins</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/news">News</a>
+    <a href="/lastdrive">Last Drive</a>
+    <a href="/wall">Wall of Honor</a>
+    <a href="/members">Members</a>
+    <a href="/store">Store</a>
+    <a href="/gear">Gear</a>
+    <a href="/tools">Tools</a>
+    <a href="/forum">Forum</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="/admin" class="admin-link">Admin</a>
   </div>
+  <p class="footer-disclosure">56ViceLane is an independent fan site. Not affiliated with Rockstar Games or Take-Two Interactive.</p>
+  <p class="footer-copy">© 2026 56ViceLane · Forged Oak Studios</p>
 </footer>
 
-<script src="/assets/vf.js"></script>
 <script src="/back-to-top.js" defer></script>
 <script>
 /* Live weekly standings — resets automatically each ISO week (Last Drive.
@@ -123,10 +187,20 @@
       if (!records.length) return; // leave the static "Open seat" rows in place
       tbody.innerHTML = records.map(function (s, i) {
         var rank = String(i + 1).padStart(2, '0');
-        return '<tr><td class="rank">' + rank + '</td><td><b>' + s.gamertag + '</b></td><td class="mono">' + (s.weekPoints || 0) + '</td></tr>';
+        return '<tr><td class="lb-rank">' + rank + '</td><td><b>' + s.gamertag + '</b></td><td class="lb-points">' + (s.weekPoints || 0) + '</td></tr>';
       }).join('');
     })
     .catch(function () { /* leave static placeholder rows in place */ });
+
+  fetch('/articles.json?v=' + Date.now())
+    .then(function (r) { return r.json(); })
+    .then(function (a) {
+      var t = document.getElementById('ticker-track');
+      if (!t) return;
+      t.innerHTML = [].concat(a, a).map(function (x) {
+        return '<span class="ticker-item" onclick="location.href=\'/articles/' + x.slug + '\'">' + (x.emoji || '⚡') + ' ' + x.title + '</span>';
+      }).join('');
+    }).catch(function () {});
 })();
 </script>
 <script src="/loyalty-banner.js" defer></script>
