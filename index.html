@@ -41,9 +41,13 @@
 
   /* HERO */
   .hero{position:relative; height:280px; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden;}
-  .hero::before{content:''; position:absolute; inset:0; background:linear-gradient(0deg, rgba(0,0,0,0.25), transparent 50%);}
+  .hero::before{content:''; position:absolute; inset:0; z-index:1; background:linear-gradient(0deg, rgba(0,0,0,0.35), transparent 50%);}
   .hero-word{position:relative; z-index:2; font-family:'Playfair Display'; font-style:italic; font-weight:800; font-size:56px; color:#fff; text-shadow:0 4px 30px rgba(0,0,0,0.4);}
   .hero-sub{position:relative; z-index:2; font-family:'Barlow Condensed'; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:#FFE3C4; font-size:13px; margin-top:8px;}
+  .hero-video-wrap{position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none;}
+  .hero-video-wrap iframe{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+  .hero-mute-btn{position:absolute; z-index:3; bottom:14px; right:14px; background:rgba(0,0,0,.55); border:1px solid rgba(255,255,255,.35); color:#fff; font-family:'Barlow Condensed',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:12px; padding:8px 14px; border-radius:20px; cursor:pointer; display:flex; align-items:center; gap:6px; pointer-events:auto;}
+  .hero-mute-btn:hover{background:rgba(0,0,0,.75);}
 
   /* NAV BAND — matches reference's colored nav strip under the hero */
   .navband{background:var(--band); display:flex; justify-content:center; gap:0; flex-wrap:wrap;}
@@ -147,6 +151,10 @@
 </div>
 
 <div class="hero photo img-hero">
+  <div class="hero-video-wrap">
+    <iframe id="hero-video-frame" src="https://www.youtube.com/embed/Ni80PfNIWrM?autoplay=1&mute=1&loop=1&playlist=Ni80PfNIWrM&controls=0&modestbranding=1&rel=0&showinfo=0&playsinline=1" title="The Last Drive — GTA5's Final Cruise Before GTA6" frameborder="0" allow="autoplay; encrypted-media" loading="eager"></iframe>
+  </div>
+  <button class="hero-mute-btn" id="hero-mute-btn" onclick="toggleHeroMute(this)">🔇 Sound Off</button>
   <div>
     <div class="hero-word">56VICELANE</div>
     <div class="hero-sub">Where GTA5 Ends And GTA6 Begins</div>
@@ -284,6 +292,14 @@
 </footer>
 
 <script>
+function toggleHeroMute(btn) {
+  var frame = document.getElementById('hero-video-frame');
+  if (!frame) return;
+  var muted = frame.src.indexOf('mute=1') !== -1;
+  frame.src = frame.src.replace(muted ? 'mute=1' : 'mute=0', muted ? 'mute=0' : 'mute=1');
+  btn.textContent = muted ? '🔊 Sound On' : '🔇 Sound Off';
+}
+
 /* DRIVE LEAD SPOTLIGHT — live from Airtable, rotates a random 2 real
    Drive Leads on every page load. Falls back to a static message if
    the fetch fails or no Drive Leads exist yet. Same Last Drive table
