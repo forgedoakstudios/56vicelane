@@ -41,8 +41,8 @@
   var POINTS_LEDGER_URL = 'https://api.airtable.com/v0/' + AT_BASE + '/PointsLedger';
   var PAGE_STATS_URL    = 'https://api.airtable.com/v0/' + AT_BASE + '/PageStats';
 
-  var N8N_TRACK_PAGEVIEW_URL = 'https://n8n.56vicelane.com/webhook/cefe674c-ff97-420e-83e6-5cace07977cc/track-pageview';
-  var N8N_TRACK_ACTION_URL   = 'https://n8n.56vicelane.com/webhook/72563ac9-1235-450f-bd52-5369d3812cb9/track-action';
+  var N8N_TRACK_PAGEVIEW_URL = 'https://n8n.56vicelane.com/webhook/track-pageview';
+  var N8N_TRACK_ACTION_URL   = 'https://n8n.56vicelane.com/webhook/track-action';
 
   var RATES = {
     'Article Read':       1,
