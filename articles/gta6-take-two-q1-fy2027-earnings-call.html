@@ -45,9 +45,9 @@ nav{background:var(--asphalt);border-bottom:1px solid var(--edge);padding:0 16px
 .btn-twitter{background:#000;color:#fff;border:1px solid #333;}
 .btn-whatsapp{background:#25D366;color:#fff;}
 .btn-copy{background:var(--edge);color:var(--bone);}
-.article-header{position:relative;min-height:240px;display:flex;flex-direction:column;justify-content:flex-end;padding:28px 16px 24px;overflow:hidden;background:var(--asphalt);}
-.article-header-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0.25;z-index:0;}
-.article-header-content{position:relative;z-index:1;max-width:720px;margin:0 auto;width:100%;}
+.article-header{background:var(--asphalt);}
+.article-header-bg{width:100%;aspect-ratio:2.4/1;background-size:cover;background-position:center;display:block;}
+.article-header-content{max-width:720px;margin:0 auto;width:100%;padding:20px 16px 24px;}
 .eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--red);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
 .tag-coverage{background:var(--red);color:#fff;padding:2px 8px;border-radius:3px;font-size:0.7rem;}
 h1{font-family:'Playfair Display',serif;font-size:1.8rem;line-height:1.15;color:var(--bone);margin-bottom:12px;}
@@ -123,7 +123,6 @@ footer{background:var(--asphalt);border-top:1px solid var(--edge);padding:24px 1
 .footer-copy{font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;color:var(--smoke);}
 .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.7s,transform 0.7s;}
 .reveal.visible{opacity:1;transform:translateY(0);}
-.article-hero{width:100%;aspect-ratio:2.4/1;object-fit:cover;object-position:center;border-radius:8px;margin-bottom:32px;display:block;}
 </style>
 <!-- 56ViceLane V2 navband (Vibrant Premium retheme) -->
 <style>
@@ -151,8 +150,6 @@ footer{background:var(--asphalt);border-top:1px solid var(--edge);padding:24px 1
 </div>
 
 <div class="ticker-wrap"><div class="ticker-track" id="ticker-track"><span class="ticker-item">Loading...</span></div></div>
-
-<img src="/images/gta6-hero.png" id="article-hero" alt="Take-Two Raises FY2027 Guidance to $8.2B, Reaffirms Nov 19 — Q1 Earnings Breakdown" class="article-hero">
 
 <div class="vl-share-bar-mount"></div>
 
