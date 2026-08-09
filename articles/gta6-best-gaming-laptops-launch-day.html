@@ -392,8 +392,9 @@
 </footer>
 
 <script>
-  const AIRTABLE_TOKEN = 'patCIXzXQ5pGrbr7K.885a7ff83de3cf47755fe6f78222a990c47c4cc6f401986e8d8d8242374cbb61';
-  const AIRTABLE_BASE  = 'appVViGbmcu5gbn8B';
+  const SUBMIT_RATING_URL  = 'https://n8n.56vicelane.com/webhook/submit-rating';
+  const SUBMIT_COMMENT_URL = 'https://n8n.56vicelane.com/webhook/submit-comment';
+  const LIST_COMMENTS_URL  = 'https://n8n.56vicelane.com/webhook/list-comments';
   const ARTICLE_SLUG   = 'gta6-best-gaming-laptops-launch-day';
 
   fetch('/articles.json')
@@ -432,10 +433,10 @@
       const isPositive = type === 'good';
       document.querySelectorAll(`[data-type="${type}"]`).forEach((ic, i) => { if (i < val) ic.classList.add('active'); });
       try {
-        await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE}/ArticleRatings`, {
+        await fetch(SUBMIT_RATING_URL, {
           method: 'POST',
-          headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}`, 'Content-Type': 'application/json' },
-          body: JSON.stringify({ fields: { ArticleSlug: ARTICLE_SLUG, Rating: val, IsPositive: isPositive, Timestamp: new Date().toISOString() } })
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ articleSlug: ARTICLE_SLUG, rating: val, isPositive: isPositive })
         });
       } catch(e) {}
       localStorage.setItem('rated-' + ARTICLE_SLUG, '1');
@@ -458,10 +459,10 @@
     if (!name || !text) { msgEl.textContent = 'Name and comment required.'; msgEl.style.color = '#FF3B3B'; return; }
     msgEl.textContent = 'Posting...'; msgEl.style.color = 'var(--smoke)';
     try {
-      await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE}/ArticleComments`, {
+      await fetch(SUBMIT_COMMENT_URL, {
         method: 'POST',
-        headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ fields: { Name: name, Comment: text, Emoji: emoji, GifUrl: gifUrl, ArticleSlug: ARTICLE_SLUG, Timestamp: new Date().toISOString() } })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ articleSlug: ARTICLE_SLUG, name: name, comment: text, gifUrl: gifUrl || '', emoji: emoji })
       });
       msgEl.textContent = '✅ Posted!'; msgEl.style.color = 'var(--green)';
       document.getElementById('comment-name').value = '';
@@ -474,26 +475,23 @@
 
   async function loadComments() {
     try {
-      const res = await fetch(
-        `https://api.airtable.com/v0/${AIRTABLE_BASE}/ArticleComments?filterByFormula={ArticleSlug}="${ARTICLE_SLUG}"&sort[0][field]=Timestamp&sort[0][direction]=desc`,
-        { headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}` } }
-      );
+      const res = await fetch(LIST_COMMENTS_URL + '?slug=' + encodeURIComponent(ARTICLE_SLUG));
       const data = await res.json();
       const list = document.getElementById('comments-list');
-      if (!data.records || data.records.length === 0) {
+      const comments = (data && data.comments) || [];
+      if (!comments.length) {
         list.innerHTML = '<p style="color:var(--smoke);font-size:0.9rem;">No comments yet. Be the first to share your build.</p>';
         return;
       }
-      list.innerHTML = data.records.map(r => {
-        const f = r.fields;
-        const d = f.Timestamp ? new Date(f.Timestamp).toLocaleDateString() : '';
+      list.innerHTML = comments.map(c => {
+        const d = c.timestamp ? new Date(c.timestamp).toLocaleDateString() : '';
         return `<div class="comment-card">
           <div class="comment-card-header">
-            <span class="comment-name">${f.Emoji || ''} ${f.Name || 'Anonymous'}</span>
+            <span class="comment-name">${c.emoji || ''} ${c.name || 'Anonymous'}</span>
             <span class="comment-time">${d}</span>
           </div>
-          <div class="comment-text">${f.Comment || ''}</div>
-          ${f.GifUrl ? `<div class="comment-gif"><img src="${f.GifUrl}" alt="gif" loading="lazy"/></div>` : ''}
+          <div class="comment-text">${c.comment || ''}</div>
+          ${c.gifUrl ? `<div class="comment-gif"><img src="${c.gifUrl}" alt="gif" loading="lazy"/></div>` : ''}
         </div>`;
       }).join('');
     } catch(e) {}
