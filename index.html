@@ -98,12 +98,12 @@
   .blotter-source{display:block; font-family:'Barlow Condensed'; font-size:10px; color:var(--ink-soft); margin-top:4px; text-transform:uppercase; letter-spacing:0.5px;}
 
   .fan-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:24px;}
-  .fan-thumb{height:90px; border-radius:8px;}
+  .fan-thumb{height:117px; border-radius:8px;}
 
   /* MEDIA GALLERY */
   .section{max-width:1200px; margin:0 auto; padding:50px 28px;}
   .gallery-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:12px;}
-  .gallery-tile{height:130px; border-radius:10px;}
+  .gallery-tile{height:169px; border-radius:10px;}
 
   /* MEMBER SPOTLIGHT (replaces "character files") — populated live from Airtable, see loadDriveLeadSpotlight() */
   .spot-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
@@ -259,7 +259,7 @@
   <span class="label sec-label">🔴 Now Featuring!</span>
   <div class="gallery-grid" id="gallery-grid">
     <a href="/lastdrive" id="gallery-promo" class="gallery-tile photo" style="background:radial-gradient(ellipse at 30% 100%, #FF3D7A44, transparent 60%), linear-gradient(160deg,#3A1B4A,#1A0E2A); display:flex; align-items:flex-end; text-decoration:none;">
-      <span style="width:100%; padding:8px 10px; background:linear-gradient(0deg,rgba(0,0,0,.75),transparent 70%); color:#fff; font-family:'Barlow Condensed'; font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:.4px;">🔴 Streaming The Last Drive — Add Your Channel →</span>
+      <span style="width:100%; padding:10px 12px; background:linear-gradient(0deg,rgba(0,0,0,.75),transparent 70%); color:#fff; font-family:'Barlow Condensed'; font-weight:700; font-size:14px; text-transform:uppercase; letter-spacing:.4px;">🔴 Streaming The Last Drive — Add Your Channel →</span>
     </a>
     <div class="gallery-tile photo img-welcome"></div>
     <div class="gallery-tile photo img-street"></div>
@@ -444,7 +444,7 @@ function streamerCardHTML(s, thumbClass, i) {
     : '';
   var bgClass = s.screenshotUrl ? '' : (' ' + STREAM_FALLBACK_BG[i % STREAM_FALLBACK_BG.length]);
   return '<a href="' + href + '" target="_blank" rel="noopener" class="' + thumbClass + ' photo' + bgClass + '" style="' + bgStyle + 'display:flex;align-items:flex-end;text-decoration:none;">' +
-    '<span style="width:100%;padding:6px 8px;background:linear-gradient(0deg,rgba(0,0,0,.75),transparent 70%);color:#fff;font-family:\'Barlow Condensed\';font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.4px;">' + icon + ' ' + name + '</span>' +
+    '<span style="width:100%;padding:10px 12px;background:linear-gradient(0deg,rgba(0,0,0,.75),transparent 70%);color:#fff;font-family:\'Barlow Condensed\';font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.4px;">' + icon + ' ' + name + '</span>' +
   '</a>';
 }
 
