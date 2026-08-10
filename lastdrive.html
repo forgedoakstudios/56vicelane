@@ -541,6 +541,14 @@
   </div>
 </div>
 
+<div class="ld-social-cta" style="max-width:760px;margin:0 auto;padding:0 24px 32px;text-align:center;">
+  <div style="font-size:.92rem;color:var(--smoke);margin-bottom:16px;">Not ready to pick a slot yet? Start here — RSVP so you don't miss it, and jump in the Discord to link up before the 18th.</div>
+  <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
+    <a href="https://www.facebook.com/share/18xmTDYf9X/" target="_blank" rel="noopener" class="btn btn-primary">📅 RSVP on Facebook →</a>
+    <a href="https://discord.gg/ewdRcjsbg5" target="_blank" rel="noopener" class="btn btn-ghost">💬 Join the Discord →</a>
+  </div>
+</div>
+
 <div class="role-wrap" id="role-wrap">
   <div class="role-label">How do you want to roll?</div>
   <div class="role-cards">
@@ -704,6 +712,95 @@
   </div>
 
 </div>
+
+<div style="max-width:1000px;margin:0 auto;padding:0 24px 60px;">
+  <div class="finder-wrap" style="margin-top:0;">
+    <div class="eyebrow" style="margin-bottom:4px;">🔴 Going Live?</div>
+    <h3 style="margin-bottom:8px;">Streaming The Last Drive?</h3>
+    <p style="font-size:.9rem;color:var(--smoke);margin-bottom:20px;">Drop your channel below so other drivers can pull up your stream and watch — or hop in as a viewer.</p>
+    <div class="form-grid">
+      <div class="form-field">
+        <label class="form-label">Gamertag / Channel Name</label>
+        <input type="text" class="form-input" id="stream-gamertag" placeholder="What should we call you?">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Platform</label>
+        <select class="form-select" id="stream-platform" style="width:100%;">
+          <option value="Twitch">Twitch</option>
+          <option value="YouTube">YouTube</option>
+          <option value="Kick">Kick</option>
+          <option value="Facebook Gaming">Facebook Gaming</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-field form-full">
+        <label class="form-label">Channel Link</label>
+        <input type="url" class="form-input" id="stream-url" placeholder="https://twitch.tv/yourname">
+      </div>
+    </div>
+    <button class="form-submit" id="stream-submit-btn" onclick="submitStreamer()">Add My Channel</button>
+    <p id="stream-error" style="display:none;font-size:.8rem;color:var(--red);text-align:center;margin-top:8px;"></p>
+    <div id="stream-list" style="margin-top:24px;display:flex;flex-wrap:wrap;gap:10px;"></div>
+  </div>
+</div>
+<script>
+(function() {
+  var N8N_SUBMIT_STREAMER_URL = 'https://n8n.56vicelane.com/webhook/lastdrive-submit-streamer';
+  var N8N_LIST_STREAMERS_URL  = 'https://n8n.56vicelane.com/webhook/lastdrive-list-streamers';
+  var PLATFORM_ICON = {Twitch:'🟣', YouTube:'🔴', Kick:'🟢', 'Facebook Gaming':'🔵', Other:'📺'};
+
+  function loadStreamers() {
+    fetch(N8N_LIST_STREAMERS_URL).then(function(r){ return r.json(); }).then(function(data) {
+      var list = document.getElementById('stream-list');
+      var streamers = (data && data.streamers) || [];
+      if (!streamers.length) { list.innerHTML = '<div style="font-size:.85rem;color:var(--smoke);">No one\'s signed up to stream yet — be the first.</div>'; return; }
+      list.innerHTML = streamers.map(function(s) {
+        var icon = PLATFORM_ICON[s.platform] || '📺';
+        return '<a href="' + String(s.channelUrl).replace(/"/g,'&quot;') + '" target="_blank" rel="noopener" class="btn btn-ghost" style="font-size:.82rem;padding:8px 14px;">' + icon + ' ' + String(s.gamertag || 'Streamer').replace(/</g,'&lt;') + '</a>';
+      }).join('');
+    }).catch(function() {});
+  }
+
+  window.submitStreamer = function() {
+    var gamertag = document.getElementById('stream-gamertag').value.trim();
+    var platform = document.getElementById('stream-platform').value;
+    var channelUrl = document.getElementById('stream-url').value.trim();
+    var err = document.getElementById('stream-error');
+    err.style.display = 'none';
+    if (!gamertag || !/^https?:\/\/.+/.test(channelUrl)) {
+      err.textContent = 'Enter a gamertag and a full channel link (starting with https://).';
+      err.style.display = 'block';
+      return;
+    }
+    var btn = document.getElementById('stream-submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Adding...';
+    fetch(N8N_SUBMIT_STREAMER_URL, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({gamertag: gamertag, platform: platform, channelUrl: channelUrl})
+    }).then(function(r){ return r.json(); }).then(function(data) {
+      btn.disabled = false;
+      btn.textContent = 'Add My Channel';
+      if (data && data.success) {
+        document.getElementById('stream-gamertag').value = '';
+        document.getElementById('stream-url').value = '';
+        loadStreamers();
+      } else {
+        err.textContent = (data && data.error) || 'Something went wrong — try again.';
+        err.style.display = 'block';
+      }
+    }).catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Add My Channel';
+      err.textContent = 'Something went wrong — try again.';
+      err.style.display = 'block';
+    });
+  };
+
+  loadStreamers();
+})();
+</script>
 
 <div style="max-width:1000px;margin:0 auto;padding:0 24px;">
   <div class="vl-share-bar-mount"></div>
