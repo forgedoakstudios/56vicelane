@@ -492,6 +492,12 @@
   margin-bottom: 8px;
 }
 .found-meta { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* Streamer cards: hover/focus expands ~20% and reveals a Watch Now prompt */
+.watch-hover { position: relative; transition: transform .2s ease, box-shadow .2s ease; transform-origin: center; }
+.watch-hover:hover, .watch-hover:focus-within { transform: scale(1.2); z-index: 20; box-shadow: 0 14px 32px rgba(0,0,0,.35); }
+.watch-hover .wc-now { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,.5); opacity: 0; transition: opacity .18s ease; color: #fff; font-family: var(--font-label); font-weight: 800; text-transform: uppercase; letter-spacing: .1em; font-size: .75rem; }
+.watch-hover:hover .wc-now, .watch-hover:focus-within .wc-now { opacity: 1; }
 </style>
 </head>
 <body>
@@ -520,6 +526,7 @@
   <a href="/">Home</a>
   <a href="/news">News</a>
   <a href="/lastdrive" class="active">Last Drive</a>
+  <a href="/streams">Watch</a>
   <a href="/wall">Wall of Honor</a>
   <a href="/leaderboard">Leaderboard</a>
   <a href="/members">Members</a>
@@ -745,7 +752,7 @@
     </div>
     <button class="form-submit" id="stream-submit-btn" onclick="submitStreamer()">Add My Channel</button>
     <p id="stream-error" style="display:none;font-size:.8rem;color:var(--red);text-align:center;margin-top:8px;"></p>
-    <div id="stream-list" style="margin-top:24px;display:flex;flex-wrap:wrap;gap:12px;"></div>
+    <div id="stream-list" style="margin-top:24px;display:flex;flex-wrap:wrap;gap:24px;padding:10px;"></div>
   </div>
 </div>
 <script>
@@ -764,14 +771,15 @@
       list.innerHTML = streamers.map(function(s) {
         var icon = PLATFORM_ICON[s.platform] || '📺';
         var name = String(s.gamertag || 'Streamer').replace(/</g,'&lt;');
-        var href = String(s.channelUrl).replace(/"/g,'&quot;');
+        var href = '/streams?watch=' + encodeURIComponent(s.gamertag || '');
         if (s.screenshotUrl) {
-          return '<a href="' + href + '" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;width:160px;border:1px solid var(--edge);border-radius:10px;overflow:hidden;">' +
+          return '<a href="' + href + '" class="watch-hover" style="text-decoration:none;color:inherit;width:160px;border:1px solid var(--edge);border-radius:10px;overflow:hidden;display:block;">' +
             '<div style="height:100px;background:var(--asphalt) center/cover no-repeat url(\'' + String(s.screenshotUrl).replace(/'/g,"") + '\');"></div>' +
+            '<span class="wc-now">▶ Watch Now</span>' +
             '<div style="padding:8px 10px;font-size:.8rem;">' + icon + ' ' + name + '</div>' +
           '</a>';
         }
-        return '<a href="' + href + '" target="_blank" rel="noopener" class="btn btn-ghost" style="font-size:.82rem;padding:8px 14px;">' + icon + ' ' + name + '</a>';
+        return '<a href="' + href + '" class="btn btn-ghost" style="font-size:.82rem;padding:8px 14px;">' + icon + ' ' + name + '</a>';
       }).join('');
     }).catch(function() {});
   }
@@ -847,6 +855,7 @@
     <a href="/">Home</a>
     <a href="/news">News</a>
     <a href="/lastdrive">Last Drive</a>
+    <a href="/streams">Watch</a>
     <a href="/members">Members</a>
     <a href="/store">Store</a>
     <a href="/gear">Gear</a>
