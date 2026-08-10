@@ -717,7 +717,8 @@
   <div class="finder-wrap" style="margin-top:0;">
     <div class="eyebrow" style="margin-bottom:4px;">🔴 Going Live?</div>
     <h3 style="margin-bottom:8px;">Streaming The Last Drive?</h3>
-    <p style="font-size:.9rem;color:var(--smoke);margin-bottom:20px;">Drop your channel below so other drivers can pull up your stream and watch — or hop in as a viewer.</p>
+    <p style="font-size:.9rem;color:var(--smoke);margin-bottom:8px;">Drop your channel below so other drivers can pull up your stream and watch — or hop in as a viewer.</p>
+    <p style="font-size:.85rem;color:var(--amber);margin-bottom:20px;">⭐ Sign up and you'll get featured on our homepage — the whole site sees your channel.</p>
     <div class="form-grid">
       <div class="form-field">
         <label class="form-label">Gamertag / Channel Name</label>
@@ -737,16 +738,22 @@
         <label class="form-label">Channel Link</label>
         <input type="url" class="form-input" id="stream-url" placeholder="https://twitch.tv/yourname">
       </div>
+      <div class="form-field form-full">
+        <label class="form-label">Screenshot of You Streaming <span style="font-family:var(--font-body);text-transform:none;letter-spacing:0;font-size:.7rem;">(optional — helps people recognize you)</span></label>
+        <input type="file" accept="image/*" class="form-input" id="stream-photo" style="padding:10px;">
+      </div>
     </div>
     <button class="form-submit" id="stream-submit-btn" onclick="submitStreamer()">Add My Channel</button>
     <p id="stream-error" style="display:none;font-size:.8rem;color:var(--red);text-align:center;margin-top:8px;"></p>
-    <div id="stream-list" style="margin-top:24px;display:flex;flex-wrap:wrap;gap:10px;"></div>
+    <div id="stream-list" style="margin-top:24px;display:flex;flex-wrap:wrap;gap:12px;"></div>
   </div>
 </div>
 <script>
 (function() {
   var N8N_SUBMIT_STREAMER_URL = 'https://n8n.56vicelane.com/webhook/lastdrive-submit-streamer';
   var N8N_LIST_STREAMERS_URL  = 'https://n8n.56vicelane.com/webhook/lastdrive-list-streamers';
+  var CLOUDINARY_CLOUD_NAME   = 'dd8bbuv93';
+  var CLOUDINARY_UPLOAD_PRESET = 'lastdrive_streamers';
   var PLATFORM_ICON = {Twitch:'🟣', YouTube:'🔴', Kick:'🟢', 'Facebook Gaming':'🔵', Other:'📺'};
 
   function loadStreamers() {
@@ -756,15 +763,35 @@
       if (!streamers.length) { list.innerHTML = '<div style="font-size:.85rem;color:var(--smoke);">No one\'s signed up to stream yet — be the first.</div>'; return; }
       list.innerHTML = streamers.map(function(s) {
         var icon = PLATFORM_ICON[s.platform] || '📺';
-        return '<a href="' + String(s.channelUrl).replace(/"/g,'&quot;') + '" target="_blank" rel="noopener" class="btn btn-ghost" style="font-size:.82rem;padding:8px 14px;">' + icon + ' ' + String(s.gamertag || 'Streamer').replace(/</g,'&lt;') + '</a>';
+        var name = String(s.gamertag || 'Streamer').replace(/</g,'&lt;');
+        var href = String(s.channelUrl).replace(/"/g,'&quot;');
+        if (s.screenshotUrl) {
+          return '<a href="' + href + '" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;width:160px;border:1px solid var(--edge);border-radius:10px;overflow:hidden;">' +
+            '<div style="height:100px;background:var(--asphalt) center/cover no-repeat url(\'' + String(s.screenshotUrl).replace(/'/g,"") + '\');"></div>' +
+            '<div style="padding:8px 10px;font-size:.8rem;">' + icon + ' ' + name + '</div>' +
+          '</a>';
+        }
+        return '<a href="' + href + '" target="_blank" rel="noopener" class="btn btn-ghost" style="font-size:.82rem;padding:8px 14px;">' + icon + ' ' + name + '</a>';
       }).join('');
     }).catch(function() {});
+  }
+
+  function uploadScreenshot(file) {
+    var fd = new FormData();
+    fd.append('file', file);
+    fd.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+    return fetch('https://api.cloudinary.com/v1_1/' + CLOUDINARY_CLOUD_NAME + '/image/upload', { method: 'POST', body: fd })
+      .then(function(r) { return r.json(); })
+      .then(function(data) { return data && data.secure_url ? data.secure_url : ''; })
+      .catch(function() { return ''; });
   }
 
   window.submitStreamer = function() {
     var gamertag = document.getElementById('stream-gamertag').value.trim();
     var platform = document.getElementById('stream-platform').value;
     var channelUrl = document.getElementById('stream-url').value.trim();
+    var photoInput = document.getElementById('stream-photo');
+    var photoFile = photoInput.files && photoInput.files[0];
     var err = document.getElementById('stream-error');
     err.style.display = 'none';
     if (!gamertag || !/^https?:\/\/.+/.test(channelUrl)) {
@@ -774,17 +801,24 @@
     }
     var btn = document.getElementById('stream-submit-btn');
     btn.disabled = true;
-    btn.textContent = 'Adding...';
-    fetch(N8N_SUBMIT_STREAMER_URL, {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({gamertag: gamertag, platform: platform, channelUrl: channelUrl})
+    btn.textContent = photoFile ? 'Uploading photo...' : 'Adding...';
+
+    var uploadPromise = photoFile ? uploadScreenshot(photoFile) : Promise.resolve('');
+
+    uploadPromise.then(function(screenshotUrl) {
+      btn.textContent = 'Adding...';
+      return fetch(N8N_SUBMIT_STREAMER_URL, {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({gamertag: gamertag, platform: platform, channelUrl: channelUrl, screenshotUrl: screenshotUrl})
+      });
     }).then(function(r){ return r.json(); }).then(function(data) {
       btn.disabled = false;
       btn.textContent = 'Add My Channel';
       if (data && data.success) {
         document.getElementById('stream-gamertag').value = '';
         document.getElementById('stream-url').value = '';
+        photoInput.value = '';
         loadStreamers();
       } else {
         err.textContent = (data && data.error) || 'Something went wrong — try again.';
