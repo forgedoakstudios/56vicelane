@@ -1,25 +1,21 @@
 # 56ViceLane — Daily Checklist
 
-**Generated:** 2026-08-09, second pass same day (Central Time)
+**Generated:** 2026-08-10 (Central Time)
 **How this works:** one list, updated daily. Check things off yourself by
 editing this file (change `- [ ]` to `- [x]`), or tell me and I'll check
 them off. Each day I regenerate this — anything still unchecked carries
 forward, anything new gets added, and you get a fresh copy to download.
 Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
-Note: no code shipped to `main` since the last regen a few minutes earlier
-today — this pass is a routine touchpoint/archive, not a real diff.
 
 ---
 
 ## 🚨 Urgent
 
-- [ ] **The Airtable token is still hardcoded in 5 files**, all live,
-      publicly readable pages: `admin.html`, `contact.html`, `members.html`,
-      `track.js`, `lastdrive.html`. Unchanged since 8/6 — worth a direct
-      decision on priority since these are all real, currently-valid-secret
-      exposures, not draft/inactive ones.
 - [ ] Revoke the OLD (pre-8/3) Airtable Personal Access Token in Airtable's
-      token settings — still open, Chris to do on his own timeline.
+      token settings — still open, Chris to do on his own timeline. This is
+      now the only thing standing between the site and being fully off the
+      old exposed token (see Done recently — the last 5 files carrying it
+      were fixed today).
 
 ## Needs a decision from you
 
@@ -62,6 +58,23 @@ today — this pass is a routine touchpoint/archive, not a real diff.
 
 ## Done recently
 
+- [x] **Airtable token fully removed sitewide, 2026-08-10.** The last 5
+      files carrying it — `track.js`, `members.html`, `lastdrive.html`,
+      `contact.html`, `admin.html` — are all clean now (repo-wide grep for
+      the token literal returns zero matches). Two of these were dead code
+      (track.js/members.html had `USE_N8N_BACKEND` already flipped true, so
+      the Airtable branches never actually ran — just deleted them).
+      `lastdrive.html` and `admin.html` had real live call sites with no
+      n8n equivalent yet, so built 5 new n8n webhooks to cover the actual
+      gaps: `LastDrive - List Drives`, `Submit Contact Form`, `Admin - List
+      Contacts` (new `ContactSubmissions` data table, since the old
+      Airtable Contact table is now dead), `Admin - List Signups`, `Admin -
+      Gift Plates`. Bonus find: the old direct-Airtable "browse available
+      drives" query in lastdrive.html was reading a frozen pre-cutover
+      Airtable snapshot — drives signed up after the n8n migration never
+      showed up in that browser. Fixed as part of the same swap. Also
+      dropped an Email field the old query fetched but never actually
+      rendered anywhere — one less PII field exposed for no reason.
 - [x] **Live secret exposure found and fixed, 2026-08-09.** The
       `gta6-best-gaming-laptops-launch-day.html` draft — the one carrying
       the hardcoded Airtable token flagged in prior checklists — got
