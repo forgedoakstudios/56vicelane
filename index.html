@@ -237,7 +237,7 @@
     </a>
 
     <span class="label sec-label">Fan Creations</span>
-    <div class="fan-grid">
+    <div class="fan-grid" id="fan-grid">
       <div class="fan-thumb photo p-plate"></div>
       <div class="fan-thumb photo p-water"></div>
     </div>
@@ -256,8 +256,8 @@
 </div>
 
 <div class="section" style="background:#FDFBF8;">
-  <span class="label sec-label">Media Gallery</span>
-  <div class="gallery-grid">
+  <span class="label sec-label">🔴 Now Featuring!</span>
+  <div class="gallery-grid" id="gallery-grid">
     <div class="gallery-tile photo img-hero"></div>
     <div class="gallery-tile photo img-welcome"></div>
     <div class="gallery-tile photo img-street"></div>
@@ -428,6 +428,45 @@ function loadDriveLeadSpotlight() {
   });
 }
 loadDriveLeadSpotlight();
+
+var N8N_LIST_STREAMERS_URL = 'https://n8n.56vicelane.com/webhook/lastdrive-list-streamers';
+var STREAM_PLATFORM_ICON = {Twitch:'🟣', YouTube:'🔴', Kick:'🟢', 'Facebook Gaming':'🔵', Other:'📺'};
+var STREAM_FALLBACK_BG = ['p-city','p-crew','p-street','p-member1'];
+
+function streamerCardHTML(s, thumbClass, i) {
+  var icon = STREAM_PLATFORM_ICON[s.platform] || '📺';
+  var name = String(s.gamertag || 'Streamer').replace(/</g,'&lt;');
+  var href = String(s.channelUrl).replace(/"/g,'&quot;');
+  var bgStyle = s.screenshotUrl
+    ? "background-image:url('" + String(s.screenshotUrl).replace(/'/g,'') + "');"
+    : '';
+  var bgClass = s.screenshotUrl ? '' : (' ' + STREAM_FALLBACK_BG[i % STREAM_FALLBACK_BG.length]);
+  return '<a href="' + href + '" target="_blank" rel="noopener" class="' + thumbClass + ' photo' + bgClass + '" style="' + bgStyle + 'display:flex;align-items:flex-end;text-decoration:none;">' +
+    '<span style="width:100%;padding:6px 8px;background:linear-gradient(0deg,rgba(0,0,0,.75),transparent 70%);color:#fff;font-family:\'Barlow Condensed\';font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.4px;">' + icon + ' ' + name + '</span>' +
+  '</a>';
+}
+
+function loadFeaturedStreamers() {
+  fetch(N8N_LIST_STREAMERS_URL).then(function (r) { return r.json(); }).then(function (d) {
+    var streamers = (d && d.streamers) || [];
+    if (!streamers.length) return;
+
+    var galleryGrid = document.getElementById('gallery-grid');
+    if (galleryGrid) {
+      galleryGrid.innerHTML = streamers.slice(0, 4).map(function (s, i) {
+        return streamerCardHTML(s, 'gallery-tile', i);
+      }).join('');
+    }
+
+    var fanGrid = document.getElementById('fan-grid');
+    if (fanGrid) {
+      fanGrid.innerHTML += streamers.slice(0, 2).map(function (s, i) {
+        return streamerCardHTML(s, 'fan-thumb', i);
+      }).join('');
+    }
+  }).catch(function () {});
+}
+loadFeaturedStreamers();
 </script>
 <script src="/countdown.js" defer></script>
 <script src="/crime-blotter.js" defer></script>
