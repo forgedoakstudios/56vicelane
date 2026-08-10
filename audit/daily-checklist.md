@@ -1,6 +1,6 @@
 # 56ViceLane — Daily Checklist
 
-**Generated:** 2026-08-10, second pass same day (Central Time)
+**Generated:** 2026-08-10, third pass same day (Central Time)
 **How this works:** one list, updated daily. Check things off yourself by
 editing this file (change `- [ ]` to `- [x]`), or tell me and I'll check
 them off. Each day I regenerate this — anything still unchecked carries
@@ -47,16 +47,6 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
 - [ ] External citation links in article bodies and live redirect/404
       behavior still haven't been checked (the 7/31 audit hit a 403 on
       outbound calls).
-- [ ] **3 `gear.html` product photos still don't match their new product
-      names** — fixed today alongside the affiliate link overhaul, but no
-      new photos were supplied for these specific swaps: Sony PULSE Elite
-      (showing old Pulse 3D photos), Turtle Beach Stealth 600 (showing
-      generic old Xbox headset photos), HyperX Cloud Alpha Wireless (using
-      non-wireless Cloud Alpha photos — same product family, lower risk).
-      Also worth a glance: the TP-Link BE9700 WiFi 7 router card's photo
-      file is literally named "WiFi 6E," possibly a leftover pre-swap
-      image rather than the actual BE9700 box. Send real photos for these
-      whenever you have them.
 
 ## Shelved — revisit late August 2026
 
@@ -69,6 +59,20 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
 
 ## Done recently
 
+- [x] **Blotato silent post-failure blind spot closed, 2026-08-10.** n8n
+      was only confirming Blotato *accepted* a post, never that it actually
+      published — the only reason a real failure surfaced was Blotato's own
+      email. Added submission logging to all 3 active posting workflows
+      (Last Drive Push, Evergreen Recycle Poster, Friday Frequency) and
+      built a new `Blotato - Check Post Status` workflow that runs every 30
+      min and pings Discord on real failures. Verified end-to-end against a
+      real historical post. Writeup:
+      `audit/2026-08-10-blotato-post-failure-blind-spot.md`.
+- [x] **Stale "Store paused until August 1" banner removed, 2026-08-10.**
+      Static leftover markup, completely disconnected from the actual
+      `STORE_MAINTENANCE` flag (false since 8/2) — had been telling every
+      store visitor the site was broken for over a week after it was
+      actually fine.
 - [x] **gear.html affiliate links fully fixed, 2026-08-10.** Every generic
       Amazon search link (20 total, across Controllers/Headsets/Monitors/PC
       Gear/Accessories) replaced with the real `amzn.to` affiliate link you
@@ -82,8 +86,9 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
       bestseller) alongside the existing 75-85" one. Monitors section also
       got real product photos for the first time — it was showing emoji
       placeholders before. 22 new product photos pulled from the shared
-      Drive folder into `/images/gear/`. Three photo mismatches flagged
-      separately below — not silently passed off as correct.
+      Drive folder into `/images/gear/`. Three photo mismatches (Pulse
+      Elite, Turtle Beach, TP-Link) were flagged for review — Chris looked
+      at them live and confirmed they're fine as-is, closed.
 - [x] **Airtable token fully removed sitewide, 2026-08-10.** The last 5
       files carrying it — `track.js`, `members.html`, `lastdrive.html`,
       `contact.html`, `admin.html` — are all clean now (repo-wide grep for
