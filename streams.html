@@ -33,12 +33,15 @@
   --font-label: 'Barlow Condensed', sans-serif;
   --font-body: 'Inter', sans-serif;
 }
-.watch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
-.watch-card{position:relative;height:180px;border-radius:10px;overflow:hidden;cursor:pointer;display:flex;align-items:flex-end;background:var(--pitch);border:2px solid transparent;text-decoration:none;color:inherit;background-size:cover;background-position:center;}
+.watch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:28px;padding:12px;}
+.watch-card{position:relative;height:180px;border-radius:10px;overflow:hidden;cursor:pointer;display:flex;align-items:flex-end;background:var(--pitch);border:2px solid transparent;text-decoration:none;color:inherit;background-size:cover;background-position:center;transition:transform .22s ease,box-shadow .22s ease;transform-origin:center;}
 .watch-card.active{border-color:var(--amber);}
+.watch-card:hover,.watch-card:focus-within{transform:scale(1.2);z-index:20;box-shadow:0 14px 34px rgba(0,0,0,.4);}
 .watch-card .wc-label{width:100%;padding:10px 12px;background:linear-gradient(0deg,rgba(0,0,0,.8),transparent 70%);color:#fff;font-family:'Barlow Condensed';font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.4px;}
 .watch-card .wc-badge{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);color:#fff;font-family:'Barlow Condensed';font-size:10px;font-weight:700;text-transform:uppercase;padding:3px 8px;border-radius:12px;letter-spacing:.5px;}
 .watch-card .wc-badge.embed{background:var(--green);color:#04241a;}
+.watch-card .wc-now{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.5);opacity:0;transition:opacity .18s ease;color:#fff;font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:.85rem;}
+.watch-card:hover .wc-now,.watch-card:focus-within .wc-now{opacity:1;}
 .watch-player-wrap{max-width:1000px;margin:0 auto 32px;padding:0 24px;}
 .watch-player{position:relative;width:100%;padding-top:56.25%;background:#000;border-radius:10px;overflow:hidden;}
 .watch-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
@@ -165,12 +168,22 @@ if(mt&&nm)mt.addEventListener('click',function(){nm.classList.toggle('open');});
         var info = embedInfo(s.channelUrl);
         var bgStyle = s.screenshotUrl ? "background-image:url('" + String(s.screenshotUrl).replace(/'/g,'') + "');" : 'background:linear-gradient(160deg,#3A1B4A,#1A0E2A);';
         var badge = info ? '<span class="wc-badge embed">▶ Watch Here</span>' : '<span class="wc-badge">Opens New Tab</span>';
-        return '<div class="watch-card" style="' + bgStyle + '" onclick="playStreamer(' + i + ', window.__streamers, this)">' +
+        return '<div class="watch-card" style="' + bgStyle + '" tabindex="0" onclick="playStreamer(' + i + ', window.__streamers, this)" onkeydown="if(event.key===\'Enter\')playStreamer(' + i + ', window.__streamers, this)">' +
           badge +
+          '<span class="wc-now">▶ Watch Now</span>' +
           '<span class="wc-label">' + icon + ' ' + name + '</span>' +
         '</div>';
       }).join('');
       window.__streamers = streamers;
+
+      var wantGamertag = new URLSearchParams(location.search).get('watch');
+      if (wantGamertag) {
+        var idx = streamers.findIndex(function (s) { return (s.gamertag || '').toLowerCase() === wantGamertag.toLowerCase(); });
+        if (idx > -1) {
+          var cardEl = grid.children[idx];
+          window.playStreamer(idx, streamers, cardEl);
+        }
+      }
     }).catch(function() {
       document.getElementById('watch-grid').innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--smoke);font-size:.9rem;padding:20px;">Couldn\'t load streamers right now — try again shortly.</div>';
     });
