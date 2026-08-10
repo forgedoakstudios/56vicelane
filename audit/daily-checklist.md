@@ -26,7 +26,6 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
 - [ ] **Blotato AI video — still paused; OpenArt testing ongoing**
       (prompt notes in `audit/ai-video-prompt-notes.md`, not a full
       pipeline yet).
-- [ ] **Amazon Associates — still waiting on the new tracking tag.**
 - [ ] **Dell monitor swap — still drafted, needs your merge approval.**
       Unchanged, sitting on `claude/dell-monitor-swap`.
 - [ ] **Two buyer's-guide articles — still drafted, need review before
@@ -47,6 +46,12 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
 - [ ] External citation links in article bodies and live redirect/404
       behavior still haven't been checked (the 7/31 audit hit a 403 on
       outbound calls).
+- [ ] **gear.html's `amzn.to` short links may still be tracking under the
+      old Amazon tag.** The new tag (`forgedoakstud-20`) is live everywhere
+      I have direct control, but gear.html's "Check Price" buttons use
+      Amazon's own shortened URLs — the tag is baked in at creation time
+      via Amazon's link tool, invisible and unreachable from here. Worth
+      checking in Associates Central whether those need regenerating.
 
 ## Shelved — revisit late August 2026
 
@@ -59,6 +64,32 @@ Full history/detail always lives in `THIS-WEEK.md` and `NEXT-SESSION.md`.
 
 ## Done recently
 
+- [x] **lastdrive.html: Facebook event + Discord CTA + streamer signups,
+      2026-08-10.** Chris created a virtual Facebook event for The Last
+      Drive and called this out as one of the biggest pieces for the
+      event. Added a prominent RSVP/Discord block right under the
+      countdown bar (above the sign-up cards) linking the FB event and
+      the site's Discord, plus a real streamer-links feature — a form for
+      members to submit their channel (Twitch/YouTube/Kick/etc.),
+      rendered as a public list on the page. New backend: `LastDriveStreamers`
+      data table, `LastDrive - Submit Streamer` (validates gamertag + a
+      real URL) and `LastDrive - List Streamers` workflows, both tested
+      end-to-end via direct execution against the real API before merge.
+      Bonus: reconciled the sitewide Discord link split flagged in this
+      file's own notes — Chris confirmed `discord.gg/ewdRcjsbg5` is the
+      permanent one, `index.html` was the only holdout still on the old
+      code.
+- [x] **Amazon Associates tag swapped sitewide, 2026-08-10.** Chris sent a
+      new tracking tag (`forgedoakstud-20`); confirmed full sitewide
+      replacement (not a separate campaign tag). Swapped across all 22
+      files carrying the old `56vicelane-20` tag — article-template-5.html
+      (covers future auto-published articles), 18 published articles, both
+      buyer's-guide drafts, and gear.html's disclosure text. Flagged
+      separately: gear.html's actual "Check Price" buttons use Amazon
+      `amzn.to` short links, which bake in a tag at creation time via
+      Amazon's own tool — those weren't touched here and may still be
+      tracking under the old tag until Chris regenerates them in
+      Associates Central.
 - [x] **Blotato silent post-failure blind spot closed, 2026-08-10.** n8n
       was only confirming Blotato *accepted* a post, never that it actually
       published — the only reason a real failure surfaced was Blotato's own
