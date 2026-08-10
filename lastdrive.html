@@ -752,6 +752,7 @@
     </div>
     <button class="form-submit" id="stream-submit-btn" onclick="submitStreamer()">Add My Channel</button>
     <p id="stream-error" style="display:none;font-size:.8rem;color:var(--red);text-align:center;margin-top:8px;"></p>
+    <p id="stream-success" style="display:none;font-size:.85rem;color:var(--amber);text-align:center;margin-top:8px;font-weight:700;"></p>
     <div id="stream-list" style="margin-top:24px;display:flex;flex-wrap:wrap;gap:24px;padding:10px;"></div>
   </div>
 </div>
@@ -803,7 +804,9 @@
     var photoInput = document.getElementById('stream-photo');
     var photoFile = photoInput.files && photoInput.files[0];
     var err = document.getElementById('stream-error');
+    var success = document.getElementById('stream-success');
     err.style.display = 'none';
+    success.style.display = 'none';
     if (!gamertag || !/^https?:\/\/.+/.test(channelUrl)) {
       err.textContent = 'Enter a gamertag and a full channel link (starting with https://).';
       err.style.display = 'block';
@@ -829,6 +832,12 @@
         document.getElementById('stream-gamertag').value = '';
         document.getElementById('stream-url').value = '';
         photoInput.value = '';
+        if (data.id && data.id <= 50) {
+          success.textContent = '🎉 You\'re PFA League streamer #' + data.id + ' — one of our first 50! Free Overlay Pack incoming, details soon.';
+        } else {
+          success.textContent = '✅ You\'re in the PFA League! (Free Overlay Pack was for our first 50 founding streamers — still fully in the league either way.)';
+        }
+        success.style.display = 'block';
         loadStreamers();
       } else {
         err.textContent = (data && data.error) || 'Something went wrong — try again.';
