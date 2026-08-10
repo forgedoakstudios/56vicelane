@@ -166,9 +166,9 @@ target when building each week's content calendar going forward:
 - YouTube: https://www.youtube.com/@56vicelane
 - Facebook: https://www.facebook.com/profile.php?id=61592220568182
 - Bluesky: @56vicelane.bsky.social
-- Discord: https://discord.gg/Ewe5T9eFs — NOTE: differs from the invite
-  code (`ewdRcjsbg5`) hardcoded across forum.html. Not yet reconciled —
-  confirm which is current before treating either as canonical.
+- Discord: https://discord.gg/ewdRcjsbg5 — confirmed permanent by Chris,
+  2026-08-10. Reconciled sitewide same day (index.html was the only
+  holdout, still on the old `Ewe5T9eFs` code).
 - X/Twitter: no confirmed link yet — Blotato posts to X (account_id 20503)
   but the actual public handle/URL hasn't been given. Still a placeholder
   on-site.
