@@ -154,6 +154,19 @@ if(mt&&nm)mt.addEventListener('click',function(){nm.classList.toggle('open');});
     document.querySelector('.watch-player-wrap').scrollIntoView({behavior:'smooth', block:'center'});
   };
 
+  function cardHTML(s, i) {
+    var icon = PLATFORM_ICON[s.platform] || '📺';
+    var name = String(s.gamertag || 'Streamer').replace(/</g,'&lt;');
+    var info = embedInfo(s.channelUrl);
+    var bgStyle = s.screenshotUrl ? "background-image:url('" + String(s.screenshotUrl).replace(/'/g,'') + "');" : 'background:linear-gradient(160deg,#3A1B4A,#1A0E2A);';
+    var badge = info ? '<span class="wc-badge embed">▶ Watch Here</span>' : '<span class="wc-badge">Opens New Tab</span>';
+    return '<div class="watch-card" data-idx="' + i + '" style="' + bgStyle + '" tabindex="0" onclick="playStreamer(' + i + ', window.__streamers, this)" onkeydown="if(event.key===\'Enter\')playStreamer(' + i + ', window.__streamers, this)">' +
+      badge +
+      '<span class="wc-now">▶ Watch Now</span>' +
+      '<span class="wc-label">' + icon + ' ' + name + '</span>' +
+    '</div>';
+  }
+
   function loadStreamers() {
     fetch(N8N_LIST_STREAMERS_URL).then(function (r) { return r.json(); }).then(function (d) {
       var streamers = (d && d.streamers) || [];
@@ -162,26 +175,35 @@ if(mt&&nm)mt.addEventListener('click',function(){nm.classList.toggle('open');});
         grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--smoke);font-size:.9rem;padding:20px;">No one\'s streaming yet — <a href="/lastdrive" style="color:var(--cyan);">be the first to sign up →</a></div>';
         return;
       }
-      grid.innerHTML = streamers.map(function (s, i) {
-        var icon = PLATFORM_ICON[s.platform] || '📺';
-        var name = String(s.gamertag || 'Streamer').replace(/</g,'&lt;');
-        var info = embedInfo(s.channelUrl);
-        var bgStyle = s.screenshotUrl ? "background-image:url('" + String(s.screenshotUrl).replace(/'/g,'') + "');" : 'background:linear-gradient(160deg,#3A1B4A,#1A0E2A);';
-        var badge = info ? '<span class="wc-badge embed">▶ Watch Here</span>' : '<span class="wc-badge">Opens New Tab</span>';
-        return '<div class="watch-card" style="' + bgStyle + '" tabindex="0" onclick="playStreamer(' + i + ', window.__streamers, this)" onkeydown="if(event.key===\'Enter\')playStreamer(' + i + ', window.__streamers, this)">' +
-          badge +
-          '<span class="wc-now">▶ Watch Now</span>' +
-          '<span class="wc-label">' + icon + ' ' + name + '</span>' +
-        '</div>';
-      }).join('');
-      window.__streamers = streamers;
+
+      // Group by platform (alphabetical), streamers within each group alphabetical by gamertag
+      var sorted = streamers.slice().sort(function (a, b) {
+        var pa = (a.platform || 'Other'), pb = (b.platform || 'Other');
+        if (pa !== pb) return pa.localeCompare(pb);
+        return (a.gamertag || '').localeCompare(b.gamertag || '', undefined, { sensitivity: 'base' });
+      });
+
+      var html = '';
+      var lastPlatform = null;
+      sorted.forEach(function (s, i) {
+        var platform = s.platform || 'Other';
+        if (platform !== lastPlatform) {
+          html += '<div style="grid-column:1/-1;margin-top:' + (lastPlatform === null ? '0' : '20px') + ';margin-bottom:2px;">' +
+            '<span style="font-family:\'Barlow Condensed\';font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:.8rem;color:var(--amber);">' + (PLATFORM_ICON[platform] || '📺') + ' ' + platform + '</span>' +
+          '</div>';
+          lastPlatform = platform;
+        }
+        html += cardHTML(s, i);
+      });
+      grid.innerHTML = html;
+      window.__streamers = sorted;
 
       var wantGamertag = new URLSearchParams(location.search).get('watch');
       if (wantGamertag) {
-        var idx = streamers.findIndex(function (s) { return (s.gamertag || '').toLowerCase() === wantGamertag.toLowerCase(); });
+        var idx = sorted.findIndex(function (s) { return (s.gamertag || '').toLowerCase() === wantGamertag.toLowerCase(); });
         if (idx > -1) {
-          var cardEl = grid.children[idx];
-          window.playStreamer(idx, streamers, cardEl);
+          var cardEl = grid.querySelector('[data-idx="' + idx + '"]');
+          window.playStreamer(idx, sorted, cardEl);
         }
       }
     }).catch(function() {
