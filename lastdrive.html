@@ -732,18 +732,11 @@
 </footer>
 
 <script>
-var AT_TOKEN = 'patCIXzXQ5pGrbr7K.885a7ff83de3cf47755fe6f78222a990c47c4cc6f401986e8d8d8242374cbb61';
-var AT_BASE  = 'appVViGbmcu5gbn8B';
-var AT_URL   = 'https://api.airtable.com/v0/' + AT_BASE + '/Last%20Drive';
-var AT_H     = { 'Authorization': 'Bearer ' + AT_TOKEN, 'Content-Type': 'application/json' };
 var NTFY_URL = 'https://ntfy.sh/56vicelane-brew';
 
-/* n8n migration (2026-07-27) — OFF by default, see track.js header for why.
-   Webhooks are live-tested but not reviewed/approved for cutover yet. */
-var USE_N8N_BACKEND = true;
 var N8N_FIND_PROFILE_URL   = 'https://n8n.56vicelane.com/webhook/find-profile';
 var N8N_LIST_MEMBERS_URL   = 'https://n8n.56vicelane.com/webhook/list-members';
-var N8N_ROW_COUNT_URL      = 'https://n8n.56vicelane.com/webhook/lastdrive-count';
+var N8N_LIST_DRIVES_URL    = 'https://n8n.56vicelane.com/webhook/list-drives';
 var N8N_SIGNUP_URL         = 'https://n8n.56vicelane.com/webhook/lastdrive-signup';
 
 var PLATFORMS = ['PS5','PS4','Xbox Series X/S','Xbox One','PC'];
@@ -966,24 +959,12 @@ function fetchMembersN8n() {
   return _membersCachePromise;
 }
 
-function isFirstSignupAirtable(platform, region, slot) {
-  var f = encodeURIComponent('AND({Platform}="' + platform + '",{Region}="' + region + '",{Staging Time}="' + slot + '")');
-  return fetch(AT_URL + '?filterByFormula=' + f + '&maxRecords=1&fields%5B%5D=Name', {headers: AT_H})
-    .then(function(r) { return r.json(); })
-    .then(function(d) { return !d.records || d.records.length === 0; })
-    .catch(function() { return false; });
-}
-
-function isFirstSignupN8n(platform, region, slot) {
+function isFirstSignup(platform, region, slot) {
   return fetchMembersN8n().then(function(members) {
     return !members.some(function(m) {
       return m.platform === platform && m.region === region && m.stagingTime === slot;
     });
   }).catch(function() { return false; });
-}
-
-function isFirstSignup(platform, region, slot) {
-  return USE_N8N_BACKEND ? isFirstSignupN8n(platform, region, slot) : isFirstSignupAirtable(platform, region, slot);
 }
 
 function showLeadForm(p, pid, region, slot, isOrg) {
@@ -1071,51 +1052,21 @@ document.addEventListener('click', function(e) {
     console.error('[LD Lead Error]', err);
   }
 
-  if (USE_N8N_BACKEND) {
-    fetch(N8N_SIGNUP_URL, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        name: name, gamertag: gamertag, email: email,
-        platform: p, region: s.region, stagingTime: s.slot,
-        chat: s.chat, chatOther: chatOther, crewName: crew,
-        stagingLocation: s.staging, driveType: s.drive,
-        passiveMode: passive, isOrganizer: s.isOrg,
-        showOnWall: showWall, petitionOptIn: petition,
-        signupType: 'Drive Lead'
-      })
-    }).then(function(res) { return res.json().then(function(d) { return {ok: res.ok, d: d}; }); })
-      .then(function(r) { if (r.ok && r.d.success) onLeadSuccess(r.d.signupNumber); else onLeadError(); })
-      .catch(onLeadNetworkError);
-    return;
-  }
-
-  getSignupNumber().then(function(signupNum) {
-    var plateStatus = (!signupNum || signupNum <= 100) ? 'Free Premium' : 'Standard';
-    var linkedSlot  = p + '||' + s.region + '||' + s.staging + '||' + s.slot;
-
-    return fetch(AT_URL, {
-      method: 'POST',
-      headers: AT_H,
-      body: JSON.stringify({records:[{fields:{
-        'Name': name, 'Gamertag': gamertag, 'Email': email,
-        'Platform': p, 'Region': s.region, 'Staging Time': s.slot,
-        'Chat': s.chat, 'ChatOther': chatOther, 'CrewName': crew,
-        'StagingLocation': s.staging, 'Drive Type': s.drive,
-        'Passive Mode': passive, 'IsOrganizer': s.isOrg,
-        'ShowOnWall': showWall, 'Petition Opt In': petition,
-        'SignupType': 'Drive Lead',
-        'AccessType': s.access || 'Open',
-        'JoinStatus': 'Active',
-        'LinkedSlot': linkedSlot,
-        'SignupNumber': signupNum || undefined,
-        'PlateStatus': plateStatus
-      }}]})
-    }).then(function(res) {
-      if (res.ok) onLeadSuccess(signupNum);
-      else onLeadError();
-    });
-  }).catch(onLeadNetworkError);
+  fetch(N8N_SIGNUP_URL, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      name: name, gamertag: gamertag, email: email,
+      platform: p, region: s.region, stagingTime: s.slot,
+      chat: s.chat, chatOther: chatOther, crewName: crew,
+      stagingLocation: s.staging, driveType: s.drive,
+      passiveMode: passive, isOrganizer: s.isOrg,
+      showOnWall: showWall, petitionOptIn: petition,
+      signupType: 'Drive Lead'
+    })
+  }).then(function(res) { return res.json().then(function(d) { return {ok: res.ok, d: d}; }); })
+    .then(function(r) { if (r.ok && r.d.success) onLeadSuccess(r.d.signupNumber); else onLeadError(); })
+    .catch(onLeadNetworkError);
 });
 
 document.querySelectorAll('.platform-tab-j').forEach(function(tab) {
@@ -1160,15 +1111,20 @@ function loadDriveBrowser() {
   list.innerHTML = '<div style="color:var(--smoke);font-size:.88rem;padding:12px 0;">🔍 Loading available drives...</div>';
   browser.scrollIntoView({behavior:'smooth', block:'start'});
 
-  var f = encodeURIComponent('AND(OR({SignupType}=\'Drive Lead\',{SignupType}=\'\'),{Platform}=\'' + joinState.platform + '\',{Region}=\'' + joinState.region + '\')');
-  var fields = 'fields%5B%5D=Gamertag&fields%5B%5D=Platform&fields%5B%5D=Region&fields%5B%5D=Staging%20Time&fields%5B%5D=StagingLocation&fields%5B%5D=Drive%20Type&fields%5B%5D=AccessType&fields%5B%5D=CrewName&fields%5B%5D=Email';
-  fetch(AT_URL + '?filterByFormula=' + f + '&' + fields, {headers: AT_H})
+  fetch(N8N_LIST_DRIVES_URL)
     .then(function(r) { return r.json(); })
     .then(function(d) {
-      joinState.allDrives = (d.records || []).filter(function(rec) {
-        var g = (rec.fields.Gamertag || '').toLowerCase();
-        return g !== 'test' && g !== 'trst' && g !== '';
-      });
+      joinState.allDrives = (d.drives || [])
+        .filter(function(rec) {
+          return rec.platform === joinState.platform && rec.region === joinState.region;
+        })
+        .map(function(rec) {
+          return { fields: {
+            Gamertag: rec.gamertag, Platform: rec.platform, Region: rec.region,
+            'Staging Time': rec.stagingTime, StagingLocation: rec.stagingLocation,
+            'Drive Type': rec.driveType, AccessType: rec.accessType, CrewName: rec.crewName
+          } };
+        });
       renderDrives(joinState.allDrives);
     })
     .catch(function() {
@@ -1263,7 +1219,6 @@ function submitParticipant() {
   var drive = joinState.drive;
   var isApproval = (drive.AccessType || 'Open') === 'Approval Required';
   var joinStatus = isApproval ? 'Pending' : 'Active';
-  var linkedSlot = (drive.Platform || '') + '||' + (drive.Region || '') + '||' + (drive.StagingLocation || '') + '||' + (drive['Staging Time'] || '');
 
   btn.textContent = isApproval ? 'Sending Request...' : 'Joining...';
   btn.disabled = true;
@@ -1299,48 +1254,21 @@ function submitParticipant() {
     btn.style.background = 'var(--red)';
   }
 
-  if (USE_N8N_BACKEND) {
-    fetch(N8N_SIGNUP_URL, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        gamertag: gamertag, email: email,
-        platform: drive.Platform || joinState.platform,
-        region: drive.Region || joinState.region,
-        stagingTime: drive['Staging Time'] || '',
-        stagingLocation: drive.StagingLocation || '',
-        showOnWall: showWall, petitionOptIn: petition,
-        signupType: 'Participant', joinStatus: joinStatus
-      })
-    }).then(function(res) { return res.json().then(function(d) { return {ok: res.ok, d: d}; }); })
-      .then(function(r) { if (r.ok && r.d.success) onJoinSuccess(r.d.signupNumber); else onJoinError(); })
-      .catch(onJoinNetworkError);
-    return;
-  }
-
-  getSignupNumber().then(function(signupNum) {
-    var plateStatus = (!signupNum || signupNum <= 100) ? 'Free Premium' : 'Standard';
-    return fetch(AT_URL, {
-      method: 'POST',
-      headers: AT_H,
-      body: JSON.stringify({records:[{fields:{
-        'Gamertag': gamertag, 'Email': email,
-        'Platform': drive.Platform || joinState.platform,
-        'Region':   drive.Region   || joinState.region,
-        'Staging Time': drive['Staging Time'] || '',
-        'StagingLocation': drive.StagingLocation || '',
-        'ShowOnWall': showWall, 'Petition Opt In': petition,
-        'SignupType': 'Participant',
-        'JoinStatus': joinStatus,
-        'LinkedSlot': linkedSlot,
-        'SignupNumber': signupNum || undefined,
-        'PlateStatus': plateStatus
-      }}]})
-    }).then(function(res) {
-      if (res.ok) onJoinSuccess(signupNum);
-      else onJoinError();
-    });
-  }).catch(onJoinNetworkError);
+  fetch(N8N_SIGNUP_URL, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      gamertag: gamertag, email: email,
+      platform: drive.Platform || joinState.platform,
+      region: drive.Region || joinState.region,
+      stagingTime: drive['Staging Time'] || '',
+      stagingLocation: drive.StagingLocation || '',
+      showOnWall: showWall, petitionOptIn: petition,
+      signupType: 'Participant', joinStatus: joinStatus
+    })
+  }).then(function(res) { return res.json().then(function(d) { return {ok: res.ok, d: d}; }); })
+    .then(function(r) { if (r.ok && r.d.success) onJoinSuccess(r.d.signupNumber); else onJoinError(); })
+    .catch(onJoinNetworkError);
 }
 
 function renderFriendResult(q, rec) {
@@ -1367,23 +1295,6 @@ function renderFriendResult(q, rec) {
     '</div>';
 }
 
-function searchFriendAirtable(q) {
-  var result = document.getElementById('finder-result');
-  var f = encodeURIComponent('{Gamertag}="' + q + '"');
-  fetch(AT_URL + '?filterByFormula=' + f + '&fields%5B%5D=Gamertag&fields%5B%5D=Platform&fields%5B%5D=Region&fields%5B%5D=Staging%20Time&fields%5B%5D=StagingLocation&fields%5B%5D=SignupType&fields%5B%5D=ShowOnWall', {headers: AT_H})
-    .then(function(r) { return r.json(); })
-    .then(function(d) {
-      var records = (d.records || []).filter(function(rec) {
-        var g = (rec.fields.Gamertag || '').toLowerCase();
-        return g !== 'test' && g !== 'trst';
-      });
-      renderFriendResult(q, records.length ? records[0].fields : null);
-    })
-    .catch(function() {
-      result.innerHTML = '<div style="color:var(--smoke);font-size:.88rem;">Search error — try again.</div>';
-    });
-}
-
 function searchFriendN8n(q) {
   var result = document.getElementById('finder-result');
   fetch(N8N_FIND_PROFILE_URL + '?gamertag=' + encodeURIComponent(q))
@@ -1407,14 +1318,7 @@ function searchFriend() {
   var result = document.getElementById('finder-result');
   if (!q) return;
   result.innerHTML = '<div style="color:var(--smoke);font-size:.88rem;">Searching...</div>';
-  if (USE_N8N_BACKEND) searchFriendN8n(q);
-  else searchFriendAirtable(q);
-}
-
-function isTestRecord(r) {
-  var g = (r.fields.Gamertag || '').toLowerCase().trim();
-  var n = (r.fields.Name || '').toLowerCase().trim();
-  return g === 'test' || n === 'test' || g === 'trst' || n === 'trst';
+  searchFriendN8n(q);
 }
 
 function renderCounts(platforms) {
@@ -1426,29 +1330,6 @@ function renderCounts(platforms) {
   Object.entries(CNT_IDS).forEach(function(entry) {
     var el = document.getElementById(entry[1]);
     if (el) el.textContent = counts[entry[0]] || 0;
-  });
-}
-
-function loadCountsAirtable() {
-  var allRec = [];
-  var offset = '';
-  function fetchPage() {
-    var url = AT_URL + '?fields%5B%5D=Platform&fields%5B%5D=Gamertag&fields%5B%5D=Name' + (offset ? '&offset=' + offset : '');
-    return fetch(url, {headers: AT_H})
-      .then(function(r) { return r.json(); })
-      .then(function(d) {
-        if (d.records) allRec = allRec.concat(d.records);
-        offset = d.offset || '';
-        if (offset) return fetchPage();
-        var real = allRec.filter(function(r) { return !isTestRecord(r); });
-        renderCounts(real.map(function(r) { return r.fields.Platform; }));
-      });
-  }
-  fetchPage().catch(function() {
-    Object.values(CNT_IDS).forEach(function(id) {
-      var el = document.getElementById(id);
-      if (el) el.textContent = '0';
-    });
   });
 }
 
@@ -1468,47 +1349,9 @@ function loadCountsN8n() {
 }
 
 function loadCounts() {
-  if (USE_N8N_BACKEND) loadCountsN8n();
-  else loadCountsAirtable();
+  loadCountsN8n();
 }
 loadCounts();
-
-function getSignupNumberAirtable() {
-  return new Promise(function(resolve) {
-    setTimeout(function() {
-      var allRec = [];
-      var offset = '';
-      function fetchPage() {
-        var url = AT_URL + '?fields%5B%5D=Gamertag' + (offset ? '&offset=' + offset : '');
-        fetch(url, {headers: {Authorization: 'Bearer ' + AT_TOKEN}})
-          .then(function(r) { return r.json(); })
-          .then(function(d) {
-            if (d.records) allRec = allRec.concat(d.records);
-            offset = d.offset || '';
-            if (offset) { fetchPage(); return; }
-            var real = allRec.filter(function(rec) {
-              var g = (rec.fields && rec.fields.Gamertag ? rec.fields.Gamertag : '').toLowerCase().trim();
-              return g && g !== 'test' && g !== 'trst';
-            });
-            resolve(real.length + 1);
-          })
-          .catch(function() { resolve(null); });
-      }
-      fetchPage();
-    }, 400);
-  });
-}
-
-function getSignupNumberN8n() {
-  return fetch(N8N_ROW_COUNT_URL)
-    .then(function(r) { return r.json(); })
-    .then(function(d) { return d.nextSignupNumber || null; })
-    .catch(function() { return null; });
-}
-
-function getSignupNumber() {
-  return USE_N8N_BACKEND ? getSignupNumberN8n() : getSignupNumberAirtable();
-}
 
 function founderHTML(num) {
   if (!num || num > 100) return '';

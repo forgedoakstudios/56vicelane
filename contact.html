@@ -186,8 +186,7 @@ footer{padding:40px 24px;border-top:1px solid var(--edge);text-align:center;}
 </footer>
 
 <script>
-var VL_AT_TOKEN = "patCIXzXQ5pGrbr7K.885a7ff83de3cf47755fe6f78222a990c47c4cc6f401986e8d8d8242374cbb61";
-var VL_AT_BASE  = "appVViGbmcu5gbn8B";
+var N8N_SUBMIT_CONTACT_URL = "https://n8n.56vicelane.com/webhook/submit-contact";
 
 async function submitContact() {
   var name    = document.getElementById("c-name").value.trim();
@@ -204,10 +203,10 @@ async function submitContact() {
   btn.disabled = true; btn.textContent = "Sending...";
 
   try {
-    var res = await fetch("https://api.airtable.com/v0/" + VL_AT_BASE + "/Contact", {
+    var res = await fetch(N8N_SUBMIT_CONTACT_URL, {
       method: "POST",
-      headers: {"Authorization":"Bearer "+VL_AT_TOKEN,"Content-Type":"application/json"},
-      body: JSON.stringify({fields:{Name:name,Email:email,Subject:subject,Message:message,Timestamp:new Date().toISOString()}})
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({name:name,email:email,subject:subject,message:message})
     });
     if (res.ok) {
       document.getElementById("contact-form").style.display = "none";

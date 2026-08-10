@@ -1,8 +1,6 @@
 /* track.js — 56ViceLane engagement tracking
-   Writes directly to Airtable using the same embedded token already used
-   on store.html/members.html (the dedicated server-side n8n path exists
-   but isn't in use right now, per Chris's call — running on the old
-   client token instead).
+   Calls the n8n Track Pageview / Track Action webhooks server-side; no
+   Airtable credential is ever shipped to the browser.
 
    Two independent things happen on include:
    1. Anonymous pageview -> PageStats (Views/WeekViews), no identity needed.
@@ -13,34 +11,10 @@
       Drive record. Points values are intentionally never shown here or
       anywhere public-facing.
 
-   Anti-spam: before awarding, re-reads the member's own LastPointAt from
-   Airtable and skips the write if less than COOLDOWN_MS has passed. This
-   is a real deterrent against naive rapid-fire scripts and stops any
-   genuine human from being credited for physically-impossible back-to-back
-   actions, but it is not a hard security boundary — the token is visible
-   in page source, so a determined attacker could still pace requests
-   around the cooldown. Acceptable tradeoff for what's at stake (a free
-   nameplate), not appropriate for anything higher-value.
-
-   ── n8n migration (2026-07-27) ──────────────────────────────────────────
-   USE_N8N_BACKEND below is OFF by default on purpose. The n8n Data Table
-   webhooks exist and are live-tested (see audit/airtable-to-n8n-migration.md)
-   but real member data hasn't been migrated off Airtable yet, and Chris
-   hasn't reviewed/approved cutover. Flipping this to true switches BOTH
-   functions below to the n8n path — do not flip until that review happens.
-   The n8n path also folds the old two-request cooldown check into a single
-   atomic server-side check-and-write (was a separate GET before the write;
-   now the Track Action webhook does both in one call). */
+   Anti-spam: the Track Action webhook re-reads the member's own
+   LastPointAt server-side and skips the write if less than COOLDOWN_MS
+   has passed, atomically with the ledger insert + rollup. */
 (function () {
-  var USE_N8N_BACKEND = true;
-
-  var AT_TOKEN = 'patCIXzXQ5pGrbr7K.885a7ff83de3cf47755fe6f78222a990c47c4cc6f401986e8d8d8242374cbb61';
-  var AT_BASE  = 'appVViGbmcu5gbn8B';
-  var AT_H     = { 'Authorization': 'Bearer ' + AT_TOKEN, 'Content-Type': 'application/json' };
-  var LAST_DRIVE_URL    = 'https://api.airtable.com/v0/' + AT_BASE + '/Last%20Drive';
-  var POINTS_LEDGER_URL = 'https://api.airtable.com/v0/' + AT_BASE + '/PointsLedger';
-  var PAGE_STATS_URL    = 'https://api.airtable.com/v0/' + AT_BASE + '/PageStats';
-
   var N8N_TRACK_PAGEVIEW_URL = 'https://n8n.56vicelane.com/webhook/track-pageview';
   var N8N_TRACK_ACTION_URL   = 'https://n8n.56vicelane.com/webhook/track-action';
 
@@ -51,51 +25,14 @@
     'Reply Posted':       5,
     'Affiliate Visit':    10
   };
-  var COOLDOWN_MS = 4000; // minimum gap between any two scored point events per member
-
-  function isoWeekKey(d) {
-    var date = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
-    var dayNum = date.getUTCDay() || 7;
-    date.setUTCDate(date.getUTCDate() + 4 - dayNum);
-    var yearStart = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
-    var weekNo = Math.ceil(((date - yearStart) / 86400000 + 1) / 7);
-    return date.getUTCFullYear() + '-W' + String(weekNo).padStart(2, '0');
-  }
 
   function currentGamertag() {
     try { return (localStorage.getItem('56vl-gamertag') || '').trim(); }
     catch (e) { return ''; }
   }
 
-  /* ── anonymous pageview -> PageStats — always runs, no identity needed ── */
-  function trackPageviewAirtable(slug) {
-    var filter = encodeURIComponent('{Slug}="' + slug + '"');
-    fetch(PAGE_STATS_URL + '?filterByFormula=' + filter + '&maxRecords=1', { headers: AT_H })
-      .then(function (r) { return r.json(); })
-      .then(function (d) {
-        var rec = d.records && d.records[0];
-        var weekKey = isoWeekKey(new Date());
-        var priorViews     = rec ? (rec.fields.Views || 0) : 0;
-        var priorWeekViews = rec ? (rec.fields.WeekViews || 0) : 0;
-        var priorWeekKey   = rec ? (rec.fields.WeekKey || '') : '';
-        var newWeekViews   = (priorWeekKey === weekKey) ? priorWeekViews + 1 : 1;
-        var fields = {
-          Slug: slug,
-          Views: priorViews + 1,
-          WeekViews: newWeekViews,
-          WeekKey: weekKey,
-          LastVisit: new Date().toISOString()
-        };
-        if (rec) {
-          fetch(PAGE_STATS_URL + '/' + rec.id, { method: 'PATCH', headers: AT_H, body: JSON.stringify({ fields: fields }) }).catch(function () {});
-        } else {
-          fetch(PAGE_STATS_URL, { method: 'POST', headers: AT_H, body: JSON.stringify({ fields: fields }) }).catch(function () {});
-        }
-      })
-      .catch(function () {});
-  }
-
-  function trackPageviewN8n(slug) {
+  function trackPageview(slug) {
+    if (!slug) return;
     fetch(N8N_TRACK_PAGEVIEW_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -103,56 +40,13 @@
     }).catch(function () {});
   }
 
-  function trackPageview(slug) {
-    if (!slug) return;
-    if (USE_N8N_BACKEND) trackPageviewN8n(slug);
-    else trackPageviewAirtable(slug);
-  }
-
-  /* ── scored member action -> PointsLedger + Last Drive rollup ── */
-  function trackActionAirtable(gamertag, action, points, ref) {
-    var filter = encodeURIComponent('LOWER({Gamertag})="' + gamertag.toLowerCase() + '"');
-    fetch(LAST_DRIVE_URL + '?filterByFormula=' + filter + '&maxRecords=1', { headers: AT_H })
-      .then(function (r) { return r.json(); })
-      .then(function (d) {
-        var rec = d.records && d.records[0];
-        if (!rec) return;
-        var fields = rec.fields;
-
-        var lastAt = fields.LastPointAt ? new Date(fields.LastPointAt).getTime() : 0;
-        if (Date.now() - lastAt < COOLDOWN_MS) return; // cooldown — block rapid-fire abuse
-
-        var weekKey = isoWeekKey(new Date());
-        var priorPoints     = fields.Points || 0;
-        var priorWeekPoints = fields.WeekPoints || 0;
-        var priorWeekKey    = fields.PointsWeekKey || '';
-        var newWeekPoints   = (priorWeekKey === weekKey) ? priorWeekPoints + points : points;
-
-        fetch(POINTS_LEDGER_URL, {
-          method: 'POST', headers: AT_H,
-          body: JSON.stringify({ fields: {
-            Gamertag: gamertag, Action: action, Points: points,
-            Ref: ref || '', WeekKey: weekKey, Processed: false
-          } })
-        }).catch(function () {});
-
-        fetch(LAST_DRIVE_URL + '/' + rec.id, {
-          method: 'PATCH', headers: AT_H,
-          body: JSON.stringify({ fields: {
-            Points: priorPoints + points,
-            WeekPoints: newWeekPoints,
-            PointsWeekKey: weekKey,
-            LastPointAt: new Date().toISOString()
-          } })
-        }).catch(function () {});
-      })
-      .catch(function () {});
-  }
-
-  function trackActionN8n(gamertag, action, points, ref) {
-    /* Cooldown check happens server-side inside this one call now —
-       the webhook reads LastPointAt, checks it, and does the ledger
-       insert + LastDrive rollup atomically. Response is {awarded:false,
+  function trackAction(action, ref) {
+    var gamertag = currentGamertag();
+    var points = RATES[action];
+    if (!gamertag || !points) return;
+    /* Cooldown check happens server-side inside this one call — the
+       webhook reads LastPointAt, checks it, and does the ledger insert +
+       LastDrive rollup atomically. Response is {awarded:false,
        reason:"cooldown"} if blocked, ignored here either way since points
        are never shown client-side. */
     fetch(N8N_TRACK_ACTION_URL, {
@@ -160,14 +54,6 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ gamertag: gamertag, action: action, points: points, ref: ref || '' })
     }).catch(function () {});
-  }
-
-  function trackAction(action, ref) {
-    var gamertag = currentGamertag();
-    var points = RATES[action];
-    if (!gamertag || !points) return;
-    if (USE_N8N_BACKEND) trackActionN8n(gamertag, action, points, ref);
-    else trackActionAirtable(gamertag, action, points, ref);
   }
 
   var thisScript = document.currentScript;
