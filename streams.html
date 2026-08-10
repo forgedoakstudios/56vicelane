@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Watch Streamers — 56ViceLane</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9EKF7J4V7W');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
+<meta name="description" content="Watch 56ViceLane community members streaming The Last Drive and GTA5 — browse live channels without leaving the site.">
+<meta property="og:title" content="Watch Streamers — 56ViceLane">
+<meta property="og:url" content="https://56vicelane.com/streams">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/vicelane.css">
+
+<!-- 56ViceLane V2 — Vibrant Premium palette override (see design-system-addendum.md) -->
+<style>
+:root{
+  --pitch: #FDFBF8;
+  --asphalt: #FFFFFF;
+  --edge: #F0E6DA;
+  --amber: #FF6B2C;
+  --cyan: #D6247A;
+  --bone: #211A16;
+  --smoke: #6B5F52;
+  --green: #00C875;
+  --red: #FF3B3B;
+  --font-display: 'Playfair Display', serif;
+  --font-label: 'Barlow Condensed', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+.watch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
+.watch-card{position:relative;height:180px;border-radius:10px;overflow:hidden;cursor:pointer;display:flex;align-items:flex-end;background:var(--pitch);border:2px solid transparent;text-decoration:none;color:inherit;background-size:cover;background-position:center;}
+.watch-card.active{border-color:var(--amber);}
+.watch-card .wc-label{width:100%;padding:10px 12px;background:linear-gradient(0deg,rgba(0,0,0,.8),transparent 70%);color:#fff;font-family:'Barlow Condensed';font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.4px;}
+.watch-card .wc-badge{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);color:#fff;font-family:'Barlow Condensed';font-size:10px;font-weight:700;text-transform:uppercase;padding:3px 8px;border-radius:12px;letter-spacing:.5px;}
+.watch-card .wc-badge.embed{background:var(--green);color:#04241a;}
+.watch-player-wrap{max-width:1000px;margin:0 auto 32px;padding:0 24px;}
+.watch-player{position:relative;width:100%;padding-top:56.25%;background:#000;border-radius:10px;overflow:hidden;}
+.watch-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+.watch-player-empty{display:flex;align-items:center;justify-content:center;height:100%;position:absolute;inset:0;color:var(--smoke);font-family:'Barlow Condensed';text-transform:uppercase;letter-spacing:.1em;font-size:.85rem;text-align:center;padding:20px;}
+</style>
+</head>
+<body>
+
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker-track">
+    <span class="ticker-item">56ViceLane — Where GTA5 Ends And GTA6 Begins</span>
+  </div>
+</div>
+
+<nav class="nav">
+  <a class="logo" href="/"><span class="logo-mark">56</span><span class="logo-text">ViceLane</span></a>
+</nav>
+<div class="navband">
+  <a href="/">Home</a>
+  <a href="/news">News</a>
+  <a href="/lastdrive">Last Drive</a>
+  <a href="/streams" class="active">Watch</a>
+  <a href="/wall">Wall of Honor</a>
+  <a href="/leaderboard">Leaderboard</a>
+  <a href="/members">Members</a>
+  <a href="/store">Store</a>
+  <a href="/gear">Gear</a>
+  <a href="/forum">Forum</a>
+</div>
+
+<div style="max-width:1000px;margin:0 auto;padding:50px 24px 8px;text-align:center;">
+  <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.35em;font-size:.72rem;color:var(--amber);margin-bottom:16px;">🔴 Live From The Community</div>
+  <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,6vw,3rem);text-transform:uppercase;line-height:1;margin-bottom:16px;">Watch <span style="color:var(--amber);">Streamers</span></h1>
+  <p style="font-size:.95rem;color:var(--smoke);max-width:520px;margin:0 auto;line-height:1.7;">Browse who's streaming The Last Drive and GTA5 right now. Twitch and Kick channels play right here — no tab switching. Streaming yourself? <a href="/lastdrive" style="color:var(--cyan);">Add your channel →</a></p>
+</div>
+
+<div class="watch-player-wrap" style="margin-top:24px;">
+  <div class="watch-player" id="watch-player">
+    <div class="watch-player-empty" id="watch-player-empty">Pick a channel below to start watching.</div>
+  </div>
+</div>
+
+<div style="max-width:1000px;margin:0 auto;padding:0 24px 70px;">
+  <div id="watch-grid" class="watch-grid"></div>
+</div>
+
+<footer>
+  <div class="footer-brand"><span class="logo-mark">56</span>ViceLane</div>
+  <div class="footer-tag">Where GTA5 Ends And GTA6 Begins</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/news">News</a>
+    <a href="/lastdrive">Last Drive</a>
+    <a href="/streams">Watch</a>
+    <a href="/store">Store</a>
+    <a href="/gear">Gear</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/privacy">Privacy</a>
+  </div>
+  <p class="footer-copy">© 2026 56ViceLane · Forged Oak Studios · Not affiliated with Rockstar Games or Take-Two Interactive</p>
+</footer>
+
+<script>
+fetch('/articles.json?v=' + Date.now())
+  .then(function(r){return r.json();})
+  .then(function(a){
+    var t = document.getElementById('ticker-track');
+    t.innerHTML = [].concat(a,a).map(function(x){
+      return '<span class="ticker-item" onclick="location.href=\'/articles/'+x.slug+'\'">'+(x.emoji||'⚡')+' '+x.title+'</span>';
+    }).join('');
+  }).catch(function(){});
+var mt=document.getElementById('menu-toggle'),nm=document.getElementById('nav-mobile');
+if(mt&&nm)mt.addEventListener('click',function(){nm.classList.toggle('open');});
+</script>
+
+<script>
+(function() {
+  var N8N_LIST_STREAMERS_URL = 'https://n8n.56vicelane.com/webhook/lastdrive-list-streamers';
+  var PLATFORM_ICON = {Twitch:'🟣', YouTube:'🔴', Kick:'🟢', 'Facebook Gaming':'🔵', Other:'📺'};
+
+  function embedInfo(channelUrl) {
+    var tw = String(channelUrl).match(/twitch\.tv\/([a-zA-Z0-9_]+)/i);
+    if (tw) {
+      var parent = location.hostname || '56vicelane.com';
+      return { type: 'twitch', src: 'https://player.twitch.tv/?channel=' + tw[1] + '&parent=' + parent + '&muted=false' };
+    }
+    var kick = String(channelUrl).match(/kick\.com\/([a-zA-Z0-9_]+)/i);
+    if (kick) {
+      return { type: 'kick', src: 'https://player.kick.com/' + kick[1] };
+    }
+    return null;
+  }
+
+  function renderPlayer(s) {
+    var wrap = document.getElementById('watch-player');
+    var info = embedInfo(s.channelUrl);
+    if (info) {
+      wrap.innerHTML = '<iframe src="' + info.src + '" allowfullscreen scrolling="no" allow="autoplay"></iframe>';
+    } else {
+      window.open(s.channelUrl, '_blank', 'noopener');
+      wrap.innerHTML = '<div class="watch-player-empty">' + (PLATFORM_ICON[s.platform] || '📺') + ' ' + (s.platform || 'This platform') + ' doesn\'t support watching in-page — opened ' + String(s.gamertag || 'their channel').replace(/</g,'&lt;') + '\'s stream in a new tab.</div>';
+    }
+  }
+
+  window.playStreamer = function(idx, streamers, cardEl) {
+    document.querySelectorAll('.watch-card').forEach(function(c) { c.classList.remove('active'); });
+    if (cardEl) cardEl.classList.add('active');
+    renderPlayer(streamers[idx]);
+    document.querySelector('.watch-player-wrap').scrollIntoView({behavior:'smooth', block:'center'});
+  };
+
+  function loadStreamers() {
+    fetch(N8N_LIST_STREAMERS_URL).then(function (r) { return r.json(); }).then(function (d) {
+      var streamers = (d && d.streamers) || [];
+      var grid = document.getElementById('watch-grid');
+      if (!streamers.length) {
+        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--smoke);font-size:.9rem;padding:20px;">No one\'s streaming yet — <a href="/lastdrive" style="color:var(--cyan);">be the first to sign up →</a></div>';
+        return;
+      }
+      grid.innerHTML = streamers.map(function (s, i) {
+        var icon = PLATFORM_ICON[s.platform] || '📺';
+        var name = String(s.gamertag || 'Streamer').replace(/</g,'&lt;');
+        var info = embedInfo(s.channelUrl);
+        var bgStyle = s.screenshotUrl ? "background-image:url('" + String(s.screenshotUrl).replace(/'/g,'') + "');" : 'background:linear-gradient(160deg,#3A1B4A,#1A0E2A);';
+        var badge = info ? '<span class="wc-badge embed">▶ Watch Here</span>' : '<span class="wc-badge">Opens New Tab</span>';
+        return '<div class="watch-card" style="' + bgStyle + '" onclick="playStreamer(' + i + ', window.__streamers, this)">' +
+          badge +
+          '<span class="wc-label">' + icon + ' ' + name + '</span>' +
+        '</div>';
+      }).join('');
+      window.__streamers = streamers;
+    }).catch(function() {
+      document.getElementById('watch-grid').innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--smoke);font-size:.9rem;padding:20px;">Couldn\'t load streamers right now — try again shortly.</div>';
+    });
+  }
+
+  loadStreamers();
+})();
+</script>
+
+<script src="/back-to-top.js" defer></script>
+<script src="/loyalty-banner.js" defer></script>
+<script src="/share-bar.js"></script>
+</body>
+</html>
