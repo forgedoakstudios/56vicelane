@@ -441,6 +441,7 @@ loadDriveLeadSpotlight();
 var N8N_LIST_STREAMERS_URL = 'https://n8n.56vicelane.com/webhook/lastdrive-list-streamers';
 var STREAM_PLATFORM_ICON = {Twitch:'🟣', YouTube:'🔴', Kick:'🟢', 'Facebook Gaming':'🔵', Other:'📺'};
 var STREAM_FALLBACK_BG = ['p-city','p-crew','p-street','p-member1'];
+var PFA_TIER_BADGE = {Rising:'🥈 Rising', Elite:'🥇 Elite'};
 
 function streamerCardHTML(s, thumbClass, i) {
   var icon = STREAM_PLATFORM_ICON[s.platform] || '📺';
@@ -450,7 +451,9 @@ function streamerCardHTML(s, thumbClass, i) {
     ? "background-image:url('" + String(s.screenshotUrl).replace(/'/g,'') + "');"
     : '';
   var bgClass = s.screenshotUrl ? '' : (' ' + STREAM_FALLBACK_BG[i % STREAM_FALLBACK_BG.length]);
+  var tierBadge = PFA_TIER_BADGE[s.tier] ? '<span style="position:absolute;top:8px;left:8px;background:var(--gold);color:#000;font-family:\'Barlow Condensed\';font-size:10px;font-weight:800;text-transform:uppercase;padding:3px 8px;border-radius:12px;letter-spacing:.5px;">' + PFA_TIER_BADGE[s.tier] + '</span>' : '';
   return '<a href="' + href + '" class="' + thumbClass + ' photo watch-hover' + bgClass + '" style="' + bgStyle + 'display:flex;align-items:flex-end;text-decoration:none;">' +
+    tierBadge +
     '<span class="wc-now">▶ Watch Now</span>' +
     '<span style="width:100%;padding:10px 12px;background:linear-gradient(0deg,rgba(0,0,0,.75),transparent 70%);color:#fff;font-family:\'Barlow Condensed\';font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.4px;position:relative;">' + icon + ' ' + name + '</span>' +
   '</a>';

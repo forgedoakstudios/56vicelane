@@ -367,6 +367,27 @@
     </div>
   </div>
 
+  <!-- PFA LEAGUE TIERS -->
+  <div class="admin-section">
+    <div class="admin-section-header" onclick="toggleSection('pfatier')">
+      <div class="admin-section-title">🏅 PFA League Tiers</div>
+      <span style="color:var(--smoke);">▼</span>
+    </div>
+    <div class="admin-section-body" id="sec-pfatier">
+      <div class="plate-mgmt-search">
+        <input type="text" class="form-input" id="pfa-search-input" placeholder="Search streamer gamertag..." oninput="searchPfaStreamer(this.value)" autocomplete="off" style="flex:1;">
+      </div>
+      <div id="pfa-search-dropdown" style="background:var(--pitch);border:1px solid var(--edge);display:none;max-height:160px;overflow-y:auto;margin-bottom:10px;"></div>
+      <div class="player-result" id="pfa-player-result">
+        <div class="player-result-tag" id="pfa-player-tag"></div>
+        <div style="font-size:.78rem;color:var(--smoke);margin-bottom:10px;" id="pfa-player-current"></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;" id="pfa-tier-options"></div>
+        <button class="form-submit" onclick="savePfaTier()" style="margin-top:4px;">Save Tier</button>
+        <div class="msg" id="pfa-tier-msg" style="margin-top:8px;"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- GTACON CONTROL -->
   <div class="admin-section">
     <div class="admin-section-header" onclick="toggleSection('gtacon')">
@@ -670,11 +691,21 @@ var ADMIN_VERIFY_URL = 'https://n8n.56vicelane.com/webhook/admin-verify-password
 var N8N_ADMIN_LIST_SIGNUPS_URL = 'https://n8n.56vicelane.com/webhook/admin-list-signups';
 var N8N_ADMIN_GIFT_PLATES_URL  = 'https://n8n.56vicelane.com/webhook/admin-gift-plates-v2';
 var N8N_ADMIN_LIST_CONTACTS_URL = 'https://n8n.56vicelane.com/webhook/admin-list-contacts';
+var N8N_LIST_STREAMERS_URL = 'https://n8n.56vicelane.com/webhook/lastdrive-list-streamers';
+var N8N_ADMIN_SET_STREAMER_TIER_URL = 'https://n8n.56vicelane.com/webhook/admin-set-streamer-tier';
 var GTACON_URL = 'https://gtacon-worker.forgedoakstudios.workers.dev/gtacon-update';
 
 var allSignups  = [];
 var adminTarget = null;
 var adminPlates = [];
+var allStreamers = [];
+var pfaTarget = null;
+var pfaSelectedTier = 'Rookie';
+var PFA_TIERS = [
+  { id: 'Rookie', label: '🟢 PFA Rookie' },
+  { id: 'Rising', label: '🥈 PFA Rising' },
+  { id: 'Elite',  label: '🥇 PFA Elite' }
+];
 
 var PLATE_STYLES = [
   {id:'founder',label:'Founder'},
@@ -745,6 +776,7 @@ function adminLogin() {
       document.getElementById('admin-dashboard').style.display = 'block';
       loadStats();
       loadSignups();
+      loadStreamersForAdmin();
       log('Logged in as Musashi13');
     })
     .catch(function() {
@@ -940,6 +972,75 @@ function giftPlates() {
     showMsg('plate-gift-msg', '✅ Plates saved!', 'success');
     log('Plates gifted: ' + selected.join(', '));
   }).catch(function(e) { showMsg('plate-gift-msg', 'Save failed: ' + e, 'error'); log('Gift error: ' + e, 'error'); });
+}
+
+// ── PFA LEAGUE TIERS ───────────────────────────────────────
+function loadStreamersForAdmin() {
+  fetch(N8N_LIST_STREAMERS_URL)
+    .then(function(r) { return r.json(); })
+    .then(function(d) { allStreamers = (d && d.streamers) || []; })
+    .catch(function() {});
+}
+
+function searchPfaStreamer(val) {
+  var dd = document.getElementById('pfa-search-dropdown');
+  dd.innerHTML = '';
+  if (!val || !allStreamers.length) { dd.style.display = 'none'; return; }
+  var matches = allStreamers.filter(function(s) {
+    return (s.gamertag||'').toLowerCase().indexOf(val.toLowerCase()) >= 0;
+  }).slice(0, 10);
+  if (!matches.length) { dd.style.display = 'none'; return; }
+  matches.forEach(function(s) {
+    var row = document.createElement('div');
+    row.style.cssText = 'padding:10px 14px;cursor:pointer;font-size:.88rem;font-weight:800;text-transform:uppercase;color:var(--bone);border-bottom:1px solid var(--edge);';
+    row.textContent = s.gamertag || '?';
+    row.addEventListener('mouseover', function() { this.style.background = 'var(--asphalt)'; });
+    row.addEventListener('mouseout',  function() { this.style.background = ''; });
+    row.addEventListener('click', function() { selectPfaStreamer(s); });
+    dd.appendChild(row);
+  });
+  dd.style.display = 'block';
+}
+
+function selectPfaStreamer(s) {
+  pfaTarget = s.gamertag;
+  pfaSelectedTier = s.tier || 'Rookie';
+  document.getElementById('pfa-search-input').value = s.gamertag || '';
+  document.getElementById('pfa-search-dropdown').style.display = 'none';
+  document.getElementById('pfa-player-tag').textContent = s.gamertag || '?';
+  document.getElementById('pfa-player-current').textContent = 'Platform: ' + (s.platform || 'Other') + ' · Current tier: ' + pfaSelectedTier;
+  renderPfaTierOptions();
+  document.getElementById('pfa-player-result').classList.add('show');
+  log('Selected streamer: ' + (s.gamertag || '?'));
+}
+
+function renderPfaTierOptions() {
+  var wrap = document.getElementById('pfa-tier-options');
+  wrap.innerHTML = '';
+  PFA_TIERS.forEach(function(t) {
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'btn ' + (t.id === pfaSelectedTier ? '' : 'btn-ghost');
+    btn.style.cssText = 'font-size:.78rem;padding:8px 14px;' + (t.id === pfaSelectedTier ? 'background:var(--amber);color:#000;' : '');
+    btn.textContent = t.label;
+    btn.addEventListener('click', function() { pfaSelectedTier = t.id; renderPfaTierOptions(); });
+    wrap.appendChild(btn);
+  });
+}
+
+function savePfaTier() {
+  if (!pfaTarget) return;
+  showMsg('pfa-tier-msg', 'Saving...', 'info');
+  fetch(N8N_ADMIN_SET_STREAMER_TIER_URL, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({gamertag: pfaTarget, tier: pfaSelectedTier})
+  }).then(function() {
+    document.getElementById('pfa-player-current').textContent = 'Current tier: ' + pfaSelectedTier;
+    showMsg('pfa-tier-msg', '✅ Tier saved!', 'success');
+    log('PFA tier set: ' + pfaTarget + ' → ' + pfaSelectedTier);
+    loadStreamersForAdmin();
+  }).catch(function(e) { showMsg('pfa-tier-msg', 'Save failed: ' + e, 'error'); log('Tier save error: ' + e, 'error'); });
 }
 
 // ── GTACON ─────────────────────────────────────────────────

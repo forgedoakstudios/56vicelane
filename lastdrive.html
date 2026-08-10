@@ -722,10 +722,10 @@
 
 <div style="max-width:1000px;margin:0 auto;padding:0 24px 60px;">
   <div class="finder-wrap" style="margin-top:0;">
-    <div class="eyebrow" style="margin-bottom:4px;">🔴 Going Live?</div>
+    <div class="eyebrow" style="margin-bottom:4px;">🏆 The PFA League</div>
     <h3 style="margin-bottom:8px;">Streaming The Last Drive?</h3>
-    <p style="font-size:.9rem;color:var(--smoke);margin-bottom:8px;">Drop your channel below so other drivers can pull up your stream and watch — or hop in as a viewer.</p>
-    <p style="font-size:.85rem;color:var(--amber);margin-bottom:20px;">⭐ Sign up and you'll get featured on our homepage — the whole site sees your channel.</p>
+    <p style="font-size:.9rem;color:var(--smoke);margin-bottom:8px;">Drop your channel below to join the PFA League (Pretty F*kn Awesome) — so other drivers can pull up your stream and watch, or hop in as a viewer.</p>
+    <p style="font-size:.85rem;color:var(--amber);margin-bottom:20px;">⭐ Sign up and you'll get featured on our homepage. Grow your channel and climb the PFA tiers — Rookie → Rising → Elite — for shoutouts, merch, and gear as the league grows.</p>
     <div class="form-grid">
       <div class="form-field">
         <label class="form-label">Gamertag / Channel Name</label>
@@ -762,6 +762,7 @@
   var CLOUDINARY_CLOUD_NAME   = 'dd8bbuv93';
   var CLOUDINARY_UPLOAD_PRESET = 'lastdrive_streamers';
   var PLATFORM_ICON = {Twitch:'🟣', YouTube:'🔴', Kick:'🟢', 'Facebook Gaming':'🔵', Other:'📺'};
+  var PFA_TIER_BADGE = {Rising:'🥈 Rising', Elite:'🥇 Elite'};
 
   function loadStreamers() {
     fetch(N8N_LIST_STREAMERS_URL).then(function(r){ return r.json(); }).then(function(data) {
@@ -772,9 +773,10 @@
         var icon = PLATFORM_ICON[s.platform] || '📺';
         var name = String(s.gamertag || 'Streamer').replace(/</g,'&lt;');
         var href = '/streams?watch=' + encodeURIComponent(s.gamertag || '');
+        var tierBadge = PFA_TIER_BADGE[s.tier] ? '<span style="position:absolute;top:6px;left:6px;background:var(--amber);color:#000;font-family:var(--font-label);font-size:9px;font-weight:800;text-transform:uppercase;padding:2px 6px;border-radius:10px;letter-spacing:.5px;">' + PFA_TIER_BADGE[s.tier] + '</span>' : '';
         if (s.screenshotUrl) {
           return '<a href="' + href + '" class="watch-hover" style="text-decoration:none;color:inherit;width:160px;border:1px solid var(--edge);border-radius:10px;overflow:hidden;display:block;">' +
-            '<div style="height:100px;background:var(--asphalt) center/cover no-repeat url(\'' + String(s.screenshotUrl).replace(/'/g,"") + '\');"></div>' +
+            '<div style="height:100px;position:relative;background:var(--asphalt) center/cover no-repeat url(\'' + String(s.screenshotUrl).replace(/'/g,"") + '\');">' + tierBadge + '</div>' +
             '<span class="wc-now">▶ Watch Now</span>' +
             '<div style="padding:8px 10px;font-size:.8rem;">' + icon + ' ' + name + '</div>' +
           '</a>';
