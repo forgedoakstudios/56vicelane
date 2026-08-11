@@ -865,7 +865,7 @@
     <a href="/about">About</a>
     <a href="/contact">Contact</a>
     <a href="/privacy">Privacy</a>
-    <a href="/terms">Terms</a>
+    <a href="/terms">Terms</a><a href="/editorial-policy">Editorial Policy</a>
     <a href="/admin" class="admin-link">Admin</a>
   </div>
   <p class="footer-disclosure">56ViceLane is an independent fan site. Not affiliated with Rockstar Games or Take-Two Interactive.</p>
@@ -879,6 +879,31 @@ var N8N_FIND_PROFILE_URL   = 'https://n8n.56vicelane.com/webhook/find-profile';
 var N8N_LIST_MEMBERS_URL   = 'https://n8n.56vicelane.com/webhook/list-members';
 var N8N_LIST_DRIVES_URL    = 'https://n8n.56vicelane.com/webhook/list-drives';
 var N8N_SIGNUP_URL         = 'https://n8n.56vicelane.com/webhook/lastdrive-signup';
+
+/* REFERRAL CAPTURE — a ?ref=<gamertag> in the URL (from a friend's share
+   link) is stashed in sessionStorage so it survives the platform/drive
+   picker steps, then gets sent along with whichever signup call fires. */
+(function () {
+  var refParam = new URLSearchParams(location.search).get('ref');
+  if (refParam) sessionStorage.setItem('vl-referred-by', refParam.trim());
+})();
+function getReferredBy() {
+  return sessionStorage.getItem('vl-referred-by') || '';
+}
+
+/* UTM CAPTURE — first-touch attribution. Whichever platform's ?utm_source=
+   link brought this visitor in gets stashed once and kept for the whole
+   session (not overwritten by a later internal navigation with no UTM),
+   so the signup can be attributed back to the platform that drove it. */
+(function () {
+  var utmSource = new URLSearchParams(location.search).get('utm_source');
+  if (utmSource && !sessionStorage.getItem('vl-utm-source')) {
+    sessionStorage.setItem('vl-utm-source', utmSource.trim());
+  }
+})();
+function getUtmSource() {
+  return sessionStorage.getItem('vl-utm-source') || 'direct';
+}
 
 var PLATFORMS = ['PS5','PS4','Xbox Series X/S','Xbox One','PC'];
 var REGIONS = [
@@ -1203,7 +1228,7 @@ document.addEventListener('click', function(e) {
       stagingLocation: s.staging, driveType: s.drive,
       passiveMode: passive, isOrganizer: s.isOrg,
       showOnWall: showWall, petitionOptIn: petition,
-      signupType: 'Drive Lead'
+      signupType: 'Drive Lead', referredBy: getReferredBy(), utmSource: getUtmSource()
     })
   }).then(function(res) { return res.json().then(function(d) { return {ok: res.ok, d: d}; }); })
     .then(function(r) { if (r.ok && r.d.success) onLeadSuccess(r.d.signupNumber); else onLeadError(); })
@@ -1377,6 +1402,24 @@ function submitParticipant() {
           '</div>' +
         '</div>';
     if (signupNum && signupNum <= 100) successTxt += founderHTML(signupNum);
+
+    var calUrl = 'https://www.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent('The Last Drive — 56ViceLane') +
+      '&dates=20261118T220000Z/20261119T060000Z&details=' + encodeURIComponent('One final night in Los Santos before GTA6 launches. See you in the lane. https://56vicelane.com/lastdrive') +
+      '&location=' + encodeURIComponent('GTA5 Online');
+    var refLink = 'https://56vicelane.com/lastdrive?ref=' + encodeURIComponent(gamertag);
+    successTxt +=
+      '<div style="margin-top:14px;display:flex;flex-direction:column;gap:8px;">' +
+        '<a href="' + calUrl + '" target="_blank" rel="noopener" class="btn btn-ghost" style="text-align:center;">📅 Add To Calendar</a>' +
+        '<a href="https://discord.gg/ewdRcjsbg5" target="_blank" rel="noopener" class="btn btn-ghost" style="text-align:center;">💬 Join The Discord</a>' +
+      '</div>' +
+      '<div style="margin-top:14px;background:var(--edge);border-radius:6px;padding:12px;text-align:left;">' +
+        '<div style="font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.75rem;color:var(--amber);margin-bottom:6px;">Invite A Friend</div>' +
+        '<div style="font-size:.82rem;color:var(--smoke);margin-bottom:8px;">Share your link — friends who sign up through it ride with you.</div>' +
+        '<div style="display:flex;gap:6px;">' +
+          '<input readonly id="ref-link-input" value="' + refLink + '" style="flex:1;font-size:.78rem;padding:8px;border:1px solid var(--edge);border-radius:4px;background:#fff;color:var(--smoke);" onclick="this.select()">' +
+          '<button class="btn btn-primary" style="padding:8px 14px;font-size:.78rem;" onclick="navigator.clipboard.writeText(document.getElementById(\'ref-link-input\').value);this.textContent=\'Copied!\';setTimeout(()=>{this.textContent=\'Copy\';},1500);">Copy</button>' +
+        '</div>' +
+      '</div>';
     document.getElementById('join-success-text').innerHTML = successTxt;
     document.getElementById('join-success').classList.add('show');
     document.getElementById('join-form-wrap').querySelector('.form-grid').style.display = 'none';
@@ -1405,7 +1448,7 @@ function submitParticipant() {
       stagingTime: drive['Staging Time'] || '',
       stagingLocation: drive.StagingLocation || '',
       showOnWall: showWall, petitionOptIn: petition,
-      signupType: 'Participant', joinStatus: joinStatus
+      signupType: 'Participant', joinStatus: joinStatus, referredBy: getReferredBy(), utmSource: getUtmSource()
     })
   }).then(function(res) { return res.json().then(function(d) { return {ok: res.ok, d: d}; }); })
     .then(function(r) { if (r.ok && r.d.success) onJoinSuccess(r.d.signupNumber); else onJoinError(); })

@@ -134,10 +134,8 @@
     <div class="lb-table-wrap" style="margin-top:18px;">
       <table class="lb-table" id="lbTable">
         <thead><tr><th>#</th><th>Driver</th><th>Points</th></tr></thead>
-        <tbody>
-          <tr><td class="lb-rank">01</td><td>Open seat</td><td class="lb-points">—</td></tr>
-          <tr><td class="lb-rank">02</td><td>Open seat</td><td class="lb-points">—</td></tr>
-          <tr><td class="lb-rank">03</td><td>Open seat</td><td class="lb-points">—</td></tr>
+        <tbody id="lbTableBody">
+          <tr id="lbEmptyRow"><td colspan="3" style="text-align:center;padding:28px 12px;color:var(--smoke);">Standings open once the first convoy points post — <a href="/lastdrive">be one of the founding drivers</a> and claim the first spot.</td></tr>
         </tbody>
       </table>
     </div>
@@ -161,7 +159,7 @@
     <a href="/about">About</a>
     <a href="/contact">Contact</a>
     <a href="/privacy">Privacy</a>
-    <a href="/terms">Terms</a>
+    <a href="/terms">Terms</a><a href="/editorial-policy">Editorial Policy</a>
     <a href="/admin" class="admin-link">Admin</a>
   </div>
   <p class="footer-disclosure">56ViceLane is an independent fan site. Not affiliated with Rockstar Games or Take-Two Interactive.</p>
@@ -186,13 +184,13 @@
         .filter(function (s) { return s.gamertag && s.weekPoints > 0; })
         .sort(function (a, b) { return b.weekPoints - a.weekPoints; })
         .slice(0, 10);
-      if (!records.length) return; // leave the static "Open seat" rows in place
+      if (!records.length) return; // leave the honest empty-state row in place
       tbody.innerHTML = records.map(function (s, i) {
         var rank = String(i + 1).padStart(2, '0');
         return '<tr><td class="lb-rank">' + rank + '</td><td><b>' + s.gamertag + '</b></td><td class="lb-points">' + (s.weekPoints || 0) + '</td></tr>';
       }).join('');
     })
-    .catch(function () { /* leave static placeholder rows in place */ });
+    .catch(function () { /* leave the honest empty-state row in place */ });
 
   fetch('/articles.json?v=' + Date.now())
     .then(function (r) { return r.json(); })

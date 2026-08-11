@@ -32,6 +32,30 @@
     "url": "/articles/gta6-november-19-confirmed"
   },
   {
+    "emoji": "🗞️",
+    "title": "From The Editor's Desk: Week Of August 11",
+    "slug": "editors-desk-week-of-august-11",
+    "url": "/articles/editors-desk-week-of-august-11",
+    "headline": "From The Editor's Desk: Week Of August 11",
+    "category": "Community",
+    "date": "2026-08-11",
+    "excerpt": "We just brought on several new staff writers, each running their own beat — tech, business, lore, culture, and retro nostalgia — plus a faster pipeline for turning breaking GTA6 news into real coverage the same day.",
+    "image": "editor-portrait.png",
+    "permanent": false
+  },
+  {
+    "emoji": "💿",
+    "title": "GTA6 On A Disc 'Doesn't Make Sense,' Take-Two CEO Says",
+    "slug": "gta6-disc-doesnt-make-sense-download-size",
+    "url": "/articles/gta6-disc-doesnt-make-sense-download-size",
+    "headline": "Take-Two CEO Says GTA6 On Disc 'Doesn't Make Sense' — But Could Happen Anyway",
+    "category": "News",
+    "date": "2026-08-11",
+    "excerpt": "Take-Two's Strauss Zelnick says putting GTA6 on a physical disc doesn't make sense, but could still happen. Read between the lines and it's really a download-size story.",
+    "image": "gta6-disc-doesnt-make-sense-download-size-hero.jpg",
+    "permanent": false
+  },
+  {
     "emoji": "🎮",
     "title": "Take-Two Raises FY2027 Guidance to $8.2B, Reaffirms Nov 19 — Q1 Earnings Breakdown",
     "slug": "gta6-take-two-q1-fy2027-earnings-call",

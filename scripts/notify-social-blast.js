@@ -43,11 +43,15 @@ function buildPayload (filePath) {
   const ogImage = getTag(content, 'property', 'og:image') || getTag(content, 'name', 'image');
   const imageFile = ogImage ? ogImage.split('/').pop() : 'gta6-hero.png';
 
+  const rawStatus = getTag(content, 'name', 'source-status').trim().toLowerCase();
+  const sourceStatus = ['confirmed', 'reported', 'rumor', 'disproven'].includes(rawStatus) ? rawStatus : 'confirmed';
+
   return {
     title: title,
     url: SITE_URL + '/articles/' + slug,
     excerpt: excerpt,
     image: SITE_URL + '/images/' + imageFile,
+    sourceStatus: sourceStatus,
   };
 }
 

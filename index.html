@@ -40,14 +40,29 @@
   .socials a{width:30px; height:30px; border-radius:50%; background:linear-gradient(135deg,var(--gold),var(--pink)); display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:700; text-decoration:none;}
 
   /* HERO */
-  .hero{position:relative; height:280px; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden;}
-  .hero::before{content:''; position:absolute; inset:0; z-index:1; background:linear-gradient(0deg, rgba(0,0,0,0.35), transparent 50%);}
-  .hero-word{position:relative; z-index:2; font-family:'Playfair Display'; font-style:italic; font-weight:800; font-size:56px; color:#fff; text-shadow:0 4px 30px rgba(0,0,0,0.4);}
-  .hero-sub{position:relative; z-index:2; font-family:'Barlow Condensed'; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:#FFE3C4; font-size:13px; margin-top:8px;}
-  .hero-video-wrap{position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none;}
-  .hero-video-wrap iframe{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
-  .hero-mute-btn{position:absolute; z-index:3; bottom:14px; right:14px; background:rgba(0,0,0,.55); border:1px solid rgba(255,255,255,.35); color:#fff; font-family:'Barlow Condensed',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:12px; padding:8px 14px; border-radius:20px; cursor:pointer; display:flex; align-items:center; gap:6px; pointer-events:auto;}
-  .hero-mute-btn:hover{background:rgba(0,0,0,.75);}
+  .hero{position:relative; min-height:440px; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; background-image:url('images/lastdrive-hero.webp'); padding:40px 20px;}
+  .hero::before{content:''; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(10,6,4,.55) 0%, rgba(10,6,4,.35) 45%, rgba(10,6,4,.75) 100%);}
+  .hero-inner{position:relative; z-index:2; max-width:640px;}
+  .hero-eyebrow{font-family:'Barlow Condensed'; font-weight:800; letter-spacing:3px; text-transform:uppercase; color:var(--orange); font-size:13px; margin-bottom:14px;}
+  .hero-word{font-family:'Playfair Display'; font-style:italic; font-weight:800; font-size:clamp(30px,6vw,50px); line-height:1.1; color:#fff; text-shadow:0 4px 30px rgba(0,0,0,0.5); margin-bottom:14px;}
+  .hero-sub{font-family:'Inter',sans-serif; font-weight:400; color:#F2DCC9; font-size:16px; line-height:1.6; margin-bottom:26px;}
+  .hero-ctas{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:14px;}
+  .hero-cta-primary{background:var(--orange); color:#000; font-family:'Playfair Display'; font-weight:700; font-size:15px; padding:14px 28px; border-radius:6px; text-decoration:none; letter-spacing:.5px;}
+  .hero-cta-secondary{background:rgba(255,255,255,.1); color:#fff; border:1px solid rgba(255,255,255,.4); font-family:'Barlow Condensed'; font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:13px; padding:14px 26px; border-radius:6px; text-decoration:none;}
+  .hero-reassure{font-family:'Barlow Condensed'; font-size:11.5px; letter-spacing:.5px; color:#D8C6B8; text-transform:uppercase;}
+
+  /* STATS STRIP */
+  .stats-strip{background:#FBF3E9; border-bottom:1px solid var(--edge); padding:22px 20px;}
+  .stats-strip-inner{max-width:900px; margin:0 auto; display:flex; justify-content:center; gap:40px; flex-wrap:wrap; text-align:center;}
+  .stat-item .stat-num{font-family:'Playfair Display'; font-weight:800; font-size:26px; color:var(--orange);}
+  .stat-item .stat-label{font-family:'Barlow Condensed'; font-weight:600; letter-spacing:1px; text-transform:uppercase; font-size:11px; color:var(--ink-soft); margin-top:2px;}
+
+  /* 3-STEP */
+  .steps-strip{padding:28px 20px 8px; text-align:center;}
+  .steps-inner{max-width:900px; margin:0 auto; display:flex; gap:24px; justify-content:center; flex-wrap:wrap;}
+  .step-item{max-width:220px;}
+  .step-num{font-family:'Playfair Display'; font-style:italic; font-weight:800; font-size:22px; color:var(--orange); margin-bottom:4px;}
+  .step-text{font-family:'Barlow Condensed'; font-size:13px; color:var(--ink-soft); font-weight:600;}
 
   /* NAV BAND — matches reference's colored nav strip under the hero */
   .navband{background:var(--band); display:flex; justify-content:center; gap:0; flex-wrap:wrap;}
@@ -152,19 +167,37 @@
 <div class="topbar">
   <div class="brand">
     <span class="name">56ViceLane</span>
-    <span class="sub">GTA5 → GTA6 Fan Hub</span>
+    <span class="sub">Where GTA5 Ends And GTA6 Begins</span>
   </div>
   <div class="socials"><a href="https://www.instagram.com/56vicelane/?hl=en" target="_blank" rel="noopener" title="Instagram">IG</a><a href="https://x.com/56ViceLane" target="_blank" rel="noopener" title="X">X</a><a href="https://www.youtube.com/@56vicelane" target="_blank" rel="noopener" title="YouTube">YT</a></div>
 </div>
 
-<div class="hero photo img-hero">
-  <div class="hero-video-wrap">
-    <iframe id="hero-video-frame" src="https://www.youtube.com/embed/Ni80PfNIWrM?autoplay=1&mute=1&loop=1&playlist=Ni80PfNIWrM&controls=0&modestbranding=1&rel=0&showinfo=0&playsinline=1" title="The Last Drive — GTA5's Final Cruise Before GTA6" frameborder="0" allow="autoplay; encrypted-media" loading="eager"></iframe>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">November 18 &middot; All Platforms &middot; Free</div>
+    <div class="hero-word">One Final Night In Los Santos</div>
+    <p class="hero-sub">Join a scheduled GTA5 convoy the night before GTA6 launches. Choose your platform, find your crew, and put your gamertag on the Wall of Honor.</p>
+    <div class="hero-ctas">
+      <a href="/lastdrive" class="hero-cta-primary">Reserve My Free Spot</a>
+      <a href="https://discord.gg/ewdRcjsbg5" target="_blank" rel="noopener" class="hero-cta-secondary">Join the Discord</a>
+    </div>
+    <div class="hero-reassure">No purchase required &middot; Pick your convoy later &middot; Unsubscribe anytime</div>
   </div>
-  <button class="hero-mute-btn" id="hero-mute-btn" onclick="toggleHeroMute(this)">🔇 Sound Off</button>
-  <div>
-    <div class="hero-word">56VICELANE</div>
-    <div class="hero-sub">Where GTA5 Ends And GTA6 Begins</div>
+</div>
+
+<div class="stats-strip">
+  <div class="stats-strip-inner" id="home-stats-strip">
+    <div class="stat-item"><div class="stat-num" id="stat-drivers">—</div><div class="stat-label">Drivers Registered</div></div>
+    <div class="stat-item"><div class="stat-num" id="stat-convoys">—</div><div class="stat-label">Convoys Forming</div></div>
+    <div class="stat-item"><div class="stat-num">5</div><div class="stat-label">Platforms Supported</div></div>
+  </div>
+</div>
+
+<div class="steps-strip">
+  <div class="steps-inner">
+    <div class="step-item"><div class="step-num">1</div><div class="step-text">Pick your platform</div></div>
+    <div class="step-item"><div class="step-num">2</div><div class="step-text">Join or lead a convoy</div></div>
+    <div class="step-item"><div class="step-num">3</div><div class="step-text">Add your crew and meet November 18</div></div>
   </div>
 </div>
 
@@ -303,14 +336,6 @@
 </footer>
 
 <script>
-function toggleHeroMute(btn) {
-  var frame = document.getElementById('hero-video-frame');
-  if (!frame) return;
-  var muted = frame.src.indexOf('mute=1') !== -1;
-  frame.src = frame.src.replace(muted ? 'mute=1' : 'mute=0', muted ? 'mute=0' : 'mute=1');
-  btn.textContent = muted ? '🔊 Sound On' : '🔇 Sound Off';
-}
-
 function playLastDrivePreview() {
   var block = document.getElementById('lastdrive-preview-block');
   if (!block) return;
@@ -404,6 +429,47 @@ function shuffle(arr) {
   }
   return arr;
 }
+
+/* HERO STATS STRIP — real counts only. Below a small threshold the raw
+   number reads as embarrassing rather than impressive, so it falls back
+   to founding-member framing instead of ever showing a tiny number. */
+var N8N_LIST_DRIVES_URL_HOME = 'https://n8n.56vicelane.com/webhook/list-drives';
+function loadHomeStats() {
+  var driversEl = document.getElementById('stat-drivers');
+  var convoysEl = document.getElementById('stat-convoys');
+  var driversLabel = driversEl && driversEl.nextElementSibling;
+  var convoysLabel = convoysEl && convoysEl.nextElementSibling;
+
+  fetch(SIGNUPS_PUBLIC_URL).then(function (r) { return r.json(); }).then(function (d) {
+    var count = ((d && d.signups) || []).filter(function (s) {
+      var g = (s.gamertag || '').toLowerCase().trim();
+      return g && g !== 'test' && g !== 'trst';
+    }).length;
+    if (count >= 25) {
+      driversEl.textContent = count;
+    } else {
+      driversEl.textContent = 'Founding';
+      if (driversLabel) driversLabel.textContent = 'Drivers Wanted';
+    }
+  }).catch(function () {
+    driversEl.textContent = 'Founding';
+    if (driversLabel) driversLabel.textContent = 'Drivers Wanted';
+  });
+
+  fetch(N8N_LIST_DRIVES_URL_HOME).then(function (r) { return r.json(); }).then(function (d) {
+    var count = ((d && d.drives) || []).length;
+    if (count >= 5) {
+      convoysEl.textContent = count;
+    } else {
+      convoysEl.textContent = 'New';
+      if (convoysLabel) convoysLabel.textContent = 'Convoys Weekly';
+    }
+  }).catch(function () {
+    convoysEl.textContent = 'New';
+    if (convoysLabel) convoysLabel.textContent = 'Convoys Weekly';
+  });
+}
+loadHomeStats();
 
 function loadDriveLeadSpotlight() {
   var grid = document.getElementById('spot-grid');
