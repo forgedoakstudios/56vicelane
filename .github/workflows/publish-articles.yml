@@ -22,6 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      actions: write
 
     steps:
       - name: Checkout repo
@@ -148,6 +149,13 @@ jobs:
           git push
 
           echo "✅ Published $FILENAME at $PUBLISH_TIME"
+
+      - name: Trigger immediate Bluesky post (don't wait for the 5-min cron)
+        if: steps.draft.outputs.found == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run social-poster.yml --repo "${{ github.repository }}"
 
       - name: No drafts available notice
         if: steps.draft.outputs.found == 'false'

@@ -2,7 +2,11 @@ name: Social Queue Poster
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    # Every 5 min -- was hourly, which meant a queued post could sit up to
+    # 59 minutes before going out. publish-articles.yml also dispatches this
+    # workflow directly right after queuing, so this cron is mainly a
+    # backstop/catch-all (and the only trigger for recurring-countdown posts).
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 permissions:
