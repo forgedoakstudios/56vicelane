@@ -879,6 +879,17 @@ var N8N_LIST_MEMBERS_URL   = 'https://n8n.56vicelane.com/webhook/list-members';
 var N8N_LIST_DRIVES_URL    = 'https://n8n.56vicelane.com/webhook/list-drives';
 var N8N_SIGNUP_URL         = 'https://n8n.56vicelane.com/webhook/lastdrive-signup';
 
+/* REFERRAL CAPTURE — a ?ref=<gamertag> in the URL (from a friend's share
+   link) is stashed in sessionStorage so it survives the platform/drive
+   picker steps, then gets sent along with whichever signup call fires. */
+(function () {
+  var refParam = new URLSearchParams(location.search).get('ref');
+  if (refParam) sessionStorage.setItem('vl-referred-by', refParam.trim());
+})();
+function getReferredBy() {
+  return sessionStorage.getItem('vl-referred-by') || '';
+}
+
 var PLATFORMS = ['PS5','PS4','Xbox Series X/S','Xbox One','PC'];
 var REGIONS = [
   {name:'NA East',     tz:'EST', flag:'🇺🇸'},
@@ -1202,7 +1213,7 @@ document.addEventListener('click', function(e) {
       stagingLocation: s.staging, driveType: s.drive,
       passiveMode: passive, isOrganizer: s.isOrg,
       showOnWall: showWall, petitionOptIn: petition,
-      signupType: 'Drive Lead'
+      signupType: 'Drive Lead', referredBy: getReferredBy()
     })
   }).then(function(res) { return res.json().then(function(d) { return {ok: res.ok, d: d}; }); })
     .then(function(r) { if (r.ok && r.d.success) onLeadSuccess(r.d.signupNumber); else onLeadError(); })
@@ -1422,7 +1433,7 @@ function submitParticipant() {
       stagingTime: drive['Staging Time'] || '',
       stagingLocation: drive.StagingLocation || '',
       showOnWall: showWall, petitionOptIn: petition,
-      signupType: 'Participant', joinStatus: joinStatus
+      signupType: 'Participant', joinStatus: joinStatus, referredBy: getReferredBy()
     })
   }).then(function(res) { return res.json().then(function(d) { return {ok: res.ok, d: d}; }); })
     .then(function(r) { if (r.ok && r.d.success) onJoinSuccess(r.d.signupNumber); else onJoinError(); })
