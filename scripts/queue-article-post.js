@@ -39,7 +39,7 @@ function buildQueueEntry (filePath) {
   const ogImage = getTag(content, 'property', 'og:image') || getTag(content, 'name', 'image');
   const imageFile = ogImage ? ogImage.split('/').pop() : 'gta6-hero.png';
 
-  const url = SITE_URL + '/articles/' + slug;
+  const url = SITE_URL + '/articles/' + slug + '?utm_source=bluesky&utm_medium=social&utm_campaign=article_blast';
 
   // Don't append url here — post-to-bluesky.js's posting loop already
   // appends post.url onto the text for every one-off queue entry. Doing
