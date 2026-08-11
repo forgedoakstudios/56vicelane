@@ -92,6 +92,40 @@ actually said. History through 2026-08-11 lives on `main` (from before
 this policy changed); everything from 2026-08-12 on lives on the dev
 branch.
 
+## GTA News Scan → Article pipeline (standing rule, 2026-08-11)
+A GitHub Action (`.github/workflows/news-scan.yml`, script `scripts/scan-news.js`)
+scans GTA RSS feeds every ~90 min and commits reports to `news-scan/*.md` on
+`main`, each scoring items with a rough keyword heuristic (baseline 3, +2 per
+high-signal word, -1 per speculative word) — not editorial judgment, so a
+hedged-but-real story can score lower than it deserves. Two Routines turn
+these into actual articles:
+- **`56ViceLane News → Breaking Article (Score 7+)`** — fires every 2 hours.
+  Verifies authenticity (trusted-feed domain, live page matches the claim,
+  cross-source corroboration on major factual claims) before drafting, then
+  pushes straight to `main` and fires the social blast. This is the one
+  standing exception that skips the normal main-approval gate — same
+  category as the article-publish bot.
+- **`56ViceLane News → Draft Digest (4-6)`** — fires once daily. Drafts
+  articles for the mid-tier scores, holds them on `claude/friendly-feynman-3scinq`
+  for Chris's manual confirmation before anything ships to `main` or goes out
+  socially.
+- Scores under 4 stay log-only, no article drafted.
+- Both check `news-scan/drafted-links.json` (lives on `main`) to avoid
+  double-drafting the same story, and check existing articles for topic
+  duplication first.
+- **Bylines:** vary by tone — "56ViceLane News Desk" (default, straight
+  reporting), "The Editor" (analysis/context pieces), "Trevor" (rare, only
+  genuinely hot-take-shaped stories — a byline stamp, not a full Trevor's
+  Take column entry, doesn't count against that separate weekly quota).
+- **Images:** the "Generate Article Images" n8n workflow (id `HMma5a0Bv1wl2Hiz`,
+  Pollinations.ai/flux, free, no credential) is the chosen platform — active
+  as of 2026-08-11. Every news-scan-sourced article gets 1 real generated
+  hero + 2-4 inline images, not the generic `gta6-hero.png` placeholder and
+  not CSS-drawn art. Only fall back to the placeholder if generation
+  actually fails.
+- These are a breaking-news lane on top of the standing weekly cadence below,
+  not counted against its quotas.
+
 ## Posting: auto-schedule is the standing mode
 Human-in-the-loop approval is being built but currently errors out, so
 auto-scheduling (across Blotato-connected platforms + Discord) is the
