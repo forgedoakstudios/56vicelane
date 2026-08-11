@@ -429,6 +429,24 @@
     </div>
   </div>
 
+  <!-- UTM / ATTRIBUTION -->
+  <div class="admin-section">
+    <div class="admin-section-header" onclick="toggleSection('utm')">
+      <div class="admin-section-title">📊 Signups by Source (UTM)</div>
+      <span style="color:var(--smoke);">▼</span>
+    </div>
+    <div class="admin-section-body" id="sec-utm">
+      <div style="color:var(--smoke);font-size:.8rem;margin-bottom:12px;">
+        Where signed-up drivers actually came from, by <code>utm_source</code> captured at signup.
+        "direct" means no UTM was present (typed the URL, bookmark, or a link missing tracking params).
+      </div>
+      <div id="utm-breakdown"></div>
+      <div class="export-btns" style="margin-top:14px;">
+        <button class="btn btn-ghost" style="font-size:.78rem;padding:8px 16px;" onclick="loadStats()">🔄 Refresh</button>
+      </div>
+    </div>
+  </div>
+
   <!-- CONTACT MESSAGES -->
   <div class="admin-section">
     <div class="admin-section-header" onclick="toggleSection('contacts')">
@@ -775,7 +793,8 @@ function loadStats() {
       var real = (d.signups || []).map(function(s) {
         return { id: s.id, fields: {
           Gamertag: s.gamertag, Platform: s.platform, IsOrganizer: s.isOrganizer,
-          PlateStatus: s.plateStatus, SignupNumber: s.signupNumber, OwnedPlates: s.ownedPlates
+          PlateStatus: s.plateStatus, SignupNumber: s.signupNumber, OwnedPlates: s.ownedPlates,
+          UtmSource: s.utmSource || 'direct', ReferredBy: s.referredBy || ''
         } };
       });
       var leads   = real.filter(function(r) { return r.fields.IsOrganizer; }).length;
@@ -790,8 +809,45 @@ function loadStats() {
       document.getElementById('as-xbox').textContent    = xbox;
       document.getElementById('as-pc').textContent      = pc;
       allSignups = real;
+      renderUtmBreakdown(real);
       log('Stats loaded — ' + real.length + ' total signups');
     }).catch(function(e) { log('Stats load error: ' + e, 'error'); });
+}
+
+// ── UTM / ATTRIBUTION BREAKDOWN ────────────────────────────
+function renderUtmBreakdown(real) {
+  var el = document.getElementById('utm-breakdown');
+  if (!el) return;
+  if (!real.length) { el.innerHTML = '<div style="color:var(--smoke);font-size:.85rem;">No signups yet.</div>'; return; }
+
+  var counts = {};
+  real.forEach(function(r) {
+    var src = r.fields.UtmSource || 'direct';
+    counts[src] = (counts[src] || 0) + 1;
+  });
+  var referred = real.filter(function(r) { return r.fields.ReferredBy; }).length;
+
+  var rows = Object.keys(counts).sort(function(a, b) { return counts[b] - counts[a]; });
+  var max = Math.max.apply(null, rows.map(function(k) { return counts[k]; }));
+
+  var html = rows.map(function(src) {
+    var n = counts[src];
+    var pct = Math.round((n / real.length) * 100);
+    var barPct = Math.round((n / max) * 100);
+    return '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">' +
+      '<div style="width:110px;flex-shrink:0;font-size:.85rem;font-weight:600;color:var(--bone);text-transform:capitalize;">' + src + '</div>' +
+      '<div style="flex:1;background:var(--edge);border-radius:4px;height:18px;overflow:hidden;">' +
+        '<div style="width:' + barPct + '%;background:var(--amber);height:100%;"></div>' +
+      '</div>' +
+      '<div style="width:70px;flex-shrink:0;text-align:right;font-size:.8rem;color:var(--smoke);">' + n + ' (' + pct + '%)</div>' +
+    '</div>';
+  }).join('');
+
+  html += '<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--edge);font-size:.8rem;color:var(--smoke);">' +
+    referred + ' of ' + real.length + ' signups (' + Math.round((referred / real.length) * 100) + '%) came from a referral link.' +
+  '</div>';
+
+  el.innerHTML = html;
 }
 
 // ── LOAD SIGNUPS ───────────────────────────────────────────
