@@ -63,14 +63,22 @@ chats. Open with a short summary of what's urgent/outstanding from it
 before moving on to whatever the session was actually asked to do. This
 is a standing instruction, not optional context to skip past.
 
+**Lives on the `claude/friendly-feynman-3scinq` branch, not `main`
+(standing policy, set 2026-08-11).** Chris checks in about an hour a day
+until launch week and doesn't need this on `main` — he and Claude both
+have access on the dev branch, which is all that's needed. Read/write it
+there; do not merge or push it to `main` unless Chris explicitly says
+otherwise in a session.
+
 `audit/daily-checklist.md` is a living, once-a-day-refreshed list of
 what's outstanding and what needs a decision — urgent items first,
 then decisions needed from Chris, then recently-done, then the general
 backlog. A scheduled Routine (`56ViceLane Daily Checklist`, fires
 ~8am CT / 13:00 UTC) regenerates it each day from `THIS-WEEK.md` +
-`NEXT-SESSION.md` + recent `main` history, commits it straight to
-`main` (report file, not feature code — same standing exception as
-the article-publish/news-scan bots), and sends Chris a fresh
+`NEXT-SESSION.md` + recent history on that branch, commits it straight
+to `claude/friendly-feynman-3scinq` (report file, not feature code —
+same standing exception as the article-publish/news-scan bots, just
+scoped to the dev branch instead of `main`), and sends Chris a fresh
 downloadable copy. Either of us can check items off by hand
 (`- [ ]` → `- [x]`) — the daily regen never un-checks something that's
 already checked, it only carries forward what's still open and adds
@@ -80,7 +88,9 @@ Before regenerating, the Routine archives the current day's snapshot to
 `audit/daily-checklist-history/<Generated date, YYYY-MM-DD>.md` — a
 permanent file per day, never overwritten. That history folder is the
 full record if you need to check what a specific past day's checklist
-actually said.
+actually said. History through 2026-08-11 lives on `main` (from before
+this policy changed); everything from 2026-08-12 on lives on the dev
+branch.
 
 ## Posting: auto-schedule is the standing mode
 Human-in-the-loop approval is being built but currently errors out, so
