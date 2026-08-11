@@ -296,12 +296,14 @@
   <div class="nav-links">
     <a href="/news">News</a><a href="/members">Members</a>
     <a href="/store">Store</a><a href="/lastdrive">Last Drive</a>
+  <a href="/streams">Watch</a>
   </div>
   <button class="menu-toggle" id="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="nav-mobile" id="nav-mobile">
   <a href="/">Home</a><a href="/news">News</a><a href="/members">Members</a>
   <a href="/store">Store</a><a href="/lastdrive">Last Drive</a>
+<a href="/streams">Watch</a>
 </div>
 
 <!-- LOGIN GATE -->
@@ -664,16 +666,10 @@
 </footer>
 
 <script>
-/* Login itself is now verified server-side via n8n (see adminLogin() below) --
-   the password never leaves n8n. AT_TOKEN below still covers the rest of this
-   dashboard (stats/signups/plate-gifting/contacts), which are a separate,
-   not-yet-migrated follow-up. */
 var ADMIN_VERIFY_URL = 'https://n8n.56vicelane.com/webhook/admin-verify-password';
-var AT_TOKEN = 'patCIXzXQ5pGrbr7K.885a7ff83de3cf47755fe6f78222a990c47c4cc6f401986e8d8d8242374cbb61';
-var AT_BASE  = 'appVViGbmcu5gbn8B';
-var AT_LD    = 'https://api.airtable.com/v0/' + AT_BASE + '/Last%20Drive';
-var AT_CT    = 'https://api.airtable.com/v0/' + AT_BASE + '/Contact';
-var AT_H     = {'Authorization':'Bearer ' + AT_TOKEN, 'Content-Type':'application/json'};
+var N8N_ADMIN_LIST_SIGNUPS_URL = 'https://n8n.56vicelane.com/webhook/admin-list-signups';
+var N8N_ADMIN_GIFT_PLATES_URL  = 'https://n8n.56vicelane.com/webhook/admin-gift-plates-v2';
+var N8N_ADMIN_LIST_CONTACTS_URL = 'https://n8n.56vicelane.com/webhook/admin-list-contacts';
 var GTACON_URL = 'https://gtacon-worker.forgedoakstudios.workers.dev/gtacon-update';
 
 var allSignups  = [];
@@ -773,36 +769,29 @@ function toggleSection(id) {
 
 // ── LOAD STATS ─────────────────────────────────────────────
 function loadStats() {
-  var allRec = [];
-  var offset = '';
-  function fetchPage() {
-    var url = AT_LD + '?fields%5B%5D=Platform&fields%5B%5D=IsOrganizer&fields%5B%5D=PlateStatus&fields%5B%5D=Gamertag' + (offset ? '&offset=' + offset : '');
-    fetch(url, {headers: AT_H})
-      .then(function(r) { return r.json(); })
-      .then(function(d) {
-        if (d.records) allRec = allRec.concat(d.records);
-        offset = d.offset || '';
-        if (offset) { fetchPage(); return; }
-        var real = allRec.filter(function(r) {
-          var g = (r.fields.Gamertag || '').toLowerCase();
-          return g && g !== 'test' && g !== 'trst';
-        });
-        var leads   = real.filter(function(r) { return r.fields.IsOrganizer; }).length;
-        var founders = real.filter(function(r) { return r.fields.PlateStatus === 'Free Premium'; }).length;
-        var ps = real.filter(function(r) { return (r.fields.Platform||'').startsWith('PS'); }).length;
-        var xbox = real.filter(function(r) { return (r.fields.Platform||'').startsWith('Xbox'); }).length;
-        var pc = real.filter(function(r) { return r.fields.Platform === 'PC'; }).length;
-        document.getElementById('as-total').textContent   = real.length;
-        document.getElementById('as-leads').textContent   = leads;
-        document.getElementById('as-founders').textContent = Math.min(founders, 100);
-        document.getElementById('as-ps').textContent      = ps;
-        document.getElementById('as-xbox').textContent    = xbox;
-        document.getElementById('as-pc').textContent      = pc;
-        allSignups = real;
-        log('Stats loaded — ' + real.length + ' total signups');
-      }).catch(function(e) { log('Stats load error: ' + e, 'error'); });
-  }
-  fetchPage();
+  fetch(N8N_ADMIN_LIST_SIGNUPS_URL)
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      var real = (d.signups || []).map(function(s) {
+        return { id: s.id, fields: {
+          Gamertag: s.gamertag, Platform: s.platform, IsOrganizer: s.isOrganizer,
+          PlateStatus: s.plateStatus, SignupNumber: s.signupNumber, OwnedPlates: s.ownedPlates
+        } };
+      });
+      var leads   = real.filter(function(r) { return r.fields.IsOrganizer; }).length;
+      var founders = real.filter(function(r) { return r.fields.PlateStatus === 'Free Premium'; }).length;
+      var ps = real.filter(function(r) { return (r.fields.Platform||'').startsWith('PS'); }).length;
+      var xbox = real.filter(function(r) { return (r.fields.Platform||'').startsWith('Xbox'); }).length;
+      var pc = real.filter(function(r) { return r.fields.Platform === 'PC'; }).length;
+      document.getElementById('as-total').textContent   = real.length;
+      document.getElementById('as-leads').textContent   = leads;
+      document.getElementById('as-founders').textContent = Math.min(founders, 100);
+      document.getElementById('as-ps').textContent      = ps;
+      document.getElementById('as-xbox').textContent    = xbox;
+      document.getElementById('as-pc').textContent      = pc;
+      allSignups = real;
+      log('Stats loaded — ' + real.length + ' total signups');
+    }).catch(function(e) { log('Stats load error: ' + e, 'error'); });
 }
 
 // ── LOAD SIGNUPS ───────────────────────────────────────────
@@ -942,9 +931,10 @@ function giftPlates() {
   }).map(function(p) { return p.id; });
   if (!selected.length) { showMsg('plate-gift-msg', 'Select at least one plate.', 'error'); return; }
   showMsg('plate-gift-msg', 'Saving...', 'info');
-  fetch(AT_LD + '/' + adminTarget, {
-    method: 'PATCH', headers: AT_H,
-    body: JSON.stringify({fields:{OwnedPlates: selected.join(', ')}})
+  fetch(N8N_ADMIN_GIFT_PLATES_URL, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({id: adminTarget, ownedPlates: selected.join(', ')})
   }).then(function() {
     document.getElementById('plate-player-current').textContent = 'Current plates: ' + selected.join(', ');
     showMsg('plate-gift-msg', '✅ Plates saved!', 'success');
@@ -997,24 +987,23 @@ function pushGTACON() {
 function loadContacts() {
   var list = document.getElementById('contacts-list');
   list.innerHTML = '<div style="color:var(--smoke);font-size:.85rem;">Loading...</div>';
-  fetch(AT_CT + '?sort%5B0%5D%5Bfield%5D=Timestamp&sort%5B0%5D%5Bdirection%5D=desc&maxRecords=50', {headers: AT_H})
+  fetch(N8N_ADMIN_LIST_CONTACTS_URL)
     .then(function(r) { return r.json(); })
     .then(function(d) {
-      if (!d.records || !d.records.length) {
+      if (!d.contacts || !d.contacts.length) {
         list.innerHTML = '<div style="color:var(--smoke);font-size:.85rem;">No messages yet.</div>';
         return;
       }
-      list.innerHTML = d.records.map(function(r) {
-        var f = r.fields;
+      list.innerHTML = d.contacts.map(function(f) {
         return '<div style="background:var(--pitch);border:1px solid var(--edge);padding:12px 14px;margin-bottom:8px;">' +
           '<div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px;margin-bottom:6px;">' +
-            '<div style="font-family:var(--font-label);font-weight:800;font-size:.88rem;color:var(--bone);">' + (f.Name||'?') + ' — ' + (f.Subject||'?') + '</div>' +
-            '<div style="font-size:.72rem;color:var(--smoke);">' + (f.Email||'') + '</div>' +
+            '<div style="font-family:var(--font-label);font-weight:800;font-size:.88rem;color:var(--bone);">' + (f.name||'?') + ' — ' + (f.subject||'?') + '</div>' +
+            '<div style="font-size:.72rem;color:var(--smoke);">' + (f.email||'') + '</div>' +
           '</div>' +
-          '<div style="font-size:.82rem;color:#C8C4BE;line-height:1.6;">' + (f.Message||'') + '</div>' +
+          '<div style="font-size:.82rem;color:#C8C4BE;line-height:1.6;">' + (f.message||'') + '</div>' +
         '</div>';
       }).join('');
-      log('Contacts loaded — ' + d.records.length + ' messages');
+      log('Contacts loaded — ' + d.contacts.length + ' messages');
     }).catch(function(e) {
       list.innerHTML = '<div style="color:var(--red);font-size:.85rem;">Load error.</div>';
       log('Contacts error: ' + e, 'error');
