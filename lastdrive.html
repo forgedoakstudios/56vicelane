@@ -864,7 +864,7 @@
     <a href="/about">About</a>
     <a href="/contact">Contact</a>
     <a href="/privacy">Privacy</a>
-    <a href="/terms">Terms</a>
+    <a href="/terms">Terms</a><a href="/editorial-policy">Editorial Policy</a>
     <a href="/admin" class="admin-link">Admin</a>
   </div>
   <p class="footer-disclosure">56ViceLane is an independent fan site. Not affiliated with Rockstar Games or Take-Two Interactive.</p>
@@ -1376,6 +1376,24 @@ function submitParticipant() {
           '</div>' +
         '</div>';
     if (signupNum && signupNum <= 100) successTxt += founderHTML(signupNum);
+
+    var calUrl = 'https://www.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent('The Last Drive — 56ViceLane') +
+      '&dates=20261118T220000Z/20261119T060000Z&details=' + encodeURIComponent('One final night in Los Santos before GTA6 launches. See you in the lane. https://56vicelane.com/lastdrive') +
+      '&location=' + encodeURIComponent('GTA5 Online');
+    var refLink = 'https://56vicelane.com/lastdrive?ref=' + encodeURIComponent(gamertag);
+    successTxt +=
+      '<div style="margin-top:14px;display:flex;flex-direction:column;gap:8px;">' +
+        '<a href="' + calUrl + '" target="_blank" rel="noopener" class="btn btn-ghost" style="text-align:center;">📅 Add To Calendar</a>' +
+        '<a href="https://discord.gg/ewdRcjsbg5" target="_blank" rel="noopener" class="btn btn-ghost" style="text-align:center;">💬 Join The Discord</a>' +
+      '</div>' +
+      '<div style="margin-top:14px;background:var(--edge);border-radius:6px;padding:12px;text-align:left;">' +
+        '<div style="font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.75rem;color:var(--amber);margin-bottom:6px;">Invite A Friend</div>' +
+        '<div style="font-size:.82rem;color:var(--smoke);margin-bottom:8px;">Share your link — friends who sign up through it ride with you.</div>' +
+        '<div style="display:flex;gap:6px;">' +
+          '<input readonly id="ref-link-input" value="' + refLink + '" style="flex:1;font-size:.78rem;padding:8px;border:1px solid var(--edge);border-radius:4px;background:#fff;color:var(--smoke);" onclick="this.select()">' +
+          '<button class="btn btn-primary" style="padding:8px 14px;font-size:.78rem;" onclick="navigator.clipboard.writeText(document.getElementById(\'ref-link-input\').value);this.textContent=\'Copied!\';setTimeout(()=>{this.textContent=\'Copy\';},1500);">Copy</button>' +
+        '</div>' +
+      '</div>';
     document.getElementById('join-success-text').innerHTML = successTxt;
     document.getElementById('join-success').classList.add('show');
     document.getElementById('join-form-wrap').querySelector('.form-grid').style.display = 'none';
