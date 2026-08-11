@@ -890,6 +890,20 @@ function getReferredBy() {
   return sessionStorage.getItem('vl-referred-by') || '';
 }
 
+/* UTM CAPTURE — first-touch attribution. Whichever platform's ?utm_source=
+   link brought this visitor in gets stashed once and kept for the whole
+   session (not overwritten by a later internal navigation with no UTM),
+   so the signup can be attributed back to the platform that drove it. */
+(function () {
+  var utmSource = new URLSearchParams(location.search).get('utm_source');
+  if (utmSource && !sessionStorage.getItem('vl-utm-source')) {
+    sessionStorage.setItem('vl-utm-source', utmSource.trim());
+  }
+})();
+function getUtmSource() {
+  return sessionStorage.getItem('vl-utm-source') || 'direct';
+}
+
 var PLATFORMS = ['PS5','PS4','Xbox Series X/S','Xbox One','PC'];
 var REGIONS = [
   {name:'NA East',     tz:'EST', flag:'🇺🇸'},
@@ -1213,7 +1227,7 @@ document.addEventListener('click', function(e) {
       stagingLocation: s.staging, driveType: s.drive,
       passiveMode: passive, isOrganizer: s.isOrg,
       showOnWall: showWall, petitionOptIn: petition,
-      signupType: 'Drive Lead', referredBy: getReferredBy()
+      signupType: 'Drive Lead', referredBy: getReferredBy(), utmSource: getUtmSource()
     })
   }).then(function(res) { return res.json().then(function(d) { return {ok: res.ok, d: d}; }); })
     .then(function(r) { if (r.ok && r.d.success) onLeadSuccess(r.d.signupNumber); else onLeadError(); })
@@ -1433,7 +1447,7 @@ function submitParticipant() {
       stagingTime: drive['Staging Time'] || '',
       stagingLocation: drive.StagingLocation || '',
       showOnWall: showWall, petitionOptIn: petition,
-      signupType: 'Participant', joinStatus: joinStatus, referredBy: getReferredBy()
+      signupType: 'Participant', joinStatus: joinStatus, referredBy: getReferredBy(), utmSource: getUtmSource()
     })
   }).then(function(res) { return res.json().then(function(d) { return {ok: res.ok, d: d}; }); })
     .then(function(r) { if (r.ok && r.d.success) onJoinSuccess(r.d.signupNumber); else onJoinError(); })
