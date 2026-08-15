@@ -16,5 +16,53 @@
     "slug": "gta6-100-ultimate-edition-outselling-80-standard",
     "tier": "digest",
     "date": "2026-08-12"
+  },
+  {
+    "link": "https://www.polygon.com/warhammer-dawn-of-war-4-delayed-december/",
+    "slug": null,
+    "tier": "skipped-off-topic",
+    "date": "2026-08-14"
+  },
+  {
+    "link": "https://www.pcgamer.com/games/grand-theft-auto/take-two-wont-reveal-raw-gta-6-preorder-numbers-because-it-doesnt-know-what-they-mean-its-just-never-happened-before/",
+    "slug": "gta6-take-two-wont-reveal-preorder-numbers",
+    "tier": "breaking",
+    "date": "2026-08-14"
+  },
+  {
+    "link": "https://www.gamesradar.com/games/grand-theft-auto/ahead-of-gta-6-rockstar-ramps-up-gta-online-roleplay-as-nopixel-v-prepares-for-exclusive-closed-beta-launch-in-september/",
+    "slug": "gta6-nopixel-v-closed-beta-september",
+    "tier": "breaking",
+    "date": "2026-08-14"
+  },
+  {
+    "link": "https://www.ign.com/articles/target-gta-6-wolverine-preorder-discount",
+    "slug": "gta6-target-20-percent-off-students-teachers",
+    "tier": "digest",
+    "date": "2026-08-14"
+  },
+  {
+    "link": "https://www.polygon.com/gta-6-pc-release-date-phantom-vice-auto/",
+    "slug": "gta6-pc-rival-same-release-date",
+    "tier": "digest",
+    "date": "2026-08-14"
+  },
+  {
+    "link": "https://www.gamespot.com/articles/gta-6-preorders-alone-could-pay-for-production-budget-expert/",
+    "slug": "gta6-preorders-could-cover-production-budget",
+    "tier": "digest",
+    "date": "2026-08-14"
+  },
+  {
+    "link": "https://insider-gaming.com/gta-6s-100-ultimate-edition-makes-up-89-of-pre-orders/",
+    "slug": "gta6-100-ultimate-edition-outselling-80-standard",
+    "tier": "skipped-duplicate",
+    "date": "2026-08-14"
+  },
+  {
+    "link": "https://www.gamesradar.com/games/grand-theft-auto/gta-6-isnt-too-expensive-for-superfans-as-90-percent-opt-for-the-pricier-usd100-copy-according-to-analysts-it-lives-in-a-league-of-its-own/",
+    "slug": "gta6-100-ultimate-edition-outselling-80-standard",
+    "tier": "skipped-duplicate",
+    "date": "2026-08-14"
   }
 ]
