@@ -3,17 +3,21 @@
 ## Mission
 56vicelane.com is a GTA6 fan site (~70 articles, 2 months old, ~550 visitors
 so far). Goal: 1M visitors by GTA6's launch, November 19, 2026. Site repo is
-on GitHub. Content distribution runs through n8n (automation) and Blotato
-(social auto-posting), with direct wired access to Discord.
+on GitHub. Content distribution runs through n8n (automation), with direct
+wired access to Discord.
 
 ## Control & access
 - Full control over the site repo, its files, and its build — including a
   dedicated `/audit` folder for reports.
 - Live control over n8n — can create, edit, and trigger workflows directly.
 - Direct wired access to Discord — can post, not just monitor.
-- Blotato posts to every connected platform EXCEPT YouTube and TikTok.
-  Anything meant for those two needs a separate manual/native upload — flag
-  it, don't assume it went out.
+- **Blotato cancelled 2026-08-16** (Chris's call — traction wasn't there,
+  and posting to channels that weren't sending visitors wasn't worth
+  paying for). It is not a posting path anymore. X/Instagram/Facebook
+  auto-posting is off entirely until/unless a replacement is chosen.
+  YouTube/TikTok were always manual/native-upload only — that part is
+  unchanged, still flag those every time rather than assuming they're
+  covered.
 
 ## Shipping to production (`main`)
 `main` is what 56vicelane.com actually deploys from — anything not on
@@ -127,17 +131,20 @@ these into actual articles:
   not counted against its quotas.
 
 ## Posting: auto-schedule is the standing mode
-Human-in-the-loop approval is being built but currently errors out, so
-auto-scheduling (across Blotato-connected platforms + Discord) is the
-default going forward — not a temporary exception that reverts once HITL
-is fixed.
+Auto-scheduling is still the default going forward — not a temporary
+exception, and not gated on human-in-the-loop approval being built.
+**Blotato is cancelled (2026-08-16)**, so the live auto-posting paths are
+now:
+- **Discord** — direct webhook, unaffected by the Blotato cancellation.
+- **Bluesky** — `social-queue.json` + GitHub Action, unaffected by the
+  Blotato cancellation.
+- **X / Instagram / Facebook** — off. These were Blotato-only; there is
+  currently no auto-posting path to them. Don't schedule or claim posts
+  went out on these platforms until a replacement is chosen and wired up.
 - Log every scheduled post (platform, content, timestamp, source article
   if applicable) to `/audit` so there's always a paper trail to review.
-- If HITL comes back online and the intent changes to "approve before
-  scheduling" again, that needs to be said explicitly in a session — don't
-  assume it from context alone.
-- YouTube/TikTok are the exception: never assume Blotato covered them.
-  Flag them as needing manual/native upload every time.
+- YouTube/TikTok remain manual/native-upload only, as before — flag them
+  as needing that every time, don't assume anything covered them.
 
 ## Standing automation: nightly site audit
 Set this up as an n8n workflow if it doesn't already exist — Claude Code
@@ -161,10 +168,14 @@ not in a chat session.
 ## What's already proven (don't relitigate — build on it)
 - TikTok and YouTube's best-performing content is reactive: "what just
   dropped / when's it dropping / what does it mean" trailer & news content.
-- Facebook is new (~3 days old) and already outperforming IG/X/Bluesky
-  combined — feed it the same content type daily while early reach holds.
-- IG, X, and Bluesky have real posting volume and near-zero traction.
-  Don't recommend "post more there" without new evidence it's working.
+  These stay manual/native-upload only regardless of the Blotato
+  cancellation — that was never a Blotato-covered path.
+- Facebook was outperforming IG/X/Bluesky combined before Blotato was
+  cancelled 2026-08-16 — now moot, since Facebook/IG/X auto-posting is
+  off entirely pending a replacement.
+- IG, X, and Bluesky had real posting volume and near-zero traction while
+  Blotato was live — the low-traction read stands, but don't cite this as
+  evidence for or against a *replacement* posting tool without re-testing.
 
 ## Standing priorities, in order
 1. Nightly site audit (automated, see above).
@@ -213,9 +224,8 @@ target when building each week's content calendar going forward:
 - Discord: https://discord.gg/ewdRcjsbg5 — confirmed permanent by Chris,
   2026-08-10. Reconciled sitewide same day (index.html was the only
   holdout, still on the old `Ewe5T9eFs` code).
-- X/Twitter: no confirmed link yet — Blotato posts to X (account_id 20503)
-  but the actual public handle/URL hasn't been given. Still a placeholder
-  on-site.
+- X/Twitter: no confirmed link yet, and no active posting path either now
+  that Blotato is cancelled. Still a placeholder on-site.
 
 See `/NEXT-SESSION.md` for the live, itemized backlog (the July 26 "two
 huge lists" improvements list and its running status).
