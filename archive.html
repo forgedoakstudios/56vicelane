@@ -111,7 +111,7 @@ footer{padding:40px 24px;border-top:1px solid var(--edge);text-align:center;}
     .catch(function(){
       // fallback if JSON fails
       var track = document.getElementById('ticker-track');
-      if(track) track.innerHTML = '<span>&#x1F525; <a href="/news.html">Latest GTA6 News &#8212; 56ViceLane</a></span>';
+      if(track) track.innerHTML = '<span>&#x1F525; <a href="/news">Latest GTA6 News &#8212; 56ViceLane</a></span>';
     });
 })();
 </script>
@@ -135,10 +135,10 @@ footer{padding:40px 24px;border-top:1px solid var(--edge);text-align:center;}
 </div>
 
 <div class="archive-wrap">
-  <a href="/news.html" class="back-to-news">Back to News</a>
+  <a href="/news" class="back-to-news">Back to News</a>
   <div class="page-eyebrow">Full Coverage History</div>
   <h1>News <span class="hl">Archive</span></h1>
-  <p class="archive-sub">All articles older than 15 days. Current news is on the <a href="/news.html" style="color:var(--cyan)">News Hub</a>.</p>
+  <p class="archive-sub">All articles older than 15 days. Current news is on the <a href="/news" style="color:var(--cyan)">News Hub</a>.</p>
 
   <div class="archive-layout">
     <aside class="month-nav">
@@ -157,7 +157,7 @@ footer{padding:40px 24px;border-top:1px solid var(--edge);text-align:center;}
         <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;font-size:11px;color:var(--smoke);">
           Articles move here automatically after about 2 months on the news hub
           (permanent/historical stories stay on both). New stories are always at
-          <a href="/news.html" style="color:var(--amber)">56vicelane.com/news</a>
+          <a href="/news" style="color:var(--amber)">56vicelane.com/news</a>
         </div>
       </div>
     </div>
@@ -224,7 +224,7 @@ footer{padding:40px 24px;border-top:1px solid var(--edge);text-align:center;}
 
       var host = document.getElementById('archiveGroups');
       if (!old.length) {
-        host.innerHTML = '<div style="color:var(--smoke);font-size:13px;">Nothing in the archive yet — everything published so far is still current on the <a href="/news.html" style="color:var(--amber)">News Hub</a>.</div>';
+        host.innerHTML = '<div style="color:var(--smoke);font-size:13px;">Nothing in the archive yet — everything published so far is still current on the <a href="/news" style="color:var(--amber)">News Hub</a>.</div>';
         return;
       }
 
@@ -274,10 +274,10 @@ footer{padding:40px 24px;border-top:1px solid var(--edge);text-align:center;}
   <div class="footer-tag">Where GTA5 Ends And GTA6 Begins</div>
   <div class="footer-links">
     <a href="/">Home</a>
-    <a href="/news.html">News</a>
-    <a href="/archive.html">Archive</a>
-    <a href="/contact.html">Contact</a>
-    <a href="/privacy.html">Privacy Policy</a>
+    <a href="/news">News</a>
+    <a href="/archive">Archive</a>
+    <a href="/contact">Contact</a>
+    <a href="/privacy">Privacy Policy</a>
   </div>
   <div class="footer-copy">&#169; 2026 56ViceLane &#183; Independent fan project &#183; Not affiliated with Rockstar Games or Take-Two Interactive</div>
 </footer>
