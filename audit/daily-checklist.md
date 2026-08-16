@@ -37,6 +37,24 @@ source right now).
 
 ## Needs a decision from you
 
+- [ ] **Blotato cancelled 2026-08-16 — 4 bad live IG/FB posts from the
+      2026-08-14 video-SLA incident still need your manual delete/edit,
+      and there's now no Blotato dashboard to check post status in.**
+      Chris cancelled Blotato outright (traction wasn't there, and
+      posting to channels that weren't sending visitors wasn't worth
+      paying for). Shut down cleanly same day: disabled the "Post to
+      Blotato" node in all 4 hybrid workflows (Article → Social Blast,
+      Friday Frequency, Last Drive Push, Evergreen Recycle Poster) while
+      leaving each workflow's independent Discord-posting leg and — for
+      Friday Frequency — the Gemini content-generation/Store Edition
+      pipeline untouched and still running. Fully deactivated the 2
+      Blotato-only workflows (`Blotato - Check Post Status`, `Daily Last
+      Drive Countdown → X`). X/Instagram/Facebook auto-posting is now
+      off entirely; Discord (direct webhook) and Bluesky (queue) remain
+      the live auto-posting paths. CLAUDE.md's posting-mode section
+      updated to match. The 2 wrong IG + 2 wrong FB posts from 8/14 are
+      still sitting live on those accounts — I have no way to remove them
+      from here; that part is on you whenever you get to it.
 - [ ] **5 news-scan articles awaiting review, 2026-08-14.** 2 breaking
       (score 7+) already pushed live to `main`: Take-Two declining to
       share raw pre-order numbers, and Rockstar/NoPixel V roleplay beta
@@ -69,9 +87,9 @@ source right now).
       PayPal fix works end-to-end in production, including the plate/bundle
       actually getting granted — the synthetic test only proved the
       credential and rejection logic, not a full real grant.
-- [ ] **Blotato AI video — still paused; OpenArt testing ongoing**
-      (prompt notes in `audit/ai-video-prompt-notes.md`, not a full
-      pipeline yet).
+- [ ] **AI video — Blotato's own video path is gone now that Blotato is
+      cancelled; OpenArt testing (prompt notes in
+      `audit/ai-video-prompt-notes.md`) is whatever's left to build on.**
 - [ ] **Dell monitor swap — still drafted, needs your merge approval.**
       Unchanged, sitting on `claude/dell-monitor-swap`.
 - [ ] **Controllers buyer's-guide — still drafted, needs review before
@@ -99,12 +117,9 @@ source right now).
       safety/trust items from that same audit are done (see below); these
       two are the broader sitewide follow-through, not started as a full
       pass yet.
-- [ ] Instagram anti-spam — 3 confirmed Meta "we restrict certain
-      activity" failures, all traced to the same source (Evergreen Recycle
-      Poster). IG posting was pulled from that workflow 2026-08-12; Last
-      Drive Push (2x/day) is now the only recurring automated IG source.
-      Per your own fallback: if that also gets flagged, next step is
-      dropping Last Drive Push's IG to 1x/day.
+- [x] ~~Instagram anti-spam~~ — moot as of 2026-08-16, Blotato (the only
+      IG-posting path) is cancelled entirely. See the Blotato-cancellation
+      item above.
 
 ## Shelved — revisit late August 2026
 
