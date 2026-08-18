@@ -82,5 +82,17 @@
     "slug": "gta6-lucidsound-ls500-sunset-paradise-headset",
     "tier": "digest",
     "date": "2026-08-18"
+  },
+  {
+    "link": "https://www.gamesradar.com/games/grand-theft-auto/new-gta-6-leaks-show-gameplay-and-the-full-leonida-map-as-rockstar-issues-dmca-takedowns/",
+    "slug": "gta6-gameplay-leonida-map-leak-dmca-takedowns",
+    "tier": "breaking",
+    "date": "2026-08-18"
+  },
+  {
+    "link": "https://www.gamespot.com/articles/apparent-gta-6-footage-and-map-leak-as-rockstar-issues-takedowns/",
+    "slug": "gta6-gameplay-leonida-map-leak-dmca-takedowns",
+    "tier": "skipped-duplicate",
+    "date": "2026-08-18"
   }
 ]
