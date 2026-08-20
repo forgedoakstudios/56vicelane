@@ -50,3 +50,41 @@
 - Continued low-score coverage of the same leak story from additional
   angles (leaker's stated motives, Stop Killing Games' response) — no
   new distinct development, not drafted separately.
+
+---
+
+### Take-Two loses billions in market value as GTA6 leaks keep coming
+- **Slug:** `gta6-take-two-stock-drop-leaks`
+- **Scanner score:** 7 (Insider Gaming).
+- **Verification:** Insider Gaming is a trusted FEED domain. WebFetch to
+  the live article was blocked by the egress proxy (confirmed via a
+  real fetch attempt, same block pattern as prior runs). Corroborated
+  via WebSearch instead — GameSpot, TechPowerUp, Finbold, VGTimes, and
+  Tech4Gamers all independently report a real Take-Two stock decline
+  tracking the leak timeline, though the exact dollar figure varies by
+  outlet and measurement window ($1B–$2.83B depending on source). Not a
+  duplicate of the existing May 2026 earnings-drop article
+  (`gta6-earnings-stock-slide-what-it-means`) — different cause, both
+  now cross-linked as related.
+- **Source-status:** `reported`, not `confirmed` — no on-record
+  statement from Take-Two attributing the drop to the leaks, and the
+  cited dollar figure isn't consistent across outlets.
+- **Byline:** Marcus Webb (business/market beat).
+- **Images:** generation FAILED again this run — same n8n MCP token
+  expiry (now three consecutive days) plus the HTTP fallback blocked by
+  the egress proxy (confirmed via a real curl attempt, exit 56/403).
+  Published with the generic `gta6-hero.png` placeholder.
+- **Platforms:**
+  - ❌ **Discord** — NOT posted. Same n8n/proxy outage blocked both the
+    "Article → Social Blast" workflow and a direct webhook curl test.
+  - ✅ **Bluesky** — queued via `scripts/queue-article-post.js`, entry
+    confirmed present in `social-queue.json`.
+  - ❌ **X / Instagram / Facebook** — N/A; Blotato is cancelled as of
+    2026-08-16.
+  - N/A **YouTube / TikTok** — never covered by this pipeline.
+- **Video SLA alert: NOT sent** — blocked by the same outage.
+- **Action needed:** n8n MCP token expiry is now a 3-day-running
+  pattern (2026-08-18/19/20), each day degrading image generation,
+  Discord posting, and the video SLA alert on every breaking article
+  published that day. Already flagged top-of-checklist as urgent —
+  reiterating here since it recurred a third time.
