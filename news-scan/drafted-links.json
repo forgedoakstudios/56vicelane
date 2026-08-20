@@ -106,5 +106,23 @@
     "slug": "gta6-400-million-preorder-revenue-sensor-tower",
     "tier": "breaking",
     "date": "2026-08-19"
+  },
+  {
+    "link": "https://www.thegamer.com/gta-6-new-gameplay-leak-planes-confirms-hacker-has-full-game/",
+    "slug": "gta6-playable-build-leak-biggest-breach-since-2022",
+    "tier": "breaking",
+    "date": "2026-08-20"
+  },
+  {
+    "link": "https://www.rockpapershotgun.com/a-playable-build-of-gta-6-appears-to-have-leaked-as-rockstar-and-take-two-scramble-to-take-down-videos",
+    "slug": "gta6-playable-build-leak-biggest-breach-since-2022",
+    "tier": "skipped-duplicate",
+    "date": "2026-08-20"
+  },
+  {
+    "link": "https://www.gamesradar.com/games/grand-theft-auto/gta-6-leaks-go-from-bad-to-worse-for-rockstar-as-new-footage-suggests-leaker-has-access-to-a-playable-build/",
+    "slug": "gta6-playable-build-leak-biggest-breach-since-2022",
+    "tier": "skipped-duplicate",
+    "date": "2026-08-20"
   }
 ]
