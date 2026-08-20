@@ -20,7 +20,7 @@
     "url": "https://56vicelane.com/lastdrive",
     "image": "images/lastdrive-hero.webp",
     "imageAlt": "The Last Drive countdown",
-    "lastPostedDate": "2026-08-19"
+    "lastPostedDate": "2026-08-20"
   },
   {
     "id": "lastdrive-signup-1",
@@ -275,6 +275,6 @@
     "image": "images/gta6-hero.png",
     "imageAlt": "Take-Two Loses Billions In Value As GTA6 Leaks Keep Coming",
     "scheduledFor": "2026-08-20T16:53:50.787Z",
-    "posted": false
+    "posted": true
   }
 ]
