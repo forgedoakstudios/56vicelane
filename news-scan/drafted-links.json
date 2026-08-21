@@ -84,10 +84,58 @@
     "date": "2026-08-18"
   },
   {
+    "link": "https://www.gamesradar.com/games/grand-theft-auto/new-gta-6-leaks-show-gameplay-and-the-full-leonida-map-as-rockstar-issues-dmca-takedowns/",
+    "slug": "gta6-gameplay-leonida-map-leak-dmca-takedowns",
+    "tier": "breaking",
+    "date": "2026-08-18"
+  },
+  {
+    "link": "https://www.gamespot.com/articles/apparent-gta-6-footage-and-map-leak-as-rockstar-issues-takedowns/",
+    "slug": "gta6-gameplay-leonida-map-leak-dmca-takedowns",
+    "tier": "skipped-duplicate",
+    "date": "2026-08-18"
+  },
+  {
     "link": "https://www.thegamer.com/gta-6-pre-order-copies-sold-sales-figures/",
     "slug": "gta6-4-5-million-preorders-estimate",
     "tier": "digest",
     "date": "2026-08-19"
+  },
+  {
+    "link": "https://www.gamespot.com/articles/gta-6-has-already-made-400-million-from-preorders-apparently/",
+    "slug": "gta6-400-million-preorder-revenue-sensor-tower",
+    "tier": "breaking",
+    "date": "2026-08-19"
+  },
+  {
+    "link": "https://www.thegamer.com/gta-6-new-gameplay-leak-planes-confirms-hacker-has-full-game/",
+    "slug": "gta6-playable-build-leak-biggest-breach-since-2022",
+    "tier": "breaking",
+    "date": "2026-08-20"
+  },
+  {
+    "link": "https://www.rockpapershotgun.com/a-playable-build-of-gta-6-appears-to-have-leaked-as-rockstar-and-take-two-scramble-to-take-down-videos",
+    "slug": "gta6-playable-build-leak-biggest-breach-since-2022",
+    "tier": "skipped-duplicate",
+    "date": "2026-08-20"
+  },
+  {
+    "link": "https://www.gamesradar.com/games/grand-theft-auto/gta-6-leaks-go-from-bad-to-worse-for-rockstar-as-new-footage-suggests-leaker-has-access-to-a-playable-build/",
+    "slug": "gta6-playable-build-leak-biggest-breach-since-2022",
+    "tier": "skipped-duplicate",
+    "date": "2026-08-20"
+  },
+  {
+    "link": "https://insider-gaming.com/take-two-loses-2-billion-in-value-following-gta-6-leaks/",
+    "slug": "gta6-take-two-stock-drop-leaks",
+    "tier": "breaking",
+    "date": "2026-08-20"
+  },
+  {
+    "link": "https://www.pcgamer.com/gaming-industry/take-two-lost-usd2-8-billion-in-market-cap-after-gta-6-leaks-but-whats-more-shocking-to-me-is-it-probably-barely-felt-it/",
+    "slug": "gta6-take-two-stock-drop-leaks",
+    "tier": "skipped-duplicate",
+    "date": "2026-08-21"
   },
   {
     "link": "https://www.ign.com/articles/take-two-seeks-information-from-microsoft-and-discord-in-hunt-for-gta-6-leaker-files-multiple-subpoenas-in-federal-court",
