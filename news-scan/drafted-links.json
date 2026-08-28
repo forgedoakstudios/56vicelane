@@ -430,5 +430,17 @@
     "slug": "gta6-netflix-extended-look-august-27",
     "tier": "skipped-duplicate",
     "date": "2026-08-27"
+  },
+  {
+    "link": "https://www.ign.com/articles/star-citizen-spinoff-squadron-42-delayed-to-2027-dev-insists-its-because-of-gta-6",
+    "slug": "star-citizen-squadron-42-delayed-2027-gta6-buzz-saw",
+    "tier": "breaking",
+    "date": "2026-08-27"
+  },
+  {
+    "link": "https://www.pcgamer.com/games/fps/star-citizens-squadron-42-delayed-again-this-time-to-avoid-the-attention-buzz-saw-of-gta-6-says-chris-roberts/",
+    "slug": "star-citizen-squadron-42-delayed-2027-gta6-buzz-saw",
+    "tier": "skipped-duplicate",
+    "date": "2026-08-27"
   }
 ]
