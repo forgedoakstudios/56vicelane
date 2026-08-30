@@ -496,5 +496,11 @@
     "slug": "gta6-no-microtransactions-no-generative-ai-rockstar",
     "tier": "breaking",
     "date": "2026-08-30"
+  },
+  {
+    "link": "https://www.eurogamer.net/gta-6-microtransactions-generative-ai-rockstar",
+    "slug": "gta6-no-microtransactions-no-generative-ai-rockstar",
+    "tier": "skipped-duplicate",
+    "date": "2026-08-30"
   }
 ]
