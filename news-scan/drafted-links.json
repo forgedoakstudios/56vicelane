@@ -472,5 +472,29 @@
     "slug": "star-citizen-squadron-42-delayed-2027-gta6-buzz-saw",
     "tier": "skipped-duplicate",
     "date": "2026-08-28"
+  },
+  {
+    "link": "https://www.ign.com/articles/rockstar-approached-netflix-for-exclusive-gta-6-extended-look-not-the-other-way-around",
+    "slug": "rockstar-approached-netflix-extended-look-deal",
+    "tier": "digest",
+    "date": "2026-08-29"
+  },
+  {
+    "link": "https://www.ign.com/articles/gta-6-preorder-how-to-save",
+    "slug": "gta6-preorder-save-5-dollars",
+    "tier": "digest",
+    "date": "2026-08-29"
+  },
+  {
+    "link": "https://www.rockpapershotgun.com/star-citizen-spinoff-squadron-42-has-been-delayed-yet-again-citing-everyone-going-gaga-for-gta-6-even-if-it-isnt-coming-to-pc-yet",
+    "slug": "star-citizen-squadron-42-delayed-2027-gta6-buzz-saw",
+    "tier": "skipped-duplicate",
+    "date": "2026-08-29"
+  },
+  {
+    "link": "https://www.ign.com/articles/gta-6-will-have-no-microtransactions-or-generative-ai-at-launch-rockstar-says",
+    "slug": "gta6-no-microtransactions-no-generative-ai-rockstar",
+    "tier": "breaking",
+    "date": "2026-08-30"
   }
 ]
