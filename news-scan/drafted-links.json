@@ -550,5 +550,17 @@
     "slug": "gta6-leak-subpoena-x-microsoft-discord-escalates",
     "tier": "skipped-duplicate",
     "date": "2026-09-01"
+  },
+  {
+    "link": "https://www.pcgamer.com/games/action/no-rest-for-the-wicked-which-was-slated-to-hit-1-0-a-month-before-grand-theft-auto-6-is-delayed-into-2027/",
+    "slug": "no-rest-for-the-wicked-delayed-2027-gta6-window",
+    "tier": "breaking",
+    "date": "2026-09-01"
+  },
+  {
+    "link": "https://www.eurogamer.net/rockstar-games-official-gta-online-rp-server-closed-beta",
+    "slug": "gta6-nopixel-v-closed-beta-september",
+    "tier": "skipped-duplicate",
+    "date": "2026-09-01"
   }
 ]
