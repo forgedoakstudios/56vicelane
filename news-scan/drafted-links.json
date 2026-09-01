@@ -526,5 +526,29 @@
     "slug": "gta6-clair-obscur-expedition-33-easter-egg",
     "tier": "digest",
     "date": "2026-08-31"
+  },
+  {
+    "link": "https://www.ign.com/articles/gta-6-gets-even-more-new-screenshots-as-rockstar-locks-in-for-november-launch",
+    "slug": "gta6-new-screenshots-november-launch",
+    "tier": "digest",
+    "date": "2026-09-01"
+  },
+  {
+    "link": "https://www.pcgamer.com/games/grand-theft-auto/with-gta-6-leaker-hunt-rapidly-evolving-take-two-asks-court-to-keep-latest-subpoena-request-sealed-to-avoid-tipping-off-leakers/",
+    "slug": "gta6-leak-subpoena-x-microsoft-discord-escalates",
+    "tier": "skipped-duplicate",
+    "date": "2026-09-01"
+  },
+  {
+    "link": "https://www.gamesradar.com/games/grand-theft-auto/take-twos-gta-6-leak-investigation-is-heating-up-as-the-publisher-requests-sealed-subpoena-to-avoid-tipping-off-leakers/",
+    "slug": "gta6-leak-subpoena-x-microsoft-discord-escalates",
+    "tier": "skipped-duplicate",
+    "date": "2026-09-01"
+  },
+  {
+    "link": "https://www.eurogamer.net/gta-6-leaker-discord-subpoena-sealed-take-two",
+    "slug": "gta6-leak-subpoena-x-microsoft-discord-escalates",
+    "tier": "skipped-duplicate",
+    "date": "2026-09-01"
   }
 ]
