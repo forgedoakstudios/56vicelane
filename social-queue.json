@@ -20,7 +20,7 @@
     "url": "https://56vicelane.com/lastdrive",
     "image": "images/lastdrive-hero.webp",
     "imageAlt": "The Last Drive countdown",
-    "lastPostedDate": "2026-09-02"
+    "lastPostedDate": "2026-09-03"
   },
   {
     "id": "lastdrive-signup-1",
@@ -338,6 +338,6 @@
     "image": "images/gta6-hero.png",
     "imageAlt": "Sony Reveals Two Limited-Edition GTA6 DualSense Controllers",
     "scheduledFor": "2026-09-03T16:55:08.749Z",
-    "posted": false
+    "posted": true
   }
 ]
