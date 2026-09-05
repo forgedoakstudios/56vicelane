@@ -658,5 +658,17 @@
     "slug": "",
     "tier": "skipped-not-gta6-story",
     "date": "2026-09-04"
+  },
+  {
+    "link": "https://www.dexerto.com/gta/youtube-updates-gaming-violence-monetization-rules-ahead-of-gta-6-launch-3405945/",
+    "slug": "gta6-youtube-monetization-rules-updated",
+    "tier": "digest",
+    "date": "2026-09-05"
+  },
+  {
+    "link": "https://www.ign.com/articles/rockstar-censors-gta-6-extended-look-trailer-for-china",
+    "slug": "gta6-china-officially-censored-bilibili",
+    "tier": "skipped-duplicate",
+    "date": "2026-09-05"
   }
 ]
