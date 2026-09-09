@@ -706,5 +706,35 @@
     "slug": "gta6-fan-viral-girlfriend-preorder-vip-treatment",
     "tier": "digest",
     "date": "2026-09-08"
+  },
+  {
+    "link": "https://www.gamespot.com/articles/legend-of-zelda-ocarina-of-time-remake-release-date-is-november-5-just-before-gta-6/",
+    "slug": "zelda-ocarina-of-time-remake-november-5-before-gta6",
+    "tier": "digest",
+    "date": "2026-09-09"
+  },
+  {
+    "link": "https://www.polygon.com/grand-theft-auto-6-gta-staggered-release-time/",
+    "slug": "gta6-regional-launch-times-play-early",
+    "tier": "skipped-duplicate",
+    "date": "2026-09-09"
+  },
+  {
+    "link": "https://www.gamespot.com/articles/gamestop-sets-a-new-financial-record-and-its-no-thanks-to-games/",
+    "slug": "",
+    "tier": "skipped-not-gta6-story",
+    "date": "2026-09-09"
+  },
+  {
+    "link": "https://www.gamespot.com/articles/the-legend-of-zelda-40th-anniversary-direct-all-the-biggest-announcements/",
+    "slug": "",
+    "tier": "skipped-not-gta6-story",
+    "date": "2026-09-09"
+  },
+  {
+    "link": "https://www.polygon.com/escape-academy-2-back-2-school-interview/",
+    "slug": "",
+    "tier": "skipped-not-gta6-story",
+    "date": "2026-09-09"
   }
 ]
