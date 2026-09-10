@@ -736,5 +736,23 @@
     "slug": "",
     "tier": "skipped-not-gta6-story",
     "date": "2026-09-09"
+  },
+  {
+    "link": "https://www.thegamer.com/gta-6-exclusive-ps5-controller-pre-orders-nightmare-black-edition-queue/",
+    "slug": "gta6-dualsense-preorders-live-queue-mess",
+    "tier": "breaking",
+    "date": "2026-09-10"
+  },
+  {
+    "link": "https://www.ign.com/articles/gta-6-dualsense-controller-preorders-are-now-live-in-the-uk",
+    "slug": "gta6-dualsense-preorders-live-queue-mess",
+    "tier": "skipped-duplicate",
+    "date": "2026-09-10"
+  },
+  {
+    "link": "https://www.ign.com/articles/gta-6-developer-rockstar-says-it-will-defend-itself-vigorously-from-union-claims-as-employment-tribunal-over-the-firing-of-31-workers-gets-underway",
+    "slug": "",
+    "tier": "skipped-not-gta6-specific",
+    "date": "2026-09-10"
   }
 ]
