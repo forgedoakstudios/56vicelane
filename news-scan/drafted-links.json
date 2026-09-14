@@ -844,5 +844,23 @@
     "slug": "",
     "tier": "skipped-opinion-not-news",
     "date": "2026-09-12"
+  },
+  {
+    "link": "https://www.gamespot.com/articles/first-gta-6-actor-officially-confirmed-and-its-a-big-name/",
+    "slug": "gta6-first-actor-confirmed-stephen-root",
+    "tier": "breaking",
+    "date": "2026-09-14"
+  },
+  {
+    "link": "https://www.ign.com/articles/first-major-cast-member-confirms-appearance-in-gta-6-seemingly-going-off-rockstars-script",
+    "slug": "gta6-first-actor-confirmed-stephen-root",
+    "tier": "skipped-duplicate",
+    "date": "2026-09-14"
+  },
+  {
+    "link": "https://www.gamesradar.com/games/grand-theft-auto/one-of-gta-6s-actors-has-finally-been-confirmed-because-it-was-already-obvious-there-are-too-many-people-who-knew-me-from-king-of-the-hill/",
+    "slug": "gta6-first-actor-confirmed-stephen-root",
+    "tier": "skipped-duplicate",
+    "date": "2026-09-14"
   }
 ]
