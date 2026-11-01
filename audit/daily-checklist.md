@@ -1,6 +1,6 @@
 # 56ViceLane — Daily Checklist
 
-**Generated:** 2026-09-14 (Central Time)
+**Generated:** 2026-11-01 (Central Time)
 **How this works:** one list, updated daily. Check things off yourself by
 editing this file (change `- [ ]` to `- [x]`), or tell me and I'll check
 them off. Each day I regenerate this — anything still unchecked carries
@@ -26,17 +26,40 @@ decision point is real if it doesn't pan out.
 
 ## 🚨 Urgent
 
-- [ ] **news-scan's GitHub Actions cron keeps silently stopping — now
-      confirmed 41 separate times across 2026-08-27 through 9/14** (twice
-      on 8/27, twice on 8/28, once on 8/29, twice on 8/31, once on 9/2,
-      4 in one stretch on 9/3-into-9/4, 3 more on 9/4-into-9/5, 3 more on
-      9/5-into-9/6, 4 more on 9/6-into-9/7, 2 more on 9/8 morning, 4 more
-      on 9/8-into-9/9, 4 more on 9/9-into-9/10, 3 more on 9/10-into-9/11
-      (9/10 13:14→16:51, 9/11 02:23→04:51, 9/11 07:38→10:51), 1 more
-      on 9/12 morning (07:32→10:51, ~3h19m gap), 1 more 9/12 midday
-      (12:32→14:51), 1 more on 9/13 morning (07:52→10:51, ~3h gap),
-      1 more 9/13 afternoon (13:34→16:51, ~3h17m gap), and **1 more on
-      9/14 morning** (08:25→10:51, ~2h26m gap) — each
+- [ ] **The entire content pipeline sat dark for 48 days (2026-09-14 through
+      2026-10-31) — no breaking articles, no digest drafts, no daily
+      checklist regen, despite real GTA6 news happening that whole time.**
+      Confirmed via direct repo audit today (2026-11-01): `git log` on
+      `main` between those dates shows only `News scan: ...` and "Mark
+      posted items in social queue" bot commits — the news-scan GitHub
+      Action itself kept running fine the entire time (hundreds of runs),
+      but the session-based Routines that turn scan results into articles
+      (`56ViceLane News → Breaking Article`, `56ViceLane News → Draft
+      Digest`, `56ViceLane Daily Checklist`) produced zero output in that
+      window — no new entries in `drafted-links.json`, no new files in
+      `articles/`, no new daily-checklist commits. This checklist you're
+      reading was still showing 2026-09-14 as its Generated date right up
+      until this regen. All three Routines resumed firing and were
+      processed normally starting today (2026-11-01) — nothing scored
+      7+ or 4-6 in the reports checked since resumption, so no backlog of
+      *missed* 7+ stories is confirmed, but a 48-day gap this size means
+      real breaking-tier news very likely went uncovered. Worth a
+      decision: was this a trigger/scheduling outage on the platform
+      side, or something else? If it happens again, it needs to surface
+      somewhere more visible than "the checklist silently stopped
+      updating."
+- [ ] **news-scan's GitHub Actions cron stall count is NOT reliably
+      tracked across the 48-day gap above (2026-09-14 through 2026-10-31)
+      — nobody was checking during that window.** Last confirmed count
+      before the gap: 41 separate stalls across 2026-08-27 through 9/14.
+      Resumed active tracking today, 2026-11-01: 2 more stalls caught and
+      fixed (03:40→06:51 UTC gap, ~3h11m; 07:46→10:51 UTC gap, ~3h5m),
+      both re-dispatched via `workflow_dispatch` and confirmed resumed
+      clean. The underlying pattern described below (from before the
+      gap) still held true today — the cron itself clearly kept running
+      throughout the 48 days (hundreds of commits), so whatever caused
+      the content-pipeline silence above likely was NOT this same cron
+      issue — each
       requiring a manual `workflow_dispatch` to unstick it after gaps of
       ~2-4+ hours (normal cadence is ~90 min-2 hr).
       Plenty of other gaps across this same stretch were checked and
@@ -56,12 +79,15 @@ decision point is real if it doesn't pan out.
       that's back up) rather than continued manual re-dispatching every
       cycle. No code-level fix implemented yet; flagging again for a
       decision on whether to invest in one.
-- [ ] **n8n's MCP token has now been down 26+ days running (2026-08-19
-      through 9/14, re-tested and reconfirmed broken every day a
-      breaking article actually needed image/Discord generation —
-      most recently 9/14's Stephen Root actor-confirmation breaking
-      article; also re-tested on the 9/12 digest article, still
-      broken), degrading every breaking- and digest-article run.** Every time: image generation failed (generic
+- [ ] **n8n's MCP token has now been down 74+ days running (2026-08-19
+      through 2026-11-01, re-tested and reconfirmed broken again today
+      via fresh curl to `n8n.56vicelane.com/webhook/article-images` —
+      still exit 56/000, CONNECT rejected by the egress proxy), degrading
+      every breaking- and digest-article run whenever one actually
+      happens.** No breaking/digest article needed it during today's
+      resumption (nothing scored 7+ or 4-6 yet), but the outage itself is
+      confirmed still live. Every time an article does need it: image
+      generation failed (generic
       `gta6-hero.png` placeholder used instead of real hero/inline art)
       — the direct HTTP fallback to `n8n.56vicelane.com` is also blocked
       by this sandbox's egress proxy (curl exit 56/000, CONNECT rejected
@@ -436,6 +462,17 @@ decision point is real if it doesn't pan out.
 
 ## Done recently
 
+- [x] **2026-11-01: content pipeline resumed after the 48-day gap (see
+      Urgent).** Processed the Breaking Article (7+) Routine across
+      several firings today — nothing scored 7+ in any report since
+      resumption (mostly 3s, one score-5 item). Caught and re-dispatched
+      2 news-scan cron stalls, both resumed clean. Confirmed digest
+      backlog unchanged at 38 articles (direct `articles/` diff against
+      `main` — no new digest activity happened during the gap either,
+      consistent with the pipeline-silence finding above).
+      `drafted-links.json` confirmed in sync between branches (no drift
+      — expected, since neither routine wrote anything new during the
+      gap). n8n outage re-confirmed still live (74+ days).
 - [x] **2026-09-13 midday through 2026-09-14 midday: quiet-to-active
       stretch, 1 breaking article plus 2 more cron stalls plus a 7th
       `drafted-links.json` sync-drift.** Mostly 3s across roughly 20
