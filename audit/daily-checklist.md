@@ -1,6 +1,6 @@
 # 56ViceLane — Daily Checklist
 
-**Generated:** 2026-11-01 (Central Time)
+**Generated:** 2026-11-02 (Central Time)
 **How this works:** one list, updated daily. Check things off yourself by
 editing this file (change `- [ ]` to `- [x]`), or tell me and I'll check
 them off. Each day I regenerate this — anything still unchecked carries
@@ -52,11 +52,14 @@ decision point is real if it doesn't pan out.
       tracked across the 48-day gap above (2026-09-14 through 2026-10-31)
       — nobody was checking during that window.** Last confirmed count
       before the gap: 41 separate stalls across 2026-08-27 through 9/14.
-      Resumed active tracking today, 2026-11-01: 2 more stalls caught and
-      fixed (03:40→06:51 UTC gap, ~3h11m; 07:46→10:51 UTC gap, ~3h5m),
-      both re-dispatched via `workflow_dispatch` and confirmed resumed
-      clean. The underlying pattern described below (from before the
-      gap) still held true today — the cron itself clearly kept running
+      Resumed active tracking 2026-11-01: 2 stalls caught and fixed that
+      day (03:40→06:51 UTC gap, ~3h11m; 07:46→10:51 UTC gap, ~3h5m). 4
+      more caught and fixed across the Nov 1 evening–Nov 2 early-afternoon
+      stretch (19:18→22:52 UTC gap ~3.5h; 00:05→02:52 UTC gap ~2h46m;
+      02:52→06:55 UTC gap ~4h; 10:24→13:13 UTC gap ~2h48m) — all
+      re-dispatched via `workflow_dispatch` and confirmed resumed clean.
+      Running total now 47. The underlying pattern described below (from
+      before the gap) still holds — the cron itself clearly kept running
       throughout the 48 days (hundreds of commits), so whatever caused
       the content-pipeline silence above likely was NOT this same cron
       issue — each
@@ -158,6 +161,19 @@ decision point is real if it doesn't pan out.
 
 ## Needs a decision from you
 
+- [ ] **New digest-tier article drafted 2026-09-13, needs your go-ahead:**
+      "Rockstar Says GTA5's NPCs Already Looked Dated — Here's How GTA6
+      Fixes It" (score 5, GamesRadar, corroborated across Kotaku/SVG) —
+      Rockstar had to visibly raise the bar on NPC realism/behavior since
+      GTA5's own NPCs already looked dated at that game's 2013 launch.
+      Reg Calloway byline (retro/nostalgia/franchise-history beat — the
+      story measures GTA6 against GTA5's own past), `source-status:
+      confirmed`. Related links to the trailer-1 "not fully formed"
+      piece, the no-first-person-mode piece, and the Zelnick 13-year-wait
+      piece — all verified to exist. Held on this dev branch, not
+      shipped. Digest backlog now verified at 39 articles (direct
+      `articles/` diff against `main`) — genuinely worth a batch review
+      pass at this point, it keeps growing.
 - [ ] **New digest-tier article drafted 2026-09-12, needs your go-ahead:**
       "Rockstar Says Hackers Tried To Blackmail It Over GTA6 Leaks — And
       Drones Were Used To Spy On Devs" (score 5, The Gamer, corroborated
@@ -462,6 +478,17 @@ decision point is real if it doesn't pan out.
 
 ## Done recently
 
+- [x] **2026-11-01 evening through 2026-11-02 early afternoon: steady
+      quiet stretch, 1 new digest article plus 4 more cron stalls.**
+      Processed the Breaking Article (7+) Routine across roughly a dozen
+      firings in this window — nothing scored 7+ in any report (mostly
+      2s and 3s, a few 5s). One new digest-tier article drafted (see
+      Needs a decision: Rockstar/GTA5-NPC-realism-aging, Reg Calloway
+      byline), bringing the digest backlog to 39 articles (direct
+      `articles/` diff against `main`). Caught and re-dispatched 4 more
+      news-scan cron stalls (see Urgent for the running count, now 47)
+      — all resumed clean. `drafted-links.json` confirmed in sync
+      between branches (145 entries both) — no drift this stretch.
 - [x] **2026-11-01: content pipeline resumed after the 48-day gap (see
       Urgent).** Processed the Breaking Article (7+) Routine across
       several firings today — nothing scored 7+ in any report since
