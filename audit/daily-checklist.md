@@ -1,6 +1,6 @@
 # 56ViceLane — Daily Checklist
 
-**Generated:** 2026-11-02 (Central Time)
+**Generated:** 2026-11-03 (Central Time)
 **How this works:** one list, updated daily. Check things off yourself by
 editing this file (change `- [ ]` to `- [x]`), or tell me and I'll check
 them off. Each day I regenerate this — anything still unchecked carries
@@ -58,7 +58,10 @@ decision point is real if it doesn't pan out.
       stretch (19:18→22:52 UTC gap ~3.5h; 00:05→02:52 UTC gap ~2h46m;
       02:52→06:55 UTC gap ~4h; 10:24→13:13 UTC gap ~2h48m) — all
       re-dispatched via `workflow_dispatch` and confirmed resumed clean.
-      Running total now 47. The underlying pattern described below (from
+      4 more caught and fixed across the Nov 2 afternoon–Nov 3 midday
+      stretch (13:13→15:17 UTC gap ~2h; 15:18→17:43 UTC gap ~2h25m;
+      21:14→00:51 UTC gap ~3.5h; 04:50→08:51 UTC gap ~4h) — all resumed
+      clean. Running total now 51. The underlying pattern described below (from
       before the gap) still holds — the cron itself clearly kept running
       throughout the 48 days (hundreds of commits), so whatever caused
       the content-pipeline silence above likely was NOT this same cron
@@ -161,6 +164,19 @@ decision point is real if it doesn't pan out.
 
 ## Needs a decision from you
 
+- [ ] **2 new digest-tier articles drafted 2026-11-02, need your go-ahead:**
+      "Walmart's GTA6 Preorder Bonus Is A Mystery 'Surprise And Delight'
+      Bag" (score 5, Insider Gaming, single-source — could not
+      independently corroborate the bag's contents, so written with
+      "according to Insider Gaming" hedging throughout) and "Every GTA6
+      Trailer Released So Far — The Full Timeline" (score 5, Insider
+      Gaming recap of the two real GTA6 trailers — Dec 2023 reveal and
+      the Aug 2026 Netflix Extended Look). Marcus Webb and Danny
+      Marchetti bylines respectively, both `source-status: reported`.
+      Both hit the n8n image outage (see Urgent) — placeholder hero used
+      for both. Held on this dev branch, not shipped. Digest backlog now
+      verified at 41 articles (direct `articles/` diff against `main`) —
+      genuinely worth a batch review pass, it keeps growing.
 - [ ] **New digest-tier article drafted 2026-09-13, needs your go-ahead:**
       "Rockstar Says GTA5's NPCs Already Looked Dated — Here's How GTA6
       Fixes It" (score 5, GamesRadar, corroborated across Kotaku/SVG) —
@@ -478,6 +494,19 @@ decision point is real if it doesn't pan out.
 
 ## Done recently
 
+- [x] **2026-11-02 afternoon through 2026-11-03 midday: steady quiet
+      stretch, 2 new digest articles plus 4 more cron stalls.** Processed
+      the Breaking Article (7+) Routine across roughly a dozen firings in
+      this window — nothing scored 7+ in any report (mostly 2s and 3s, a
+      handful of 4s and 5s). 2 new digest-tier articles drafted (see
+      Needs a decision: Walmart preorder bonus bag, GTA6 trailer
+      timeline recap), bringing the digest backlog to 41 articles
+      (direct `articles/` diff against `main`). Caught and re-dispatched
+      4 more news-scan cron stalls (see Urgent for the running count, now
+      51) — all resumed clean. `drafted-links.json` confirmed in sync
+      between branches (147 entries both) — no drift this stretch. n8n
+      image-generation outage re-confirmed still down (fresh curl test,
+      exit 56/000) before drafting both new digest articles.
 - [x] **2026-11-01 evening through 2026-11-02 early afternoon: steady
       quiet stretch, 1 new digest article plus 4 more cron stalls.**
       Processed the Breaking Article (7+) Routine across roughly a dozen
