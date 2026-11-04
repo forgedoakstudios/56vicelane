@@ -1,6 +1,6 @@
 # 56ViceLane — Daily Checklist
 
-**Generated:** 2026-11-03 (Central Time)
+**Generated:** 2026-11-04 (Central Time)
 **How this works:** one list, updated daily. Check things off yourself by
 editing this file (change `- [ ]` to `- [x]`), or tell me and I'll check
 them off. Each day I regenerate this — anything still unchecked carries
@@ -61,7 +61,10 @@ decision point is real if it doesn't pan out.
       4 more caught and fixed across the Nov 2 afternoon–Nov 3 midday
       stretch (13:13→15:17 UTC gap ~2h; 15:18→17:43 UTC gap ~2h25m;
       21:14→00:51 UTC gap ~3.5h; 04:50→08:51 UTC gap ~4h) — all resumed
-      clean. Running total now 51. The underlying pattern described below (from
+      clean. 3 more caught and fixed across the Nov 3 afternoon–Nov 4
+      midday stretch (13:24→16:51 UTC gap ~3.5h; 20:42→00:51 UTC gap ~4h;
+      02:30→06:51 UTC gap ~4h21m) — all resumed clean. Running total now
+      54. The underlying pattern described below (from
       before the gap) still holds — the cron itself clearly kept running
       throughout the 48 days (hundreds of commits), so whatever caused
       the content-pipeline silence above likely was NOT this same cron
@@ -494,6 +497,25 @@ decision point is real if it doesn't pan out.
 
 ## Done recently
 
+- [x] **2026-11-03 afternoon through 2026-11-04 midday: quiet stretch,
+      one near-miss breaking story correctly caught and skipped, plus 3
+      more cron stalls.** 3 outlets (IGN, Dexerto, The Gamer) scored 7 on
+      a GTA6 preload/install-size/physical-map "confirmation" story —
+      verified before drafting and found it didn't hold up: the preload
+      date was already covered by an existing July article, independent
+      WebSearch showed the install-size and global-release-time claims
+      are NOT actually officially confirmed (still leak-based/conflicting
+      despite the "confirmed" framing in headlines), and the physical
+      Leonida map poster predates today's reports by weeks. Skipped
+      rather than publishing an overstated or duplicate piece — logged in
+      `drafted-links.json` on both branches so it isn't re-attempted.
+      Nothing else scored 7+ across roughly a dozen more firings (mostly
+      2s and 3s, a few 4-6s left for the digest routine). Caught and
+      re-dispatched 3 more news-scan cron stalls (see Urgent for the
+      running count, now 54) — all resumed clean. Digest backlog holding
+      steady at 45 (direct `articles/` diff against `main`) —
+      `drafted-links.json` confirmed in sync between branches (155
+      entries both).
 - [x] **2026-11-02 afternoon through 2026-11-03 midday: steady quiet
       stretch, 2 new digest articles plus 4 more cron stalls.** Processed
       the Breaking Article (7+) Routine across roughly a dozen firings in
