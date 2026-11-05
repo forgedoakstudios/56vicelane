@@ -976,5 +976,35 @@
     "slug": null,
     "tier": "skipped-not-genuinely-gta6",
     "date": "2026-11-05"
+  },
+  {
+    "link": "https://insider-gaming.com/take-two-addresses-ai-in-gta-6/",
+    "slug": "gta6-take-two-addresses-ai-development-again",
+    "tier": "digest",
+    "date": "2026-11-05"
+  },
+  {
+    "link": "https://www.gamespot.com/articles/gta-6-survey-reveals-people-really-want-gta-online-but-it-hasnt-been-confirmed-yet/",
+    "slug": "gta6-survey-players-want-gta-online",
+    "tier": "digest",
+    "date": "2026-11-05"
+  },
+  {
+    "link": "https://www.thegamer.com/strauss-zelnick-interview-take-two-no-big-hits/",
+    "slug": "gta6-zelnick-not-enough-big-hits",
+    "tier": "digest",
+    "date": "2026-11-05"
+  },
+  {
+    "link": "https://www.polygon.com/gta-6-preorders-sales-8-million-copies-before-release-date/",
+    "slug": "gta6-preorder-revenue-730-million-estimate",
+    "tier": "skipped-duplicate-same-day-digest",
+    "date": "2026-11-05"
+  },
+  {
+    "link": "https://www.thegamer.com/grand-theft-auto-6-spoilers-will-be-taken-down-rockstar-confirms/",
+    "slug": "gta6-dmca-spoilers-after-launch",
+    "tier": "skipped-duplicate",
+    "date": "2026-11-05"
   }
 ]
