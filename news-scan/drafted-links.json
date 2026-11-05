@@ -1006,5 +1006,23 @@
     "slug": "gta6-dmca-spoilers-after-launch",
     "tier": "skipped-duplicate",
     "date": "2026-11-05"
+  },
+  {
+    "link": "https://www.ign.com/articles/rockstar-games-releases-39-new-gta-6-screenshots-to-celebrate-two-weeks-from-launch",
+    "slug": "gta6-39-new-screenshots-two-weeks-out",
+    "tier": "breaking",
+    "date": "2026-11-05"
+  },
+  {
+    "link": "https://www.dexerto.com/gta/gta-6-boss-defends-delays-with-nod-to-cyberpunk-2077s-launch-3425120/",
+    "slug": "gta6-zelnick-delay-cyberpunk-2077-comparison",
+    "tier": "skipped-duplicate-same-day-breaking",
+    "date": "2026-11-05"
+  },
+  {
+    "link": "https://insider-gaming.com/gta-6-delayed-again-release/",
+    "slug": "gta6-delayed-again-fake-rumor-debunked",
+    "tier": "breaking",
+    "date": "2026-11-05"
   }
 ]
