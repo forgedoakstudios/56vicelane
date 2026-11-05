@@ -1,6 +1,6 @@
 # 56ViceLane — Daily Checklist
 
-**Generated:** 2026-11-04 (Central Time)
+**Generated:** 2026-11-05 (Central Time)
 **How this works:** one list, updated daily. Check things off yourself by
 editing this file (change `- [ ]` to `- [x]`), or tell me and I'll check
 them off. Each day I regenerate this — anything still unchecked carries
@@ -63,8 +63,18 @@ decision point is real if it doesn't pan out.
       21:14→00:51 UTC gap ~3.5h; 04:50→08:51 UTC gap ~4h) — all resumed
       clean. 3 more caught and fixed across the Nov 3 afternoon–Nov 4
       midday stretch (13:24→16:51 UTC gap ~3.5h; 20:42→00:51 UTC gap ~4h;
-      02:30→06:51 UTC gap ~4h21m) — all resumed clean. Running total now
-      54. The underlying pattern described below (from
+      02:30→06:51 UTC gap ~4h21m) — all resumed clean. 3 more caught and
+      fixed across the Nov 4 evening–Nov 5 midday stretch (20:28→00:52
+      UTC gap ~4h24m; 02:38→06:52 UTC gap ~4h14m; the 06:52 re-dispatch
+      didn't get the schedule itself to resume on its own, so a second
+      re-dispatch at 08:52 was needed before natural `schedule`-event
+      runs resumed — confirmed healthy again at the 10:09 and 12:36 UTC
+      reports). One gap this same stretch (roughly 00:52→04:51 UTC)
+      looked like a stall at first glance but checking `actions_list`
+      showed the cron had actually fired fine at 01:12 and 02:38, just
+      finding zero new RSS items both times — correctly left alone, no
+      re-dispatch needed. Running total now
+      57. The underlying pattern described below (from
       before the gap) still holds — the cron itself clearly kept running
       throughout the 48 days (hundreds of commits), so whatever caused
       the content-pipeline silence above likely was NOT this same cron
@@ -149,24 +159,57 @@ decision point is real if it doesn't pan out.
       take a look now that it's already live. Detail:
       `audit/2026-08-10-90-day-push-ramp-and-streams-page.md`.
 - [ ] **`news-scan/drafted-links.json` has now drifted out of sync
-      between `main` and this dev branch seven times (2026-08-26,
+      between `main` and this dev branch eight times (2026-08-26,
       2026-08-28, 2026-08-30, 2026-08-31, 2026-09-02, 2026-09-10,
-      2026-09-14), all caught and corrected same session before causing
-      any actual duplicate-drafting.** Root cause varies: sometimes a
-      digest-routine sync push to `main` landing before a later routine
-      re-pulls; both the 9/10 and 9/14 occurrences were the
-      breaking-article routine's entries (DualSense pre-order-chaos,
-      then the Stephen Root actor confirmation) never syncing back to
-      this dev branch,
-      same root cause as 9/2 — the breaking routine still has no
-      sync-to-dev step of its own, only the digest routine syncs in that
-      direction. Seven occurrences now means this needs an actual process
-      fix (always re-pull/diff-check this file at the start of a turn,
-      and give the breaking-article routine its own sync-to-dev step)
-      rather than repeat manual correction each time it happens.
+      2026-09-14, 2026-11-05), all caught and corrected same session
+      before causing any actual duplicate-drafting.** Root cause varies:
+      sometimes a digest-routine sync push to `main` landing before a
+      later routine re-pulls; the 9/10, 9/14, and 11/5 occurrences were
+      all the breaking-article routine's own entries (DualSense
+      pre-order-chaos, the Stephen Root actor confirmation, and today's
+      Zelnick/Cyberpunk-2077 article plus its 2 duplicate/skip log
+      entries) never syncing back to this dev branch — same root cause
+      every time: the breaking routine still has no sync-to-dev step of
+      its own, only the digest routine syncs in that direction. Eight
+      occurrences now means this needs an actual process fix (always
+      re-pull/diff-check this file at the start of a turn, and give the
+      breaking-article routine its own sync-to-dev step) rather than
+      repeat manual correction each time it happens.
 
 ## Needs a decision from you
 
+- [ ] **Breaking article published 2026-11-05, needs no approval (already
+      live) but flagging the social-pipeline gap:** "Take-Two CEO Suggests
+      Rockstar Avoided a Cyberpunk 2077-Style Launch With GTA6's Delays"
+      (score 7, GamesRadar, reporting a WSJ interview) — Zelnick described
+      a competitor's launch that "had to pull the title after shipping"
+      without naming it; read by GamesRadar and others as a Cyberpunk 2077
+      reference, but he didn't confirm that directly, so `source-status:
+      reported`. Marcus Webb byline. Pushed straight to `main`. Bluesky
+      queued fine; X/IG/FB/Discord social-blast failed (n8n still down)
+      and — new this time — **the video-SLA Discord alert also could not
+      be sent at all, not even via the risky re-trigger-the-whole-webhook
+      workaround**, because this session has no way to resolve the
+      Discord webhook URL without going through n8n, and direct
+      `discord.com` egress is also blocked. Whoever's on video duty needs
+      to check this article manually — no automated ping went out. Full
+      log: `audit/2026-11-05-news-scan-articles-log.md`.
+- [ ] **7 new digest-tier articles drafted 2026-11-04 afternoon, never
+      logged in this checklist until now (drafted after that day's
+      regen), need your go-ahead:** "How To Claim Your GTA6 Preorder
+      Bonus Through GTA+" (Marcus Webb), "Ubisoft's Next Division 2
+      Project Might Be Walking Right Into GTA6's Launch" (Marcus Webb),
+      "Does GTA6 Have A 60 FPS Mode? Every Confirmed And Rumored Graphics
+      Setting" (Julian Ashworth), "Is GTA6 Out Yet? What To Actually
+      Track On Launch Day" (Danny Marchetti), "GTA6 Preorders Have
+      Reportedly Already Topped $730 Million" (Marcus Webb), "Xbox Built
+      An Alligator-Shaped Series X For GTA6 — And You Can Win It" (Marcus
+      Webb), and "Rockstar May DMCA GTA6 Spoilers Even After Launch"
+      (Ezra Voss). All `source-status: reported`, all placeholder hero
+      images (n8n outage). Held on this dev branch, not shipped. Digest
+      backlog now verified at 48 articles (direct `articles/` diff
+      against `main`) — genuinely worth a batch review pass, it keeps
+      growing.
 - [ ] **2 new digest-tier articles drafted 2026-11-02, need your go-ahead:**
       "Walmart's GTA6 Preorder Bonus Is A Mystery 'Surprise And Delight'
       Bag" (score 5, Insider Gaming, single-source — could not
@@ -497,6 +540,29 @@ decision point is real if it doesn't pan out.
 
 ## Done recently
 
+- [x] **2026-11-04 evening through 2026-11-05 midday: 1 breaking article
+      published, 2 items correctly skipped, 3 more cron stalls, an 8th
+      `drafted-links.json` sync-drift caught and fixed.** Published
+      "Take-Two CEO Suggests Rockstar Avoided a Cyberpunk 2077-Style
+      Launch With GTA6's Delays" (see Needs a decision above for full
+      detail) straight to `main`. Also correctly skipped two other
+      score-7+ items the same scan: IGN's $750M preorder story (score 9)
+      was the same running Sensor Tower estimate already covered via
+      Dexerto hours earlier at $730M — not a new number, just a second
+      outlet; and IGN's Sony/Wolverine PlayStation-earnings story (score
+      7) turned out to tie to GTA6 only through one outlet's speculative
+      inference about Sony's forecast guidance, not anything Sony or
+      Take-Two actually said about GTA6 — correctly left undrafted rather
+      than stretched into a GTA6 story. Caught and re-dispatched 3 more
+      news-scan cron stalls (see Urgent for the running count, now 57),
+      including one that needed a second re-dispatch because the first
+      didn't get the schedule to resume on its own. Also caught and fixed
+      the 8th `drafted-links.json` sync-drift occurrence — this dev
+      branch was missing today's own breaking-tier entries (same
+      still-unfixed root cause as the 9/10 and 9/14 occurrences, see
+      Urgent). Digest backlog now at 48 (direct `articles/` diff against
+      `main`) — 7 of those were drafted yesterday afternoon but never
+      made it into a checklist until this regen (see Needs a decision).
 - [x] **2026-11-03 afternoon through 2026-11-04 midday: quiet stretch,
       one near-miss breaking story correctly caught and skipped, plus 3
       more cron stalls.** 3 outlets (IGN, Dexerto, The Gamer) scored 7 on
