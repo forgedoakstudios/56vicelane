@@ -20,7 +20,7 @@
     "url": "https://56vicelane.com/lastdrive",
     "image": "images/lastdrive-hero.webp",
     "imageAlt": "The Last Drive countdown",
-    "lastPostedDate": "2026-11-04"
+    "lastPostedDate": "2026-11-05"
   },
   {
     "id": "lastdrive-signup-1",
@@ -365,7 +365,7 @@
     "image": "images/gta6-hero.png",
     "imageAlt": "Take-Two CEO Hints GTA6's Delays Were About Avoiding a Cyberpunk 2077-Style Launch",
     "scheduledFor": "2026-11-05T12:54:16.318Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-gta6-delayed-again-fake-rumor-debunked",
@@ -374,7 +374,7 @@
     "image": "images/gta6-hero.png",
     "imageAlt": "No, GTA6 Has Not Been Delayed Again — Here's Where That Rumor Came From",
     "scheduledFor": "2026-11-05T16:55:30.239Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-gta6-39-new-screenshots-two-weeks-out",
@@ -383,6 +383,6 @@
     "image": "images/gta6-hero.png",
     "imageAlt": "Rockstar Drops 39 New GTA6 Screenshots To Mark Two Weeks To Launch",
     "scheduledFor": "2026-11-05T16:55:30.283Z",
-    "posted": false
+    "posted": true
   }
 ]
