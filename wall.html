@@ -301,9 +301,24 @@
   margin: 0 auto;
   padding: 0 20px 60px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
 }
+@media (max-width: 680px) { .wall-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 380px) { .wall-grid { grid-template-columns: repeat(1, 1fr); } }
+
+.wall-tier-label {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px 10px;
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: .85rem;
+  color: var(--gold);
+}
+.wall-tier-label.rest { color: var(--smoke); margin-top: 8px; }
 
 .player-card {
   background: var(--asphalt);
@@ -541,9 +556,18 @@
 
 <div class="results-info" id="results-info"></div>
 
-<div class="wall-grid" id="wall-grid">
+<div class="wall-tier-label" id="wall-tier-founders">⭐ First 100 — Founder Plates</div>
+<div class="wall-grid" id="wall-grid-founders">
   <div class="skel"></div>
   <div class="skel"></div>
+  <div class="skel"></div>
+  <div class="skel"></div>
+  <div class="skel"></div>
+  <div class="skel"></div>
+</div>
+
+<div class="wall-tier-label rest" id="wall-tier-rest">Everyone Else On The Wall</div>
+<div class="wall-grid" id="wall-grid-rest">
   <div class="skel"></div>
   <div class="skel"></div>
   <div class="skel"></div>
@@ -636,7 +660,10 @@ function isPhotoPlate(style) {
 }
 
 function renderWall() {
-  var grid = document.getElementById('wall-grid');
+  var gridFounders = document.getElementById('wall-grid-founders');
+  var gridRest = document.getElementById('wall-grid-rest');
+  var labelFounders = document.getElementById('wall-tier-founders');
+  var labelRest = document.getElementById('wall-tier-rest');
   var info = document.getElementById('results-info');
 
   var filtered = allPlayers.filter(function(r) {
@@ -667,14 +694,27 @@ function renderWall() {
   var rangeLabel = activeRange === 'all' ? 'All letters' : activeRange.toUpperCase().replace('-',' – ');
 
   if (!filtered.length) {
-    grid.innerHTML = '<div class="wall-empty">No players found for ' + platLabel + '.<br><br><a href="/lastdrive">Be the first to sign up →</a></div>';
+    gridFounders.innerHTML = '<div class="wall-empty">No players found for ' + platLabel + '.<br><br><a href="/lastdrive">Be the first to sign up →</a></div>';
+    gridRest.innerHTML = '';
+    labelFounders.style.display = 'none';
+    labelRest.style.display = 'none';
     info.innerHTML = '';
     return;
   }
 
   info.innerHTML = '<strong>' + filtered.length + '</strong> players · ' + platLabel + ' · ' + rangeLabel;
 
-  grid.innerHTML = filtered.map(function(r) {
+  var founders = filtered.filter(function(r) { return r._pos && r._pos <= 100; });
+  var rest = filtered.filter(function(r) { return !(r._pos && r._pos <= 100); });
+
+  labelFounders.style.display = founders.length ? '' : 'none';
+  labelRest.style.display = rest.length ? '' : 'none';
+
+  gridFounders.innerHTML = founders.map(cardHTML).join('');
+  gridRest.innerHTML = rest.map(cardHTML).join('');
+}
+
+function cardHTML(r) {
     var f = r.fields;
     var tag = esc(f.Gamertag || f.Name || 'Unknown');
     var isOrg = f.IsOrganizer;
@@ -717,7 +757,6 @@ function renderWall() {
       (isOrg ? '<div class="card-access-badge ' + (isApproval ? 'access-approval-sm' : 'access-open-sm') + '">' + (isApproval ? '🔒 Approval' : '🟢 Open') + '</div>' : '') +
       (riderCount > 0 ? '<div class="rider-count-sm">🚗 ' + riderCount + ' rider' + (riderCount !== 1 ? 's' : '') + '</div>' : '') +
     '</div>';
-  }).join('');
 }
 
 function updateFounderBar() {
@@ -828,7 +867,9 @@ function loadWall() {
 
   fetchPage().catch(function(err) {
     console.error('[Wall Error]', err);
-    document.getElementById('wall-grid').innerHTML =
+    document.getElementById('wall-tier-rest').style.display = 'none';
+    document.getElementById('wall-grid-rest').innerHTML = '';
+    document.getElementById('wall-grid-founders').innerHTML =
       '<div class="wall-empty">Could not load the wall. <a href="">Refresh</a></div>';
   });
 }
