@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Videos — 56ViceLane</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9EKF7J4V7W');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
+<meta name="description" content="GTA5 and GTA6 trailers, news breakdowns, and gameplay — curated video picks from creators across the community, embedded right here.">
+<meta property="og:title" content="Videos — 56ViceLane">
+<meta property="og:description" content="GTA5 and GTA6 trailers, news breakdowns, and gameplay — curated picks from creators across the community.">
+<meta property="og:url" content="https://56vicelane.com/videos">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/vicelane.css">
+
+<style>
+:root{
+  --pitch: #FDFBF8;
+  --asphalt: #FFFFFF;
+  --edge: #F0E6DA;
+  --amber: #FF6B2C;
+  --cyan: #D6247A;
+  --bone: #211A16;
+  --smoke: #6B5F52;
+  --green: #00C875;
+  --red: #FF3B3B;
+  --font-display: 'Playfair Display', serif;
+  --font-label: 'Barlow Condensed', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+.video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:24px;padding:12px;}
+.video-card{position:relative;border-radius:10px;overflow:hidden;cursor:pointer;display:block;background:var(--pitch);border:2px solid transparent;text-decoration:none;color:inherit;transition:transform .22s ease,box-shadow .22s ease;}
+.video-card.active{border-color:var(--amber);}
+.video-card:hover,.video-card:focus-within{transform:scale(1.05);z-index:20;box-shadow:0 14px 34px rgba(0,0,0,.3);}
+.video-card .vc-thumb{width:100%;aspect-ratio:16/9;background-size:cover;background-position:center;background-color:#1A0E2A;position:relative;}
+.video-card .vc-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.25);opacity:0;transition:opacity .18s ease;color:#fff;font-size:2.4rem;}
+.video-card:hover .vc-play,.video-card:focus-within .vc-play{opacity:1;}
+.video-card .vc-info{padding:10px 12px;background:var(--asphalt);}
+.video-card .vc-title{font-family:'Barlow Condensed';font-weight:700;font-size:14px;line-height:1.3;color:var(--bone);margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.video-card .vc-channel{font-family:'Barlow Condensed';font-weight:600;font-size:12px;color:var(--cyan);text-transform:uppercase;letter-spacing:.3px;}
+.video-player-wrap{max-width:1000px;margin:0 auto 32px;padding:0 24px;}
+.video-player{position:relative;width:100%;padding-top:56.25%;background:#000;border-radius:10px;overflow:hidden;}
+.video-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+.video-player-meta{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-top:12px;font-family:'Barlow Condensed';}
+.video-player-meta .vpm-title{font-size:1.1rem;font-weight:700;color:var(--bone);}
+.video-player-meta a{color:var(--cyan);font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.3px;}
+</style>
+</head>
+<body>
+
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker-track">
+    <span class="ticker-item">56ViceLane — Where GTA5 Ends And GTA6 Begins</span>
+  </div>
+</div>
+
+<nav class="nav">
+  <a class="logo" href="/"><span class="logo-mark">56</span><span class="logo-text">ViceLane</span></a>
+</nav>
+<div class="navband">
+  <a href="/">Home</a>
+  <a href="/news">News</a>
+  <a href="/lastdrive">Last Drive</a>
+  <a href="/streams">Watch</a>
+  <a href="/videos" class="active">Videos</a>
+  <a href="/wall">Wall of Honor</a>
+  <a href="/leaderboard">Leaderboard</a>
+  <a href="/members">Members</a>
+  <a href="/store">Store</a>
+  <a href="/gear">Gear</a>
+  <a href="/forum">Forum</a>
+</div>
+
+<div style="max-width:1000px;margin:0 auto;padding:50px 24px 8px;text-align:center;">
+  <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.35em;font-size:.72rem;color:var(--amber);margin-bottom:16px;">🎬 Watch & Learn</div>
+  <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,6vw,3rem);text-transform:uppercase;line-height:1;margin-bottom:16px;">GTA <span style="color:var(--amber);">Videos</span></h1>
+  <p style="font-size:.95rem;color:var(--smoke);max-width:560px;margin:0 auto;line-height:1.7;">Trailers, news breakdowns, and gameplay from creators across the community — curated picks, embedded right here. Every video is linked back to its original channel, full credit where it's due.</p>
+</div>
+
+<div class="video-player-wrap" style="margin-top:24px;">
+  <div class="video-player" id="video-player"></div>
+  <div class="video-player-meta">
+    <span class="vpm-title" id="video-player-title"></span>
+    <a href="#" id="video-player-channel-link" target="_blank" rel="noopener"></a>
+  </div>
+</div>
+
+<div style="max-width:1000px;margin:0 auto;padding:0 24px 70px;">
+  <div id="video-grid" class="video-grid"></div>
+</div>
+
+<footer>
+  <div class="footer-brand"><span class="logo-mark">56</span>ViceLane</div>
+  <div class="footer-tag">Where GTA5 Ends And GTA6 Begins</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/news">News</a>
+    <a href="/lastdrive">Last Drive</a>
+    <a href="/streams">Watch</a>
+    <a href="/videos">Videos</a>
+    <a href="/store">Store</a>
+    <a href="/gear">Gear</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/privacy">Privacy</a>
+  </div>
+  <p class="footer-copy">© 2026 56ViceLane · Forged Oak Studios · Not affiliated with Rockstar Games or Take-Two Interactive. All embedded videos remain the property of their original creators — click through to support them directly.</p>
+</footer>
+
+<script>
+fetch('/articles.json?v=' + Date.now())
+  .then(function(r){return r.json();})
+  .then(function(a){
+    var t = document.getElementById('ticker-track');
+    t.innerHTML = [].concat(a,a).map(function(x){
+      return '<span class="ticker-item" onclick="location.href=\'/articles/'+x.slug+'\'">'+(x.emoji||'⚡')+' '+x.title+'</span>';
+    }).join('');
+  }).catch(function(){});
+</script>
+
+<script>
+(function() {
+  /* VIDEO ROTATION — add new entries here as they come in.
+     id: YouTube video ID, channel: display name, channelUrl: link back
+     to the creator's channel, title: video title, topic: short tag
+     used for grouping. */
+  var VIDEOS = [
+    {
+      id: 'oLsUiT8A3UY',
+      title: 'I Broke Every Law in GTA 5 RP',
+      channel: 'SpeirsTheAmazingHD',
+      channelUrl: 'https://www.youtube.com/@SpeirsTheAmazingHD',
+      topic: 'Gameplay'
+    }
+  ];
+
+  function thumbUrl(id) {
+    return 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg';
+  }
+
+  function renderPlayer(v) {
+    var wrap = document.getElementById('video-player');
+    wrap.innerHTML = '<iframe src="https://www.youtube.com/embed/' + v.id + '?modestbranding=1&rel=0" title="' + String(v.title).replace(/"/g,'&quot;') + '" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+    document.getElementById('video-player-title').textContent = v.title;
+    var link = document.getElementById('video-player-channel-link');
+    link.textContent = '▶ ' + v.channel + ' →';
+    link.href = v.channelUrl;
+  }
+
+  window.playVideo = function(idx, cardEl) {
+    document.querySelectorAll('.video-card').forEach(function(c) { c.classList.remove('active'); });
+    if (cardEl) cardEl.classList.add('active');
+    renderPlayer(VIDEOS[idx]);
+    document.querySelector('.video-player-wrap').scrollIntoView({behavior:'smooth', block:'center'});
+  };
+
+  function cardHTML(v, i) {
+    var title = String(v.title).replace(/</g,'&lt;');
+    var channel = String(v.channel).replace(/</g,'&lt;');
+    return '<div class="video-card" data-idx="' + i + '" tabindex="0" onclick="playVideo(' + i + ', this)" onkeydown="if(event.key===\'Enter\')playVideo(' + i + ', this)">' +
+      '<div class="vc-thumb" style="background-image:url(\'' + thumbUrl(v.id) + '\');"><span class="vc-play">▶</span></div>' +
+      '<div class="vc-info"><div class="vc-title">' + title + '</div><div class="vc-channel">' + channel + '</div></div>' +
+    '</div>';
+  }
+
+  var grid = document.getElementById('video-grid');
+  grid.innerHTML = VIDEOS.map(cardHTML).join('');
+
+  var wantId = new URLSearchParams(location.search).get('v');
+  var startIdx = 0;
+  if (wantId) {
+    var found = VIDEOS.findIndex(function(v) { return v.id === wantId; });
+    if (found > -1) startIdx = found;
+  }
+  var startCard = grid.querySelector('[data-idx="' + startIdx + '"]');
+  playVideo(startIdx, startCard);
+})();
+</script>
+
+<script src="/back-to-top.js" defer></script>
+<script src="/loyalty-banner.js" defer></script>
+<script src="/share-bar.js"></script>
+</body>
+</html>
