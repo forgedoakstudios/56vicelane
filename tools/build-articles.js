@@ -111,6 +111,10 @@ const files = fs.readdirSync(ARTICLES_DIR)
 
     const title = decodeEntities(getMeta('title') || getOG('title') || pageTitle);
 
+    // Get column (e.g. "editor", "trevor") -- drives the /editor and
+    // /trevor archive listings, which filter articles.json on this field
+    const column = getMeta('column') || '';
+
     return {
       emoji,
       title,
@@ -121,6 +125,7 @@ const files = fs.readdirSync(ARTICLES_DIR)
       date,
       excerpt,
       image: imageFile,
+      ...(column ? { column } : {}),
       permanent: false
     };
   })

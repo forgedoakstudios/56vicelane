@@ -32,6 +32,32 @@
     "url": "/articles/gta6-november-19-confirmed"
   },
   {
+    "emoji": "🗞️",
+    "title": "From The Editor's Desk: 11 Days Out",
+    "slug": "editors-desk-11-days-out",
+    "url": "/articles/editors-desk-11-days-out",
+    "headline": "From The Editor's Desk: 11 Days Out",
+    "category": "Community",
+    "date": "2026-11-08",
+    "excerpt": "Eleven days until GTA6 launches, and the Editor is starting to feel it — physically. A countdown update on the site, the news, and a confession about heartburn.",
+    "image": "editor-portrait-3-grinding.png",
+    "column": "editor",
+    "permanent": false
+  },
+  {
+    "emoji": "🗣️",
+    "title": "Trevor's Take: 11 Days Left And I Can Feel Them Watching",
+    "slug": "trevors-take-11-days-out",
+    "url": "/articles/trevors-take-11-days-out",
+    "headline": "Trevor's Take: 11 Days Left And I Can Feel Them Watching",
+    "category": "Community",
+    "date": "2026-11-08",
+    "excerpt": "Eleven days until GTA6 and Trevor is convinced the operation is winding down, in several senses of that phrase. Nobody asked him to be this way about it.",
+    "image": "trevor-portrait.png",
+    "column": "trevor",
+    "permanent": false
+  },
+  {
     "emoji": "📸",
     "title": "Rockstar Drops 39 New GTA6 Screenshots To Mark Two Weeks To Launch",
     "slug": "gta6-39-new-screenshots-two-weeks-out",
@@ -281,6 +307,7 @@
     "date": "2026-08-11",
     "excerpt": "We just brought on several new staff writers, each running their own beat — tech, business, lore, culture, and retro nostalgia — plus a faster pipeline for turning breaking GTA6 news into real coverage the same day.",
     "image": "editor-portrait.png",
+    "column": "editor",
     "permanent": false
   },
   {
@@ -341,6 +368,7 @@
     "date": "2026-08-05",
     "excerpt": "A busy week behind us — a store bug fixed, a security token rotated, a broken share button found and fixed sitewide — and a bigger one ahead, with Trailer 3 watch on and an earnings call landing Friday.",
     "image": "editor-portrait.png",
+    "column": "editor",
     "permanent": false
   },
   {
@@ -413,6 +441,7 @@
     "date": "2026-07-31",
     "excerpt": "AI-generated fake GTA6 trailers and gameplay clips are getting millions of views while fans wait for a real one. The Editor breaks down why it's spreading, how to spot it, and what we're doing about it.",
     "image": "editor-portrait.png",
+    "column": "editor",
     "permanent": false
   },
   {
@@ -425,6 +454,7 @@
     "date": "2026-07-31",
     "excerpt": "AI is generating fake GTA6 trailers that get millions of views. Trevor has thoughts, none of them useful, all of them delivered with total confidence.",
     "image": "trevor-portrait.png",
+    "column": "trevor",
     "permanent": false
   },
   {
@@ -509,6 +539,7 @@
     "date": "2026-07-24",
     "excerpt": "Thirteen years of expectations, two very serious articles about it this week, and one unqualified guy with strong opinions. Here's Trevor's actual take on whether GTA6 can live up to the hype.",
     "image": "trevor-portrait.png",
+    "column": "trevor",
     "permanent": false
   },
   {
