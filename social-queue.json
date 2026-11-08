@@ -384,5 +384,23 @@
     "imageAlt": "Rockstar Drops 39 New GTA6 Screenshots To Mark Two Weeks To Launch",
     "scheduledFor": "2026-11-05T16:55:30.283Z",
     "posted": true
+  },
+  {
+    "id": "auto-publish-editors-desk-11-days-out",
+    "text": "Eleven days until GTA6. The Editor is starting to feel it — physically. Site update, news recap, and a confession about heartburn.",
+    "url": "https://56vicelane.com/articles/editors-desk-11-days-out?utm_source=bluesky&utm_medium=social&utm_campaign=article_blast",
+    "image": "images/editor-portrait-3-grinding.png",
+    "imageAlt": "From The Editor's Desk: 11 Days Out",
+    "scheduledFor": "2026-11-08T22:30:02.736Z",
+    "posted": false
+  },
+  {
+    "id": "auto-publish-trevors-take-11-days-out",
+    "text": "Eleven days until GTA6. Trevor is convinced the operation is winding down, in several senses of that phrase.",
+    "url": "https://56vicelane.com/articles/trevors-take-11-days-out?utm_source=bluesky&utm_medium=social&utm_campaign=article_blast",
+    "image": "images/trevor-portrait.png",
+    "imageAlt": "Trevor's Take: 11 Days Left And I Can Feel Them Watching",
+    "scheduledFor": "2026-11-08T22:30:02.763Z",
+    "posted": false
   }
 ]
