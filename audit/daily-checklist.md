@@ -141,20 +141,13 @@ decision point is real if it doesn't pan out.
       approach is probably needed. Full detail:
       `audit/2026-08-19-news-scan-articles-log.md` through
       `audit/2026-09-03-news-scan-articles-log.md`.
-- [ ] **Google hadn't re-crawled the sitemap in 3 months — found via a
-      GSC screenshot you sent 2026-08-18.** Sitemaps tab showed "Submitted
-      May 19 · Last read May 19" — explains most of the "50 not indexed"
-      headline number (Google was working off a snapshot from when the
-      site had ~19 pages, not today's 107). Checked the other flagged
-      categories directly in the repo — noindex tags, robots.txt,
-      duplicate-canonicals — all intentional/non-issues, not bugs. The fix
-      is a manual one-time "Resubmit" click on the sitemap in Search
-      Console (can't be done from here, needs your GSC login). Decided
-      against auto-pinging Google on every publish (the old ping endpoint
-      is deprecated; a real fix needs a Search Console API service account
-      — you chose "skip automation, just fix it today" rather than set
-      that up). Confirm once you've clicked resubmit and I'll check back
-      on the indexing report in a few days.
+- [ ] **Sitemap resubmitted 2026-11-09 — confirmed Success, 123 pages
+      discovered.** "Last read" hadn't updated yet as of the resubmit
+      screenshot (still showing the prior Nov 5 read), which is expected
+      — Google re-crawls asynchronously. Checking back in a few days to
+      confirm "Last read" actually advances and the "not indexed" count
+      drops. Leaving unchecked until that's confirmed, not just
+      submitted.
 - [ ] **Manual cleanup needed: 2 wrong Instagram posts + 2 wrong Facebook
       posts went out 2026-08-14.** A bug in how I fired the "video SLA"
       Discord reminder re-triggered the entire social blast instead of
@@ -195,6 +188,18 @@ decision point is real if it doesn't pan out.
 
 ## Needs a decision from you
 
+- [ ] **`admin-list-signups` n8n webhook may not be returning an `email`
+      field at all, 2026-11-09 finding.** After fixing `admin.html`'s
+      CSV-export mapping bug, Chris still didn't see emails in the
+      export — pointing to the webhook's own response-shaping node
+      (right before its "Respond to Webhook" step) likely stripping
+      email out server-side, same pattern as the "Compare Password"
+      node investigation. Chris worked around it and got the Drive Lead
+      emails some other way to send today's email, but the underlying
+      gap is still open — worth checking that workflow's response node
+      and adding `email` (verify the real field name in the Data Table
+      first) if it's missing, so the CSV export reliably works going
+      forward without a manual workaround each time.
 - [ ] **No "email all drive leads" capability exists yet — building it now,
       but it needs n8n reachable to actually go live (see Urgent, the
       network-policy item).** Chris asked 2026-11-09 for a 10-days-to-
@@ -575,6 +580,25 @@ decision point is real if it doesn't pan out.
 
 ## Done recently
 
+- [x] **Drive Lead countdown email sent 2026-11-09** — 10 days to
+      launch / 9 days to The Last Drive, covering adding riders,
+      confirming arrangements, and claiming a #last-drive Discord
+      channel. Sent manually from Chris's personal Gmail (Bcc, ~20+
+      recipients) rather than through n8n, since n8n is still
+      unreachable from this sandbox. Along the way: fixed the
+      `admin.html` CSV export bug (Email/Region/SignupType/StagingTime
+      columns were silently blank), diagnosed that the password-reset
+      pipeline doesn't exist yet when Chris got locked out of `/admin`,
+      shipped a "Forgot password?" frontend (not yet backed by a real
+      n8n workflow — spec in
+      `audit/n8n-email-drive-leads-blueprint.md`), and walked through
+      n8n directly to find the real admin password (stored in an n8n
+      Data Table, `adminPass` field, table ID `qAuBlJlozGJbHzLb`,
+      checked via the "Compare Password" node in the "Admin - Verify
+      Password" workflow) so Chris could reset it himself without
+      waiting on the email pipeline.
+- [x] **GSC sitemap resubmitted 2026-11-09** — see Urgent above, still
+      confirming "Last read" actually advances.
 - [x] **Daily "11 days out" countdown launched 2026-11-08, now on day 2
       (2026-11-09).** New standing rule through GTA6 launch (Nov 19):
       one Editor's Desk + one Trevor's Take post every day, escalating
