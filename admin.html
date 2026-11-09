@@ -794,7 +794,9 @@ function loadStats() {
         return { id: s.id, fields: {
           Gamertag: s.gamertag, Platform: s.platform, IsOrganizer: s.isOrganizer,
           PlateStatus: s.plateStatus, SignupNumber: s.signupNumber, OwnedPlates: s.ownedPlates,
-          UtmSource: s.utmSource || 'direct', ReferredBy: s.referredBy || ''
+          UtmSource: s.utmSource || 'direct', ReferredBy: s.referredBy || '',
+          Email: s.email || '', Region: s.region || '', SignupType: s.signupType || '',
+          'Staging Time': s.stagingTime || ''
         } };
       });
       var leads   = real.filter(function(r) { return r.fields.IsOrganizer; }).length;
