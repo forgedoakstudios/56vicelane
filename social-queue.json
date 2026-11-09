@@ -392,7 +392,7 @@
     "image": "images/editor-portrait-3-grinding.png",
     "imageAlt": "From The Editor's Desk: 11 Days Out",
     "scheduledFor": "2026-11-08T22:30:02.736Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-trevors-take-11-days-out",
@@ -401,6 +401,6 @@
     "image": "images/trevor-portrait.png",
     "imageAlt": "Trevor's Take: 11 Days Left And I Can Feel Them Watching",
     "scheduledFor": "2026-11-08T22:30:02.763Z",
-    "posted": false
+    "posted": true
   }
 ]
