@@ -321,6 +321,32 @@
     </div>
     <button class="form-submit" onclick="adminLogin()">Enter Admin</button>
     <div class="msg" id="gate-msg" style="margin-top:10px;"></div>
+    <div style="margin-top:14px;">
+      <a href="#" onclick="toggleForgotPassword();return false;" style="font-size:.82rem;color:var(--smoke);">Forgot password?</a>
+    </div>
+    <div id="forgot-pass-box" style="display:none;margin-top:14px;text-align:left;border-top:1px solid var(--edge);padding-top:14px;">
+      <p style="font-size:.82rem;color:var(--smoke);margin-bottom:10px;">A reset link will be emailed to the registered admin address.</p>
+      <button class="form-submit" style="background:var(--edge);color:var(--bone);" onclick="requestPasswordReset()">Send Reset Link</button>
+      <div class="msg" id="forgot-pass-msg" style="margin-top:10px;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- RESET PASSWORD (shown only when the page loads with ?reset=TOKEN) -->
+<div id="reset-pass-wrap" style="display:none;">
+  <div class="admin-gate">
+    <div class="admin-gate-title">🔑 Set New Password</div>
+    <p class="admin-gate-sub">56ViceLane · Forged Oak Studios</p>
+    <div class="form-field" style="margin-bottom:14px;text-align:left;">
+      <label class="form-label">New Password</label>
+      <input type="password" class="form-input" id="reset-new-pass" placeholder="New password" autocomplete="off">
+    </div>
+    <div class="form-field" style="margin-bottom:18px;text-align:left;">
+      <label class="form-label">Confirm New Password</label>
+      <input type="password" class="form-input" id="reset-new-pass-confirm" placeholder="Confirm new password" autocomplete="off" onkeypress="if(event.key==='Enter')submitPasswordReset()">
+    </div>
+    <button class="form-submit" onclick="submitPasswordReset()">Set New Password</button>
+    <div class="msg" id="reset-pass-msg" style="margin-top:10px;"></div>
   </div>
 </div>
 
@@ -688,6 +714,8 @@ var ADMIN_VERIFY_URL = 'https://n8n.56vicelane.com/webhook/admin-verify-password
 var N8N_ADMIN_LIST_SIGNUPS_URL = 'https://n8n.56vicelane.com/webhook/admin-list-signups';
 var N8N_ADMIN_GIFT_PLATES_URL  = 'https://n8n.56vicelane.com/webhook/admin-gift-plates-v2';
 var N8N_ADMIN_LIST_CONTACTS_URL = 'https://n8n.56vicelane.com/webhook/admin-list-contacts';
+var ADMIN_REQUEST_RESET_URL = 'https://n8n.56vicelane.com/webhook/admin-request-password-reset';
+var ADMIN_RESET_PASSWORD_URL = 'https://n8n.56vicelane.com/webhook/admin-reset-password';
 var GTACON_URL = 'https://gtacon-worker.forgedoakstudios.workers.dev/gtacon-update';
 
 var allSignups  = [];
@@ -777,6 +805,91 @@ function adminLogout() {
   document.getElementById('gate-pass').value = '';
   document.getElementById('gate-msg').className = 'msg';
 }
+
+// ── FORGOT / RESET PASSWORD ──────────────────────────────────
+function toggleForgotPassword() {
+  var box = document.getElementById('forgot-pass-box');
+  box.style.display = (box.style.display === 'none') ? 'block' : 'none';
+}
+
+function requestPasswordReset() {
+  var msg = document.getElementById('forgot-pass-msg');
+  msg.textContent = 'Sending...';
+  msg.className = 'msg show info';
+
+  fetch(ADMIN_REQUEST_RESET_URL, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({gamertag: 'Musashi13'})
+  })
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (!d.success) {
+        msg.textContent = 'Could not send reset link. Try again.';
+        msg.className = 'msg show error';
+        return;
+      }
+      msg.textContent = '✅ Reset link sent — check the registered admin inbox.';
+      msg.className = 'msg show success';
+    })
+    .catch(function() {
+      msg.textContent = 'Connection error. Try again.';
+      msg.className = 'msg show error';
+    });
+}
+
+function submitPasswordReset() {
+  var token = new URLSearchParams(window.location.search).get('reset');
+  var newPass = (document.getElementById('reset-new-pass').value || '').trim();
+  var confirmPass = (document.getElementById('reset-new-pass-confirm').value || '').trim();
+  var msg = document.getElementById('reset-pass-msg');
+
+  if (!newPass || newPass.length < 8) {
+    msg.textContent = 'Password must be at least 8 characters.';
+    msg.className = 'msg show error';
+    return;
+  }
+  if (newPass !== confirmPass) {
+    msg.textContent = 'Passwords do not match.';
+    msg.className = 'msg show error';
+    return;
+  }
+
+  msg.textContent = 'Updating...';
+  msg.className = 'msg show info';
+
+  fetch(ADMIN_RESET_PASSWORD_URL, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({gamertag: 'Musashi13', token: token, newPassword: newPass})
+  })
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (!d.success) {
+        msg.textContent = d.error || 'Reset link invalid or expired. Request a new one.';
+        msg.className = 'msg show error';
+        return;
+      }
+      msg.textContent = '✅ Password updated — you can log in now.';
+      msg.className = 'msg show success';
+      setTimeout(function() {
+        window.location.href = '/admin';
+      }, 1800);
+    })
+    .catch(function() {
+      msg.textContent = 'Connection error. Try again.';
+      msg.className = 'msg show error';
+    });
+}
+
+// If the page loaded with ?reset=TOKEN (from the emailed reset link),
+// show the "set new password" form instead of the normal login gate.
+(function checkForResetToken() {
+  var token = new URLSearchParams(window.location.search).get('reset');
+  if (!token) return;
+  document.getElementById('admin-gate-wrap').style.display = 'none';
+  document.getElementById('reset-pass-wrap').style.display = 'block';
+})();
 
 // ── TOGGLE SECTIONS ────────────────────────────────────────
 function toggleSection(id) {
