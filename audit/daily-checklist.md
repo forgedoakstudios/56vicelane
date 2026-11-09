@@ -1,6 +1,6 @@
 # 56ViceLane — Daily Checklist
 
-**Generated:** 2026-11-05 (Central Time)
+**Generated:** 2026-11-09 (Central Time)
 **How this works:** one list, updated daily. Check things off yourself by
 editing this file (change `- [ ]` to `- [x]`), or tell me and I'll check
 them off. Each day I regenerate this — anything still unchecked carries
@@ -98,6 +98,23 @@ decision point is real if it doesn't pan out.
       that's back up) rather than continued manual re-dispatching every
       cycle. No code-level fix implemented yet; flagging again for a
       decision on whether to invest in one.
+- [ ] **Root cause of the n8n unreachability finally identified, 2026-11-09:
+      it's a session-level network policy block, not n8n itself being
+      down.** Checked the proxy's own diagnostic endpoint
+      (`$HTTPS_PROXY/__agentproxy/status`) directly instead of just
+      curling n8n again — it shows `n8n.56vicelane.com:443` getting a
+      403 on CONNECT with reason "policy denial or upstream failure,"
+      which per this environment's own proxy docs means the host simply
+      isn't on this session's allowed-egress list. That's a different
+      problem than "n8n is broken" — it explains why Chris and n8n's own
+      automations reach it fine (confirmed via his Gmail showing past
+      successful email activity) while this session has never been able
+      to reach it at all. **Fix is on Chris's end: update this Claude
+      Code environment's network policy to allow `n8n.56vicelane.com`,**
+      not a retry or code-level workaround. Until that's done, every
+      n8n-dependent step (images, Discord posts, admin data pulls, any
+      new workflow build) stays blocked from inside a session, same as
+      the item below.
 - [ ] **n8n's MCP token has now been down 74+ days running (2026-08-19
       through 2026-11-01, re-tested and reconfirmed broken again today
       via fresh curl to `n8n.56vicelane.com/webhook/article-images` —
@@ -178,6 +195,24 @@ decision point is real if it doesn't pan out.
 
 ## Needs a decision from you
 
+- [ ] **No "email all drive leads" capability exists yet — building it now,
+      but it needs n8n reachable to actually go live (see Urgent, the
+      network-policy item).** Chris asked 2026-11-09 for a 10-days-to-
+      launch / 9-days-to-Last-Drive email to all Drive Leads (add riders,
+      confirm arrangements, claim a Discord channel under #last-drive to
+      coordinate). No existing pipeline sends this — `admin.html` has an
+      Email column in its CSV export and an `admin-list-contacts` n8n
+      webhook, but nothing wired to actually send mail to that list.
+      Drafted the email copy already (ready to use). Building an
+      importable n8n workflow (Gmail SMTP node, per the SMTP credential
+      Chris set up per `NEXT-SESSION.md`) now — but it can't be tested or
+      activated until n8n is reachable again, so this needs Chris to
+      either send today's email manually in the meantime, or fix the
+      network policy first.
+- [ ] **1 new digest-tier article drafted 2026-11-08, needs your go-ahead:**
+      "GTA6 Physical Copies: Code-In-Box, No Disc" (score 5, Polygon,
+      corroborated across Kotaku/Men's Journal). Julian Ashworth byline,
+      `source-status: reported`. Held on this dev branch, not shipped.
 - [ ] **Breaking article published 2026-11-05, needs no approval (already
       live) but flagging the social-pipeline gap:** "Take-Two CEO Suggests
       Rockstar Avoided a Cyberpunk 2077-Style Launch With GTA6's Delays"
@@ -540,6 +575,39 @@ decision point is real if it doesn't pan out.
 
 ## Done recently
 
+- [x] **Daily "11 days out" countdown launched 2026-11-08, now on day 2
+      (2026-11-09).** New standing rule through GTA6 launch (Nov 19):
+      one Editor's Desk + one Trevor's Take post every day, escalating
+      tone (Editor's heartburn bit, Trevor's "undercover op winding
+      down" bit) — replaces the normal weekly cadence until launch. Also
+      fixed a real bug while setting this up: the `/editor` and `/trevor`
+      archive pages have been silently showing "Nothing archived yet"
+      since they launched, because `build-articles.js` never captured
+      the `<meta name="column">` tag the archives filter on. Fixed the
+      build script and backfilled all 5 pre-existing Editor's Desk/
+      Trevor's Take articles — both archives now populate correctly,
+      most-recent-first. Set up a daily scheduled Routine to keep this
+      running automatically through launch day without needing a manual
+      trigger each day. A scheduled Routine firing confirmed this is
+      running as day 2 ("10 days out") shipped clean today.
+- [x] **Wall of Honor split into two 4-column tiers, 2026-11-08.** First
+      100 signups (founder plates) now render in their own labeled
+      section; everyone after #100 renders in a separate "Participants"
+      section below. Verified with mocked Playwright data (100/20 split
+      exactly right) before shipping. Held on a branch pending approval
+      initially, then pushed to `main` once Chris confirmed.
+- [x] **New `/videos` page shipped, 2026-11-08.** Curated GTA video
+      rotation (creator embeds, not re-hosted clips — avoids any DMCA/
+      rights risk) with channel attribution; 2 SpeirsTheAmazingHD videos
+      live, more to come as Chris sends links.
+- [x] **Last Drive milestone + Drive Lead comms shipped, 2026-11-08.**
+      166 drivers / 100+ Discord members milestone banner added to
+      `lastdrive.html`, plus new Drive Lead ↔ participant communication
+      instructions pointing to the `#last-drive` Discord channel.
+- [x] **Diagnosed the real cause of this session's n8n unreachability,
+      2026-11-09** (see Urgent — it's a network policy block on this
+      Claude Code environment, not n8n being down; confirmed via the
+      proxy's own status endpoint rather than just re-curling n8n).
 - [x] **2026-11-04 evening through 2026-11-05 midday: 1 breaking article
       published, 2 items correctly skipped, 3 more cron stalls, an 8th
       `drafted-links.json` sync-drift caught and fixed.** Published
