@@ -410,7 +410,7 @@
     "image": "images/editor-portrait-3-grinding.png",
     "imageAlt": "From The Editor's Desk: 10 Days Out",
     "scheduledFor": "2026-11-09T12:19:03.524Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-trevors-take-10-days-out",
@@ -419,6 +419,6 @@
     "image": "images/trevor-portrait.png",
     "imageAlt": "Trevor's Take: 10 Days And I've Started Writing Things Down",
     "scheduledFor": "2026-11-09T12:19:03.554Z",
-    "posted": false
+    "posted": true
   }
 ]
