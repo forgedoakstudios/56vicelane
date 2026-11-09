@@ -127,10 +127,10 @@ password stored anywhere (correct — it should never be in the repo).
    store node, whatever's already the pattern elsewhere in this n8n
    instance.
 4. Send Email node (same Gmail SMTP credential as the Drive Lead
-   blueprint above) to **your own fixed admin email** (hardcode it in
-   this workflow — this is single-admin, don't take an email address
-   as input from the request, or anyone could trigger a reset email
-   to an address they control) with a link:
+   blueprint above) to **`forgedoakstudios@gmail.com`** — hardcode this
+   exact address in the node itself, don't take an email as input from
+   the request, or anyone could trigger a reset email to an address
+   they control. With a link:
    `https://56vicelane.com/admin?reset={{token}}`
 5. Respond to Webhook: `{"success": true}`
 
