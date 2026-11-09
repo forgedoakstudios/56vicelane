@@ -33,6 +33,32 @@
   },
   {
     "emoji": "🗞️",
+    "title": "From The Editor's Desk: 10 Days Out",
+    "slug": "editors-desk-10-days-out",
+    "url": "/articles/editors-desk-10-days-out",
+    "headline": "From The Editor's Desk: 10 Days Out",
+    "category": "Community",
+    "date": "2026-11-09",
+    "excerpt": "Ten days until GTA6 launches. The Editor's found a second drawer for the antacids. A countdown update on the site, the news, and the state of his stomach.",
+    "image": "editor-portrait-3-grinding.png",
+    "column": "editor",
+    "permanent": false
+  },
+  {
+    "emoji": "🗣️",
+    "title": "Trevor's Take: 10 Days And I've Started Writing Things Down",
+    "slug": "trevors-take-10-days-out",
+    "url": "/articles/trevors-take-10-days-out",
+    "headline": "Trevor's Take: 10 Days And I've Started Writing Things Down",
+    "category": "Community",
+    "date": "2026-11-09",
+    "excerpt": "Ten days until GTA6 and Trevor has started keeping a list. Not of good things. Nobody asked him to be this way about it, and yet.",
+    "image": "trevor-portrait.png",
+    "column": "trevor",
+    "permanent": false
+  },
+  {
+    "emoji": "🗞️",
     "title": "From The Editor's Desk: 11 Days Out",
     "slug": "editors-desk-11-days-out",
     "url": "/articles/editors-desk-11-days-out",

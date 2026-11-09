@@ -402,5 +402,23 @@
     "imageAlt": "Trevor's Take: 11 Days Left And I Can Feel Them Watching",
     "scheduledFor": "2026-11-08T22:30:02.763Z",
     "posted": true
+  },
+  {
+    "id": "auto-publish-editors-desk-10-days-out",
+    "text": "Ten days until GTA6. The Editor's found a second drawer for the antacids. Site update, news recap, and the state of his stomach.",
+    "url": "https://56vicelane.com/articles/editors-desk-10-days-out?utm_source=bluesky&utm_medium=social&utm_campaign=article_blast",
+    "image": "images/editor-portrait-3-grinding.png",
+    "imageAlt": "From The Editor's Desk: 10 Days Out",
+    "scheduledFor": "2026-11-09T12:19:03.524Z",
+    "posted": false
+  },
+  {
+    "id": "auto-publish-trevors-take-10-days-out",
+    "text": "Ten days until GTA6. Trevor has started keeping a list. Not of good things.",
+    "url": "https://56vicelane.com/articles/trevors-take-10-days-out?utm_source=bluesky&utm_medium=social&utm_campaign=article_blast",
+    "image": "images/trevor-portrait.png",
+    "imageAlt": "Trevor's Take: 10 Days And I've Started Writing Things Down",
+    "scheduledFor": "2026-11-09T12:19:03.554Z",
+    "posted": false
   }
 ]
