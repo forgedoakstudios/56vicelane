@@ -550,7 +550,7 @@
 <div style="max-width:760px;margin:0 auto 32px;padding:0 24px;">
   <div style="background:rgba(0,200,117,.08);border:1px solid rgba(0,200,117,.3);border-radius:10px;padding:22px 24px;text-align:center;">
     <div style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:10px;">🎉 Milestone</div>
-    <div style="font-size:1.05rem;font-weight:600;margin-bottom:8px;">166 drivers registered. 100+ of you in the Discord.</div>
+    <div style="font-size:1.05rem;font-weight:600;margin-bottom:8px;"><span id="ld-milestone-drivers">166</span> drivers registered. <span id="ld-milestone-discord">100+</span> of you in the Discord.</div>
     <div style="font-size:.92rem;color:var(--smoke);margin-bottom:4px;">Thank you — every single one of you made this real. We almost missed celebrating it with everything else going on, and that's on us, not you.</div>
     <div style="font-size:.92rem;color:var(--smoke);">Starting tomorrow, we're on the <strong style="color:var(--bone);">10-day countdown to GTA6's launch</strong>, November 19. The Last Drive happens the night before — November 18. Lock in your slot, add your crew, and let's finish this right.</div>
   </div>
@@ -1138,6 +1138,33 @@ function fetchMembersN8n() {
     .catch(function() { return []; });
   return _membersCachePromise;
 }
+
+/* MILESTONE BANNER — live counts, no manual editing needed. Driver count
+   reuses the same members cache every other signup check uses; Discord
+   count comes from Discord's own public (no-auth) invite lookup, which
+   returns an approximate online+total count for any invite code. Either
+   fetch failing just leaves the last-committed number on the page. */
+function updateMilestoneBanner() {
+  fetchMembersN8n().then(function(members) {
+    var count = members.filter(function(m) {
+      var g = (m.gamertag || '').toLowerCase().trim();
+      return g && g !== 'test' && g !== 'trst';
+    }).length;
+    var el = document.getElementById('ld-milestone-drivers');
+    if (el && count > 0) el.textContent = count;
+  });
+
+  fetch('https://discord.com/api/v10/invites/ewdRcjsbg5?with_counts=true')
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      var el = document.getElementById('ld-milestone-discord');
+      if (el && d && typeof d.approximate_member_count === 'number' && d.approximate_member_count > 0) {
+        el.textContent = d.approximate_member_count;
+      }
+    })
+    .catch(function() { /* keep last-known value on screen */ });
+}
+updateMilestoneBanner();
 
 function isFirstSignup(platform, region, slot) {
   return fetchMembersN8n().then(function(members) {
