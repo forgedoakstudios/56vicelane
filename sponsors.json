@@ -12,9 +12,9 @@
     "id": "gfuel-miami-nights",
     "name": "G FUEL Miami Nights 2.0",
     "tagline": "Vice City-flavored energy — Strawberry Colada, zero sugar, 140mg caffeine",
-    "image": null,
+    "image": "/images/gear/gfuel-miami-nights-tub.jpg",
     "url": "https://www.awin1.com/cread.php?awinmid=112292&awinaffid=3009641&ued=https%3A%2F%2Fgfuel.com%2Fproducts%2Fmiami-nights-2-0",
     "cta": "Check Price",
-    "active": false
+    "active": true
   }
 ]
