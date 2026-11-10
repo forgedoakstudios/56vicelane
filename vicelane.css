@@ -64,14 +64,14 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
-  font-size: 18px; /* base size (older-reader +2px pass reverted 1px net 2026-07-27 — 20px looked zoomed in, settled on 18px) — scales every rem-sized element site-wide */
+  font-size: 22px; /* bumped from 18px 2026-11-10 — GTA6 launch-week vibrancy pass (Chris's call) — scales every rem-sized element site-wide */
 }
 
 body {
   background: var(--pitch);
   color: var(--bone);
   font-family: var(--font-body);
-  font-size: 18px;
+  font-size: 22px;
   line-height: var(--line);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -425,14 +425,14 @@ footer {
 
 h1 {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 6vw, 3rem);
+  font-size: clamp(calc(1.8rem + 4px), 6vw, calc(3rem + 4px));
   line-height: 1.1;
   text-transform: uppercase;
 }
 
 h2 {
   font-family: var(--font-display);
-  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-size: clamp(calc(1.2rem + 4px), 3vw, calc(1.6rem + 4px));
   line-height: 1.2;
   text-transform: uppercase;
   color: var(--bone);
@@ -440,7 +440,7 @@ h2 {
 
 h3 {
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: calc(1.1rem + 4px);
   text-transform: uppercase;
   color: var(--bone);
 }
