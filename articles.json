@@ -45,18 +45,6 @@
     "permanent": false
   },
   {
-    "emoji": "💰",
-    "title": "Take-Two: GTA6 Could Bring In $3.5 Billion At Launch",
-    "slug": "gta6-take-two-q2-fy2027-earnings-3-5-billion",
-    "url": "/articles/gta6-take-two-q2-fy2027-earnings-3-5-billion",
-    "headline": "Take-Two: GTA6 Could Bring In $3.5 Billion At Launch, Pre-Orders Tracking Well Above Expectations",
-    "category": "News",
-    "date": "2026-11-10",
-    "excerpt": "Take-Two's Q2 FY2027 earnings call, 10 days before GTA6 launches: the company says the game could bring in as much as $3.5 billion during the launch period, and pre-orders are reportedly tracking well above expectations.",
-    "image": "gta6-take-two-q2-fy2027-earnings-3-5-billion-hero.jpg",
-    "permanent": false
-  },
-  {
     "emoji": "🗣️",
     "title": "Trevor's Take: 9 Days And The Number Danny Showed Me",
     "slug": "trevors-take-9-days-out",
@@ -67,6 +55,18 @@
     "excerpt": "Nine days until GTA6. Danny showed Trevor a number with nine figures in it and Trevor has not been the same since. The notebook grows.",
     "image": "trevor-portrait.png",
     "column": "trevor",
+    "permanent": false
+  },
+  {
+    "emoji": "💰",
+    "title": "Take-Two: GTA6 Could Bring In $3.5 Billion At Launch",
+    "slug": "gta6-take-two-q2-fy2027-earnings-3-5-billion",
+    "url": "/articles/gta6-take-two-q2-fy2027-earnings-3-5-billion",
+    "headline": "Take-Two: GTA6 Could Bring In $3.5 Billion At Launch, Pre-Orders Tracking Well Above Expectations",
+    "category": "News",
+    "date": "2026-11-10",
+    "excerpt": "Take-Two's Q2 FY2027 earnings call, 10 days before GTA6 launches: the company says the game could bring in as much as $3.5 billion during the launch period, and pre-orders are reportedly tracking well above expectations.",
+    "image": "gta6-take-two-q2-fy2027-earnings-3-5-billion-hero.jpg",
     "permanent": false
   },
   {

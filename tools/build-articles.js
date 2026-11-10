@@ -1,8 +1,25 @@
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 
 const ARTICLES_DIR = './articles';
 const OUTPUT_FILE = './articles.json';
+
+// git's "when was this file first added" timestamp survives checkouts/pulls
+// (unlike fs mtime, which git checkout resets to the checkout moment for
+// every touched file) and survives later sitewide edits that re-touch a
+// file without changing its actual publish order. Used only as a same-date
+// tiebreaker below -- falls back to 0 (no effect on sort) if git isn't
+// available or the file isn't tracked yet.
+function gitAddedTime(filePath) {
+  try {
+    const out = execSync(`git log --diff-filter=A --format=%ct -- "${filePath}"`, { encoding: 'utf8' }).trim();
+    const lines = out.split('\n').filter(Boolean);
+    return lines.length ? parseInt(lines[lines.length - 1], 10) : 0;
+  } catch (e) {
+    return 0;
+  }
+}
 
 // Load existing articles.json to preserve permanent entries
 let existing = [];
@@ -126,13 +143,23 @@ const files = fs.readdirSync(ARTICLES_DIR)
       excerpt,
       image: imageFile,
       ...(column ? { column } : {}),
-      permanent: false
+      permanent: false,
+      _addedAt: gitAddedTime(filePath)
     };
   })
   // Filter out any that failed to get a title
   .filter(a => a.title && a.title.length > 0)
-  // Sort newest first
-  .sort((a, b) => new Date(b.date) - new Date(a.date));
+  // Sort newest first. Same-day articles (e.g. the daily Editor's Desk +
+  // Trevor's Take pair) used to tie-break on readdir's alphabetical file
+  // order, which could silently drop one of a same-day pair out of
+  // "latest 2" slots on the homepage (e.g. "editors-desk-..." sorting
+  // ahead of "trevors-take-..." purely alphabetically despite both
+  // publishing in the same commit) -- break same-date ties by git's
+  // "file first added" commit timestamp instead, which reflects true
+  // publish order and survives checkouts/pulls and later sitewide edits
+  // (unlike fs mtime, which git checkout resets on every touched file).
+  .sort((a, b) => (new Date(b.date) - new Date(a.date)) || (b._addedAt - a._addedAt))
+  .map(({ _addedAt, ...rest }) => rest);
 
 // Permanent entries pass through untouched except a missing url
 permanent.forEach(p => { if (!p.url && p.slug) p.url = '/articles/' + p.slug; });
