@@ -290,6 +290,21 @@ saved for social?**
 
 A: "Both."
 
+**Sponsor placement (standing rule, 2026-11-10):** when a current active
+sponsor (see `/sponsors.json`) genuinely fits the article's topic — e.g.
+a headset/audio product in a hardware or gear-adjacent article, a drink
+in a late-night/marathon-session piece — drop in a `.sponsor-box`
+callout (CSS pattern defined in
+`articles/gta6-best-gaming-headsets-buyers-guide.html`, copy that block
+verbatim rather than inventing new markup). Pull name/image/tagline/url
+straight from `/sponsors.json` — never hardcode a sponsor that isn't
+listed there as `active: true`. This is a natural, occasional placement
+for genuinely relevant articles, not something to force into every post
+— most articles won't have one, and that's fine. The sitewide
+`sponsor-banner.js` widget (small bottom-left card, present on every
+page) already covers general-awareness exposure, so this inline box is
+specifically for topical fit, not frequency.
+
 **Q: Scannable subheadings/sections, or flowing narrative prose?**
 
 A: "Yes." (to subheadings)

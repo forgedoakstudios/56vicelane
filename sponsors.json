@@ -1,0 +1,20 @@
+[
+  {
+    "id": "earfun-wave-pro-x",
+    "name": "EarFun Wave Pro X",
+    "tagline": "Red Dot Award 2026 winner — adaptive ANC, 90hr battery, Bluetooth 6.0 multipoint",
+    "image": "/images/gear/earfun-wave-pro-x-1.jpg",
+    "url": "https://www.awin1.com/cread.php?awinmid=61233&awinaffid=3009641&ued=https%3A%2F%2Fwww.myearfun.com%2F",
+    "cta": "Check Price",
+    "active": true
+  },
+  {
+    "id": "gfuel-miami-nights",
+    "name": "G FUEL Miami Nights 2.0",
+    "tagline": "Vice City-flavored energy — Strawberry Colada, zero sugar, 140mg caffeine",
+    "image": null,
+    "url": "https://www.awin1.com/cread.php?awinmid=112292&awinaffid=3009641&ued=https%3A%2F%2Fgfuel.com%2Fproducts%2Fmiami-nights-2-0",
+    "cta": "Check Price",
+    "active": false
+  }
+]

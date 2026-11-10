@@ -162,6 +162,19 @@
 .guide-bar-label{width:170px;flex:0 0 170px;font-family:var(--font-label);font-weight:700;font-size:.85rem;color:var(--bone);}
 .guide-bar-track{flex:1;background:var(--edge);border-radius:20px;height:22px;overflow:hidden;}
 .guide-bar-fill{height:100%;border-radius:20px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;color:#fff;font-family:var(--font-label);font-weight:800;font-size:.75rem;}
+
+/* SPONSOR BOX — reusable "Recommended Gear" callout. Standard pattern
+   for any article, not specific to this guide. See sponsors.json for
+   the current roster; pull name/image/tagline/url from there when
+   adding one to a new article. */
+.sponsor-box{display:flex;gap:16px;align-items:center;background:var(--asphalt);border:1px solid var(--edge);border-left:4px solid var(--cyan);border-radius:8px;padding:18px 20px;margin:32px 0;}
+.sponsor-box-label{font-family:var(--font-label);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--cyan);margin-bottom:6px;}
+.sponsor-box-img{width:64px;height:64px;border-radius:8px;object-fit:cover;flex-shrink:0;}
+.sponsor-box-text{flex:1;min-width:0;}
+.sponsor-box-name{font-family:var(--font-display);font-weight:700;font-size:1.05rem;color:var(--bone);}
+.sponsor-box-tagline{font-size:.88rem;color:var(--smoke);margin-top:2px;line-height:1.4;}
+.sponsor-box-cta{flex-shrink:0;display:inline-block;padding:9px 18px;border-radius:6px;background:var(--amber);color:#000;font-family:var(--font-label);font-weight:800;font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;text-decoration:none;white-space:nowrap;}
+@media(max-width:600px){.sponsor-box{flex-wrap:wrap;}.sponsor-box-cta{width:100%;text-align:center;}}
 </style>
 </head>
 <body>
@@ -330,6 +343,18 @@
       <div class="guide-bar-row"><div class="guide-bar-label">Arctis Nova Pro</div><div class="guide-bar-track"><div class="guide-bar-fill" style="width:94%;background:var(--cyan);">4.7</div></div></div>
       <div class="guide-bar-row"><div class="guide-bar-label">Xbox Wireless</div><div class="guide-bar-track"><div class="guide-bar-fill" style="width:88%;background:var(--green);">4.4</div></div></div>
       <div class="guide-bar-row"><div class="guide-bar-label">HyperX Cloud Alpha</div><div class="guide-bar-track"><div class="guide-bar-fill" style="width:94%;background:var(--bone);">4.7</div></div></div>
+    </div>
+
+    <div class="sponsor-box">
+      <div>
+        <img class="sponsor-box-img" src="/images/gear/earfun-wave-pro-x-1.jpg" alt="EarFun Wave Pro X">
+      </div>
+      <div class="sponsor-box-text">
+        <div class="sponsor-box-label">🛒 Recommended Gear</div>
+        <div class="sponsor-box-name">EarFun Wave Pro X</div>
+        <div class="sponsor-box-tagline">Just landed on our Gear page — Red Dot Award 2026 winner, adaptive ANC, 90-hour battery, and Bluetooth 6.0 multipoint for switching between console and phone mid-Discord-call.</div>
+      </div>
+      <a class="sponsor-box-cta" href="https://www.awin1.com/cread.php?awinmid=61233&awinaffid=3009641&ued=https%3A%2F%2Fwww.myearfun.com%2F" target="_blank" rel="noopener sponsored">Check Price →</a>
     </div>
 
     <h2 class="bottom-line-header" style="font-family:var(--font-display);font-size:1.6rem;color:var(--bone);margin-top:32px;">The Bottom Line</h2>
