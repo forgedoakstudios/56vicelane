@@ -429,5 +429,23 @@
     "imageAlt": "Take-Two: GTA6 Could Bring In $3.5 Billion At Launch",
     "scheduledFor": "2026-11-10T00:55:48.310Z",
     "posted": true
+  },
+  {
+    "id": "auto-publish-editors-desk-9-days-out",
+    "text": "Nine days until GTA6. Take-Two says $3.5 billion. The Editor says nothing, just breathes.",
+    "url": "https://56vicelane.com/articles/editors-desk-9-days-out?utm_source=bluesky&utm_medium=social&utm_campaign=article_blast",
+    "image": "images/editor-portrait-3-grinding.png",
+    "imageAlt": "From The Editor's Desk: 9 Days Out",
+    "scheduledFor": "2026-11-10T12:16:49.533Z",
+    "posted": false
+  },
+  {
+    "id": "auto-publish-trevors-take-9-days-out",
+    "text": "Nine days until GTA6. Danny showed Trevor a number with nine figures in it. The notebook grows.",
+    "url": "https://56vicelane.com/articles/trevors-take-9-days-out?utm_source=bluesky&utm_medium=social&utm_campaign=article_blast",
+    "image": "images/trevor-portrait.png",
+    "imageAlt": "Trevor's Take: 9 Days And The Number Danny Showed Me",
+    "scheduledFor": "2026-11-10T12:16:49.558Z",
+    "posted": false
   }
 ]
