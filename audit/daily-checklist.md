@@ -561,6 +561,46 @@ decision point is real if it doesn't pan out.
 
 ## Done recently
 
+- [x] **Growth signal, 2026-11-10: organic Twitch discovery.** Two
+      streamers (`stillgotgamegta6`, `killswitch8801`) found the site on
+      their own and scheduled "THE LAST DRIVE | One Final Night in Los
+      Santos!" streams on their own channels/calendars — not something
+      we pushed. Posted a shoutout to the main Discord channel
+      encouraging other streamers to add their channel at `/streams`.
+      Worth watching whether `/streams` page traffic/signups tick up off
+      the back of this.
+- [x] **Sitewide sponsor infrastructure shipped, 2026-11-10.**
+      `sponsors.json` (single config for current sponsors — EarFun Wave
+      Pro X active, G Fuel Miami Nights held inactive pending a product
+      image), `sponsor-banner.js` (small dismissible bottom-left card on
+      all 135 pages carrying the loyalty banner), and a reusable
+      `.sponsor-box` inline "Recommended Gear" callout pattern (live
+      example in the gaming headsets buyer's guide), documented in
+      `brand-voice.md` for future article drafts to use when genuinely
+      topical. EarFun Wave Pro X affiliate card also added to
+      `/gear.html`'s Headsets section.
+- [x] **Two homepage visual bugs fixed, 2026-11-10.** (1) The
+      Editor's/Trevor's "Latest News" thumbnails and the Last Drive
+      Preview video box were both using a fixed pixel height regardless
+      of container width, squashing them — switched to real aspect
+      ratios. (2) The Last Drive Preview's actual embedded video is
+      portrait-oriented but was forced into a 16:9 landscape box,
+      pillarboxing it down to a tiny sliver — now switches to a 9:16
+      portrait frame the moment playback starts, while the static
+      landscape thumbnail keeps its own un-cropped 4:3 aspect. Also
+      fixed the root cause of the "editor's head cut off" issue from
+      earlier today: `og:image:width/height` was hardcoded to 1200x675
+      on all 11 Editor's Desk/Trevor's Take articles, but those use
+      1024x1024 square portraits — Discord/social link previews were
+      force-cropping them into the wrong aspect ratio.
+- [x] **Two signup gamertag corrections, 2026-11-10.** A player signed
+      up with their Steam name ("SlayerAdi") instead of their real GTA
+      in-game name — found and corrected to "Aditya_-21" after two failed
+      lookup attempts by Steam name and Discord name alone (record only
+      turned up once Chris found the actual signup name himself via
+      `/admin`). Posted two public clarifications to Discord (main
+      channel + #announcements) explaining Social Club/in-game name vs.
+      Steam/platform username, since this is a recurring confusion point.
 - [x] **Last Drive instructions posted to #last-drive Discord channel,
       2026-11-10.** How to pick platform/region/time slot, join vs. lead
       a drive, and — per your specific request — a call-out that anyone
