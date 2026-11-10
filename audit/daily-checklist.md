@@ -1,6 +1,6 @@
 # 56ViceLane — Daily Checklist
 
-**Generated:** 2026-11-09 (Central Time)
+**Generated:** 2026-11-10 (Central Time)
 **How this works:** one list, updated daily. Check things off yourself by
 editing this file (change `- [ ]` to `- [x]`), or tell me and I'll check
 them off. Each day I regenerate this — anything still unchecked carries
@@ -98,49 +98,19 @@ decision point is real if it doesn't pan out.
       that's back up) rather than continued manual re-dispatching every
       cycle. No code-level fix implemented yet; flagging again for a
       decision on whether to invest in one.
-- [ ] **Root cause of the n8n unreachability finally identified, 2026-11-09:
-      it's a session-level network policy block, not n8n itself being
-      down.** Checked the proxy's own diagnostic endpoint
-      (`$HTTPS_PROXY/__agentproxy/status`) directly instead of just
-      curling n8n again — it shows `n8n.56vicelane.com:443` getting a
-      403 on CONNECT with reason "policy denial or upstream failure,"
-      which per this environment's own proxy docs means the host simply
-      isn't on this session's allowed-egress list. That's a different
-      problem than "n8n is broken" — it explains why Chris and n8n's own
-      automations reach it fine (confirmed via his Gmail showing past
-      successful email activity) while this session has never been able
-      to reach it at all. **Fix is on Chris's end: update this Claude
-      Code environment's network policy to allow `n8n.56vicelane.com`,**
-      not a retry or code-level workaround. Until that's done, every
-      n8n-dependent step (images, Discord posts, admin data pulls, any
-      new workflow build) stays blocked from inside a session, same as
-      the item below.
-- [ ] **n8n's MCP token has now been down 74+ days running (2026-08-19
-      through 2026-11-01, re-tested and reconfirmed broken again today
-      via fresh curl to `n8n.56vicelane.com/webhook/article-images` —
-      still exit 56/000, CONNECT rejected by the egress proxy), degrading
-      every breaking- and digest-article run whenever one actually
-      happens.** No breaking/digest article needed it during today's
-      resumption (nothing scored 7+ or 4-6 yet), but the outage itself is
-      confirmed still live. Every time an article does need it: image
-      generation failed (generic
-      `gta6-hero.png` placeholder used instead of real hero/inline art)
-      — the direct HTTP fallback to `n8n.56vicelane.com` is also blocked
-      by this sandbox's egress proxy (curl exit 56/000, CONNECT rejected
-      by the proxy's organization policy), so there's still no working
-      path. On breaking articles this also meant no Discord post and no
-      video-SLA alert — on 9/3's DualSense breaking article, direct
-      egress to `discord.com` itself was also tried as a fallback and
-      confirmed blocked the same way, so there is genuinely no reachable
-      path for that step right now, not just an n8n-specific gap.
-      Articles still published/drafted fine (text/build/dedup-state all
-      unaffected), just missing real images + Discord + SLA alert every
-      time. This is a clear, persistent pattern, not a fluke — worth
-      checking why the n8n MCP connection isn't staying authorized
-      between sessions; a longer-lived credential or different auth
-      approach is probably needed. Full detail:
-      `audit/2026-08-19-news-scan-articles-log.md` through
-      `audit/2026-09-03-news-scan-articles-log.md`.
+- [x] ~~**n8n unreachable from this session (network policy block).**~~ —
+      **RESOLVED 2026-11-10.** The n8n MCP tools worked cleanly all
+      session today: pulled live workflow details, ran executions,
+      created and archived two temporary utility workflows, and
+      successfully posted to Discord twice via n8n-relayed webhook calls
+      (the Video SLA alert, and the new Last Drive instructions post —
+      see Done recently). Whatever network-policy fix was needed on
+      Chris's end appears to have landed. Direct `curl` from this sandbox
+      straight to `discord.com` or `n8n.56vicelane.com` is still blocked
+      by the session's own egress proxy (confirmed again today) — but
+      routing through n8n as a relay works fine, which is the path every
+      routine already uses. Worth one more day of confirmation before
+      fully retiring this item, but treating it as fixed for now.
 - [ ] **Sitemap resubmitted 2026-11-09 — confirmed Success, 123 pages
       discovered.** "Last read" hadn't updated yet as of the resubmit
       screenshot (still showing the prior Nov 5 read), which is expected
@@ -188,6 +158,13 @@ decision point is real if it doesn't pan out.
 
 ## Needs a decision from you
 
+- [ ] **Affiliate sponsor links — just need the URLs/codes and placement
+      call, 2026-11-10.** You have real affiliate sponsor relationships
+      already (Amazon plus a few others) — this is wiring in existing
+      deals, not setting up a new program. Didn't have the actual
+      tracking links/codes on hand yet; send them over whenever and say
+      where you want them (gear/store pages only, or woven into article
+      bodies too) and I'll get them live same session.
 - [ ] **`admin-list-signups` n8n webhook may not be returning an `email`
       field at all, 2026-11-09 finding.** After fixing `admin.html`'s
       CSV-export mapping bug, Chris still didn't see emails in the
@@ -529,14 +506,18 @@ decision point is real if it doesn't pan out.
 - [ ] **AI video — Blotato's own video path is gone now that Blotato is
       cancelled; OpenArt testing (prompt notes in
       `audit/ai-video-prompt-notes.md`) is whatever's left to build on.**
-- [ ] **Video-SLA Discord alert needs a real fix — skipped twice now
-      (2026-08-14, 2026-08-18)** on breaking-article publishes. The only
-      currently-reachable path (re-triggering the article webhook with
-      substitute text) is the exact mechanism that caused the 8/14
-      duplicate/garbled-post incident. Needs a dedicated Discord-only
-      endpoint/node separate from the article-announcement path before
-      this can run automatically again — not something to keep silently
-      skipping.
+- [ ] **Video-SLA Discord alert mechanism improved 2026-11-10 but still
+      not a permanent fix.** Since n8n is reachable again (see Done
+      recently), stopped re-triggering the article-announcement webhook
+      for SLA pings (the 8/14 bug) and instead built a one-off temp n8n
+      workflow (manual trigger → HTTP POST straight to the Discord
+      webhook with the SLA text) each time, then archived it after use —
+      confirmed working cleanly on today's breaking article. This avoids
+      the duplicate-post bug entirely, but it's still a build-and-archive
+      pattern each time rather than one standing dedicated node. Worth
+      promoting to a permanent small workflow (just a webhook trigger →
+      Discord HTTP node) so this stops being rebuilt from scratch every
+      time a breaking article ships.
 - [ ] **Dell monitor swap — still drafted, needs your merge approval.**
       Unchanged, sitting on `claude/dell-monitor-swap`.
 - [ ] **More affiliate programs — Turtle Beach and Impact network still
@@ -580,6 +561,37 @@ decision point is real if it doesn't pan out.
 
 ## Done recently
 
+- [x] **Last Drive instructions posted to #last-drive Discord channel,
+      2026-11-10.** How to pick platform/region/time slot, join vs. lead
+      a drive, and — per your specific request — a call-out that anyone
+      joining a drive should add their Drive Leader as a friend on
+      their platform and message them directly about exact meeting
+      time/place. Posted via a temp n8n utility workflow (archived after
+      use) straight to the channel's own webhook, which you provided.
+- [x] **Daily Editor's Desk / Trevor's Take now also post a Discord
+      teaser each day, 2026-11-10 (your call).** Extended the
+      "56ViceLane Daily Countdown" Routine to POST both new posts to the
+      same `article-published` webhook already used for breaking news —
+      it formats as a short title+excerpt+link teaser in Discord (not
+      the full column), so readers click through to the site for the
+      rest. Reused the existing main webhook/channel rather than
+      standing up a separate one, per your call. Confirmed this doesn't
+      risk an accidental X/IG/FB post: verified via a real execution
+      that the Blotato leg of that same webhook still safely 403s
+      ("subscription canceled") every time — no actual cross-posting
+      risk.
+- [x] **Day 9 of the countdown shipped 2026-11-10** —
+      `editors-desk-9-days-out.html` / `trevors-take-9-days-out.html`,
+      both referencing the real Take-Two $3.5B earnings-call story.
+- [x] **Breaking article published 2026-11-10: "Take-Two: GTA6 Could
+      Bring In $3.5 Billion At Launch"** (PC Gamer/Eurogamer, Q2 FY2027
+      earnings call — Zelnick says preorders are tracking "well above
+      expectations" and the game will "set a new baseline"). Marcus
+      Webb byline, `source-status: reported`. Pushed to `main`. Image
+      generation hung past normal time and never completed — shipped
+      with the `gta6-hero.png` placeholder per the routine's own
+      fallback rule. Discord + video-SLA alert both sent successfully
+      (see n8n-reachability fix above); Bluesky queued.
 - [x] **Drive Lead countdown email sent 2026-11-09** — 10 days to
       launch / 9 days to The Last Drive, covering adding riders,
       confirming arrangements, and claiming a #last-drive Discord
