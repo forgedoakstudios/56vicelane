@@ -1036,5 +1036,17 @@
     "slug": "gta6-55-trophies-achievements-unconfirmed",
     "tier": "digest",
     "date": "2026-11-09"
+  },
+  {
+    "link": "https://www.pcgamer.com/games/grand-theft-auto/take-two-expects-to-make-as-much-as-usd3-5-billion-during-the-gta-6-launch-period/",
+    "slug": "gta6-take-two-q2-fy2027-earnings-3-5-billion",
+    "tier": "breaking",
+    "date": "2026-11-10"
+  },
+  {
+    "link": "https://www.eurogamer.net/gta-6-preorders-tracking-take-two-earnings-call",
+    "slug": "gta6-take-two-q2-fy2027-earnings-3-5-billion",
+    "tier": "skipped-duplicate-same-day-breaking",
+    "date": "2026-11-10"
   }
 ]
