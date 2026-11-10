@@ -204,5 +204,59 @@
     "imageAlt": "GTA6 Isn't Coming To PC Until 2027 — Here's Why A Gaming Laptop Is Still Worth It",
     "scheduledFor": "2026-08-08T13:39:00.125Z",
     "posted": true
+  },
+  {
+    "id": "auto-publish-gta6-rockstar-miami-music-festival-launch-celebration",
+    "text": "🟡 Reported: A last-minute live music festival featuring Travis Scott and Cardi B, reportedly tied to GTA6's launch celebration.",
+    "url": "https://56vicelane.com/articles/gta6-rockstar-miami-music-festival-launch-celebration",
+    "image": "images/gta6-rockstar-miami-music-festival-launch-celebration-hero.jpg",
+    "imageAlt": "Rockstar Is Throwing A Miami Music Festival With Travis Scott And Cardi B For GTA6's Launch",
+    "scheduledFor": "2026-11-10T16:12:56.536Z",
+    "posted": false
+  },
+  {
+    "id": "auto-publish-gta6-selfridges-varsity-jacket-2500-collab",
+    "text": "🟡 Reported: London's Selfridges has expanded its GTA6 takeover into a full retail collab, including a £2,500 varsity jacket.",
+    "url": "https://56vicelane.com/articles/gta6-selfridges-varsity-jacket-2500-collab",
+    "image": "images/gta6-selfridges-varsity-jacket-2500-collab-hero.jpg",
+    "imageAlt": "Selfridges' GTA6 Collab Includes A $2,500 Varsity Jacket",
+    "scheduledFor": "2026-11-10T16:12:56.571Z",
+    "posted": false
+  },
+  {
+    "id": "auto-publish-gta5-235-million-copies-sold-milestone",
+    "text": "🟡 Reported: GTA5's lifetime sales have reportedly climbed to almost 235 million copies, days before GTA6 launches.",
+    "url": "https://56vicelane.com/articles/gta5-235-million-copies-sold-milestone",
+    "image": "images/gta6-hero.png",
+    "imageAlt": "GTA5 Has Now Sold Almost 235 Million Copies",
+    "scheduledFor": "2026-11-10T16:12:56.604Z",
+    "posted": false
+  },
+  {
+    "id": "auto-publish-gta6-take-two-anti-piracy-ai-recomp-crackdown",
+    "text": "🟡 Reported: Take-Two is reportedly enhancing technical and legal defenses against AI-generated GTA6 'recomps' built from leaked assets.",
+    "url": "https://56vicelane.com/articles/gta6-take-two-anti-piracy-ai-recomp-crackdown",
+    "image": "images/gta6-hero.png",
+    "imageAlt": "Take-Two Is Cracking Down On AI-Generated GTA6 Recreations Before It Even Launches",
+    "scheduledFor": "2026-11-10T16:12:56.634Z",
+    "posted": false
+  },
+  {
+    "id": "auto-publish-gta6-zelnick-not-worried-ps5-jailbreak-modding",
+    "text": "🟡 Reported: Strauss Zelnick says Take-Two isn't worried about GTA6 players jailbreaking their consoles to mod the game.",
+    "url": "https://56vicelane.com/articles/gta6-zelnick-not-worried-ps5-jailbreak-modding",
+    "image": "images/gta6-hero.png",
+    "imageAlt": "Take-Two's CEO Isn't Worried About Players Jailbreaking PS5s To Mod GTA6",
+    "scheduledFor": "2026-11-10T16:12:56.659Z",
+    "posted": false
+  },
+  {
+    "id": "auto-publish-gta6-launch-files-hint-online-multiplayer",
+    "text": "🟡 Reported: A PlayStation Store sleuth reportedly found GTA6 launch files hinting at online multiplayer infrastructure.",
+    "url": "https://56vicelane.com/articles/gta6-launch-files-hint-online-multiplayer",
+    "image": "images/gta6-hero.png",
+    "imageAlt": "GTA6 Launch Files Already Hint At Online Multiplayer, Report Says",
+    "scheduledFor": "2026-11-10T16:13:39.393Z",
+    "posted": false
   }
 ]
