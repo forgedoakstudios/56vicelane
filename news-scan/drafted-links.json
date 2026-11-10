@@ -1038,15 +1038,69 @@
     "date": "2026-11-09"
   },
   {
-    "link": "https://www.pcgamer.com/games/grand-theft-auto/take-two-expects-to-make-as-much-as-usd3-5-billion-during-the-gta-6-launch-period/",
-    "slug": "gta6-take-two-q2-fy2027-earnings-3-5-billion",
-    "tier": "breaking",
+    "link": "https://www.eurogamer.net/rockstar-gta-6-miami-music-festival",
+    "slug": "gta6-rockstar-miami-music-festival-launch-celebration",
+    "tier": "digest",
     "date": "2026-11-10"
   },
   {
-    "link": "https://www.eurogamer.net/gta-6-preorders-tracking-take-two-earnings-call",
+    "link": "https://www.pcgamer.com/games/grand-theft-auto/rockstar-is-putting-on-a-last-minute-live-music-festival-featuring-travis-scott-and-cardi-b-to-celebrate-gta-6s-launch/",
+    "slug": "gta6-rockstar-miami-music-festival-launch-celebration",
+    "tier": "skipped-duplicate-same-day-digest",
+    "date": "2026-11-10"
+  },
+  {
+    "link": "https://www.eurogamer.net/selfridges-gta6-collab-takeover",
+    "slug": "gta6-selfridges-varsity-jacket-2500-collab",
+    "tier": "digest",
+    "date": "2026-11-10"
+  },
+  {
+    "link": "https://www.gamesradar.com/games/grand-theft-auto/gta-6-launch-files-already-hint-at-online-multiplayer-playstation-store-sleuth-reports-leading-to-hopes-we-wont-be-waiting-for-a-gta-online-follow-up-for-long/",
+    "slug": "gta6-launch-files-hint-online-multiplayer",
+    "tier": "digest",
+    "date": "2026-11-10"
+  },
+  {
+    "link": "https://insider-gaming.com/gta-6-presales-far-in-excess-take-two-expectations/",
     "slug": "gta6-take-two-q2-fy2027-earnings-3-5-billion",
-    "tier": "skipped-duplicate-same-day-breaking",
+    "tier": "skipped-duplicate-already-breaking",
+    "date": "2026-11-10"
+  },
+  {
+    "link": "https://insider-gaming.com/gta-5-sales-reach-235-million-copies-since-launch/",
+    "slug": "gta5-235-million-copies-sold-milestone",
+    "tier": "digest",
+    "date": "2026-11-10"
+  },
+  {
+    "link": "https://www.ign.com/articles/take-two-enhancing-technical-defenses-and-legal-activities-to-combat-gta-6-ai-reverse-engineering-threat",
+    "slug": "gta6-take-two-anti-piracy-ai-recomp-crackdown",
+    "tier": "digest",
+    "date": "2026-11-10"
+  },
+  {
+    "link": "https://www.dexerto.com/gta/gta-6-boss-sends-warning-to-pirates-who-make-ai-generated-pc-version-before-official-release-3426850/",
+    "slug": "gta6-take-two-anti-piracy-ai-recomp-crackdown",
+    "tier": "skipped-duplicate-same-day-digest",
+    "date": "2026-11-10"
+  },
+  {
+    "link": "https://www.polygon.com/gta-6-grand-theft-auto-preorders-nba-2k27/",
+    "slug": "gta6-take-two-q2-fy2027-earnings-3-5-billion",
+    "tier": "skipped-duplicate-already-breaking",
+    "date": "2026-11-10"
+  },
+  {
+    "link": "https://www.gamesradar.com/games/grand-theft-auto/take-two-boss-isnt-worried-about-gta-6-players-jailbreaking-ps5-consoles-and-modding-it-because-if-the-game-is-great-then-the-monetization-takes-care-of-itself/",
+    "slug": "gta6-zelnick-not-worried-ps5-jailbreak-modding",
+    "tier": "digest",
+    "date": "2026-11-10"
+  },
+  {
+    "link": "https://insider-gaming.com/gta-6-might-be-the-most-pre-ordered-game-ever-according-to-data/",
+    "slug": "gta6-take-two-q2-fy2027-earnings-3-5-billion",
+    "tier": "skipped-duplicate-already-breaking",
     "date": "2026-11-10"
   }
 ]
