@@ -1404,13 +1404,18 @@ function submitParticipant() {
   btn.disabled = true;
 
   function onJoinSuccess(signupNum) {
+    var gtRaw = drive.Gamertag || '';
+    var gtForOnclick = gtRaw.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    var gtForDisplay = gtRaw.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     var successTxt = isApproval
       ? '<strong>Request sent!</strong><br><br>The drive lead has been notified. You\'ll receive an email when your spot is approved.'
       : '<strong>You\'re in!</strong><br><br>See you November 18. Your name is going on the Wall of Honor.<br><br>' +
         '<div style="background:rgba(214,36,122,.07);border:1px solid rgba(214,36,122,.2);padding:12px;margin-top:12px;font-size:.82rem;text-align:left;">' +
           '<div style="font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--cyan);margin-bottom:6px;">📋 Do This Now</div>' +
           '<div style="color:var(--smoke);line-height:1.6;">' +
-            '1. Add <strong style="color:var(--bone);">' + (drive.Gamertag || 'your drive lead') + '</strong> to your in-game friends list right now<br>' +
+            '1. Add <strong style="color:var(--bone);">' + (gtForDisplay || 'your drive lead') +
+            '</strong> <button type="button" style="background:var(--edge);border:1px solid var(--smoke);border-radius:4px;padding:2px 8px;font-size:.72rem;font-family:inherit;color:var(--bone);cursor:pointer;" onclick="navigator.clipboard.writeText(\'' + gtForOnclick + '\');this.textContent=\'Copied!\';setTimeout(()=>{this.textContent=\'Copy\';},1500);">Copy</button>' +
+            ' to your in-game friends list right now — paste the exact spelling into your platform\'s friend search so it matches<br>' +
             '2. They\'ll send you a session invite on November 18<br>' +
             '3. Enable Passive Mode before you join' +
           '</div>' +
