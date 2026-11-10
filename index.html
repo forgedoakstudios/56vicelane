@@ -396,23 +396,37 @@ function loadHomeNews() {
       var withImg = byDate.filter(function (a) { return a.image; });
       var latestPool = withImg.length ? withImg : byDate;
 
-      var latest = latestPool[0];
+      // The daily Editor's Desk / Trevor's Take pair should always lead
+      // the hero spot over same-day breaking news or digest articles --
+      // otherwise a same-day cherry-picked article (later commit time,
+      // same calendar date) can legitimately out-rank and fully bump the
+      // daily column pair out of "Latest News" on busy days.
+      var editorPick = latestPool.filter(function (a) { return a.column === 'editor'; })[0];
+      var trevorPick = latestPool.filter(function (a) { return a.column === 'trevor'; })[0];
+      var columnPicks = [editorPick, trevorPick].filter(Boolean);
+      var latest = columnPicks[0] || latestPool[0];
+
       if (newsTitle && latest) {
         newsTitle.textContent = latest.title || latest.headline;
         newsTitle.href = '/articles/' + latest.slug;
       }
+
+      var heroThumbs = (editorPick && trevorPick) ? [editorPick, trevorPick] : latestPool.slice(0, 2);
       if (newsGrid) {
-        var thumbs = latestPool.slice(0, 2);
-        newsGrid.innerHTML = thumbs.map(function (a) {
+        newsGrid.innerHTML = heroThumbs.map(function (a) {
           var bg = a.image ? "background-image:url('/images/" + a.image + "');background-size:cover;background-position:center top;" : '';
           return '<a class="news-thumb photo" href="/articles/' + a.slug + '" style="' + bg + '"></a>';
         }).join('');
       }
       if (storiesEl) {
         // Top Stories = most-visited articles when we have real view counts
-        // (see loadTopStories below); until then, fall back to next-newest.
+        // (see loadTopStories below); until then, fall back to next-newest,
+        // excluding whatever's already shown as the hero above so nothing
+        // is duplicated on the page.
         if (!window.__topStoriesLoaded) {
-          var picks = latestPool.slice(1, 4);
+          var usedSlugs = {};
+          heroThumbs.forEach(function (a) { usedSlugs[a.slug] = true; });
+          var picks = latestPool.filter(function (a) { return !usedSlugs[a.slug]; }).slice(0, 3);
           storiesEl.innerHTML = picks.map(function (a) {
             return '<li><a href="/articles/' + a.slug + '" style="color:inherit;text-decoration:none;">' + (a.title || a.headline) +
               '<span>' + (a.category || 'News') + ' · ' + (a.date || '') + '</span></a></li>';
