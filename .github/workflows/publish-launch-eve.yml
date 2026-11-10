@@ -1,0 +1,103 @@
+name: Launch Eve Article Publisher (One-Off, Nov 18 2026)
+
+# Publishes one pre-written, pre-reviewed article sitting in scheduled/ on
+# its intended date: editors-desk-we-made-it-launch-eve.html on Nov 18,
+# 2026 (The Last Drive night / GTA6 launch eve). Same pattern as
+# publish-scheduled.yml (the Aug 2026 one-off), kept as a separate file
+# since that workflow is explicitly single-use for its own two articles.
+#
+# Single-use: the date guard below makes this a safe no-op on any day
+# other than 2026-11-18, so it doesn't need to be deleted afterward -- it
+# just becomes permanently inert once the file has moved out of scheduled/.
+
+on:
+  schedule:
+    - cron: '0 13 18 11 *' # Nov 18, 13:00 UTC (8am CT)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Guard against reruns on the wrong day
+        id: gate
+        run: |
+          TODAY=$(date -u +%Y-%m-%d)
+          FILE="editors-desk-we-made-it-launch-eve.html"
+          if [ "$TODAY" != "2026-11-18" ] && [ "${{ github.event_name }}" != "workflow_dispatch" ]; then
+            echo "Not Nov 18, 2026 -- this workflow is single-use for this one article. Skipping."
+            echo "found=false" >> "$GITHUB_OUTPUT"
+          elif [ ! -f "scheduled/$FILE" ]; then
+            echo "scheduled/$FILE not found (already published) -- nothing to do."
+            echo "found=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "found=true" >> "$GITHUB_OUTPUT"
+            echo "file=$FILE" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check n8n webhook secret is configured
+        if: steps.gate.outputs.found == 'true'
+        env:
+          N8N_ARTICLE_WEBHOOK_URL: ${{ secrets.N8N_ARTICLE_WEBHOOK_URL }}
+        run: |
+          if [ -z "$N8N_ARTICLE_WEBHOOK_URL" ]; then
+            echo "::warning::N8N_ARTICLE_WEBHOOK_URL secret is not set -- the article will still publish, but the social blast step will skip silently. Add the secret in repo Settings > Secrets to fix."
+          else
+            echo "N8N_ARTICLE_WEBHOOK_URL is configured."
+          fi
+
+      - name: Move into articles/
+        if: steps.gate.outputs.found == 'true'
+        run: git mv "scheduled/${{ steps.gate.outputs.file }}" "articles/${{ steps.gate.outputs.file }}"
+
+      - uses: actions/setup-node@v4
+        if: steps.gate.outputs.found == 'true'
+        with:
+          node-version: '20'
+
+      - name: Rebuild articles.json + sitemap.xml
+        if: steps.gate.outputs.found == 'true'
+        run: |
+          node tools/build-articles.js
+          node tools/build-sitemap.js
+
+      - name: Queue Bluesky post
+        if: steps.gate.outputs.found == 'true'
+        run: node scripts/queue-article-post.js "articles/${{ steps.gate.outputs.file }}"
+
+      - name: Notify social blast (X, Instagram, Facebook, Discord via n8n)
+        if: steps.gate.outputs.found == 'true'
+        env:
+          N8N_ARTICLE_WEBHOOK_URL: ${{ secrets.N8N_ARTICLE_WEBHOOK_URL }}
+        run: node scripts/notify-social-blast.js "articles/${{ steps.gate.outputs.file }}"
+
+      - name: Commit and push
+        if: steps.gate.outputs.found == 'true'
+        run: |
+          git config user.name "56ViceLane Bot"
+          git config user.email "bot@56vicelane.com"
+          git add -A
+          git commit -m "publish (scheduled): ${{ steps.gate.outputs.file }} — $(date -u +'%Y-%m-%d %H:%M UTC')"
+
+          for i in 1 2 3 4 5; do
+            if git push; then
+              echo "Published ${{ steps.gate.outputs.file }}"
+              exit 0
+            fi
+            echo "Push rejected (attempt $i/5) — pulling and retrying..."
+            git pull --rebase origin main
+            node tools/build-articles.js
+            node tools/build-sitemap.js
+            git add -A
+            git diff --staged --quiet || git commit --amend --no-edit
+            sleep 2
+          done
+          echo "::error::Failed to push after 5 attempts"
+          exit 1
