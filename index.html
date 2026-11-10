@@ -40,7 +40,9 @@
   .socials a{width:30px; height:30px; border-radius:50%; background:linear-gradient(135deg,var(--gold),var(--pink)); display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:700; text-decoration:none;}
 
   /* HERO */
-  .hero{position:relative; min-height:440px; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; background-image:url('images/lastdrive-hero.webp'); padding:40px 20px;}
+  .hero{position:relative; min-height:440px; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; background-image:url('images/lastdrive-hero.webp'); background-size:cover; background-position:center; padding:40px 20px;}
+  .hero-video{position:absolute; inset:0; z-index:0; width:100%; height:100%; object-fit:cover;}
+  .hero-cta-share{background:transparent; color:#fff; border:1px solid rgba(255,255,255,.4); font-family:'Barlow Condensed'; font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:13px; padding:14px 26px; border-radius:6px; cursor:pointer;}
   .hero::before{content:''; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(10,6,4,.55) 0%, rgba(10,6,4,.35) 45%, rgba(10,6,4,.75) 100%);}
   .hero-inner{position:relative; z-index:2; max-width:640px;}
   .hero-eyebrow{font-family:'Barlow Condensed'; font-weight:800; letter-spacing:3px; text-transform:uppercase; color:var(--orange); font-size:13px; margin-bottom:14px;}
@@ -173,6 +175,9 @@
 </div>
 
 <div class="hero">
+  <video class="hero-video" autoplay muted loop playsinline poster="images/lastdrive-hero.webp">
+    <source src="https://assets.vidiq.com/compositions/a1786415-9174-4c92-8372-4bff2f950bdd/bhs3qdtxuazmzq743ec6wn09.mp4" type="video/mp4">
+  </video>
   <div class="hero-inner">
     <div class="hero-eyebrow">November 18 &middot; All Platforms &middot; Free</div>
     <div class="hero-word">One Final Night In Los Santos</div>
@@ -180,6 +185,7 @@
     <div class="hero-ctas">
       <a href="/lastdrive" class="hero-cta-primary">Reserve My Free Spot</a>
       <a href="https://discord.gg/ewdRcjsbg5" target="_blank" rel="noopener" class="hero-cta-secondary">Join the Discord</a>
+      <button type="button" class="hero-cta-share" id="hero-share-btn">📣 Share This Moment</button>
     </div>
     <div class="hero-reassure">No purchase required &middot; Pick your convoy later &middot; Unsubscribe anytime</div>
   </div>
@@ -471,6 +477,54 @@ function loadHomeStats() {
   });
 }
 loadHomeStats();
+
+/* SHARE THIS MOMENT — the hero video itself, tagged with the site so a
+   shared clip always points back here. Tries a native file share first
+   (best on mobile), falls back to a native link share, falls back to
+   copy-to-clipboard (same pattern as other copy buttons sitewide). */
+(function() {
+  var shareBtn = document.getElementById('hero-share-btn');
+  if (!shareBtn) return;
+  var HERO_VIDEO_URL = 'https://assets.vidiq.com/compositions/a1786415-9174-4c92-8372-4bff2f950bdd/bhs3qdtxuazmzq743ec6wn09.mp4';
+  var SHARE_TEXT = 'One final night in Los Santos before GTA6 begins. #56ViceLane #GTA6';
+  var SHARE_URL = 'https://56vicelane.com/';
+
+  shareBtn.addEventListener('click', function() {
+    var original = shareBtn.textContent;
+
+    function fallbackCopy() {
+      navigator.clipboard.writeText(SHARE_TEXT + ' ' + SHARE_URL).then(function() {
+        shareBtn.textContent = 'Link Copied!';
+        setTimeout(function() { shareBtn.textContent = original; }, 2000);
+      });
+    }
+
+    if (navigator.share && navigator.canShare && window.fetch) {
+      fetch(HERO_VIDEO_URL).then(function(r) { return r.blob(); }).then(function(blob) {
+        var file = new File([blob], '56vicelane-vice-city.mp4', { type: 'video/mp4' });
+        if (navigator.canShare({ files: [file] })) {
+          return navigator.share({ files: [file], title: '56ViceLane', text: SHARE_TEXT, url: SHARE_URL });
+        }
+        return navigator.share({ title: '56ViceLane', text: SHARE_TEXT, url: SHARE_URL });
+      }).catch(function(err) {
+        if (err && err.name === 'AbortError') return;
+        if (navigator.share) {
+          navigator.share({ title: '56ViceLane', text: SHARE_TEXT, url: SHARE_URL }).catch(function(e2) {
+            if (!e2 || e2.name !== 'AbortError') fallbackCopy();
+          });
+        } else {
+          fallbackCopy();
+        }
+      });
+    } else if (navigator.share) {
+      navigator.share({ title: '56ViceLane', text: SHARE_TEXT, url: SHARE_URL }).catch(function(err) {
+        if (!err || err.name !== 'AbortError') fallbackCopy();
+      });
+    } else {
+      fallbackCopy();
+    }
+  });
+})();
 
 function loadDriveLeadSpotlight() {
   var grid = document.getElementById('spot-grid');
