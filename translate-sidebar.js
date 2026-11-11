@@ -29,10 +29,29 @@
     'ترجمة', 'अनुवाद करें', '翻訳', '번역', '翻译'
   ];
 
+  /* RTL (Arabic is the only RTL language in LANGUAGES above) — the free
+     Google widget only swaps words, it never flips reading direction, so
+     without this an Arabic translation would still read left-to-right.
+     Scoped to prose content only (not nav/ticker/flag-grid/footer-links),
+     so sitewide flex/grid chrome doesn't mirror along with it. */
+  function currentGoogTransLang() {
+    var m = document.cookie.match(/googtrans=\/en\/([a-zA-Z-]+)/);
+    return m ? m[1] : '';
+  }
+  if (currentGoogTransLang() === 'ar') {
+    document.documentElement.classList.add('vl-lang-rtl');
+  }
+
   var style = document.createElement('style');
   style.textContent = [
     '#goog-gt-tt, .goog-te-banner-frame, .skiptranslate > iframe { display:none !important; }',
     'body { top:0 !important; }',
+    '.vl-lang-rtl .article-body, .vl-lang-rtl .article-body p, .vl-lang-rtl .article-body li,',
+    '.vl-lang-rtl .article-title, .vl-lang-rtl .lead, .vl-lang-rtl .callout, .vl-lang-rtl .editor-note,',
+    '.vl-lang-rtl p, .vl-lang-rtl li, .vl-lang-rtl blockquote,',
+    '.vl-lang-rtl h1, .vl-lang-rtl h2, .vl-lang-rtl h3, .vl-lang-rtl h4 {',
+      'direction:rtl;text-align:right;',
+    '}',
     '#google_translate_element { position:absolute; width:1px; height:1px; overflow:hidden; opacity:0; pointer-events:none; }',
     '.vl-ts-tab{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:9998;',
       'background:linear-gradient(135deg,#FF6B2C,#D6247A);color:#fff;padding:14px 8px;',
