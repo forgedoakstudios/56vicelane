@@ -840,7 +840,14 @@ function loadWall() {
     return fetch(SIGNUPS_PUBLIC_URL)
       .then(function(r) { return r.json(); })
       .then(function(d) {
-        var allRec = ((d && d.signups) || [])
+        // A malformed/empty response (bad gateway, stale cache, webhook
+        // hiccup) must never silently render as "0 signups" -- that looks
+        // identical to real data and is actively misleading. Treat it as
+        // a load failure instead, same as a network error.
+        if (!d || !Array.isArray(d.signups)) {
+          throw new Error('Signups response missing expected shape');
+        }
+        var allRec = (d.signups || [])
           .filter(function(s) { return s.showOnWall; })
           .map(toFieldsRecord);
 
@@ -867,6 +874,11 @@ function loadWall() {
 
   fetchPage().catch(function(err) {
     console.error('[Wall Error]', err);
+    // Only show the hard error state on the FIRST load. On a periodic
+    // 60s refresh, a transient blip shouldn't wipe an already-rendered,
+    // correct wall out from under someone mid-browse -- just keep showing
+    // the last-good data and let the next refresh try again.
+    if (allPlayers.length > 0) return;
     document.getElementById('wall-tier-rest').style.display = 'none';
     document.getElementById('wall-grid-rest').innerHTML = '';
     document.getElementById('wall-grid-founders').innerHTML =
