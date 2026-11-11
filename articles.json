@@ -58,16 +58,39 @@
     "permanent": false
   },
   {
-    "emoji": "🗞️",
-    "title": "From The Editor's Desk: 9 Days Out",
-    "slug": "editors-desk-9-days-out",
-    "url": "/articles/editors-desk-9-days-out",
-    "headline": "From The Editor's Desk: 9 Days Out",
-    "category": "Community",
-    "date": "2026-11-10",
-    "excerpt": "Nine days until GTA6 launches. The Editor finds out Take-Two is expecting $3.5 billion and decides that's a number he's not going to think about today.",
-    "image": "editor-portrait-3-grinding.png",
-    "column": "editor",
+    "emoji": "💰",
+    "title": "GTA6 At $80 Is A 'Bargain,' Take-Two CEO Says",
+    "slug": "gta6-80-dollar-bargain-cost-of-living",
+    "url": "/articles/gta6-80-dollar-bargain-cost-of-living",
+    "headline": "Take-Two CEO Calls GTA6's $80 Price An 'Incredible Bargain' — Even As Costs Rise Everywhere Else",
+    "category": "Business",
+    "date": "2026-11-11",
+    "excerpt": "Strauss Zelnick says Take-Two isn't trying to maximize price on GTA6, calling the $80 base price an 'incredible bargain' even as he acknowledges rising costs of living.",
+    "image": "gta6-80-dollar-bargain-cost-of-living-hero.jpg",
+    "permanent": false
+  },
+  {
+    "emoji": "🕵️",
+    "title": "GTA6 Fans Think They Spotted A Gay Tony Cameo",
+    "slug": "gta6-gay-tony-cameo-fan-theory",
+    "url": "/articles/gta6-gay-tony-cameo-fan-theory",
+    "headline": "Fan Theory: Did GTA6's Trailer Just Sneak In A Gay Tony Cameo?",
+    "category": "Lore",
+    "date": "2026-11-11",
+    "excerpt": "A fan theory making the rounds claims a blink-and-you'll-miss-it trailer detail points to Gay Tony making a return in GTA6. Here's the theory, and why it's still just a theory.",
+    "image": "gta6-gay-tony-cameo-fan-theory-hero.jpg",
+    "permanent": false
+  },
+  {
+    "emoji": "🕹️",
+    "title": "Take-Two CEO Calls Ocarina Of Time 'Terrific'",
+    "slug": "gta6-zelnick-ocarina-of-time-praise",
+    "url": "/articles/gta6-zelnick-ocarina-of-time-praise",
+    "headline": "Take-Two CEO Praises Zelda: Ocarina Of Time — And Explains Why GTA6 Isn't Really 'Competing' With It",
+    "category": "News",
+    "date": "2026-11-11",
+    "excerpt": "Strauss Zelnick praised The Legend of Zelda: Ocarina of Time's remaster as 'terrific' while explaining why, in his view, the entertainment business competes against everything and nothing at once.",
+    "image": "gta6-zelnick-ocarina-of-time-praise-hero.jpg",
     "permanent": false
   },
   {
@@ -95,15 +118,16 @@
     "permanent": false
   },
   {
-    "emoji": "💰",
-    "title": "Take-Two: GTA6 Could Bring In $3.5 Billion At Launch",
-    "slug": "gta6-take-two-q2-fy2027-earnings-3-5-billion",
-    "url": "/articles/gta6-take-two-q2-fy2027-earnings-3-5-billion",
-    "headline": "Take-Two: GTA6 Could Bring In $3.5 Billion At Launch, Pre-Orders Tracking Well Above Expectations",
-    "category": "News",
+    "emoji": "🗞️",
+    "title": "From The Editor's Desk: 9 Days Out",
+    "slug": "editors-desk-9-days-out",
+    "url": "/articles/editors-desk-9-days-out",
+    "headline": "From The Editor's Desk: 9 Days Out",
+    "category": "Community",
     "date": "2026-11-10",
-    "excerpt": "Take-Two's Q2 FY2027 earnings call, 10 days before GTA6 launches: the company says the game could bring in as much as $3.5 billion during the launch period, and pre-orders are reportedly tracking well above expectations.",
-    "image": "gta6-take-two-q2-fy2027-earnings-3-5-billion-hero.jpg",
+    "excerpt": "Nine days until GTA6 launches. The Editor finds out Take-Two is expecting $3.5 billion and decides that's a number he's not going to think about today.",
+    "image": "editor-portrait-3-grinding.png",
+    "column": "editor",
     "permanent": false
   },
   {
@@ -117,6 +141,18 @@
     "excerpt": "Nine days until GTA6. Danny showed Trevor a number with nine figures in it and Trevor has not been the same since. The notebook grows.",
     "image": "trevor-portrait.png",
     "column": "trevor",
+    "permanent": false
+  },
+  {
+    "emoji": "💰",
+    "title": "Take-Two: GTA6 Could Bring In $3.5 Billion At Launch",
+    "slug": "gta6-take-two-q2-fy2027-earnings-3-5-billion",
+    "url": "/articles/gta6-take-two-q2-fy2027-earnings-3-5-billion",
+    "headline": "Take-Two: GTA6 Could Bring In $3.5 Billion At Launch, Pre-Orders Tracking Well Above Expectations",
+    "category": "News",
+    "date": "2026-11-10",
+    "excerpt": "Take-Two's Q2 FY2027 earnings call, 10 days before GTA6 launches: the company says the game could bring in as much as $3.5 billion during the launch period, and pre-orders are reportedly tracking well above expectations.",
+    "image": "gta6-take-two-q2-fy2027-earnings-3-5-billion-hero.jpg",
     "permanent": false
   },
   {
