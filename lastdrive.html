@@ -740,6 +740,18 @@
     <div class="finder-result" id="finder-result"></div>
   </div>
 
+  <div class="finder-wrap">
+    <div class="eyebrow" style="margin-bottom:4px;">Signed Up More Than Once?</div>
+    <h3 style="margin-bottom:8px;">Manage My Drives</h3>
+    <p style="font-size:.85rem;color:var(--smoke);margin-bottom:8px;">Riding in multiple regions or time slots so you don't miss a minute? Enter your gamertag and the email you signed up with to see every drive you're on — and cancel any you don't need.</p>
+    <div class="finder-row" style="flex-wrap:wrap;">
+      <input type="text" class="form-input" id="mymanage-gamertag" placeholder="Your gamertag..." onkeypress="if(event.key==='Enter')findMyDrives()" style="flex:1;min-width:160px;">
+      <input type="email" class="form-input" id="mymanage-email" placeholder="Email you signed up with..." onkeypress="if(event.key==='Enter')findMyDrives()" style="flex:1;min-width:200px;">
+      <button onclick="findMyDrives()" class="btn btn-primary" style="padding:12px 20px;white-space:nowrap;">Find My Drives</button>
+    </div>
+    <div class="finder-result" id="mymanage-result"></div>
+  </div>
+
 </div>
 
 <div style="max-width:1000px;margin:0 auto;padding:0 24px 60px;">
@@ -900,6 +912,8 @@ var N8N_FIND_PROFILE_URL   = 'https://n8n.56vicelane.com/webhook/find-profile';
 var N8N_LIST_MEMBERS_URL   = 'https://n8n.56vicelane.com/webhook/list-members';
 var N8N_LIST_DRIVES_URL    = 'https://n8n.56vicelane.com/webhook/list-drives';
 var N8N_SIGNUP_URL         = 'https://n8n.56vicelane.com/webhook/lastdrive-signup';
+var N8N_FIND_MY_DRIVES_URL = 'https://n8n.56vicelane.com/webhook/find-my-drives';
+var N8N_CANCEL_SIGNUP_URL  = 'https://n8n.56vicelane.com/webhook/cancel-signup';
 
 /* REFERRAL CAPTURE — a ?ref=<gamertag> in the URL (from a friend's share
    link) is stashed in sessionStorage so it survives the platform/drive
@@ -1622,6 +1636,84 @@ function searchFriend() {
   if (!q) return;
   result.innerHTML = '<div style="color:var(--smoke);font-size:.88rem;">Searching...</div>';
   searchFriendN8n(q);
+}
+
+/* "Manage My Drives" — lets someone who signed up for more than one
+   drive (different regions/time slots so they don't miss the window)
+   see every signup tied to their gamertag+email and cancel the ones
+   they don't need. Requires both gamertag AND email to match a row
+   before it's returned or deleted, so a stranger can't look up or
+   cancel someone else's signup just by knowing their gamertag. */
+function findMyDrives() {
+  var gamertag = (document.getElementById('mymanage-gamertag').value || '').trim();
+  var email = (document.getElementById('mymanage-email').value || '').trim();
+  var result = document.getElementById('mymanage-result');
+  if (!gamertag || !email) {
+    result.innerHTML = '<div style="color:var(--red);font-size:.88rem;">Enter both your gamertag and the email you signed up with.</div>';
+    return;
+  }
+  result.innerHTML = '<div style="color:var(--smoke);font-size:.88rem;">Looking up your drives...</div>';
+  fetch(N8N_FIND_MY_DRIVES_URL + '?gamertag=' + encodeURIComponent(gamertag) + '&email=' + encodeURIComponent(email))
+    .then(function(r) { return r.json(); })
+    .then(function(d) { renderMyDrives(d.found ? (d.drives || []) : [], gamertag, email); })
+    .catch(function() {
+      result.innerHTML = '<div style="color:var(--smoke);font-size:.88rem;">Search error — try again.</div>';
+    });
+}
+
+function renderMyDrives(drives, gamertag, email) {
+  var result = document.getElementById('mymanage-result');
+  if (!drives.length) {
+    result.innerHTML =
+      '<div style="background:var(--asphalt);border:1px solid var(--edge);padding:16px 20px;">' +
+        '<div style="font-family:var(--font-display);font-size:1rem;text-transform:uppercase;color:var(--smoke);margin-bottom:6px;">No Drives Found</div>' +
+        '<div style="font-size:.85rem;color:var(--smoke);">No signups matched that gamertag + email combo. Double-check the email you used when you signed up.</div>' +
+      '</div>';
+    return;
+  }
+  result.innerHTML = drives.map(function(d) {
+    var isLead = d.signupType === 'Drive Lead';
+    return '<div class="found-card" id="mymanage-row-' + d.id + '" style="margin-bottom:10px;">' +
+      '<div class="found-gamertag">' + (d.gamertag || '') + '</div>' +
+      '<div class="found-meta">' +
+        '<div class="drive-tag">' + (d.platform || '?') + '</div>' +
+        '<div class="drive-tag">' + (d.region || '?') + '</div>' +
+        (d.stagingLocation ? '<div class="drive-tag loc">📍 ' + d.stagingLocation + '</div>' : '') +
+        (d.stagingTime ? '<div class="drive-tag time">🕐 ' + d.stagingTime + '</div>' : '') +
+        '<div class="drive-tag" style="color:var(--green);border-color:rgba(0,200,117,.2);">' + (isLead ? '⭐ Drive Lead' : '🚗 Participant') + '</div>' +
+        (d.driveType ? '<div class="drive-tag">' + d.driveType + '</div>' : '') +
+      '</div>' +
+      '<button type="button" class="btn btn-ghost" style="margin-top:10px;border-color:var(--red);color:var(--red);" onclick="cancelMyDrive(' + d.id + ',\'' +
+        gamertag.replace(/'/g, "\\'") + '\',\'' + email.replace(/'/g, "\\'") + '\')">Cancel This Signup</button>' +
+    '</div>';
+  }).join('');
+}
+
+function cancelMyDrive(id, gamertag, email) {
+  if (!window.confirm('Cancel this signup? This can\'t be undone.')) return;
+  var row = document.getElementById('mymanage-row-' + id);
+  var btn = row ? row.querySelector('button') : null;
+  if (btn) { btn.textContent = 'Cancelling...'; btn.disabled = true; }
+  fetch(N8N_CANCEL_SIGNUP_URL, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ id: id, gamertag: gamertag, email: email })
+  }).then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (d.success) {
+        if (row) {
+          row.style.opacity = '.5';
+          row.innerHTML = '<div style="color:var(--green);font-size:.88rem;padding:8px 0;">✅ Cancelled</div>';
+        }
+      } else {
+        if (btn) { btn.textContent = 'Cancel This Signup'; btn.disabled = false; }
+        window.alert(d.error || 'Could not cancel that signup — try again.');
+      }
+    })
+    .catch(function() {
+      if (btn) { btn.textContent = 'Cancel This Signup'; btn.disabled = false; }
+      window.alert('Network error — try again.');
+    });
 }
 
 function renderCounts(platforms) {
