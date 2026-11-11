@@ -5,20 +5,28 @@
    toast (bottom-left) or the article sponsor rail (right side). */
 (function () {
   var LANGUAGES = [
-    { code: 'es',    name: 'Español',   flag: '🇪🇸' },
-    { code: 'pt',    name: 'Português', flag: '🇵🇹' },
-    { code: 'fr',    name: 'Français',  flag: '🇫🇷' },
-    { code: 'de',    name: 'Deutsch',   flag: '🇩🇪' },
-    { code: 'it',    name: 'Italiano',  flag: '🇮🇹' },
-    { code: 'pl',    name: 'Polski',    flag: '🇵🇱' },
-    { code: 'nl',    name: 'Nederlands',flag: '🇳🇱' },
-    { code: 'ru',    name: 'Русский',   flag: '🇷🇺' },
-    { code: 'tr',    name: 'Türkçe',    flag: '🇹🇷' },
-    { code: 'ar',    name: 'العربية',   flag: '🇸🇦' },
-    { code: 'hi',    name: 'हिन्दी',     flag: '🇮🇳' },
-    { code: 'ja',    name: '日本語',    flag: '🇯🇵' },
-    { code: 'ko',    name: '한국어',    flag: '🇰🇷' },
-    { code: 'zh-CN', name: '中文',      flag: '🇨🇳' }
+    { code: 'es',    name: 'Español',   flagCode: 'es' },
+    { code: 'pt',    name: 'Português', flagCode: 'pt' },
+    { code: 'fr',    name: 'Français',  flagCode: 'fr' },
+    { code: 'de',    name: 'Deutsch',   flagCode: 'de' },
+    { code: 'it',    name: 'Italiano',  flagCode: 'it' },
+    { code: 'pl',    name: 'Polski',    flagCode: 'pl' },
+    { code: 'nl',    name: 'Nederlands',flagCode: 'nl' },
+    { code: 'ru',    name: 'Русский',   flagCode: 'ru' },
+    { code: 'tr',    name: 'Türkçe',    flagCode: 'tr' },
+    { code: 'ar',    name: 'العربية',   flagCode: 'sa' },
+    { code: 'hi',    name: 'हिन्दी',     flagCode: 'in' },
+    { code: 'ja',    name: '日本語',    flagCode: 'jp' },
+    { code: 'ko',    name: '한국어',    flagCode: 'kr' },
+    { code: 'zh-CN', name: '中文',      flagCode: 'cn' }
+  ];
+
+  /* "Translate" in each language, cycled on the collapsed tab so it reads
+     as multilingual at a glance before anyone even opens the panel. */
+  var TRANSLATE_WORDS = [
+    'Translate', 'Traducir', 'Traduzir', 'Traduire', 'Übersetzen',
+    'Traduci', 'Przetłumacz', 'Vertalen', 'Перевести', 'Çevir',
+    'ترجمة', 'अनुवाद करें', '翻訳', '번역', '翻译'
   ];
 
   var style = document.createElement('style');
@@ -51,7 +59,8 @@
       'border-radius:10px;padding:12px 8px 10px;text-align:center;cursor:pointer;overflow:hidden;',
       'animation:vlTsGlow 2.6s ease-in-out infinite;transition:transform .15s ease;}',
     '.vl-ts-box:hover{transform:translateY(-2px);border-color:#FF6B2C;}',
-    '.vl-ts-flag{display:block;font-size:1.7rem;line-height:1;margin-bottom:6px;',
+    '.vl-ts-flag{display:block;width:32px;height:22px;object-fit:cover;border-radius:3px;',
+      'margin:0 auto 6px;box-shadow:0 0 0 1px rgba(255,255,255,.15);',
       'animation:vlTsWave 2.4s ease-in-out infinite;}',
     '.vl-ts-name{display:block;font-size:.72rem;color:#FBEFE6;font-weight:600;line-height:1.2;}',
     '.vl-ts-badge{display:block;margin-top:4px;font-size:.58rem;color:#FF8A50;',
@@ -71,11 +80,17 @@
   tab.textContent = '🌐 Translate';
   document.body.appendChild(tab);
 
+  var twIndex = 0;
+  setInterval(function () {
+    twIndex = (twIndex + 1) % TRANSLATE_WORDS.length;
+    tab.textContent = '🌐 ' + TRANSLATE_WORDS[twIndex];
+  }, 1800);
+
   var panel = document.createElement('div');
   panel.className = 'vl-ts-panel';
   var boxesHtml = LANGUAGES.map(function (l) {
     return '<div class="vl-ts-box" data-code="' + l.code + '">' +
-      '<span class="vl-ts-flag">' + l.flag + '</span>' +
+      '<img class="vl-ts-flag" src="https://flagcdn.com/' + l.flagCode + '.svg" alt="' + l.name + ' flag" loading="lazy">' +
       '<span class="vl-ts-name">' + l.name + '</span>' +
       '<span class="vl-ts-badge">Click to translate</span>' +
     '</div>';
