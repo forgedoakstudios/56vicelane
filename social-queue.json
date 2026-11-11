@@ -465,5 +465,23 @@
     "imageAlt": "Selfridges' GTA6 Collab Includes A $2,500 Varsity Jacket",
     "scheduledFor": "2026-11-10T16:15:48.192Z",
     "posted": true
+  },
+  {
+    "id": "auto-publish-editors-desk-8-days-out",
+    "text": "Eight days until GTA6. The internet is apparently straining under preload traffic, and Strauss Zelnick called $80 'a bargain.' The Editor f…",
+    "url": "https://56vicelane.com/articles/editors-desk-8-days-out?utm_source=bluesky&utm_medium=social&utm_campaign=article_blast",
+    "image": "images/editor-portrait-4-launchweek.png",
+    "imageAlt": "From The Editor's Desk: 8 Days Out",
+    "scheduledFor": "2026-11-11T12:18:10.354Z",
+    "posted": false
+  },
+  {
+    "id": "auto-publish-trevors-take-8-days-out",
+    "text": "Eight days until GTA6. The global internet is apparently straining under preload traffic. Trevor has a theory. The notebook has a new secti…",
+    "url": "https://56vicelane.com/articles/trevors-take-8-days-out?utm_source=bluesky&utm_medium=social&utm_campaign=article_blast",
+    "image": "images/trevor-portrait.png",
+    "imageAlt": "Trevor's Take: 8 Days And The Internet Is Straining",
+    "scheduledFor": "2026-11-11T12:18:10.382Z",
+    "posted": false
   }
 ]

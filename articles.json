@@ -32,6 +32,32 @@
     "url": "/articles/gta6-november-19-confirmed"
   },
   {
+    "emoji": "🗞️",
+    "title": "From The Editor's Desk: 8 Days Out",
+    "slug": "editors-desk-8-days-out",
+    "url": "/articles/editors-desk-8-days-out",
+    "headline": "From The Editor's Desk: 8 Days Out",
+    "category": "Community",
+    "date": "2026-11-11",
+    "excerpt": "Eight days until GTA6. The preload is apparently straining the internet, Take-Two's CEO calls $80 'a bargain,' and The Editor finds a loophole in his own three-drawer antacid rule.",
+    "image": "editor-portrait-4-launchweek.png",
+    "column": "editor",
+    "permanent": false
+  },
+  {
+    "emoji": "🗣️",
+    "title": "Trevor's Take: 8 Days And The Internet Is Straining",
+    "slug": "trevors-take-8-days-out",
+    "url": "/articles/trevors-take-8-days-out",
+    "headline": "Trevor's Take: 8 Days And The Internet Is Straining",
+    "category": "Community",
+    "date": "2026-11-11",
+    "excerpt": "Eight days until GTA6. Apparently the preload is straining the actual global internet. Trevor has thoughts about what that really means, and the notebook has a new section.",
+    "image": "trevor-portrait.png",
+    "column": "trevor",
+    "permanent": false
+  },
+  {
     "emoji": "🎤",
     "title": "Rockstar Is Throwing A Miami Music Festival With Travis Scott And Cardi B For GTA6's Launch",
     "slug": "gta6-rockstar-miami-music-festival-launch-celebration",
