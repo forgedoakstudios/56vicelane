@@ -724,8 +724,9 @@
   </div>
 
   <div class="finder-wrap">
-    <div class="eyebrow" style="margin-bottom:4px;">Find a Friend</div>
+    <div class="eyebrow" style="margin-bottom:4px;">Find A Friend — Or Find Your Own Drive</div>
     <h3 style="margin-bottom:8px;">Is Your Friend Already Signed Up?</h3>
+    <p style="font-size:.85rem;color:var(--smoke);margin-bottom:8px;">Enter your own gamertag to see your platform, region, staging time — and if you're a Participant, who your Drive Lead is.</p>
     <div class="finder-row">
       <input type="text" class="form-input" id="friend-search" placeholder="Enter their gamertag..." onkeypress="if(event.key==='Enter')searchFriend()" style="flex:1;">
       <button onclick="searchFriend()" class="btn btn-primary" style="padding:12px 20px;white-space:nowrap;">Search</button>
@@ -1529,7 +1530,44 @@ function renderFriendResult(q, rec) {
         (rec['Staging Time']  ? '<div class="drive-tag time">🕐 ' + rec['Staging Time'] + '</div>' : '') +
         '<div class="drive-tag" style="color:var(--green);border-color:rgba(0,200,117,.2);">✅ ' + (isLead ? '⭐ Drive Lead' : '🚗 Participant') + '</div>' +
       '</div>' +
+      (isLead ? '' : '<div id="finder-lead-lookup" style="margin-top:12px;font-size:.85rem;color:var(--smoke);">Looking up your Drive Lead...</div>') +
     '</div>';
+
+  if (!isLead) findDriveLeadFor(rec);
+}
+
+/* "Find My Drive" — for a Participant, resolves which Drive Lead they're
+   linked to by matching platform+region+stagingLocation+stagingTime
+   against the public list of Drive Lead rows (same key the signup
+   backend uses internally as linkedSlot). No new backend endpoint
+   needed -- both pieces of public data already exist. */
+function findDriveLeadFor(rec) {
+  var slotEl = document.getElementById('finder-lead-lookup');
+  fetch(N8N_LIST_DRIVES_URL)
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      var drives = (d && d.drives) || [];
+      var match = drives.find(function(dr) {
+        return (dr.platform || '') === (rec.Platform || '') &&
+               (dr.region || '') === (rec.Region || '') &&
+               (dr.stagingLocation || '') === (rec.StagingLocation || '') &&
+               (dr.stagingTime || '') === (rec['Staging Time'] || '');
+      });
+      if (!slotEl) return;
+      if (!match) {
+        slotEl.innerHTML = 'Couldn\'t automatically match your Drive Lead — ask in <strong>#last-drive</strong> on Discord with your platform/region/time.';
+        return;
+      }
+      var gt = match.gamertag || '';
+      var gtForOnclick = gt.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+      var gtForDisplay = gt.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      slotEl.innerHTML =
+        'Your Drive Lead: <strong style="color:var(--bone);">' + gtForDisplay + '</strong> ' +
+        '<button type="button" style="background:var(--edge);border:1px solid var(--smoke);border-radius:4px;padding:2px 8px;font-size:.72rem;font-family:inherit;color:var(--bone);cursor:pointer;" onclick="navigator.clipboard.writeText(\'' + gtForOnclick + '\');this.textContent=\'Copied!\';setTimeout(()=>{this.textContent=\'Copy\';},1500);">Copy</button>';
+    })
+    .catch(function() {
+      if (slotEl) slotEl.innerHTML = 'Couldn\'t look up your Drive Lead right now — try again shortly.';
+    });
 }
 
 function searchFriendN8n(q) {
