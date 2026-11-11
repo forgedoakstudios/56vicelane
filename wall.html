@@ -611,7 +611,7 @@ function toFieldsRecord(s) {
     'Staging Time': s.stagingTime || '', Region: s.region || '', IsOrganizer: !!s.isOrganizer,
     StagingLocation: s.stagingLocation || '', PlateStatus: s.plateStatus || '',
     SignupNumber: s.signupNumber, AccessType: s.accessType || '', SignupType: s.signupType || '',
-    LinkedSlot: s.linkedSlot || '', PlateStyle: s.plateStyle || ''
+    LinkedSlot: s.linkedSlot || '', PlateStyle: s.plateStyle || '', SteamFriendCode: s.steamFriendCode || ''
   } };
 }
 
@@ -726,6 +726,8 @@ function cardHTML(r) {
     var slotKey = (f.Platform || '') + '||' + (f.Region || '') + '||' + (f.StagingLocation || '') + '||' + (f['Staging Time'] || '');
     var riderCount = participantCounts[slotKey] || 0;
     var profileUrl = '/player?g=' + encodeURIComponent(f.Gamertag || f.Name || '');
+    var steamBadge = (isOrg && f.Platform === 'PC' && f.SteamFriendCode) ?
+      '<div class="card-access-badge" style="border-color:rgba(102,192,244,.3);color:#66C0F4;" title="Steam: ' + esc(f.SteamFriendCode) + '">🎮 ' + esc(f.SteamFriendCode) + '</div>' : '';
 
     if (isFounderEligible) {
       var plateStyle = f.PlateStyle || 'founder';
@@ -746,6 +748,7 @@ function cardHTML(r) {
           '<div class="card-meta">' + region + (region && slot ? ' · ' : '') + slot + '</div>' +
           (isOrg ? '<div class="card-access-badge ' + (isApproval ? 'access-approval-sm' : 'access-open-sm') + '">' + (isApproval ? '🔒 Approval' : '🟢 Open') + '</div>' : '') +
           (riderCount > 0 ? '<div class="rider-count-sm">🚗 ' + riderCount + ' rider' + (riderCount !== 1 ? 's' : '') + '</div>' : '') +
+          steamBadge +
         '</div>' +
       '</div>';
     }
@@ -756,6 +759,7 @@ function cardHTML(r) {
       '<div class="card-meta">' + region + (region && slot ? ' · ' : '') + slot + '</div>' +
       (isOrg ? '<div class="card-access-badge ' + (isApproval ? 'access-approval-sm' : 'access-open-sm') + '">' + (isApproval ? '🔒 Approval' : '🟢 Open') + '</div>' : '') +
       (riderCount > 0 ? '<div class="rider-count-sm">🚗 ' + riderCount + ' rider' + (riderCount !== 1 ? 's' : '') + '</div>' : '') +
+      steamBadge +
     '</div>';
 }
 

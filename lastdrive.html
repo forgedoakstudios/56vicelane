@@ -987,6 +987,10 @@ PLATFORMS.forEach(function(p) {
         '<div class="form-field"><label class="form-label">Email</label><input type="email" class="form-input" id="fe_' + pid + '" placeholder="For event updates only"></div>' +
         '<div class="form-field form-full"><label class="form-label">' + (p.startsWith('Xbox') ? 'Xbox Gamertag' : p === 'PC' ? 'Social Club / Steam Name' : 'PSN ID') + '</label><input type="text" class="form-input" id="fg_' + pid + '" placeholder="Other players will add you with this"></div>' +
 
+        (p === 'PC' ? (
+        '<div class="form-field form-full"><label class="form-label">Steam Friend Code or Profile URL <span style="font-family:var(--font-body);text-transform:none;letter-spacing:0;font-size:.7rem;">(optional)</span></label><input type="text" class="form-input" id="fs_' + pid + '" placeholder="e.g. 123456789 or steamcommunity.com/id/you"><p style="font-size:.72rem;color:var(--smoke);margin-top:6px;">Steam can\'t find PC players by display name alone — add this so your crew can actually add you.</p></div>'
+        ) : '') +
+
         '<div class="form-field form-full">' +
           '<label class="form-label">Preferred Chat</label>' +
           '<div class="sel-btns">' +
@@ -1234,6 +1238,7 @@ document.addEventListener('click', function(e) {
   var name     = (document.getElementById('fn_' + pid) ? document.getElementById('fn_' + pid).value : '').trim();
   var email    = (document.getElementById('fe_' + pid) ? document.getElementById('fe_' + pid).value : '').trim();
   var gamertag = (document.getElementById('fg_' + pid) ? document.getElementById('fg_' + pid).value : '').trim();
+  var steamFriendCode = (document.getElementById('fs_' + pid) ? document.getElementById('fs_' + pid).value : '').trim();
   var crew     = (document.getElementById('fc_' + pid) ? document.getElementById('fc_' + pid).value : '').trim();
   var chatOther= (document.getElementById('ct_' + pid) ? document.getElementById('ct_' + pid).value : '').trim();
   var passive  = document.getElementById('tp_' + pid) ? document.getElementById('tp_' + pid).checked : false;
@@ -1277,7 +1282,7 @@ document.addEventListener('click', function(e) {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
-      name: name, gamertag: gamertag, email: email,
+      name: name, gamertag: gamertag, email: email, steamFriendCode: steamFriendCode,
       platform: p, region: s.region, stagingTime: s.slot,
       chat: s.chat, chatOther: chatOther, crewName: crew,
       stagingLocation: s.staging, driveType: s.drive,
@@ -1343,7 +1348,8 @@ function loadDriveBrowser() {
           return { fields: {
             Gamertag: rec.gamertag, Platform: rec.platform, Region: rec.region,
             'Staging Time': rec.stagingTime, StagingLocation: rec.stagingLocation,
-            'Drive Type': rec.driveType, AccessType: rec.accessType, CrewName: rec.crewName
+            'Drive Type': rec.driveType, AccessType: rec.accessType, CrewName: rec.crewName,
+            SteamFriendCode: rec.steamFriendCode
           } };
         });
       renderDrives(joinState.allDrives);
@@ -1456,8 +1462,16 @@ function submitParticipant() {
           '<div style="color:var(--smoke);line-height:1.6;">' +
             '1. Add <strong style="color:var(--bone);">' + (gtForDisplay || 'your drive lead') +
             '</strong> <button type="button" style="background:var(--edge);border:1px solid var(--smoke);border-radius:4px;padding:2px 8px;font-size:.72rem;font-family:inherit;color:var(--bone);cursor:pointer;" onclick="navigator.clipboard.writeText(\'' + gtForOnclick + '\');this.textContent=\'Copied!\';setTimeout(()=>{this.textContent=\'Copy\';},1500);">Copy</button>' +
-            ' to your in-game friends list right now — paste the exact spelling into your platform\'s friend search so it matches<br>' +
-            '2. They\'ll send you a session invite on November 18<br>' +
+            ' to your in-game friends list right now — paste the exact spelling into your platform\'s friend search so it matches' +
+            (function() {
+              var sfc = drive.SteamFriendCode || '';
+              if (!sfc) return '';
+              var sfcForOnclick = sfc.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+              var sfcForDisplay = sfc.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+              return '<br>On PC/Steam, a display name alone won\'t find them — use their friend code / profile instead: <strong style="color:var(--bone);">' + sfcForDisplay + '</strong> ' +
+                '<button type="button" style="background:var(--edge);border:1px solid var(--smoke);border-radius:4px;padding:2px 8px;font-size:.72rem;font-family:inherit;color:var(--bone);cursor:pointer;" onclick="navigator.clipboard.writeText(\'' + sfcForOnclick + '\');this.textContent=\'Copied!\';setTimeout(()=>{this.textContent=\'Copy\';},1500);">Copy</button>';
+            })() +
+            '<br>2. They\'ll send you a session invite on November 18<br>' +
             '3. Enable Passive Mode before you join' +
           '</div>' +
         '</div>';
@@ -1567,9 +1581,17 @@ function findDriveLeadFor(rec) {
       var gt = match.gamertag || '';
       var gtForOnclick = gt.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;');
       var gtForDisplay = gt.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-      slotEl.innerHTML =
+      var html =
         'Your Drive Lead: <strong style="color:var(--bone);">' + gtForDisplay + '</strong> ' +
         '<button type="button" style="background:var(--edge);border:1px solid var(--smoke);border-radius:4px;padding:2px 8px;font-size:.72rem;font-family:inherit;color:var(--bone);cursor:pointer;" onclick="navigator.clipboard.writeText(\'' + gtForOnclick + '\');this.textContent=\'Copied!\';setTimeout(()=>{this.textContent=\'Copy\';},1500);">Copy</button>';
+      var sfc = match.steamFriendCode || '';
+      if (sfc) {
+        var sfcForOnclick = sfc.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+        var sfcForDisplay = sfc.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        html += '<br><br>Steam Friend Code / Profile: <strong style="color:var(--bone);">' + sfcForDisplay + '</strong> ' +
+          '<button type="button" style="background:var(--edge);border:1px solid var(--smoke);border-radius:4px;padding:2px 8px;font-size:.72rem;font-family:inherit;color:var(--bone);cursor:pointer;" onclick="navigator.clipboard.writeText(\'' + sfcForOnclick + '\');this.textContent=\'Copied!\';setTimeout(()=>{this.textContent=\'Copy\';},1500);">Copy</button>';
+      }
+      slotEl.innerHTML = html;
     })
     .catch(function() {
       if (slotEl) slotEl.innerHTML = 'Couldn\'t look up your Drive Lead right now — try again shortly.';
