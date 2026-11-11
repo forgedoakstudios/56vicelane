@@ -683,6 +683,10 @@
         <option value="Open">Open Only</option>
         <option value="Approval Required">Approval Required</option>
       </select>
+      <select id="filter-sort" class="form-select" style="width:auto;min-width:160px;">
+        <option value="">Default Order</option>
+        <option value="fullest">🔥 Most Riders First</option>
+      </select>
       <button onclick="applyJoinFilters()" class="btn btn-primary" style="padding:11px 18px;font-size:.82rem;">Filter</button>
     </div>
 
@@ -914,6 +918,7 @@ var N8N_LIST_DRIVES_URL    = 'https://n8n.56vicelane.com/webhook/list-drives';
 var N8N_SIGNUP_URL         = 'https://n8n.56vicelane.com/webhook/lastdrive-signup';
 var N8N_FIND_MY_DRIVES_URL = 'https://n8n.56vicelane.com/webhook/find-my-drives';
 var N8N_CANCEL_SIGNUP_URL  = 'https://n8n.56vicelane.com/webhook/cancel-signup';
+var N8N_SIGNUPS_PUBLIC_URL = 'https://n8n.56vicelane.com/webhook/list-signups-public';
 
 /* REFERRAL CAPTURE — a ?ref=<gamertag> in the URL (from a friend's share
    link) is stashed in sessionStorage so it survives the platform/drive
@@ -1342,6 +1347,26 @@ function buildJoinRegions() {
   wrap.scrollIntoView({behavior:'smooth', block:'start'});
 }
 
+/* Rider counts per drive slot — lets "Most Riders First" sort show which
+   lobbies are actually filling up, per a Discord feature request. Same
+   linkedSlot-counting approach wall.html already uses for its rider
+   badges, just scoped to Active/Approved Participants. */
+function loadRiderCounts() {
+  return fetch(N8N_SIGNUPS_PUBLIC_URL)
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      var counts = {};
+      ((d && d.signups) || []).forEach(function(s) {
+        if (s.signupType !== 'Participant') return;
+        if (s.joinStatus !== 'Active' && s.joinStatus !== 'Approved') return;
+        var slot = s.linkedSlot || '';
+        if (slot) counts[slot] = (counts[slot] || 0) + 1;
+      });
+      return counts;
+    })
+    .catch(function() { return {}; });
+}
+
 function loadDriveBrowser() {
   var browser = document.getElementById('join-browser');
   var list    = document.getElementById('drives-list');
@@ -1351,22 +1376,27 @@ function loadDriveBrowser() {
   list.innerHTML = '<div style="color:var(--smoke);font-size:.88rem;padding:12px 0;">🔍 Loading available drives...</div>';
   browser.scrollIntoView({behavior:'smooth', block:'start'});
 
-  fetch(N8N_LIST_DRIVES_URL)
-    .then(function(r) { return r.json(); })
-    .then(function(d) {
+  Promise.all([
+    fetch(N8N_LIST_DRIVES_URL).then(function(r) { return r.json(); }),
+    loadRiderCounts()
+  ])
+    .then(function(results) {
+      var d = results[0];
+      var riderCounts = results[1];
       joinState.allDrives = (d.drives || [])
         .filter(function(rec) {
           return rec.platform === joinState.platform && rec.region === joinState.region;
         })
         .map(function(rec) {
+          var slotKey = rec.platform + '||' + rec.region + '||' + rec.stagingLocation + '||' + rec.stagingTime;
           return { fields: {
             Gamertag: rec.gamertag, Platform: rec.platform, Region: rec.region,
             'Staging Time': rec.stagingTime, StagingLocation: rec.stagingLocation,
             'Drive Type': rec.driveType, AccessType: rec.accessType, CrewName: rec.crewName,
-            SteamFriendCode: rec.steamFriendCode
+            SteamFriendCode: rec.steamFriendCode, RiderCount: riderCounts[slotKey] || 0
           } };
         });
-      renderDrives(joinState.allDrives);
+      applyJoinFilters();
     })
     .catch(function() {
       list.innerHTML = '<div style="color:var(--smoke);font-size:.88rem;">Error loading drives. Please try again.</div>';
@@ -1377,10 +1407,14 @@ function applyJoinFilters() {
   var loc    = document.getElementById('filter-location').value;
   var time   = document.getElementById('filter-time').value;
   var access = document.getElementById('filter-access').value;
+  var sort   = document.getElementById('filter-sort').value;
   var filtered = joinState.allDrives;
   if (loc)    filtered = filtered.filter(function(d) { return d.fields.StagingLocation === loc; });
   if (time)   filtered = filtered.filter(function(d) { return (d.fields['Staging Time'] || '').includes(time); });
   if (access) filtered = filtered.filter(function(d) { return (d.fields.AccessType || 'Open') === access; });
+  if (sort === 'fullest') {
+    filtered = filtered.slice().sort(function(a, b) { return (b.fields.RiderCount || 0) - (a.fields.RiderCount || 0); });
+  }
   renderDrives(filtered);
 }
 
@@ -1413,6 +1447,7 @@ function renderDrives(drives) {
         (f.StagingLocation ? '<div class="drive-tag loc">📍 ' + f.StagingLocation + '</div>' : '') +
         (f['Staging Time']  ? '<div class="drive-tag time">🕐 ' + f['Staging Time'] + '</div>' : '') +
         (f['Drive Type']    ? '<div class="drive-tag">' + f['Drive Type'] + '</div>' : '') +
+        (f.RiderCount > 0 ? '<div class="drive-tag" style="color:var(--green);border-color:rgba(0,200,117,.2);">🚗 ' + f.RiderCount + ' rider' + (f.RiderCount !== 1 ? 's' : '') + '</div>' : '') +
       '</div>' +
       '<div class="access-badge ' + (isApproval ? 'access-approval' : 'access-open') + '">' +
         (isApproval ? '🔒 Approval Required' : '🟢 Open — Join Instantly') +
