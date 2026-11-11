@@ -1,6 +1,6 @@
 # 56ViceLane — Daily Checklist
 
-**Generated:** 2026-11-10 (Central Time)
+**Generated:** 2026-11-11 (Central Time)
 **How this works:** one list, updated daily. Check things off yourself by
 editing this file (change `- [ ]` to `- [x]`), or tell me and I'll check
 them off. Each day I regenerate this — anything still unchecked carries
@@ -74,7 +74,10 @@ decision point is real if it doesn't pan out.
       showed the cron had actually fired fine at 01:12 and 02:38, just
       finding zero new RSS items both times — correctly left alone, no
       re-dispatch needed. Running total now
-      57. The underlying pattern described below (from
+      58 — one more caught 2026-11-11 (04:01→10:52 UTC gap, ~6h51m, by
+      far the longest single gap yet; manually re-dispatched via
+      `workflow_dispatch`, confirmed resumed clean afterward, flagged to
+      Chris via push notification same day). The underlying pattern described below (from
       before the gap) still holds — the cron itself clearly kept running
       throughout the 48 days (hundreds of commits), so whatever caused
       the content-pipeline silence above likely was NOT this same cron
@@ -158,6 +161,19 @@ decision point is real if it doesn't pan out.
 
 ## Needs a decision from you
 
+- [ ] **Per-language Discord posting needs 5 webhook URLs from you,
+      2026-11-10/11.** Chris asked for the hourly "How To Join The Last
+      Drive" bot to also post translated versions into the 5 dedicated
+      WORLD CHANNELS (polski/português/deutsch/français/español), one
+      per channel every 2 hours. Translations for all 5 are already
+      drafted and ready. Deferred for the night at Chris's request — a
+      reminder is scheduled to follow up the morning of 2026-11-12.
+      Still needed: a webhook URL for each of the 5 channels (right-click
+      channel → Edit Channel → Integrations → Webhooks → New Webhook →
+      Copy Webhook URL). The #general awareness message (pointing people
+      to the language channels) is already live, posting every 2 hours
+      alongside the English how-to — that part didn't need new webhooks
+      since it reuses the existing #general one.
 - [ ] **Affiliate sponsor links — just need the URLs/codes and placement
       call, 2026-11-10.** You have real affiliate sponsor relationships
       already (Amazon plus a few others) — this is wiring in existing
@@ -561,6 +577,73 @@ decision point is real if it doesn't pan out.
 
 ## Done recently
 
+- [x] **Big day, 2026-11-10 evening through 2026-11-11: homepage
+      overhaul, launch-prep content, and several live bug fixes.**
+      Highlights:
+      - **GTA6-launch hero video shipped to homepage** — AI-generated
+        (vidIQ, ~210 credits spent, Chris approved the spend) 3-clip
+        sequence (sunlit interstate → tunnel → Vice City night reveal,
+        sedan→convertible), composed with real transitions, autoplay/
+        loop as the new homepage hero background. Added a "Share This
+        Moment" button (native file share → link share → clipboard
+        copy fallback chain, tagged #56ViceLane #GTA6).
+      - **Copy Gamertag button** added to the Last Drive post-signup
+        success message — caught and fixed a real quote-escaping bug
+        (JSON.stringify inside an HTML attribute) during testing before
+        it shipped.
+      - **Last Drive milestone banner made fully dynamic** — driver
+        count, Discord member count, and the "N-day countdown" line all
+        now compute live instead of being hand-typed (the exact "0
+        signups on my phone" and "says tomorrow but it's been days"
+        bugs Chris reported were both this general class of problem).
+      - **Wall of Honor "0 signups" bug fixed** — root cause: a
+        malformed/empty webhook response was silently rendering as a
+        confident "0 players" instead of showing an error state. Now
+        treated as a load failure (matches the existing error UI), and
+        that error state no longer wipes an already-good render on a
+        later 60s auto-refresh blip.
+      - **Homepage "Trevor disappeared" bug fixed** — the daily
+        Editor's Desk/Trevor's Take pair was getting bumped off the
+        homepage hero slot by same-day breaking/digest articles added
+        later in the day (pure-recency sort). Hero now prefers the
+        daily column pair; breaking news still gets full billing in the
+        3-item Top Stories list.
+      - **"Find My Drive" lookup added** to the existing gamertag finder
+        on `/lastdrive` — a Participant's result now also resolves and
+        shows their Drive Lead's exact gamertag (Copy button included),
+        matching by platform+region+staging location+time. Directly
+        answers the repeat "can't find my convoy/drive lead" Discord
+        questions (tinman8113, then 20filip14 — the second one turned
+        out to already be correctly registered, just a PC-platform
+        friend-search mismatch, not a data error).
+      - **Sitewide text size bumped** 18px → 22px body / headers +4px,
+        per Chris's call for launch week (supersedes the old 18px hard
+        rule in CLAUDE.md going forward).
+      - **Unofficial "world's largest farewell cruise" bit** added to
+        `/lastdrive` plus 3 new rotating social captions (Chris's joke,
+        decided against actually filing for a real Guinness record this
+        close to the event — new-category review alone runs 12+ weeks).
+      - **Translate sidebar shipped sitewide (all 158 pages)** — Kira's
+        idea: a collapsed edge tab expanding into glowing native-script
+        flag boxes for 14 major languages, Google's free client-side
+        translate engine under the hood, fully custom UI on top.
+      - **Discord "How To Join" bot** — posts every 2 hours to
+        #general (down from hourly per Chris's request after volume
+        complaints), now also posts a second message pointing people to
+        the per-language WORLD CHANNELS. Per-language translated posts
+        into those channels themselves still need webhook URLs from
+        Chris (see Needs a decision).
+      - **Day 8 of the daily countdown shipped** —
+        `editors-desk-8-days-out.html` / `trevors-take-8-days-out.html`,
+        referencing the real preload-straining-the-internet (Dexerto)
+        and "$80 is a bargain" (GameSpot) stories; also debunked and
+        logged as a skip the unverified "officially most pre-ordered
+        game ever" claim (GamesRadar) rather than running with it.
+      - One pre-existing bug found but NOT touched (out of scope that
+        session): `articles/gta6-everything-confirmed.html` has a JS
+        syntax error ("Unexpected string") that predates all of today's
+        changes — confirmed via the original git HEAD version, worth a
+        look separately.
 - [x] **Growth signal, 2026-11-10: organic Twitch discovery.** Two
       streamers (`stillgotgamegta6`, `killswitch8801`) found the site on
       their own and scheduled "THE LAST DRIVE | One Final Night in Los
