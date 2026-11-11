@@ -20,7 +20,7 @@
     "url": "https://56vicelane.com/lastdrive",
     "image": "images/lastdrive-hero.webp",
     "imageAlt": "The Last Drive countdown",
-    "lastPostedDate": "2026-11-10"
+    "lastPostedDate": "2026-11-11"
   },
   {
     "id": "lastdrive-signup-1",
@@ -491,7 +491,7 @@
     "image": "images/gta6-80-dollar-bargain-cost-of-living-hero.jpg",
     "imageAlt": "GTA6 At $80 Is A 'Bargain,' Take-Two CEO Says",
     "scheduledFor": "2026-11-11T16:49:16.845Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-gta6-zelnick-ocarina-of-time-praise",
@@ -500,7 +500,7 @@
     "image": "images/gta6-zelnick-ocarina-of-time-praise-hero.jpg",
     "imageAlt": "Take-Two CEO Calls Ocarina Of Time 'Terrific'",
     "scheduledFor": "2026-11-11T16:49:16.874Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-gta6-gay-tony-cameo-fan-theory",
@@ -509,7 +509,7 @@
     "image": "images/gta6-gay-tony-cameo-fan-theory-hero.jpg",
     "imageAlt": "GTA6 Fans Think They Spotted A Gay Tony Cameo",
     "scheduledFor": "2026-11-11T16:49:16.904Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-gta6-presales-surpass-1-billion-week-before-launch",
@@ -518,6 +518,6 @@
     "image": "images/gta6-presales-surpass-1-billion-week-before-launch-hero.jpg",
     "imageAlt": "GTA6 Presales Reportedly Surpass $1 Billion",
     "scheduledFor": "2026-11-11T20:54:44.598Z",
-    "posted": false
+    "posted": true
   }
 ]
