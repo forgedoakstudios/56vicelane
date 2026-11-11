@@ -554,9 +554,14 @@
       var track = document.getElementById('ticker-track');
       if(!track) return;
       var items = articles.concat(articles).map(function(a){
-        return '<span class="ticker-item" onclick="location.href='' + a.url + ''">' + a.emoji + ' ' + a.title + '</span>';
-      }).join('');
-      track.innerHTML = items;
+        var span = document.createElement('span');
+        span.className = 'ticker-item';
+        span.textContent = (a.emoji||'⚡') + ' ' + a.title;
+        span.onclick = function(){ window.location.href = a.url; };
+        return span;
+      });
+      track.innerHTML = '';
+      items.forEach(function(el){ track.appendChild(el); });
     })
     .catch(function(){
       var track = document.getElementById('ticker-track');
