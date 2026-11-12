@@ -1,6 +1,6 @@
 # 56ViceLane — Daily Checklist
 
-**Generated:** 2026-11-11 (Central Time)
+**Generated:** 2026-11-12 (Central Time)
 **How this works:** one list, updated daily. Check things off yourself by
 editing this file (change `- [ ]` to `- [x]`), or tell me and I'll check
 them off. Each day I regenerate this — anything still unchecked carries
@@ -26,6 +26,18 @@ decision point is real if it doesn't pan out.
 
 ## 🚨 Urgent
 
+- [ ] **Still need 3 more real Amazon product URLs to finish the
+      controllers buyer's guide fix, 2026-11-12.** All 80 affiliate links
+      sitewide were found pointing to generic `/s?k=` search pages instead
+      of direct `/dp/{ASIN}` product pages — explains 16 clicks / $0.00
+      commissions over 30 days in Associates Central. Fixed the PlayStation
+      DualSense link (real ASIN `B0FY6Y9WZT`, sent by you) — pushed to
+      `main`. Still need full `amazon.com/dp/...` URLs (not shortened
+      `link.amazon` links — those aren't resolvable from here and the
+      codes you sent were a character short of a real ASIN) for: DualSense
+      Edge Wireless Controller, Xbox Wireless Controller Series X, Xbox
+      Elite Series 2 Controller — all three still show generic search
+      links in `articles/gta6-best-controllers-buyers-guide.html`.
 - [ ] **The entire content pipeline sat dark for 48 days (2026-09-14 through
       2026-10-31) — no breaking articles, no digest drafts, no daily
       checklist regen, despite real GTA6 news happening that whole time.**
@@ -522,18 +534,14 @@ decision point is real if it doesn't pan out.
 - [ ] **AI video — Blotato's own video path is gone now that Blotato is
       cancelled; OpenArt testing (prompt notes in
       `audit/ai-video-prompt-notes.md`) is whatever's left to build on.**
-- [ ] **Video-SLA Discord alert mechanism improved 2026-11-10 but still
-      not a permanent fix.** Since n8n is reachable again (see Done
-      recently), stopped re-triggering the article-announcement webhook
-      for SLA pings (the 8/14 bug) and instead built a one-off temp n8n
-      workflow (manual trigger → HTTP POST straight to the Discord
-      webhook with the SLA text) each time, then archived it after use —
-      confirmed working cleanly on today's breaking article. This avoids
-      the duplicate-post bug entirely, but it's still a build-and-archive
-      pattern each time rather than one standing dedicated node. Worth
-      promoting to a permanent small workflow (just a webhook trigger →
-      Discord HTTP node) so this stops being rebuilt from scratch every
-      time a breaking article ships.
+- [x] ~~**Video-SLA Discord alert mechanism improved 2026-11-10 but still
+      not a permanent fix.**~~ — **MOOT, 2026-11-11.** Chris asked for
+      this step to stop entirely ("Just stop the video sla post, the
+      others are okay") after it posted an inaccurate/unwanted alert.
+      The "Video SLA Alert (Discord)" workflow (`Jra8RR745auP5QMk`) has
+      been unpublished and the Breaking Article routine's own prompt
+      updated to retire step 9 permanently — do not rebuild this unless
+      Chris explicitly asks again.
 - [ ] **Dell monitor swap — still drafted, needs your merge approval.**
       Unchanged, sitting on `claude/dell-monitor-swap`.
 - [ ] **More affiliate programs — Turtle Beach and Impact network still
@@ -577,6 +585,43 @@ decision point is real if it doesn't pan out.
 
 ## Done recently
 
+- [x] **LastDrive signup: optional Standard/⚡Enhanced edition pick shipped
+      to `main`, 2026-11-12.** Chris's request: PC players keep asking
+      which GTA5 edition a drive is running, so added an optional pick
+      (blank/Standard/Enhanced) for both Drive Leads and Participants,
+      across all 5 platforms — shows as a tag on drive browser cards.
+      New `edition` column on the LastDrive Data Table; wired through the
+      "LastDrive - Signup" and "LastDrive - List Drives" n8n workflows
+      (both published). Built and tested on a branch first, merged to
+      `main` with Chris's go-ahead.
+- [x] **Kira (KiraMarxs) rewarded with all premium nameplates + duplicate
+      signups cleaned up, 2026-11-12.** Chris's call after Kira modded
+      all night with no sleep: granted all 6 color plates + both exotic
+      plates across his signup rows via the "Admin - Gift Plates"
+      workflow (confirmed all 4 executions succeeded). Separately, Kira
+      had 4 duplicate Participant signups all on the exact same slot
+      (PS5/Europe/Airport, under yonderboi83's crew) — confirmed
+      intentional (not a bug), then trimmed to 1 at Kira's own request via
+      the "LastDrive - Cancel Signup" workflow once he saw all 4 on his
+      end and asked to consolidate.
+- [x] **Breaking article corrected + process fix, 2026-11-11/12:
+      "$1 billion presales" → Take-Two's own $3.5B guidance.** Chris
+      flagged via Discord that the published $1B Sensor Tower figure was
+      stale and shouldn't have gone to Discord as-is, since Take-Two's
+      own earnings call had already guided $3.5B for the same window.
+      Added an Update callout to the top of
+      `articles/gta6-presales-surpass-1-billion-week-before-launch.html`
+      pointing to the $3.5B article as the authoritative number. The
+      Breaking Article (7+) routine's stored prompt now has a mandatory
+      check (step 2c) requiring it to search for an official Take-Two/
+      Rockstar figure before leading with any third-party dollar
+      estimate, citing this incident directly.
+- [x] **Amazon affiliate zero-commission bug found and partly fixed,
+      2026-11-12.** All 80 affiliate links sitewide were pointing to
+      generic Amazon search pages instead of real product pages — explains
+      16 clicks / $0.00 earnings over 30 days. DualSense controller link
+      fixed with a real ASIN; 3 more controller links still need real URLs
+      from Chris (see Urgent).
 - [x] **Big day, 2026-11-10 evening through 2026-11-11: homepage
       overhaul, launch-prep content, and several live bug fixes.**
       Highlights:
