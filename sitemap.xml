@@ -133,7 +133,19 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://56vicelane.com/articles/editors-desk-8-days-out</loc>
+    <loc>https://56vicelane.com/articles/editors-desk-7-days-out</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/trevors-take-7-days-out</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-presales-surpass-1-billion-week-before-launch</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -151,13 +163,13 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://56vicelane.com/articles/gta6-presales-surpass-1-billion-week-before-launch</loc>
+    <loc>https://56vicelane.com/articles/gta6-zelnick-ocarina-of-time-praise</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://56vicelane.com/articles/gta6-zelnick-ocarina-of-time-praise</loc>
+    <loc>https://56vicelane.com/articles/editors-desk-8-days-out</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -165,12 +177,6 @@
   <url>
     <loc>https://56vicelane.com/articles/trevors-take-8-days-out</loc>
     <lastmod>2026-11-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://56vicelane.com/articles/editors-desk-9-days-out</loc>
-    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -187,13 +193,19 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://56vicelane.com/articles/gta6-take-two-q2-fy2027-earnings-3-5-billion</loc>
+    <loc>https://56vicelane.com/articles/editors-desk-9-days-out</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://56vicelane.com/articles/trevors-take-9-days-out</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://56vicelane.com/articles/gta6-take-two-q2-fy2027-earnings-3-5-billion</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

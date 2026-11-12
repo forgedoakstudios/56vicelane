@@ -519,5 +519,23 @@
     "imageAlt": "GTA6 Presales Reportedly Surpass $1 Billion",
     "scheduledFor": "2026-11-11T20:54:44.598Z",
     "posted": true
+  },
+  {
+    "id": "auto-publish-editors-desk-7-days-out",
+    "text": "Seven days until GTA6. We published a presales number yesterday that Take-Two's own earnings call quietly made obsolete less than a day lat…",
+    "url": "https://56vicelane.com/articles/editors-desk-7-days-out?utm_source=bluesky&utm_medium=social&utm_campaign=article_blast",
+    "image": "images/editor-portrait-4-launchweek.png",
+    "imageAlt": "From The Editor's Desk: 7 Days Out",
+    "scheduledFor": "2026-11-12T12:16:58.209Z",
+    "posted": false
+  },
+  {
+    "id": "auto-publish-trevors-take-7-days-out",
+    "text": "Seven days until GTA6. A viral gameplay clip nobody can confirm is real or AI, a Gay Tony theory, and Trevor connecting dots nobody asked h…",
+    "url": "https://56vicelane.com/articles/trevors-take-7-days-out?utm_source=bluesky&utm_medium=social&utm_campaign=article_blast",
+    "image": "images/trevor-portrait.png",
+    "imageAlt": "Trevor's Take: Was That Gameplay Clip Even Real",
+    "scheduledFor": "2026-11-12T12:16:58.237Z",
+    "posted": false
   }
 ]
