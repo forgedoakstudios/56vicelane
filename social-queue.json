@@ -20,7 +20,7 @@
     "url": "https://56vicelane.com/lastdrive",
     "image": "images/lastdrive-hero.webp",
     "imageAlt": "The Last Drive countdown",
-    "lastPostedDate": "2026-11-11"
+    "lastPostedDate": "2026-11-12"
   },
   {
     "id": "lastdrive-signup-1",
@@ -527,7 +527,7 @@
     "image": "images/editor-portrait-4-launchweek.png",
     "imageAlt": "From The Editor's Desk: 7 Days Out",
     "scheduledFor": "2026-11-12T12:16:58.209Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-trevors-take-7-days-out",
@@ -536,6 +536,6 @@
     "image": "images/trevor-portrait.png",
     "imageAlt": "Trevor's Take: Was That Gameplay Clip Even Real",
     "scheduledFor": "2026-11-12T12:16:58.237Z",
-    "posted": false
+    "posted": true
   }
 ]
