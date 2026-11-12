@@ -709,6 +709,15 @@
         <label class="form-label">Email</label>
         <input type="email" class="form-input" id="j-email" placeholder="For event updates only">
       </div>
+      <div class="form-field form-full">
+        <label class="form-label">Which Edition? <span style="font-family:var(--font-body);text-transform:none;letter-spacing:0;font-size:.7rem;">(optional)</span></label>
+        <select class="form-select" id="j-edition" style="width:100%;">
+          <option value="">Not sure / doesn't apply</option>
+          <option value="Standard">Standard</option>
+          <option value="Enhanced">⚡ Enhanced</option>
+        </select>
+        <p style="font-size:.72rem;color:var(--smoke);margin-top:6px;">Make sure it matches your Drive Lead's edition — sessions don't cross between Standard and Enhanced.</p>
+      </div>
       <div class="form-full">
         <div class="toggle-row">
           <div class="toggle-label">Show my gamertag on the Wall of Honor<small>Your tag will be publicly visible on 56ViceLane</small></div>
@@ -960,7 +969,7 @@ var CNT_IDS= {'PS5':'cnt-PS5','PS4':'cnt-PS4','Xbox Series X/S':'cnt-XboxS','Xbo
 
 var st = {};
 PLATFORMS.forEach(function(p) {
-  st[p] = {region:'',slot:'',chat:'',staging:'',drive:'',access:'Open',isOrg:false};
+  st[p] = {region:'',slot:'',chat:'',staging:'',drive:'',access:'Open',isOrg:false,edition:''};
 });
 
 var joinState = {platform:'PS5', region:'', drive:null, allDrives:[]};
@@ -1009,6 +1018,15 @@ PLATFORMS.forEach(function(p) {
         (p === 'PC' ? (
         '<div class="form-field form-full"><label class="form-label">Steam Friend Code or Profile URL <span style="font-family:var(--font-body);text-transform:none;letter-spacing:0;font-size:.7rem;">(optional)</span></label><input type="text" class="form-input" id="fs_' + pid + '" placeholder="e.g. 123456789 or steamcommunity.com/id/you"><p style="font-size:.72rem;color:var(--smoke);margin-top:6px;">Steam can\'t find PC players by display name alone — add this so your crew can actually add you.</p></div>'
         ) : '') +
+
+        '<div class="form-field form-full">' +
+          '<label class="form-label">Which Edition? <span style="font-family:var(--font-body);text-transform:none;letter-spacing:0;font-size:.7rem;">(optional)</span></label>' +
+          '<div class="sel-btns">' +
+            '<button type="button" class="sel-btn" data-p="' + p + '" data-k="edition" data-v="Standard">Standard</button>' +
+            '<button type="button" class="sel-btn" data-p="' + p + '" data-k="edition" data-v="Enhanced">⚡ Enhanced</button>' +
+          '</div>' +
+          '<p style="font-size:.72rem;color:var(--smoke);margin-top:6px;">Riders on a different edition than you may not be able to join your session — flagging this helps your crew find the right lobby. Leave blank if you\'re not sure.</p>' +
+        '</div>' +
 
         '<div class="form-field form-full">' +
           '<label class="form-label">Preferred Chat</label>' +
@@ -1306,7 +1324,7 @@ document.addEventListener('click', function(e) {
       chat: s.chat, chatOther: chatOther, crewName: crew,
       stagingLocation: s.staging, driveType: s.drive,
       passiveMode: passive, isOrganizer: s.isOrg,
-      showOnWall: showWall, petitionOptIn: petition,
+      showOnWall: showWall, petitionOptIn: petition, edition: s.edition || '',
       signupType: 'Drive Lead', referredBy: getReferredBy(), utmSource: getUtmSource()
     })
   }).then(function(res) { return res.json().then(function(d) { return {ok: res.ok, d: d}; }); })
@@ -1393,7 +1411,8 @@ function loadDriveBrowser() {
             Gamertag: rec.gamertag, Platform: rec.platform, Region: rec.region,
             'Staging Time': rec.stagingTime, StagingLocation: rec.stagingLocation,
             'Drive Type': rec.driveType, AccessType: rec.accessType, CrewName: rec.crewName,
-            SteamFriendCode: rec.steamFriendCode, RiderCount: riderCounts[slotKey] || 0
+            SteamFriendCode: rec.steamFriendCode, RiderCount: riderCounts[slotKey] || 0,
+            Edition: rec.edition || ''
           } };
         });
       applyJoinFilters();
@@ -1447,6 +1466,7 @@ function renderDrives(drives) {
         (f.StagingLocation ? '<div class="drive-tag loc">📍 ' + f.StagingLocation + '</div>' : '') +
         (f['Staging Time']  ? '<div class="drive-tag time">🕐 ' + f['Staging Time'] + '</div>' : '') +
         (f['Drive Type']    ? '<div class="drive-tag">' + f['Drive Type'] + '</div>' : '') +
+        (f.Edition ? '<div class="drive-tag" style="color:var(--amber);border-color:rgba(255,107,26,.2);">' + (f.Edition === 'Enhanced' ? '⚡ Enhanced' : f.Edition) + '</div>' : '') +
         (f.RiderCount > 0 ? '<div class="drive-tag" style="color:var(--green);border-color:rgba(0,200,117,.2);">🚗 ' + f.RiderCount + ' rider' + (f.RiderCount !== 1 ? 's' : '') + '</div>' : '') +
       '</div>' +
       '<div class="access-badge ' + (isApproval ? 'access-approval' : 'access-open') + '">' +
@@ -1483,6 +1503,7 @@ function submitParticipant() {
   var email    = (document.getElementById('j-email').value || '').trim();
   var showWall = document.getElementById('j-showwall').checked;
   var petition = document.getElementById('j-petition').checked;
+  var edition  = document.getElementById('j-edition').value;
   var btn = document.getElementById('join-submit-btn');
 
   if (!gamertag || !email || !joinState.drive) {
@@ -1570,7 +1591,7 @@ function submitParticipant() {
       region: drive.Region || joinState.region,
       stagingTime: drive['Staging Time'] || '',
       stagingLocation: drive.StagingLocation || '',
-      showOnWall: showWall, petitionOptIn: petition,
+      showOnWall: showWall, petitionOptIn: petition, edition: edition,
       signupType: 'Participant', joinStatus: joinStatus, referredBy: getReferredBy(), utmSource: getUtmSource()
     })
   }).then(function(res) { return res.json().then(function(d) { return {ok: res.ok, d: d}; }); })
