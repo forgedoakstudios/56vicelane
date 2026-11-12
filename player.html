@@ -40,6 +40,10 @@
 .drive-detail{background:var(--pitch);padding:10px 12px;}
 .detail-lbl{font-family:var(--font-label);font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:.65rem;color:var(--smoke);margin-bottom:3px;}
 .detail-val{font-family:var(--font-label);font-weight:800;font-size:.95rem;color:var(--bone);text-transform:uppercase;letter-spacing:.05em;}
+.crew-card{background:var(--asphalt);border:1px solid var(--edge);padding:16px 20px;margin-bottom:20px;}
+.crew-card-label{font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.2em;font-size:.7rem;color:var(--cyan);margin-bottom:10px;}
+.crew-row{background:var(--pitch);padding:8px 12px;margin-bottom:6px;font-size:.9rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.crew-row:last-child{margin-bottom:0;}
 .add-me-card{background:var(--asphalt);border:1px solid var(--edge);border-left:3px solid var(--amber);padding:16px 20px;margin-bottom:20px;}
 .add-me-label{font-family:var(--font-label);font-weight:800;text-transform:uppercase;letter-spacing:.2em;font-size:.7rem;color:var(--amber);margin-bottom:8px;}
 .add-me-tag{font-family:var(--font-display);font-size:1.4rem;text-transform:uppercase;color:var(--bone);margin-bottom:12px;}
@@ -146,10 +150,12 @@
       <div class="drive-card-label">Drive Details &mdash; November 18, 2026</div>
       <div class="drive-details-grid" id="drive-details-grid"></div>
     </div>
+    <div id="crew-mount"></div>
     <div class="add-me-card">
       <div class="add-me-label">&#128203; Add Me In-Game</div>
       <div class="add-me-tag" id="add-me-gamertag"></div>
       <button class="btn btn-primary" id="copy-btn" onclick="copyGamertag()" style="padding:10px 20px;font-size:.82rem;">Copy Gamertag</button>
+      <div id="profile-discord-link" style="display:none;margin-top:10px;"></div>
     </div>
     <div class="plate-section">
       <div class="plate-section-label">License Plate</div>
@@ -218,6 +224,18 @@
           <button class="btn btn-primary" onclick="saveProfilePic()" style="padding:12px 16px;white-space:nowrap;">Save</button>
         </div>
         <div class="msg" id="pic-msg"></div>
+      </div>
+
+      <!-- ── DISCORD LINK ─────────────────────────────── -->
+      <div class="owner-panel-section">
+        <div class="owner-panel-label">Your Profile</div>
+        <div class="owner-panel-title">Discord Channel Link</div>
+        <p class="owner-panel-sub">Optional — if you have a Discord server/channel, share it here. It'll show on your public profile and to your crew.</p>
+        <div style="display:flex;gap:8px;">
+          <input type="url" class="form-input" id="discord-link-input" placeholder="https://discord.gg/yourinvite" style="flex:1;">
+          <button class="btn btn-primary" onclick="saveDiscordLink()" style="padding:12px 16px;white-space:nowrap;">Save</button>
+        </div>
+        <div class="msg" id="discord-link-msg"></div>
       </div>
 
       <!-- ── DRIVE MANAGE ───────────────────────────── -->
@@ -403,6 +421,8 @@ function normalizeToId(s){
 }
 
 // ── LOAD PROFILE ───────────────────────────────────────────
+var allSignupsList=[];
+
 function loadProfile(){
   var params=new URLSearchParams(window.location.search);
   var g=params.get('g')||params.get('gamertag')||'';
@@ -411,6 +431,7 @@ function loadProfile(){
     .then(function(r){return r.json();})
     .then(function(d){
       var signups=(d&&d.signups)||[];
+      allSignupsList=signups;
       var match=signups.filter(function(s){return s.gamertag===g;})[0];
       if(!match){showNotFound();return;}
       playerData={
@@ -419,10 +440,41 @@ function loadProfile(){
         'Drive Type':match.driveType, AccessType:match.accessType,
         IsOrganizer:match.isOrganizer, SignupNumber:match.signupNumber,
         PlateStyle:match.plateStyle, PlateStatus:match.plateStatus,
-        About:match.about, ImgurLink:match.imgurLink
+        About:match.about, ImgurLink:match.imgurLink, DiscordLink:match.discordLink
       };
       renderProfile(playerData,g);
     }).catch(showNotFound);
+}
+
+/* Crew lookup — reuses the already-fetched public signups list, matching
+   the same platform+region+stagingLocation+stagingTime key the signup
+   backend uses as linkedSlot (same convention as lastdrive.html). */
+function buildCrewHtml(f){
+  var slotKey=(f.Platform||'')+'||'+(f.Region||'')+'||'+(f.StagingLocation||'')+'||'+(f['Staging Time']||'');
+  function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function discordBit(link){
+    if(!link)return'';
+    return ' <a href="'+esc(link)+'" target="_blank" rel="noopener" style="color:var(--cyan);font-size:.8rem;">💬 Discord</a>';
+  }
+  if(f.IsOrganizer){
+    var crew=allSignupsList.filter(function(s){
+      return s.signupType==='Participant' && s.linkedSlot===slotKey;
+    });
+    if(!crew.length)return'';
+    var rows=crew.map(function(s){
+      return '<div class="crew-row">🚗 <a href="/player?g='+encodeURIComponent(s.gamertag)+'" style="color:var(--bone);">'+esc(s.gamertag)+'</a>'+discordBit(s.discordLink)+'</div>';
+    }).join('');
+    return '<div class="crew-card"><div class="crew-card-label">Your Crew ('+crew.length+')</div>'+rows+'</div>';
+  }else{
+    var lead=allSignupsList.filter(function(s){
+      return (s.signupType==='Drive Lead'||s.isOrganizer) &&
+        s.platform===(f.Platform||'') && s.region===(f.Region||'') &&
+        s.stagingLocation===(f.StagingLocation||'') && s.stagingTime===(f['Staging Time']||'');
+    })[0];
+    if(!lead)return'';
+    return '<div class="crew-card"><div class="crew-card-label">Your Drive Lead</div>'+
+      '<div class="crew-row">⭐ <a href="/player?g='+encodeURIComponent(lead.gamertag)+'" style="color:var(--bone);">'+esc(lead.gamertag)+'</a>'+discordBit(lead.discordLink)+'</div></div>';
+  }
 }
 
 function showNotFound(){
@@ -458,6 +510,18 @@ function renderProfile(f,gamertag){
     if(f[df.key]){hasAny=true;var cell=document.createElement('div');cell.className='drive-detail';cell.innerHTML='<div class="detail-lbl">'+df.label+'</div><div class="detail-val">'+f[df.key]+'</div>';grid.appendChild(cell);}
   });
   if(hasAny)document.getElementById('drive-card').style.display='block';
+  var crewHtml=buildCrewHtml(f);
+  var crewMount=document.getElementById('crew-mount');
+  if(crewMount){crewMount.innerHTML=crewHtml;}
+  var discordMount=document.getElementById('profile-discord-link');
+  if(discordMount){
+    if(f.DiscordLink){
+      discordMount.style.display='block';
+      discordMount.innerHTML='<a href="'+f.DiscordLink.replace(/"/g,'&quot;')+'" target="_blank" rel="noopener" class="share-btn" style="display:inline-block;">💬 Discord Channel</a>';
+    }else{
+      discordMount.style.display='none';
+    }
+  }
   var pi=document.getElementById('profile-plate-inner');
   if(ip){pi.style.backgroundImage=bg;pi.style.backgroundSize='cover';pi.style.backgroundPosition='center';pi.style.background='';}
   else{pi.style.backgroundImage='';pi.style.background=bg;}
@@ -571,6 +635,7 @@ function unlockOwner(){
       document.getElementById('owner-panel').style.display='block';
       if(flds.About)document.getElementById('about-input').value=flds.About;
       if(flds.ImgurLink)document.getElementById('pic-url-input').value=flds.ImgurLink;
+      if(d.discordLink)document.getElementById('discord-link-input').value=d.discordLink;
       var mc=document.getElementById('manage-current'),isLR=flds.SignupType==='Drive Lead';
       var sum=(isLR?'Drive Lead':'Participant')+(flds['Staging Time']?' · '+flds['Staging Time']:'')+(flds.StagingLocation?' · '+flds.StagingLocation:'');
       mc.innerHTML=sum;mc.style.display='block';
@@ -604,6 +669,25 @@ function saveProfilePic(){
       img.src=url;img.alt='avatar';img.onerror=function(){a.textContent='?';};
       a.innerHTML='';a.appendChild(img);
       showMsg(msg,'✅ Updated!','success');
+      setTimeout(function(){hideMsg(msg);},3000);
+    }).catch(function(){showMsg(msg,'Failed.','error');});
+}
+
+function saveDiscordLink(){
+  var url=document.getElementById('discord-link-input').value.trim(),msg=document.getElementById('discord-link-msg');
+  if(!playerData||!verifiedEmail)return;
+  showMsg(msg,'Saving...','success');
+  fetch(UPDATE_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({gamertag:playerData.Gamertag,email:verifiedEmail,patch:{discordLink:url}})})
+    .then(function(r){return r.json();})
+    .then(function(d){
+      if(!d.success){showMsg(msg,'Failed.','error');return;}
+      playerData.DiscordLink=url;
+      var discordMount=document.getElementById('profile-discord-link');
+      if(discordMount){
+        if(url){discordMount.style.display='block';discordMount.innerHTML='<a href="'+url.replace(/"/g,'&quot;')+'" target="_blank" rel="noopener" class="share-btn" style="display:inline-block;">💬 Discord Channel</a>';}
+        else{discordMount.style.display='none';}
+      }
+      showMsg(msg,'✅ Saved!','success');
       setTimeout(function(){hideMsg(msg);},3000);
     }).catch(function(){showMsg(msg,'Failed.','error');});
 }
