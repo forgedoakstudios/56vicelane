@@ -55,12 +55,14 @@
         'object-fit:cover;object-position:50% 20%;opacity:.95;' +
         'filter:drop-shadow(0 0 30px rgba(0,0,0,.35));}' +
       '.vl-char-rail img.vl-flip{transform:scaleX(-1);}' +
-      /* Fade the art into the page's white background gradually at the
-         inner edge (toward the center content) instead of a hard seam. */
-      '.vl-char-left img{-webkit-mask-image:linear-gradient(to right,#000 55%,transparent 100%);' +
-        'mask-image:linear-gradient(to right,#000 55%,transparent 100%);}' +
-      '.vl-char-right img{-webkit-mask-image:linear-gradient(to left,#000 55%,transparent 100%);' +
-        'mask-image:linear-gradient(to left,#000 55%,transparent 100%);}' +
+      /* Face is centered in the frame (object-position 50%), so the
+         opaque zone has to clear well past center or the fade cuts a
+         seam straight through the middle of the face. Only fade a
+         narrow strip right at the innermost edge, past the whole face. */
+      '.vl-char-left img{-webkit-mask-image:linear-gradient(to right,#000 85%,transparent 100%);' +
+        'mask-image:linear-gradient(to right,#000 85%,transparent 100%);}' +
+      '.vl-char-right img{-webkit-mask-image:linear-gradient(to left,#000 85%,transparent 100%);' +
+        'mask-image:linear-gradient(to left,#000 85%,transparent 100%);}' +
       '@media(max-width:1500px){.vl-char-rail{width:160px;}}' +
       '@media(max-width:1200px){.vl-char-rail{display:none !important;}}' +
       /* The nav bar's opaque white background sits above the rail
