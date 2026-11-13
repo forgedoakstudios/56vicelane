@@ -179,15 +179,27 @@
     <source src="https://assets.vidiq.com/compositions/a1786415-9174-4c92-8372-4bff2f950bdd/bhs3qdtxuazmzq743ec6wn09.mp4" type="video/mp4">
   </video>
   <div class="hero-inner">
-    <div class="hero-eyebrow">November 18 &middot; All Platforms &middot; Free</div>
-    <div class="hero-word">One Final Night In Los Santos</div>
-    <p class="hero-sub">Join a scheduled GTA5 convoy the night before GTA6 launches. Choose your platform, find your crew, and put your gamertag on the Wall of Honor.</p>
-    <div class="hero-ctas">
+    <div class="hero-eyebrow"
+      data-pre-html="November 18 &middot; All Platforms &middot; Free"
+      data-post-html="GTA6 Is Live &middot; Welcome Back">November 18 &middot; All Platforms &middot; Free</div>
+    <div class="hero-word"
+      data-pre-html="One Final Night In Los Santos"
+      data-post-html="Thank You, Los Santos. Hello, Vice City.">One Final Night In Los Santos</div>
+    <p class="hero-sub"
+      data-pre-html="Join a scheduled GTA5 convoy the night before GTA6 launches. Choose your platform, find your crew, and put your gamertag on the Wall of Honor."
+      data-post-html="The Last Drive is done &mdash; thank you to everyone who rode. 56ViceLane isn&rsquo;t going anywhere: same site, same crew, now covering everything GTA6 as it happens.">Join a scheduled GTA5 convoy the night before GTA6 launches. Choose your platform, find your crew, and put your gamertag on the Wall of Honor.</p>
+    <div class="hero-ctas pre-launch-only">
       <a href="/lastdrive" class="hero-cta-primary">Reserve My Free Spot</a>
+      <a href="https://discord.gg/ewdRcjsbg5" target="_blank" rel="noopener" class="hero-cta-secondary">Join the Discord</a>
+    </div>
+    <div class="hero-ctas post-launch-only" style="display:none;">
+      <a href="/news" class="hero-cta-primary">Read The Latest GTA6 News</a>
       <a href="https://discord.gg/ewdRcjsbg5" target="_blank" rel="noopener" class="hero-cta-secondary">Join the Discord</a>
       <button type="button" class="hero-cta-share" id="hero-share-btn">📣 Share This Moment</button>
     </div>
-    <div class="hero-reassure">No purchase required &middot; Pick your convoy later &middot; Unsubscribe anytime</div>
+    <div class="hero-reassure"
+      data-pre-html="No purchase required &middot; Pick your convoy later &middot; Unsubscribe anytime"
+      data-post-html="5, 6&hellip; 56. All things GTA, not just The Last Drive.">No purchase required &middot; Pick your convoy later &middot; Unsubscribe anytime</div>
   </div>
 </div>
 
@@ -622,5 +634,6 @@ loadFeaturedStreamers();
 <script src="/loyalty-banner.js" defer></script>
 <script src="/sponsor-banner.js" defer></script>
 <script src="/translate-sidebar.js?v=3" defer></script>
+<script src="/launch-transform.js" defer></script>
 </body>
 </html>
