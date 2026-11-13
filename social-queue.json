@@ -20,7 +20,7 @@
     "url": "https://56vicelane.com/lastdrive",
     "image": "images/lastdrive-hero.webp",
     "imageAlt": "The Last Drive countdown",
-    "lastPostedDate": "2026-11-12"
+    "lastPostedDate": "2026-11-13"
   },
   {
     "id": "lastdrive-signup-1",
@@ -545,7 +545,7 @@
     "image": "images/editor-portrait-4-launchweek.png",
     "imageAlt": "From The Editor's Desk: 6 Days Out",
     "scheduledFor": "2026-11-13T18:20:00.000Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-trevors-take-6-days-out",
@@ -554,6 +554,6 @@
     "image": "images/trevor-portrait.png",
     "imageAlt": "Trevor's Take: The Internet Companies Know Something",
     "scheduledFor": "2026-11-13T18:21:00.000Z",
-    "posted": false
+    "posted": true
   }
 ]
