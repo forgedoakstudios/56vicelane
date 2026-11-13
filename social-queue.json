@@ -537,5 +537,23 @@
     "imageAlt": "Trevor's Take: Was That Gameplay Clip Even Real",
     "scheduledFor": "2026-11-12T12:16:58.237Z",
     "posted": true
+  },
+  {
+    "id": "auto-publish-editors-desk-6-days-out",
+    "text": "Six days until GTA6. A UK broadband operator is publicly bracing for launch-day traffic, which is somehow the most normal thing Danny has r…",
+    "url": "https://56vicelane.com/articles/editors-desk-6-days-out?utm_source=bluesky&utm_medium=social&utm_campaign=article_blast",
+    "image": "images/editor-portrait-4-launchweek.png",
+    "imageAlt": "From The Editor's Desk: 6 Days Out",
+    "scheduledFor": "2026-11-13T12:24:43.530Z",
+    "posted": false
+  },
+  {
+    "id": "auto-publish-trevors-take-6-days-out",
+    "text": "Six days until GTA6. A UK broadband operator says it's been bracing for launch day 'for a long time.' Trevor has questions about exactly ho…",
+    "url": "https://56vicelane.com/articles/trevors-take-6-days-out?utm_source=bluesky&utm_medium=social&utm_campaign=article_blast",
+    "image": "images/trevor-portrait.png",
+    "imageAlt": "Trevor's Take: The Internet Companies Know Something",
+    "scheduledFor": "2026-11-13T12:24:43.568Z",
+    "posted": false
   }
 ]
