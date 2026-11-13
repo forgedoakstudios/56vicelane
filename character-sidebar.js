@@ -4,10 +4,12 @@
    character's portrait appears on the left edge, another on the right,
    and the pair rotates over time as more characters are added below.
 
-   ADDING A NEW CHARACTER: just add one line to ROSTER. The image only
-   needs to exist facing one direction -- the opposite sidebar mirrors it
-   with CSS (transform: scaleX(-1)) rather than needing a second generated
-   image, so likeness stays consistent between the two sides.
+   ADDING A NEW CHARACTER: add one line to ROSTER. Check which way they're
+   already facing/turned in the source image -- if they're naturally
+   turned toward what would be the WRONG side (away from the page's
+   center) once placed, set mirror:true on that entry to flip them with
+   CSS (transform: scaleX(-1)) instead of generating a second image.
+   Leave mirror off (the default) if they already face the right way.
 
    Include with: <script src="/character-sidebar.js" defer></script>
    (after launch-transform.js, order doesn't matter -- this one polls the
@@ -16,10 +18,10 @@
   'use strict';
 
   var ROSTER = [
-    { name: 'Lucia Caminos', src: 'images/gta6/sidebar/lucia-caminos.jpg' }, // left
-    { name: 'Jason Duval', src: 'images/gta6/sidebar/jason-duval.jpg' }      // right
+    { name: 'Lucia Caminos', src: 'images/gta6/sidebar/lucia-caminos.jpg', mirror: false }, // left, already turned toward center
+    { name: 'Jason Duval', src: 'images/gta6/sidebar/jason-duval.jpg', mirror: false }      // right, already turned toward center
     // Add more as they're generated, e.g.:
-    // { name: 'Boobie Ike', src: 'images/gta6/sidebar/boobie-ike.jpg' },
+    // { name: 'Boobie Ike', src: 'images/gta6/sidebar/boobie-ike.jpg', mirror: true },
   ];
 
   var ROTATION_MS = 1000 * 60 * 60 * 6; // swap pair every 6 hours
@@ -52,7 +54,13 @@
       '.vl-char-rail img{position:absolute;inset:0;width:100%;height:100%;' +
         'object-fit:cover;object-position:50% 20%;opacity:.95;' +
         'filter:drop-shadow(0 0 30px rgba(0,0,0,.35));}' +
-      '.vl-char-right img{transform:scaleX(-1);}' +
+      '.vl-char-rail img.vl-flip{transform:scaleX(-1);}' +
+      /* Fade the art into the page's white background gradually at the
+         inner edge (toward the center content) instead of a hard seam. */
+      '.vl-char-left img{-webkit-mask-image:linear-gradient(to right,#000 55%,transparent 100%);' +
+        'mask-image:linear-gradient(to right,#000 55%,transparent 100%);}' +
+      '.vl-char-right img{-webkit-mask-image:linear-gradient(to left,#000 55%,transparent 100%);' +
+        'mask-image:linear-gradient(to left,#000 55%,transparent 100%);}' +
       '@media(max-width:1500px){.vl-char-rail{width:160px;}}' +
       '@media(max-width:1200px){.vl-char-rail{display:none !important;}}' +
       /* The nav bar's opaque white background sits above the rail
@@ -93,10 +101,12 @@
       leftImg.src = pair[0].src;
       leftImg.alt = pair[0].name;
     }
+    leftImg.classList.toggle('vl-flip', !!pair[0].mirror);
     if (rightImg.getAttribute('src') !== pair[1].src) {
       rightImg.src = pair[1].src;
       rightImg.alt = pair[1].name;
     }
+    rightImg.classList.toggle('vl-flip', !!pair[1].mirror);
   }
 
   if (document.readyState === 'loading') {
