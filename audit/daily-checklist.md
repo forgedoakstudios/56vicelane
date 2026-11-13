@@ -1,6 +1,6 @@
 # 56ViceLane — Daily Checklist
 
-**Generated:** 2026-11-12 (Central Time)
+**Generated:** 2026-11-13 (Central Time)
 **How this works:** one list, updated daily. Check things off yourself by
 editing this file (change `- [ ]` to `- [x]`), or tell me and I'll check
 them off. Each day I regenerate this — anything still unchecked carries
@@ -26,6 +26,10 @@ decision point is real if it doesn't pan out.
 
 ## 🚨 Urgent
 
+- [ ] **Multi-connector outage, 2026-11-13: n8n, Gmail, Google Calendar, Google Drive, Cloudflare, and vidIQ all showing connection failures (502s) for most of today's session, on and off from roughly 13:00 UTC onward.** Unlike the earlier network-policy block (resolved 2026-11-10), this looks like a genuine outage on the connector side, not this sandbox's egress rules — repeated retries across the session kept failing with `CLIENT_HTTP_NOT_IMPLEMENTED`/`REQUEST_TIMEOUT`. Real-world impact today: couldn't fire the Drive Lead channel-update notice repost, couldn't send the Drive Lead email myself (Chris sent it manually instead), couldn't gift Kira's 2 new nameplate bundles, couldn't wire the new language-dropdown field into the backend. All of that is staged and ready to fire the moment connectivity returns — nothing lost, just blocked. Worth watching whether this resolves on its own or needs the same kind of fix as the 11/10 network-policy incident.
+- [ ] **6-hour full auto-posting pause called by Chris, 2026-11-13 (12:13–18:14 UTC), for the Drive Lead channel-update notice.** Covers everything, including breaking news — all 4 recurring Discord bots unpublished and the Article → Social Blast workflow's Discord node disabled, with a scheduled reminder to re-publish/re-enable everything at 18:14 UTC. One exception carved out live: the Drive Lead channel-update repost (see next item) is explicitly authorized to fire during the pause. Also added a pause-check (STEP 0) to the Breaking Article (7+) Routine's own stored prompt so a future fresh-session firing during any pause checks for an active "Resume ... auto-posting" reminder before publishing anything — closes a real gap where a stateless scheduled run had no way to know a pause was active.
+- [ ] **Drive Lead channel-update notice (v2, new graphic) still queued, not yet fired.** Chris provided an updated graphic + copy late in the day ("From this point on, every Drive Lead is getting their own dedicated channel... react with any emoji... we're also emailing every Drive Lead directly") and said to fire it as the only post that should go out, explicitly overriding the active pause above for this one post. Translated into all 6 languages, image live at `images/drive-lead-channel-notice-2.jpg`. Blocked on the n8n outage above — queued to fire automatically the moment n8n reconnects.
+- [ ] **Kira (KiraMarxs) owed 2 more premium nameplate bundles — Low Riders + Exotic Cars — gift not yet executed.** Chris's request, 2026-11-13. Blocked on the same n8n outage; queued to fire via the `Admin - Gift Plates` workflow once reachable.
 - [ ] **Still need 3 more real Amazon product URLs to finish the
       controllers buyer's guide fix, 2026-11-12.** All 80 affiliate links
       sitewide were found pointing to generic `/s?k=` search pages instead
@@ -173,6 +177,7 @@ decision point is real if it doesn't pan out.
 
 ## Needs a decision from you
 
+- [ ] **Language multi-select added to the Drive Lead signup form, needs your merge approval, 2026-11-13.** Region alone doesn't map to spoken language (Europe bundles Polish/Portuguese/German/French/Spanish/English signups with zero way to split them — confirmed while trying to label all 30 existing Drive Leads by language for Discord channel routing). New "Language(s) You Speak" multi-select on the lead-signup flow, built and verified rendering/toggling correctly on branch `claude/lastdrive-language-field`. Front-end only — still needs a `language` column added to the LastDrive data table and the signup workflow wired to persist it, blocked on the n8n outage above.
 - [ ] **Per-language Discord posting needs 5 webhook URLs from you,
       2026-11-10/11.** Chris asked for the hourly "How To Join The Last
       Drive" bot to also post translated versions into the 5 dedicated
@@ -585,6 +590,11 @@ decision point is real if it doesn't pan out.
 
 ## Done recently
 
+- [x] **Day 6 of the countdown shipped, 2026-11-13** — `editors-desk-6-days-out.html` / `trevors-take-6-days-out.html`, both referencing the real Eurogamer/Openreach "UK broadband bracing for GTA6 launch traffic" story. Cross-linked to each other and the existing disc/download-size article. Pushed to `main`, queued to Bluesky (see next item for a mistake caught on that).
+- [x] **Caught and fixed a real mistake: 2 Bluesky posts queued during Chris's active posting pause, 2026-11-13.** The day-6 Editor's Desk/Trevor's Take Bluesky entries landed in `social-queue.json` at 12:24 UTC — 11 minutes after the 6-hour pause started (12:13 UTC) — before I'd registered the pause covered Bluesky too. Neither had posted yet (`posted: false`), so pushed their `scheduledFor` to just after the pause lifts (18:14 UTC) instead of leaving them live during the quiet window.
+- [x] **`images/gta6/` folder created, 2026-11-13** — for Chris to start uploading launch-and-beyond images into directly.
+- [x] **KiraMarxs and Uzzywuzzy resolved as Drive Lead channel-naming questions, 2026-11-13.** Kira confirmed fine to use as his short name (no full name on file). Uzzywuzzy doesn't match any real Last Drive signup (closest was a loyalty-checkin-only account with no platform/region/email) — Chris added him manually himself, no action needed here.
+- [x] **Drive Lead email drafted and handed off, 2026-11-13.** Full email copy (Discord channel info, what info to send back, drive rules, Passive Mode default, a soft invite to a Wednesday Noon CT group call) plus the 30-name/email list compiled fresh from the LastDrive data table (isOrganizer=true, deduped from 35 raw rows down to 30 — 2 test rows + 3 exact duplicate signups dropped). Also flagged a real scheduling catch: checked everyone's actual drive `stagingTime` against a Wednesday 4pm CT meeting before Chris changed it to a Noon CT invite — 2 leads (Ryan, Rocksy) would've had a hard conflict, 4 more were borderline. Chris is sending the final email himself.
 - [x] **LastDrive signup: optional Standard/⚡Enhanced edition pick shipped
       to `main`, 2026-11-12.** Chris's request: PC players keep asking
       which GTA5 edition a drive is running, so added an optional pick
