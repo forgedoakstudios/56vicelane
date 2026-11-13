@@ -1079,6 +1079,20 @@ PLATFORMS.forEach(function(p) {
           '<input type="text" class="form-input" id="fc_' + pid + '" placeholder="Leave blank if riding solo">' +
         '</div>' +
 
+        '<div class="form-field form-full">' +
+          '<label class="form-label">Language(s) You Speak <span style="font-family:var(--font-body);text-transform:none;letter-spacing:0;font-size:.7rem;">(select all that apply)</span></label>' +
+          '<div class="sel-btns" id="lang_' + pid + '">' +
+            '<button type="button" class="sel-btn lang-btn" data-p="' + p + '" data-lang="English">English</button>' +
+            '<button type="button" class="sel-btn lang-btn" data-p="' + p + '" data-lang="Polish">Polski</button>' +
+            '<button type="button" class="sel-btn lang-btn" data-p="' + p + '" data-lang="Portuguese">Português</button>' +
+            '<button type="button" class="sel-btn lang-btn" data-p="' + p + '" data-lang="German">Deutsch</button>' +
+            '<button type="button" class="sel-btn lang-btn" data-p="' + p + '" data-lang="French">Français</button>' +
+            '<button type="button" class="sel-btn lang-btn" data-p="' + p + '" data-lang="Spanish">Español</button>' +
+            '<button type="button" class="sel-btn lang-btn" data-p="' + p + '" data-lang="Other">Other</button>' +
+          '</div>' +
+          '<p style="font-size:.72rem;color:var(--smoke);margin-top:6px;">Helps us route you to the right language channel on Discord.</p>' +
+        '</div>' +
+
         '<div class="form-full">' +
           '<div class="toggle-row"><div class="toggle-label">I\'ll enable Passive Mode during the drive<small>Required to keep the cruise clean</small></div><label class="toggle"><input type="checkbox" id="tp_' + pid + '"><span class="toggle-slider"></span></label></div>' +
           '<div class="toggle-row"><div class="toggle-label">Show my gamertag on the Wall of Honor<small>Publicly visible on 56ViceLane</small></div><label class="toggle"><input type="checkbox" id="tw_' + pid + '" checked><span class="toggle-slider"></span></label></div>' +
@@ -1244,8 +1258,22 @@ function showLeadForm(p, pid, region, slot, isOrg) {
 }
 
 document.addEventListener('click', function(e) {
+  var langBtn = e.target.closest('.lang-btn');
+  if (langBtn) {
+    var lp = langBtn.dataset.p;
+    langBtn.classList.toggle('selected');
+    if (!st[lp].languages) st[lp].languages = [];
+    var lang = langBtn.dataset.lang;
+    var idx = st[lp].languages.indexOf(lang);
+    if (langBtn.classList.contains('selected') && idx === -1) st[lp].languages.push(lang);
+    if (!langBtn.classList.contains('selected') && idx !== -1) st[lp].languages.splice(idx, 1);
+    return;
+  }
+});
+
+document.addEventListener('click', function(e) {
   var btn = e.target.closest('.sel-btn, .opt-btn');
-  if (!btn) return;
+  if (!btn || btn.classList.contains('lang-btn')) return;
   var p   = btn.dataset.p;
   var pid = p.replace(/[^a-zA-Z0-9]/g,'_');
   var k   = btn.dataset.k;
@@ -1325,6 +1353,7 @@ document.addEventListener('click', function(e) {
       stagingLocation: s.staging, driveType: s.drive,
       passiveMode: passive, isOrganizer: s.isOrg,
       showOnWall: showWall, petitionOptIn: petition, edition: s.edition || '',
+      language: (s.languages || []).join(', '),
       signupType: 'Drive Lead', referredBy: getReferredBy(), utmSource: getUtmSource()
     })
   }).then(function(res) { return res.json().then(function(d) { return {ok: res.ok, d: d}; }); })
