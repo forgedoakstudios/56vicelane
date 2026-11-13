@@ -12,6 +12,20 @@
     --gold:#E8B84B; --gold-deep:#C4922A; --orange:#FF6B2C; --pink:#FF3D7A; --magenta:#D6247A;
     --band:#B5637A;
   }
+  /* Post-launch theme: the site's "midnight swap" -- same light-background,
+     readable structure, but pushed into a vibrant classic Vice City palette
+     (hot pink, electric teal, sunset orange, a hit of purple) instead of
+     the pre-launch warm-paper tone. Not a dark/neon reskin -- bright and
+     saturated, like the actual Vice City skyline at golden hour. */
+  .post-launch{
+    --bg:linear-gradient(160deg,#FFE1F2 0%,#FFE9C7 45%,#D8FBF5 100%);
+    --edge:#FFD2E8; --ink:#2A1420; --ink-soft:#8A5A74;
+    --gold:#FFC93C; --gold-deep:#E89B2D; --orange:#FF5F1F; --pink:#FF2E9A; --magenta:#D6009C;
+    --band:linear-gradient(90deg,#FF2E9A,#9D4EDD);
+    --teal:#00E5D4; --purple:#9D4EDD;
+  }
+  .post-launch .news-thumb{background:linear-gradient(135deg,var(--teal),var(--orange) 55%,var(--magenta));}
+  .post-launch .socials a{background:linear-gradient(135deg,var(--teal),var(--purple));}
   *{box-sizing:border-box; margin:0; padding:0;}
   body{background:var(--bg); color:var(--ink); font-family:'Inter',sans-serif; font-size:22px;}
   .serif{font-family:'Playfair Display',serif;}
