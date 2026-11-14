@@ -1,6 +1,6 @@
 # 56ViceLane — Daily Checklist
 
-**Generated:** 2026-11-13 (Central Time)
+**Generated:** 2026-11-14 (Central Time)
 **How this works:** one list, updated daily. Check things off yourself by
 editing this file (change `- [ ]` to `- [x]`), or tell me and I'll check
 them off. Each day I regenerate this — anything still unchecked carries
@@ -26,10 +26,10 @@ decision point is real if it doesn't pan out.
 
 ## 🚨 Urgent
 
-- [ ] **Multi-connector outage, 2026-11-13: n8n, Gmail, Google Calendar, Google Drive, Cloudflare, and vidIQ all showing connection failures (502s) for most of today's session, on and off from roughly 13:00 UTC onward.** Unlike the earlier network-policy block (resolved 2026-11-10), this looks like a genuine outage on the connector side, not this sandbox's egress rules — repeated retries across the session kept failing with `CLIENT_HTTP_NOT_IMPLEMENTED`/`REQUEST_TIMEOUT`. Real-world impact today: couldn't fire the Drive Lead channel-update notice repost, couldn't send the Drive Lead email myself (Chris sent it manually instead), couldn't gift Kira's 2 new nameplate bundles, couldn't wire the new language-dropdown field into the backend. All of that is staged and ready to fire the moment connectivity returns — nothing lost, just blocked. Worth watching whether this resolves on its own or needs the same kind of fix as the 11/10 network-policy incident.
-- [ ] **6-hour full auto-posting pause called by Chris, 2026-11-13 (12:13–18:14 UTC), for the Drive Lead channel-update notice.** Covers everything, including breaking news — all 4 recurring Discord bots unpublished and the Article → Social Blast workflow's Discord node disabled, with a scheduled reminder to re-publish/re-enable everything at 18:14 UTC. One exception carved out live: the Drive Lead channel-update repost (see next item) is explicitly authorized to fire during the pause. Also added a pause-check (STEP 0) to the Breaking Article (7+) Routine's own stored prompt so a future fresh-session firing during any pause checks for an active "Resume ... auto-posting" reminder before publishing anything — closes a real gap where a stateless scheduled run had no way to know a pause was active.
-- [ ] **Drive Lead channel-update notice (v2, new graphic) still queued, not yet fired.** Chris provided an updated graphic + copy late in the day ("From this point on, every Drive Lead is getting their own dedicated channel... react with any emoji... we're also emailing every Drive Lead directly") and said to fire it as the only post that should go out, explicitly overriding the active pause above for this one post. Translated into all 6 languages, image live at `images/drive-lead-channel-notice-2.jpg`. Blocked on the n8n outage above — queued to fire automatically the moment n8n reconnects.
-- [ ] **Kira (KiraMarxs) owed 2 more premium nameplate bundles — Low Riders + Exotic Cars — gift not yet executed.** Chris's request, 2026-11-13. Blocked on the same n8n outage; queued to fire via the `Admin - Gift Plates` workflow once reachable.
+- [x] ~~**Multi-connector outage, 2026-11-13: n8n, Gmail, Google Calendar, Google Drive, Cloudflare, and vidIQ all showing connection failures (502s) for most of that day's session.**~~ — **RESOLVED.** n8n has worked cleanly in every session since (executions, workflow fires, Discord teasers all going through fine as of 2026-11-14).
+- [x] ~~**6-hour full auto-posting pause called by Chris, 2026-11-13 (12:13–18:14 UTC).**~~ — pause window passed, all bots re-enabled, confirmed no active "Resume ... auto-posting" trigger remains outstanding as of 2026-11-14. Also added a pause-check (STEP 0) to the Breaking Article (7+) Routine's own stored prompt so a future fresh-session firing during any pause checks for an active "Resume ... auto-posting" reminder before publishing anything — closes a real gap where a stateless scheduled run had no way to know a pause was active.
+- [x] ~~**Drive Lead channel-update notice (v2, new graphic).**~~ — fired 2026-11-13 once Chris explicitly overrode the active pause for this one post; translated into all 6 languages, image `images/drive-lead-channel-notice-2.jpg`.
+- [x] ~~**Kira (KiraMarxs) owed 2 more premium nameplate bundles — Low Riders + Exotic Cars.**~~ — gifted 2026-11-13 via the `Admin - Gift Plates` workflow once n8n reconnected.
 - [ ] **Still need 3 more real Amazon product URLs to finish the
       controllers buyer's guide fix, 2026-11-12.** All 80 affiliate links
       sitewide were found pointing to generic `/s?k=` search pages instead
@@ -90,10 +90,15 @@ decision point is real if it doesn't pan out.
       showed the cron had actually fired fine at 01:12 and 02:38, just
       finding zero new RSS items both times — correctly left alone, no
       re-dispatch needed. Running total now
-      58 — one more caught 2026-11-11 (04:01→10:52 UTC gap, ~6h51m, by
+      60 — one more caught 2026-11-11 (04:01→10:52 UTC gap, ~6h51m, by
       far the longest single gap yet; manually re-dispatched via
       `workflow_dispatch`, confirmed resumed clean afterward, flagged to
-      Chris via push notification same day). The underlying pattern described below (from
+      Chris via push notification same day). 2 more caught back-to-back
+      2026-11-14 (02:34→06:52 UTC gap re-dispatched, then the natural
+      `schedule` run still didn't resume on its own within ~2 hours, so a
+      second re-dispatch at 08:52 UTC was needed — same "needs a second
+      nudge" pattern seen before — both confirmed resumed clean
+      afterward). The underlying pattern described below (from
       before the gap) still holds — the cron itself clearly kept running
       throughout the 48 days (hundreds of commits), so whatever caused
       the content-pipeline silence above likely was NOT this same cron
@@ -177,6 +182,7 @@ decision point is real if it doesn't pan out.
 
 ## Needs a decision from you
 
+- [ ] **4 new digest-tier articles drafted 2026-11-12/13, need your go-ahead, held on this dev branch:** "Korea rating" / "Shrek 2 tie-in" / "Popeyes sandwich" batch (score 4-6, 2026-11-12); Zelnick's "physical games are the vinyl records of gaming" comments (score 5 consolidated from 3 duplicate headlines, 2026-11-13); and the Germany 38% vacation-request-spike piece you personally tipped, expanded to also cover Logitech's "Logi Game Day" and the Fort Stewart 9th Brigade's reenlistment pass (all independently verified — Personio/ComputerBase for Germany, Fortune/PCMag for Logitech, Stars and Stripes/Task & Purpose for the Army pass; Pocketpair's claimed "5 days paid leave" kept in but explicitly flagged unconfirmed since the only source was an unfetchable/unrecognized outlet). None shipped to `main` or queued to social yet.
 - [ ] **Language multi-select added to the Drive Lead signup form, needs your merge approval, 2026-11-13.** Region alone doesn't map to spoken language (Europe bundles Polish/Portuguese/German/French/Spanish/English signups with zero way to split them — confirmed while trying to label all 30 existing Drive Leads by language for Discord channel routing). New "Language(s) You Speak" multi-select on the lead-signup flow, built and verified rendering/toggling correctly on branch `claude/lastdrive-language-field`. Front-end only — still needs a `language` column added to the LastDrive data table and the signup workflow wired to persist it, blocked on the n8n outage above.
 - [ ] **Per-language Discord posting needs 5 webhook URLs from you,
       2026-11-10/11.** Chris asked for the hourly "How To Join The Last
@@ -590,7 +596,10 @@ decision point is real if it doesn't pan out.
 
 ## Done recently
 
-- [x] **Day 6 of the countdown shipped, 2026-11-13** — `editors-desk-6-days-out.html` / `trevors-take-6-days-out.html`, both referencing the real Eurogamer/Openreach "UK broadband bracing for GTA6 launch traffic" story. Cross-linked to each other and the existing disc/download-size article. Pushed to `main`, queued to Bluesky (see next item for a mistake caught on that).
+- [x] **Breaking article published 2026-11-13 night into 11-14: "Take-Two Says It's Not Interested In Selling Itself After EA's $55 Billion Buyout."** Score 7 (GameSpot), `source-status: reported` (synthesizes two real-but-separate prior Zelnick statements rather than one new on-record quote, and the GameSpot page itself couldn't be fetched to confirm exact framing). Marcus Webb byline. Pushed straight to `main`, Bluesky queued, Discord fired. Full log: `audit/2026-11-14-news-scan-articles-log.md`.
+- [x] **Day 5 of the countdown shipped, 2026-11-14** — `editors-desk-5-days-out.html` / `trevors-take-5-days-out.html`. Editor covers the viral sealed-box download-code warning (Dexerto) plus the real Twitch Drops campaign surfacing; Trevor escalates the "undercover operation" paranoia bit onto the same box story. Both pushed to `main`, queued to Bluesky, Discord teasers fired and confirmed successful (executions 24103/24104). No active posting pause at fire time — checked `list_triggers` first, nothing matching "Resume ... auto-posting."
+- [x] **2026-11-14: Breaking Article (7+) routine processed across several firings — nothing scored 7+ all day.** The GameSpot EA-buyout story from the prior night was already handled; everything since topped out at 6 (Polygon's GTA6 cast-rumors roundup, score 6; a PS5 lease-bundle deal, score 5) — both correctly left for the Draft Digest (4-6) routine, not drafted here.
+- [x] **News-scan cron stalled twice back-to-back, 2026-11-14 — both caught and fixed** (see Urgent for the running tally, now 60). — `editors-desk-6-days-out.html` / `trevors-take-6-days-out.html`, both referencing the real Eurogamer/Openreach "UK broadband bracing for GTA6 launch traffic" story. Cross-linked to each other and the existing disc/download-size article. Pushed to `main`, queued to Bluesky (see next item for a mistake caught on that).
 - [x] **Caught and fixed a real mistake: 2 Bluesky posts queued during Chris's active posting pause, 2026-11-13.** The day-6 Editor's Desk/Trevor's Take Bluesky entries landed in `social-queue.json` at 12:24 UTC — 11 minutes after the 6-hour pause started (12:13 UTC) — before I'd registered the pause covered Bluesky too. Neither had posted yet (`posted: false`), so pushed their `scheduledFor` to just after the pause lifts (18:14 UTC) instead of leaving them live during the quiet window.
 - [x] **`images/gta6/` folder created, 2026-11-13** — for Chris to start uploading launch-and-beyond images into directly.
 - [x] **KiraMarxs and Uzzywuzzy resolved as Drive Lead channel-naming questions, 2026-11-13.** Kira confirmed fine to use as his short name (no full name on file). Uzzywuzzy doesn't match any real Last Drive signup (closest was a loyalty-checkin-only account with no platform/region/email) — Chris added him manually himself, no action needed here.
