@@ -47,7 +47,6 @@
 }
 </style>
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
 
 <style>
 .wall-hero-wrap {
@@ -302,9 +301,24 @@
   margin: 0 auto;
   padding: 0 20px 60px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
 }
+@media (max-width: 680px) { .wall-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 380px) { .wall-grid { grid-template-columns: repeat(1, 1fr); } }
+
+.wall-tier-label {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px 10px;
+  font-family: var(--font-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: .85rem;
+  color: var(--gold);
+}
+.wall-tier-label.rest { color: var(--smoke); margin-top: 8px; }
 
 .player-card {
   background: var(--asphalt);
@@ -542,9 +556,18 @@
 
 <div class="results-info" id="results-info"></div>
 
-<div class="wall-grid" id="wall-grid">
+<div class="wall-tier-label" id="wall-tier-founders">⭐ First 100 — Founder Plates</div>
+<div class="wall-grid" id="wall-grid-founders">
   <div class="skel"></div>
   <div class="skel"></div>
+  <div class="skel"></div>
+  <div class="skel"></div>
+  <div class="skel"></div>
+  <div class="skel"></div>
+</div>
+
+<div class="wall-tier-label rest" id="wall-tier-rest">Participants</div>
+<div class="wall-grid" id="wall-grid-rest">
   <div class="skel"></div>
   <div class="skel"></div>
   <div class="skel"></div>
@@ -588,7 +611,7 @@ function toFieldsRecord(s) {
     'Staging Time': s.stagingTime || '', Region: s.region || '', IsOrganizer: !!s.isOrganizer,
     StagingLocation: s.stagingLocation || '', PlateStatus: s.plateStatus || '',
     SignupNumber: s.signupNumber, AccessType: s.accessType || '', SignupType: s.signupType || '',
-    LinkedSlot: s.linkedSlot || '', PlateStyle: s.plateStyle || ''
+    LinkedSlot: s.linkedSlot || '', PlateStyle: s.plateStyle || '', SteamFriendCode: s.steamFriendCode || '', LeaderGamertag: s.leaderGamertag || ''
   } };
 }
 
@@ -637,7 +660,10 @@ function isPhotoPlate(style) {
 }
 
 function renderWall() {
-  var grid = document.getElementById('wall-grid');
+  var gridFounders = document.getElementById('wall-grid-founders');
+  var gridRest = document.getElementById('wall-grid-rest');
+  var labelFounders = document.getElementById('wall-tier-founders');
+  var labelRest = document.getElementById('wall-tier-rest');
   var info = document.getElementById('results-info');
 
   var filtered = allPlayers.filter(function(r) {
@@ -668,14 +694,27 @@ function renderWall() {
   var rangeLabel = activeRange === 'all' ? 'All letters' : activeRange.toUpperCase().replace('-',' – ');
 
   if (!filtered.length) {
-    grid.innerHTML = '<div class="wall-empty">No players found for ' + platLabel + '.<br><br><a href="/lastdrive">Be the first to sign up →</a></div>';
+    gridFounders.innerHTML = '<div class="wall-empty">No players found for ' + platLabel + '.<br><br><a href="/lastdrive">Be the first to sign up →</a></div>';
+    gridRest.innerHTML = '';
+    labelFounders.style.display = 'none';
+    labelRest.style.display = 'none';
     info.innerHTML = '';
     return;
   }
 
   info.innerHTML = '<strong>' + filtered.length + '</strong> players · ' + platLabel + ' · ' + rangeLabel;
 
-  grid.innerHTML = filtered.map(function(r) {
+  var founders = filtered.filter(function(r) { return r._pos && r._pos <= 100; });
+  var rest = filtered.filter(function(r) { return !(r._pos && r._pos <= 100); });
+
+  labelFounders.style.display = founders.length ? '' : 'none';
+  labelRest.style.display = rest.length ? '' : 'none';
+
+  gridFounders.innerHTML = founders.map(cardHTML).join('');
+  gridRest.innerHTML = rest.map(cardHTML).join('');
+}
+
+function cardHTML(r) {
     var f = r.fields;
     var tag = esc(f.Gamertag || f.Name || 'Unknown');
     var isOrg = f.IsOrganizer;
@@ -684,9 +723,10 @@ function renderWall() {
     var isFounderEligible = r._pos && r._pos <= 100;
     var signupNum = r._pos || f.SignupNumber || '';
     var isApproval = (f.AccessType || 'Open') === 'Approval Required';
-    var slotKey = (f.Platform || '') + '||' + (f.Region || '') + '||' + (f.StagingLocation || '') + '||' + (f['Staging Time'] || '');
-    var riderCount = participantCounts[slotKey] || 0;
+    var riderCount = participantCounts[(f.Gamertag || '').trim().toLowerCase()] || 0;
     var profileUrl = '/player?g=' + encodeURIComponent(f.Gamertag || f.Name || '');
+    var steamBadge = (isOrg && f.Platform === 'PC' && f.SteamFriendCode) ?
+      '<div class="card-access-badge" style="border-color:rgba(102,192,244,.3);color:#66C0F4;" title="Steam: ' + esc(f.SteamFriendCode) + '">🎮 ' + esc(f.SteamFriendCode) + '</div>' : '';
 
     if (isFounderEligible) {
       var plateStyle = f.PlateStyle || 'founder';
@@ -707,6 +747,7 @@ function renderWall() {
           '<div class="card-meta">' + region + (region && slot ? ' · ' : '') + slot + '</div>' +
           (isOrg ? '<div class="card-access-badge ' + (isApproval ? 'access-approval-sm' : 'access-open-sm') + '">' + (isApproval ? '🔒 Approval' : '🟢 Open') + '</div>' : '') +
           (riderCount > 0 ? '<div class="rider-count-sm">🚗 ' + riderCount + ' rider' + (riderCount !== 1 ? 's' : '') + '</div>' : '') +
+          steamBadge +
         '</div>' +
       '</div>';
     }
@@ -717,8 +758,8 @@ function renderWall() {
       '<div class="card-meta">' + region + (region && slot ? ' · ' : '') + slot + '</div>' +
       (isOrg ? '<div class="card-access-badge ' + (isApproval ? 'access-approval-sm' : 'access-open-sm') + '">' + (isApproval ? '🔒 Approval' : '🟢 Open') + '</div>' : '') +
       (riderCount > 0 ? '<div class="rider-count-sm">🚗 ' + riderCount + ' rider' + (riderCount !== 1 ? 's' : '') + '</div>' : '') +
+      steamBadge +
     '</div>';
-  }).join('');
 }
 
 function updateFounderBar() {
@@ -789,8 +830,11 @@ function loadParticipantCounts() {
       ((d && d.signups) || []).forEach(function(s) {
         if (s.signupType !== 'Participant') return;
         if (s.joinStatus !== 'Active' && s.joinStatus !== 'Approved') return;
-        var slot = s.linkedSlot || '';
-        if (slot) counts[slot] = (counts[slot] || 0) + 1;
+        // Keyed by the Drive Lead's own gamertag (leaderGamertag), not the raw
+        // platform/region/location/time slot string — two Leads can share an
+        // identical slot, and the slot string alone can't tell them apart.
+        var leader = (s.leaderGamertag || '').trim().toLowerCase();
+        if (leader) counts[leader] = (counts[leader] || 0) + 1;
       });
       return counts;
     })
@@ -802,7 +846,14 @@ function loadWall() {
     return fetch(SIGNUPS_PUBLIC_URL)
       .then(function(r) { return r.json(); })
       .then(function(d) {
-        var allRec = ((d && d.signups) || [])
+        // A malformed/empty response (bad gateway, stale cache, webhook
+        // hiccup) must never silently render as "0 signups" -- that looks
+        // identical to real data and is actively misleading. Treat it as
+        // a load failure instead, same as a network error.
+        if (!d || !Array.isArray(d.signups)) {
+          throw new Error('Signups response missing expected shape');
+        }
+        var allRec = (d.signups || [])
           .filter(function(s) { return s.showOnWall; })
           .map(toFieldsRecord);
 
@@ -829,7 +880,14 @@ function loadWall() {
 
   fetchPage().catch(function(err) {
     console.error('[Wall Error]', err);
-    document.getElementById('wall-grid').innerHTML =
+    // Only show the hard error state on the FIRST load. On a periodic
+    // 60s refresh, a transient blip shouldn't wipe an already-rendered,
+    // correct wall out from under someone mid-browse -- just keep showing
+    // the last-good data and let the next refresh try again.
+    if (allPlayers.length > 0) return;
+    document.getElementById('wall-tier-rest').style.display = 'none';
+    document.getElementById('wall-grid-rest').innerHTML = '';
+    document.getElementById('wall-grid-founders').innerHTML =
       '<div class="wall-empty">Could not load the wall. <a href="">Refresh</a></div>';
   });
 }
@@ -903,5 +961,7 @@ document.addEventListener('visibilitychange', function() {
 </script>
 <script src="/back-to-top.js" defer></script>
 <script src="/loyalty-banner.js" defer></script>
+<script src="/sponsor-banner.js" defer></script>
+<script src="/translate-sidebar.js?v=3" defer></script>
 </body>
 </html>
