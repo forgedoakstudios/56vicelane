@@ -564,5 +564,23 @@
     "imageAlt": "Take-Two Says It's Not Interested In Selling Itself After EA's $55 Billion Buyout",
     "scheduledFor": "2026-11-14T02:57:22.045Z",
     "posted": true
+  },
+  {
+    "id": "auto-publish-editors-desk-5-days-out",
+    "text": "Five days until GTA6. A warning about sealed boxes going viral, a Twitch Drops campaign surfacing, and Danny's antacid count climbing again.",
+    "url": "https://56vicelane.com/articles/editors-desk-5-days-out?utm_source=bluesky&utm_medium=social&utm_campaign=article_blast",
+    "image": "images/editor-portrait-4-launchweek.png",
+    "imageAlt": "From The Editor's Desk: 5 Days Out",
+    "scheduledFor": "2026-11-14T12:14:14.447Z",
+    "posted": false
+  },
+  {
+    "id": "auto-publish-trevors-take-5-days-out",
+    "text": "Five days until GTA6. A warning that you can see the download code through the sealed packaging has gone viral, and Trevor would like every…",
+    "url": "https://56vicelane.com/articles/trevors-take-5-days-out?utm_source=bluesky&utm_medium=social&utm_campaign=article_blast",
+    "image": "images/trevor-portrait.png",
+    "imageAlt": "Trevor's Take: The Boxes Are Talking Now",
+    "scheduledFor": "2026-11-14T12:14:14.484Z",
+    "posted": false
   }
 ]
