@@ -611,7 +611,7 @@ function toFieldsRecord(s) {
     'Staging Time': s.stagingTime || '', Region: s.region || '', IsOrganizer: !!s.isOrganizer,
     StagingLocation: s.stagingLocation || '', PlateStatus: s.plateStatus || '',
     SignupNumber: s.signupNumber, AccessType: s.accessType || '', SignupType: s.signupType || '',
-    LinkedSlot: s.linkedSlot || '', PlateStyle: s.plateStyle || '', SteamFriendCode: s.steamFriendCode || ''
+    LinkedSlot: s.linkedSlot || '', PlateStyle: s.plateStyle || '', SteamFriendCode: s.steamFriendCode || '', LeaderGamertag: s.leaderGamertag || ''
   } };
 }
 
@@ -723,8 +723,7 @@ function cardHTML(r) {
     var isFounderEligible = r._pos && r._pos <= 100;
     var signupNum = r._pos || f.SignupNumber || '';
     var isApproval = (f.AccessType || 'Open') === 'Approval Required';
-    var slotKey = (f.Platform || '') + '||' + (f.Region || '') + '||' + (f.StagingLocation || '') + '||' + (f['Staging Time'] || '');
-    var riderCount = participantCounts[slotKey] || 0;
+    var riderCount = participantCounts[(f.Gamertag || '').trim().toLowerCase()] || 0;
     var profileUrl = '/player?g=' + encodeURIComponent(f.Gamertag || f.Name || '');
     var steamBadge = (isOrg && f.Platform === 'PC' && f.SteamFriendCode) ?
       '<div class="card-access-badge" style="border-color:rgba(102,192,244,.3);color:#66C0F4;" title="Steam: ' + esc(f.SteamFriendCode) + '">🎮 ' + esc(f.SteamFriendCode) + '</div>' : '';
@@ -831,8 +830,11 @@ function loadParticipantCounts() {
       ((d && d.signups) || []).forEach(function(s) {
         if (s.signupType !== 'Participant') return;
         if (s.joinStatus !== 'Active' && s.joinStatus !== 'Approved') return;
-        var slot = s.linkedSlot || '';
-        if (slot) counts[slot] = (counts[slot] || 0) + 1;
+        // Keyed by the Drive Lead's own gamertag (leaderGamertag), not the raw
+        // platform/region/location/time slot string — two Leads can share an
+        // identical slot, and the slot string alone can't tell them apart.
+        var leader = (s.leaderGamertag || '').trim().toLowerCase();
+        if (leader) counts[leader] = (counts[leader] || 0) + 1;
       });
       return counts;
     })

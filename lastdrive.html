@@ -705,7 +705,8 @@
 
   <div class="join-form-wrap" id="join-form-wrap">
     <h3 style="margin-bottom:6px;">Lock In Your Spot</h3>
-    <p style="font-size:.82rem;color:var(--smoke);margin-bottom:18px;">You're joining the drive below. Fill in your details to get on the roster.</p>
+    <p style="font-size:.82rem;color:var(--smoke);margin-bottom:6px;">You're joining the drive below. Fill in your details to get on the roster.</p>
+    <p style="font-size:.78rem;color:var(--amber);margin-bottom:18px;">👥 Signing up a friend instead? Just enter <em>their</em> gamertag and email here — they're the one who'll be added to this drive.</p>
     <div class="selected-drive-strip" id="selected-drive-strip"></div>
     <div class="pending-note" id="pending-note" style="display:none;">
       🔒 This drive requires organizer approval. Your request will be sent to the drive lead — you'll receive an email when approved.
@@ -766,7 +767,7 @@
   <div class="finder-wrap">
     <div class="eyebrow" style="margin-bottom:4px;">Signed Up More Than Once?</div>
     <h3 style="margin-bottom:8px;">Manage My Drives</h3>
-    <p style="font-size:.85rem;color:var(--smoke);margin-bottom:8px;">Riding in multiple regions or time slots so you don't miss a minute? Enter your gamertag and the email you signed up with to see every drive you're on — and cancel any you don't need.</p>
+    <p style="font-size:.85rem;color:var(--smoke);margin-bottom:8px;">Riding in multiple regions or time slots so you don't miss a minute? Enter your gamertag and the email you signed up with to see every drive you're on — switch to a different one, or cancel what you don't need. Works for Drive Leads too.</p>
     <div class="finder-row" style="flex-wrap:wrap;">
       <input type="text" class="form-input" id="mymanage-gamertag" placeholder="Your gamertag..." onkeypress="if(event.key==='Enter')findMyDrives()" style="flex:1;min-width:160px;">
       <input type="email" class="form-input" id="mymanage-email" placeholder="Email you signed up with..." onkeypress="if(event.key==='Enter')findMyDrives()" style="flex:1;min-width:200px;">
@@ -937,6 +938,7 @@ var N8N_LIST_DRIVES_URL    = 'https://n8n.56vicelane.com/webhook/list-drives';
 var N8N_SIGNUP_URL         = 'https://n8n.56vicelane.com/webhook/lastdrive-signup';
 var N8N_FIND_MY_DRIVES_URL = 'https://n8n.56vicelane.com/webhook/find-my-drives';
 var N8N_CANCEL_SIGNUP_URL  = 'https://n8n.56vicelane.com/webhook/cancel-signup';
+var N8N_SWITCH_SIGNUP_URL  = 'https://n8n.56vicelane.com/webhook/switch-signup';
 var N8N_SIGNUPS_PUBLIC_URL = 'https://n8n.56vicelane.com/webhook/list-signups-public';
 
 /* REFERRAL CAPTURE — a ?ref=<gamertag> in the URL (from a friend's share
@@ -1335,7 +1337,8 @@ document.addEventListener('click', function(e) {
       stagingLocation: s.staging, driveType: s.drive,
       passiveMode: passive, isOrganizer: s.isOrg,
       showOnWall: showWall, petitionOptIn: petition, edition: s.edition || '',
-      signupType: 'Drive Lead', referredBy: getReferredBy(), utmSource: getUtmSource()
+      signupType: 'Drive Lead', referredBy: getReferredBy(), utmSource: getUtmSource(),
+      leaderGamertag: gamertag
     })
   }).then(function(res) { return res.json().then(function(d) { return {ok: res.ok, d: d}; }); })
     .then(function(r) { if (r.ok && r.d.success) onLeadSuccess(r.d.signupNumber); else onLeadError(); })
@@ -1601,6 +1604,7 @@ function submitParticipant() {
       region: drive.Region || joinState.region,
       stagingTime: drive['Staging Time'] || '',
       stagingLocation: drive.StagingLocation || '',
+      leaderGamertag: drive.Gamertag || '',
       showOnWall: showWall, petitionOptIn: petition, edition: edition,
       signupType: 'Participant', joinStatus: joinStatus, referredBy: getReferredBy(), utmSource: getUtmSource()
     })
@@ -1738,7 +1742,10 @@ function renderMyDrives(drives, gamertag, email) {
     return;
   }
   result.innerHTML = drives.map(function(d) {
-    var isLead = d.signupType === 'Drive Lead';
+    var isLead = d.signupType === 'Drive Lead' || d.isOrganizer;
+    var roleTag = isLead
+      ? '⭐ Drive Lead'
+      : '🚗 Participant' + (d.leaderGamertag ? ' · riding with ' + d.leaderGamertag : '');
     return '<div class="found-card" id="mymanage-row-' + d.id + '" style="margin-bottom:10px;">' +
       '<div class="found-gamertag">' + (d.gamertag || '') + '</div>' +
       '<div class="found-meta">' +
@@ -1746,11 +1753,16 @@ function renderMyDrives(drives, gamertag, email) {
         '<div class="drive-tag">' + (d.region || '?') + '</div>' +
         (d.stagingLocation ? '<div class="drive-tag loc">📍 ' + d.stagingLocation + '</div>' : '') +
         (d.stagingTime ? '<div class="drive-tag time">🕐 ' + d.stagingTime + '</div>' : '') +
-        '<div class="drive-tag" style="color:var(--green);border-color:rgba(0,200,117,.2);">' + (isLead ? '⭐ Drive Lead' : '🚗 Participant') + '</div>' +
+        '<div class="drive-tag" style="color:var(--green);border-color:rgba(0,200,117,.2);">' + roleTag + '</div>' +
         (d.driveType ? '<div class="drive-tag">' + d.driveType + '</div>' : '') +
       '</div>' +
-      '<button type="button" class="btn btn-ghost" style="margin-top:10px;border-color:var(--red);color:var(--red);" onclick="cancelMyDrive(' + d.id + ',\'' +
-        gamertag.replace(/'/g, "\\'") + '\',\'' + email.replace(/'/g, "\\'") + '\')">Cancel This Signup</button>' +
+      '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">' +
+        '<button type="button" class="btn btn-ghost btn-switch-signup" style="border-color:var(--amber);color:var(--amber);" onclick="startSwitch(' + d.id + ',\'' +
+          gamertag.replace(/'/g, "\\'") + '\',\'' + email.replace(/'/g, "\\'") + '\')">🔁 Switch Drives</button>' +
+        '<button type="button" class="btn btn-ghost btn-cancel-signup" style="border-color:var(--red);color:var(--red);" onclick="cancelMyDrive(' + d.id + ',\'' +
+          gamertag.replace(/'/g, "\\'") + '\',\'' + email.replace(/'/g, "\\'") + '\')">✕ Cancel This Signup</button>' +
+      '</div>' +
+      '<div id="mymanage-switch-' + d.id + '" style="display:none;margin-top:12px;border-top:1px solid var(--edge);padding-top:12px;"></div>' +
     '</div>';
   }).join('');
 }
@@ -1758,7 +1770,7 @@ function renderMyDrives(drives, gamertag, email) {
 function cancelMyDrive(id, gamertag, email) {
   if (!window.confirm('Cancel this signup? This can\'t be undone.')) return;
   var row = document.getElementById('mymanage-row-' + id);
-  var btn = row ? row.querySelector('button') : null;
+  var btn = row ? row.querySelector('.btn-cancel-signup') : null;
   if (btn) { btn.textContent = 'Cancelling...'; btn.disabled = true; }
   fetch(N8N_CANCEL_SIGNUP_URL, {
     method: 'POST',
@@ -1772,14 +1784,96 @@ function cancelMyDrive(id, gamertag, email) {
           row.innerHTML = '<div style="color:var(--green);font-size:.88rem;padding:8px 0;">✅ Cancelled</div>';
         }
       } else {
-        if (btn) { btn.textContent = 'Cancel This Signup'; btn.disabled = false; }
+        if (btn) { btn.textContent = '✕ Cancel This Signup'; btn.disabled = false; }
         window.alert(d.error || 'Could not cancel that signup — try again.');
       }
     })
     .catch(function() {
-      if (btn) { btn.textContent = 'Cancel This Signup'; btn.disabled = false; }
+      if (btn) { btn.textContent = '✕ Cancel This Signup'; btn.disabled = false; }
       window.alert('Network error — try again.');
     });
+}
+
+/* "Switch Drives" — lets someone move an existing signup (Lead or
+   Participant) to a different platform/region/drive in place, instead
+   of cancelling and re-signing-up (which would lose their points,
+   plates, and streak history). */
+var switchState = { id: null, gamertag: '', email: '', platform: '', region: '' };
+
+function startSwitch(id, gamertag, email) {
+  var panel = document.getElementById('mymanage-switch-' + id);
+  var wasOpen = panel.style.display === 'block';
+  document.querySelectorAll('[id^="mymanage-switch-"]').forEach(function(p) { p.style.display = 'none'; });
+  if (wasOpen) return;
+  switchState = { id: id, gamertag: gamertag, email: email, platform: '', region: '' };
+  panel.style.display = 'block';
+  panel.innerHTML =
+    '<div style="font-size:.8rem;color:var(--smoke);margin-bottom:8px;">Pick a platform, then a region, then a drive to switch into:</div>' +
+    '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;" id="sw-plat-' + id + '">' +
+      PLATFORMS.map(function(p) {
+        return '<button type="button" class="btn btn-ghost" style="font-size:.76rem;padding:6px 12px;" onclick="pickSwitchPlatform(' + id + ',\'' + p.replace(/'/g, "\\'") + '\')">' + p + '</button>';
+      }).join('') +
+    '</div>' +
+    '<div id="sw-regions-' + id + '"></div>' +
+    '<div id="sw-drives-' + id + '"></div>';
+}
+
+function pickSwitchPlatform(id, platform) {
+  switchState.platform = platform;
+  switchState.region = '';
+  document.getElementById('sw-drives-' + id).innerHTML = '';
+  document.getElementById('sw-regions-' + id).innerHTML =
+    '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;">' +
+      REGIONS.map(function(r) {
+        return '<button type="button" class="btn btn-ghost" style="font-size:.76rem;padding:6px 12px;" onclick="pickSwitchRegion(' + id + ',\'' + r.name.replace(/'/g, "\\'") + '\')">' + r.flag + ' ' + r.name + '</button>';
+      }).join('') +
+    '</div>';
+}
+
+function pickSwitchRegion(id, region) {
+  switchState.region = region;
+  var list = document.getElementById('sw-drives-' + id);
+  list.innerHTML = '<div style="font-size:.82rem;color:var(--smoke);">Loading drives...</div>';
+  fetch(N8N_LIST_DRIVES_URL)
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      var drives = ((d && d.drives) || []).filter(function(rec) {
+        return rec.platform === switchState.platform && rec.region === region;
+      });
+      if (!drives.length) {
+        list.innerHTML = '<div style="font-size:.82rem;color:var(--smoke);">No drives open yet for ' + switchState.platform + ' · ' + region + '. You can still switch into this platform/region as a new Drive Lead by signing up fresh above.</div>';
+        return;
+      }
+      list.innerHTML = drives.map(function(rec) {
+        return '<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;border:1px solid var(--edge);border-radius:6px;padding:10px 12px;margin-bottom:6px;">' +
+          '<div style="font-size:.82rem;"><strong>' + (rec.gamertag || '?') + '</strong><br>' +
+          '<span style="color:var(--smoke);">' + (rec.stagingLocation || '?') + ' — ' + (rec.stagingTime || '?') + '</span></div>' +
+          '<button type="button" class="btn btn-primary" style="font-size:.76rem;padding:7px 12px;white-space:nowrap;" onclick="confirmSwitch(\'' + (rec.gamertag || '').replace(/'/g, "\\'") + '\',\'' + (rec.stagingLocation || '').replace(/'/g, "\\'") + '\',\'' + (rec.stagingTime || '').replace(/'/g, "\\'") + '\')">Switch Here</button>' +
+        '</div>';
+      }).join('');
+    })
+    .catch(function() { list.innerHTML = '<div style="color:var(--red);font-size:.82rem;">Could not load drives.</div>'; });
+}
+
+function confirmSwitch(leaderGamertag, stagingLocation, stagingTime) {
+  var id = switchState.id;
+  fetch(N8N_SWITCH_SIGNUP_URL, {
+    method: 'POST', headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      id: id, gamertag: switchState.gamertag, email: switchState.email,
+      platform: switchState.platform, region: switchState.region,
+      stagingLocation: stagingLocation, stagingTime: stagingTime,
+      isOrganizer: false, leaderGamertag: leaderGamertag
+    })
+  }).then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (!d.success) { window.alert('Switch failed — ' + (d.error || 'try again.')); return; }
+      var row = document.getElementById('mymanage-row-' + id);
+      if (row) {
+        row.innerHTML = '<div style="color:var(--green);font-size:.88rem;padding:8px 0;">✅ Switched to ' + switchState.platform + ' · ' + switchState.region + ' — ' + stagingLocation + ' @ ' + stagingTime + ' (riding with ' + leaderGamertag + ')</div>';
+      }
+    })
+    .catch(function() { window.alert('Network error — try again.'); });
 }
 
 function renderCounts(platforms) {

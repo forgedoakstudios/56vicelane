@@ -752,7 +752,7 @@ function joinDrive(lt,pl,rg,lc){
   var msg=document.getElementById('join-msg');
   if(!verifiedEmail){showMsg(msg,'Not verified.','error');return;}
   showMsg(msg,'Joining...','info');
-  fetch(UPDATE_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({gamertag:playerData.Gamertag,email:verifiedEmail,patch:{signupType:'Participant',joinStatus:'Active',linkedSlot:pl+'||'+rg+'||'+lc+'||'+lt}})})
+  fetch(UPDATE_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({gamertag:playerData.Gamertag,email:verifiedEmail,patch:{signupType:'Participant',joinStatus:'Active',linkedSlot:pl+'||'+rg+'||'+lc+'||'+lt,leaderGamertag:lt}})})
     .then(function(r){return r.json();})
     .then(function(d){
       if(!d.success){showMsg(msg,'Join failed.','error');return;}
@@ -768,7 +768,7 @@ function saveLead(){
   if(!time||!loc||!tp){showMsg(msg,'Fill in all fields.','error');return;}
   if(!verifiedEmail){showMsg(msg,'Not verified.','error');return;}
   showMsg(msg,'Saving...','info');
-  fetch(UPDATE_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({gamertag:playerData.Gamertag,email:verifiedEmail,patch:{signupType:'Drive Lead',isOrganizer:true,joinStatus:'Active',stagingTime:time,stagingLocation:loc,driveType:tp,accessType:ac}})})
+  fetch(UPDATE_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({gamertag:playerData.Gamertag,email:verifiedEmail,patch:{signupType:'Drive Lead',isOrganizer:true,joinStatus:'Active',stagingTime:time,stagingLocation:loc,driveType:tp,accessType:ac,leaderGamertag:playerData.Gamertag}})})
     .then(function(r){return r.json();})
     .then(function(d){
       if(!d.success){showMsg(msg,'Save failed.','error');return;}
