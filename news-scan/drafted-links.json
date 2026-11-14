@@ -1186,5 +1186,53 @@
     "slug": null,
     "tier": "skipped-unverified",
     "date": "2026-11-13"
+  },
+  {
+    "link": "https://www.pcgamer.com/games/grand-theft-auto/new-grand-theft-auto-6-trailer-is-for-a-tv-show-that-exists-within-grand-theft-auto-6/",
+    "slug": "gta6-tv-show-trailer-within-game",
+    "tier": "digest",
+    "date": "2026-11-14"
+  },
+  {
+    "link": "https://www.polygon.com/gta-6-cast-rumors-speculation-confirmed-actors/",
+    "slug": "gta6-every-actor-rumored-confirmed",
+    "tier": "digest",
+    "date": "2026-11-14"
+  },
+  {
+    "link": "https://www.pcgamer.com/games/yes-some-brave-games-are-still-launching-on-steam-during-gta-6-launch-week/",
+    "slug": "gta6-steam-rivals-launch-week",
+    "tier": "digest",
+    "date": "2026-11-14"
+  },
+  {
+    "link": "https://insider-gaming.com/barbie-rewind-gta-6-release-window/",
+    "slug": "atari-barbie-rewind-gta6-release-window",
+    "tier": "digest",
+    "date": "2026-11-14"
+  },
+  {
+    "link": "https://www.dexerto.com/gta/kick-and-twitch-are-giving-away-thousands-of-gta-6-codes-to-viewers-before-launch-3428151/",
+    "slug": null,
+    "tier": "skipped-unverified",
+    "date": "2026-11-14"
+  },
+  {
+    "link": "https://www.gamesradar.com/hardware/gaming-controllers/best-buy-launches-its-black-friday-doorbuster-sale-but-this-is-the-only-deal-wed-recommend-the-weekend-before-gta-6/",
+    "slug": null,
+    "tier": "skipped-unverified",
+    "date": "2026-11-14"
+  },
+  {
+    "link": "https://www.dexerto.com/gta/can-gta-6-download-codes-be-seen-through-sealed-boxes-warning-goes-viral-days-before-launch-3428147/",
+    "slug": null,
+    "tier": "skipped-duplicate",
+    "date": "2026-11-14"
+  },
+  {
+    "link": "https://www.thegamer.com/gta-6-ps5-lease-bundle-uk/",
+    "slug": null,
+    "tier": "skipped-unverified",
+    "date": "2026-11-14"
   }
 ]
