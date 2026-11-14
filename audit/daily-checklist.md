@@ -90,15 +90,16 @@ decision point is real if it doesn't pan out.
       showed the cron had actually fired fine at 01:12 and 02:38, just
       finding zero new RSS items both times — correctly left alone, no
       re-dispatch needed. Running total now
-      60 — one more caught 2026-11-11 (04:01→10:52 UTC gap, ~6h51m, by
+      61 — one more caught 2026-11-11 (04:01→10:52 UTC gap, ~6h51m, by
       far the longest single gap yet; manually re-dispatched via
       `workflow_dispatch`, confirmed resumed clean afterward, flagged to
-      Chris via push notification same day). 2 more caught back-to-back
+      Chris via push notification same day). 3 more caught across
       2026-11-14 (02:34→06:52 UTC gap re-dispatched, then the natural
       `schedule` run still didn't resume on its own within ~2 hours, so a
       second re-dispatch at 08:52 UTC was needed — same "needs a second
-      nudge" pattern seen before — both confirmed resumed clean
-      afterward). The underlying pattern described below (from
+      nudge" pattern seen before; a third, longer gap followed,
+      12:48→16:51 UTC, ~4h03m, re-dispatched again — all three confirmed
+      resumed clean afterward). The underlying pattern described below (from
       before the gap) still holds — the cron itself clearly kept running
       throughout the 48 days (hundreds of commits), so whatever caused
       the content-pipeline silence above likely was NOT this same cron
