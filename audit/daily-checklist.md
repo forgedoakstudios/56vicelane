@@ -1,6 +1,6 @@
 # 56ViceLane — Daily Checklist
 
-**Generated:** 2026-11-14 (Central Time)
+**Generated:** 2026-11-15 (Central Time)
 **How this works:** one list, updated daily. Check things off yourself by
 editing this file (change `- [ ]` to `- [x]`), or tell me and I'll check
 them off. Each day I regenerate this — anything still unchecked carries
@@ -597,6 +597,8 @@ decision point is real if it doesn't pan out.
 
 ## Done recently
 
+- [x] **Day 4 of the countdown shipped, 2026-11-15** — `editors-desk-4-days-out.html` / `trevors-take-4-days-out.html`. Editor covers PC Gamer's confirmation that the leaked soundtrack (Lana Del Rey, Playboi Carti, Keith Richards) is accurate, plus Twitch's monetization-rules change for adult-rated games; Trevor escalates the "Can't Tell Anymore" paranoia bit onto the same soundtrack-confirmation timing (entry four of the notebook). Both pushed to `main`, queued to Bluesky, Discord teasers fired and confirmed successful (executions 26472/26473). No active posting pause at fire time.
+- [x] **2026-11-15: Breaking Article (7+) routine processed across six firings (00:51 through 12:51 UTC) — nothing scored 7+ all day.** Topped out at 5 (PC Gamer's soundtrack-leak-confirmed story, IGN's tracklist-leak piece, a pre-order-code issues report) — all correctly left for the Draft Digest (4-6) routine, not drafted here. Several firings were interrupted mid-run by session worker restarts and had to be re-checked on the next firing — no duplicate work resulted, just repeated clean "nothing qualifies" outcomes.
 - [x] **Breaking article published 2026-11-13 night into 11-14: "Take-Two Says It's Not Interested In Selling Itself After EA's $55 Billion Buyout."** Score 7 (GameSpot), `source-status: reported` (synthesizes two real-but-separate prior Zelnick statements rather than one new on-record quote, and the GameSpot page itself couldn't be fetched to confirm exact framing). Marcus Webb byline. Pushed straight to `main`, Bluesky queued, Discord fired. Full log: `audit/2026-11-14-news-scan-articles-log.md`.
 - [x] **Day 5 of the countdown shipped, 2026-11-14** — `editors-desk-5-days-out.html` / `trevors-take-5-days-out.html`. Editor covers the viral sealed-box download-code warning (Dexerto) plus the real Twitch Drops campaign surfacing; Trevor escalates the "undercover operation" paranoia bit onto the same box story. Both pushed to `main`, queued to Bluesky, Discord teasers fired and confirmed successful (executions 24103/24104). No active posting pause at fire time — checked `list_triggers` first, nothing matching "Resume ... auto-posting."
 - [x] **2026-11-14: Breaking Article (7+) routine processed across several firings — nothing scored 7+ all day.** The GameSpot EA-buyout story from the prior night was already handled; everything since topped out at 6 (Polygon's GTA6 cast-rumors roundup, score 6; a PS5 lease-bundle deal, score 5) — both correctly left for the Draft Digest (4-6) routine, not drafted here.
