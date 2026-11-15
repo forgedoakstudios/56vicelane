@@ -99,7 +99,9 @@ decision point is real if it doesn't pan out.
       second re-dispatch at 08:52 UTC was needed — same "needs a second
       nudge" pattern seen before; a third, longer gap followed,
       12:48→16:51 UTC, ~4h03m, re-dispatched again — all three confirmed
-      resumed clean afterward). The underlying pattern described below (from
+      resumed clean afterward). One more caught 2026-11-15 (10:14→14:51
+      UTC gap, ~4h37m, re-dispatched via `workflow_dispatch`, confirmed
+      resumed clean afterward — running total now 62). The underlying pattern described below (from
       before the gap) still holds — the cron itself clearly kept running
       throughout the 48 days (hundreds of commits), so whatever caused
       the content-pipeline silence above likely was NOT this same cron
