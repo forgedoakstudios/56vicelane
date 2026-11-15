@@ -582,5 +582,23 @@
     "imageAlt": "Trevor's Take: The Boxes Are Talking Now",
     "scheduledFor": "2026-11-14T12:14:14.484Z",
     "posted": true
+  },
+  {
+    "id": "auto-publish-editors-desk-4-days-out",
+    "text": "Four days until GTA6. The soundtrack leak just got confirmed accurate, Twitch changed its monetization rules for games like this one, and D…",
+    "url": "https://56vicelane.com/articles/editors-desk-4-days-out?utm_source=bluesky&utm_medium=social&utm_campaign=article_blast",
+    "image": "images/editor-portrait-4-launchweek.png",
+    "imageAlt": "From The Editor's Desk: 4 Days Out",
+    "scheduledFor": "2026-11-15T12:12:59.292Z",
+    "posted": false
+  },
+  {
+    "id": "auto-publish-trevors-take-4-days-out",
+    "text": "Four days until GTA6. The soundtrack leak just got officially confirmed accurate, and Trevor would like to know who benefits from everyone…",
+    "url": "https://56vicelane.com/articles/trevors-take-4-days-out?utm_source=bluesky&utm_medium=social&utm_campaign=article_blast",
+    "image": "images/trevor-portrait.png",
+    "imageAlt": "Trevor's Take: They Confirmed It On Purpose",
+    "scheduledFor": "2026-11-15T12:12:59.320Z",
+    "posted": false
   }
 ]
