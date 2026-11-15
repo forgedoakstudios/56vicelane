@@ -1234,5 +1234,41 @@
     "slug": null,
     "tier": "skipped-unverified",
     "date": "2026-11-14"
+  },
+  {
+    "link": "https://www.gamesradar.com/games/grand-theft-auto/ahead-of-gta-6-take-two-ceo-calls-out-anthropic-and-openai-over-ai-game-clones-as-its-ironic-to-stomp-on-someone-elses-ip/",
+    "slug": "gta6-anthropic-openai-ai-clones-zelnick",
+    "tier": "digest",
+    "date": "2026-11-15"
+  },
+  {
+    "link": "https://insider-gaming.com/take-two-ai-game-cloning-creative-concern/",
+    "slug": "gta6-anthropic-openai-ai-clones-zelnick",
+    "tier": "skipped-duplicate",
+    "date": "2026-11-15"
+  },
+  {
+    "link": "https://www.polygon.com/gta-6-grand-theft-auto-no-code-physical-edition/",
+    "slug": "gta6-physical-copies-missing-redeemed-codes",
+    "tier": "digest",
+    "date": "2026-11-15"
+  },
+  {
+    "link": "https://www.ign.com/articles/gta-6-leak-seemingly-reveals-full-track-list-days-before-launch",
+    "slug": "gta6-soundtrack-leak-confirmed-tracklist",
+    "tier": "digest",
+    "date": "2026-11-15"
+  },
+  {
+    "link": "https://www.pcgamer.com/games/grand-theft-auto/gta-6-soundtrack-leak-confirmed-accurate-with-new-songs-from-lana-del-rey-playboi-carti-and-keith-richards/",
+    "slug": "gta6-soundtrack-leak-confirmed-tracklist",
+    "tier": "skipped-duplicate",
+    "date": "2026-11-15"
+  },
+  {
+    "link": "https://www.eurogamer.net/gta-6-tracklist-leak",
+    "slug": "gta6-soundtrack-leak-confirmed-tracklist",
+    "tier": "skipped-duplicate",
+    "date": "2026-11-15"
   }
 ]
