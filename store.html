@@ -670,6 +670,7 @@
           <div id="redeem-preview" style="margin-bottom:12px;"></div>
           <button class="verify-btn" onclick="grantRedeemedPlate()">Claim This Plate</button>
           <button class="verify-btn" id="redeem-bundle-btn" style="display:none;margin-top:8px;background:var(--gold);" onclick="grantRedeemedBundle()">Claim The Entire Theme Bundle (10 Designs)</button>
+          <button class="verify-btn" id="redeem-all-access-btn" style="display:none;margin-top:8px;background:linear-gradient(90deg,var(--gold),var(--amber));" onclick="grantRedeemedAllAccess()">🎁 Claim The Entire Nameplate Collection (All 70 Designs)</button>
         </div>
       </div>
     </div>
@@ -1586,6 +1587,8 @@ function initRedeemPlatePicker() {
   document.getElementById('redeem-plate-design').disabled = true;
   document.getElementById('redeem-preview').innerHTML = '';
   redeemPlateSelection = null;
+  var allAccessBtn = document.getElementById('redeem-all-access-btn');
+  if (allAccessBtn) allAccessBtn.style.display = 'block';
 }
 
 function renderRedeemPlateOptions() {
@@ -1667,6 +1670,30 @@ function grantRedeemedBundle() {
     redeemPlateSelection = null;
     showSuccess(firstPlate, false, 'Prize Nameplate Bundle', false);
   }).catch(function() { showSuccess(firstPlate, true); });
+}
+
+function grantRedeemedAllAccess() {
+  if (!redeemCode || !playerRecord) return;
+  var fields = playerRecord.fields;
+  var owned  = buildOwnedFromRecord(fields);
+  if (owned.indexOf('np-all-access') < 0) owned.push('np-all-access');
+  var ownedStr = owned.join(',');
+
+  fetch(REDEEM_CODE_URL, {
+    method: 'POST', headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({code: redeemCode, gamertag: fields.Gamertag || '', plateId: 'all-access'})
+  }).then(function(r) { return r.json(); })
+  .then(function(d) {
+    if (!d.success) { showSuccess('np-all-access', true); return; }
+    playerRecord.fields.PlateStyle  = 'np-all-access';
+    playerRecord.fields.PlateStatus = 'Prize Redemption';
+    playerRecord.fields.OwnedPlates = ownedStr;
+    buildOwnedDropdown(owned, 'np-all-access', fields.Gamertag || '');
+    markOwnedPlates(owned);
+    redeemCode = null;
+    redeemPlateSelection = null;
+    showSuccess('np-all-access', false, 'Prize Nameplate Collection', false);
+  }).catch(function() { showSuccess('np-all-access', true); });
 }
 
 // ── BUNDLE PAYPAL BUTTONS ──────────────────────────────────
