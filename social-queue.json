@@ -600,5 +600,23 @@
     "imageAlt": "Trevor's Take: They Confirmed It On Purpose",
     "scheduledFor": "2026-11-15T12:12:59.320Z",
     "posted": true
+  },
+  {
+    "id": "auto-publish-editors-desk-3-days-out",
+    "text": "Three days until GTA6. There's a Saturday morning cartoon inside the game, physical copies are showing up with dead codes, and Danny has st…",
+    "url": "https://56vicelane.com/articles/editors-desk-3-days-out?utm_source=bluesky&utm_medium=social&utm_campaign=article_blast",
+    "image": "images/editor-portrait-4-launchweek.png",
+    "imageAlt": "From The Editor's Desk: 3 Days Out",
+    "scheduledFor": "2026-11-16T12:17:58.563Z",
+    "posted": false
+  },
+  {
+    "id": "auto-publish-trevors-take-3-days-out",
+    "text": "Three days until GTA6. Physical copies are showing up with dead codes, someone already leaked the full completion time, and Trevor has a th…",
+    "url": "https://56vicelane.com/articles/trevors-take-3-days-out?utm_source=bluesky&utm_medium=social&utm_campaign=article_blast",
+    "image": "images/trevor-portrait.png",
+    "imageAlt": "Trevor's Take: The Codes Aren't Missing",
+    "scheduledFor": "2026-11-16T12:17:58.592Z",
+    "posted": false
   }
 ]
