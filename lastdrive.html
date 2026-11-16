@@ -1390,8 +1390,15 @@ function loadRiderCounts() {
       ((d && d.signups) || []).forEach(function(s) {
         if (s.signupType !== 'Participant') return;
         if (s.joinStatus !== 'Active' && s.joinStatus !== 'Approved') return;
-        var slot = s.linkedSlot || '';
-        if (slot) counts[slot] = (counts[slot] || 0) + 1;
+        if (!s.leaderGamertag) return;
+        // Keyed off the clean platform/region/location/time/leader fields
+        // directly, NOT the free-text linkedSlot string -- older signups
+        // stored linkedSlot without the leader's name appended, which
+        // merged rider counts across any two leads who happened to pick
+        // the identical slot (e.g. KiraMarxs / Fanta_berry2k25 both at
+        // PS5/Europe/Airport/10PM CET). This key can't collide that way.
+        var slot = s.platform + '||' + s.region + '||' + s.stagingLocation + '||' + s.stagingTime + '||' + s.leaderGamertag;
+        counts[slot] = (counts[slot] || 0) + 1;
       });
       return counts;
     })
@@ -1419,7 +1426,7 @@ function loadDriveBrowser() {
           return rec.platform === joinState.platform && rec.region === joinState.region;
         })
         .map(function(rec) {
-          var slotKey = rec.platform + '||' + rec.region + '||' + rec.stagingLocation + '||' + rec.stagingTime;
+          var slotKey = rec.platform + '||' + rec.region + '||' + rec.stagingLocation + '||' + rec.stagingTime + '||' + rec.gamertag;
           return { fields: {
             Gamertag: rec.gamertag, Platform: rec.platform, Region: rec.region,
             'Staging Time': rec.stagingTime, StagingLocation: rec.stagingLocation,
