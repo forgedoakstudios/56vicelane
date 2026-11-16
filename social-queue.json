@@ -20,7 +20,7 @@
     "url": "https://56vicelane.com/lastdrive",
     "image": "images/lastdrive-hero.webp",
     "imageAlt": "The Last Drive countdown",
-    "lastPostedDate": "2026-11-15"
+    "lastPostedDate": "2026-11-16"
   },
   {
     "id": "lastdrive-signup-1",
@@ -608,7 +608,7 @@
     "image": "images/editor-portrait-4-launchweek.png",
     "imageAlt": "From The Editor's Desk: 3 Days Out",
     "scheduledFor": "2026-11-16T12:17:58.563Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-trevors-take-3-days-out",
@@ -617,7 +617,7 @@
     "image": "images/trevor-portrait.png",
     "imageAlt": "Trevor's Take: The Codes Aren't Missing",
     "scheduledFor": "2026-11-16T12:17:58.592Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-gta6-hacker-kurtaj-pleads-guilty-rockstar-breach",
@@ -626,6 +626,6 @@
     "image": "images/gta6-hero.png",
     "imageAlt": "GTA6 Hacker Pleads Guilty To The 2022 Rockstar Breach",
     "scheduledFor": "2026-11-16T18:54:10.103Z",
-    "posted": false
+    "posted": true
   }
 ]
