@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GTA6 Performance Explainer: What We Actually Know About Frame Rates, Resolution, and Load Times | 56ViceLane</title>
+<meta name="description" content="Everything confirmed and rumored about GTA6's technical side going into launch — 60fps modes, resolution targets, file size, load times, and what it actually takes to run this thing.">
+<meta name="category" content="Tech">
+<meta name="emoji" content="🖥️">
+<meta name="date" content="2026-11-16">
+<meta name="source-status" content="confirmed">
+<meta name="headline" content="GTA6 Performance Explainer: What We Actually Know About Frame Rates, Resolution, and Load Times">
+<meta property="og:title" content="GTA6 Performance Explainer: What We Actually Know About Frame Rates, Resolution, and Load Times">
+<meta property="og:description" content="Everything confirmed and rumored about GTA6's technical side going into launch.">
+<meta property="og:image" content="https://56vicelane.com/images/julian-ashworth-portrait.jpg">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="1024">
+<meta property="og:url" content="https://56vicelane.com/articles/gta6-performance-explainer-framerate-resolution-load-times">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="56ViceLane">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GTA6 Performance Explainer: What We Actually Know About Frame Rates, Resolution, and Load Times">
+<meta name="twitter:description" content="Everything confirmed and rumored about GTA6's technical side going into launch.">
+<meta name="twitter:image" content="https://56vicelane.com/images/julian-ashworth-portrait.jpg">
+<link rel="canonical" href="https://56vicelane.com/articles/gta6-performance-explainer-framerate-resolution-load-times">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9EKF7J4V7W"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9EKF7J4V7W');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376427875991063" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Barlow+Condensed:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+--pitch:#FDFBF8;--asphalt:#FFFFFF;--amber:#FF6B2C;--amber-dim:#C4922A;
+--cyan:#D6247A;--bone:#211A16;--smoke:#6B5F52;--edge:#F0E6DA;
+--green:#00C875;--red:#FF3B3B;
+}
+body{background:var(--pitch);color:var(--bone);font-family:'Inter',sans-serif;font-size:18px;line-height:1.7;}
+a{color:var(--amber);text-decoration:none;}
+a:hover{color:var(--cyan);}
+nav{background:var(--asphalt);border-bottom:2px solid var(--amber);padding:0 20px;position:sticky;top:0;z-index:200;}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo-box{background:var(--amber);color:#000;font-family:'Playfair Display',serif;font-size:1.1rem;padding:4px 8px;border-radius:4px;}
+.nav-logo-text{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--bone);letter-spacing:1px;}
+.nav-links{display:flex;gap:24px;list-style:none;}
+.nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;color:var(--smoke);letter-spacing:1px;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--amber);}
+.ticker-wrap{background:var(--amber);overflow:hidden;padding:6px 0;}
+.ticker-track{display:flex;gap:60px;white-space:nowrap;animation:ticker 40s linear infinite;}
+.ticker-item{font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:700;color:#000;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;flex-shrink:0;}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.article-wrap{max-width:780px;margin:0 auto;padding:40px 20px 80px;}
+.article-category{font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:12px;}
+.article-title{font-family:'Playfair Display',serif;font-size:2rem;line-height:1.2;color:var(--bone);margin-bottom:16px;}
+.article-meta{font-size:0.85rem;color:var(--smoke);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
+.article-meta span{display:flex;align-items:center;gap:4px;}
+.article-hero{width:100%;border-radius:8px;margin-bottom:32px;display:block;}
+.article-body h2{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--amber);margin:36px 0 14px;}
+.article-body h3{font-family:'Barlow Condensed',sans-serif;font-size:1.05rem;font-weight:700;color:var(--cyan);margin:22px 0 8px;text-transform:uppercase;letter-spacing:1px;}
+.article-body p{margin-bottom:18px;color:var(--bone);line-height:1.75;}
+.article-body ul{margin:0 0 18px 24px;}
+.article-body li{margin-bottom:8px;color:var(--bone);}
+.article-body strong{color:var(--bone);font-weight:600;}
+.callout{background:var(--edge);border-left:4px solid var(--amber);border-radius:6px;padding:20px 24px;margin:28px 0;}
+.callout.green{border-color:var(--green);}
+.callout-label{font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:8px;}
+.callout.green .callout-label{color:var(--green);}
+.callout p{margin:0;font-size:0.95rem;}
+.editor-note{background:#FFF6EC;border:1px dashed var(--amber-dim);border-radius:6px;padding:18px 22px;margin:28px 0;font-style:italic;}
+.editor-note-label{font-family:'Barlow Condensed',sans-serif;font-style:normal;font-size:0.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber-dim);margin-bottom:6px;}
+.share-bar{display:flex;gap:10px;flex-wrap:wrap;margin:32px 0;}
+.share-bar a{display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:6px;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s;}
+.share-bar a:hover{opacity:0.85;}
+.share-facebook{background:#1877F2;color:#fff;}
+.share-twitter{background:#000;color:#fff;}
+.share-reddit{background:#FF4500;color:#fff;}
+.share-copy{background:var(--edge);color:var(--bone);border:1px solid var(--smoke);}
+.ad-unit{margin:32px 0;text-align:center;}
+.lastdrive-cta{background:var(--asphalt);border:2px solid var(--amber);border-radius:8px;padding:28px;margin:40px 0;text-align:center;}
+.lastdrive-cta h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--amber);margin-bottom:8px;}
+.lastdrive-cta p{font-size:0.95rem;color:var(--smoke);margin-bottom:20px;}
+.lastdrive-cta a{display:inline-block;background:var(--amber);color:#000;font-family:'Playfair Display',serif;font-size:1rem;padding:12px 28px;border-radius:6px;text-decoration:none;letter-spacing:1px;}
+.lastdrive-cta a:hover{background:var(--amber-dim);}
+footer{background:var(--asphalt);border-top:1px solid var(--edge);padding:40px 20px;}
+.footer-inner{max-width:1100px;margin:0 auto;text-align:center;}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:16px;}
+.footer-links a{font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;color:var(--smoke);text-transform:uppercase;letter-spacing:1px;}
+.footer-links a:hover{color:var(--amber);}
+.footer-disclaimer{font-size:0.8rem;color:var(--smoke);line-height:1.6;max-width:600px;margin:0 auto;}
+@media(max-width:600px){.article-title{font-size:1.5rem;}.nav-links{display:none;}}
+</style>
+<style>
+.navband{background:#B5637A;display:flex;justify-content:center;gap:0;flex-wrap:wrap;}
+.navband a{color:#fff;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:12.5px;padding:14px 22px;transition:background .2s;}
+.navband a:hover{background:rgba(255,255,255,.1);}
+.navband a.active{background:rgba(255,255,255,.15);}
+</style>
+<style>
+.related-section{border-top:1px solid var(--edge);padding-top:24px;margin-top:32px;}
+.related-title{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--bone);margin-bottom:14px;}
+.related-grid{display:flex;flex-direction:column;gap:10px;}
+.related-card{background:var(--asphalt);border:1px solid var(--edge);border-radius:6px;padding:12px 14px;text-decoration:none;display:block;}
+.related-card:hover{border-color:var(--amber);}
+.related-card-label{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;font-weight:700;text-transform:uppercase;color:var(--amber);margin-bottom:4px;}
+.related-card-title{font-family:'Playfair Display',serif;font-size:0.9rem;color:var(--bone);line-height:1.3;}
+</style>
+</head>
+<body>
+<nav>
+<div class="nav-inner">
+<a href="/" class="nav-logo"><span class="nav-logo-box">56</span><span class="nav-logo-text">VICELANE</span></a>
+</div>
+</nav>
+<div class="navband">
+  <a href="/">Home</a>
+  <a href="/news" class="active">News</a>
+  <a href="/lastdrive">Last Drive</a>
+  <a href="/streams">Watch</a>
+  <a href="/wall">Wall of Honor</a>
+  <a href="/leaderboard">Leaderboard</a>
+  <a href="/members">Members</a>
+  <a href="/store">Store</a>
+  <a href="/gear">Gear</a>
+  <a href="/forum">Forum</a>
+</div>
+<div class="ticker-wrap"><div class="ticker-track" id="ticker-track"><span class="ticker-item">Loading latest GTA6 news...</span></div></div>
+
+<div class="article-wrap">
+<div class="article-category">🖥️ Tech</div>
+<h1 class="article-title">GTA6 Performance Explainer: What We Actually Know About Frame Rates, Resolution, and Load Times</h1>
+<div class="article-meta">
+<span>📅 November 16, 2026</span>
+<span>✍️ Julian Ashworth</span>
+<span>⏱️ 9 min read</span>
+</div>
+
+<img src="/images/julian-ashworth-portrait.jpg" id="article-hero" alt="Julian Ashworth" class="article-hero">
+
+<div class="vl-share-bar-mount"></div>
+
+<div class="ad-unit">
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<div class="article-body">
+<p class="lead" style="font-size:1.05rem;color:var(--bone);font-weight:500;">Three days before launch, the technical questions around GTA6 have mostly stopped being "will it run well" and started being "exactly how well, on exactly what." Here's every real data point we've got on performance, resolution, and storage, consolidated in one place before day-one reports start flooding in and this all gets a lot more complicated.</p>
+
+<h2>🎯 Frame Rate: What's Actually Confirmed</h2>
+<p>We covered the specifics in our <a href="/articles/gta6-60fps-graphics-settings-confirmed-rumored.html">60fps graphics settings breakdown</a>, but the short version going into launch: a 60fps performance mode is confirmed to exist on both PS5 and Xbox Series X/S, alongside a higher-fidelity mode that trades frame rate for visual detail — the standard current-gen split we've seen on other big AAA titles this generation. What hasn't been nailed down with full certainty is exactly how consistent that 60fps target holds in dense urban areas like downtown Vice City versus open highway driving, which historically is where open-world titles in this series have shown the most frame-pacing variance.</p>
+
+<p>Series S owners should pay closer attention than usual here — Rockstar hasn't published a dedicated Series S performance breakdown yet, and the hardware's weaker GPU relative to Series X has historically meant either a lower resolution target or a capped frame rate to compensate. We'll know for certain once day-one testing starts; until then, treat Series S parity with Series X as unconfirmed, not assumed.</p>
+
+<h2>🎮 How Performance Modes Actually Work, For Anyone New To This</h2>
+<p>For readers less steeped in console hardware terminology: a "performance mode" and a "fidelity" or "quality mode" are two different trade-offs built into the same game, letting players choose which matters more to them. Performance mode targets a higher, steadier frame rate — typically 60fps — usually by reducing resolution or dialing back certain visual effects like ray-traced reflections or dense foliage rendering distance. Quality mode flips that priority, targeting the highest possible resolution and visual fidelity, often at 30fps or an uncapped-but-inconsistent higher rate. Neither is objectively "better" — it's a genuine preference question, and the fact that GTA6 is confirmed to offer both options at all means players aren't locked into a single trade-off the way some titles still force.</p>
+
+<p>For racing, driving, and anything requiring tight reaction timing — which, given this is a GTA game, is going to be most of actual played time — most competitive and casual players alike tend to gravitate toward performance mode once they've tried both side by side, even if quality mode looks more impressive in a static screenshot. Worth trying both for yourself in the first hour rather than assuming you know your own preference in advance; plenty of players who swore they'd never give up visual fidelity end up switching to performance mode within a session or two once they feel the responsiveness difference during actual driving and combat.</p>
+
+<h2>💾 File Size: The Download Everyone's Been Bracing For</h2>
+<p>Leaked file-size figures pointed toward <a href="/articles/gta6-file-size-leaked-storage-requirements.html">roughly 200GB</a>, a number that's held up well against everything reported since, including Take-Two CEO Strauss Zelnick's own comment that a <a href="/articles/gta6-disc-doesnt-make-sense-download-size.html">physical disc "doesn't make sense"</a> for this game — a CEO publicly saying that is effectively him confirming the file size is large enough to make single-disc physical distribution impractical. If your console or PC is sitting anywhere close to full, now's the moment to actually clear space rather than discover the problem mid-download on launch day.</p>
+
+<div class="callout">
+<div class="callout-label">🎮 What This Means For You</div>
+<p>Check your available storage today, not launch day. At ~200GB, that's enough to fill a stock PS5's entire usable SSD on its own if you're not already managing space carefully. If you've pre-loaded already, double check the install actually completed and isn't sitting in a partial/paused state — a common failure mode when storage runs tight mid-download.</p>
+</div>
+
+<h3>Pre-Load And Unlock Timing</h3>
+<p>We've already covered <a href="/articles/gta6-preload-date-when-download.html">when pre-loading actually opens</a> relative to launch — the short version is that getting the download started early is the single highest-leverage thing you can do this week if you want to actually play at midnight your local unlock time rather than staring at a progress bar.</p>
+
+<h2>🖥️ PC: The Wildcard</h2>
+<p>PC performance is the single biggest unknown going into launch, for the obvious reason that PC specs vary wildly and Rockstar hasn't published a full minimum/recommended spec sheet with the same clarity as console performance modes. Expect wide day-one variance in benchmark results depending on GPU generation, VRAM, and whether frame-generation technology (DLSS/FSR-style upscaling) is supported at launch or patched in later — a detail that's been notably absent from official messaging so far.</p>
+
+<p>History is actually instructive here, and not in a flattering way. GTA4's PC port in 2008 was infamous for shipping in a rough, poorly optimized state that took multiple patches to stabilize. GTA5's PC port, by contrast, arrived over a year after console and was widely considered one of the best PC ports of its generation once it landed — proof that when Rockstar takes the extra time, the result is genuinely excellent. GTA6 is launching simultaneously across console and PC rather than staggering the PC release, which is new territory for this series at this scale, and it raises a real question: does day-one PC parity with console come at the cost of the kind of extended polish GTA5's delayed PC port benefited from, or has Rockstar's engineering team solved that trade-off this time around?</p>
+
+<h3>What To Actually Check Before Launch Day</h3>
+<p>If you're planning to play on PC, a few concrete things worth doing in the next 72 hours rather than waiting until launch night: update your GPU drivers to the latest stable release, confirm your storage has enough free space for a ~200GB install with room to spare for a potential day-one patch, and check whether your motherboard and PSU can handle a sustained high-wattage load if you're running anything beyond a mid-range build — open-world titles at this scale tend to push hardware harder and longer than most other genres, since there's no natural "level load" break to let components cool between sessions.</p>
+
+<h2>🔊 Audio And Haptics: The Overlooked Performance Dimension</h2>
+<p>Performance conversations tend to fixate on frame rate and resolution, but PS5's DualSense haptics and adaptive triggers have become a meaningful part of how "performance" actually feels in modern Rockstar-style open-world titles. GTA5's eventual PS5 re-release leaned into haptic feedback for things like weapon recoil and surface-dependent vehicle handling, and the expectation for GTA6 — built natively for this console generation rather than retrofitted onto it — is a far more extensive implementation. If you're deciding between platforms purely on raw performance specs, don't discount how much the haptic and 3D audio implementation can actually change how "fast" and "responsive" a game feels in practice, independent of the actual frame counter.</p>
+
+<p>Xbox Series X/S players won't get DualSense-specific haptics, obviously, but Xbox's own Impulse Triggers on the Elite controller lineup offer a comparable, if less granular, feedback layer. Neither platform has a clear advantage here so much as a different flavor of the same idea — something worth factoring in if you're platform-agnostic and trying to decide where to actually buy.</p>
+
+<div class="editor-note">
+<div class="editor-note-label">📝 Editor's Note</div>
+<p>The honest read here: console players have more certainty going into launch than PC players do, which is a little unusual for a Rockstar title given how strong their PC ports have historically landed eventually — just rarely on day one. If you're on PC and performance is make-or-break for you, temper expectations for the first patch cycle rather than launch day itself.</p>
+</div>
+
+<h2>⏱️ Load Times And The Seamless-World Question</h2>
+<p>One technical thread that hasn't gotten nearly enough attention going into launch: how GTA6 actually handles loading, and whether it's pursuing a fully seamless open world versus the more traditional load-screen-on-death, load-screen-on-fast-travel approach prior entries used. GTA5 leaned heavily on background streaming to minimize visible loading, and the expectation for GTA6 — given everything we know about the scope of Leonida and the jump in asset fidelity — is an even more aggressive streaming approach, likely leaning hard on each console's SSD architecture specifically. PS5 and Series X both ship with genuinely fast, purpose-built storage solutions for exactly this kind of workload; a title built around minimizing load screens is one of the better real-world showcases for why that hardware investment mattered in the first place.</p>
+
+<p>The practical risk, and it's one worth flagging honestly: a game built to lean this hard on fast SSD streaming can degrade noticeably if installed on anything slower, which matters most for PC players running the game off a traditional hard drive or an older, slower SSD rather than a current-generation NVMe drive. If you're on PC and have the choice, install GTA6 on your fastest available drive — this is one of the rare cases where that choice could visibly affect more than just load screens, potentially touching texture pop-in and streaming hitches during fast traversal too.</p>
+
+<h2>The Bottom Line</h2>
+<p>Going into launch: 60fps performance mode confirmed on both consoles, Series S parity still an open question, file size landing right around the ~200GB mark the leaks predicted, and PC remaining the genuine wildcard of this entire release. We'll be tracking real day-one performance reports the moment players actually get hands-on time — this is the single fastest-moving beat of launch week, and we'll be updating as the real numbers come in.</p>
+
+<h2>What's Next</h2>
+<p>Are you prioritizing the 60fps mode over visual fidelity for launch week, or do you want the full-detail mode regardless of frame rate — and does your answer change once you've actually seen both side by side?</p>
+
+<div class="ad-unit">
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376427875991063" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+</div>
+
+<div class="vl-share-bar-mount"></div>
+
+<div class="lastdrive-cta">
+<h3>🏁 The Last Drive — November 18, 2026</h3>
+<p>The night before GTA6 launches — be one of the founding drivers on one final cruise through GTA5. Free. All platforms. No killing. No chaos. Just the road.</p>
+<a href="/lastdrive">Sign Up Free →</a>
+</div>
+</div>
+
+<div class="related-section reveal">
+  <div class="related-title">Related Articles</div>
+  <div class="related-grid">
+    <a href="/articles/gta6-60fps-graphics-settings-confirmed-rumored.html" class="related-card">
+      <div class="related-card-label">🎯 Performance</div>
+      <div class="related-card-title">Does GTA6 Have A 60 FPS Mode? Every Confirmed And Rumored Graphics Setting</div>
+    </a>
+    <a href="/articles/gta6-file-size-leaked-storage-requirements.html" class="related-card">
+      <div class="related-card-label">💾 Storage</div>
+      <div class="related-card-title">GTA6 File Size Leaked — And Your PS5 Might Not Be Ready</div>
+    </a>
+    <a href="/articles/gta6-preload-date-when-download.html" class="related-card">
+      <div class="related-card-label">⬇️ Pre-Load</div>
+      <div class="related-card-title">GTA6 Pre-Load: When Can You Start Downloading?</div>
+    </a>
+  </div>
+  </div>
+
+<footer>
+<div class="footer-inner">
+<div class="footer-links">
+<a href="/">Home</a><a href="/news">News</a><a href="/lastdrive">Last Drive</a>
+<a href="/streams">Watch</a>
+<a href="/wall">Wall of Honor</a>
+  <a href="/leaderboard">Leaderboard</a><a href="/store">Store</a><a href="/gear">Gear</a>
+<a href="/privacy">Privacy</a><a href="/contact">Contact</a>
+</div>
+<p class="footer-disclaimer">56ViceLane is an independent fan site. Not affiliated with Rockstar Games or Take-Two Interactive. All trademarks belong to their respective owners.<br><br>© 2026 56ViceLane · Forged Oak Studios</p>
+</div>
+</footer>
+
+<script>
+fetch('/articles.json?v='+Date.now())
+.then(function(r){return r.json();})
+.then(function(articles){
+var track=document.getElementById('ticker-track');
+if(track){
+var items=articles.map(function(a){
+var span=document.createElement('span');
+span.className='ticker-item';
+span.textContent=(a.emoji||'⚡')+' '+a.title;
+span.onclick=function(){window.location.href='/articles/'+a.slug;};
+return span;
+});
+var doubled=items.concat(items.map(function(el){return el.cloneNode(true);}));
+track.innerHTML='';
+doubled.forEach(function(el){track.appendChild(el);});
+}
+var parts=window.location.pathname.replace(/\/+$/,'').split('/');
+var slug=parts[parts.length-1];
+var hero=document.getElementById('article-hero');
+if(hero&&slug){
+for(var i=0;i<articles.length;i++){
+if(articles[i].slug===slug&&articles[i].image){
+hero.src='/images/'+articles[i].image;
+break;
+}
+}
+}
+})
+.catch(function(){});
+</script>
+<script src="/back-to-top.js" defer></script>
+  <script src="/share-bar.js"></script>
+  <script src="/related-articles.js" defer></script>
+<script src="/loyalty-banner.js" defer></script>
+<script src="/article-sponsor-rail.js" defer></script>
+</body>
+</html>

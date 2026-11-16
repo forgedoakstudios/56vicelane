@@ -32,6 +32,66 @@
     "url": "/articles/gta6-november-19-confirmed"
   },
   {
+    "emoji": "📼",
+    "title": "13 Years Later: How GTA6's Launch Compares To Every Prior GTA Launch",
+    "slug": "13-years-later-gta6-launch-compares-every-prior-gta-launch",
+    "url": "/articles/13-years-later-gta6-launch-compares-every-prior-gta-launch",
+    "headline": "13 Years Later: How GTA6's Launch Compares To Every Prior GTA Launch",
+    "category": "Retro",
+    "date": "2026-11-16",
+    "excerpt": "GTA3, Vice City, San Andreas, GTA4, and GTA5 all launched into a different industry. Here's how GTA6's launch actually stacks up against every one of them.",
+    "image": "reg-calloway-portrait.jpg",
+    "permanent": false
+  },
+  {
+    "emoji": "🕵️",
+    "title": "Every Confirmed GTA6 Easter Egg And Lore Thread Going Into Launch",
+    "slug": "gta6-every-confirmed-easter-egg-lore-thread-going-into-launch",
+    "url": "/articles/gta6-every-confirmed-easter-egg-lore-thread-going-into-launch",
+    "headline": "Every Confirmed GTA6 Easter Egg And Lore Thread Going Into Launch",
+    "category": "Lore",
+    "date": "2026-11-16",
+    "excerpt": "Every real easter egg, callback, and lore thread confirmed in GTA6 marketing so far — Clair Obscur, the Gay Tony theory, and what to actually watch for once the map opens up.",
+    "image": "ezra-voss-portrait.jpg",
+    "permanent": false
+  },
+  {
+    "emoji": "🖥️",
+    "title": "GTA6 Performance Explainer: What We Actually Know About Frame Rates, Resolution, and Load Times",
+    "slug": "gta6-performance-explainer-framerate-resolution-load-times",
+    "url": "/articles/gta6-performance-explainer-framerate-resolution-load-times",
+    "headline": "GTA6 Performance Explainer: What We Actually Know About Frame Rates, Resolution, and Load Times",
+    "category": "Tech",
+    "date": "2026-11-16",
+    "excerpt": "Everything confirmed and rumored about GTA6's technical side going into launch — 60fps modes, resolution targets, file size, load times, and what it actually takes to run this thing.",
+    "image": "julian-ashworth-portrait.jpg",
+    "permanent": false
+  },
+  {
+    "emoji": "💰",
+    "title": "GTA6 Pre-Order Numbers: Where Things Actually Stand Going Into Launch",
+    "slug": "gta6-preorder-numbers-where-things-stand-going-into-launch",
+    "url": "/articles/gta6-preorder-numbers-where-things-stand-going-into-launch",
+    "headline": "GTA6 Pre-Order Numbers: Where Things Actually Stand Going Into Launch",
+    "category": "Business",
+    "date": "2026-11-16",
+    "excerpt": "Every real GTA6 pre-order and revenue data point in one place — Take-Two's own $3.5B guidance, the analyst estimates that came before it, and the Ultimate Edition's dominant split — going into launch week.",
+    "image": "marcus-webb-portrait.jpg",
+    "permanent": false
+  },
+  {
+    "emoji": "🎨",
+    "title": "Jason & Lucia's Full Look: Breaking Down Everything Confirmed About Character Customization",
+    "slug": "jason-lucia-full-look-character-customization-confirmed",
+    "url": "/articles/jason-lucia-full-look-character-customization-confirmed",
+    "headline": "Jason & Lucia's Full Look: Breaking Down Everything Confirmed About Character Customization",
+    "category": "Culture",
+    "date": "2026-11-16",
+    "excerpt": "Cover art, trailer wardrobe, and every confirmed detail about GTA6's character customization system — broken down frame by frame going into launch.",
+    "image": "camille-duarte-portrait.jpg",
+    "permanent": false
+  },
+  {
     "emoji": "🤖",
     "title": "Take-Two CEO Calls Out Anthropic And OpenAI Over AI Game Clones Ahead Of GTA6",
     "slug": "gta6-anthropic-openai-ai-clones-zelnick",
