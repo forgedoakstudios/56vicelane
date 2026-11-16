@@ -117,6 +117,11 @@ const files = fs.readdirSync(ARTICLES_DIR)
     // Get category
     const category = getMeta('category') || getOG('section') || 'GTA6 News';
 
+    // Get the topic-desk section (culture/art/music/tech/business/lore/
+    // legacy archive pages filter articles.json on this field) — separate
+    // from "category" above, which is legacy/inconsistent sitewide
+    const section = getMeta('section') || '';
+
     // Get excerpt
     const excerpt = decodeEntities(getMeta('description') || getOG('description') || '');
 
@@ -143,6 +148,7 @@ const files = fs.readdirSync(ARTICLES_DIR)
       excerpt,
       image: imageFile,
       ...(column ? { column } : {}),
+      ...(section ? { section } : {}),
       permanent: false,
       _addedAt: gitAddedTime(filePath)
     };

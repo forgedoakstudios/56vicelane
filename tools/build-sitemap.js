@@ -31,6 +31,14 @@ const CORE = [
   ['/about', 'monthly', '0.4'],
   ['/contact', 'monthly', '0.4'],
   ['/archive', 'weekly', '0.5'],
+  ['/sections', 'weekly', '0.6'],
+  ['/culture.html', 'weekly', '0.6'],
+  ['/art.html', 'weekly', '0.6'],
+  ['/music.html', 'weekly', '0.6'],
+  ['/tech.html', 'weekly', '0.6'],
+  ['/business.html', 'weekly', '0.6'],
+  ['/lore.html', 'weekly', '0.6'],
+  ['/legacy.html', 'weekly', '0.6'],
   ['/privacy', 'yearly', '0.2'],
   ['/terms', 'yearly', '0.2']
 ];
