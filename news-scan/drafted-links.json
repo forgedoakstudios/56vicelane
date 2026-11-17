@@ -1278,14 +1278,56 @@
     "date": "2026-11-16"
   },
   {
-    "link": "https://www.rockpapershotgun.com/gta-6-hacker-pleads-guilty-to-2022-rockstar-games-breach-which-the-company-claim-cost-them-5-million",
-    "slug": "gta6-hacker-kurtaj-pleads-guilty-rockstar-breach",
-    "tier": "breaking",
-    "date": "2026-11-16"
-  },
-  {
     "link": "https://insider-gaming.com/gta-6-has-62-bird-types-confirms-rockstar-games/",
     "slug": "gta6-leonida-wildlife-bird-species",
+    "tier": "digest",
+    "date": "2026-11-17"
+  },
+  {
+    "link": "https://www.dexerto.com/gta/discord-teams-up-with-rockstar-for-vice-city-theme-to-celebrate-gta-6-launch-3428758/",
+    "slug": "gta6-discord-rockstar-vice-city-theme",
+    "tier": "digest",
+    "date": "2026-11-17"
+  },
+  {
+    "link": "https://www.dexerto.com/gta/professor-cancels-homework-and-exams-during-gta-6-launch-week-3428746/",
+    "slug": "gta6-professor-cancels-homework-launch-week",
+    "tier": "digest",
+    "date": "2026-11-17"
+  },
+  {
+    "link": "https://www.ign.com/articles/uks-national-health-service-is-urging-gamers-to-protect-their-hands-ahead-of-gta-6-launch",
+    "slug": "gta6-nhs-protect-your-hands-launch",
+    "tier": "digest",
+    "date": "2026-11-17"
+  },
+  {
+    "link": "https://www.ign.com/articles/sony-squeezes-in-last-minute-ps5-firmware-security-update-ahead-of-gta-6-release-date-amid-fresh-hacker-claim",
+    "slug": "gta6-sony-ps5-firmware-security-update-hacker-claim",
+    "tier": "digest",
+    "date": "2026-11-17"
+  },
+  {
+    "link": "https://www.ign.com/articles/gta-6-new-zealand-trick-xbox-ps5-early-release-time",
+    "slug": "gta6-regional-launch-times-play-early",
+    "tier": "skipped-duplicate",
+    "date": "2026-11-17"
+  },
+  {
+    "link": "https://www.pcgamer.com/games/grand-theft-auto/gta-6-release-time-date/",
+    "slug": "gta6-regional-launch-times-play-early",
+    "tier": "skipped-duplicate",
+    "date": "2026-11-17"
+  },
+  {
+    "link": "https://www.ign.com/articles/warnings-encouragement-and-gift-cards-how-schools-are-preparing-for-mass-absences-on-gta-6-launch-day",
+    "slug": "gta6-schools-preparing-mass-absences-launch-day",
+    "tier": "digest",
+    "date": "2026-11-17"
+  },
+  {
+    "link": "https://www.polygon.com/gta-6-preorder-bonuses-plus-release-perks-digital-ultimate-edition/",
+    "slug": "gta6-preorder-bonuses-important-asterisk",
     "tier": "digest",
     "date": "2026-11-17"
   }
