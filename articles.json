@@ -32,6 +32,18 @@
     "url": "/articles/gta6-november-19-confirmed"
   },
   {
+    "emoji": "🌴",
+    "title": "Discord Teams Up With Rockstar For A Vice City Theme Ahead Of GTA6's Launch",
+    "slug": "gta6-discord-rockstar-vice-city-theme",
+    "url": "/articles/gta6-discord-rockstar-vice-city-theme",
+    "headline": "Discord Is Going Vice City For GTA6's Launch",
+    "category": "News",
+    "date": "2026-11-17",
+    "excerpt": "Discord is rolling out an official Vice City-themed look to celebrate GTA6's launch, according to Dexerto. Here's what's actually changing and why it matters.",
+    "image": "gta6-hero.png",
+    "permanent": false
+  },
+  {
     "emoji": "🦅",
     "title": "GTA6's Leonida Wildlife Includes Over 60 Bird Species, Reports Say",
     "slug": "gta6-leonida-wildlife-bird-species",
@@ -40,6 +52,66 @@
     "category": "News",
     "date": "2026-11-17",
     "excerpt": "A new report pegs GTA6's bird population at 60+ species, part of a wider ~170-species wildlife ecosystem Rockstar detailed in Game Informer's cover story. Here's what's actually confirmed.",
+    "image": "gta6-hero.png",
+    "permanent": false
+  },
+  {
+    "emoji": "🏥",
+    "title": "The UK's NHS Is Urging Gamers To Protect Their Hands Ahead Of GTA6's Launch",
+    "slug": "gta6-nhs-protect-your-hands-launch",
+    "url": "/articles/gta6-nhs-protect-your-hands-launch",
+    "headline": "UK Health Service Urges Gamers To Protect Their Hands For GTA6",
+    "category": "News",
+    "date": "2026-11-17",
+    "excerpt": "The UK's National Health Service is reportedly urging gamers to take hand and wrist precautions ahead of marathon GTA6 launch sessions, according to IGN.",
+    "image": "gta6-hero.png",
+    "permanent": false
+  },
+  {
+    "emoji": "⚠️",
+    "title": "GTA6's Pre-Order Bonuses Come With An Important Asterisk",
+    "slug": "gta6-preorder-bonuses-important-asterisk",
+    "url": "/articles/gta6-preorder-bonuses-important-asterisk",
+    "headline": "GTA6's Pre-Order Bonuses Have A Catch You Should Know About",
+    "category": "News",
+    "date": "2026-11-17",
+    "excerpt": "GTA6's pre-order bonuses come with a catch worth knowing about before you buy, according to Polygon's breakdown of the digital Ultimate Edition perks.",
+    "image": "gta6-hero.png",
+    "permanent": false
+  },
+  {
+    "emoji": "📚",
+    "title": "This Professor Is Cancelling Homework And Exams For GTA6's Launch Week",
+    "slug": "gta6-professor-cancels-homework-launch-week",
+    "url": "/articles/gta6-professor-cancels-homework-launch-week",
+    "headline": "A College Professor Is Cancelling Assignments For GTA6's Launch Week",
+    "category": "News",
+    "date": "2026-11-17",
+    "excerpt": "A professor is reportedly cancelling homework and exams for launch week so students can actually play GTA6. According to Dexerto, this is a real syllabus adjustment.",
+    "image": "gta6-hero.png",
+    "permanent": false
+  },
+  {
+    "emoji": "🏫",
+    "title": "Warnings, Encouragement, And Gift Cards: How Schools Are Preparing For GTA6 Launch Day Absences",
+    "slug": "gta6-schools-preparing-mass-absences-launch-day",
+    "url": "/articles/gta6-schools-preparing-mass-absences-launch-day",
+    "headline": "Schools Are Bracing For Mass Absences On GTA6's Launch Day",
+    "category": "News",
+    "date": "2026-11-17",
+    "excerpt": "Schools are reportedly bracing for mass student absences around GTA6's launch, with responses ranging from warnings to gift-card incentives, according to IGN.",
+    "image": "gta6-hero.png",
+    "permanent": false
+  },
+  {
+    "emoji": "🔐",
+    "title": "Sony Squeezes In A Last-Minute PS5 Firmware Security Update Ahead Of GTA6's Launch",
+    "slug": "gta6-sony-ps5-firmware-security-update-hacker-claim",
+    "url": "/articles/gta6-sony-ps5-firmware-security-update-hacker-claim",
+    "headline": "Sony Pushes A Last-Minute PS5 Security Update Right Before GTA6",
+    "category": "News",
+    "date": "2026-11-17",
+    "excerpt": "Sony is reportedly pushing a last-minute PS5 firmware security update right before GTA6's release, amid a fresh hacker claim, according to IGN.",
     "image": "gta6-hero.png",
     "permanent": false
   },
