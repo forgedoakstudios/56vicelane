@@ -20,7 +20,7 @@
     "url": "https://56vicelane.com/lastdrive",
     "image": "images/lastdrive-hero.webp",
     "imageAlt": "The Last Drive countdown",
-    "lastPostedDate": "2026-11-16"
+    "lastPostedDate": "2026-11-17"
   },
   {
     "id": "lastdrive-signup-1",
@@ -651,7 +651,7 @@
     "image": "images/gta6-hero.png",
     "imageAlt": "Discord Teams Up With Rockstar For A Vice City Theme Ahead Of GTA6's Launch",
     "scheduledFor": "2026-11-17T19:31:40.999Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-gta6-nhs-protect-your-hands-launch",
@@ -660,7 +660,7 @@
     "image": "images/gta6-hero.png",
     "imageAlt": "The UK's NHS Is Urging Gamers To Protect Their Hands Ahead Of GTA6's Launch",
     "scheduledFor": "2026-11-17T19:31:41.007Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-gta6-preorder-bonuses-important-asterisk",
@@ -669,7 +669,7 @@
     "image": "images/gta6-hero.png",
     "imageAlt": "GTA6's Pre-Order Bonuses Come With An Important Asterisk",
     "scheduledFor": "2026-11-17T19:31:41.007Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-gta6-professor-cancels-homework-launch-week",
@@ -678,7 +678,7 @@
     "image": "images/gta6-hero.png",
     "imageAlt": "This Professor Is Cancelling Homework And Exams For GTA6's Launch Week",
     "scheduledFor": "2026-11-17T19:31:41.007Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-gta6-schools-preparing-mass-absences-launch-day",
@@ -687,7 +687,7 @@
     "image": "images/gta6-hero.png",
     "imageAlt": "Warnings, Encouragement, And Gift Cards: How Schools Are Preparing For GTA6 Launch Day Absences",
     "scheduledFor": "2026-11-17T19:31:41.007Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-gta6-sony-ps5-firmware-security-update-hacker-claim",
@@ -696,7 +696,7 @@
     "image": "images/gta6-hero.png",
     "imageAlt": "Sony Squeezes In A Last-Minute PS5 Firmware Security Update Ahead Of GTA6's Launch",
     "scheduledFor": "2026-11-17T19:31:41.007Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-gta6-leonida-wildlife-bird-species",
@@ -705,7 +705,7 @@
     "image": "images/gta6-hero.png",
     "imageAlt": "GTA6's Leonida Wildlife Includes Over 60 Bird Species, Reports Say",
     "scheduledFor": "2026-11-17T19:31:41.008Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-the-last-drive-eve-newsroom-roundtable",
@@ -714,7 +714,7 @@
     "image": "images/the-last-drive-eve-newsroom-roundtable-hero.jpg",
     "imageAlt": "The Last Drive Eve: A Newsroom Roundtable",
     "scheduledFor": "2026-11-17T19:31:41.008Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-gta6-last-drive-cultural-ritual-camille-duarte",
@@ -723,7 +723,7 @@
     "image": "images/camille-duarte-portrait.jpg",
     "imageAlt": "Why The Last Drive Is A Ritual, Not Just A Goodbye",
     "scheduledFor": "2026-11-17T19:31:41.008Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-gta6-last-drive-two-days-out-franchise-legacy-reg-calloway",
@@ -732,7 +732,7 @@
     "image": "images/reg-calloway-portrait.jpg",
     "imageAlt": "Two Days Out: What The Last Drive Says About 13 Years Of This Franchise",
     "scheduledFor": "2026-11-17T19:31:41.008Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-13-years-later-gta6-launch-compares-every-prior-gta-launch",
@@ -741,7 +741,7 @@
     "image": "images/reg-calloway-portrait.jpg",
     "imageAlt": "13 Years Later: How GTA6's Launch Compares To Every Prior GTA Launch",
     "scheduledFor": "2026-11-17T19:31:41.009Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-gta6-every-confirmed-easter-egg-lore-thread-going-into-launch",
@@ -750,7 +750,7 @@
     "image": "images/ezra-voss-portrait.jpg",
     "imageAlt": "Every Confirmed GTA6 Easter Egg And Lore Thread Going Into Launch",
     "scheduledFor": "2026-11-17T19:31:41.009Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-gta6-performance-explainer-framerate-resolution-load-times",
@@ -759,7 +759,7 @@
     "image": "images/julian-ashworth-portrait.jpg",
     "imageAlt": "GTA6 Performance Explainer: What We Actually Know About Frame Rates, Resolution, and Load Times",
     "scheduledFor": "2026-11-17T19:31:41.009Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-gta6-preorder-numbers-where-things-stand-going-into-launch",
@@ -768,7 +768,7 @@
     "image": "images/marcus-webb-portrait.jpg",
     "imageAlt": "GTA6 Pre-Order Numbers: Where Things Actually Stand Going Into Launch",
     "scheduledFor": "2026-11-17T19:31:41.010Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-jason-lucia-full-look-character-customization-confirmed",
@@ -777,7 +777,7 @@
     "image": "images/camille-duarte-portrait.jpg",
     "imageAlt": "Jason & Lucia's Full Look: Breaking Down Everything Confirmed About Character Customization",
     "scheduledFor": "2026-11-17T19:31:41.010Z",
-    "posted": false
+    "posted": true
   },
   {
     "id": "auto-publish-gta6-macca-and-friends-in-game-cartoon",
@@ -786,6 +786,6 @@
     "image": "images/gta6-hero.png",
     "imageAlt": "GTA6 Is Getting Its Own In-Game Cartoon, \"Macca & Friends\"",
     "scheduledFor": "2026-11-17T19:31:41.010Z",
-    "posted": false
+    "posted": true
   }
 ]
