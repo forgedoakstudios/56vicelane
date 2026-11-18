@@ -59,6 +59,35 @@
   .hero-cta-share{background:transparent; color:#fff; border:1px solid rgba(255,255,255,.4); font-family:'Barlow Condensed'; font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:13px; padding:14px 26px; border-radius:6px; cursor:pointer;}
   .hero::before{content:''; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(10,6,4,.55) 0%, rgba(10,6,4,.35) 45%, rgba(10,6,4,.75) 100%);}
   .hero-inner{position:relative; z-index:2; max-width:640px;}
+  .gta-flip{position:relative; display:inline-block; font-family:'Playfair Display',serif; font-style:italic; font-weight:800; font-size:clamp(32px,6vw,52px); margin-bottom:16px; line-height:1;}
+  .gta-flip-text{position:relative; z-index:2; color:#fff; white-space:nowrap;}
+  .gta-flip-vi{position:absolute; left:0; top:0; opacity:0;}
+  .gta-flip-v{animation:gtaVFade 4.2s ease-in-out .4s 1 forwards;}
+  .gta-flip-vi{animation:gtaVIFade 4.2s ease-in-out .4s 1 forwards;}
+  .gta-flip::before{content:''; position:absolute; left:-12%; bottom:-4px; width:34%; height:16px; border-radius:50%; background:radial-gradient(ellipse at center, rgba(255,214,140,.95) 0%, rgba(255,107,44,.6) 45%, transparent 75%); filter:blur(7px); z-index:1; animation:gtaSweep 4.2s ease-in-out .4s 1 forwards;}
+  @keyframes gtaSweep{
+    0%{left:-12%; opacity:.75; filter:blur(7px) brightness(1); width:34%; height:16px;}
+    65%{left:92%; opacity:1; filter:blur(7px) brightness(1); width:34%; height:16px;}
+    76%{left:100%; opacity:1; filter:blur(3px) brightness(2.4); width:130%; height:70px;}
+    100%{opacity:0;}
+  }
+  @keyframes gtaVFade{
+    0%{opacity:1;}
+    68%{opacity:1; text-shadow:0 4px 30px rgba(0,0,0,.5);}
+    78%{opacity:0; text-shadow:0 0 40px #fff;}
+    100%{opacity:0;}
+  }
+  @keyframes gtaVIFade{
+    0%{opacity:0;}
+    76%{opacity:0;}
+    82%{opacity:1; text-shadow:0 0 36px rgba(255,184,75,.95);}
+    100%{opacity:1; text-shadow:0 0 10px rgba(255,184,75,.45);}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .gta-flip::before{animation:none; opacity:0;}
+    .gta-flip-v{animation:none; opacity:0;}
+    .gta-flip-vi{animation:none; opacity:1;}
+  }
   .hero-eyebrow{font-family:'Barlow Condensed'; font-weight:800; letter-spacing:3px; text-transform:uppercase; color:var(--orange); font-size:13px; margin-bottom:14px;}
   .hero-word{font-family:'Playfair Display'; font-style:italic; font-weight:800; font-size:clamp(30px,6vw,50px); line-height:1.1; color:#fff; text-shadow:0 4px 30px rgba(0,0,0,0.5); margin-bottom:14px;}
   .hero-sub{font-family:'Inter',sans-serif; font-weight:400; color:#F2DCC9; font-size:16px; line-height:1.6; margin-bottom:26px;}
@@ -182,6 +211,10 @@
 
 <div class="hero" style="background-image:url('images/gta6-hero.png');background-size:cover;background-position:center;aspect-ratio:1408/768;min-height:0;">
   <div class="hero-inner">
+    <div class="gta-flip" aria-label="GTA V becomes GTA VI">
+      <span class="gta-flip-text gta-flip-v">GTA V</span>
+      <span class="gta-flip-text gta-flip-vi">GTA VI</span>
+    </div>
     <div class="hero-eyebrow">November 19 &middot; Launch Night</div>
     <div class="hero-word">13 Years Later, We're Here</div>
     <p class="hero-sub">Grand Theft Auto VI launches tonight. Follow live coverage, join the Discord for day-one impressions, and relive the GTA5 send-off that got us to this moment.</p>
