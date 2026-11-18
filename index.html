@@ -204,9 +204,7 @@
 
 <div class="stats-strip">
   <div class="stats-strip-inner" id="home-stats-strip">
-    <div class="stat-item"><div class="stat-num" id="stat-drivers">—</div><div class="stat-label">Drivers Registered</div></div>
-    <div class="stat-item"><div class="stat-num" id="stat-convoys">—</div><div class="stat-label">Convoys Forming</div></div>
-    <div class="stat-item"><div class="stat-num">5</div><div class="stat-label">Platforms Supported</div></div>
+    <div class="stat-item"><div class="stat-num" id="stat-drivers">—</div><div class="stat-label">Total Players Signed Up</div></div>
   </div>
 </div>
 
@@ -462,43 +460,20 @@ function shuffle(arr) {
   return arr;
 }
 
-/* HERO STATS STRIP — real counts only. Below a small threshold the raw
-   number reads as embarrassing rather than impressive, so it falls back
-   to founding-member framing instead of ever showing a tiny number. */
-var N8N_LIST_DRIVES_URL_HOME = 'https://n8n.56vicelane.com/webhook/list-drives';
+/* HERO STATS STRIP — the Last Drive is underway worldwide now, so this is
+   just the one real running total: total players signed up. */
 function loadHomeStats() {
   var driversEl = document.getElementById('stat-drivers');
-  var convoysEl = document.getElementById('stat-convoys');
-  var driversLabel = driversEl && driversEl.nextElementSibling;
-  var convoysLabel = convoysEl && convoysEl.nextElementSibling;
+  if (!driversEl) return;
 
   fetch(SIGNUPS_PUBLIC_URL).then(function (r) { return r.json(); }).then(function (d) {
     var count = ((d && d.signups) || []).filter(function (s) {
       var g = (s.gamertag || '').toLowerCase().trim();
       return g && g !== 'test' && g !== 'trst';
     }).length;
-    if (count >= 25) {
-      driversEl.textContent = count;
-    } else {
-      driversEl.textContent = 'Founding';
-      if (driversLabel) driversLabel.textContent = 'Drivers Wanted';
-    }
+    driversEl.textContent = count.toLocaleString();
   }).catch(function () {
-    driversEl.textContent = 'Founding';
-    if (driversLabel) driversLabel.textContent = 'Drivers Wanted';
-  });
-
-  fetch(N8N_LIST_DRIVES_URL_HOME).then(function (r) { return r.json(); }).then(function (d) {
-    var count = ((d && d.drives) || []).length;
-    if (count >= 5) {
-      convoysEl.textContent = count;
-    } else {
-      convoysEl.textContent = 'New';
-      if (convoysLabel) convoysLabel.textContent = 'Convoys Weekly';
-    }
-  }).catch(function () {
-    convoysEl.textContent = 'New';
-    if (convoysLabel) convoysLabel.textContent = 'Convoys Weekly';
+    driversEl.textContent = '1,725+';
   });
 }
 loadHomeStats();
