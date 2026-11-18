@@ -61,7 +61,7 @@
   .hero-inner{position:relative; z-index:2; max-width:640px;}
   .gta-flip{position:relative; display:inline-block; font-family:'Playfair Display',serif; font-style:italic; font-weight:800; font-size:clamp(72px,15vw,170px); margin-bottom:6px; line-height:1;}
   .gta-flip-byline{font-family:'Barlow Condensed'; font-weight:700; letter-spacing:4px; text-transform:uppercase; color:#F2DCC9; font-size:14px; margin-bottom:22px; opacity:.85;}
-  .gta-flip-text{position:relative; z-index:2; color:#fff; white-space:nowrap;}
+  .gta-flip-text{position:relative; z-index:2; white-space:nowrap; background:linear-gradient(180deg,#fff 0%,#fff 45%,#e8dfd3 100%); -webkit-background-clip:text; background-clip:text; color:transparent;}
   .gta-flip-vi{position:absolute; left:0; top:0; opacity:0;}
   .gta-flip-v{animation:gtaVFade 7s ease-in-out .3s 1 forwards;}
   .gta-flip-vi{animation:gtaVIFade 7s ease-in-out .3s 1 forwards;}
@@ -74,21 +74,16 @@
     100%{opacity:0;}
   }
   @keyframes gtaVFade{
-    0%{opacity:1;}
-    58%{opacity:1; text-shadow:0 4px 30px rgba(0,0,0,.5);}
-    74%{opacity:0; text-shadow:0 0 60px #fff;}
+    0%{opacity:1; filter:drop-shadow(1px 1px 0 rgba(0,0,0,.5)) drop-shadow(2px 2px 0 rgba(0,0,0,.45)) drop-shadow(3px 3px 0 rgba(0,0,0,.4)) drop-shadow(5px 6px 2px rgba(0,0,0,.4)) drop-shadow(8px 10px 16px rgba(0,0,0,.55));}
+    58%{opacity:1; filter:drop-shadow(1px 1px 0 rgba(0,0,0,.5)) drop-shadow(2px 2px 0 rgba(0,0,0,.45)) drop-shadow(3px 3px 0 rgba(0,0,0,.4)) drop-shadow(5px 6px 2px rgba(0,0,0,.4)) drop-shadow(8px 10px 16px rgba(0,0,0,.55));}
+    74%{opacity:0; filter:drop-shadow(1px 1px 0 rgba(0,0,0,.5)) drop-shadow(2px 2px 0 rgba(0,0,0,.45)) drop-shadow(3px 3px 0 rgba(0,0,0,.4)) drop-shadow(0 0 60px #fff);}
     100%{opacity:0;}
   }
   @keyframes gtaVIFade{
     0%{opacity:0;}
     73%{opacity:0;}
-    80%{opacity:1; text-shadow:0 0 50px rgba(255,184,75,1);}
-    100%{opacity:1; text-shadow:0 0 14px rgba(255,184,75,.5);}
-  }
-  @media (prefers-reduced-motion:reduce){
-    .gta-flip::before{animation:none; opacity:0;}
-    .gta-flip-v{animation:none; opacity:0;}
-    .gta-flip-vi{animation:none; opacity:1;}
+    80%{opacity:1; filter:drop-shadow(1px 1px 0 rgba(0,0,0,.5)) drop-shadow(2px 2px 0 rgba(0,0,0,.45)) drop-shadow(3px 3px 0 rgba(0,0,0,.4)) drop-shadow(5px 6px 2px rgba(0,0,0,.4)) drop-shadow(0 0 50px rgba(255,184,75,1));}
+    100%{opacity:1; filter:drop-shadow(1px 1px 0 rgba(0,0,0,.5)) drop-shadow(2px 2px 0 rgba(0,0,0,.45)) drop-shadow(3px 3px 0 rgba(0,0,0,.4)) drop-shadow(5px 6px 2px rgba(0,0,0,.4)) drop-shadow(8px 10px 16px rgba(0,0,0,.55)) drop-shadow(0 0 14px rgba(255,184,75,.5));}
   }
   .hero-eyebrow{font-family:'Barlow Condensed'; font-weight:800; letter-spacing:3px; text-transform:uppercase; color:var(--orange); font-size:13px; margin-bottom:14px;}
   .hero-word{font-family:'Playfair Display'; font-style:italic; font-weight:800; font-size:clamp(36px,7vw,62px); line-height:1.15; color:#fff; text-shadow:0 4px 30px rgba(0,0,0,0.5); margin-bottom:18px;}
