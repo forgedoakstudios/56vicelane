@@ -59,50 +59,20 @@
   .hero-cta-share{background:transparent; color:#fff; border:1px solid rgba(255,255,255,.4); font-family:'Barlow Condensed'; font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:15px; padding:16px 30px; border-radius:6px; cursor:pointer;}
   .hero::before{content:''; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(10,6,4,.55) 0%, rgba(10,6,4,.35) 45%, rgba(10,6,4,.75) 100%);}
   .hero-inner{position:relative; z-index:2; max-width:640px;}
-  .gta-flip{position:relative; display:inline-block; font-family:'Playfair Display',serif; font-style:italic; font-weight:800; font-size:clamp(72px,15vw,170px); margin-bottom:6px; line-height:1;}
+  .gta-flip{position:relative; width:min(92vw,780px); aspect-ratio:1000/260; margin:0 auto 6px;}
   .gta-flip-byline{font-family:'Barlow Condensed'; font-weight:700; letter-spacing:4px; text-transform:uppercase; color:#F2DCC9; font-size:14px; margin-bottom:22px; opacity:.85;}
-  .gta-flip-text{position:relative; z-index:2; white-space:nowrap; color:transparent; -webkit-background-clip:text; background-clip:text;
-    background-image:linear-gradient(180deg,#fff 0%,#fff 45%,#e8dfd3 100%), linear-gradient(100deg, transparent 0%, transparent 42%, #fff 50%, transparent 58%, transparent 100%);
-    background-size:100% 100%, 300% 100%;
-    background-position:0 0, -220% 0;
-    background-repeat:no-repeat;}
-  .gta-flip-vi{position:absolute; left:0; top:0; opacity:0;}
-  .gta-flip-v{animation:gtaVFade 7s ease-in-out .3s 1 forwards, gtaShimmer 7s ease-in-out .3s 1 forwards;}
-  .gta-flip-vi{animation:gtaVIFade 7s ease-in-out .3s 1 forwards;}
-  .gta-flip::before{content:''; position:absolute; top:-15%; left:-18%; width:16%; height:130%; background:linear-gradient(90deg, transparent, rgba(255,235,195,.95) 40%, #fff 50%, rgba(255,235,195,.95) 60%, transparent); filter:blur(16px); z-index:1; opacity:0; animation:gtaGlowSweep 7s ease-in-out .3s 1 forwards;}
-  .gta-flip::after{content:''; position:absolute; inset:-18% -6%; background:#fff; z-index:3; transform:scaleX(0); transform-origin:left center; pointer-events:none; animation:gtaFlashWipe 7s ease-in-out .3s 1 forwards;}
-  @keyframes gtaGlowSweep{
-    0%{left:-18%; opacity:0;}
-    6%{opacity:1;}
-    50%{left:88%; opacity:1;}
-    58%{left:100%; opacity:0;}
-    100%{opacity:0;}
-  }
-  @keyframes gtaShimmer{
-    0%{background-position:0 0, -220% 0;}
-    55%{background-position:0 0, 220% 0;}
-    100%{background-position:0 0, 220% 0;}
-  }
-  @keyframes gtaFlashWipe{
-    0%{transform:scaleX(0); opacity:0;}
-    48%{transform:scaleX(0); opacity:1;}
-    58%{transform:scaleX(1); opacity:1;}
-    68%{transform:scaleX(1); opacity:1;}
-    84%{transform:scaleX(1); opacity:0;}
-    100%{transform:scaleX(1); opacity:0;}
-  }
-  @keyframes gtaVFade{
-    0%{opacity:1; filter:drop-shadow(1px 1px 0 rgba(0,0,0,.5)) drop-shadow(2px 2px 0 rgba(0,0,0,.45)) drop-shadow(3px 3px 0 rgba(0,0,0,.4)) drop-shadow(5px 6px 2px rgba(0,0,0,.4)) drop-shadow(8px 10px 16px rgba(0,0,0,.55));}
-    54%{opacity:1; filter:drop-shadow(1px 1px 0 rgba(0,0,0,.5)) drop-shadow(2px 2px 0 rgba(0,0,0,.45)) drop-shadow(3px 3px 0 rgba(0,0,0,.4)) drop-shadow(5px 6px 2px rgba(0,0,0,.4)) drop-shadow(8px 10px 16px rgba(0,0,0,.55));}
-    60%{opacity:0;}
-    100%{opacity:0;}
-  }
-  @keyframes gtaVIFade{
-    0%{opacity:0;}
-    62%{opacity:0;}
-    66%{opacity:1; filter:drop-shadow(1px 1px 0 rgba(0,0,0,.5)) drop-shadow(2px 2px 0 rgba(0,0,0,.45)) drop-shadow(3px 3px 0 rgba(0,0,0,.4)) drop-shadow(5px 6px 2px rgba(0,0,0,.4)) drop-shadow(0 0 60px rgba(255,184,75,1));}
-    84%{opacity:1; filter:drop-shadow(1px 1px 0 rgba(0,0,0,.5)) drop-shadow(2px 2px 0 rgba(0,0,0,.45)) drop-shadow(3px 3px 0 rgba(0,0,0,.4)) drop-shadow(5px 6px 2px rgba(0,0,0,.4)) drop-shadow(0 0 45px rgba(255,184,75,.9));}
-    100%{opacity:1; filter:drop-shadow(1px 1px 0 rgba(0,0,0,.5)) drop-shadow(2px 2px 0 rgba(0,0,0,.45)) drop-shadow(3px 3px 0 rgba(0,0,0,.4)) drop-shadow(5px 6px 2px rgba(0,0,0,.4)) drop-shadow(8px 10px 16px rgba(0,0,0,.55)) drop-shadow(0 0 14px rgba(255,184,75,.5));}
+  .gta-flip-svg{position:absolute; inset:0; width:100%; height:100%; overflow:visible;}
+  .gta-trace-line{stroke:#ffe6b8; stroke-width:3; fill:none; filter:drop-shadow(0 0 6px rgba(255,200,120,.95));}
+  .gta-trace-text{font-family:'Playfair Display',serif; font-style:italic; font-weight:800; fill:none; stroke:#fff; stroke-width:2.5; filter:drop-shadow(0 0 10px rgba(255,255,255,.95));}
+  .gta-fill-text{font-family:'Playfair Display',serif; font-style:italic; font-weight:800; fill:#fff; opacity:0; filter:drop-shadow(2px 3px 0 rgba(0,0,0,.45)) drop-shadow(5px 7px 10px rgba(0,0,0,.5));}
+  .gta-fill-vi{filter:drop-shadow(2px 3px 0 rgba(0,0,0,.45)) drop-shadow(5px 7px 10px rgba(0,0,0,.5)) drop-shadow(0 0 40px rgba(255,184,75,.85));}
+  .gta-flash{position:absolute; left:50%; top:50%; width:170%; height:170%; margin-left:-85%; margin-top:-85%; border-radius:50%; background:radial-gradient(circle, #fff 0%, rgba(255,255,255,.95) 30%, rgba(255,224,170,.55) 50%, transparent 72%); opacity:0; transform:scale(.25); pointer-events:none; z-index:5;}
+  .gta-flash.active{animation:gtaCameraFlash .85s ease-out forwards;}
+  @keyframes gtaCameraFlash{
+    0%{opacity:0; transform:scale(.2);}
+    12%{opacity:1; transform:scale(1);}
+    42%{opacity:1; transform:scale(1.1);}
+    100%{opacity:0; transform:scale(1.25);}
   }
   .hero-eyebrow{font-family:'Barlow Condensed'; font-weight:800; letter-spacing:3px; text-transform:uppercase; color:var(--orange); font-size:13px; margin-bottom:14px;}
   .hero-word{font-family:'Playfair Display'; font-style:italic; font-weight:800; font-size:clamp(36px,7vw,62px); line-height:1.15; color:#fff; text-shadow:0 4px 30px rgba(0,0,0,0.5); margin-bottom:18px;}
@@ -228,8 +198,13 @@
 <div class="hero" style="background-image:url('images/gta6-hero.png');background-size:cover;background-position:center;aspect-ratio:1408/768;min-height:0;">
   <div class="hero-inner">
     <div class="gta-flip" aria-label="GTA V becomes GTA VI">
-      <span class="gta-flip-text gta-flip-v">GTA V</span>
-      <span class="gta-flip-text gta-flip-vi">GTA VI</span>
+      <svg class="gta-flip-svg" id="gtaFlipSvg" viewBox="0 0 1000 260" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <line id="gtaTraceLine" class="gta-trace-line" x1="30" y1="225" x2="610" y2="225"></line>
+        <text id="gtaTraceText" class="gta-trace-text" x="30" y="190" font-size="160">GTA V</text>
+        <text id="gtaFillV" class="gta-fill-text" x="30" y="190" font-size="160">GTA V</text>
+        <text id="gtaFillVI" class="gta-fill-text gta-fill-vi" x="20" y="190" font-size="150">GTA VI</text>
+      </svg>
+      <div class="gta-flash" id="gtaFlash"></div>
     </div>
     <div class="gta-flip-byline">56vicelane.com</div>
     <div class="hero-word">13 Years Later, We're Here</div>
@@ -526,6 +501,56 @@ function loadHomeStats() {
   });
 }
 loadHomeStats();
+
+/* GTA V -> GTA VI title: traces the outline of "GTA V" letter by letter
+   (with a connecting line underneath) using SVG stroke-dasharray, fills
+   it in solid, then a camera-flash burst hides the swap to "GTA VI". */
+(function () {
+  var traceText = document.getElementById('gtaTraceText');
+  var traceLine = document.getElementById('gtaTraceLine');
+  var fillV = document.getElementById('gtaFillV');
+  var fillVI = document.getElementById('gtaFillVI');
+  var flash = document.getElementById('gtaFlash');
+  if (!traceText || !traceLine || !fillV || !fillVI || !flash) return;
+
+  function prime(el) {
+    var len = el.getTotalLength();
+    el.style.strokeDasharray = len;
+    el.style.strokeDashoffset = len;
+  }
+  prime(traceText);
+  prime(traceLine);
+
+  var DRAW_MS = 3000;
+  var DRAW_DELAY = 300;
+  var HOLD_MS = 500;
+  var FLASH_DELAY = DRAW_DELAY + DRAW_MS + HOLD_MS;
+  var SWAP_DELAY = FLASH_DELAY + 320;
+
+  setTimeout(function () {
+    traceText.style.transition = 'stroke-dashoffset ' + DRAW_MS + 'ms ease-in-out';
+    traceLine.style.transition = 'stroke-dashoffset ' + DRAW_MS + 'ms ease-in-out';
+    traceText.style.strokeDashoffset = '0';
+    traceLine.style.strokeDashoffset = '0';
+  }, DRAW_DELAY);
+
+  setTimeout(function () {
+    fillV.style.transition = 'opacity .6s ease';
+    fillV.style.opacity = '1';
+  }, DRAW_DELAY + DRAW_MS - 500);
+
+  setTimeout(function () {
+    flash.classList.add('active');
+  }, FLASH_DELAY);
+
+  setTimeout(function () {
+    traceText.style.opacity = '0';
+    traceLine.style.opacity = '0';
+    fillV.style.opacity = '0';
+    fillVI.style.transition = 'opacity .2s ease';
+    fillVI.style.opacity = '1';
+  }, SWAP_DELAY);
+})();
 
 /* SHARE THIS MOMENT — the hero video itself, tagged with the site so a
    shared clip always points back here. Tries a native file share first
