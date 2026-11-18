@@ -58,6 +58,19 @@
     "permanent": false
   },
   {
+    "emoji": "🗞️",
+    "title": "From The Editor's Desk: 2 Days Out",
+    "slug": "editors-desk-2-days-out",
+    "url": "/articles/editors-desk-2-days-out",
+    "headline": "From The Editor's Desk: 2 Days Out",
+    "category": "Community",
+    "date": "2026-11-17",
+    "excerpt": "Two days until GTA6. Lucia's actress is finally confirmed, Take-Two laid off staff at Firaxis the same week, and Danny's drawer four just hit double digits before lunch.",
+    "image": "editor-portrait-4-launchweek.png",
+    "column": "editor",
+    "permanent": false
+  },
+  {
     "emoji": "🌴",
     "title": "Discord Teams Up With Rockstar For A Vice City Theme Ahead Of GTA6's Launch",
     "slug": "gta6-discord-rockstar-vice-city-theme",
@@ -155,19 +168,6 @@
     "permanent": false
   },
   {
-    "emoji": "🗞️",
-    "title": "From The Editor's Desk: 2 Days Out",
-    "slug": "editors-desk-2-days-out",
-    "url": "/articles/editors-desk-2-days-out",
-    "headline": "From The Editor's Desk: 2 Days Out",
-    "category": "Community",
-    "date": "2026-11-17",
-    "excerpt": "Two days until GTA6. Lucia's actress is finally confirmed, Take-Two laid off staff at Firaxis the same week, and Danny's drawer four just hit double digits before lunch.",
-    "image": "editor-portrait-4-launchweek.png",
-    "column": "editor",
-    "permanent": false
-  },
-  {
     "emoji": "🗣️",
     "title": "Trevor's Take: They Replaced Her Face And Expect Us Not To Notice",
     "slug": "trevors-take-2-days-out",
@@ -193,6 +193,19 @@
     "permanent": false
   },
   {
+    "emoji": "🗞️",
+    "title": "From The Editor's Desk: 3 Days Out",
+    "slug": "editors-desk-3-days-out",
+    "url": "/articles/editors-desk-3-days-out",
+    "headline": "From The Editor's Desk: 3 Days Out",
+    "category": "Community",
+    "date": "2026-11-16",
+    "excerpt": "Three days until GTA6. There's a Saturday morning cartoon inside the game, physical copies are showing up with dead codes, and Danny has started doing math he didn't want to do.",
+    "image": "editor-portrait-4-launchweek.png",
+    "column": "editor",
+    "permanent": false
+  },
+  {
     "emoji": "🕵️",
     "title": "Every Confirmed GTA6 Easter Egg And Lore Thread Going Into Launch",
     "slug": "gta6-every-confirmed-easter-egg-lore-thread-going-into-launch",
@@ -202,6 +215,18 @@
     "date": "2026-11-16",
     "excerpt": "Every real easter egg, callback, and lore thread confirmed in GTA6 marketing so far — Clair Obscur, the Gay Tony theory, and what to actually watch for once the map opens up.",
     "image": "ezra-voss-portrait.jpg",
+    "permanent": false
+  },
+  {
+    "emoji": "⚖️",
+    "title": "GTA6 Hacker Pleads Guilty To The 2022 Rockstar Breach",
+    "slug": "gta6-hacker-kurtaj-pleads-guilty-rockstar-breach",
+    "url": "/articles/gta6-hacker-kurtaj-pleads-guilty-rockstar-breach",
+    "headline": "GTA6 Hacker Pleads Guilty To The 2022 Rockstar Breach",
+    "category": "Leaks",
+    "date": "2026-11-16",
+    "excerpt": "Arion Kurtaj pleaded guilty to every charge tied to the 2022 Rockstar breach, three days before GTA6 launches. Rockstar told the court recovery cost $5 million and thousands of staff hours.",
+    "image": "gta6-hero.png",
     "permanent": false
   },
   {
@@ -279,31 +304,6 @@
     "permanent": false
   },
   {
-    "emoji": "⚖️",
-    "title": "GTA6 Hacker Pleads Guilty To The 2022 Rockstar Breach",
-    "slug": "gta6-hacker-kurtaj-pleads-guilty-rockstar-breach",
-    "url": "/articles/gta6-hacker-kurtaj-pleads-guilty-rockstar-breach",
-    "headline": "GTA6 Hacker Pleads Guilty To The 2022 Rockstar Breach",
-    "category": "Leaks",
-    "date": "2026-11-16",
-    "excerpt": "Arion Kurtaj pleaded guilty to every charge tied to the 2022 Rockstar breach, three days before GTA6 launches. Rockstar told the court recovery cost $5 million and thousands of staff hours.",
-    "image": "gta6-hero.png",
-    "permanent": false
-  },
-  {
-    "emoji": "🗞️",
-    "title": "From The Editor's Desk: 3 Days Out",
-    "slug": "editors-desk-3-days-out",
-    "url": "/articles/editors-desk-3-days-out",
-    "headline": "From The Editor's Desk: 3 Days Out",
-    "category": "Community",
-    "date": "2026-11-16",
-    "excerpt": "Three days until GTA6. There's a Saturday morning cartoon inside the game, physical copies are showing up with dead codes, and Danny has started doing math he didn't want to do.",
-    "image": "editor-portrait-4-launchweek.png",
-    "column": "editor",
-    "permanent": false
-  },
-  {
     "emoji": "🗣️",
     "title": "Trevor's Take: The Codes Aren't Missing",
     "slug": "trevors-take-3-days-out",
@@ -356,6 +356,18 @@
     "permanent": false
   },
   {
+    "emoji": "📈",
+    "title": "Take-Two Says It's Not Interested In Selling Itself After EA's $55 Billion Buyout",
+    "slug": "take-two-not-for-sale-ea-55-billion-buyout",
+    "url": "/articles/take-two-not-for-sale-ea-55-billion-buyout",
+    "headline": "Take-Two Says It's Not Interested In Selling Itself After EA's $55 Billion Buyout",
+    "category": "News",
+    "date": "2026-11-14",
+    "excerpt": "EA just went private in a $55 billion deal. Take-Two's CEO has made clear, more than once, that the GTA6 publisher isn't following suit.",
+    "image": "take-two-not-for-sale-ea-55-billion-buyout-hero.jpg",
+    "permanent": false
+  },
+  {
     "emoji": "🗣️",
     "title": "Trevor's Take: The Boxes Are Talking Now",
     "slug": "trevors-take-5-days-out",
@@ -366,18 +378,6 @@
     "excerpt": "Five days until GTA6. A warning that you can see the download code through the sealed packaging has gone viral, and Trevor would like everyone to understand that this is not a packaging problem.",
     "image": "trevor-portrait.png",
     "column": "trevor",
-    "permanent": false
-  },
-  {
-    "emoji": "📈",
-    "title": "Take-Two Says It's Not Interested In Selling Itself After EA's $55 Billion Buyout",
-    "slug": "take-two-not-for-sale-ea-55-billion-buyout",
-    "url": "/articles/take-two-not-for-sale-ea-55-billion-buyout",
-    "headline": "Take-Two Says It's Not Interested In Selling Itself After EA's $55 Billion Buyout",
-    "category": "News",
-    "date": "2026-11-14",
-    "excerpt": "EA just went private in a $55 billion deal. Take-Two's CEO has made clear, more than once, that the GTA6 publisher isn't following suit.",
-    "image": "take-two-not-for-sale-ea-55-billion-buyout-hero.jpg",
     "permanent": false
   },
   {
@@ -433,15 +433,16 @@
     "permanent": false
   },
   {
-    "emoji": "💰",
-    "title": "GTA6 Presales Reportedly Surpass $1 Billion",
-    "slug": "gta6-presales-surpass-1-billion-week-before-launch",
-    "url": "/articles/gta6-presales-surpass-1-billion-week-before-launch",
-    "headline": "GTA6 Presales Reportedly Cross $1 Billion — One Week Before Launch",
-    "category": "Business",
+    "emoji": "🗞️",
+    "title": "From The Editor's Desk: 8 Days Out",
+    "slug": "editors-desk-8-days-out",
+    "url": "/articles/editors-desk-8-days-out",
+    "headline": "From The Editor's Desk: 8 Days Out",
+    "category": "Community",
     "date": "2026-11-11",
-    "excerpt": "Sensor Tower estimates GTA6 has already crossed $1 billion in presales and over 10 million units reserved, a week before the game's November 19 launch.",
-    "image": "gta6-presales-surpass-1-billion-week-before-launch-hero.jpg",
+    "excerpt": "Eight days until GTA6. The preload is apparently straining the internet, Take-Two's CEO calls $80 'a bargain,' and The Editor finds a loophole in his own three-drawer antacid rule.",
+    "image": "editor-portrait-4-launchweek.png",
+    "column": "editor",
     "permanent": false
   },
   {
@@ -469,6 +470,18 @@
     "permanent": false
   },
   {
+    "emoji": "💰",
+    "title": "GTA6 Presales Reportedly Surpass $1 Billion",
+    "slug": "gta6-presales-surpass-1-billion-week-before-launch",
+    "url": "/articles/gta6-presales-surpass-1-billion-week-before-launch",
+    "headline": "GTA6 Presales Reportedly Cross $1 Billion — One Week Before Launch",
+    "category": "Business",
+    "date": "2026-11-11",
+    "excerpt": "Sensor Tower estimates GTA6 has already crossed $1 billion in presales and over 10 million units reserved, a week before the game's November 19 launch.",
+    "image": "gta6-presales-surpass-1-billion-week-before-launch-hero.jpg",
+    "permanent": false
+  },
+  {
     "emoji": "🕹️",
     "title": "Take-Two CEO Calls Ocarina Of Time 'Terrific'",
     "slug": "gta6-zelnick-ocarina-of-time-praise",
@@ -478,19 +491,6 @@
     "date": "2026-11-11",
     "excerpt": "Strauss Zelnick praised The Legend of Zelda: Ocarina of Time's remaster as 'terrific' while explaining why, in his view, the entertainment business competes against everything and nothing at once.",
     "image": "gta6-zelnick-ocarina-of-time-praise-hero.jpg",
-    "permanent": false
-  },
-  {
-    "emoji": "🗞️",
-    "title": "From The Editor's Desk: 8 Days Out",
-    "slug": "editors-desk-8-days-out",
-    "url": "/articles/editors-desk-8-days-out",
-    "headline": "From The Editor's Desk: 8 Days Out",
-    "category": "Community",
-    "date": "2026-11-11",
-    "excerpt": "Eight days until GTA6. The preload is apparently straining the internet, Take-Two's CEO calls $80 'a bargain,' and The Editor finds a loophole in his own three-drawer antacid rule.",
-    "image": "editor-portrait-4-launchweek.png",
-    "column": "editor",
     "permanent": false
   },
   {
@@ -504,6 +504,19 @@
     "excerpt": "Eight days until GTA6. Apparently the preload is straining the actual global internet. Trevor has thoughts about what that really means, and the notebook has a new section.",
     "image": "trevor-portrait.png",
     "column": "trevor",
+    "permanent": false
+  },
+  {
+    "emoji": "🗞️",
+    "title": "From The Editor's Desk: 9 Days Out",
+    "slug": "editors-desk-9-days-out",
+    "url": "/articles/editors-desk-9-days-out",
+    "headline": "From The Editor's Desk: 9 Days Out",
+    "category": "Community",
+    "date": "2026-11-10",
+    "excerpt": "Nine days until GTA6 launches. The Editor finds out Take-Two is expecting $3.5 billion and decides that's a number he's not going to think about today.",
+    "image": "editor-portrait-3-grinding.png",
+    "column": "editor",
     "permanent": false
   },
   {
@@ -531,16 +544,15 @@
     "permanent": false
   },
   {
-    "emoji": "🗞️",
-    "title": "From The Editor's Desk: 9 Days Out",
-    "slug": "editors-desk-9-days-out",
-    "url": "/articles/editors-desk-9-days-out",
-    "headline": "From The Editor's Desk: 9 Days Out",
-    "category": "Community",
+    "emoji": "💰",
+    "title": "Take-Two: GTA6 Could Bring In $3.5 Billion At Launch",
+    "slug": "gta6-take-two-q2-fy2027-earnings-3-5-billion",
+    "url": "/articles/gta6-take-two-q2-fy2027-earnings-3-5-billion",
+    "headline": "Take-Two: GTA6 Could Bring In $3.5 Billion At Launch, Pre-Orders Tracking Well Above Expectations",
+    "category": "News",
     "date": "2026-11-10",
-    "excerpt": "Nine days until GTA6 launches. The Editor finds out Take-Two is expecting $3.5 billion and decides that's a number he's not going to think about today.",
-    "image": "editor-portrait-3-grinding.png",
-    "column": "editor",
+    "excerpt": "Take-Two's Q2 FY2027 earnings call, 10 days before GTA6 launches: the company says the game could bring in as much as $3.5 billion during the launch period, and pre-orders are reportedly tracking well above expectations.",
+    "image": "gta6-take-two-q2-fy2027-earnings-3-5-billion-hero.jpg",
     "permanent": false
   },
   {
@@ -554,18 +566,6 @@
     "excerpt": "Nine days until GTA6. Danny showed Trevor a number with nine figures in it and Trevor has not been the same since. The notebook grows.",
     "image": "trevor-portrait.png",
     "column": "trevor",
-    "permanent": false
-  },
-  {
-    "emoji": "💰",
-    "title": "Take-Two: GTA6 Could Bring In $3.5 Billion At Launch",
-    "slug": "gta6-take-two-q2-fy2027-earnings-3-5-billion",
-    "url": "/articles/gta6-take-two-q2-fy2027-earnings-3-5-billion",
-    "headline": "Take-Two: GTA6 Could Bring In $3.5 Billion At Launch, Pre-Orders Tracking Well Above Expectations",
-    "category": "News",
-    "date": "2026-11-10",
-    "excerpt": "Take-Two's Q2 FY2027 earnings call, 10 days before GTA6 launches: the company says the game could bring in as much as $3.5 billion during the launch period, and pre-orders are reportedly tracking well above expectations.",
-    "image": "gta6-take-two-q2-fy2027-earnings-3-5-billion-hero.jpg",
     "permanent": false
   },
   {
@@ -765,18 +765,6 @@
     "permanent": false
   },
   {
-    "emoji": "📉",
-    "title": "Take-Two Loses Billions In Value As GTA6 Leaks Keep Coming",
-    "slug": "gta6-take-two-stock-drop-leaks",
-    "url": "/articles/gta6-take-two-stock-drop-leaks",
-    "headline": "Take-Two Loses Billions In Market Value As GTA6 Leaks Keep Coming",
-    "category": "News",
-    "date": "2026-08-20",
-    "excerpt": "Take-Two's stock has taken a real hit since the GTA6 leaks began last week — here's what the numbers actually show, and what analysts think is really driving the drop.",
-    "image": "gta6-hero.png",
-    "permanent": false
-  },
-  {
     "emoji": "🚨",
     "title": "GTA6 Leak Escalates: Hacker Now Confirmed To Have A Full Playable Build",
     "slug": "gta6-playable-build-leak-biggest-breach-since-2022",
@@ -785,6 +773,18 @@
     "category": "News",
     "date": "2026-08-20",
     "excerpt": "The GTA6 leak just got a lot more serious — new footage confirms the leaker Cyberleek has an actual playable build of the game, the biggest breach against Rockstar since 2022.",
+    "image": "gta6-hero.png",
+    "permanent": false
+  },
+  {
+    "emoji": "📉",
+    "title": "Take-Two Loses Billions In Value As GTA6 Leaks Keep Coming",
+    "slug": "gta6-take-two-stock-drop-leaks",
+    "url": "/articles/gta6-take-two-stock-drop-leaks",
+    "headline": "Take-Two Loses Billions In Market Value As GTA6 Leaks Keep Coming",
+    "category": "News",
+    "date": "2026-08-20",
+    "excerpt": "Take-Two's stock has taken a real hit since the GTA6 leaks began last week — here's what the numbers actually show, and what analysts think is really driving the drop.",
     "image": "gta6-hero.png",
     "permanent": false
   },
@@ -899,18 +899,6 @@
   },
   {
     "emoji": "🎮",
-    "title": "GTA 6 Fans Are Furious About The Netflix Exclusive — Is The Backlash Fair? | 56ViceLane",
-    "slug": "gta6-netflix-reveal-fan-backlash",
-    "url": "/articles/gta6-netflix-reveal-fan-backlash",
-    "headline": "",
-    "category": "News",
-    "date": "2026-08-06",
-    "excerpt": "Rockstar's Netflix-exclusive GTA 6 reveal is getting called 'the weirdest marketing I've ever seen' by fans online. Here's the actual case for and against the 6-hour window — and why the outrage may be bigger than the real inconvenience.",
-    "image": "Gta6trailer3.png",
-    "permanent": false
-  },
-  {
-    "emoji": "🎮",
     "title": "GTA 6 Is Coming To Netflix — 'An Extended Look' Premieres August 27 | 56ViceLane",
     "slug": "gta6-netflix-extended-look-august-27",
     "url": "/articles/gta6-netflix-extended-look-august-27",
@@ -918,6 +906,18 @@
     "category": "News",
     "date": "2026-08-06",
     "excerpt": "Rockstar and Netflix just announced Grand Theft Auto VI: An Extended Look, premiering exclusively on Netflix August 27 before a free release on YouTube six hours later. Here's everything confirmed.",
+    "image": "Gta6trailer3.png",
+    "permanent": false
+  },
+  {
+    "emoji": "🎮",
+    "title": "GTA 6 Fans Are Furious About The Netflix Exclusive — Is The Backlash Fair? | 56ViceLane",
+    "slug": "gta6-netflix-reveal-fan-backlash",
+    "url": "/articles/gta6-netflix-reveal-fan-backlash",
+    "headline": "",
+    "category": "News",
+    "date": "2026-08-06",
+    "excerpt": "Rockstar's Netflix-exclusive GTA 6 reveal is getting called 'the weirdest marketing I've ever seen' by fans online. Here's the actual case for and against the 6-hour window — and why the outrage may be bigger than the real inconvenience.",
     "image": "Gta6trailer3.png",
     "permanent": false
   },
