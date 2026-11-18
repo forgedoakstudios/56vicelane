@@ -77,7 +77,11 @@ body {
   -webkit-font-smoothing: antialiased;
   background-image:
     radial-gradient(900px 500px at 80% -10%, rgba(255,107,44,.08), transparent 60%),
-    radial-gradient(700px 400px at -10% 5%, rgba(214,36,122,.06), transparent 55%);
+    radial-gradient(700px 400px at -10% 5%, rgba(214,36,122,.06), transparent 55%),
+    url('/images/jason-lucia-embrace-vice-city.jpg');
+  background-size:auto,auto,cover;
+  background-position:center,center,center;
+  background-repeat:no-repeat,no-repeat,no-repeat;
   background-attachment: fixed;
 }
 
