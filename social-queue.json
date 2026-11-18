@@ -787,5 +787,41 @@
     "imageAlt": "GTA6 Is Getting Its Own In-Game Cartoon, \"Macca & Friends\"",
     "scheduledFor": "2026-11-17T19:31:41.010Z",
     "posted": true
+  },
+  {
+    "id": "auto-publish-editors-desk-2-days-out",
+    "text": "Two days until GTA6. Lucia's actress is finally confirmed, Take-Two laid off staff at Firaxis the same week, and Danny's drawer four just h…",
+    "url": "https://56vicelane.com/articles/editors-desk-2-days-out?utm_source=bluesky&utm_medium=social&utm_campaign=article_blast",
+    "image": "images/editor-portrait-4-launchweek.png",
+    "imageAlt": "From The Editor's Desk: 2 Days Out",
+    "scheduledFor": "2026-11-18T12:17:47.905Z",
+    "posted": false
+  },
+  {
+    "id": "auto-publish-trevors-take-2-days-out",
+    "text": "Two days until GTA6. Lucia's actress got confirmed at the Game Awards, Take-Two laid off staff at Firaxis the same morning, and Trevor thin…",
+    "url": "https://56vicelane.com/articles/trevors-take-2-days-out?utm_source=bluesky&utm_medium=social&utm_campaign=article_blast",
+    "image": "images/trevor-portrait.png",
+    "imageAlt": "Trevor's Take: They Replaced Her Face And Expect Us Not To Notice",
+    "scheduledFor": "2026-11-18T12:17:47.934Z",
+    "posted": false
+  },
+  {
+    "id": "auto-publish-editors-desk-1-days-out",
+    "text": "One day until GTA6. IGN's launch live blog just went up, New Zealand's tourist board is celebrating getting the game first, and Danny has s…",
+    "url": "https://56vicelane.com/articles/editors-desk-1-days-out?utm_source=bluesky&utm_medium=social&utm_campaign=article_blast",
+    "image": "images/editor-portrait-4-launchweek.png",
+    "imageAlt": "From The Editor's Desk: 1 Day Out",
+    "scheduledFor": "2026-11-18T12:17:47.969Z",
+    "posted": false
+  },
+  {
+    "id": "auto-publish-trevors-take-1-days-out",
+    "text": "One day until GTA6. New Zealand gets the game first, Sony's quietly locking down PS5s, and Trevor is pretty sure this column was never supp…",
+    "url": "https://56vicelane.com/articles/trevors-take-1-days-out?utm_source=bluesky&utm_medium=social&utm_campaign=article_blast",
+    "image": "images/trevor-portrait.png",
+    "imageAlt": "Trevor's Take: This Is My Last Dispatch Before The Operation Ends",
+    "scheduledFor": "2026-11-18T12:17:47.996Z",
+    "posted": false
   }
 ]
