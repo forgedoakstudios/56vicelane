@@ -58,6 +58,19 @@
     "permanent": false
   },
   {
+    "emoji": "🌃",
+    "title": "From The Editor's Desk: We Didn't Build This For One Night",
+    "slug": "editors-desk-we-made-it-launch-eve",
+    "url": "/articles/editors-desk-we-made-it-launch-eve",
+    "headline": "From The Editor's Desk: We Didn't Build This For One Night",
+    "category": "Community",
+    "date": "2026-11-18",
+    "excerpt": "Tonight is The Last Drive. Tomorrow GTA6 launches. The Editor on why 56ViceLane doesn't end when the countdown hits zero — and what the site becomes next.",
+    "image": "editor-portrait-4-launchweek.png",
+    "column": "editor",
+    "permanent": false
+  },
+  {
     "emoji": "🗞️",
     "title": "From The Editor's Desk: 2 Days Out",
     "slug": "editors-desk-2-days-out",
@@ -68,6 +81,19 @@
     "excerpt": "Two days until GTA6. Lucia's actress is finally confirmed, Take-Two laid off staff at Firaxis the same week, and Danny's drawer four just hit double digits before lunch.",
     "image": "editor-portrait-4-launchweek.png",
     "column": "editor",
+    "permanent": false
+  },
+  {
+    "emoji": "🗣️",
+    "title": "Trevor's Take: They Replaced Her Face And Expect Us Not To Notice",
+    "slug": "trevors-take-2-days-out",
+    "url": "/articles/trevors-take-2-days-out",
+    "headline": "Trevor's Take: They Replaced Her Face And Expect Us Not To Notice",
+    "category": "Community",
+    "date": "2026-11-17",
+    "excerpt": "Two days until GTA6. Lucia's actress got confirmed at the Game Awards, Take-Two laid off staff at Firaxis the same morning, and Trevor thinks those two things are connected, and he will not be talked out of it.",
+    "image": "trevor-portrait.png",
+    "column": "trevor",
     "permanent": false
   },
   {
@@ -168,19 +194,6 @@
     "permanent": false
   },
   {
-    "emoji": "🗣️",
-    "title": "Trevor's Take: They Replaced Her Face And Expect Us Not To Notice",
-    "slug": "trevors-take-2-days-out",
-    "url": "/articles/trevors-take-2-days-out",
-    "headline": "Trevor's Take: They Replaced Her Face And Expect Us Not To Notice",
-    "category": "Community",
-    "date": "2026-11-17",
-    "excerpt": "Two days until GTA6. Lucia's actress got confirmed at the Game Awards, Take-Two laid off staff at Firaxis the same morning, and Trevor thinks those two things are connected, and he will not be talked out of it.",
-    "image": "trevor-portrait.png",
-    "column": "trevor",
-    "permanent": false
-  },
-  {
     "emoji": "📼",
     "title": "13 Years Later: How GTA6's Launch Compares To Every Prior GTA Launch",
     "slug": "13-years-later-gta6-launch-compares-every-prior-gta-launch",
@@ -193,19 +206,6 @@
     "permanent": false
   },
   {
-    "emoji": "🗞️",
-    "title": "From The Editor's Desk: 3 Days Out",
-    "slug": "editors-desk-3-days-out",
-    "url": "/articles/editors-desk-3-days-out",
-    "headline": "From The Editor's Desk: 3 Days Out",
-    "category": "Community",
-    "date": "2026-11-16",
-    "excerpt": "Three days until GTA6. There's a Saturday morning cartoon inside the game, physical copies are showing up with dead codes, and Danny has started doing math he didn't want to do.",
-    "image": "editor-portrait-4-launchweek.png",
-    "column": "editor",
-    "permanent": false
-  },
-  {
     "emoji": "🕵️",
     "title": "Every Confirmed GTA6 Easter Egg And Lore Thread Going Into Launch",
     "slug": "gta6-every-confirmed-easter-egg-lore-thread-going-into-launch",
@@ -215,18 +215,6 @@
     "date": "2026-11-16",
     "excerpt": "Every real easter egg, callback, and lore thread confirmed in GTA6 marketing so far — Clair Obscur, the Gay Tony theory, and what to actually watch for once the map opens up.",
     "image": "ezra-voss-portrait.jpg",
-    "permanent": false
-  },
-  {
-    "emoji": "⚖️",
-    "title": "GTA6 Hacker Pleads Guilty To The 2022 Rockstar Breach",
-    "slug": "gta6-hacker-kurtaj-pleads-guilty-rockstar-breach",
-    "url": "/articles/gta6-hacker-kurtaj-pleads-guilty-rockstar-breach",
-    "headline": "GTA6 Hacker Pleads Guilty To The 2022 Rockstar Breach",
-    "category": "Leaks",
-    "date": "2026-11-16",
-    "excerpt": "Arion Kurtaj pleaded guilty to every charge tied to the 2022 Rockstar breach, three days before GTA6 launches. Rockstar told the court recovery cost $5 million and thousands of staff hours.",
-    "image": "gta6-hero.png",
     "permanent": false
   },
   {
@@ -304,6 +292,31 @@
     "permanent": false
   },
   {
+    "emoji": "⚖️",
+    "title": "GTA6 Hacker Pleads Guilty To The 2022 Rockstar Breach",
+    "slug": "gta6-hacker-kurtaj-pleads-guilty-rockstar-breach",
+    "url": "/articles/gta6-hacker-kurtaj-pleads-guilty-rockstar-breach",
+    "headline": "GTA6 Hacker Pleads Guilty To The 2022 Rockstar Breach",
+    "category": "Leaks",
+    "date": "2026-11-16",
+    "excerpt": "Arion Kurtaj pleaded guilty to every charge tied to the 2022 Rockstar breach, three days before GTA6 launches. Rockstar told the court recovery cost $5 million and thousands of staff hours.",
+    "image": "gta6-hero.png",
+    "permanent": false
+  },
+  {
+    "emoji": "🗞️",
+    "title": "From The Editor's Desk: 3 Days Out",
+    "slug": "editors-desk-3-days-out",
+    "url": "/articles/editors-desk-3-days-out",
+    "headline": "From The Editor's Desk: 3 Days Out",
+    "category": "Community",
+    "date": "2026-11-16",
+    "excerpt": "Three days until GTA6. There's a Saturday morning cartoon inside the game, physical copies are showing up with dead codes, and Danny has started doing math he didn't want to do.",
+    "image": "editor-portrait-4-launchweek.png",
+    "column": "editor",
+    "permanent": false
+  },
+  {
     "emoji": "🗣️",
     "title": "Trevor's Take: The Codes Aren't Missing",
     "slug": "trevors-take-3-days-out",
@@ -356,18 +369,6 @@
     "permanent": false
   },
   {
-    "emoji": "📈",
-    "title": "Take-Two Says It's Not Interested In Selling Itself After EA's $55 Billion Buyout",
-    "slug": "take-two-not-for-sale-ea-55-billion-buyout",
-    "url": "/articles/take-two-not-for-sale-ea-55-billion-buyout",
-    "headline": "Take-Two Says It's Not Interested In Selling Itself After EA's $55 Billion Buyout",
-    "category": "News",
-    "date": "2026-11-14",
-    "excerpt": "EA just went private in a $55 billion deal. Take-Two's CEO has made clear, more than once, that the GTA6 publisher isn't following suit.",
-    "image": "take-two-not-for-sale-ea-55-billion-buyout-hero.jpg",
-    "permanent": false
-  },
-  {
     "emoji": "🗣️",
     "title": "Trevor's Take: The Boxes Are Talking Now",
     "slug": "trevors-take-5-days-out",
@@ -378,6 +379,18 @@
     "excerpt": "Five days until GTA6. A warning that you can see the download code through the sealed packaging has gone viral, and Trevor would like everyone to understand that this is not a packaging problem.",
     "image": "trevor-portrait.png",
     "column": "trevor",
+    "permanent": false
+  },
+  {
+    "emoji": "📈",
+    "title": "Take-Two Says It's Not Interested In Selling Itself After EA's $55 Billion Buyout",
+    "slug": "take-two-not-for-sale-ea-55-billion-buyout",
+    "url": "/articles/take-two-not-for-sale-ea-55-billion-buyout",
+    "headline": "Take-Two Says It's Not Interested In Selling Itself After EA's $55 Billion Buyout",
+    "category": "News",
+    "date": "2026-11-14",
+    "excerpt": "EA just went private in a $55 billion deal. Take-Two's CEO has made clear, more than once, that the GTA6 publisher isn't following suit.",
+    "image": "take-two-not-for-sale-ea-55-billion-buyout-hero.jpg",
     "permanent": false
   },
   {
@@ -433,16 +446,15 @@
     "permanent": false
   },
   {
-    "emoji": "🗞️",
-    "title": "From The Editor's Desk: 8 Days Out",
-    "slug": "editors-desk-8-days-out",
-    "url": "/articles/editors-desk-8-days-out",
-    "headline": "From The Editor's Desk: 8 Days Out",
-    "category": "Community",
+    "emoji": "💰",
+    "title": "GTA6 Presales Reportedly Surpass $1 Billion",
+    "slug": "gta6-presales-surpass-1-billion-week-before-launch",
+    "url": "/articles/gta6-presales-surpass-1-billion-week-before-launch",
+    "headline": "GTA6 Presales Reportedly Cross $1 Billion — One Week Before Launch",
+    "category": "Business",
     "date": "2026-11-11",
-    "excerpt": "Eight days until GTA6. The preload is apparently straining the internet, Take-Two's CEO calls $80 'a bargain,' and The Editor finds a loophole in his own three-drawer antacid rule.",
-    "image": "editor-portrait-4-launchweek.png",
-    "column": "editor",
+    "excerpt": "Sensor Tower estimates GTA6 has already crossed $1 billion in presales and over 10 million units reserved, a week before the game's November 19 launch.",
+    "image": "gta6-presales-surpass-1-billion-week-before-launch-hero.jpg",
     "permanent": false
   },
   {
@@ -470,18 +482,6 @@
     "permanent": false
   },
   {
-    "emoji": "💰",
-    "title": "GTA6 Presales Reportedly Surpass $1 Billion",
-    "slug": "gta6-presales-surpass-1-billion-week-before-launch",
-    "url": "/articles/gta6-presales-surpass-1-billion-week-before-launch",
-    "headline": "GTA6 Presales Reportedly Cross $1 Billion — One Week Before Launch",
-    "category": "Business",
-    "date": "2026-11-11",
-    "excerpt": "Sensor Tower estimates GTA6 has already crossed $1 billion in presales and over 10 million units reserved, a week before the game's November 19 launch.",
-    "image": "gta6-presales-surpass-1-billion-week-before-launch-hero.jpg",
-    "permanent": false
-  },
-  {
     "emoji": "🕹️",
     "title": "Take-Two CEO Calls Ocarina Of Time 'Terrific'",
     "slug": "gta6-zelnick-ocarina-of-time-praise",
@@ -491,6 +491,19 @@
     "date": "2026-11-11",
     "excerpt": "Strauss Zelnick praised The Legend of Zelda: Ocarina of Time's remaster as 'terrific' while explaining why, in his view, the entertainment business competes against everything and nothing at once.",
     "image": "gta6-zelnick-ocarina-of-time-praise-hero.jpg",
+    "permanent": false
+  },
+  {
+    "emoji": "🗞️",
+    "title": "From The Editor's Desk: 8 Days Out",
+    "slug": "editors-desk-8-days-out",
+    "url": "/articles/editors-desk-8-days-out",
+    "headline": "From The Editor's Desk: 8 Days Out",
+    "category": "Community",
+    "date": "2026-11-11",
+    "excerpt": "Eight days until GTA6. The preload is apparently straining the internet, Take-Two's CEO calls $80 'a bargain,' and The Editor finds a loophole in his own three-drawer antacid rule.",
+    "image": "editor-portrait-4-launchweek.png",
+    "column": "editor",
     "permanent": false
   },
   {
@@ -504,19 +517,6 @@
     "excerpt": "Eight days until GTA6. Apparently the preload is straining the actual global internet. Trevor has thoughts about what that really means, and the notebook has a new section.",
     "image": "trevor-portrait.png",
     "column": "trevor",
-    "permanent": false
-  },
-  {
-    "emoji": "🗞️",
-    "title": "From The Editor's Desk: 9 Days Out",
-    "slug": "editors-desk-9-days-out",
-    "url": "/articles/editors-desk-9-days-out",
-    "headline": "From The Editor's Desk: 9 Days Out",
-    "category": "Community",
-    "date": "2026-11-10",
-    "excerpt": "Nine days until GTA6 launches. The Editor finds out Take-Two is expecting $3.5 billion and decides that's a number he's not going to think about today.",
-    "image": "editor-portrait-3-grinding.png",
-    "column": "editor",
     "permanent": false
   },
   {
@@ -544,15 +544,16 @@
     "permanent": false
   },
   {
-    "emoji": "💰",
-    "title": "Take-Two: GTA6 Could Bring In $3.5 Billion At Launch",
-    "slug": "gta6-take-two-q2-fy2027-earnings-3-5-billion",
-    "url": "/articles/gta6-take-two-q2-fy2027-earnings-3-5-billion",
-    "headline": "Take-Two: GTA6 Could Bring In $3.5 Billion At Launch, Pre-Orders Tracking Well Above Expectations",
-    "category": "News",
+    "emoji": "🗞️",
+    "title": "From The Editor's Desk: 9 Days Out",
+    "slug": "editors-desk-9-days-out",
+    "url": "/articles/editors-desk-9-days-out",
+    "headline": "From The Editor's Desk: 9 Days Out",
+    "category": "Community",
     "date": "2026-11-10",
-    "excerpt": "Take-Two's Q2 FY2027 earnings call, 10 days before GTA6 launches: the company says the game could bring in as much as $3.5 billion during the launch period, and pre-orders are reportedly tracking well above expectations.",
-    "image": "gta6-take-two-q2-fy2027-earnings-3-5-billion-hero.jpg",
+    "excerpt": "Nine days until GTA6 launches. The Editor finds out Take-Two is expecting $3.5 billion and decides that's a number he's not going to think about today.",
+    "image": "editor-portrait-3-grinding.png",
+    "column": "editor",
     "permanent": false
   },
   {
@@ -566,6 +567,18 @@
     "excerpt": "Nine days until GTA6. Danny showed Trevor a number with nine figures in it and Trevor has not been the same since. The notebook grows.",
     "image": "trevor-portrait.png",
     "column": "trevor",
+    "permanent": false
+  },
+  {
+    "emoji": "💰",
+    "title": "Take-Two: GTA6 Could Bring In $3.5 Billion At Launch",
+    "slug": "gta6-take-two-q2-fy2027-earnings-3-5-billion",
+    "url": "/articles/gta6-take-two-q2-fy2027-earnings-3-5-billion",
+    "headline": "Take-Two: GTA6 Could Bring In $3.5 Billion At Launch, Pre-Orders Tracking Well Above Expectations",
+    "category": "News",
+    "date": "2026-11-10",
+    "excerpt": "Take-Two's Q2 FY2027 earnings call, 10 days before GTA6 launches: the company says the game could bring in as much as $3.5 billion during the launch period, and pre-orders are reportedly tracking well above expectations.",
+    "image": "gta6-take-two-q2-fy2027-earnings-3-5-billion-hero.jpg",
     "permanent": false
   },
   {
@@ -765,18 +778,6 @@
     "permanent": false
   },
   {
-    "emoji": "🚨",
-    "title": "GTA6 Leak Escalates: Hacker Now Confirmed To Have A Full Playable Build",
-    "slug": "gta6-playable-build-leak-biggest-breach-since-2022",
-    "url": "/articles/gta6-playable-build-leak-biggest-breach-since-2022",
-    "headline": "GTA6 Leaker Confirmed To Have A Full Playable Build, Not Just Clips",
-    "category": "News",
-    "date": "2026-08-20",
-    "excerpt": "The GTA6 leak just got a lot more serious — new footage confirms the leaker Cyberleek has an actual playable build of the game, the biggest breach against Rockstar since 2022.",
-    "image": "gta6-hero.png",
-    "permanent": false
-  },
-  {
     "emoji": "📉",
     "title": "Take-Two Loses Billions In Value As GTA6 Leaks Keep Coming",
     "slug": "gta6-take-two-stock-drop-leaks",
@@ -785,6 +786,18 @@
     "category": "News",
     "date": "2026-08-20",
     "excerpt": "Take-Two's stock has taken a real hit since the GTA6 leaks began last week — here's what the numbers actually show, and what analysts think is really driving the drop.",
+    "image": "gta6-hero.png",
+    "permanent": false
+  },
+  {
+    "emoji": "🚨",
+    "title": "GTA6 Leak Escalates: Hacker Now Confirmed To Have A Full Playable Build",
+    "slug": "gta6-playable-build-leak-biggest-breach-since-2022",
+    "url": "/articles/gta6-playable-build-leak-biggest-breach-since-2022",
+    "headline": "GTA6 Leaker Confirmed To Have A Full Playable Build, Not Just Clips",
+    "category": "News",
+    "date": "2026-08-20",
+    "excerpt": "The GTA6 leak just got a lot more serious — new footage confirms the leaker Cyberleek has an actual playable build of the game, the biggest breach against Rockstar since 2022.",
     "image": "gta6-hero.png",
     "permanent": false
   },
@@ -899,18 +912,6 @@
   },
   {
     "emoji": "🎮",
-    "title": "GTA 6 Is Coming To Netflix — 'An Extended Look' Premieres August 27 | 56ViceLane",
-    "slug": "gta6-netflix-extended-look-august-27",
-    "url": "/articles/gta6-netflix-extended-look-august-27",
-    "headline": "",
-    "category": "News",
-    "date": "2026-08-06",
-    "excerpt": "Rockstar and Netflix just announced Grand Theft Auto VI: An Extended Look, premiering exclusively on Netflix August 27 before a free release on YouTube six hours later. Here's everything confirmed.",
-    "image": "Gta6trailer3.png",
-    "permanent": false
-  },
-  {
-    "emoji": "🎮",
     "title": "GTA 6 Fans Are Furious About The Netflix Exclusive — Is The Backlash Fair? | 56ViceLane",
     "slug": "gta6-netflix-reveal-fan-backlash",
     "url": "/articles/gta6-netflix-reveal-fan-backlash",
@@ -918,6 +919,18 @@
     "category": "News",
     "date": "2026-08-06",
     "excerpt": "Rockstar's Netflix-exclusive GTA 6 reveal is getting called 'the weirdest marketing I've ever seen' by fans online. Here's the actual case for and against the 6-hour window — and why the outrage may be bigger than the real inconvenience.",
+    "image": "Gta6trailer3.png",
+    "permanent": false
+  },
+  {
+    "emoji": "🎮",
+    "title": "GTA 6 Is Coming To Netflix — 'An Extended Look' Premieres August 27 | 56ViceLane",
+    "slug": "gta6-netflix-extended-look-august-27",
+    "url": "/articles/gta6-netflix-extended-look-august-27",
+    "headline": "",
+    "category": "News",
+    "date": "2026-08-06",
+    "excerpt": "Rockstar and Netflix just announced Grand Theft Auto VI: An Extended Look, premiering exclusively on Netflix August 27 before a free release on YouTube six hours later. Here's everything confirmed.",
     "image": "Gta6trailer3.png",
     "permanent": false
   },
@@ -1118,18 +1131,6 @@
     "permanent": false
   },
   {
-    "emoji": "🏆",
-    "title": "The Biggest Trailer Launches Ever — Where GTA6 Really Ranks",
-    "slug": "biggest-trailer-launches-ever-gta6-ranking",
-    "url": "/articles/biggest-trailer-launches-ever-gta6-ranking",
-    "headline": "The Biggest Trailer Launches In History — Where GTA6 Actually Ranks",
-    "category": "Industry News",
-    "date": "2026-07-22",
-    "excerpt": "Avengers: Doomsday just hit 503 million views in 24 hours, the second-biggest trailer debut ever recorded — behind Spider-Man: Brand New Day, and ahead of GTA6. Here's the real all-time leaderboard, updated as new records fall.",
-    "image": "gta6-hero.png",
-    "permanent": false
-  },
-  {
     "emoji": "💳",
     "title": "Can You Cancel or Refund Your GTA6 Pre-Order?",
     "slug": "gta6-cancel-refund-preorder-guide",
@@ -1150,6 +1151,18 @@
     "category": "News",
     "date": "2026-07-22",
     "excerpt": "GTA6 pre-loads start November 12, 2026 — exactly one week before launch. Here's what you need to know about pre-load timing, platforms, digital vs physical, and getting ready for November 19.",
+    "image": "gta6-hero.png",
+    "permanent": false
+  },
+  {
+    "emoji": "🏆",
+    "title": "The Biggest Trailer Launches Ever — Where GTA6 Really Ranks",
+    "slug": "biggest-trailer-launches-ever-gta6-ranking",
+    "url": "/articles/biggest-trailer-launches-ever-gta6-ranking",
+    "headline": "The Biggest Trailer Launches In History — Where GTA6 Actually Ranks",
+    "category": "Industry News",
+    "date": "2026-07-22",
+    "excerpt": "Avengers: Doomsday just hit 503 million views in 24 hours, the second-biggest trailer debut ever recorded — behind Spider-Man: Brand New Day, and ahead of GTA6. Here's the real all-time leaderboard, updated as new records fall.",
     "image": "gta6-hero.png",
     "permanent": false
   },
@@ -1203,14 +1216,14 @@
   },
   {
     "emoji": "🎮",
-    "title": "Even Assassin's Creed Is Bracing for GTA6 — Dev Begs Fans \\",
-    "slug": "assassins-creed-begs-fans-play-us-when-gta6-launches",
-    "url": "/articles/assassins-creed-begs-fans-play-us-when-gta6-launches",
-    "headline": "Even Assassin's Creed Is Bracing for GTA6 — Dev Begs Fans \"Please Play Us\" Post-Launch",
-    "category": "GTA6 News",
+    "title": "Seven New Nameplate Bundles Just Dropped — Classic, Muscle, Exotic, and More",
+    "slug": "seven-nameplate-bundles-drop",
+    "url": "/articles/seven-nameplate-bundles-drop",
+    "headline": "Seven New Nameplate Bundles Just Dropped",
+    "category": "Store",
     "date": "2026-07-20",
-    "excerpt": "The director of Assassin's Creed Black Flag Resynced just admitted the quiet part out loud: they're planning post-launch content specifically to survive the GTA6 launch window.",
-    "image": "gta6-hero.png",
+    "excerpt": "Classic Cars, Trucks, Low Riders, Sports Cars, Muscle Cars, Exotic Cars, and Monster Trucks — seven new premium nameplate bundles are live in the store, each with ten original plate designs.",
+    "image": "NameplateBundlesHero.png",
     "permanent": false
   },
   {
@@ -1227,14 +1240,14 @@
   },
   {
     "emoji": "🎮",
-    "title": "Seven New Nameplate Bundles Just Dropped — Classic, Muscle, Exotic, and More",
-    "slug": "seven-nameplate-bundles-drop",
-    "url": "/articles/seven-nameplate-bundles-drop",
-    "headline": "Seven New Nameplate Bundles Just Dropped",
-    "category": "Store",
+    "title": "Even Assassin's Creed Is Bracing for GTA6 — Dev Begs Fans \\",
+    "slug": "assassins-creed-begs-fans-play-us-when-gta6-launches",
+    "url": "/articles/assassins-creed-begs-fans-play-us-when-gta6-launches",
+    "headline": "Even Assassin's Creed Is Bracing for GTA6 — Dev Begs Fans \"Please Play Us\" Post-Launch",
+    "category": "GTA6 News",
     "date": "2026-07-20",
-    "excerpt": "Classic Cars, Trucks, Low Riders, Sports Cars, Muscle Cars, Exotic Cars, and Monster Trucks — seven new premium nameplate bundles are live in the store, each with ten original plate designs.",
-    "image": "NameplateBundlesHero.png",
+    "excerpt": "The director of Assassin's Creed Black Flag Resynced just admitted the quiet part out loud: they're planning post-launch content specifically to survive the GTA6 launch window.",
+    "image": "gta6-hero.png",
     "permanent": false
   },
   {
@@ -1250,18 +1263,6 @@
     "permanent": false
   },
   {
-    "emoji": "🎮",
-    "title": "Extrapolation Tech Could Kill Frame Generation Latency — And GTA6 Performance Could Change Forever",
-    "slug": "extrapolation-frame-generation-gta6-performance",
-    "url": "/articles/extrapolation-frame-generation-gta6-performance",
-    "headline": "Extrapolation Tech Could Kill Frame Generation Latency — And GTA6 Performance Could Change Forever",
-    "category": "Hardware",
-    "date": "2026-07-17",
-    "excerpt": "New extrapolation tech promises frame generation without input lag. Here's what it means for GTA6 on PC and console at November 19 launch.",
-    "image": "exhero.webp",
-    "permanent": false
-  },
-  {
     "emoji": "🔍",
     "title": "GTA6 Pre-Order Claims Are \"Absurd,\" Analyst Firm Says — But It's Still History's Strongest Campaign",
     "slug": "gta6-preorder-claims-fact-check-newzoo-absurd",
@@ -1271,6 +1272,18 @@
     "date": "2026-07-17",
     "excerpt": "Newzoo calls viral GTA6 pre-order claims of 39 million units and $3 billion in revenue false and absurd, while confirming the real numbers still make it the strongest pre-order campaign ever recorded.",
     "image": "gta6-hero.png",
+    "permanent": false
+  },
+  {
+    "emoji": "🎮",
+    "title": "Extrapolation Tech Could Kill Frame Generation Latency — And GTA6 Performance Could Change Forever",
+    "slug": "extrapolation-frame-generation-gta6-performance",
+    "url": "/articles/extrapolation-frame-generation-gta6-performance",
+    "headline": "Extrapolation Tech Could Kill Frame Generation Latency — And GTA6 Performance Could Change Forever",
+    "category": "Hardware",
+    "date": "2026-07-17",
+    "excerpt": "New extrapolation tech promises frame generation without input lag. Here's what it means for GTA6 on PC and console at November 19 launch.",
+    "image": "exhero.webp",
     "permanent": false
   },
   {
@@ -1371,18 +1384,6 @@
   },
   {
     "emoji": "🎮",
-    "title": "The Mystery Woman on the GTA6 Cover Art — Fans Think They Found Her",
-    "slug": "gta6-cover-art-mystery-woman-gabriela-chiquin",
-    "url": "/articles/gta6-cover-art-mystery-woman-gabriela-chiquin",
-    "headline": "The Mystery Woman on the GTA6 Cover Art — Fans Think They Found Her",
-    "category": "Lore",
-    "date": "2026-06-22",
-    "excerpt": "The woman in the green crop top on the GTA6 cover art has no official name. But fans found a Venezuelan DJ named Gabriela Chiquin who posted a matching photo — a year before the cover dropped.",
-    "image": "gta6-cover-girl-thumbnail.png.jpg",
-    "permanent": false
-  },
-  {
-    "emoji": "🎮",
     "title": "GTA 6 Trailer 3: Everything We Need To See Before Pre-Orders Drop",
     "slug": "gta6-trailer-3-what-we-need-to-see",
     "url": "/articles/gta6-trailer-3-what-we-need-to-see",
@@ -1391,6 +1392,18 @@
     "date": "2026-06-22",
     "excerpt": "Pre-orders go live June 25. Trailer 3 is expected the same day. Here's every question Rockstar still hasn't answered — and what we need to see.",
     "image": "gta6-trailer-3-thumbnail.png",
+    "permanent": false
+  },
+  {
+    "emoji": "🎮",
+    "title": "The Mystery Woman on the GTA6 Cover Art — Fans Think They Found Her",
+    "slug": "gta6-cover-art-mystery-woman-gabriela-chiquin",
+    "url": "/articles/gta6-cover-art-mystery-woman-gabriela-chiquin",
+    "headline": "The Mystery Woman on the GTA6 Cover Art — Fans Think They Found Her",
+    "category": "Lore",
+    "date": "2026-06-22",
+    "excerpt": "The woman in the green crop top on the GTA6 cover art has no official name. But fans found a Venezuelan DJ named Gabriela Chiquin who posted a matching photo — a year before the cover dropped.",
+    "image": "gta6-cover-girl-thumbnail.png.jpg",
     "permanent": false
   },
   {
@@ -1419,18 +1432,6 @@
   },
   {
     "emoji": "🎮",
-    "title": "Take-Two CEO Gets Ambushed on the Street — Confirms GTA6 Date and Drops Bombshells",
-    "slug": "gta6-take-two-ceo-ambushed-confirms-release-date",
-    "url": "/articles/gta6-take-two-ceo-ambushed-confirms-release-date",
-    "headline": "Take-Two CEO Gets Ambushed on the Street — Confirms GTA6 Date and Drops Bombshells",
-    "category": "News",
-    "date": "2026-06-17",
-    "excerpt": "Take-Two CEO Strauss Zelnick got ambushed by a TikToker who had no idea who he was — and still confirmed GTA6 launches November 19. Here's what he said.",
-    "image": "gta6-hero.png",
-    "permanent": false
-  },
-  {
-    "emoji": "🎮",
     "title": "Tribunal Rules Against Rockstar — Blacklisting Claims Stay, Full Trial Starts September 10",
     "slug": "rockstar-tribunal-blacklisting-claims-trial-september-2026",
     "url": "/articles/rockstar-tribunal-blacklisting-claims-trial-september-2026",
@@ -1438,6 +1439,18 @@
     "category": "News",
     "date": "2026-06-17",
     "excerpt": "A UK employment tribunal rejected Rockstar's attempt to strip blacklisting claims from the union-busting case. The full trial starts September 10 — six weeks before GTA6 launches.",
+    "image": "gta6-hero.png",
+    "permanent": false
+  },
+  {
+    "emoji": "🎮",
+    "title": "Take-Two CEO Gets Ambushed on the Street — Confirms GTA6 Date and Drops Bombshells",
+    "slug": "gta6-take-two-ceo-ambushed-confirms-release-date",
+    "url": "/articles/gta6-take-two-ceo-ambushed-confirms-release-date",
+    "headline": "Take-Two CEO Gets Ambushed on the Street — Confirms GTA6 Date and Drops Bombshells",
+    "category": "News",
+    "date": "2026-06-17",
+    "excerpt": "Take-Two CEO Strauss Zelnick got ambushed by a TikToker who had no idea who he was — and still confirmed GTA6 launches November 19. Here's what he said.",
     "image": "gta6-hero.png",
     "permanent": false
   },
@@ -1611,14 +1624,14 @@
   },
   {
     "emoji": "🎮",
-    "title": "Take-Two Is Shutting Down RAGE:MP — And It's Not Really About GTA 5 | 56ViceLane",
-    "slug": "gta5-ragemp-shutdown-gta6-fivem-takeover",
-    "url": "/articles/gta5-ragemp-shutdown-gta6-fivem-takeover",
+    "title": "GTA VI Title ID Found In Xbox API — The Pre-Order Button Is Almost Ready",
+    "slug": "gta6-xbox-title-id-found-preorder-infrastructure",
+    "url": "/articles/gta6-xbox-title-id-found-preorder-infrastructure",
     "headline": "",
-    "category": "Community",
+    "category": "Leaks",
     "date": "2026-05-28",
-    "excerpt": "Take-Two just killed RAGE:MP with a cease-and-desist. This isn't really about GTA 5. It's about controlling the entire modding ecosystem before GTA 6 launches.",
-    "image": "GtaVOnlineNews1.png",
+    "excerpt": "A Reddit user found GTA VI's Xbox Title ID buried in Microsoft's API. The Package Name is Rockstar's. This is pre-order infrastructure. It's almost time.",
+    "image": "Jason_and_Lucia_01_landscape.jpg",
     "permanent": false
   },
   {
@@ -1635,14 +1648,14 @@
   },
   {
     "emoji": "🎮",
-    "title": "GTA VI Title ID Found In Xbox API — The Pre-Order Button Is Almost Ready",
-    "slug": "gta6-xbox-title-id-found-preorder-infrastructure",
-    "url": "/articles/gta6-xbox-title-id-found-preorder-infrastructure",
+    "title": "Take-Two Is Shutting Down RAGE:MP — And It's Not Really About GTA 5 | 56ViceLane",
+    "slug": "gta5-ragemp-shutdown-gta6-fivem-takeover",
+    "url": "/articles/gta5-ragemp-shutdown-gta6-fivem-takeover",
     "headline": "",
-    "category": "Leaks",
+    "category": "Community",
     "date": "2026-05-28",
-    "excerpt": "A Reddit user found GTA VI's Xbox Title ID buried in Microsoft's API. The Package Name is Rockstar's. This is pre-order infrastructure. It's almost time.",
-    "image": "Jason_and_Lucia_01_landscape.jpg",
+    "excerpt": "Take-Two just killed RAGE:MP with a cease-and-desist. This isn't really about GTA 5. It's about controlling the entire modding ecosystem before GTA 6 launches.",
+    "image": "GtaVOnlineNews1.png",
     "permanent": false
   },
   {
