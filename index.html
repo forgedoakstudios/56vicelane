@@ -97,7 +97,7 @@
 
   /* NAV BAND — matches reference's colored nav strip under the hero */
   .navband{background:var(--band); display:flex; justify-content:center; gap:0; flex-wrap:wrap;}
-  .navband a{color:#fff; text-decoration:none; font-family:'Barlow Condensed'; font-weight:700; letter-spacing:1px; text-transform:uppercase; font-size:15px; padding:16px 24px;}
+  .navband a{color:#fff; text-decoration:none; font-family:'Barlow Condensed'; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; font-size:19px; padding:20px 26px; text-shadow:1px 1px 0 rgba(0,0,0,.35), 2px 2px 0 rgba(0,0,0,.3), 3px 4px 6px rgba(0,0,0,.4);}
   .navband a.active{background:rgba(255,255,255,0.15);}
 
   /* MAIN LAYOUT — two column like the reference */
@@ -111,6 +111,14 @@
   .welcome-text h1{font-family:'Playfair Display'; font-style:italic; font-weight:700; font-size:36px; line-height:1.15;}
   .welcome-text h1 em{color:#FFD98A; font-style:normal;}
   .welcome-text p{font-family:'Barlow Condensed'; font-size:17px; letter-spacing:0.5px; margin-top:8px; color:#F2DCC9;}
+
+  .thanks-card{background:linear-gradient(135deg,#2A1430,#4A1E3A 55%,#FF6B2C22); border:2px solid var(--orange); border-radius:12px; padding:28px; margin-bottom:28px; color:#fff;}
+  .thanks-card h2{font-family:'Playfair Display'; font-style:italic; font-weight:800; font-size:26px; margin-bottom:12px; color:#fff;}
+  .thanks-card p{font-family:'Inter',sans-serif; font-size:16px; line-height:1.6; color:#F2DCC9; margin-bottom:0;}
+  .thanks-stats{display:flex; gap:40px; margin:20px 0; flex-wrap:wrap;}
+  .thanks-num{display:block; font-family:'Playfair Display'; font-weight:800; font-size:40px; color:var(--orange);}
+  .thanks-label{display:block; font-family:'Barlow Condensed'; font-weight:600; letter-spacing:1px; text-transform:uppercase; font-size:13px; color:#F2DCC9; margin-top:2px;}
+  .thanks-note{font-size:13px; font-style:italic; opacity:.8; margin-top:16px;}
 
   .sec-label{color:var(--magenta); font-size:15px; margin-bottom:14px; display:block;}
   .news-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:8px;}
@@ -226,20 +234,6 @@
   <div class="socials"><a href="https://www.instagram.com/56vicelane/?hl=en" target="_blank" rel="noopener" title="Instagram">IG</a><a href="https://x.com/56ViceLane" target="_blank" rel="noopener" title="X">X</a><a href="https://www.youtube.com/@56vicelane" target="_blank" rel="noopener" title="YouTube">YT</a></div>
 </div>
 
-<div class="stats-strip">
-  <div class="stats-strip-inner" id="home-stats-strip">
-    <div class="stat-item"><div class="stat-num" id="stat-drivers">—</div><div class="stat-label">Total Players Signed Up</div></div>
-  </div>
-</div>
-
-<div class="steps-strip">
-  <div class="steps-inner">
-    <div class="step-item"><div class="step-num">1</div><div class="step-text">Pick your platform</div></div>
-    <div class="step-item"><div class="step-num">2</div><div class="step-text">Join or lead a convoy</div></div>
-    <div class="step-item"><div class="step-num">3</div><div class="step-text">Add your crew and meet November 18</div></div>
-  </div>
-</div>
-
 <div class="navband">
   <a class="active" href="/">Home</a>
   <a href="/news">News</a>
@@ -253,19 +247,6 @@
   <a href="/forum">Forum</a>
 </div>
 
-<!-- LIVE COUNTDOWN (see /countdown.js) -->
-<div class="countdown-bar">
-  <div class="countdown-inner">
-    <div class="countdown-label">GTA6 Launches · November 19, 2026</div>
-    <div class="countdown-timer" data-countdown="2026-11-19T00:00:00-05:00">
-      <div class="countdown-unit"><span class="countdown-num" data-d>—</span><span class="countdown-unit-label">Days</span></div>
-      <div class="countdown-unit"><span class="countdown-num" data-h>—</span><span class="countdown-unit-label">Hours</span></div>
-      <div class="countdown-unit"><span class="countdown-num" data-m>—</span><span class="countdown-unit-label">Min</span></div>
-      <div class="countdown-unit"><span class="countdown-num" data-s>—</span><span class="countdown-unit-label">Sec</span></div>
-    </div>
-  </div>
-</div>
-
 <div class="layout">
   <div class="main-col">
     <a class="welcome-photo photo img-welcome" href="/articles/welcome-back-to-the-lane" style="text-decoration:none;color:inherit;cursor:pointer;">
@@ -274,6 +255,16 @@
         <p>The community's home for everything GTA6 &mdash; launching tonight.</p>
       </div>
     </a>
+
+    <div class="thanks-card">
+      <h2>Thank You For The Last Drive</h2>
+      <p>What started as one site covering GTA6 news turned into one of the largest organized Last Drive events anywhere &mdash; and it was all of you. The convoys, the screenshots, the crews that found each other in Discord: that's the part we'll remember.</p>
+      <div class="thanks-stats">
+        <div class="thanks-stat"><span class="thanks-num">1,725</span><span class="thanks-label">Signed Up On The Site</span></div>
+        <div class="thanks-stat"><span class="thanks-num">1,076</span><span class="thanks-label">Joined On Discord</span></div>
+      </div>
+      <p class="thanks-note">Last Drive recap and clips coming soon &mdash; the Wall of Honor stays up for good.</p>
+    </div>
 
     <span class="label sec-label">Latest News</span>
     <div class="news-grid" id="home-news-grid">
@@ -484,24 +475,6 @@ function shuffle(arr) {
   return arr;
 }
 
-/* HERO STATS STRIP — the Last Drive is underway worldwide now, so this is
-   just the one real running total: total players signed up. */
-function loadHomeStats() {
-  var driversEl = document.getElementById('stat-drivers');
-  if (!driversEl) return;
-
-  fetch(SIGNUPS_PUBLIC_URL).then(function (r) { return r.json(); }).then(function (d) {
-    var count = ((d && d.signups) || []).filter(function (s) {
-      var g = (s.gamertag || '').toLowerCase().trim();
-      return g && g !== 'test' && g !== 'trst';
-    }).length;
-    driversEl.textContent = count.toLocaleString();
-  }).catch(function () {
-    driversEl.textContent = '1,725+';
-  });
-}
-loadHomeStats();
-
 /* GTA V -> GTA VI title: traces the outline of "GTA V" letter by letter
    (with a connecting line underneath) using SVG stroke-dasharray, fills
    it in solid, then a camera-flash burst hides the swap to "GTA VI". */
@@ -673,9 +646,7 @@ function loadFeaturedStreamers() {
   }).catch(function () {});
 }
 loadFeaturedStreamers();
-</script>
-<script src="/countdown.js" defer></script>
-<script src="/crime-blotter.js" defer></script>
+</script><script src="/crime-blotter.js" defer></script>
 <script src="/blotter-banner.js" defer></script>
 <script src="/lastdrive-banner.js" defer></script>
 <script src="/back-to-top.js" defer></script>
