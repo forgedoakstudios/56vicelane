@@ -1330,5 +1330,11 @@
     "slug": "gta6-preorder-bonuses-important-asterisk",
     "tier": "digest",
     "date": "2026-11-17"
+  },
+  {
+    "link": "https://www.ign.com/articles/sony-issues-official-ps5-firmware-update-warning-confirms-gta-6-requirement",
+    "slug": "gta6-sony-ps5-firmware-security-update-hacker-claim",
+    "tier": "skipped-duplicate",
+    "date": "2026-11-18"
   }
 ]
