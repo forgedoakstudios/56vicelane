@@ -143,9 +143,9 @@
   .welcome-text p{font-family:'Barlow Condensed'; font-size:17px; letter-spacing:0.5px; margin-top:8px; color:#F2DCC9;}
 
   .sec-label{color:var(--magenta); font-size:15px; margin-bottom:14px; display:block;}
-  .news-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:8px;}
-  .news-thumb{aspect-ratio:16/9; height:auto; border-radius:8px; display:block; background:linear-gradient(135deg,var(--gold),var(--orange) 55%,var(--magenta)); background-size:cover; background-position:center;}
-  .news-title{font-family:'Playfair Display'; font-weight:700; font-size:21px; margin-top:14px; margin-bottom:24px;}
+  .news-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:8px;}
+  .news-thumb{aspect-ratio:4/3; height:auto; border-radius:8px; display:block; background:linear-gradient(135deg,var(--gold),var(--orange) 55%,var(--magenta)); background-size:cover; background-position:center;}
+  .news-title{font-family:'Playfair Display'; font-weight:700; font-size:23px; margin-top:16px; margin-bottom:26px;}
 
   .video-block{aspect-ratio:4/3; height:auto; border-radius:10px; position:relative; display:flex; align-items:center; justify-content:center; margin-top:8px; overflow:hidden; cursor:pointer;}
   .video-block.playing{aspect-ratio:9/16; max-width:360px; margin:8px auto 0;}
@@ -163,7 +163,7 @@
      match the rest of the page instead of clashing. See crime-blotter.js
      and blotter-banner.js */
   .blotter-block{background:#FFF7EC; border:2px solid var(--magenta); border-radius:12px; overflow:hidden; margin-bottom:24px;}
-  .blotter-banner{width:100%; height:140px; object-fit:cover; display:block; background:linear-gradient(135deg,var(--gold),var(--magenta));}
+  .blotter-banner{width:100%; height:140px; object-fit:contain; object-position:center; display:block; background:linear-gradient(135deg,var(--gold),var(--magenta));}
   .blotter-inner{padding:18px 22px 20px;}
   .blotter-label{display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;}
   .blotter-label .sec-label{margin-bottom:0; color:var(--magenta);}
