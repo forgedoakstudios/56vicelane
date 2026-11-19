@@ -13,6 +13,7 @@ for the real data — just what we've got saved out-of-band.
   Uzzywuzzy asking how to reach him.
 - **Uzzywuzzy** — left a phone number for Chris via Discord DM (not visible
   in the channel screenshot; Chris has it in his DMs). Source: same channel,
-  09:47 AM.
+  09:47 AM. Also builds websites — worth keeping in mind as a possible
+  resource (e.g. for the n8n/Hetzner rebuild or other site work), per Chris.
 
 <!-- Add more entries below as Chris sends screenshots/info. -->
